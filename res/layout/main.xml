@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/lytMain"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="@drawable/splash" android:weightSum="1">
+    <RelativeLayout android:id="@+id/lytProfile"
+            android:layout_width="match_parent"
+            android:layout_height="92dp">
+        <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:id="@+id/imgProfile"
+                android:src="@drawable/profile"
+                android:layout_marginLeft="20dp" android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/profileName"
+                android:id="@+id/txtProfile"
+                android:layout_centerVertical="true" android:layout_toRightOf="@+id/imgProfile"
+                android:layout_marginLeft="15dp" android:textColor="#ff000000"/>
+    </RelativeLayout>
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_gravity="center_horizontal"/>
+    <RelativeLayout
+            android:layout_width="340dp"
+            android:layout_height="45dp" android:layout_marginLeft="10dp" android:background="@drawable/roundcornerlight"
+            android:onClick="ExpandAccounting">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Muhasebe"
+                android:id="@+id/txtAccounting" android:textSize="24dp"
+                android:textColor="#ff000000"
+                android:clickable="true"
+                android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                android:layout_marginLeft="9dp" android:layout_marginTop="8dp"/>
+        <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/imgAccArrow" android:layout_alignTop="@+id/txtAccounting"
+                android:layout_alignParentRight="true" android:layout_marginLeft="250dp" android:src="@drawable/up"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_width="340dp"
+            android:layout_height="140dp" android:id="@+id/lytAccounting" android:background="@drawable/roundcornerdark"
+            android:layout_marginLeft="10dp">
+        <ImageButton
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/btnIncome"
+                android:layout_marginLeft="61dp" android:background="@drawable/roundcorner" android:src="@drawable/coins"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="20dp"/>
+        <ImageButton
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/imgExpense"
+                android:background="@drawable/roundcorner" android:src="@drawable/coins"
+                android:layout_alignTop="@+id/btnIncome" android:layout_toRightOf="@+id/btnIncome"
+                android:layout_marginLeft="57dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Gelir"
+                android:id="@+id/textView"
+                android:textColor="#ffb8b8b8" android:textSize="20dp" android:layout_below="@+id/btnIncome"
+                android:layout_alignLeft="@+id/btnIncome" android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceSmall" android:text="Gider"
+                  android:id="@+id/textView2" android:textColor="#ffb8b8b8" android:textSize="20dp"
+                  android:layout_alignTop="@+id/textView" android:layout_alignLeft="@+id/imgExpense"
+                  android:layout_marginLeft="18dp"/>
+    </RelativeLayout>
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_gravity="center_horizontal"/>
+    <RelativeLayout
+            android:layout_width="340dp"
+            android:layout_height="45dp" android:layout_marginLeft="10dp" android:background="@drawable/roundcornerlight"
+            android:onClick="ExpandSavings">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Birikim"
+                android:id="@+id/txtSavings" android:textSize="24dp"
+                android:textColor="#ff000000"
+                android:clickable="true"
+                android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                android:layout_marginLeft="8dp" android:layout_marginTop="8dp"/>
+        <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/imgSavArrow" android:layout_alignTop="@+id/txtSavings"
+                android:layout_alignParentRight="true" android:layout_marginLeft="250dp" android:src="@drawable/down"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_width="340dp"
+            android:layout_height="140dp" android:id="@+id/lytSavings" android:background="@drawable/roundcornerdark"
+            android:layout_marginLeft="10dp">
+
+        <ImageButton
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/imageButton"
+                android:layout_centerHorizontal="true" android:layout_marginTop="20dp"
+                android:background="@drawable/roundcorner" android:src="@drawable/money"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceSmall" android:text="Birikim"
+                  android:id="@+id/textView3" android:textColor="#ffb8b8b8" android:textSize="20dp"
+                  android:layout_below="@+id/imageButton" android:layout_centerHorizontal="true"
+                  android:layout_marginTop="5dp"/>
+    </RelativeLayout>
+</LinearLayout>
+
