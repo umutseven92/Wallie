@@ -3,7 +3,7 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-              android:background="@drawable/splash" android:weightSum="1">
+              android:background="#B81D19" android:weightSum="1">
     <RelativeLayout android:id="@+id/lytProfile"
             android:layout_width="match_parent"
             android:layout_height="92dp">
@@ -13,7 +13,7 @@
                 android:id="@+id/imgProfile"
                 android:src="@drawable/profile"
                 android:layout_marginLeft="20dp" android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true" android:background="@drawable/roundcorner"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
                 android:text="@string/profileName"
                 android:id="@+id/txtProfile"
                 android:layout_centerVertical="true" android:layout_toRightOf="@+id/imgProfile"
-                android:layout_marginLeft="15dp" android:textColor="#ff000000"/>
+                android:layout_marginLeft="15dp" android:textColor="#F0F0F0"/>
     </RelativeLayout>
     <Space
             android:layout_width="match_parent"
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:text="Muhasebe"
                 android:id="@+id/txtAccounting" android:textSize="24dp"
-                android:textColor="#ff000000"
+                android:textColor="#F0F0F0"
                 android:clickable="true"
                 android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
                 android:layout_marginLeft="9dp" android:layout_marginTop="8dp"/>
@@ -70,12 +70,12 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Gelir"
                 android:id="@+id/textView"
-                android:textColor="#ffb8b8b8" android:textSize="20dp" android:layout_below="@+id/btnIncome"
+                android:textColor="#ff000000" android:textSize="20dp" android:layout_below="@+id/btnIncome"
                 android:layout_alignLeft="@+id/btnIncome" android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"/>
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                   android:textAppearance="?android:attr/textAppearanceSmall" android:text="Gider"
-                  android:id="@+id/textView2" android:textColor="#ffb8b8b8" android:textSize="20dp"
+                  android:id="@+id/textView2" android:textColor="#ff000000" android:textSize="20dp"
                   android:layout_alignTop="@+id/textView" android:layout_alignLeft="@+id/imgExpense"
                   android:layout_marginLeft="18dp"/>
     </RelativeLayout>
@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:text="Birikim"
                 android:id="@+id/txtSavings" android:textSize="24dp"
-                android:textColor="#ff000000"
+                android:textColor="#F0F0F0"
                 android:clickable="true"
                 android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
                 android:layout_marginLeft="8dp" android:layout_marginTop="8dp"/>
@@ -115,7 +115,7 @@
                 android:background="@drawable/roundcorner" android:src="@drawable/money"/>
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                   android:textAppearance="?android:attr/textAppearanceSmall" android:text="Birikim"
-                  android:id="@+id/textView3" android:textColor="#ffb8b8b8" android:textSize="20dp"
+                  android:id="@+id/textView3" android:textColor="#ff000000" android:textSize="20dp"
                   android:layout_below="@+id/imageButton" android:layout_centerHorizontal="true"
                   android:layout_marginTop="5dp"/>
     </RelativeLayout>
