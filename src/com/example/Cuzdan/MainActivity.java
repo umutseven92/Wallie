@@ -28,51 +28,9 @@ public class MainActivity extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        final ActionBar actionBar = getActionBar();
-        //actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         final ViewPager pager = (ViewPager) findViewById(R.id.pager);
         PagerTitleStrip strip = (PagerTitleStrip) findViewById(R.id.pagerTitle);
-
-
-
-        pager.setOnPageChangeListener(
-                new ViewPager.SimpleOnPageChangeListener(){
-                    @Override
-                    public void onPageSelected(int position)
-                    {
-                       // getActionBar().setSelectedNavigationItem(position);
-                    }
-                }
-        );
-
-        ActionBar.TabListener tabListener = new ActionBar.TabListener() {
-            @Override
-            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-               // pager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-            }
-
-            @Override
-            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-            }
-        };
-
-        /*
-        ActionBar.Tab incomeTab = actionBar.newTab().setText("Gelirler").setTabListener(tabListener);
-        actionBar.addTab(incomeTab);
-
-        ActionBar.Tab expenseTab = actionBar.newTab().setText("Giderler").setTabListener(tabListener);
-        actionBar.addTab(expenseTab);
-
-        ActionBar.Tab savingsTab = actionBar.newTab().setText("Birikim").setTabListener(tabListener);
-        actionBar.addTab(savingsTab);
-        */
 
         List<Fragment> fragments = getFragments();
         pageAdapter = new MainPageAdapter(getSupportFragmentManager(), fragments);
