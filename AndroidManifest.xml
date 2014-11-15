@@ -16,8 +16,5 @@
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".BalanceActivity">
-
-        </activity>
     </application>
 </manifest>

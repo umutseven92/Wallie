@@ -1,73 +1,170 @@
 package com.example.Cuzdan;
-import android.app.Activity;
-import android.content.Intent;
+
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.PagerTitleStrip;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.view.ViewGroup;
 
-public class MainActivity extends Activity {
+import java.util.ArrayList;
+import java.util.List;
 
-    RelativeLayout lytAccounting;
-    RelativeLayout lytSavings;
-    ImageView imgAccArrow;
-    ImageView imgSavArrow;
 
-    /**
-     * Called when the activity is first created.
-     */
+/**
+ * Created by Umut on 15.11.2014.
+ */
+public class MainActivity extends FragmentActivity {
+
+    MainPageAdapter pageAdapter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        final ActionBar actionBar = getActionBar();
+        //actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        // Accounting section
-        lytAccounting = (RelativeLayout) findViewById(R.id.lytAccounting);
-        imgAccArrow = (ImageView) findViewById(R.id.imgAccArrow);
+        final ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        PagerTitleStrip strip = (PagerTitleStrip) findViewById(R.id.pagerTitle);
 
-        // Savings section
-        lytSavings = (RelativeLayout) findViewById(R.id.lytSavings);
-        lytSavings.setVisibility(View.GONE);
-        imgSavArrow = (ImageView) findViewById(R.id.imgSavArrow);
+
+
+        pager.setOnPageChangeListener(
+                new ViewPager.SimpleOnPageChangeListener(){
+                    @Override
+                    public void onPageSelected(int position)
+                    {
+                       // getActionBar().setSelectedNavigationItem(position);
+                    }
+                }
+        );
+
+        ActionBar.TabListener tabListener = new ActionBar.TabListener() {
+            @Override
+            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+               // pager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+            }
+
+            @Override
+            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+            }
+        };
+
+        /*
+        ActionBar.Tab incomeTab = actionBar.newTab().setText("Gelirler").setTabListener(tabListener);
+        actionBar.addTab(incomeTab);
+
+        ActionBar.Tab expenseTab = actionBar.newTab().setText("Giderler").setTabListener(tabListener);
+        actionBar.addTab(expenseTab);
+
+        ActionBar.Tab savingsTab = actionBar.newTab().setText("Birikim").setTabListener(tabListener);
+        actionBar.addTab(savingsTab);
+        */
+
+        List<Fragment> fragments = getFragments();
+        pageAdapter = new MainPageAdapter(getSupportFragmentManager(), fragments);
+
+        pager.setAdapter(pageAdapter);
+
     }
 
-    public void ExpandAccounting(View v)
-    {
-        if(lytAccounting.isShown())
-        {
-            imgAccArrow.setImageResource(R.drawable.down);
-            lytAccounting.setVisibility(View.GONE);
-            FX.SlideUp(this,lytAccounting);
+    class MainPageAdapter extends FragmentPagerAdapter {
+        private List<Fragment> fragments;
+
+        public MainPageAdapter(FragmentManager fm, List<Fragment> fragments) {
+            super(fm);
+            this.fragments = fragments;
         }
-        else
-        {
-            imgAccArrow.setImageResource(R.drawable.up);
-            lytAccounting.setVisibility(View.VISIBLE);
-            FX.SlideDown(this,lytAccounting);
+
+        @Override
+        public Fragment getItem(int position) {
+            return this.fragments.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return this.fragments.size();
+        }
+
+        private final String[] titles = { "Gelirler", "Giderler", "Birikim"};
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return titles[position];
         }
 
     }
 
-    public void ExpandSavings(View v)
-    {
-        if(lytSavings.isShown())
+    private List<Fragment> getFragments() {
+        List<Fragment> fList = new ArrayList<Fragment>();
+
+        fList.add(IncomeFragment.newInstance());
+        fList.add(ExpenseFragment.newInstance());
+        fList.add(SavingsFragment.newInstance());
+
+        return fList;
+
+    }
+
+    public static class IncomeFragment extends Fragment {
+
+        public static final IncomeFragment newInstance()
         {
-            imgSavArrow.setImageResource(R.drawable.down);
-            lytSavings.setVisibility(View.GONE);
-            FX.SlideUp(this,lytSavings);
+            IncomeFragment f = new IncomeFragment();
+            return f;
         }
-        else
-        {
-            imgSavArrow.setImageResource(R.drawable.up);
-            lytSavings.setVisibility(View.VISIBLE);
-            FX.SlideDown(this,lytSavings);
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View v = inflater.inflate(R.layout.incomefragment, container, false);
+            return v;
         }
     }
 
-    public void OpenBalanceActivity(View view)
-    {
-        Intent balanceIntent = new Intent(this, BalanceActivity.class);
-        startActivity(balanceIntent);
+    public static class ExpenseFragment extends Fragment {
+
+        public static final ExpenseFragment newInstance()
+        {
+            ExpenseFragment f = new ExpenseFragment();
+            return f;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View v = inflater.inflate(R.layout.expensefragment, container, false);
+            return v;
+        }
+    }
+
+    public static class SavingsFragment extends Fragment {
+
+        public static final SavingsFragment newInstance()
+        {
+            SavingsFragment f = new SavingsFragment();
+            return f;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View v = inflater.inflate(R.layout.savingsfragment, container, false);
+            return v;
+        }
     }
 
 }
