@@ -3,7 +3,7 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-              android:background="#B81D19" android:weightSum="1">
+              android:background="#FFFFF0" android:weightSum="1">
     <RelativeLayout android:id="@+id/lytProfile"
             android:layout_width="match_parent"
             android:layout_height="92dp">
@@ -21,7 +21,7 @@
                 android:text="@string/profileName"
                 android:id="@+id/txtProfile"
                 android:layout_centerVertical="true" android:layout_toRightOf="@+id/imgProfile"
-                android:layout_marginLeft="15dp" android:textColor="#F0F0F0"/>
+                android:layout_marginLeft="15dp" android:textColor="#ff000000"/>
     </RelativeLayout>
     <Space
             android:layout_width="match_parent"
@@ -56,7 +56,8 @@
                 android:id="@+id/btnIncome"
                 android:layout_marginLeft="61dp" android:background="@drawable/roundcorner" android:src="@drawable/coins"
                 android:layout_alignParentLeft="true"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:onClick="OpenBalanceActivity"/>
         <ImageButton
                 android:layout_width="80dp"
                 android:layout_height="80dp"
