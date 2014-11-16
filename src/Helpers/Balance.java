@@ -1,56 +1,57 @@
 package Helpers;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  * Created by Umut on 12.11.2014.
  */
-public class Balance {
+public class Balance implements Serializable {
 
     private String _category;
 
-    public String getCategory()
+    public String GetCategory()
     {
         return _category;
     }
 
-    public void setCategory(String value)
+    public void SetCategory(String value)
     {
         _category = value;
     }
 
     private String _subCategory;
 
-    public String getSubCategory()
+    public String GetSubCategory()
     {
         return _subCategory;
     }
 
-    public void setSubCategory(String value)
+    public void SetSubCategory(String value)
     {
         _subCategory = value;
     }
 
     private String _description;
 
-    public String getDescription()
+    public String GetDescription()
     {
         return _description;
     }
 
-    public void setDescription(String value)
+    public void SetDescription(String value)
     {
         _description = value;
     }
 
     private BigDecimal _amount;
 
-    public BigDecimal getAmount()
+    public BigDecimal GetAmount()
     {
         return _amount;
     }
 
-    public void setAmount(BigDecimal value)
+    public void SetAmount(BigDecimal value)
     {
         _amount = value;
     }
