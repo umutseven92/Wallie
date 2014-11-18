@@ -12,6 +12,8 @@
 
             <android.support.v4.view.PagerTabStrip
                     android:id="@+id/pagerTitle"
+                    android:background="#FFFFF0"
+                    android:textColor="#000000"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top" />

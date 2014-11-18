@@ -1,4 +1,4 @@
-package com.example.Cuzdan;
+package Helpers;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -24,7 +24,7 @@ public class MainPageAdapter extends FragmentPagerAdapter {
         return this.fragments.size();
     }
 
-    private final String[] titles = { "Gelirler", "Giderler", "Birikim"};
+    private final String[] titles = { "Gelirler", "Giderler", "Birikim", "Hesap"};
 
     @Override
     public CharSequence getPageTitle(int position) {

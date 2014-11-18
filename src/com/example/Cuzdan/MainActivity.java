@@ -1,19 +1,16 @@
 package com.example.Cuzdan;
 
+import Fragments.AccountFragment;
+import Fragments.ExpenseFragment;
+import Fragments.IncomeFragment;
+import Fragments.SavingsFragment;
+import Helpers.MainPageAdapter;
 import Helpers.User;
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,20 +22,11 @@ import java.util.List;
 public class MainActivity extends FragmentActivity {
 
     MainPageAdapter pageAdapter;
-    User user;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
-        Bundle extra = getIntent().getExtras();
-        if(extra != null)
-        {
-            user = (User)extra.getSerializable("user");
-            IncomeFragment.SetUser(user);
-        }
-
 
         final ViewPager pager = (ViewPager) findViewById(R.id.pager);
         PagerTitleStrip strip = (PagerTitleStrip) findViewById(R.id.pagerTitle);
@@ -57,6 +45,7 @@ public class MainActivity extends FragmentActivity {
         fList.add(IncomeFragment.newInstance());
         fList.add(ExpenseFragment.newInstance());
         fList.add(SavingsFragment.newInstance());
+        fList.add(AccountFragment.newInstance());
 
         return fList;
 

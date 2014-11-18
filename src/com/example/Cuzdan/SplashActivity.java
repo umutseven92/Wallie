@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 
-import java.util.List;
-
 /**
  * Created by Umut on 11.11.2014.
  */
@@ -22,16 +20,15 @@ public class SplashActivity extends Activity {
     {
         super.onCreate(bundle);
 
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.splash);
 
         final User user = new User("Umut Seven");
+        ((Global) this.getApplication()).SetUser(user);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
-                mainIntent.putExtra("user",user);
                 SplashActivity.this.startActivity(mainIntent);
                 SplashActivity.this.finish();
             }

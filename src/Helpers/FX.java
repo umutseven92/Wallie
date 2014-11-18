@@ -1,9 +1,10 @@
-package com.example.Cuzdan;
+package Helpers;
 
 import android.content.Context;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import com.example.Cuzdan.R;
 
 /**
  * Created by Umut on 12.11.2014.
@@ -12,7 +13,7 @@ public class FX {
 
     public static void SlideDown(Context ctx, View v)
     {
-        Animation a = AnimationUtils.loadAnimation(ctx,R.anim.slide_down);
+        Animation a = AnimationUtils.loadAnimation(ctx, R.anim.slide_down);
         if (a!=null)
         {
             a.reset();

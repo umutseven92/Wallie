@@ -3,18 +3,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:id="@+id/lytIncome">
+              android:layout_height="match_parent" android:id="@+id/lytIncome" android:background="#FFFFF0"
+              android:weightSum="1">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Gelirler"
-            android:id="@+id/textView" android:layout_gravity="center"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/txtUserName" android:layout_gravity="center_horizontal"/>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="390dp" android:layout_gravity="center_horizontal" android:layout_marginTop="40dp"
+            android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:id="@+id/lytMainIncomes">
+        <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lstIncomes"
+                android:layout_alignParentLeft="true" android:layout_marginTop="40dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Toplam"
+                android:id="@+id/textView" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                android:textColor="#ff000000"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="total"
+                android:id="@+id/txtIncomes" android:layout_alignBottom="@+id/textView"
+                android:layout_alignParentRight="true" android:textColor="#ff000000"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="92dp"
+            android:id="@+id/lytAddIncome">
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true">
+            <ImageButton
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:id="@+id/imageButton" android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true" android:src="@drawable/stats64"
+                    android:background="#FFFFF0" android:layout_marginRight="5dp"/>
+            <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:id="@+id/btnAddIncome" android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" android:src="@drawable/plus64"
+                    android:background="#fffffff0"/>
+        </RelativeLayout>
+    </RelativeLayout>
 </LinearLayout>
