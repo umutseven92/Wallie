@@ -5,12 +5,13 @@ import Fragments.ExpenseFragment;
 import Fragments.IncomeFragment;
 import Fragments.SavingsFragment;
 import Helpers.MainPageAdapter;
-import Helpers.User;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,15 +30,12 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.main);
 
         final ViewPager pager = (ViewPager) findViewById(R.id.pager);
-        PagerTitleStrip strip = (PagerTitleStrip) findViewById(R.id.pagerTitle);
 
         List<Fragment> fragments = getFragments();
         pageAdapter = new MainPageAdapter(getSupportFragmentManager(), fragments);
 
         pager.setAdapter(pageAdapter);
     }
-
-
 
     private List<Fragment> getFragments() {
         List<Fragment> fList = new ArrayList<Fragment>();

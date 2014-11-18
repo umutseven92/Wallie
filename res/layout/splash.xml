@@ -5,9 +5,14 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:background="#FFFFF0">
 
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imgSplash" android:layout_gravity="center_horizontal" android:src="@drawable/splashicon"
-            android:layout_marginTop="200dp"/>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:layout_gravity="center_horizontal"
+            android:background="#fffff0">
+        <ImageView
+                android:layout_width="192dp"
+                android:layout_height="192dp"
+                android:id="@+id/imageView2" android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" android:src="@drawable/wallet512"/>
+    </RelativeLayout>
 </LinearLayout>
