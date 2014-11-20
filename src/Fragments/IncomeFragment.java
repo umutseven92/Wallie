@@ -1,5 +1,6 @@
 package Fragments;
 
+import Helpers.Balance;
 import Helpers.Income;
 import Helpers.ListViewAdapter;
 import android.graphics.Color;
@@ -28,10 +29,10 @@ public class IncomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.incomefragment, container, false);
 
-        ArrayList<Income> incomes = new ArrayList<Income>();
+        ArrayList<Balance> incomes = new ArrayList<Balance>();
 
-        incomes.add(new Income("Maaş Ödemesi","Maaş", new BigDecimal(1500),"İş", new Date()));
-        incomes.add(new Income("Borç Ödemesi","Borç", new BigDecimal(13),"Borç", new Date()));
+        incomes.add(new Income("Maaş Ödemesi","Maaş", new BigDecimal(1500),"İş", new Date(), Balance.Tags.Home));
+        incomes.add(new Income("Borç Ödemesi","Borç", new BigDecimal(13),"Borç", new Date(), Balance.Tags.Personal));
 
         ListView lv = (ListView)v.findViewById(R.id.lstIncomes);
 

@@ -58,15 +58,34 @@ public class Balance implements Serializable {
         _amount = value;
     }
 
-    private Date _incomeDate;
+    private Date _date;
 
-    public Date GetIncomeDate()
+    public Date GetDate()
     {
-        return _incomeDate;
+        return _date;
     }
 
-    public void SetIncomeDate(Date incomeDate)
+    public void SetDate(Date date)
     {
-        _incomeDate = incomeDate;
+        _date = date;
     }
+
+    public enum Tags
+    {
+        Home,
+        Personal
+    }
+
+    private Tags _tag;
+
+    public Tags GetTag()
+    {
+        return _tag;
+    }
+
+    public void SetTag(Tags tag)
+    {
+        _tag = tag;
+    }
+
 }

@@ -8,12 +8,14 @@ import java.util.Date;
  */
 public class Income extends Balance {
 
-    public Income(String category, String subCategory, BigDecimal amount, String desc, Date incomeDate)
+    public Income(String category, String subCategory, BigDecimal amount, String desc, Date incomeDate, Tags tag)
     {
         this.SetCategory(category);
         this.SetSubCategory(subCategory);
         this.SetAmount(amount);
         this.SetDescription(desc);
-        this.SetIncomeDate(incomeDate);
+        this.SetDate(incomeDate);
+        this.SetTag(tag);
+
     }
 }

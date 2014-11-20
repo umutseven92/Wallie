@@ -43,7 +43,7 @@
             <ImageButton
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:id="@+id/imageButton" android:layout_centerVertical="true"
+                    android:id="@+id/btnIncomeStats" android:layout_centerVertical="true"
                     android:layout_alignParentRight="true" android:src="@drawable/stats64"
                     android:background="#fffff0" android:layout_marginRight="5dp"/>
             <ImageButton
