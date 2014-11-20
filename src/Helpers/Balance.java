@@ -2,11 +2,13 @@ package Helpers;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Created by Umut on 12.11.2014.
  */
 public class Balance implements Serializable {
+
 
     private String _category;
 
@@ -54,5 +56,17 @@ public class Balance implements Serializable {
     public void SetAmount(BigDecimal value)
     {
         _amount = value;
+    }
+
+    private Date _incomeDate;
+
+    public Date GetIncomeDate()
+    {
+        return _incomeDate;
+    }
+
+    public void SetIncomeDate(Date incomeDate)
+    {
+        _incomeDate = incomeDate;
     }
 }

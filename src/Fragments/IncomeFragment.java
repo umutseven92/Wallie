@@ -1,16 +1,19 @@
 package Fragments;
 
-import android.app.ListFragment;
+import Helpers.Income;
+import Helpers.ListViewAdapter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import com.example.Cuzdan.R;
-
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class IncomeFragment extends Fragment {
 
@@ -25,11 +28,27 @@ public class IncomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.incomefragment, container, false);
 
-        String[] myList = new String[] {"Hello","World","Foo","Bar"};
+        ArrayList<Income> incomes = new ArrayList<Income>();
+
+        incomes.add(new Income("Maaş Ödemesi","Maaş", new BigDecimal(1500),"İş", new Date()));
+        incomes.add(new Income("Borç Ödemesi","Borç", new BigDecimal(13),"Borç", new Date()));
 
         ListView lv = (ListView)v.findViewById(R.id.lstIncomes);
 
-        lv.setAdapter(new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,myList));
+        BigDecimal total = BigDecimal.ZERO;
+
+        for (int i = 0; i<incomes.size(); i++)
+        {
+            BigDecimal val = incomes.get(i).GetAmount();
+
+           total = total.add(val);
+        }
+
+        lv.setAdapter(new ListViewAdapter(this.getActivity(),incomes));
+
+        TextView txtTotalIncome = (TextView)v.findViewById(R.id.txtTotalIncome);
+        txtTotalIncome.setText(total.toString() + " TL");
+        txtTotalIncome.setTextColor(Color.GREEN);
 
         return v;
     }
