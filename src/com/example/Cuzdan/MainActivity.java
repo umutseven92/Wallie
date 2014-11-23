@@ -1,9 +1,6 @@
 package com.example.Cuzdan;
 
-import Fragments.AccountFragment;
-import Fragments.ExpenseFragment;
-import Fragments.IncomeFragment;
-import Fragments.SavingsFragment;
+import Fragments.*;
 import Helpers.MainPageAdapter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -42,6 +39,7 @@ public class MainActivity extends FragmentActivity {
 
         fList.add(IncomeFragment.newInstance());
         fList.add(ExpenseFragment.newInstance());
+        fList.add(BalanceFragment.newInstance());
         fList.add(SavingsFragment.newInstance());
         fList.add(AccountFragment.newInstance());
 

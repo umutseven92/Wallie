@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="#FFFFF0">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:layout_gravity="center_horizontal">
+        <RelativeLayout
+                android:layout_width="400dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="100dp" android:background="@drawable/roundedlayout"
+                android:layout_marginRight="10dp" android:layout_marginLeft="10dp">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Gelir"
+                    android:id="@+id/textView" android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true" android:layout_marginTop="28dp"
+                    android:layout_marginLeft="20dp" android:textColor="#ff000000"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Gider"
+                    android:id="@+id/textView2"
+                    android:textColor="#ff000000"
+                    android:layout_below="@+id/textView" android:layout_alignLeft="@+id/textView"
+                    android:layout_marginTop="10dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="income"
+                    android:id="@+id/txtBalanceIncome" android:layout_above="@+id/textView2"
+                    android:layout_alignParentRight="true" android:textColor="#ff79f002"
+                    android:layout_marginRight="10dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="expense"
+                    android:id="@+id/txtBalanceExpense" android:layout_alignBottom="@+id/textView2"
+                    android:layout_alignParentRight="true" android:textColor="#fff00003"
+                    android:layout_marginRight="10dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="total"
+                    android:id="@+id/txtBalance"
+                    android:layout_marginTop="27dp"
+                    android:textColor="#ff000000" android:layout_below="@+id/txtBalanceExpense"
+                    android:layout_alignRight="@+id/txtBalanceExpense"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

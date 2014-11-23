@@ -6,17 +6,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Window;
+import org.json.*;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.*;
 
 /**
  * Created by Umut on 11.11.2014.
  */
 public class SplashActivity extends Activity {
 
-    // How long in ms the user will wait
+    // How long in ms the user will wait, change this to be an accurate load time
     private final int splashLength = 3000;
 
     @Override
@@ -26,23 +25,58 @@ public class SplashActivity extends Activity {
 
         setContentView(R.layout.splash);
 
+        User user = null;
 
-        File file = new File(this.getFilesDir(),"userInfo");
+        String fileName = "userConfigTest2";
+        File file = new File(this.getFilesDir(),fileName);
+        JSONObject userInfo = null;
+
+
+        // The user doesn't exist; so create one and save the file to internal storage.
         if(!file.exists())
         {
-            String filename = "userInfo";
-            String userName = "Umut Seven";
+            String userName = "Max Planck";
             FileOutputStream outputStream;
 
             try {
-                outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
-                outputStream.write(userName.getBytes());
+                userInfo = new JSONObject("{ 'user': {'userName':'" + userName + "'} }");
+
+                outputStream = openFileOutput(fileName, Context.MODE_PRIVATE);
+
+                if (userInfo != null) {
+                    outputStream.write(userInfo.toString().getBytes());
+                }
                 outputStream.close();
+                user = new User(userInfo);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        // The user exists; so attempt to load it from internal storage.
+        else
+        {
+            try {
+
+                StringBuilder sb = new StringBuilder();
+                BufferedReader br = new BufferedReader(new FileReader(file));
+                String line;
+                while ((line = br.readLine()) != null)
+                {
+                    sb.append(line);
+                    sb.append("\n");
+                }
+
+                user = new User(new JSONObject(sb.toString()));
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        final User user = new User("Umut Seven");
+
+
         ((Global) this.getApplication()).SetUser(user);
 
         new Handler().postDelayed(new Runnable() {

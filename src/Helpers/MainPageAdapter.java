@@ -24,7 +24,7 @@ public class MainPageAdapter extends FragmentPagerAdapter {
         return this.fragments.size();
     }
 
-    private final String[] titles = { "Gelirler", "Giderler", "Birikim", "Hesap"};
+    private final String[] titles = { "Gelirler", "Giderler", "Bakiye", "Birikim", "Hesap"};
 
     @Override
     public CharSequence getPageTitle(int position) {

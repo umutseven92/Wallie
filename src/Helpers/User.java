@@ -1,5 +1,8 @@
 package Helpers;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 
 /**
@@ -12,6 +15,15 @@ public class User implements Serializable {
         _userName = userName;
         _banker = new Banker();
         _profilePicture = "@drawable/profile.png";
+    }
+
+    public User(JSONObject data) throws JSONException {
+        if(data!= null)
+        {
+            _userName = data.getJSONObject("user").getString("userName");
+             _banker = new Banker();
+            _profilePicture = "@drawable/profile.png";
+        }
     }
 
     private String _userName;
