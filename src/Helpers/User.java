@@ -21,7 +21,6 @@ public class User implements Serializable {
             _name = jsonUser.getString("name");
             _lastName =jsonUser.getString("lastName");
             _profilePicture = "@drawable/profile.png";
-            JSONArray ar = jsonUser.getJSONArray("expenses");
             _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"));
 
         }

@@ -22,14 +22,14 @@ public class Banker implements Serializable {
         LoadBalance(incomes, expenses);
     }
 
-    private List<Income> _incomes;
+    private ArrayList<Income> _incomes;
 
-    public List<Income> GetIncomes()
+    public ArrayList<Income> GetIncomes()
     {
         return _incomes;
     }
 
-    public void SetIncomes(List<Income> value)
+    public void SetIncomes(ArrayList<Income> value)
     {
         _incomes = value;
     }
@@ -57,8 +57,7 @@ public class Banker implements Serializable {
     public void LoadExpenses(JSONArray jsonBalance) throws JSONException, ParseException {
         for(int i = 0; i<jsonBalance.length(); i++)
         {
-            JSONObject test = jsonBalance.getJSONObject(i);
-            Expense expense = new Expense(jsonBalance.getJSONObject(i).getJSONObject("expense"));
+            Expense expense = new Expense(jsonBalance.getJSONObject(i));
             _expenses.add(expense);
         }
     }

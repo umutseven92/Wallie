@@ -24,16 +24,15 @@ public class Expense extends Balance {
 
     public Expense(JSONObject jsonExpense) throws JSONException, ParseException {
 
-        JSONObject expense = jsonExpense;
-        this.SetCategory(expense.getString("category"));
-        this.SetSubCategory(expense.getString("subCategory"));
-        this.SetAmount(new BigDecimal(expense.getDouble("amount")));
-        this.SetDescription(expense.getString("desc"));
+        this.SetCategory(jsonExpense.getString("category"));
+        this.SetSubCategory(jsonExpense.getString("subCategory"));
+        this.SetAmount(new BigDecimal(jsonExpense.getDouble("amount")));
+        this.SetDescription(jsonExpense.getString("desc"));
 
-        Date d = new SimpleDateFormat("yyyy-d-MM").parse(expense.getString("date"));
+        Date d = new SimpleDateFormat("yyyy-d-MM").parse(jsonExpense.getString("date"));
         this.SetDate(d);
 
-        String tag = expense.getString("category");
+        String tag = jsonExpense.getString("category");
         if(tag == "personal")
         {
             this.SetTag(Tags.Personal);

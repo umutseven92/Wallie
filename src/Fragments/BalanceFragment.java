@@ -1,16 +1,24 @@
 package Fragments;
 
+import Helpers.User;
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import com.example.Cuzdan.Global;
 import com.example.Cuzdan.R;
+
+import java.math.BigDecimal;
 
 /**
  * Created by Umut on 22.11.2014.
  */
 public class BalanceFragment extends Fragment {
+
+    static User _user;
 
     public static final BalanceFragment newInstance()
     {
@@ -23,6 +31,32 @@ public class BalanceFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.balancefragment, container, false);
+        _user = ((Global) getActivity().getApplication()).GetUser();
+
+        BigDecimal incomeTotal = _user.GetBanker().GetTotalIncome();
+        BigDecimal expenseTotal = _user.GetBanker().GetTotalExpense();
+        BigDecimal total = _user.GetBanker().GetBalance();
+
+        TextView txtIncome = (TextView)v.findViewById(R.id.txtBalanceIncome);
+        TextView txtExpense = (TextView)v.findViewById(R.id.txtBalanceExpense);
+        TextView txtTotal = (TextView)v.findViewById(R.id.txtBalance);
+
+        txtIncome.setText(incomeTotal.toString());
+        txtExpense.setText(expenseTotal.toString());
+        txtTotal.setText(total.toString());
+        if(total.compareTo(BigDecimal.ZERO) == 0)
+        {
+            txtTotal.setTextColor(Color.GREEN);
+        }
+        else if (total.compareTo(BigDecimal.ZERO) == 1)
+        {
+            txtTotal.setTextColor(Color.GREEN);
+        }
+        else if (total.compareTo(BigDecimal.ZERO) == -1)
+        {
+            txtTotal.setTextColor(Color.RED);
+        }
+
         return v;
     }
 

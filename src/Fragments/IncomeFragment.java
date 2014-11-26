@@ -1,9 +1,6 @@
 package Fragments;
 
-import Helpers.Balance;
-import Helpers.Income;
-import Helpers.ExpenseListAdapter;
-import Helpers.IncomeListAdapter;
+import Helpers.*;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,12 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.example.Cuzdan.Global;
 import com.example.Cuzdan.R;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class IncomeFragment extends Fragment {
+
+    static User _user;
 
     public static final IncomeFragment newInstance()
     {
@@ -30,10 +30,9 @@ public class IncomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.incomefragment, container, false);
 
-        ArrayList<Income> incomes = new ArrayList<Income>();
+        _user = ((Global) getActivity().getApplication()).GetUser();
 
-        incomes.add(new Income("Maaş Ödemesi","Maaş", new BigDecimal(1500),"İş", new Date(), Balance.Tags.Home));
-        incomes.add(new Income("Borç Ödemesi","Borç", new BigDecimal(13),"Borç", new Date(), Balance.Tags.Personal));
+        ArrayList<Income> incomes = _user.GetBanker().GetIncomes();
 
         ListView lv = (ListView)v.findViewById(R.id.lstIncomes);
 

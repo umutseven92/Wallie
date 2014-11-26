@@ -33,10 +33,6 @@ public class ExpenseFragment extends Fragment {
 
         ArrayList<Expense> expenses =_user.GetBanker().GetExpenses();
 
-/*
-        expenses.add(new Expense("Yemek", "Fast Food", new BigDecimal(32), "McDonalds", new Date(), Balance.Tags.Personal));
-        expenses.add(new Expense("İçecek", "Alkollü İçecek", new BigDecimal(13), "Bira", new Date(), Balance.Tags.Personal));
-*/
         ListView lv = (ListView)v.findViewById(R.id.lstExpenses);
 
         BigDecimal total = BigDecimal.ZERO;
