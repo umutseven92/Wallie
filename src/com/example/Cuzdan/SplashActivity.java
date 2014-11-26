@@ -27,7 +27,7 @@ public class SplashActivity extends Activity {
 
         User user = null;
 
-        String fileName = "userConfigTest2";
+        String fileName = "userConfigTest11";
         File file = new File(this.getFilesDir(),fileName);
         JSONObject userInfo = null;
 
@@ -35,11 +35,70 @@ public class SplashActivity extends Activity {
         // The user doesn't exist; so create one and save the file to internal storage.
         if(!file.exists())
         {
-            String userName = "Max Planck";
+            String userName = "umutseven92";
+            String firstName = "Umut";
+            String lastName = "Seven";
             FileOutputStream outputStream;
 
             try {
-                userInfo = new JSONObject("{ 'user': {'userName':'" + userName + "'} }");
+                String userSettings =String.format("{\n" +
+                        "\t\"user\": {\n" +
+                        "\t\t\"userName\": \"%s\",\n" +
+                        "\t\t\"birthDate\": \"1992-08-05\",\n" +
+                        "\t\t\"name\": \"%s\",\n" +
+                        "\t\t\"lastName\": \"%s\",\n" +
+                        "\t\t\"city\": \"Istanbul\",\n" +
+                        "\t\t\"email\": \"umutseven92@gmail.com\",\n" +
+                        "\n" +
+                        "\t\t\"incomes\": [{\n" +
+                        "\n" +
+                        "\t\t\t\"income\": {\n" +
+                        "\t\t\t\t\t\"category\": \"borc\",\n" +
+                        "\t\t\t\t\t\"subCategory\": \"borc odemesi\",\n" +
+                        "\t\t\t\t\t\"amount\": \"43\",\n" +
+                        "\t\t\t\t\t\"tag\": \"personal\",\n" +
+                        "\t\t\t\t\t\"desc\": \"Alican borcunu odedi\",\n" +
+                        "\t\t\t\t\t\"date\": \"2014-03-13\"\n" +
+                        "\t\t\t\t},\n" +
+                        "\n" +
+                        "\t\t\t\"income\": {\n" +
+                        "\t\t\t\t\t\"category\": \"maas\",\n" +
+                        "\t\t\t\t\t\"subCategory\": \"maas odemesi\",\n" +
+                        "\t\t\t\t\t\"amount\": \"1400\",\n" +
+                        "\t\t\t\t\t\"tag\": \"personal\",\n" +
+                        "\t\t\t\t\t\"desc\": \"Maas\",\n" +
+                        "\t\t\t\t\t\"date\": \"2014-03-13\"\n" +
+                        "\n" +
+                        "\t\t\t\t}\n" +
+                        "\t\t}],\n" +
+                        "\n" +
+                        "\t\t\"expenses\": [{\n" +
+                        "\n" +
+                        "\t\t\t\"expense\": {\n" +
+                        "\t\t\t\t\t\"category\": \"yemek\",\n" +
+                        "\t\t\t\t\t\"subCategory\": \"fast food\",\n" +
+                        "\t\t\t\t\t\"amount\": \"43\",\n" +
+                        "\t\t\t\t\t\"tag\": \"personal\",\n" +
+                        "\t\t\t\t\t\"desc\": \"Burger King\",\n" +
+                        "\t\t\t\t\t\"date\": \"2014-03-13\"\n" +
+                        "\t\t\t\t},\n" +
+                        "\n" +
+                        "\t\t\t\"expense\": {\n" +
+                        "\t\t\t\t\t\"category\": \"icecek\",\n" +
+                        "\t\t\t\t\t\"subCategory\": \"alkollu icecek\",\n" +
+                        "\t\t\t\t\t\"amount\": \"13\",\n" +
+                        "\t\t\t\t\t\"tag\": \"personal\",\n" +
+                        "\t\t\t\t\t\"desc\": \"Bira\",\n" +
+                        "\t\t\t\t\t\"date\": \"2014-03-13\"\n" +
+                        "\n" +
+                        "\t\t\t\t}\n" +
+                        "\n" +
+                        "\t\t}]\n" +
+                        "\n" +
+                        "\t}\n" +
+                        "\n" +
+                        "}\n",userName,firstName,lastName );
+                userInfo = new JSONObject(userSettings);
 
                 outputStream = openFileOutput(fileName, Context.MODE_PRIVATE);
 

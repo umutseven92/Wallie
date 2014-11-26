@@ -2,7 +2,8 @@ package Fragments;
 
 import Helpers.Balance;
 import Helpers.Income;
-import Helpers.ListViewAdapter;
+import Helpers.ExpenseListAdapter;
+import Helpers.IncomeListAdapter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -29,7 +30,7 @@ public class IncomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.incomefragment, container, false);
 
-        ArrayList<Balance> incomes = new ArrayList<Balance>();
+        ArrayList<Income> incomes = new ArrayList<Income>();
 
         incomes.add(new Income("Maaş Ödemesi","Maaş", new BigDecimal(1500),"İş", new Date(), Balance.Tags.Home));
         incomes.add(new Income("Borç Ödemesi","Borç", new BigDecimal(13),"Borç", new Date(), Balance.Tags.Personal));
@@ -45,7 +46,7 @@ public class IncomeFragment extends Fragment {
            total = total.add(val);
         }
 
-        lv.setAdapter(new ListViewAdapter(this.getActivity(),incomes));
+        lv.setAdapter(new IncomeListAdapter(this.getActivity(),incomes));
 
         TextView txtTotalIncome = (TextView)v.findViewById(R.id.txtTotalIncome);
         txtTotalIncome.setText(total.toString() + " TL");

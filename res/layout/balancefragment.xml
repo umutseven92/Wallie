@@ -18,7 +18,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Gelir"
-                    android:id="@+id/textView" android:layout_alignParentTop="true"
+                    android:id="@+id/txtUserName" android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true" android:layout_marginTop="28dp"
                     android:layout_marginLeft="20dp" android:textColor="#ff000000"/>
             <TextView
@@ -28,7 +28,7 @@
                     android:text="Gider"
                     android:id="@+id/textView2"
                     android:textColor="#ff000000"
-                    android:layout_below="@+id/textView" android:layout_alignLeft="@+id/textView"
+                    android:layout_below="@+id/txtUserName" android:layout_alignLeft="@+id/txtUserName"
                     android:layout_marginTop="10dp"/>
             <TextView
                     android:layout_width="wrap_content"

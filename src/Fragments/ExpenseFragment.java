@@ -1,9 +1,6 @@
 package Fragments;
 
-import Helpers.Balance;
-import Helpers.Expense;
-import Helpers.Income;
-import Helpers.ListViewAdapter;
+import Helpers.*;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,13 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.example.Cuzdan.Global;
 import com.example.Cuzdan.R;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ExpenseFragment extends Fragment {
+
+    static User _user;
 
     public static final ExpenseFragment newInstance()
     {
@@ -30,12 +29,14 @@ public class ExpenseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.expensefragment, container, false);
+        _user = ((Global) getActivity().getApplication()).GetUser();
 
-        ArrayList<Balance> expenses = new ArrayList<Balance>();
+        ArrayList<Expense> expenses =_user.GetBanker().GetExpenses();
 
+/*
         expenses.add(new Expense("Yemek", "Fast Food", new BigDecimal(32), "McDonalds", new Date(), Balance.Tags.Personal));
         expenses.add(new Expense("İçecek", "Alkollü İçecek", new BigDecimal(13), "Bira", new Date(), Balance.Tags.Personal));
-
+*/
         ListView lv = (ListView)v.findViewById(R.id.lstExpenses);
 
         BigDecimal total = BigDecimal.ZERO;
@@ -47,7 +48,7 @@ public class ExpenseFragment extends Fragment {
             total = total.add(val);
         }
 
-        lv.setAdapter(new ListViewAdapter(this.getActivity(),expenses));
+        lv.setAdapter(new ExpenseListAdapter(this.getActivity(),expenses));
 
         TextView txtTotalIncome = (TextView)v.findViewById(R.id.txtTotalExpense);
         txtTotalIncome.setText(total.toString() + " TL");

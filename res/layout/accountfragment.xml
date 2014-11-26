@@ -7,7 +7,7 @@
 
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="124dp" android:layout_gravity="center_horizontal" android:layout_weight="0.19"
+            android:layout_height="124dp" android:layout_gravity="center_horizontal" android:layout_weight="0.25"
             android:layout_marginTop="20dp">
 
         <Helpers.RoundedImageView
@@ -25,13 +25,26 @@
                 android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 /> -->
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="User Name"
-                android:id="@+id/txtUserName" android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true" android:textColor="#ff000000"
-                android:layout_marginBottom="10dp"/>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:layout_below="@+id/imgProfile"
+                android:layout_alignParentLeft="true">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Name + LastName"
+                    android:id="@+id/txtName"
+                    android:textColor="#ff000000"
+                    android:layout_centerHorizontal="true" android:layout_marginTop="10dp" android:textSize="28dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="UserName"
+                    android:id="@+id/txtUserName"
+                    android:layout_centerHorizontal="true" android:layout_marginTop="45dp"
+                    android:textColor="#ff000000"/>
+        </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>

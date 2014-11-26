@@ -13,24 +13,24 @@ import java.util.ArrayList;
 /**
  * Created by Umut on 20.11.2014.
  */
-public class ListViewAdapter extends BaseAdapter {
+public class ExpenseListAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<Balance> balances;
+    private ArrayList<Expense> expenses;
 
-    public ListViewAdapter(Context context, ArrayList<Balance> balances) {
+    public ExpenseListAdapter(Context context, ArrayList<Expense> expenses) {
         this.context = context;
-        this.balances = balances;
+        this.expenses = expenses;
     }
 
     @Override
     public int getCount() {
-        return balances.size();
+        return expenses.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return balances.get(position);
+        return expenses.get(position);
     }
 
     @Override
@@ -54,8 +54,8 @@ public class ListViewAdapter extends BaseAdapter {
         TextView text1 = twoLineListItem.getText1();
         TextView text2 = twoLineListItem.getText2();
 
-        text1.setText(balances.get(position).GetCategory() + "/" + balances.get(position).GetSubCategory() + "/" + balances.get(position).GetDescription());
-        text2.setText(balances.get(position).GetAmount().toString() + " TL");
+        text1.setText(expenses.get(position).GetCategory() + "/" + expenses.get(position).GetSubCategory() + "/" + expenses.get(position).GetDescription());
+        text2.setText(expenses.get(position).GetAmount().toString() + " TL");
 
         return twoLineListItem;
     }

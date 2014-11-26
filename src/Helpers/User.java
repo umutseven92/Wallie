@@ -1,28 +1,29 @@
 package Helpers;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.util.ArrayList;
 
 /**
  * Created by Umut on 16.11.2014.
  */
 public class User implements Serializable {
 
-    public User(String userName)
-    {
-        _userName = userName;
-        _banker = new Banker();
-        _profilePicture = "@drawable/profile.png";
-    }
-
-    public User(JSONObject data) throws JSONException {
+    public User(JSONObject data) throws JSONException, ParseException {
         if(data!= null)
         {
-            _userName = data.getJSONObject("user").getString("userName");
-             _banker = new Banker();
+            JSONObject jsonUser = data.getJSONObject("user");
+            _userName = jsonUser.getString("userName");
+            _name = jsonUser.getString("name");
+            _lastName =jsonUser.getString("lastName");
             _profilePicture = "@drawable/profile.png";
+            JSONArray ar = jsonUser.getJSONArray("expenses");
+            _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"));
+
         }
     }
 
@@ -36,6 +37,30 @@ public class User implements Serializable {
     public void SetString(String userName)
     {
         _userName = userName;
+    }
+
+    private String _name;
+
+    public String GetName()
+    {
+        return _name;
+    }
+
+    public void SetName(String name)
+    {
+        _name = name;
+    }
+
+    private String _lastName;
+
+    public String GetLastName()
+    {
+        return _lastName;
+    }
+
+    public void SetLastName(String lastName)
+    {
+        _lastName = lastName;
     }
 
     private String _profilePicture;

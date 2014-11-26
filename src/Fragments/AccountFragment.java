@@ -27,9 +27,12 @@ public class AccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.accountfragment, container, false);
-        TextView txtUser = (TextView)v.findViewById(R.id.txtUserName);
+        TextView txtUserName = (TextView)v.findViewById(R.id.txtUserName);
+        TextView txtName = (TextView)v.findViewById(R.id.txtName);
+
         _user = ((Global) getActivity().getApplication()).GetUser();
-        txtUser.setText(_user.GetUserName());
+        txtUserName.setText(_user.GetUserName());
+        txtName.setText(_user.GetName() + " " + _user.GetLastName());
         return v;
     }
 }

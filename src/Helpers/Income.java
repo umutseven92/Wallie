@@ -1,6 +1,10 @@
 package Helpers;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -17,5 +21,24 @@ public class Income extends Balance {
         this.SetDate(incomeDate);
         this.SetTag(tag);
 
+    }
+
+    public Income(JSONObject jsonIncome) throws JSONException, ParseException {
+        JSONObject income = jsonIncome.getJSONObject("income");
+        this.SetCategory(income.getString("category"));
+        this.SetSubCategory(income.getString("subCategory"));
+        this.SetAmount(new BigDecimal(income.getDouble("amount")));
+        this.SetDescription(income.getString("desc"));
+        Date d = new SimpleDateFormat("yyyy-d-MM").parse(income.getString("date"));
+        this.SetDate(d);
+        String tag = income.getString("category");
+        if(tag == "personal")
+        {
+            this.SetTag(Tags.Personal);
+        }
+        else
+        {
+            this.SetTag(Tags.Home);
+        }
     }
 }

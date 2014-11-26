@@ -1,9 +1,14 @@
 package Helpers;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Iterator;
+
 import java.util.List;
 
 /**
@@ -11,15 +16,10 @@ import java.util.List;
  */
 public class Banker implements Serializable {
 
-    public Banker()
-    {
+    public Banker(JSONArray incomes, JSONArray expenses) throws JSONException, ParseException {
         _incomes = new ArrayList<Income>();
         _expenses = new ArrayList<Expense>();
-    }
-
-    public Banker(String loadLocation)
-    {
-        LoadBalance();
+        LoadBalance(incomes, expenses);
     }
 
     private List<Income> _incomes;
@@ -34,26 +34,42 @@ public class Banker implements Serializable {
         _incomes = value;
     }
 
-    private List<Expense> _expenses;
+    private ArrayList<Expense> _expenses;
 
-    public List<Expense> GetExpenses()
+    public ArrayList<Expense> GetExpenses()
     {
         return _expenses;
     }
 
-    public void SetExpenses(List<Expense> value)
+    public void SetExpenses(ArrayList<Expense> value)
     {
         _expenses = value;
     }
 
-    public void LoadBalance()
-    {
-        // This is where expenses & incomes will be loaded from users save file
+    // This is where expenses & incomes are loaded from users save file
+    public void LoadBalance(JSONArray jsonIncomes, JSONArray jsonExpenses) throws JSONException, ParseException {
+
+        LoadExpenses(jsonExpenses);
+        LoadIncomes(jsonIncomes);
+
     }
 
-    public void SaveBalance()
-    {
-        // This is where expenses & incomes will be saved to a location
+    public void LoadExpenses(JSONArray jsonBalance) throws JSONException, ParseException {
+        for(int i = 0; i<jsonBalance.length(); i++)
+        {
+            JSONObject test = jsonBalance.getJSONObject(i);
+            Expense expense = new Expense(jsonBalance.getJSONObject(i).getJSONObject("expense"));
+            _expenses.add(expense);
+        }
+    }
+
+    public void LoadIncomes(JSONArray jsonBalance) throws JSONException, ParseException {
+        for(int i = 0; i<jsonBalance.length(); i++)
+        {
+            Income income = new Income(jsonBalance.getJSONObject(i));
+            _incomes.add(income);
+        }
+
     }
 
     public BigDecimal GetTotalIncome()
