@@ -6,11 +6,14 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.List;
 
-public class MainPageAdapter extends FragmentPagerAdapter {
+public class AccountPageAdapter extends FragmentPagerAdapter {
     private List<Fragment> fragments;
 
-    public MainPageAdapter(FragmentManager fm, List<Fragment> fragments) {
+    public int Position;
+
+    public AccountPageAdapter(FragmentManager fm, List<Fragment> fragments, int pos) {
         super(fm);
+        Position = pos;
         this.fragments = fragments;
     }
 
@@ -24,7 +27,7 @@ public class MainPageAdapter extends FragmentPagerAdapter {
         return this.fragments.size();
     }
 
-    private final String[] titles = { "Gelirler", "Giderler", "Bakiye", "Birikim", "Hesap"};
+    private final String[] titles = { "Gelirler", "Giderler", "Bakiye"};
 
     @Override
     public CharSequence getPageTitle(int position) {

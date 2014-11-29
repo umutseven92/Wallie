@@ -18,13 +18,6 @@
                 android:contentDescription="img"
                 android:layout_centerHorizontal="true" android:layout_marginTop="15dp"/>
 
-        <!--<ImageView
-                android:layout_width="128dp"
-                android:layout_height="128dp"
-                android:id="@+id/imgProfilePicture"
-                android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                /> -->
         <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" android:layout_below="@+id/imgProfile"

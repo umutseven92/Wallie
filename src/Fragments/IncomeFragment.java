@@ -53,4 +53,5 @@ public class IncomeFragment extends Fragment {
 
         return v;
     }
+
 }
