@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/relativeLayout">
 
-        <android.support.v4.view.ViewPager
+                <android.support.v4.view.ViewPager
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/pager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            <android.support.v4.view.PagerTabStrip
-                    android:id="@+id/pagerTitle"
-                    android:background="#fffff0"
-                    android:textColor="#000000"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top" />
+                        <android.support.v4.view.PagerTabStrip
+                        android:id="@+id/pagerTitle"
+                        android:background="#fffff0"
+                        android:textColor="#000000"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top" />
 
-        </android.support.v4.view.ViewPager>
-</RelativeLayout>
+                </android.support.v4.view.ViewPager>
+        </RelativeLayout>
+    <ListView
+            android:id="@+id/left_drawer"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:choiceMode="singleChoice"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"
+            android:background="#ffff4444"/>
+</android.support.v4.widget.DrawerLayout>
