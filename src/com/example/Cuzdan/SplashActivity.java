@@ -27,12 +27,13 @@ public class SplashActivity extends Activity {
 
         User user = null;
 
-        String fileName = "userConfigTest14";
+        String fileName = "userConfigTest18";
         File file = new File(this.getFilesDir(),fileName);
         JSONObject userInfo = null;
 
 
         // The user doesn't exist; so create one and save the file to internal storage.
+        // NOTE: Date is ISO 8601 (YEAR-MONTH-DATE)
         if(!file.exists())
         {
             String userName = "umutseven92";
@@ -41,7 +42,7 @@ public class SplashActivity extends Activity {
             FileOutputStream outputStream;
 
             try {
-                String userSettings =String.format("{\n" +
+                String userSettings = String.format("{\n" +
                         "\t\"user\": {\n" +
                         "\t\t\"userName\": \"%s\",\n" +
                         "\t\t\"birthDate\": \"1992-08-05\",\n" +
@@ -56,7 +57,7 @@ public class SplashActivity extends Activity {
                         "\t\t\t\t\t\"amount\": \"43\",\n" +
                         "\t\t\t\t\t\"tag\": \"personal\",\n" +
                         "\t\t\t\t\t\"desc\": \"Alican borcunu odedi\",\n" +
-                        "\t\t\t\t\t\"date\": \"2014-03-13\"\n" +
+                        "\t\t\t\t\t\"date\": \"2014-04-12\"\n" +
                         "\t\t\t\t},\n" +
                         "\t\t\t \t{\n" +
                         "\t\t\t\t\t\"category\": \"maas\",\n" +

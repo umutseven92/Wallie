@@ -12,26 +12,16 @@ import java.util.Date;
  */
 public class Income extends Balance {
 
-    public Income(String category, String subCategory, BigDecimal amount, String desc, Date incomeDate, Tags tag)
-    {
-        this.SetCategory(category);
-        this.SetSubCategory(subCategory);
-        this.SetAmount(amount);
-        this.SetDescription(desc);
-        this.SetDate(incomeDate);
-        this.SetTag(tag);
-
-    }
-
     public Income(JSONObject jsonIncome) throws JSONException, ParseException {
 
         this.SetCategory(jsonIncome.getString("category"));
         this.SetSubCategory(jsonIncome.getString("subCategory"));
         this.SetAmount(new BigDecimal(jsonIncome.getDouble("amount")));
         this.SetDescription(jsonIncome.getString("desc"));
-        Date d = new SimpleDateFormat("yyyy-d-MM").parse(jsonIncome.getString("date"));
+        Date d = new SimpleDateFormat("yyyy-MM-d").parse(jsonIncome.getString("date"));
         this.SetDate(d);
         String tag = jsonIncome.getString("category");
+
         if(tag == "personal")
         {
             this.SetTag(Tags.Personal);

@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -99,5 +100,69 @@ public class Banker implements Serializable {
         BigDecimal totalExpense = GetTotalExpense();
         BigDecimal total = totalIncome.subtract(totalExpense);
         return total;
+    }
+
+    public ArrayList<Income> GetIncomesFromDay(Date day)
+    {
+        ArrayList<Income> specIncomes = new ArrayList<Income>();
+
+        for (int i = 0;i < _incomes.size(); i++)
+        {
+            Income incomeToTest = _incomes.get(i);
+            if(incomeToTest.GetDate().getDay() == day.getDay())
+            {
+                specIncomes.add(_incomes.get(i));
+            }
+        }
+
+        return specIncomes;
+    }
+
+    public ArrayList<Income> GetIncomesFromMonth(Date day)
+    {
+        ArrayList<Income> specIncomes = new ArrayList<Income>();
+
+        for (int i = 0;i < _incomes.size(); i++)
+        {
+            Income incomeToTest = _incomes.get(i);
+            if(incomeToTest.GetDate().getMonth() == day.getMonth())
+            {
+                specIncomes.add(_incomes.get(i));
+            }
+        }
+
+        return specIncomes;
+    }
+
+    public ArrayList<Expense> GetExpensesFromDay(Date day)
+    {
+        ArrayList<Expense> specExpenses = new ArrayList<Expense>();
+
+        for (int i = 0;i < _expenses.size(); i++)
+        {
+            Expense expenseToTest = _expenses.get(i);
+            if(expenseToTest.GetDate().getDay() == day.getDay())
+            {
+                specExpenses.add(_expenses.get(i));
+            }
+        }
+
+        return specExpenses;
+    }
+
+    public ArrayList<Expense> GetExpensesFromMonth(Date day)
+    {
+        ArrayList<Expense> specExpenses = new ArrayList<Expense>();
+
+        for (int i = 0;i < _expenses.size(); i++)
+        {
+            Expense expenseToTest = _expenses.get(i);
+            if(expenseToTest.GetDate().getMonth() == day.getMonth())
+            {
+                specExpenses.add(_expenses.get(i));
+            }
+        }
+
+        return specExpenses;
     }
 }

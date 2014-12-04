@@ -12,16 +12,6 @@ import java.util.Date;
  */
 public class Expense extends Balance {
 
-    public Expense(String category, String subCategory, BigDecimal amount, String desc, Date expenseDate, Tags tag)
-    {
-        this.SetCategory(category);
-        this.SetSubCategory(subCategory);
-        this.SetAmount(amount);
-        this.SetDescription(desc);
-        this.SetDate(expenseDate);
-        this.SetTag(tag);
-    }
-
     public Expense(JSONObject jsonExpense) throws JSONException, ParseException {
 
         this.SetCategory(jsonExpense.getString("category"));

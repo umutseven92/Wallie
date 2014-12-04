@@ -8,4 +8,8 @@
     </string-array>
     <string name="drawer_open">Aç</string>
     <string name="drawer_close">Kapat</string>
+    <string-array name="dateArray">
+        <item>Gün</item>
+        <item>Ay</item>
+    </string-array>
 </resources>

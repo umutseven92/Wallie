@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import com.example.Cuzdan.Global;
 import com.example.Cuzdan.R;
@@ -32,6 +34,11 @@ public class BalanceFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.balancefragment, container, false);
         _user = ((Global) getActivity().getApplication()).GetUser();
+
+        Spinner spnDate = (Spinner)v.findViewById(R.id.spnDateBalance);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(v.getContext(), R.array.dateArray, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnDate.setAdapter(adapter);
 
         BigDecimal incomeTotal = _user.GetBanker().GetTotalIncome();
         BigDecimal expenseTotal = _user.GetBanker().GetTotalExpense();
