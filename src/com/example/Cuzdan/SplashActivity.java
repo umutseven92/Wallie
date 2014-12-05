@@ -27,7 +27,7 @@ public class SplashActivity extends Activity {
 
         User user = null;
 
-        String fileName = "userConfigTest18";
+        String fileName = "userConfigTest21";
         File file = new File(this.getFilesDir(),fileName);
         JSONObject userInfo = null;
 
@@ -57,7 +57,7 @@ public class SplashActivity extends Activity {
                         "\t\t\t\t\t\"amount\": \"43\",\n" +
                         "\t\t\t\t\t\"tag\": \"personal\",\n" +
                         "\t\t\t\t\t\"desc\": \"Alican borcunu odedi\",\n" +
-                        "\t\t\t\t\t\"date\": \"2014-04-12\"\n" +
+                        "\t\t\t\t\t\"date\": \"2014-12-05\"\n" +
                         "\t\t\t\t},\n" +
                         "\t\t\t \t{\n" +
                         "\t\t\t\t\t\"category\": \"maas\",\n" +
@@ -65,7 +65,7 @@ public class SplashActivity extends Activity {
                         "\t\t\t\t\t\"amount\": \"1400\",\n" +
                         "\t\t\t\t\t\"tag\": \"personal\",\n" +
                         "\t\t\t\t\t\"desc\": \"Maas\",\n" +
-                        "\t\t\t\t\t\"date\": \"2014-03-13\"\n" +
+                        "\t\t\t\t\t\"date\": \"2014-12-04\"\n" +
                         "\n" +
                         "\t\t\t\t}],\n" +
                         "\t\t\"expenses\": [{\n" +
@@ -74,7 +74,7 @@ public class SplashActivity extends Activity {
                         "\t\t\t\t\t\"amount\": \"43\",\n" +
                         "\t\t\t\t\t\"tag\": \"personal\",\n" +
                         "\t\t\t\t\t\"desc\": \"Burger King\",\n" +
-                        "\t\t\t\t\t\"date\": \"2014-03-13\"\n" +
+                        "\t\t\t\t\t\"date\": \"2014-12-05\"\n" +
                         "\t\t\t\t},\n" +
                         "\t\t\t \t{\n" +
                         "\t\t\t\t\t\"category\": \"icecek\",\n" +
@@ -82,7 +82,7 @@ public class SplashActivity extends Activity {
                         "\t\t\t\t\t\"amount\": \"13\",\n" +
                         "\t\t\t\t\t\"tag\": \"personal\",\n" +
                         "\t\t\t\t\t\"desc\": \"Bira\",\n" +
-                        "\t\t\t\t\t\"date\": \"2014-03-13\"\n" +
+                        "\t\t\t\t\t\"date\": \"2014-12-04\"\n" +
                         "\t\t\t\t}]\n" +
                         "\t}\n" +
                         "}\n",userName,firstName,lastName );

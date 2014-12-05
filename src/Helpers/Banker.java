@@ -2,7 +2,6 @@ package Helpers;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -10,7 +9,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Umut on 12.11.2014.
@@ -72,33 +70,80 @@ public class Banker implements Serializable {
 
     }
 
-    public BigDecimal GetTotalIncome()
+    public BigDecimal GetTotalDayIncome(Date date)
     {
         BigDecimal total = BigDecimal.ZERO;
         for (Income i : _incomes)
         {
-           total = total.add(i.GetAmount());
-        }
+            if(i.GetDate().getDay() == date.getDay())
+            {
+                total = total.add(i.GetAmount());
+            }
 
+        }
         return total;
     }
 
-    public BigDecimal GetTotalExpense()
+    public BigDecimal GetTotalMonthIncome(Date date)
+    {
+        BigDecimal total = BigDecimal.ZERO;
+        for (Income i : _incomes)
+        {
+            if(i.GetDate().getMonth() == date.getMonth())
+            {
+                total = total.add(i.GetAmount());
+            }
+
+        }
+        return total;
+    }
+
+    public BigDecimal GetTotalDayExpense(Date date)
     {
         BigDecimal total = BigDecimal.ZERO;
         for (Expense i : _expenses)
         {
-            total = total.add(i.GetAmount());
+            if(i.GetDate().getDay() == date.getDay())
+            {
+                total = total.add(i.GetAmount());
+            }
+
         }
 
         return total;
     }
 
-    public BigDecimal GetBalance()
+    public BigDecimal GetTotalMonthExpense(Date date)
     {
-        BigDecimal totalIncome = GetTotalIncome();
-        BigDecimal totalExpense = GetTotalExpense();
-        BigDecimal total = totalIncome.subtract(totalExpense);
+        BigDecimal total = BigDecimal.ZERO;
+        for (Expense i : _expenses)
+        {
+            if(i.GetDate().getMonth() == date.getMonth())
+            {
+                total = total.add(i.GetAmount());
+            }
+
+        }
+
+        return total;
+    }
+
+    public BigDecimal GetBalance(Date date, boolean day)
+    {
+        BigDecimal total = null;
+        if(day)
+        {
+            BigDecimal totalIncome = GetTotalDayIncome(date);
+            BigDecimal totalExpense = GetTotalDayExpense(date);
+            total = totalIncome.subtract(totalExpense);
+        }
+        else
+        {
+            BigDecimal totalIncome = GetTotalMonthIncome(date);
+            BigDecimal totalExpense = GetTotalMonthExpense(date);
+            total = totalIncome.subtract(totalExpense);
+        }
+
         return total;
     }
 

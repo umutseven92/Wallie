@@ -19,7 +19,7 @@ public class Expense extends Balance {
         this.SetAmount(new BigDecimal(jsonExpense.getDouble("amount")));
         this.SetDescription(jsonExpense.getString("desc"));
 
-        Date d = new SimpleDateFormat("yyyy-d-MM").parse(jsonExpense.getString("date"));
+        Date d = new SimpleDateFormat("yyyy-MM-d").parse(jsonExpense.getString("date"));
         this.SetDate(d);
 
         String tag = jsonExpense.getString("category");
