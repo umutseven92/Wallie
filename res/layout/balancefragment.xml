@@ -31,7 +31,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Gelir"
                     android:id="@+id/txtUserName" android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true" android:layout_marginTop="28dp"
+                    android:layout_alignParentLeft="true" android:layout_marginTop="40dp"
                     android:layout_marginLeft="20dp" android:textColor="#ff000000"/>
             <TextView
                     android:layout_width="wrap_content"
@@ -74,6 +74,11 @@
                     android:text="Toplam"
                     android:id="@+id/textView" android:layout_alignBottom="@+id/txtBalance"
                     android:layout_alignLeft="@+id/textView2" android:textColor="#ff000000"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceSmall" android:text="Small Text"
+                      android:id="@+id/txtBalanceDate"
+                      android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+                      android:layout_marginTop="10dp"/>
         </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>

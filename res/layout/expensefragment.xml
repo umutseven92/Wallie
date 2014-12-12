@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/lstExpenses"
-                android:layout_alignParentLeft="true" android:layout_marginTop="40dp" android:layout_marginLeft="5dp"
+                android:layout_alignParentLeft="true" android:layout_marginTop="65dp" android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"/>
         <TextView
                 android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Toplam"
                 android:id="@+id/label" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-                android:textColor="#ff000000" android:layout_marginLeft="15dp" android:layout_marginTop="10dp"/>
+                android:textColor="#ff000000" android:layout_marginLeft="15dp" android:layout_marginTop="40dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,6 +44,11 @@
                 android:text="total"
                 android:id="@+id/txtTotalExpense" android:layout_alignBottom="@+id/label"
                 android:layout_alignParentRight="true" android:textColor="#ff000000" android:layout_marginRight="15dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceSmall" android:text="Small Text"
+                  android:id="@+id/txtExpenseDate"
+                  android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+                  android:layout_marginTop="10dp"/>
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="match_parent"

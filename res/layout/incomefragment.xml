@@ -12,8 +12,9 @@
         <Spinner
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/spnDateIncome" android:layout_alignParentTop="false" android:layout_centerHorizontal="true"
-                android:spinnerMode="dropdown"/>
+                android:id="@+id/spnDateIncome"
+                android:spinnerMode="dropdown" android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"/>
         <ImageButton
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -25,8 +26,8 @@
                 android:layout_height="32dp"
                 android:id="@+id/imgRightIncome"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp" android:layout_centerVertical="true" android:background="#fffff0"
-                android:src="@drawable/rightarrow"/>
+                android:layout_marginRight="10dp" android:layout_centerVertical="true"
+                android:src="@drawable/rightarrow" android:background="#fffff0"/>
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="match_parent"
@@ -37,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/lstIncomes"
-                android:layout_alignParentLeft="true" android:layout_marginTop="40dp" android:layout_marginLeft="5dp"
+                android:layout_alignParentLeft="true" android:layout_marginTop="65dp" android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"/>
         <TextView
                 android:layout_width="wrap_content"
@@ -45,7 +46,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Toplam"
                 android:id="@+id/label" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-                android:textColor="#ff000000" android:layout_marginLeft="15dp" android:layout_marginTop="10dp"/>
+                android:textColor="#ff000000" android:layout_marginLeft="15dp" android:layout_marginTop="40dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,6 +54,13 @@
                 android:text="total"
                 android:id="@+id/txtTotalIncome" android:layout_alignBottom="@+id/label"
                 android:layout_alignParentRight="true" android:textColor="#ff000000" android:layout_marginRight="15dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/txtIncomeDate" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"/>
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="match_parent"

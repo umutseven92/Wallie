@@ -7,14 +7,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.*;
 import com.example.Cuzdan.Global;
 import com.example.Cuzdan.R;
 
 import java.math.BigDecimal;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -25,6 +25,10 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
     static User _user;
     View infView;
     String mode = "day";
+    Date dateBeingViewed;
+    ImageButton leftArrow;
+    ImageButton rightArrow;
+    TextView txtBalanceDate;
 
     public static final BalanceFragment newInstance()
     {
@@ -40,13 +44,132 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         _user = ((Global) getActivity().getApplication()).GetUser();
 
         Spinner spnDate = (Spinner)infView.findViewById(R.id.spnDateBalance);
+        leftArrow = (ImageButton)infView.findViewById(R.id.imgLeftBalance);
+        rightArrow = (ImageButton)infView.findViewById(R.id.imgRightBalance);
+        txtBalanceDate = (TextView)infView.findViewById(R.id.txtBalanceDate);
+
+        leftArrow.setOnClickListener(onLeftArrowClick);
+        rightArrow.setOnClickListener(onRightArrowClick);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnDate.setAdapter(adapter);
         spnDate.setOnItemSelectedListener(this);
-
+        dateBeingViewed = new Date();
 
         return infView;
+    }
+
+    View.OnClickListener onLeftArrowClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            getLastDateBalance();
+        }
+    };
+
+    View.OnClickListener onRightArrowClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            getNextDateBalances();
+        }
+    };
+
+    public void UpdateDayText()
+    {
+        Format formatter = new SimpleDateFormat("dd/MM/yyyy");
+        txtBalanceDate.setText(formatter.format(dateBeingViewed));
+    }
+
+    public void UpdateMonthText()
+    {
+        Format formatter = new SimpleDateFormat("MM");
+        String[] months = getResources().getStringArray(R.array.turkishMonths);
+        String month = "m";
+
+        switch (Integer.parseInt(formatter.format(dateBeingViewed)))
+        {
+            case 1:
+                month = months[0];
+                break;
+            case 2:
+                month = months[1];
+                break;
+            case 3:
+                month = months[2];
+                break;
+            case 4:
+                month = months[3];
+                break;
+            case 5:
+                month = months[4];
+                break;
+            case 6:
+                month = months[5];
+                break;
+            case 7:
+                month = months[6];
+                break;
+            case 8:
+                month = months[7];
+                break;
+            case 9:
+                month = months[8];
+                break;
+            case 10:
+                month = months[9];
+                break;
+            case 11:
+                month = months[10];
+                break;
+            case 12:
+                month = months[11];
+                break;
+
+        }
+
+        Format formatterYear = new SimpleDateFormat("yyyy");
+        month += " " + formatterYear.format(dateBeingViewed);
+        txtBalanceDate.setText(month);
+    }
+
+    public void getNextDateBalances()
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateBeingViewed);
+
+        if(mode == "day")
+        {
+            cal.add(Calendar.DATE,1);
+            dateBeingViewed = cal.getTime();
+            LoadListView(dateBeingViewed,true);
+        }
+        else if (mode == "month")
+        {
+            cal.add(Calendar.MONTH,1);
+            dateBeingViewed = cal.getTime();
+            LoadListView(dateBeingViewed,false);
+
+        }
+    }
+
+    public void getLastDateBalance()
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateBeingViewed);
+
+        if(mode == "day")
+        {
+            cal.add(Calendar.DATE,-1);
+            dateBeingViewed = cal.getTime();
+            LoadListView(dateBeingViewed,true);
+        }
+        else if (mode == "month")
+        {
+            cal.add(Calendar.MONTH,-1);
+            dateBeingViewed = cal.getTime();
+            LoadListView(dateBeingViewed,false);
+
+        }
     }
 
     public void LoadListView(Date date, boolean day)
@@ -56,16 +179,17 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         BigDecimal total;
         if(day)
         {
-            incomeTotal = _user.GetBanker().GetTotalDayIncome(new Date());
-            expenseTotal = _user.GetBanker().GetTotalDayExpense(new Date());
-            total = _user.GetBanker().GetBalance(new Date(), true);
-
+            incomeTotal = _user.GetBanker().GetTotalDayIncome(date);
+            expenseTotal = _user.GetBanker().GetTotalDayExpense(date);
+            total = _user.GetBanker().GetBalance(date, true);
+            UpdateDayText();
         }
         else
         {
-            incomeTotal = _user.GetBanker().GetTotalMonthIncome(new Date());
-            expenseTotal = _user.GetBanker().GetTotalMonthExpense(new Date());
-            total = _user.GetBanker().GetBalance(new Date(), false);
+            incomeTotal = _user.GetBanker().GetTotalMonthIncome(date);
+            expenseTotal = _user.GetBanker().GetTotalMonthExpense(date);
+            total = _user.GetBanker().GetBalance(date, false);
+            UpdateMonthText();
         }
 
         TextView txtIncome = (TextView)infView.findViewById(R.id.txtBalanceIncome);
@@ -95,7 +219,6 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         {
             mode = "day";
             LoadListView(new Date(), true);
-
         }
         else if(position == 1)
         {

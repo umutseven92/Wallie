@@ -42,6 +42,7 @@ public class MainActivity extends FragmentActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         pager = (ViewPager) findViewById(R.id.pager);
@@ -52,6 +53,7 @@ public class MainActivity extends FragmentActivity {
 
         // set a custom shadow that overlays the main content when the drawer opens
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+
         // set up the drawer's list view with items and click listener
         drawerList.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list_item, menuArray));
@@ -93,7 +95,6 @@ public class MainActivity extends FragmentActivity {
         if (savedInstanceState == null) {
             selectItem(0);
         }
-
     }
 
     private List<Fragment> GetAccountFragments() {
@@ -137,7 +138,6 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-
     /* The click listner for ListView in the navigation drawer */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -146,6 +146,9 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
+    // When I wrote this, only God and I understood what I was doing
+    // Now, God only knows
+    //                    -Karl Weierstrass
     private void selectItem(int position) {
 
         if(getSupportFragmentManager().getFragments() != null)

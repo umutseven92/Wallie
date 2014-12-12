@@ -6,12 +6,16 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.example.Cuzdan.Global;
 import com.example.Cuzdan.R;
 import java.math.BigDecimal;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class IncomeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
@@ -19,6 +23,10 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     static User _user;
     String mode = "day";
     View infView;
+    Date dateBeingViewed;
+    ImageButton leftArrow;
+    ImageButton rightArrow;
+    TextView txtIncomeDate;
 
     public static final IncomeFragment newInstance()
     {
@@ -32,6 +40,12 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         infView = inflater.inflate(R.layout.incomefragment, container, false);
 
         Spinner spnDate = (Spinner)infView.findViewById(R.id.spnDateIncome);
+        leftArrow = (ImageButton)infView.findViewById(R.id.imgLeftIncome);
+        rightArrow = (ImageButton)infView.findViewById(R.id.imgRightIncome);
+        txtIncomeDate = (TextView)infView.findViewById(R.id.txtIncomeDate);
+
+        leftArrow.setOnClickListener(onLeftArrowClick);
+        rightArrow.setOnClickListener(onRightArrowClick);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -39,10 +53,82 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         spnDate.setOnItemSelectedListener(this);
 
         _user = ((Global) getActivity().getApplication()).GetUser();
+        dateBeingViewed = new Date();
 
         return infView;
     }
 
+    OnClickListener onLeftArrowClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            getLastDateIncomes();
+        }
+    };
+
+    OnClickListener onRightArrowClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            getNextDateIncomes();
+        }
+    };
+
+    public void UpdateDayText()
+    {
+        Format formatter = new SimpleDateFormat("dd/MM/yyyy");
+        txtIncomeDate.setText(formatter.format(dateBeingViewed));
+    }
+
+    public void UpdateMonthText()
+    {
+        Format formatter = new SimpleDateFormat("MM");
+        String[] months = getResources().getStringArray(R.array.turkishMonths);
+        String month = "m";
+
+        switch (Integer.parseInt(formatter.format(dateBeingViewed)))
+        {
+            case 1:
+                month = months[0];
+                break;
+            case 2:
+                month = months[1];
+                break;
+            case 3:
+                month = months[2];
+                break;
+            case 4:
+                month = months[3];
+                break;
+            case 5:
+                month = months[4];
+                break;
+            case 6:
+                month = months[5];
+                break;
+            case 7:
+                month = months[6];
+                break;
+            case 8:
+                month = months[7];
+                break;
+            case 9:
+                month = months[8];
+                break;
+            case 10:
+                month = months[9];
+                break;
+            case 11:
+                month = months[10];
+                break;
+            case 12:
+                month = months[11];
+                break;
+
+        }
+
+        Format formatterYear = new SimpleDateFormat("yyyy");
+        month += " " + formatterYear.format(dateBeingViewed);
+        txtIncomeDate.setText(month);
+    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -50,13 +136,13 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         if(position == 0)
         {
             mode = "day";
-            LoadListView(new Date(), true);
+            LoadListView(dateBeingViewed, true);
 
         }
         else if(position == 1)
         {
             mode = "month";
-            LoadListView(new Date(), false);
+            LoadListView(dateBeingViewed, false);
         }
 
     }
@@ -66,16 +152,59 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
     }
 
+    public void getNextDateIncomes()
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateBeingViewed);
+
+        if(mode == "day")
+        {
+            cal.add(Calendar.DATE,1);
+            dateBeingViewed = cal.getTime();
+            LoadListView(dateBeingViewed,true);
+
+        }
+        else if (mode == "month")
+        {
+            cal.add(Calendar.MONTH,1);
+            dateBeingViewed = cal.getTime();
+            LoadListView(dateBeingViewed,false);
+
+        }
+    }
+
+    public void getLastDateIncomes()
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateBeingViewed);
+
+        if(mode == "day")
+        {
+            cal.add(Calendar.DATE,-1);
+            dateBeingViewed = cal.getTime();
+            LoadListView(dateBeingViewed, true);
+        }
+        else if (mode == "month")
+        {
+            cal.add(Calendar.MONTH,-1);
+            dateBeingViewed = cal.getTime();
+            LoadListView(dateBeingViewed,false);
+
+        }
+    }
+
     public void LoadListView(Date date, boolean day)
     {
         ArrayList<Income> incomes;
         if(day)
         {
             incomes = _user.GetBanker().GetIncomesFromDay(date);
+            UpdateDayText();
         }
         else
         {
             incomes = _user.GetBanker().GetIncomesFromMonth(date);
+            UpdateMonthText();
         }
         BigDecimal total = BigDecimal.ZERO;
 
@@ -91,4 +220,8 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         txtTotalIncome.setText(total.toString() + " TL");
         txtTotalIncome.setTextColor(Color.GREEN);
     }
+
+
+
+
 }

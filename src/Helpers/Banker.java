@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -73,9 +74,17 @@ public class Banker implements Serializable {
     public BigDecimal GetTotalDayIncome(Date date)
     {
         BigDecimal total = BigDecimal.ZERO;
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(date);
+
         for (Income i : _incomes)
         {
-            if(i.GetDate().getDay() == date.getDay())
+            cal1.setTime(i.GetDate());
+            boolean sameDay = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                    cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
+
+            if(sameDay)
             {
                 total = total.add(i.GetAmount());
             }
@@ -87,9 +96,17 @@ public class Banker implements Serializable {
     public BigDecimal GetTotalMonthIncome(Date date)
     {
         BigDecimal total = BigDecimal.ZERO;
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(date);
+
         for (Income i : _incomes)
         {
-            if(i.GetDate().getMonth() == date.getMonth())
+            cal1.setTime(i.GetDate());
+            boolean sameMonth = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                    cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH);
+
+            if(sameMonth)
             {
                 total = total.add(i.GetAmount());
             }
@@ -101,9 +118,17 @@ public class Banker implements Serializable {
     public BigDecimal GetTotalDayExpense(Date date)
     {
         BigDecimal total = BigDecimal.ZERO;
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(date);
+
         for (Expense i : _expenses)
         {
-            if(i.GetDate().getDay() == date.getDay())
+            cal1.setTime(i.GetDate());
+            boolean sameDay = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                    cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
+
+            if(sameDay)
             {
                 total = total.add(i.GetAmount());
             }
@@ -116,9 +141,17 @@ public class Banker implements Serializable {
     public BigDecimal GetTotalMonthExpense(Date date)
     {
         BigDecimal total = BigDecimal.ZERO;
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(date);
+
         for (Expense i : _expenses)
         {
-            if(i.GetDate().getMonth() == date.getMonth())
+            cal1.setTime(i.GetDate());
+            boolean sameMonth = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                    cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH);
+
+            if(sameMonth)
             {
                 total = total.add(i.GetAmount());
             }
@@ -150,11 +183,18 @@ public class Banker implements Serializable {
     public ArrayList<Income> GetIncomesFromDay(Date day)
     {
         ArrayList<Income> specIncomes = new ArrayList<Income>();
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(day);
 
         for (int i = 0;i < _incomes.size(); i++)
         {
             Income incomeToTest = _incomes.get(i);
-            if(incomeToTest.GetDate().getDay() == day.getDay())
+            cal1.setTime(incomeToTest.GetDate());
+            boolean sameDay = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                    cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
+
+            if(sameDay)
             {
                 specIncomes.add(_incomes.get(i));
             }
@@ -166,11 +206,18 @@ public class Banker implements Serializable {
     public ArrayList<Income> GetIncomesFromMonth(Date day)
     {
         ArrayList<Income> specIncomes = new ArrayList<Income>();
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(day);
 
         for (int i = 0;i < _incomes.size(); i++)
         {
             Income incomeToTest = _incomes.get(i);
-            if(incomeToTest.GetDate().getMonth() == day.getMonth())
+            cal1.setTime(incomeToTest.GetDate());
+            boolean sameMonth = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                    cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH);
+
+            if(sameMonth)
             {
                 specIncomes.add(_incomes.get(i));
             }
@@ -182,11 +229,18 @@ public class Banker implements Serializable {
     public ArrayList<Expense> GetExpensesFromDay(Date day)
     {
         ArrayList<Expense> specExpenses = new ArrayList<Expense>();
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(day);
 
         for (int i = 0;i < _expenses.size(); i++)
         {
             Expense expenseToTest = _expenses.get(i);
-            if(expenseToTest.GetDate().getDay() == day.getDay())
+            cal1.setTime(expenseToTest.GetDate());
+            boolean sameDay = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                    cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
+
+            if(sameDay)
             {
                 specExpenses.add(_expenses.get(i));
             }
@@ -198,11 +252,18 @@ public class Banker implements Serializable {
     public ArrayList<Expense> GetExpensesFromMonth(Date day)
     {
         ArrayList<Expense> specExpenses = new ArrayList<Expense>();
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(day);
 
         for (int i = 0;i < _expenses.size(); i++)
         {
             Expense expenseToTest = _expenses.get(i);
-            if(expenseToTest.GetDate().getMonth() == day.getMonth())
+            cal1.setTime(expenseToTest.GetDate());
+            boolean sameMonth = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                    cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH);
+
+            if(sameMonth)
             {
                 specExpenses.add(_expenses.get(i));
             }
