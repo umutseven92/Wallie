@@ -26,17 +26,17 @@
         <item>Kasım</item>
         <item>Aralık</item>
     </string-array>
-    <string name="next">Next</string>
-    <string name="prev">Previous</string>
-    <string name="finish">Submit order</string>
-    <string name="review">Review</string>
+    <string name="next">İleri</string>
+    <string name="prev">Geri</string>
+    <string name="finish">Gelir Ekle</string>
+    <string name="review">Özet</string>
 
-    <string name="label_your_name">Name</string>
-    <string name="label_your_email">Email</string>
-    <string name="hint_your_name">e.g. Larry</string>
-    <string name="hint_your_email">Optional</string>
+    <string name="label_your_name">Miktar</string>
+    <string name="label_your_email">Açıklama</string>
+    <string name="hint_your_name">TL</string>
+    <string name="hint_your_email">İsteğe Bağlı</string>
 
-    <string name="submit_confirm_message">Place the order with the deli? You will receive an email
-        confirmation.</string>
-    <string name="submit_confirm_button">Place order</string>
+    <string name="submit_confirm_message">Herşey tamam?</string>
+    <string name="submit_confirm_button">Gelir Ekle</string>
+    <string name="submit_cancel_button">İptal</string>
 </resources>

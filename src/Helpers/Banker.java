@@ -2,12 +2,13 @@ package Helpers;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.ArrayList;
-
 import java.util.Calendar;
 import java.util.Date;
 
@@ -69,6 +70,20 @@ public class Banker implements Serializable {
             _incomes.add(income);
         }
 
+    }
+
+    public JSONObject GetIncomeJSON(Income income) throws JSONException {
+        String incomeFormat = String.format("{\n" +
+                        "\t\t\t\t\t\"category\": \"%s\",\n" +
+                        "\t\t\t\t\t\"subCategory\": \"%s\",\n" +
+                        "\t\t\t\t\t\"amount\": \"%s\",\n" +
+                        "\t\t\t\t\t\"tag\": \"%s\",\n" +
+                        "\t\t\t\t\t\"desc\": \"%s\",\n" +
+                        "\t\t\t\t\t\"date\": \"%s\"\n" +
+                        "\t\t\t\t}",income.GetCategory(),income.GetSubCategory(),income.GetAmount(),income.GetStringTag(),income.GetDescription(),income.GetDate());
+
+        JSONObject incomeJSON = new JSONObject(incomeFormat);
+        return incomeJSON;
     }
 
     public BigDecimal GetTotalDayIncome(Date date)

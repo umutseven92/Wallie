@@ -19,7 +19,7 @@ package wizard.model;
 /**
  * Represents a single line item on the final review page.
  *
- * @see com.example.android.wizardpager.wizard.ui.ReviewFragment
+ * @see wizard.ui.ReviewFragment
  */
 public class ReviewItem {
     public static final int DEFAULT_WEIGHT = 0;

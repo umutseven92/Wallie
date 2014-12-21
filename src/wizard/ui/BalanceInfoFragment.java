@@ -28,28 +28,27 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import com.example.Cuzdan.R;
-import wizard.model.CustomerInfoPage;
+import wizard.model.BalanceInfoPage;
 
-
-public class CustomerInfoFragment extends Fragment {
+public class BalanceInfoFragment extends Fragment {
     private static final String ARG_KEY = "key";
 
     private PageFragmentCallbacks mCallbacks;
     private String mKey;
-    private CustomerInfoPage mPage;
+    private BalanceInfoPage mPage;
     private TextView mNameView;
     private TextView mEmailView;
 
-    public static CustomerInfoFragment create(String key) {
+    public static BalanceInfoFragment create(String key) {
         Bundle args = new Bundle();
         args.putString(ARG_KEY, key);
 
-        CustomerInfoFragment fragment = new CustomerInfoFragment();
+        BalanceInfoFragment fragment = new BalanceInfoFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
-    public CustomerInfoFragment() {
+    public BalanceInfoFragment() {
     }
 
     @Override
@@ -58,20 +57,20 @@ public class CustomerInfoFragment extends Fragment {
 
         Bundle args = getArguments();
         mKey = args.getString(ARG_KEY);
-        mPage = (CustomerInfoPage) mCallbacks.onGetPage(mKey);
+        mPage = (BalanceInfoPage) mCallbacks.onGetPage(mKey);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_page_customer_info, container, false);
+        View rootView = inflater.inflate(R.layout.addbalancefragmentinfo, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
 
         mNameView = ((TextView) rootView.findViewById(R.id.your_name));
-        mNameView.setText(mPage.getData().getString(CustomerInfoPage.NAME_DATA_KEY));
+        mNameView.setText(mPage.getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
 
         mEmailView = ((TextView) rootView.findViewById(R.id.your_email));
-        mEmailView.setText(mPage.getData().getString(CustomerInfoPage.EMAIL_DATA_KEY));
+        mEmailView.setText(mPage.getData().getString(BalanceInfoPage.DESC_DATA_KEY));
         return rootView;
     }
 
@@ -108,7 +107,7 @@ public class CustomerInfoFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                mPage.getData().putString(CustomerInfoPage.NAME_DATA_KEY,
+                mPage.getData().putString(BalanceInfoPage.AMOUNT_DATA_KEY,
                         (editable != null) ? editable.toString() : null);
                 mPage.notifyDataChanged();
             }
@@ -126,7 +125,7 @@ public class CustomerInfoFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                mPage.getData().putString(CustomerInfoPage.EMAIL_DATA_KEY,
+                mPage.getData().putString(BalanceInfoPage.DESC_DATA_KEY,
                         (editable != null) ? editable.toString() : null);
                 mPage.notifyDataChanged();
             }

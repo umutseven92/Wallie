@@ -1,6 +1,7 @@
 package Fragments;
 
 import Helpers.*;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
 import com.example.Cuzdan.Global;
+import com.example.Cuzdan.IncomeWizardActivity;
 import com.example.Cuzdan.R;
 import java.math.BigDecimal;
 import java.text.Format;
@@ -78,6 +80,8 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         @Override
         public void onClick(View v)
         {
+            Intent incomeWizardIntent = new Intent(getActivity(), IncomeWizardActivity.class);
+            getActivity().startActivity(incomeWizardIntent);
         }
     };
 

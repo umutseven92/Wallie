@@ -19,4 +19,16 @@ public class Global extends Application {
     {
         return _user;
     }
+
+    private String _filePath;
+
+    public void SetFilePath(String path)
+    {
+        _filePath = path;
+    }
+
+    public String GetFilePath()
+    {
+        return _filePath;
+    }
 }

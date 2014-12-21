@@ -16,7 +16,6 @@
 
 package wizard.ui;
 
-
 import wizard.model.Page;
 
 public interface PageFragmentCallbacks {

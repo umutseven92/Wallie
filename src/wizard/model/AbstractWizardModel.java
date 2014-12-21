@@ -18,7 +18,6 @@ package wizard.model;
 
 import android.content.Context;
 import android.os.Bundle;
-
 import java.util.ArrayList;
 import java.util.List;
 

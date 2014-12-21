@@ -17,8 +17,8 @@
 package wizard.model;
 
 /**
- * Callback interface connecting {@link com.example.android.wizardpager.wizard.model.Page}, {@link AbstractWizardModel}, and model container
- * objects (e.g. {@link com.example.android.wizardpager.MainActivity}.
+ * Callback interface connecting {@link wizard.model.Page}, {@link AbstractWizardModel}, and model container
+ * objects (e.g. {@link .MainActivity}.
  */
 public interface ModelCallbacks {
     void onPageDataChanged(Page page);

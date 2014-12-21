@@ -18,7 +18,6 @@ package wizard.model;
 
 import android.support.v4.app.Fragment;
 import wizard.ui.MultipleChoiceFragment;
-
 import java.util.ArrayList;
 
 /**

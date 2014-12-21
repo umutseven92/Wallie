@@ -83,6 +83,18 @@ public class Balance implements Serializable {
         return _tag;
     }
 
+    public String GetStringTag()
+    {
+        if(_tag == Tags.Home)
+        {
+            return "home";
+        }
+        else
+        {
+            return "personal";
+        }
+    }
+
     public void SetTag(Tags tag)
     {
         _tag = tag;

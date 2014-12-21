@@ -12,6 +12,7 @@ import java.util.Date;
  */
 public class Income extends Balance {
 
+    // Create income via JSON
     public Income(JSONObject jsonIncome) throws JSONException, ParseException {
 
         this.SetCategory(jsonIncome.getString("category"));
@@ -30,5 +31,25 @@ public class Income extends Balance {
         {
             this.SetTag(Tags.Home);
         }
+    }
+
+    // Create income manually
+    public Income(String category, String subCategory, BigDecimal amount, String desc, Date date, String tag)
+    {
+        this.SetCategory(category);
+        this.SetSubCategory(subCategory);
+        this.SetAmount(amount);
+        this.SetDescription(desc);
+        this.SetDate(date);
+
+        if(tag == "personal")
+        {
+            this.SetTag(Tags.Personal);
+        }
+        else
+        {
+            this.SetTag(Tags.Home);
+        }
+
     }
 }

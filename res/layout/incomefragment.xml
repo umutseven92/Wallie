@@ -18,16 +18,17 @@
         <ImageButton
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:id="@+id/imgLeftIncome" android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true" android:layout_marginLeft="10dp"
-                android:src="@drawable/leftarrow" android:background="#fffff0"/>
+                android:id="@+id/imgLeftIncome"
+                android:src="@drawable/leftarrow" android:background="#fffff0"
+                android:layout_marginRight="35dp" android:layout_alignTop="@+id/imgRightIncome"
+                android:layout_toLeftOf="@+id/spnDateIncome"/>
         <ImageButton
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:id="@+id/imgRightIncome"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp" android:layout_centerVertical="true"
-                android:src="@drawable/rightarrow" android:background="#fffff0"/>
+                android:src="@drawable/rightarrow" android:background="#fffff0"
+                android:layout_centerVertical="true" android:layout_toRightOf="@+id/spnDateIncome"
+                android:layout_marginLeft="35dp"/>
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="match_parent"
