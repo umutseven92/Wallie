@@ -4,10 +4,8 @@ import Helpers.*;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.view.*;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.*;
 import com.example.Cuzdan.Global;
 import com.example.Cuzdan.R;
@@ -24,9 +22,9 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     String mode = "day";
     View infView;
     Date dateBeingViewed;
-    ImageButton leftArrow;
-    ImageButton rightArrow;
+    ImageButton btnLeftArrow, btnRightArrow, btnAddIncome;
     TextView txtIncomeDate;
+
 
     public static final IncomeFragment newInstance()
     {
@@ -40,12 +38,14 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         infView = inflater.inflate(R.layout.incomefragment, container, false);
 
         Spinner spnDate = (Spinner)infView.findViewById(R.id.spnDateIncome);
-        leftArrow = (ImageButton)infView.findViewById(R.id.imgLeftIncome);
-        rightArrow = (ImageButton)infView.findViewById(R.id.imgRightIncome);
+        btnLeftArrow = (ImageButton)infView.findViewById(R.id.imgLeftIncome);
+        btnRightArrow = (ImageButton)infView.findViewById(R.id.imgRightIncome);
         txtIncomeDate = (TextView)infView.findViewById(R.id.txtIncomeDate);
+        btnAddIncome = (ImageButton)infView.findViewById(R.id.btnAddIncome);
 
-        leftArrow.setOnClickListener(onLeftArrowClick);
-        rightArrow.setOnClickListener(onRightArrowClick);
+        btnLeftArrow.setOnClickListener(onLeftArrowClick);
+        btnRightArrow.setOnClickListener(onRightArrowClick);
+        btnAddIncome.setOnClickListener(onIncomeClick);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -55,8 +55,10 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         _user = ((Global) getActivity().getApplication()).GetUser();
         dateBeingViewed = new Date();
 
+
         return infView;
     }
+
 
     OnClickListener onLeftArrowClick = new View.OnClickListener() {
         @Override
@@ -69,6 +71,13 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         @Override
         public void onClick(View v) {
             getNextDateIncomes();
+        }
+    };
+
+    OnClickListener onIncomeClick = new View.OnClickListener(){
+        @Override
+        public void onClick(View v)
+        {
         }
     };
 
@@ -220,8 +229,5 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         txtTotalIncome.setText(total.toString() + " TL");
         txtTotalIncome.setTextColor(Color.GREEN);
     }
-
-
-
 
 }
