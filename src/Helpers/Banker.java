@@ -23,6 +23,9 @@ public class Banker implements Serializable {
         LoadBalance(incomes, expenses);
     }
 
+    private JSONArray incomeSource;
+    private JSONArray expenseSource;
+
     private ArrayList<Income> _incomes;
 
     public ArrayList<Income> GetIncomes()
@@ -50,12 +53,15 @@ public class Banker implements Serializable {
     // This is where expenses & incomes are loaded from users save file
     public void LoadBalance(JSONArray jsonIncomes, JSONArray jsonExpenses) throws JSONException, ParseException {
 
+        incomeSource = jsonIncomes;
+        expenseSource = jsonExpenses;
         LoadExpenses(jsonExpenses);
         LoadIncomes(jsonIncomes);
 
     }
 
     public void LoadExpenses(JSONArray jsonBalance) throws JSONException, ParseException {
+        _expenses = new ArrayList<Expense>();
         for(int i = 0; i<jsonBalance.length(); i++)
         {
             Expense expense = new Expense(jsonBalance.getJSONObject(i));
@@ -64,26 +70,13 @@ public class Banker implements Serializable {
     }
 
     public void LoadIncomes(JSONArray jsonBalance) throws JSONException, ParseException {
+        _incomes = new ArrayList<Income>();
         for(int i = 0; i<jsonBalance.length(); i++)
         {
             Income income = new Income(jsonBalance.getJSONObject(i));
             _incomes.add(income);
         }
 
-    }
-
-    public JSONObject GetIncomeJSON(Income income) throws JSONException {
-        String incomeFormat = String.format("{\n" +
-                        "\t\t\t\t\t\"category\": \"%s\",\n" +
-                        "\t\t\t\t\t\"subCategory\": \"%s\",\n" +
-                        "\t\t\t\t\t\"amount\": \"%s\",\n" +
-                        "\t\t\t\t\t\"tag\": \"%s\",\n" +
-                        "\t\t\t\t\t\"desc\": \"%s\",\n" +
-                        "\t\t\t\t\t\"date\": \"%s\"\n" +
-                        "\t\t\t\t}",income.GetCategory(),income.GetSubCategory(),income.GetAmount(),income.GetStringTag(),income.GetDescription(),income.GetDate());
-
-        JSONObject incomeJSON = new JSONObject(incomeFormat);
-        return incomeJSON;
     }
 
     public BigDecimal GetTotalDayIncome(Date date)
@@ -195,8 +188,9 @@ public class Banker implements Serializable {
         return total;
     }
 
-    public ArrayList<Income> GetIncomesFromDay(Date day)
+    public ArrayList<Income> GetIncomesFromDay(Date day) throws JSONException, ParseException
     {
+        LoadIncomes(incomeSource);
         ArrayList<Income> specIncomes = new ArrayList<Income>();
         Calendar cal1 = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
@@ -218,8 +212,9 @@ public class Banker implements Serializable {
         return specIncomes;
     }
 
-    public ArrayList<Income> GetIncomesFromMonth(Date day)
+    public ArrayList<Income> GetIncomesFromMonth(Date day) throws JSONException, ParseException
     {
+        LoadIncomes(incomeSource);
         ArrayList<Income> specIncomes = new ArrayList<Income>();
         Calendar cal1 = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
@@ -241,8 +236,9 @@ public class Banker implements Serializable {
         return specIncomes;
     }
 
-    public ArrayList<Expense> GetExpensesFromDay(Date day)
+    public ArrayList<Expense> GetExpensesFromDay(Date day) throws JSONException, ParseException
     {
+        LoadExpenses(expenseSource);
         ArrayList<Expense> specExpenses = new ArrayList<Expense>();
         Calendar cal1 = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
@@ -264,8 +260,9 @@ public class Banker implements Serializable {
         return specExpenses;
     }
 
-    public ArrayList<Expense> GetExpensesFromMonth(Date day)
+    public ArrayList<Expense> GetExpensesFromMonth(Date day) throws JSONException, ParseException
     {
+        LoadExpenses(expenseSource);
         ArrayList<Expense> specExpenses = new ArrayList<Expense>();
         Calendar cal1 = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
@@ -285,5 +282,23 @@ public class Banker implements Serializable {
         }
 
         return specExpenses;
+    }
+
+    public JSONObject CreateJSONIncome(Income income) throws JSONException
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(income.GetDate());
+        String date = cal.get(Calendar.YEAR)+ "-" + (cal.get(Calendar.MONTH) + 1) + "-" + cal.get(Calendar.DAY_OF_MONTH);
+
+        String json = String.format("{\n" +
+                "\t\t\t\t\t\"category\": \"%s\",\n" +
+                "\t\t\t\t\t\"subCategory\": \"%s\",\n" +
+                "\t\t\t\t\t\"amount\": \"%s\",\n" +
+                "\t\t\t\t\t\"tag\": \"%s\",\n" +
+                "\t\t\t\t\t\"desc\": \"%s\",\n" +
+                "\t\t\t\t\t\"date\": \"%s\"\n" +
+                "\t\t\t\t}",income.GetCategory(),income.GetSubCategory(),income.GetAmount(),income.GetStringTag(),income.GetDescription(),date);
+
+        return new JSONObject(json);
     }
 }

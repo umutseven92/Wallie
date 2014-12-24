@@ -1,5 +1,6 @@
 package Helpers;
 
+import android.nfc.Tag;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.math.BigDecimal;
@@ -34,22 +35,15 @@ public class Income extends Balance {
     }
 
     // Create income manually
-    public Income(String category, String subCategory, BigDecimal amount, String desc, Date date, String tag)
+    public Income(String category, String subCategory, BigDecimal amount, String desc, Date date, Tags tag)
     {
         this.SetCategory(category);
         this.SetSubCategory(subCategory);
         this.SetAmount(amount);
         this.SetDescription(desc);
         this.SetDate(date);
-
-        if(tag == "personal")
-        {
-            this.SetTag(Tags.Personal);
-        }
-        else
-        {
-            this.SetTag(Tags.Home);
-        }
+        this.SetTag(tag);
 
     }
+
 }

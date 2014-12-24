@@ -10,9 +10,11 @@ import android.view.ViewGroup;
 import android.widget.*;
 import com.example.Cuzdan.Global;
 import com.example.Cuzdan.R;
+import org.json.JSONException;
 
 import java.math.BigDecimal;
 import java.text.Format;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -61,19 +63,30 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     View.OnClickListener onLeftArrowClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            getLastDateExpenses();
+            try {
+                getLastDateExpenses();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
     };
 
     View.OnClickListener onRightArrowClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            getNextDateExpenses();
+            try {
+                getNextDateExpenses();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
     };
 
-    public void getNextDateExpenses()
-    {
+    public void getNextDateExpenses() throws JSONException, ParseException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
@@ -92,8 +105,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         }
     }
 
-    public void getLastDateExpenses()
-    {
+    public void getLastDateExpenses() throws JSONException, ParseException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
@@ -171,8 +183,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     }
 
 
-    public void LoadListView(Date date, boolean day)
-    {
+    public void LoadListView(Date date, boolean day) throws JSONException, ParseException {
         ArrayList<Expense> expenses;
 
         if(day)
@@ -206,18 +217,30 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+    {
         if(position == 0)
         {
             mode = "day";
-            LoadListView(new Date(), true);
+            try {
+                LoadListView(new Date(), true);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
         }
         else if(position == 1)
         {
             mode = "month";
-            LoadListView(new Date(), false);
+            try {
+                LoadListView(new Date(), false);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
 
     }

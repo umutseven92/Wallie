@@ -81,8 +81,4 @@ public class User implements Serializable {
         return _banker;
     }
 
-    public void SetBanker(Banker banker)
-    {
-        _banker = banker;
-    }
 }

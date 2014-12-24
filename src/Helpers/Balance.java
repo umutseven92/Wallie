@@ -9,7 +9,6 @@ import java.util.Date;
  */
 public class Balance implements Serializable {
 
-
     private String _category;
 
     public String GetCategory()

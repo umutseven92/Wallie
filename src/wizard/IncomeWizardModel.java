@@ -29,8 +29,8 @@ public class IncomeWizardModel extends AbstractWizardModel {
         return new PageList(
                                 new SingleFixedChoicePage(this, "Gelir Türü").setChoices("Kişisel", "Ev").setRequired(true),
                                 new BranchPage(this, "Kategori")
-                                        .addBranch("Maaş", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Alt Maaş 1", "Alt Maaş 2", "Alt Maaş 3").setRequired(true))
-                                        .addBranch("Borç", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Alt Borç 1", "Alt Borç 2", "Alt Borç 3").setRequired(true)).setRequired(true),
+                                        .addBranch("Maaş", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Maaş Ödemesi").setRequired(true))
+                                        .addBranch("Alacaklar", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Alacaklar Tahsilatı").setRequired(true)).setRequired(true),
                                new BalanceInfoPage(this, "Detaylar").setRequired(true));
     }
 }

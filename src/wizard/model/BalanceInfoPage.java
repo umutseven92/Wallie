@@ -21,9 +21,6 @@ import android.text.TextUtils;
 import wizard.ui.BalanceInfoFragment;
 import java.util.ArrayList;
 
-/**
- * A page asking for a name and an email.
- */
 public class BalanceInfoPage extends Page {
     public static final String AMOUNT_DATA_KEY = "amount";
     public static final String DESC_DATA_KEY = "description";

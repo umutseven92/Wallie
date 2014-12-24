@@ -1,23 +1,35 @@
 package com.example.Cuzdan;
 
+import Helpers.Balance;
+import Helpers.Banker;
+import Helpers.Income;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.support.v4.app.*;
 import android.support.v4.view.ViewPager;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import wizard.IncomeWizardModel;
 import wizard.model.AbstractWizardModel;
+import wizard.model.BalanceInfoPage;
 import wizard.model.ModelCallbacks;
 import wizard.model.Page;
 import wizard.ui.PageFragmentCallbacks;
 import wizard.ui.ReviewFragment;
 import wizard.ui.StepPagerStrip;
 
+import java.io.*;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -90,7 +102,79 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
                                 .setPositiveButton(R.string.submit_confirm_button, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        // Add income here
+                                        String tag = mWizardModel.findByKey("Gelir Türü").getData().getString(Page.SIMPLE_DATA_KEY);
+                                        Balance.Tags incomeTag;
+
+                                        if (tag == "Kişisel")
+                                        {
+                                            incomeTag = Balance.Tags.Personal;
+                                        }
+                                        else
+                                        {
+                                            incomeTag = Balance.Tags.Home;
+                                        }
+
+                                        String category = mWizardModel.findByKey("Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
+                                        String subCategory = mWizardModel.findByKey(category + ":Alt Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
+                                        BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
+                                        String description = mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.DESC_DATA_KEY);
+
+                                        Income income = new Income(category,subCategory,amount,description,new Date(), incomeTag);
+                                        StringBuffer datax = new StringBuffer("");
+
+                                        JSONObject incomeToSave = new JSONObject();
+                                        try
+                                        {
+                                           incomeToSave = ((Global) getApplication()).GetUser().GetBanker().CreateJSONIncome(income);
+                                        }
+
+                                        catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+
+                                        String filePath = ((Global) getApplication()).GetFilePath();
+
+                                        try
+                                        {
+                                            FileInputStream fIn = openFileInput(filePath);
+                                            InputStreamReader isr = new InputStreamReader(fIn);
+                                            BufferedReader buffreader = new BufferedReader(isr) ;
+
+                                            String readString = buffreader.readLine();
+                                            while (readString != null) {
+                                                datax.append(readString);
+                                                readString = buffreader.readLine() ;
+                                            }
+
+                                            isr.close();
+                                        }
+
+                                        catch (IOException ioe)
+                                        {
+                                            ioe.printStackTrace();
+                                        }
+
+                                        String main = datax.toString();
+                                        try
+                                        {
+                                            JSONObject mainJSON = new JSONObject(main);
+                                            JSONArray incomes = mainJSON.getJSONObject("user").getJSONArray("incomes");
+                                            incomes.put(incomeToSave);
+
+                                            FileOutputStream fileOutputStream = openFileOutput(filePath,Context.MODE_PRIVATE);
+                                            fileOutputStream.write(mainJSON.toString().getBytes());
+                                            fileOutputStream.close();
+                                        }
+
+                                        catch (JSONException e)
+                                        {
+                                            e.printStackTrace();
+                                        } catch (FileNotFoundException e) {
+                                            e.printStackTrace();
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                        getActivity().finish();
 
                                     }
                                 })
@@ -99,8 +183,8 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
                     }
                 };
                 dg.show(getSupportFragmentManager(), "place_order_dialog");
-
-            } else {
+            }
+            else {
                 if (mEditingAfterReview) {
                     mPager.setCurrentItem(mPagerAdapter.getCount() - 1);
                 } else {

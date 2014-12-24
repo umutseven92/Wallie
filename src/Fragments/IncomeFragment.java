@@ -11,8 +11,11 @@ import android.widget.*;
 import com.example.Cuzdan.Global;
 import com.example.Cuzdan.IncomeWizardActivity;
 import com.example.Cuzdan.R;
+import org.json.JSONException;
+
 import java.math.BigDecimal;
 import java.text.Format;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -61,18 +64,56 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         return infView;
     }
 
+    @Override
+    public void onResume(){
+
+        if(mode == "day")
+        {
+            try {
+                LoadListView(dateBeingViewed, true);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        else if(mode == "month")
+        {
+            try {
+                LoadListView(dateBeingViewed, false);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        super.onResume();
+
+    }
 
     OnClickListener onLeftArrowClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            getLastDateIncomes();
+            try {
+                getLastDateIncomes();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
     };
 
     OnClickListener onRightArrowClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            getNextDateIncomes();
+            try {
+                getNextDateIncomes();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
     };
 
@@ -149,13 +190,25 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         if(position == 0)
         {
             mode = "day";
-            LoadListView(dateBeingViewed, true);
+            try {
+                LoadListView(dateBeingViewed, true);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
         }
         else if(position == 1)
         {
             mode = "month";
-            LoadListView(dateBeingViewed, false);
+            try {
+                LoadListView(dateBeingViewed, false);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
 
     }
@@ -165,8 +218,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
     }
 
-    public void getNextDateIncomes()
-    {
+    public void getNextDateIncomes() throws JSONException, ParseException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
@@ -186,8 +238,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         }
     }
 
-    public void getLastDateIncomes()
-    {
+    public void getLastDateIncomes() throws JSONException, ParseException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
@@ -206,8 +257,8 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         }
     }
 
-    public void LoadListView(Date date, boolean day)
-    {
+    public void LoadListView(Date date, boolean day) throws JSONException, ParseException {
+
         ArrayList<Income> incomes;
         if(day)
         {
