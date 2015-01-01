@@ -13,6 +13,7 @@ import com.example.Cuzdan.IncomeWizardActivity;
 import com.example.Cuzdan.R;
 import org.json.JSONException;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.Format;
 import java.text.ParseException;
@@ -75,6 +76,8 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                 e.printStackTrace();
             } catch (ParseException e) {
                 e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
         else if(mode == "month")
@@ -84,6 +87,8 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -100,6 +105,8 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                 e.printStackTrace();
             } catch (ParseException e) {
                 e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     };
@@ -112,6 +119,8 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -196,6 +205,8 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                 e.printStackTrace();
             } catch (ParseException e) {
                 e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
         }
@@ -208,6 +219,8 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                 e.printStackTrace();
             } catch (ParseException e) {
                 e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
 
@@ -218,7 +231,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
     }
 
-    public void getNextDateIncomes() throws JSONException, ParseException {
+    public void getNextDateIncomes() throws JSONException, ParseException, IOException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
@@ -238,7 +251,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         }
     }
 
-    public void getLastDateIncomes() throws JSONException, ParseException {
+    public void getLastDateIncomes() throws JSONException, ParseException, IOException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
@@ -257,7 +270,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         }
     }
 
-    public void LoadListView(Date date, boolean day) throws JSONException, ParseException {
+    public void LoadListView(Date date, boolean day) throws JSONException, ParseException, IOException {
 
         ArrayList<Income> incomes;
         if(day)

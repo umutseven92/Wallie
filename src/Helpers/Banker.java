@@ -4,8 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.FileOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -17,16 +16,17 @@ import java.util.Date;
  */
 public class Banker implements Serializable {
 
-    public Banker(JSONArray incomes, JSONArray expenses) throws JSONException, ParseException {
+    public Banker(JSONArray incomes, JSONArray expenses, String filePath) throws JSONException, ParseException {
         _incomes = new ArrayList<Income>();
         _expenses = new ArrayList<Expense>();
+        this.filePath = filePath;
         LoadBalance(incomes, expenses);
     }
 
-    private JSONArray incomeSource;
-    private JSONArray expenseSource;
 
     private ArrayList<Income> _incomes;
+
+    private String filePath;
 
     public ArrayList<Income> GetIncomes()
     {
@@ -53,8 +53,6 @@ public class Banker implements Serializable {
     // This is where expenses & incomes are loaded from users save file
     public void LoadBalance(JSONArray jsonIncomes, JSONArray jsonExpenses) throws JSONException, ParseException {
 
-        incomeSource = jsonIncomes;
-        expenseSource = jsonExpenses;
         LoadExpenses(jsonExpenses);
         LoadIncomes(jsonIncomes);
 
@@ -77,6 +75,32 @@ public class Banker implements Serializable {
             _incomes.add(income);
         }
 
+    }
+
+    public JSONObject FetchBalanceData() throws IOException, JSONException {
+        StringBuilder sb = new StringBuilder();
+        BufferedReader br = new BufferedReader(new FileReader(this.filePath));
+        String line;
+        while ((line = br.readLine()) != null)
+        {
+            sb.append(line);
+            sb.append("\n");
+        }
+        return new JSONObject(sb.toString());
+    }
+
+    public JSONArray FetchIncomeData() throws IOException, JSONException {
+        JSONObject jsonObject = FetchBalanceData();
+        JSONArray jsonIncome = jsonObject.getJSONObject("user").getJSONArray("incomes");
+
+        return jsonIncome;
+    }
+
+    public JSONArray FetchExpenseData() throws IOException, JSONException{
+        JSONObject jsonObject = FetchBalanceData();
+        JSONArray jsonExpense = jsonObject.getJSONObject("user").getJSONArray("expenses");
+
+        return jsonExpense;
     }
 
     public BigDecimal GetTotalDayIncome(Date date)
@@ -188,9 +212,8 @@ public class Banker implements Serializable {
         return total;
     }
 
-    public ArrayList<Income> GetIncomesFromDay(Date day) throws JSONException, ParseException
-    {
-        LoadIncomes(incomeSource);
+    public ArrayList<Income> GetIncomesFromDay(Date day) throws JSONException, ParseException, IOException {
+        LoadIncomes(FetchIncomeData());
         ArrayList<Income> specIncomes = new ArrayList<Income>();
         Calendar cal1 = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
@@ -212,9 +235,8 @@ public class Banker implements Serializable {
         return specIncomes;
     }
 
-    public ArrayList<Income> GetIncomesFromMonth(Date day) throws JSONException, ParseException
-    {
-        LoadIncomes(incomeSource);
+    public ArrayList<Income> GetIncomesFromMonth(Date day) throws JSONException, ParseException, IOException {
+        LoadIncomes(FetchIncomeData());
         ArrayList<Income> specIncomes = new ArrayList<Income>();
         Calendar cal1 = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
@@ -236,9 +258,8 @@ public class Banker implements Serializable {
         return specIncomes;
     }
 
-    public ArrayList<Expense> GetExpensesFromDay(Date day) throws JSONException, ParseException
-    {
-        LoadExpenses(expenseSource);
+    public ArrayList<Expense> GetExpensesFromDay(Date day) throws JSONException, ParseException, IOException {
+        LoadExpenses(FetchExpenseData());
         ArrayList<Expense> specExpenses = new ArrayList<Expense>();
         Calendar cal1 = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
@@ -260,9 +281,8 @@ public class Banker implements Serializable {
         return specExpenses;
     }
 
-    public ArrayList<Expense> GetExpensesFromMonth(Date day) throws JSONException, ParseException
-    {
-        LoadExpenses(expenseSource);
+    public ArrayList<Expense> GetExpensesFromMonth(Date day) throws JSONException, ParseException, IOException {
+        LoadExpenses(FetchExpenseData());
         ArrayList<Expense> specExpenses = new ArrayList<Expense>();
         Calendar cal1 = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();

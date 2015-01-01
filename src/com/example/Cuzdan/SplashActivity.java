@@ -96,7 +96,7 @@ public class SplashActivity extends Activity {
                     outputStream.write(userInfo.toString().getBytes());
                 }
                 outputStream.close();
-                user = new User(userInfo);
+                user = new User(userInfo,fileName);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -118,7 +118,7 @@ public class SplashActivity extends Activity {
                     sb.append("\n");
                 }
 
-                user = new User(new JSONObject(sb.toString()));
+                user = new User(new JSONObject(sb.toString()), file.getAbsolutePath());
 
             } catch (Exception e) {
                 e.printStackTrace();

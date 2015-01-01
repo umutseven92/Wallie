@@ -12,6 +12,7 @@ import com.example.Cuzdan.Global;
 import com.example.Cuzdan.R;
 import org.json.JSONException;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.Format;
 import java.text.ParseException;
@@ -69,6 +70,8 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
                 e.printStackTrace();
             } catch (ParseException e) {
                 e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     };
@@ -82,11 +85,13 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
                 e.printStackTrace();
             } catch (ParseException e) {
                 e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     };
 
-    public void getNextDateExpenses() throws JSONException, ParseException {
+    public void getNextDateExpenses() throws JSONException, ParseException, IOException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
@@ -105,7 +110,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         }
     }
 
-    public void getLastDateExpenses() throws JSONException, ParseException {
+    public void getLastDateExpenses() throws JSONException, ParseException, IOException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
@@ -183,7 +188,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     }
 
 
-    public void LoadListView(Date date, boolean day) throws JSONException, ParseException {
+    public void LoadListView(Date date, boolean day) throws JSONException, ParseException, IOException {
         ArrayList<Expense> expenses;
 
         if(day)
@@ -228,6 +233,8 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
                 e.printStackTrace();
             } catch (ParseException e) {
                 e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
         }
@@ -239,6 +246,8 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

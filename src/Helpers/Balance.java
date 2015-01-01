@@ -2,6 +2,7 @@ package Helpers;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Date;
 
 /**
@@ -49,7 +50,7 @@ public class Balance implements Serializable {
 
     public BigDecimal GetAmount()
     {
-        return _amount;
+        return _amount.setScale(2, RoundingMode.CEILING);
     }
 
     public void SetAmount(BigDecimal value)
