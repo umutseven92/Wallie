@@ -8,9 +8,9 @@ import android.support.v4.app.Fragment;
 import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
-import com.example.Cuzdan.Global;
-import com.example.Cuzdan.IncomeWizardActivity;
-import com.example.Cuzdan.R;
+import com.graviton.Cuzdan.Global;
+import com.graviton.Cuzdan.IncomeWizardActivity;
+import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 
 import java.io.IOException;

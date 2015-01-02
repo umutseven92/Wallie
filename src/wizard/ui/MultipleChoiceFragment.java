@@ -27,7 +27,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.example.Cuzdan.R;
+import com.graviton.Cuzdan.R;
 import wizard.model.MultipleFixedChoicePage;
 import wizard.model.Page;
 import java.util.ArrayList;

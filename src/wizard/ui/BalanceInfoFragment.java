@@ -27,7 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
-import com.example.Cuzdan.R;
+import com.graviton.Cuzdan.R;
 import wizard.model.BalanceInfoPage;
 
 public class BalanceInfoFragment extends Fragment {

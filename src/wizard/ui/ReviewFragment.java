@@ -26,7 +26,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.example.Cuzdan.R;
+import com.graviton.Cuzdan.R;
 import wizard.model.AbstractWizardModel;
 import wizard.model.ModelCallbacks;
 import wizard.model.Page;

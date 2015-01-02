@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.Cuzdan.R;
+import com.graviton.Cuzdan.R;
 
 public class SavingsFragment extends Fragment {
 
