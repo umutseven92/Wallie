@@ -28,7 +28,8 @@
     </string-array>
     <string name="next">İleri</string>
     <string name="prev">Geri</string>
-    <string name="finish">Gelir Ekle</string>
+    <string name="finish_income">Gelir Ekle</string>
+    <string name="finish_expense">Gider Ekle</string>
     <string name="review">Özet</string>
 
     <string name="label_your_name">Miktar</string>

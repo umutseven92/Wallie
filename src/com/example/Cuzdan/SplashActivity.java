@@ -27,7 +27,7 @@ public class SplashActivity extends Activity {
 
         User user = null;
 
-        String fileName = "userConfigTest22";
+        String fileName = "userConfigTest27";
         ((Global) this.getApplication()).SetFilePath(fileName);
 
         File file = new File(this.getFilesDir(),fileName);
@@ -53,39 +53,8 @@ public class SplashActivity extends Activity {
                         "\t\t\"city\": \"Istanbul\",\n" +
                         "\t\t\"email\": \"umutseven92@gmail.com\",\n" +
                         "\n" +
-                        "\t\t\"incomes\": [{\n" +
-                        "\t\t\t\t\t\"category\": \"borc\",\n" +
-                        "\t\t\t\t\t\"subCategory\": \"borc odemesi\",\n" +
-                        "\t\t\t\t\t\"amount\": \"43\",\n" +
-                        "\t\t\t\t\t\"tag\": \"personal\",\n" +
-                        "\t\t\t\t\t\"desc\": \"Alican borcunu odedi\",\n" +
-                        "\t\t\t\t\t\"date\": \"2014-12-05\"\n" +
-                        "\t\t\t\t},\n" +
-                        "\t\t\t \t{\n" +
-                        "\t\t\t\t\t\"category\": \"maas\",\n" +
-                        "\t\t\t\t\t\"subCategory\": \"maas odemesi\",\n" +
-                        "\t\t\t\t\t\"amount\": \"1400\",\n" +
-                        "\t\t\t\t\t\"tag\": \"personal\",\n" +
-                        "\t\t\t\t\t\"desc\": \"Maas\",\n" +
-                        "\t\t\t\t\t\"date\": \"2014-12-04\"\n" +
-                        "\n" +
-                        "\t\t\t\t}],\n" +
-                        "\t\t\"expenses\": [{\n" +
-                        "\t\t\t\t\t\"category\": \"yemek\",\n" +
-                        "\t\t\t\t\t\"subCategory\": \"fast food\",\n" +
-                        "\t\t\t\t\t\"amount\": \"43\",\n" +
-                        "\t\t\t\t\t\"tag\": \"personal\",\n" +
-                        "\t\t\t\t\t\"desc\": \"Burger King\",\n" +
-                        "\t\t\t\t\t\"date\": \"2014-12-05\"\n" +
-                        "\t\t\t\t},\n" +
-                        "\t\t\t \t{\n" +
-                        "\t\t\t\t\t\"category\": \"icecek\",\n" +
-                        "\t\t\t\t\t\"subCategory\": \"alkollu icecek\",\n" +
-                        "\t\t\t\t\t\"amount\": \"13\",\n" +
-                        "\t\t\t\t\t\"tag\": \"personal\",\n" +
-                        "\t\t\t\t\t\"desc\": \"Bira\",\n" +
-                        "\t\t\t\t\t\"date\": \"2014-12-04\"\n" +
-                        "\t\t\t\t}]\n" +
+                        "\t\t\"incomes\": [],\n" +
+                        "\t\t\"expenses\": []\n" +
                         "\t}\n" +
                         "}\n",userName,firstName,lastName );
                 userInfo = new JSONObject(userSettings);
@@ -96,7 +65,7 @@ public class SplashActivity extends Activity {
                     outputStream.write(userInfo.toString().getBytes());
                 }
                 outputStream.close();
-                user = new User(userInfo,fileName);
+                user = new User(userInfo,file.getAbsolutePath());
 
             } catch (Exception e) {
                 e.printStackTrace();

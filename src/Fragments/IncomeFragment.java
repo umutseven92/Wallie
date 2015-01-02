@@ -31,7 +31,6 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     ImageButton btnLeftArrow, btnRightArrow, btnAddIncome;
     TextView txtIncomeDate;
 
-
     public static final IncomeFragment newInstance()
     {
         IncomeFragment f = new IncomeFragment();

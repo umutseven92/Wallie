@@ -1,6 +1,7 @@
 package Fragments;
 
 import Helpers.*;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.example.Cuzdan.ExpenseWizardActivity;
 import com.example.Cuzdan.Global;
 import com.example.Cuzdan.R;
 import org.json.JSONException;
@@ -27,8 +29,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     String mode = "day";
     View infView;
     Date dateBeingViewed;
-    ImageButton leftArrow;
-    ImageButton rightArrow;
+    ImageButton leftArrow, rightArrow, btnAddExpense;
     TextView txtExpenseDate;
 
     public static final ExpenseFragment newInstance()
@@ -46,9 +47,11 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         leftArrow = (ImageButton)infView.findViewById(R.id.imgLeftExpense);
         rightArrow = (ImageButton)infView.findViewById(R.id.imgRightExpense);
         txtExpenseDate = (TextView)infView.findViewById(R.id.txtExpenseDate);
+        btnAddExpense = (ImageButton)infView.findViewById(R.id.btnAddExpense);
 
         leftArrow.setOnClickListener(onLeftArrowClick);
         rightArrow.setOnClickListener(onRightArrowClick);
+        btnAddExpense.setOnClickListener(onExpenseClick);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -59,6 +62,38 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         _user = ((Global) getActivity().getApplication()).GetUser();
 
         return infView;
+    }
+
+    @Override
+    public void onResume()
+    {
+        if (mode == "day")
+        {
+            try {
+                LoadListView(dateBeingViewed, true);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        else if (mode == "month")
+        {
+            try {
+                LoadListView(dateBeingViewed, false);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        super.onResume();
     }
 
     View.OnClickListener onLeftArrowClick = new View.OnClickListener() {
@@ -88,6 +123,14 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    };
+
+    View.OnClickListener onExpenseClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent expenseWizardIntent = new Intent(getActivity(), ExpenseWizardActivity.class);
+            getActivity().startActivity(expenseWizardIntent);
         }
     };
 
@@ -228,7 +271,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         {
             mode = "day";
             try {
-                LoadListView(new Date(), true);
+                LoadListView(dateBeingViewed, true);
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (ParseException e) {
@@ -242,7 +285,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         {
             mode = "month";
             try {
-                LoadListView(new Date(), false);
+                LoadListView(dateBeingViewed, false);
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (ParseException e) {

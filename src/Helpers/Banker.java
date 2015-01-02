@@ -321,4 +321,23 @@ public class Banker implements Serializable {
 
         return new JSONObject(json);
     }
+
+    public JSONObject CreateJSONExpense(Expense expense) throws JSONException
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(expense.GetDate());
+        String date = cal.get(Calendar.YEAR)+ "-" + (cal.get(Calendar.MONTH) + 1) + "-" + cal.get(Calendar.DAY_OF_MONTH);
+
+        String json = String.format("{\n" +
+                "\t\t\t\t\t\"category\": \"%s\",\n" +
+                "\t\t\t\t\t\"subCategory\": \"%s\",\n" +
+                "\t\t\t\t\t\"amount\": \"%s\",\n" +
+                "\t\t\t\t\t\"tag\": \"%s\",\n" +
+                "\t\t\t\t\t\"desc\": \"%s\",\n" +
+                "\t\t\t\t\t\"date\": \"%s\"\n" +
+                "\t\t\t\t}",expense.GetCategory(),expense.GetSubCategory(),expense.GetAmount(),expense.GetStringTag(),expense.GetDescription(),date);
+
+        return new JSONObject(json);
+
+    }
 }

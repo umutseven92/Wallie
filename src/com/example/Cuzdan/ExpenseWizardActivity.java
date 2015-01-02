@@ -1,6 +1,7 @@
 package com.example.Cuzdan;
 
 import Helpers.Balance;
+import Helpers.Expense;
 import Helpers.Income;
 import android.content.Context;
 import android.os.Bundle;
@@ -13,7 +14,7 @@ import android.widget.Button;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import wizard.IncomeWizardModel;
+import wizard.ExpenseWizardModel;
 import wizard.model.AbstractWizardModel;
 import wizard.model.BalanceInfoPage;
 import wizard.model.ModelCallbacks;
@@ -28,14 +29,13 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Umut on 21.12.2014.
+ * Created by Umut on 2.1.2015.
  */
-public class IncomeWizardActivity extends FragmentActivity implements PageFragmentCallbacks, ReviewFragment.Callbacks, ModelCallbacks {
-
+public class ExpenseWizardActivity  extends FragmentActivity implements PageFragmentCallbacks, ReviewFragment.Callbacks, ModelCallbacks {
     private ViewPager mPager;
     private MyPagerAdapter mPagerAdapter;
     private boolean mEditingAfterReview;
-    private AbstractWizardModel mWizardModel = new IncomeWizardModel(this);
+    private AbstractWizardModel mWizardModel = new ExpenseWizardModel(this);
     private boolean mConsumePageSelectedEvent;
     private Button mNextButton;
     private Button mPrevButton;
@@ -45,7 +45,7 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getActionBar().setTitle("Gelir Ekle");
+        getActionBar().setTitle("Gider Ekle");
 
         if (savedInstanceState != null) {
             mWizardModel.load(savedInstanceState.getBundle("model"));
@@ -85,21 +85,21 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
             }
         });
 
-    mNextButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if (mPager.getCurrentItem() == mCurrentPageSequence.size()) {
-                AddIncome();
-                finish();
-            }
-            else {
-                if (mEditingAfterReview) {
-                    mPager.setCurrentItem(mPagerAdapter.getCount() - 1);
-                } else {
-                    mPager.setCurrentItem(mPager.getCurrentItem() + 1);
+        mNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mPager.getCurrentItem() == mCurrentPageSequence.size()) {
+                    AddExpense();
+                    finish();
                 }
-            }
-        }});
+                else {
+                    if (mEditingAfterReview) {
+                        mPager.setCurrentItem(mPagerAdapter.getCount() - 1);
+                    } else {
+                        mPager.setCurrentItem(mPager.getCurrentItem() + 1);
+                    }
+                }
+            }});
 
         mPrevButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,9 +113,21 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
 
     }
 
-    private void AddIncome()
+    private void AddExpense()
     {
-        String category = mWizardModel.findByKey("Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
+        String tag = mWizardModel.findByKey("Gider Türü").getData().getString(Page.SIMPLE_DATA_KEY);
+        Balance.Tags expenseTag;
+
+        if (tag == "Kişisel")
+        {
+            expenseTag = Balance.Tags.Personal;
+        }
+        else
+        {
+            expenseTag = Balance.Tags.Home;
+        }
+
+        String category = mWizardModel.findByKey(tag + ":Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
         String subCategory = mWizardModel.findByKey(category + ":Alt Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
         BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
         String description = mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.DESC_DATA_KEY);
@@ -125,13 +137,13 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
             description = "";
         }
 
-        Income income = new Income(category,subCategory,amount,description,new Date(), Balance.Tags.Personal);
+        Expense expense = new Expense(category,subCategory,amount,description,new Date(), expenseTag);
         StringBuffer datax = new StringBuffer("");
 
-        JSONObject incomeToSave = new JSONObject();
+        JSONObject expenseToSave = new JSONObject();
         try
         {
-            incomeToSave = ((Global) getApplication()).GetUser().GetBanker().CreateJSONIncome(income);
+            expenseToSave = ((Global) getApplication()).GetUser().GetBanker().CreateJSONExpense(expense);
         }
 
         catch (JSONException e) {
@@ -164,10 +176,10 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
         try
         {
             JSONObject mainJSON = new JSONObject(main);
-            JSONArray incomes = mainJSON.getJSONObject("user").getJSONArray("incomes");
-            incomes.put(incomeToSave);
+            JSONArray expenses = mainJSON.getJSONObject("user").getJSONArray("expenses");
+            expenses.put(expenseToSave);
 
-            FileOutputStream fileOutputStream = openFileOutput(filePath,Context.MODE_PRIVATE);
+            FileOutputStream fileOutputStream = openFileOutput(filePath, Context.MODE_PRIVATE);
             fileOutputStream.write(mainJSON.toString().getBytes());
             fileOutputStream.close();
         }
@@ -186,7 +198,7 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
     private void updateBottomBar() {
         int position = mPager.getCurrentItem();
         if (position == mCurrentPageSequence.size()) {
-            mNextButton.setText(R.string.finish_income);
+            mNextButton.setText(R.string.finish_expense);
             mNextButton.setBackgroundResource(R.drawable.finish_background);
             mNextButton.setTextAppearance(this, R.style.TextAppearanceFinish);
         } else {
@@ -256,7 +268,7 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
 
     @Override
     public Page onGetPage(String key) {
-       return mWizardModel.findByKey(key);
+        return mWizardModel.findByKey(key);
     }
 
     private boolean recalculateCutOffPage() {
@@ -331,5 +343,6 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
             return mCutOffPage;
         }
     }
+
 
 }

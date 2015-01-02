@@ -31,6 +31,15 @@ public class Expense extends Balance {
         {
             this.SetTag(Tags.Home);
         }
+    }
 
+    public Expense(String category, String subCategory, BigDecimal amount, String desc, Date date, Tags tag)
+    {
+        this.SetCategory(category);
+        this.SetSubCategory(subCategory);
+        this.SetAmount(amount);
+        this.SetDescription(desc);
+        this.SetDate(date);
+        this.SetTag(tag);
     }
 }
