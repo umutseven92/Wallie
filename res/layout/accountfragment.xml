@@ -7,8 +7,8 @@
 
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="124dp" android:layout_gravity="center_horizontal" android:layout_weight="0.25"
-            android:layout_marginTop="20dp">
+            android:layout_height="150dp" android:layout_gravity="center_horizontal"
+            android:layout_weight="0.99">
 
         <Helpers.RoundedImageView
                 android:layout_width="128dp"
@@ -39,5 +39,17 @@
                     android:layout_centerHorizontal="true" android:layout_marginTop="45dp"
                     android:textColor="#ff000000"/>
         </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp" android:layout_marginTop="250dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="version"
+                android:id="@+id/txtVersion" android:layout_centerVertical="true"
+                android:layout_alignParentRight="true" android:layout_marginRight="10dp"
+                />
     </RelativeLayout>
 </LinearLayout>

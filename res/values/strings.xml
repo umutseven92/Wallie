@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Cüzdan</string>
+    <string name="version">v0.1.1</string>
     <string-array name="menuArray">
         <item>Bakiye</item>
         <item>Birikim</item>

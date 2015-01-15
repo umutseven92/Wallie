@@ -259,9 +259,9 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
 
         lv.setAdapter(new ExpenseListAdapter(this.getActivity(),expenses));
 
-        TextView txtTotalIncome = (TextView)infView.findViewById(R.id.txtTotalExpense);
-        txtTotalIncome.setText(total.toString() + " TL");
-        txtTotalIncome.setTextColor(Color.RED);
+        TextView txtTotalExpense = (TextView)infView.findViewById(R.id.txtTotalExpense);
+        txtTotalExpense.setText(total.toString() + " TL");
+        txtTotalExpense.setTextColor(Color.RED);
     }
 
     @Override

@@ -26,8 +26,7 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
     View infView;
     String mode = "day";
     Date dateBeingViewed;
-    ImageButton leftArrow;
-    ImageButton rightArrow;
+    ImageButton leftArrow, rightArrow;
     TextView txtBalanceDate;
 
     public static final BalanceFragment newInstance()
@@ -177,6 +176,7 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         BigDecimal incomeTotal;
         BigDecimal expenseTotal;
         BigDecimal total;
+
         if(day)
         {
             incomeTotal = _user.GetBanker().GetTotalDayIncome(date);
@@ -199,6 +199,7 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         txtIncome.setText(incomeTotal.toString());
         txtExpense.setText(expenseTotal.toString());
         txtTotal.setText(total.toString());
+
         if(total.compareTo(BigDecimal.ZERO) == 0)
         {
             txtTotal.setTextColor(Color.GREEN);
@@ -214,16 +215,30 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
     }
 
     @Override
+    public void onResume()
+    {
+        if(mode == "day")
+        {
+            LoadListView(dateBeingViewed, true);
+        }
+        else if (mode == "month")
+        {
+            LoadListView(dateBeingViewed, false);
+        }
+        super.onResume();
+    }
+
+    @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         if(position == 0)
         {
             mode = "day";
-            LoadListView(new Date(), true);
+            LoadListView(dateBeingViewed, true);
         }
         else if(position == 1)
         {
             mode = "month";
-            LoadListView(new Date(), false);
+            LoadListView(dateBeingViewed, false);
         }
     }
 
