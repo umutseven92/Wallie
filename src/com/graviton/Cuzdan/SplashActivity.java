@@ -21,6 +21,7 @@ public class SplashActivity extends Activity {
     @Override
     public void onCreate(Bundle bundle)
     {
+        // Let there be light!
         super.onCreate(bundle);
 
         setContentView(R.layout.splash);

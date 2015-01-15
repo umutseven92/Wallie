@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="#fffff0">
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentLeft="false" android:layout_marginTop="20dp" android:id="@+id/lytCriteria">
+        <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spnCategory" android:layout_centerVertical="true" android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp" android:spinnerMode="dropdown"/>
+        <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spnSubCategory" android:layout_alignTop="@+id/spnCategory"
+                android:layout_alignLeft="@+id/spnCategory" android:layout_marginLeft="120dp"
+                android:layout_centerHorizontal="true" android:spinnerMode="dropdown"/>
+        <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spnDate"
+                android:layout_alignTop="@+id/spnCategory" android:layout_alignRight="@+id/spnCategory"
+                android:layout_marginLeft="250dp" android:spinnerMode="dropdown"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="390dp" android:layout_marginTop="100dp" android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp" android:background="@drawable/roundedlayout">
+        <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/listView" android:layout_marginTop="65dp" android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Toplam"
+                android:id="@+id/textView3" android:layout_alignParentTop="true"
+                android:layout_alignLeft="@+id/listView" android:textColor="#ff000000"
+                android:layout_marginLeft="12dp" android:layout_marginTop="20dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="total"
+                android:id="@+id/textView5" android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true" android:textColor="#ff000000" android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"/>
+    </RelativeLayout>
+</RelativeLayout>

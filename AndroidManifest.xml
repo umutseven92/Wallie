@@ -20,5 +20,7 @@
         </activity>
         <activity android:name="com.graviton.Cuzdan.ExpenseWizardActivity" android:theme="@style/CustomActionBarTheme">
         </activity>
+        <activity android:name="com.graviton.Cuzdan.IncomeStatsActivity" android:theme="@style/CustomActionBarTheme">
+        </activity>
     </application>
 </manifest>

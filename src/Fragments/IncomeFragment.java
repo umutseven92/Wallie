@@ -9,6 +9,7 @@ import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
 import com.graviton.Cuzdan.Global;
+import com.graviton.Cuzdan.IncomeStatsActivity;
 import com.graviton.Cuzdan.IncomeWizardActivity;
 import com.graviton.Cuzdan.R;
 import org.json.JSONException;
@@ -28,7 +29,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     String mode = "day";
     View infView;
     Date dateBeingViewed;
-    ImageButton btnLeftArrow, btnRightArrow, btnAddIncome;
+    ImageButton btnLeftArrow, btnRightArrow, btnAddIncome, btnIncomeStats;
     TextView txtIncomeDate;
 
     public static final IncomeFragment newInstance()
@@ -47,10 +48,12 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         btnRightArrow = (ImageButton)infView.findViewById(R.id.imgRightIncome);
         txtIncomeDate = (TextView)infView.findViewById(R.id.txtIncomeDate);
         btnAddIncome = (ImageButton)infView.findViewById(R.id.btnAddIncome);
+        btnIncomeStats = (ImageButton)infView.findViewById(R.id.btnIncomeStats);
 
         btnLeftArrow.setOnClickListener(onLeftArrowClick);
         btnRightArrow.setOnClickListener(onRightArrowClick);
         btnAddIncome.setOnClickListener(onIncomeClick);
+        btnIncomeStats.setOnClickListener(onIncomeStatsClick);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -94,6 +97,15 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         super.onResume();
 
     }
+
+    OnClickListener onIncomeStatsClick = new View.OnClickListener(){
+        @Override
+        public void onClick(View v)
+        {
+            Intent incomeStatsIntent = new Intent(getActivity(), IncomeStatsActivity.class);
+            getActivity().startActivity(incomeStatsIntent);
+        }
+    };
 
     OnClickListener onLeftArrowClick = new View.OnClickListener() {
         @Override
