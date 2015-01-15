@@ -16,7 +16,7 @@ import java.io.*;
 public class SplashActivity extends Activity {
 
     // How long in ms the user will wait, change this to be an accurate load time
-    private final int splashLength = 3000;
+    private final int splashLength = 1800;
 
     @Override
     public void onCreate(Bundle bundle)
