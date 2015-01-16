@@ -33,4 +33,5 @@ public class ExpenseWizardModel extends AbstractWizardModel
                                 .setRequired(true)),
                 new BalanceInfoPage(this, "Detaylar").setRequired(true));
     }
+
 }

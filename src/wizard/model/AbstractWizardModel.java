@@ -61,6 +61,14 @@ public abstract class AbstractWizardModel implements ModelCallbacks {
         }
     }
 
+    @Override
+    public void onOptionClicked()
+    {
+        for (int i = 0; i < mListeners.size(); i++) {
+            mListeners.get(i).onOptionClicked();
+        }
+    }
+
     public Page findByKey(String key) {
         return mRootPageList.findByKey(key);
     }

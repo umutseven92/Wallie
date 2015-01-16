@@ -119,5 +119,6 @@ public class SingleChoiceFragment extends ListFragment {
         mPage.getData().putString(Page.SIMPLE_DATA_KEY,
                 getListAdapter().getItem(position).toString());
         mPage.notifyDataChanged();
+        mPage.optionClicked();
     }
 }

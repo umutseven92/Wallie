@@ -88,6 +88,11 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
     }
 
     @Override
+    public void onOptionClicked() {
+
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
         mCallbacks = null;

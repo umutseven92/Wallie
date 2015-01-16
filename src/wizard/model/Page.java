@@ -91,6 +91,11 @@ public abstract class Page implements PageTreeNode {
         mCallbacks.onPageDataChanged(this);
     }
 
+    public void optionClicked()
+    {
+        mCallbacks.onOptionClicked();
+    }
+
     public Page setRequired(boolean required) {
         mRequired = required;
         return this;

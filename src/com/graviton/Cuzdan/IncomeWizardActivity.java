@@ -88,17 +88,7 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
     mNextButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if (mPager.getCurrentItem() == mCurrentPageSequence.size()) {
-                AddIncome();
-                finish();
-            }
-            else {
-                if (mEditingAfterReview) {
-                    mPager.setCurrentItem(mPagerAdapter.getCount() - 1);
-                } else {
-                    mPager.setCurrentItem(mPager.getCurrentItem() + 1);
-                }
-            }
+            GoForwardOnePage();
         }});
 
         mPrevButton.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +100,22 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
 
         onPageTreeChanged();
         updateBottomBar();
+
+    }
+
+    private void GoForwardOnePage()
+    {
+        if (mPager.getCurrentItem() == mCurrentPageSequence.size()) {
+            AddIncome();
+            finish();
+        }
+        else {
+            if (mEditingAfterReview) {
+                mPager.setCurrentItem(mPagerAdapter.getCount() - 1);
+            } else {
+                mPager.setCurrentItem(mPager.getCurrentItem() + 1);
+            }
+        }
 
     }
 
@@ -252,6 +258,11 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
         mStepPagerStrip.setPageCount(mCurrentPageSequence.size() + 1); // + 1 = review step
         mPagerAdapter.notifyDataSetChanged();
         updateBottomBar();
+    }
+
+    @Override
+    public void onOptionClicked() {
+        GoForwardOnePage();
     }
 
     @Override
