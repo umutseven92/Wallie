@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:saveEnabled="false"
-                android:inputType="textEmailAddress"
+                android:inputType="textEmailAddress|textCapSentences"
                 android:hint="@string/hint_your_email" android:lines="4" android:maxLines="4"/>
 
         </LinearLayout>

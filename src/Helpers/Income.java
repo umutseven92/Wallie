@@ -1,6 +1,5 @@
 package Helpers;
 
-import android.nfc.Tag;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.math.BigDecimal;
@@ -16,6 +15,7 @@ public class Income extends Balance {
     // Create income via JSON
     public Income(JSONObject jsonIncome) throws JSONException, ParseException {
 
+        this.SetID(jsonIncome.getString("id"));
         this.SetCategory(jsonIncome.getString("category"));
         this.SetSubCategory(jsonIncome.getString("subCategory"));
         this.SetAmount(new BigDecimal(jsonIncome.getDouble("amount")));
@@ -27,6 +27,7 @@ public class Income extends Balance {
     // Create income manually
     public Income(String category, String subCategory, BigDecimal amount, String desc, Date date)
     {
+        this.GenerateID();
         this.SetCategory(category);
         this.SetSubCategory(subCategory);
         this.SetAmount(amount);

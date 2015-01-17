@@ -1,5 +1,6 @@
 package Helpers;
 
+import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -311,12 +312,15 @@ public class Banker implements Serializable {
         String date = cal.get(Calendar.YEAR)+ "-" + (cal.get(Calendar.MONTH) + 1) + "-" + cal.get(Calendar.DAY_OF_MONTH);
 
         String json = String.format("{\n" +
+                "\t\t\t\t\t\"id\": \"%s\", \n" +
                 "\t\t\t\t\t\"category\": \"%s\",\n" +
                 "\t\t\t\t\t\"subCategory\": \"%s\",\n" +
                 "\t\t\t\t\t\"amount\": \"%s\",\n" +
                 "\t\t\t\t\t\"desc\": \"%s\",\n" +
                 "\t\t\t\t\t\"date\": \"%s\"\n" +
-                "\t\t\t\t}",income.GetCategory(),income.GetSubCategory(),income.GetAmount(),income.GetDescription(),date);
+                "\t\t\t\t}",income.GetID(),income.GetCategory(),income.GetSubCategory(),income.GetAmount(),income.GetDescription(),date);
+
+        Log.i("income",json);
 
         return new JSONObject(json);
     }
@@ -328,13 +332,16 @@ public class Banker implements Serializable {
         String date = cal.get(Calendar.YEAR)+ "-" + (cal.get(Calendar.MONTH) + 1) + "-" + cal.get(Calendar.DAY_OF_MONTH);
 
         String json = String.format("{\n" +
+                "\t\t\t\t\t\"id\": \"%s\", \n" +
                 "\t\t\t\t\t\"category\": \"%s\",\n" +
                 "\t\t\t\t\t\"subCategory\": \"%s\",\n" +
                 "\t\t\t\t\t\"amount\": \"%s\",\n" +
                 "\t\t\t\t\t\"tag\": \"%s\",\n" +
                 "\t\t\t\t\t\"desc\": \"%s\",\n" +
                 "\t\t\t\t\t\"date\": \"%s\"\n" +
-                "\t\t\t\t}",expense.GetCategory(),expense.GetSubCategory(),expense.GetAmount(),expense.GetStringTag(),expense.GetDescription(),date);
+                "\t\t\t\t}",expense.GetID(),expense.GetCategory(),expense.GetSubCategory(),expense.GetAmount(),expense.GetStringTag(),expense.GetDescription(),date);
+
+        Log.i("expense", json);
 
         return new JSONObject(json);
 

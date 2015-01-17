@@ -14,6 +14,7 @@ public class Expense extends Balance {
 
     public Expense(JSONObject jsonExpense) throws JSONException, ParseException {
 
+        this.SetID(jsonExpense.getString("id"));
         this.SetCategory(jsonExpense.getString("category"));
         this.SetSubCategory(jsonExpense.getString("subCategory"));
         this.SetAmount(new BigDecimal(jsonExpense.getDouble("amount")));
@@ -35,6 +36,7 @@ public class Expense extends Balance {
 
     public Expense(String category, String subCategory, BigDecimal amount, String desc, Date date, Tags tag)
     {
+        this.GenerateID();
         this.SetCategory(category);
         this.SetSubCategory(subCategory);
         this.SetAmount(amount);

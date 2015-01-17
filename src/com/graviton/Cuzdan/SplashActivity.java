@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import org.json.*;
 
 import java.io.*;
@@ -28,7 +29,7 @@ public class SplashActivity extends Activity {
 
         User user = null;
 
-        String fileName = "userConfigTest28";
+        String fileName = "userConfigTest29";
         ((Global) this.getApplication()).SetFilePath(fileName);
 
         File file = new File(this.getFilesDir(),fileName);
@@ -58,6 +59,8 @@ public class SplashActivity extends Activity {
                         "\t\t\"expenses\": []\n" +
                         "\t}\n" +
                         "}\n",userName,firstName,lastName );
+
+                Log.i("splash",userSettings);
                 userInfo = new JSONObject(userSettings);
 
                 outputStream = openFileOutput(fileName, Context.MODE_PRIVATE);

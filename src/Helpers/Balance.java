@@ -4,11 +4,29 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by Umut on 12.11.2014.
  */
 public class Balance implements Serializable {
+
+    private String _id;
+
+    public void GenerateID()
+    {
+        _id = UUID.randomUUID().toString();
+    }
+
+    public void SetID(String id)
+    {
+        _id = id;
+    }
+
+    public String GetID()
+    {
+        return _id;
+    }
 
     private String _category;
 
