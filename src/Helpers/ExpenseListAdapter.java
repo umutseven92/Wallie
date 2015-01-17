@@ -54,7 +54,7 @@ public class ExpenseListAdapter extends BaseAdapter {
         TextView text1 = twoLineListItem.getText1();
         TextView text2 = twoLineListItem.getText2();
 
-        text1.setText(expenses.get(position).GetCategory() + "/" + expenses.get(position).GetSubCategory() + "/" + expenses.get(position).GetDescription());
+        text1.setText(expenses.get(position).GetCategory());
         text2.setText(expenses.get(position).GetAmount().toString() + " TL");
 
         return twoLineListItem;

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.google.gson.Gson;
 import com.graviton.Cuzdan.ExpenseWizardActivity;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
@@ -31,6 +32,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     Date dateBeingViewed;
     ImageButton leftArrow, rightArrow, btnAddExpense;
     TextView txtExpenseDate;
+    ListView lv;
 
     public static final ExpenseFragment newInstance()
     {
@@ -48,10 +50,12 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         rightArrow = (ImageButton)infView.findViewById(R.id.imgRightExpense);
         txtExpenseDate = (TextView)infView.findViewById(R.id.txtExpenseDate);
         btnAddExpense = (ImageButton)infView.findViewById(R.id.btnAddExpense);
+        lv = (ListView)infView.findViewById(R.id.lstExpenses);
 
         leftArrow.setOnClickListener(onLeftArrowClick);
         rightArrow.setOnClickListener(onRightArrowClick);
         btnAddExpense.setOnClickListener(onExpenseClick);
+        lv.setOnItemClickListener(onItemClickListener);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -253,8 +257,6 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
 
         }
 
-        ListView lv = (ListView)infView.findViewById(R.id.lstExpenses);
-
         BigDecimal total = BigDecimal.ZERO;
 
         for (int i = 0; i<expenses.size(); i++)
@@ -303,6 +305,21 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         }
 
     }
+
+    AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            ExpenseListAdapter adapter = (ExpenseListAdapter)lv.getAdapter();
+            Expense exp = (Expense)adapter.getItem(position);
+
+            BalanceDetailFragment dialog = new BalanceDetailFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("balance",new Gson().toJson(exp));
+            dialog.setArguments(bundle);
+            dialog.show(getActivity().getFragmentManager(),"dialog");
+
+        }
+    };
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {

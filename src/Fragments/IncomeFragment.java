@@ -1,6 +1,7 @@
 package Fragments;
 
 import Helpers.*;
+import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,12 +9,12 @@ import android.support.v4.app.Fragment;
 import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
+import com.google.gson.Gson;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.IncomeStatsActivity;
 import com.graviton.Cuzdan.IncomeWizardActivity;
 import com.graviton.Cuzdan.R;
 import org.json.JSONException;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.Format;
@@ -31,6 +32,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     Date dateBeingViewed;
     ImageButton btnLeftArrow, btnRightArrow, btnAddIncome, btnIncomeStats;
     TextView txtIncomeDate;
+    ListView lv;
 
     public static final IncomeFragment newInstance()
     {
@@ -49,11 +51,13 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         txtIncomeDate = (TextView)infView.findViewById(R.id.txtIncomeDate);
         btnAddIncome = (ImageButton)infView.findViewById(R.id.btnAddIncome);
         btnIncomeStats = (ImageButton)infView.findViewById(R.id.btnIncomeStats);
+        lv = (ListView)infView.findViewById(R.id.lstIncomes);
 
         btnLeftArrow.setOnClickListener(onLeftArrowClick);
         btnRightArrow.setOnClickListener(onRightArrowClick);
         btnAddIncome.setOnClickListener(onIncomeClick);
         btnIncomeStats.setOnClickListener(onIncomeStatsClick);
+        lv.setOnItemClickListener(onItemClickListener);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -310,12 +314,26 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             BigDecimal val = incomes.get(i).GetAmount();
             total = total.add(val);
         }
-        ListView lv = (ListView)infView.findViewById(R.id.lstIncomes);
-        TextView txtTotalIncome = (TextView)infView.findViewById(R.id.txtTotalIncome);
         lv.setAdapter(new IncomeListAdapter(this.getActivity(),incomes));
 
-        txtTotalIncome.setText(total.toString() + " TL");
+        TextView txtTotalIncome = (TextView)infView.findViewById(R.id.txtTotalIncome);
+
+        txtTotalIncome.setText(total.toString() + "  TL");
         txtTotalIncome.setTextColor(Color.GREEN);
     }
+
+    AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            IncomeListAdapter adapter = (IncomeListAdapter)lv.getAdapter();
+            Income inc = (Income)adapter.getItem(position);
+
+            BalanceDetailFragment dialog = new BalanceDetailFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("balance",new Gson().toJson(inc));
+            dialog.setArguments(bundle);
+            dialog.show(getActivity().getFragmentManager(),"dialog");
+        }
+    };
 
 }
