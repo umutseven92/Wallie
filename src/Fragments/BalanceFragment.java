@@ -24,7 +24,7 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
 
     static User _user;
     View infView;
-    String mode = "day";
+    String mode = "month";
     Date dateBeingViewed;
     ImageButton leftArrow, rightArrow;
     TextView txtBalanceDate;
@@ -50,7 +50,7 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         leftArrow.setOnClickListener(onLeftArrowClick);
         rightArrow.setOnClickListener(onRightArrowClick);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.balanceDateArray, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnDate.setAdapter(adapter);
         spnDate.setOnItemSelectedListener(this);
@@ -230,14 +230,14 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if(position == 0)
-        {
-            mode = "day";
-            LoadListView(dateBeingViewed, true);
-        }
-        else if(position == 1)
+        if(position == 1)
         {
             mode = "month";
+            LoadListView(dateBeingViewed, true);
+        }
+        else if(position == 0)
+        {
+            mode = "day";
             LoadListView(dateBeingViewed, false);
         }
     }

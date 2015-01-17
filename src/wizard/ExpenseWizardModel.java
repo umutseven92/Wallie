@@ -24,6 +24,7 @@ public class ExpenseWizardModel extends AbstractWizardModel
                                 .addBranch("Sağlık", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Hastane Masrafları", "İlaç").setRequired(true))
                                 .addBranch("Eğlence & Sosyal Aktiviteler",new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Gazete, Dergi & Kitap", "Sinema, Tiyatro & Konser", "Diğer").setRequired(true))
                                 .addBranch("Ulaşım",new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Akbil", "Yakıt", "Diğer").setRequired(true))
+                                .addBranch("Borçlar",new SingleFixedChoicePage(this,"Alt Kategori").setChoices("Borç Ödemesi", "Banka Faiz Borcu", "Diğer").setRequired(true))
                                 .setRequired(true))
                         .addBranch("Ev", new BranchPage(this, "Kategori")
                                 .addBranch("Kira", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Ev Kirası").setRequired(true))

@@ -3,7 +3,7 @@
     <string name="app_name">Cüzdan</string>
     <string name="version">v0.1.1</string>
     <string-array name="menuArray">
-        <item>Bakiye</item>
+        <item>Bütçe</item>
         <item>Birikim</item>
         <item>Ayarlar</item>
     </string-array>
@@ -12,6 +12,10 @@
     <string-array name="dateArray">
         <item>Gün</item>
         <item>Ay</item>
+    </string-array>
+    <string-array name="balanceDateArray">
+        <item>Ay</item>
+        <item>Gün</item>
     </string-array>
     <string-array name="turkishMonths">
         <item>Ocak</item>
