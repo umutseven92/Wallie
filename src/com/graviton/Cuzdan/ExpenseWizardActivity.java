@@ -123,15 +123,15 @@ public class ExpenseWizardActivity  extends FragmentActivity implements PageFrag
     private void AddExpense()
     {
         String tag = mWizardModel.findByKey("Gider Türü").getData().getString(Page.SIMPLE_DATA_KEY);
-        Balance.Tags expenseTag;
+        Expense.Tags expenseTag;
 
         if (tag == "Kişisel")
         {
-            expenseTag = Balance.Tags.Personal;
+            expenseTag = Expense.Tags.Personal;
         }
         else
         {
-            expenseTag = Balance.Tags.Home;
+            expenseTag = Expense.Tags.Home;
         }
 
         String category = mWizardModel.findByKey(tag + ":Kategori").getData().getString(Page.SIMPLE_DATA_KEY);

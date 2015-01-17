@@ -22,27 +22,16 @@ public class Income extends Balance {
         this.SetDescription(jsonIncome.getString("desc"));
         Date d = new SimpleDateFormat("yyyy-MM-d").parse(jsonIncome.getString("date"));
         this.SetDate(d);
-        String tag = jsonIncome.getString("category");
-
-        if(tag == "personal")
-        {
-            this.SetTag(Tags.Personal);
-        }
-        else
-        {
-            this.SetTag(Tags.Home);
-        }
     }
 
     // Create income manually
-    public Income(String category, String subCategory, BigDecimal amount, String desc, Date date, Tags tag)
+    public Income(String category, String subCategory, BigDecimal amount, String desc, Date date)
     {
         this.SetCategory(category);
         this.SetSubCategory(subCategory);
         this.SetAmount(amount);
         this.SetDescription(desc);
         this.SetDate(date);
-        this.SetTag(tag);
 
     }
 

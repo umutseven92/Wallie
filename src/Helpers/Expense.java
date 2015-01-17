@@ -42,4 +42,48 @@ public class Expense extends Balance {
         this.SetDate(date);
         this.SetTag(tag);
     }
+
+    public enum Tags
+    {
+        Home,
+        Personal
+    }
+
+    private Tags _tag;
+
+    public Tags GetTag()
+    {
+        return _tag;
+    }
+
+    public String GetStringTag()
+    {
+        if(_tag == Tags.Home)
+        {
+            return "home";
+        }
+        else
+        {
+            return "personal";
+        }
+    }
+
+    public String GetTurkishStringTag()
+    {
+        if (_tag == Tags.Home)
+        {
+            return "Ev";
+        }
+        else
+        {
+            return "Kişisel";
+        }
+    }
+
+    public void SetTag(Tags tag)
+    {
+        _tag = tag;
+    }
+
+
 }

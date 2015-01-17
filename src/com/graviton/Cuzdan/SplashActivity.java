@@ -28,7 +28,7 @@ public class SplashActivity extends Activity {
 
         User user = null;
 
-        String fileName = "userConfigTest27";
+        String fileName = "userConfigTest28";
         ((Global) this.getApplication()).SetFilePath(fileName);
 
         File file = new File(this.getFilesDir(),fileName);

@@ -131,7 +131,7 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
             description = "";
         }
 
-        Income income = new Income(category,subCategory,amount,description,new Date(), Balance.Tags.Personal);
+        Income income = new Income(category,subCategory,amount,description,new Date());
         StringBuffer datax = new StringBuffer("");
 
         JSONObject incomeToSave = new JSONObject();

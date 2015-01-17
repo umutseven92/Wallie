@@ -314,10 +314,9 @@ public class Banker implements Serializable {
                 "\t\t\t\t\t\"category\": \"%s\",\n" +
                 "\t\t\t\t\t\"subCategory\": \"%s\",\n" +
                 "\t\t\t\t\t\"amount\": \"%s\",\n" +
-                "\t\t\t\t\t\"tag\": \"%s\",\n" +
                 "\t\t\t\t\t\"desc\": \"%s\",\n" +
                 "\t\t\t\t\t\"date\": \"%s\"\n" +
-                "\t\t\t\t}",income.GetCategory(),income.GetSubCategory(),income.GetAmount(),income.GetStringTag(),income.GetDescription(),date);
+                "\t\t\t\t}",income.GetCategory(),income.GetSubCategory(),income.GetAmount(),income.GetDescription(),date);
 
         return new JSONObject(json);
     }

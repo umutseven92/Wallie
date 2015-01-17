@@ -312,9 +312,9 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
             ExpenseListAdapter adapter = (ExpenseListAdapter)lv.getAdapter();
             Expense exp = (Expense)adapter.getItem(position);
 
-            BalanceDetailFragment dialog = new BalanceDetailFragment();
+            ExpenseDialogFragment dialog = new ExpenseDialogFragment();
             Bundle bundle = new Bundle();
-            bundle.putString("balance",new Gson().toJson(exp));
+            bundle.putString("expense",new Gson().toJson(exp));
             dialog.setArguments(bundle);
             dialog.show(getActivity().getFragmentManager(),"dialog");
 

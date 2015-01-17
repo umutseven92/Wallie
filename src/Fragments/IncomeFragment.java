@@ -1,7 +1,6 @@
 package Fragments;
 
 import Helpers.*;
-import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -328,9 +327,9 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             IncomeListAdapter adapter = (IncomeListAdapter)lv.getAdapter();
             Income inc = (Income)adapter.getItem(position);
 
-            BalanceDetailFragment dialog = new BalanceDetailFragment();
+            IncomeDialogFragment dialog = new IncomeDialogFragment();
             Bundle bundle = new Bundle();
-            bundle.putString("balance",new Gson().toJson(inc));
+            bundle.putString("income", new Gson().toJson(inc));
             dialog.setArguments(bundle);
             dialog.show(getActivity().getFragmentManager(),"dialog");
         }
