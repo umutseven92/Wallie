@@ -242,8 +242,17 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
     }
 
-    public void getNextDateIncomes() throws JSONException, ParseException, IOException {
+    public void getNextDateIncomes() throws JSONException, ParseException, IOException
+    {
+        Date today = new Date();
+
+        if(dateBeingViewed.getDay() == today.getDay())
+        {
+            return;
+        }
+
         Calendar cal = Calendar.getInstance();
+
         cal.setTime(dateBeingViewed);
 
         if(mode == "day")

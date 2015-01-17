@@ -133,6 +133,12 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
 
     public void getNextDateBalances()
     {
+        Date today = new Date();
+
+        if(dateBeingViewed.getDay() == today.getDay())
+        {
+            return;
+        }
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
@@ -230,15 +236,15 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if(position == 1)
+        if(position == 0)
         {
             mode = "month";
-            LoadListView(dateBeingViewed, true);
+            LoadListView(dateBeingViewed, false);
         }
-        else if(position == 0)
+        else if(position == 1)
         {
             mode = "day";
-            LoadListView(dateBeingViewed, false);
+            LoadListView(dateBeingViewed, true);
         }
     }
 

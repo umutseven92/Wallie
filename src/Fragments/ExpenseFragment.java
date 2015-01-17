@@ -135,6 +135,13 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     };
 
     public void getNextDateExpenses() throws JSONException, ParseException, IOException {
+        Date today = new Date();
+
+        if(dateBeingViewed.getDay() == today.getDay())
+        {
+            return;
+        }
+
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
