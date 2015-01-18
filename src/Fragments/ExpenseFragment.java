@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelectedListener, ExpenseLoadListener {
 
     static User _user;
     String mode = "day";
@@ -33,6 +33,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     ImageButton leftArrow, rightArrow, btnAddExpense;
     TextView txtExpenseDate;
     ListView lv;
+    ExpenseDialogFragment dialog;
 
     public static final ExpenseFragment newInstance()
     {
@@ -51,6 +52,9 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         txtExpenseDate = (TextView)infView.findViewById(R.id.txtExpenseDate);
         btnAddExpense = (ImageButton)infView.findViewById(R.id.btnAddExpense);
         lv = (ListView)infView.findViewById(R.id.lstExpenses);
+        dialog = new ExpenseDialogFragment();
+        dialog.SetListener(this);
+        ((Global)getActivity().getApplication()).expenseDialog = dialog;
 
         leftArrow.setOnClickListener(onLeftArrowClick);
         rightArrow.setOnClickListener(onRightArrowClick);
@@ -312,7 +316,6 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
             ExpenseListAdapter adapter = (ExpenseListAdapter)lv.getAdapter();
             Expense exp = (Expense)adapter.getItem(position);
 
-            ExpenseDialogFragment dialog = new ExpenseDialogFragment();
             Bundle bundle = new Bundle();
             bundle.putString("expense",new Gson().toJson(exp));
             dialog.setArguments(bundle);
@@ -323,6 +326,36 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    public void onDismissed() {
+
+        if (mode == "day")
+        {
+            try {
+                LoadListView(dateBeingViewed, true);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else if (mode == "month")
+        {
+            try {
+                LoadListView(dateBeingViewed, false);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 }

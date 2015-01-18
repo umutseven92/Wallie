@@ -2,6 +2,7 @@ package com.graviton.Cuzdan;
 
 import Fragments.*;
 import Helpers.AccountPageAdapter;
+import Helpers.Balance;
 import Helpers.SavingsPageAdapter;
 import Helpers.SettingsPageAdapter;
 import android.content.res.Configuration;
@@ -57,6 +58,7 @@ public class MainActivity extends FragmentActivity {
                 R.layout.drawer_list_item, menuArray));
 
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
+
         // enable ActionBar app icon to behave as action to toggle nav drawer
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
@@ -135,6 +137,7 @@ public class MainActivity extends FragmentActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 
     /* The click listner for ListView in the navigation drawer */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {

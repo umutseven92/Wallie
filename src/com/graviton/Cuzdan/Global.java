@@ -1,5 +1,7 @@
 package com.graviton.Cuzdan;
 
+import Fragments.ExpenseDialogFragment;
+import Fragments.IncomeDialogFragment;
 import Helpers.User;
 import android.app.Application;
 
@@ -31,4 +33,6 @@ public class Global extends Application {
     {
         return _filePath;
     }
+
+    public ExpenseDialogFragment expenseDialog;
 }

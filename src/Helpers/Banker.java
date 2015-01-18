@@ -346,4 +346,10 @@ public class Banker implements Serializable {
         return new JSONObject(json);
 
     }
+
+
+    public void DeleteExpense(Expense expense)
+    {
+
+    }
 }

@@ -1,6 +1,7 @@
 package Fragments;
 
 import Helpers.*;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class IncomeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class IncomeFragment extends Fragment implements AdapterView.OnItemSelectedListener, IncomeLoadListener {
 
     static User _user;
     String mode = "day";
@@ -32,6 +33,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     ImageButton btnLeftArrow, btnRightArrow, btnAddIncome, btnIncomeStats;
     TextView txtIncomeDate;
     ListView lv;
+    IncomeDialogFragment dialog;
 
     public static final IncomeFragment newInstance()
     {
@@ -51,6 +53,8 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         btnAddIncome = (ImageButton)infView.findViewById(R.id.btnAddIncome);
         btnIncomeStats = (ImageButton)infView.findViewById(R.id.btnIncomeStats);
         lv = (ListView)infView.findViewById(R.id.lstIncomes);
+        dialog = new IncomeDialogFragment();
+        dialog.SetListener(this);
 
         btnLeftArrow.setOnClickListener(onLeftArrowClick);
         btnRightArrow.setOnClickListener(onRightArrowClick);
@@ -69,6 +73,8 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
         return infView;
     }
+
+
 
     @Override
     public void onResume(){
@@ -327,12 +333,39 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             IncomeListAdapter adapter = (IncomeListAdapter)lv.getAdapter();
             Income inc = (Income)adapter.getItem(position);
 
-            IncomeDialogFragment dialog = new IncomeDialogFragment();
             Bundle bundle = new Bundle();
             bundle.putString("income", new Gson().toJson(inc));
             dialog.setArguments(bundle);
-            dialog.show(getActivity().getFragmentManager(),"dialog");
+            dialog.show(getActivity().getFragmentManager(), "dialog");
         }
     };
 
+    @Override
+    public void onDismissed() {
+
+        if (mode == "day")
+        {
+            try {
+                LoadListView(dateBeingViewed, true);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else if (mode == "month")
+        {
+            try {
+                LoadListView(dateBeingViewed, false);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

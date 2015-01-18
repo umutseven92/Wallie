@@ -1,5 +1,6 @@
 package Fragments;
 
+import Helpers.ExpenseLoadListener;
 import Helpers.User;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
@@ -20,7 +21,7 @@ import java.util.Date;
 /**
  * Created by Umut on 22.11.2014.
  */
-public class BalanceFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class BalanceFragment extends Fragment implements AdapterView.OnItemSelectedListener, ExpenseLoadListener {
 
     static User _user;
     View infView;
@@ -46,6 +47,8 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         leftArrow = (ImageButton)infView.findViewById(R.id.imgLeftBalance);
         rightArrow = (ImageButton)infView.findViewById(R.id.imgRightBalance);
         txtBalanceDate = (TextView)infView.findViewById(R.id.txtBalanceDate);
+        ExpenseDialogFragment edf = ((Global)getActivity().getApplication()).expenseDialog;
+        edf.SetSecondListener(this);
 
         leftArrow.setOnClickListener(onLeftArrowClick);
         rightArrow.setOnClickListener(onRightArrowClick);
@@ -250,6 +253,19 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    public void onDismissed() {
+        if(mode == "day")
+        {
+            LoadListView(dateBeingViewed, true);
+        }
+        else if (mode == "month")
+        {
+            LoadListView(dateBeingViewed, false);
+        }
 
     }
 }
