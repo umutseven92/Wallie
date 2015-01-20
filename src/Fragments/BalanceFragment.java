@@ -211,11 +211,11 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
 
         if(total.compareTo(BigDecimal.ZERO) == 0)
         {
-            txtTotal.setTextColor(Color.GREEN);
+            txtTotal.setTextColor(Color.parseColor("#216C2A"));
         }
         else if (total.compareTo(BigDecimal.ZERO) == 1)
         {
-            txtTotal.setTextColor(Color.GREEN);
+            txtTotal.setTextColor(Color.parseColor("#216C2A"));
         }
         else if (total.compareTo(BigDecimal.ZERO) == -1)
         {

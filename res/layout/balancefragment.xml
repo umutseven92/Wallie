@@ -49,7 +49,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="income"
                     android:id="@+id/txtBalanceIncome" android:layout_above="@+id/textView2"
-                    android:layout_alignParentRight="true" android:textColor="#ff79f002"
+                    android:layout_alignParentRight="true" android:textColor="#216C2A"
                     android:layout_marginRight="10dp"/>
             <TextView
                     android:layout_width="wrap_content"
