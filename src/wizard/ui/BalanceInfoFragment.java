@@ -16,11 +16,13 @@
 
 package wizard.ui;
 
+import Helpers.DecimalDigitsInputFilter;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +70,7 @@ public class BalanceInfoFragment extends Fragment {
 
         mNameView = ((TextView) rootView.findViewById(R.id.your_name));
         mNameView.setText(mPage.getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
+        mNameView.setFilters(new InputFilter[]{new DecimalDigitsInputFilter(2)});
 
         mEmailView = ((TextView) rootView.findViewById(R.id.your_email));
         mEmailView.setText(mPage.getData().getString(BalanceInfoPage.DESC_DATA_KEY));

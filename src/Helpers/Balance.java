@@ -68,7 +68,7 @@ public class Balance implements Serializable {
 
     public BigDecimal GetAmount()
     {
-        return _amount.setScale(2, RoundingMode.CEILING);
+        return _amount.setScale(2, BigDecimal.ROUND_DOWN);
     }
 
     public void SetAmount(BigDecimal value)
