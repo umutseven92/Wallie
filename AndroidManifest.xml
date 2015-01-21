@@ -8,19 +8,19 @@
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:name="com.graviton.Cuzdan.Global">
         <activity android:name="com.graviton.Cuzdan.SplashActivity"
                   android:label="@string/app_name"
-                android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
+                android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.graviton.Cuzdan.MainActivity" android:theme="@style/CustomActionBarTheme">
+        <activity android:name="com.graviton.Cuzdan.MainActivity" android:theme="@style/CustomActionBarTheme" android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.graviton.Cuzdan.IncomeWizardActivity" android:theme="@style/CustomActionBarTheme">
+        <activity android:name="com.graviton.Cuzdan.IncomeWizardActivity" android:theme="@style/CustomActionBarTheme" android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.graviton.Cuzdan.ExpenseWizardActivity" android:theme="@style/CustomActionBarTheme">
+        <activity android:name="com.graviton.Cuzdan.ExpenseWizardActivity" android:theme="@style/CustomActionBarTheme" android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.graviton.Cuzdan.IncomeStatsActivity" android:theme="@style/CustomActionBarTheme">
+        <activity android:name="com.graviton.Cuzdan.IncomeStatsActivity" android:theme="@style/CustomActionBarTheme" android:screenOrientation="portrait" >
         </activity>
     </application>
 </manifest>

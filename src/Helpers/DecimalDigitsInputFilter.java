@@ -27,6 +27,7 @@ public class DecimalDigitsInputFilter implements InputFilter {
                 break;
             }
         }
+
         if (dotPos >= 0) {
 
             // protects against many dots
