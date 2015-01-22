@@ -13,6 +13,40 @@
         <item>Gün</item>
         <item>Ay</item>
     </string-array>
+
+    <!-- Gelir Kategorileri & Alt Kategoriler -->
+    <string-array name="incomeCategories">
+        <item>Maaş</item>
+        <item>Kira</item>
+        <item>Faiz Ödemesi</item>
+        <item>Şans Oyunları</item>
+        <item>Alacaklar</item>
+        <item>Harçlık</item>
+    </string-array>
+
+    <string-array name="Maaş">
+        <item>Maaş Ödemesi</item>
+    </string-array>
+    <string-array name="Kira">
+        <item>Kira Ödemesi</item>
+    </string-array>
+    <string-array name="Faiz">
+        <item>Banka Faiz Ödemesi</item>
+        <item>Borç Faiz Ödemesi</item>
+    </string-array>
+    <string-array name="Şans">
+        <item>Piyango</item>
+        <item>İddia</item>
+        <item>Kumar Oyunları</item>
+        <item>Diğer</item>
+    </string-array>
+    <string-array name="Alacaklar">
+        <item>Alacaklar Tahsilatı</item>
+    </string-array>
+    <string-array name="Harçlık">
+        <item>Harçlık Ödemesi</item>
+    </string-array>
+
     <string-array name="balanceDateArray">
         <item>Ay</item>
         <item>Gün</item>
