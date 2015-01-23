@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import com.graviton.Cuzdan.R;
 
 /**
- * Created by Umut on 15.1.2015.
+ * Created by Umut on 23.1.2015.
  */
-public class IncomeGraphFragment extends Fragment {
+public class ExpenseGraphFragment extends Fragment{
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -22,7 +22,8 @@ public class IncomeGraphFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View v = inflater.inflate(R.layout.incomegraphfragment, container,false);
+        View v = inflater.inflate(R.layout.expensegraphfragment, container,false);
         return v;
     }
+
 }

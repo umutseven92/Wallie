@@ -74,8 +74,6 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         return infView;
     }
 
-
-
     @Override
     public void onResume(){
 

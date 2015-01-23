@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.google.gson.Gson;
+import com.graviton.Cuzdan.ExpenseStatsActivity;
 import com.graviton.Cuzdan.ExpenseWizardActivity;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
@@ -30,7 +31,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     String mode = "day";
     View infView;
     Date dateBeingViewed;
-    ImageButton leftArrow, rightArrow, btnAddExpense;
+    ImageButton leftArrow, rightArrow, btnAddExpense, btnExpenseStats;
     TextView txtExpenseDate;
     ListView lv;
     ExpenseDialogFragment dialog;
@@ -51,6 +52,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         rightArrow = (ImageButton)infView.findViewById(R.id.imgRightExpense);
         txtExpenseDate = (TextView)infView.findViewById(R.id.txtExpenseDate);
         btnAddExpense = (ImageButton)infView.findViewById(R.id.btnAddExpense);
+        btnExpenseStats = (ImageButton)infView.findViewById(R.id.btnExpenseStats);
         lv = (ListView)infView.findViewById(R.id.lstExpenses);
         dialog = new ExpenseDialogFragment();
         dialog.SetListener(this);
@@ -59,6 +61,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         leftArrow.setOnClickListener(onLeftArrowClick);
         rightArrow.setOnClickListener(onRightArrowClick);
         btnAddExpense.setOnClickListener(onExpenseClick);
+        btnExpenseStats.setOnClickListener(onExpenseStatsClick);
         lv.setOnItemClickListener(onItemClickListener);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, android.R.layout.simple_spinner_item);
@@ -103,6 +106,15 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         }
         super.onResume();
     }
+
+    View.OnClickListener onExpenseStatsClick = new View.OnClickListener(){
+        @Override
+        public void onClick(View v)
+        {
+            Intent expenseStatsIntent = new Intent(getActivity(), ExpenseStatsActivity.class);
+            getActivity().startActivity(expenseStatsIntent);
+        }
+    };
 
     View.OnClickListener onLeftArrowClick = new View.OnClickListener() {
         @Override

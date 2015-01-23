@@ -23,8 +23,8 @@ public class Expense extends Balance {
         Date d = new SimpleDateFormat("yyyy-MM-d").parse(jsonExpense.getString("date"));
         this.SetDate(d);
 
-        String tag = jsonExpense.getString("category");
-        if(tag == "personal")
+        String tag = jsonExpense.getString("tag");
+        if(tag.equals("personal"))
         {
             this.SetTag(Tags.Personal);
         }

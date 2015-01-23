@@ -37,7 +37,10 @@ public class ExpenseDialogFragment extends DialogFragment{
                         try {
                             DeleteExpense(expense.GetID());
                            _listener.onDismissed();
-                            _secondListener.onDismissed();
+                            if(_secondListener != null)
+                            {
+                                _secondListener.onDismissed();
+                            }
                             dismiss();
                         } catch (IOException e) {
                             e.printStackTrace();
