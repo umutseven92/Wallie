@@ -15,15 +15,14 @@ import com.google.gson.Gson;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
 import org.json.JSONException;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.jar.Attributes;
 
 /**
  * Created by Umut on 14.1.2015.
@@ -36,6 +35,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
     Date dateBeingViewed;
     String mode = "month";
     TextView txtIncomeDate;
+    ImageButton btnRight, btnLeft;
     static User _user;
     IncomeDialogFragment dialog;
 
@@ -59,6 +59,12 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
 
         txtIncomeDate = (TextView)v.findViewById(R.id.txtSearchDate);
 
+        btnLeft = (ImageButton)v.findViewById(R.id.imgSearchLeftIncome);
+        btnRight = (ImageButton)v.findViewById(R.id.imgSearchRightIncome);
+
+        btnLeft.setOnClickListener(onLeftArrowClick);
+        btnRight.setOnClickListener(onRightArrowClick);
+
         spnSearchCategory = (Spinner)v.findViewById(R.id.spnSearchCategory);
         spnSearchSubCategory = (Spinner)v.findViewById(R.id.spnSearchSubCategory);
         spnSearchDate = (Spinner)v.findViewById(R.id.spnSearchDate);
@@ -77,6 +83,81 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
         spnSearchDate.setOnItemSelectedListener(this);
 
         return v;
+    }
+
+    View.OnClickListener onLeftArrowClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            try {
+                getLastDateIncomes();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
+    View.OnClickListener onRightArrowClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            try {
+                getNextDateIncomes();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
+    public void getNextDateIncomes() throws JSONException, ParseException, IOException
+    {
+        Date today = new Date();
+
+        if(dateBeingViewed.getDay() == today.getDay())
+        {
+            return;
+        }
+
+        Calendar cal = Calendar.getInstance();
+
+        cal.setTime(dateBeingViewed);
+
+        if(mode == "day")
+        {
+            cal.add(Calendar.DATE,1);
+            dateBeingViewed = cal.getTime();
+            LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString() , true);
+        }
+        else if (mode == "month")
+        {
+            cal.add(Calendar.MONTH,1);
+            dateBeingViewed = cal.getTime();
+            LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString() , false);
+        }
+    }
+
+    public void getLastDateIncomes() throws JSONException, ParseException, IOException {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateBeingViewed);
+
+        if(mode == "day")
+        {
+            cal.add(Calendar.DATE,-1);
+            dateBeingViewed = cal.getTime();
+            LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString() , true);
+        }
+        else if (mode == "month")
+        {
+            cal.add(Calendar.MONTH,-1);
+            dateBeingViewed = cal.getTime();
+            LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString() , false);
+        }
     }
 
     @Override
