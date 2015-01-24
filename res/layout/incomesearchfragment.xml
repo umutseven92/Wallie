@@ -34,13 +34,13 @@
                 android:spinnerMode="dropdown"
                 android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgSearchLeftIncome"
-                     android:src="@drawable/leftarrow" android:background="#fffff0"
+                     android:src="@drawable/arrowleft" android:background="#10ffffff"
                      android:layout_centerVertical="true" android:layout_toLeftOf="@+id/spnSearchIncomeDate"
-                     android:layout_marginRight="35dp"/>
+                     android:layout_marginRight="35dp" android:scaleType="fitXY"/>
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgSearchRightIncome"
-                     android:src="@drawable/rightarrow" android:background="#fffff0"
+                     android:src="@drawable/arrowright" android:background="#10ffffff"
                      android:layout_centerVertical="true" android:layout_toRightOf="@+id/spnSearchIncomeDate"
-                     android:layout_marginLeft="35dp"/>
+                     android:layout_marginLeft="35dp" android:scaleType="fitXY"/>
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="fill_parent"

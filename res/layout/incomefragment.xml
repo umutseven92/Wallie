@@ -4,7 +4,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:id="@+id/lytIncome"
-              android:weightSum="1" android:background="@drawable/sunresize">
+              android:weightSum="1" android:background="#fffff0">
 
     <RelativeLayout
             android:layout_width="match_parent"
@@ -19,16 +19,16 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:id="@+id/imgLeftIncome"
-                android:src="@drawable/leftarrow" android:background="#10ffffff"
+                android:src="@drawable/arrowleft" android:background="#10ffffff"
                 android:layout_marginRight="35dp" android:layout_alignTop="@+id/imgRightIncome"
-                android:layout_toLeftOf="@+id/spnDateIncome"/>
+                android:layout_toLeftOf="@+id/spnDateIncome" android:scaleType="fitXY"/>
         <ImageButton
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:id="@+id/imgRightIncome"
-                android:src="@drawable/rightarrow" android:background="#10ffffff"
+                android:src="@drawable/arrowright" android:background="#10ffffff"
                 android:layout_centerVertical="true" android:layout_toRightOf="@+id/spnDateIncome"
-                android:layout_marginLeft="35dp"/>
+                android:layout_marginLeft="35dp" android:scaleType="fitXY"/>
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="match_parent"

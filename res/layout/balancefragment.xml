@@ -3,18 +3,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="#f8c528">
+              android:layout_height="match_parent" android:background="#fffff0">
 
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="45dp" android:id="@+id/relativeLayout"
                     android:layout_marginTop="100dp">
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgLeftBalance"
-                     android:src="@drawable/leftarrow" android:background="#10ffffff"
+                     android:src="@drawable/arrowleft" android:background="#10ffffff"
                      android:layout_alignTop="@+id/imgRightBalance" android:layout_toLeftOf="@+id/spnDateBalance"
-                     android:layout_marginRight="35dp"/>
+                     android:layout_marginRight="35dp" android:scaleType="fitXY"/>
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgRightBalance"
                      android:background="#10ffffff"
-                     android:src="@drawable/rightarrow" android:layout_centerVertical="true"
-                     android:layout_toRightOf="@+id/spnDateBalance" android:layout_marginLeft="35dp"/>
+                     android:src="@drawable/arrowright" android:layout_centerVertical="true"
+                     android:layout_toRightOf="@+id/spnDateBalance" android:layout_marginLeft="35dp"
+                     android:scaleType="fitXY"/>
         <Spinner android:layout_width="100dp" android:layout_height="wrap_content" android:id="@+id/spnDateBalance"
                  android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
     </RelativeLayout>
