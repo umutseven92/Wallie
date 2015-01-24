@@ -1,5 +1,5 @@
 language: android 
-install: ant install-deps
+install: true 
 android:
  components:
   - platform-tools
