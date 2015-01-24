@@ -1,5 +1,4 @@
 language: android 
-install: true 
 android:
  components:
   - platform-tools
