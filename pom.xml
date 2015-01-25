@@ -25,11 +25,16 @@
             <artifactId>android-support</artifactId>
             <version>21.0.3</version>
         </dependency>
-            <dependency>
-                <groupId>com.google.code.gson</groupId>
-                <artifactId>gson</artifactId>
-                <version>2.3.1</version>
-            </dependency>
+        <dependency>
+            <groupId>com.philjay</groupId>
+            <artifactId>mpandroidchart</artifactId>
+            <version>1.7.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.3.1</version>
+        </dependency>
    </dependencies>
     <build>
         <sourceDirectory>gen</sourceDirectory>
