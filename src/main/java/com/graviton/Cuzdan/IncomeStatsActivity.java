@@ -1,6 +1,6 @@
 package com.graviton.Cuzdan;
 
-import Fragments.IncomeGraphFragment;
+import Fragments.IncomePieFragment;
 import Fragments.IncomeSearchFragment;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
@@ -43,7 +43,7 @@ public class IncomeStatsActivity  extends FragmentActivity implements ActionBar.
         }
         else if(pos == 1)
         {
-            ft.replace(android.R.id.content,new IncomeGraphFragment());
+            ft.replace(android.R.id.content,new IncomePieFragment());
 
         }
 

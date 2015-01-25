@@ -20,3 +20,4 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
 ##Kullanılan Kaynaklar
 * Çüzdan simgesi: Jerry Low
 * Android-WizardPager: [Roman Nurik](http://roman.nurik.net/)
+* MPAndroidChart: [Philipp Jahoda](https://github.com/PhilJay)

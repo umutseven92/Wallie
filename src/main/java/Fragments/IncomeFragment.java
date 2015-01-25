@@ -70,7 +70,6 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         _user = ((Global) getActivity().getApplication()).GetUser();
         dateBeingViewed = new Date();
 
-
         return infView;
     }
 
@@ -262,14 +261,14 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
         cal.setTime(dateBeingViewed);
 
-        if(mode == "day")
+        if(mode.equals("day"))
         {
             cal.add(Calendar.DATE,1);
             dateBeingViewed = cal.getTime();
             LoadListView(dateBeingViewed,true);
 
         }
-        else if (mode == "month")
+        else if (mode.equals("month"))
         {
             cal.add(Calendar.MONTH,1);
             dateBeingViewed = cal.getTime();
@@ -282,13 +281,13 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
-        if(mode == "day")
+        if(mode.equals("day"))
         {
             cal.add(Calendar.DATE,-1);
             dateBeingViewed = cal.getTime();
             LoadListView(dateBeingViewed, true);
         }
-        else if (mode == "month")
+        else if (mode.equals("month"))
         {
             cal.add(Calendar.MONTH,-1);
             dateBeingViewed = cal.getTime();
@@ -341,7 +340,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public void onDismissed() {
 
-        if (mode == "day")
+        if (mode.equals("day"))
         {
             try {
                 LoadListView(dateBeingViewed, true);
@@ -353,7 +352,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                 e.printStackTrace();
             }
         }
-        else if (mode == "month")
+        else if (mode.equals("month"))
         {
             try {
                 LoadListView(dateBeingViewed, false);

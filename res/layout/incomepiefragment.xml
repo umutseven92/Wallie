@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:background="#fffff0">
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp">
+        <Spinner android:layout_width="100dp" android:layout_height="wrap_content" android:id="@+id/spnIncomePieDate"
+                 android:spinnerMode="dropdown" android:layout_alignParentTop="true"
+                 android:layout_centerHorizontal="true"/>
+        <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgIncomePieRight"
+                     android:src="@drawable/arrowright" android:scaleType="fitXY"
+                     android:background="#10ffffff" android:layout_centerVertical="true"
+                     android:layout_toRightOf="@+id/spnIncomePieDate" android:layout_marginLeft="35dp"
+                />
+        <ImageButton
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/imgIncomePieLeft"
+                android:background="#10ffffff"
+                android:src="@drawable/arrowleft" android:scaleType="fitXY"
+                android:layout_toLeftOf="@+id/spnIncomePieDate"
+                android:layout_centerVertical="true" android:layout_marginRight="35dp"/>
+    </RelativeLayout>
+    <com.github.mikephil.charting.charts.PieChart android:layout_width="match_parent"
+                                                  android:layout_height="1000dp" android:id="@+id/incomePieChart"
+                                                  android:layout_marginTop="50dp"/>
+
+
+</RelativeLayout>
