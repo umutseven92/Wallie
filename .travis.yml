@@ -4,3 +4,6 @@ android:
   - android-21
   - platform-tools
   - tools
+  - extra-android-support
+  - extra-android-m2repository
+  - extra-google-m2repository

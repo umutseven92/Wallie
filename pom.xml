@@ -7,6 +7,12 @@
     <groupId>com.graviton</groupId>
     <artifactId>Cuzdan</artifactId>
     <version>0.2.2</version>
+    <repositories>
+        <repository>
+            <id>Graviton-Repo</id>
+            <url>file://${basedir}/libs</url>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>com.google.android</groupId>
@@ -15,11 +21,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.google.android</groupId>
-            <artifactId>support-v4</artifactId>
+            <groupId>com.google</groupId>
+            <artifactId>android-support</artifactId>
             <version>21.0.3</version>
-            <scope>system</scope>
-            <systemPath>C:/Android/android-sdk/extras/android/support/v4/android-support-v4.jar</systemPath>
         </dependency>
             <dependency>
                 <groupId>com.google.code.gson</groupId>
