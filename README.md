@@ -1,9 +1,10 @@
 Cüzdan
 ======
-
-![Cuzdan](https://github.com/umutseven92/Cuzdan/blob/master/res/drawable-xxhdpi/ic_launcher.png)
+[![Build Status](https://magnum.travis-ci.com/umutseven92/Cuzdan.svg?token=FcSswCqpWzu5VpELPryw&branch=master)](https://magnum.travis-ci.com/umutseven92/Cuzdan)
 
 ##Hakkında
+![Cuzdan](https://github.com/umutseven92/Cuzdan/blob/master/res/drawable-xxhdpi/ic_launcher.png)
+
 “Cüzdan”, basit ve kullanışlı arayüzü ile harcamalarınızı kolay bir şekilde takip etmenize, bütçe planlarınızı kontrol altında tutmanıza ve birikim hedeflerinizi gerçekleştirebilmenize yardımcı olmak için hazırlanmıştır.  
   
 Cüzdan ile neler yapabilirsiniz?
