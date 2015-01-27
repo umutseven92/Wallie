@@ -7,8 +7,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 /**
- * Created by Umut on 12.11.2014.
+ * Created by Umut Seven on 12.11.2014, for Graviton.
  */
 public class Expense extends Balance {
 
@@ -52,11 +53,6 @@ public class Expense extends Balance {
     }
 
     private Tags _tag;
-
-    public Tags GetTag()
-    {
-        return _tag;
-    }
 
     public String GetStringTag()
     {

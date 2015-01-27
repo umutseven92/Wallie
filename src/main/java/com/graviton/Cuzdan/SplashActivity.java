@@ -11,13 +11,14 @@ import org.json.*;
 
 import java.io.*;
 
+
 /**
- * Created by Umut on 11.11.2014.
+ * Created by Umut Seven on 11.11.2014, for Graviton.
  */
 public class SplashActivity extends Activity {
 
     // How long in ms the user will wait, change this to be an accurate load time
-    private final int splashLength = 1800;
+    private final int splashLength = 1200;
 
     @Override
     public void onCreate(Bundle bundle)
@@ -60,7 +61,6 @@ public class SplashActivity extends Activity {
                         "\t}\n" +
                         "}\n",userName,firstName,lastName );
 
-                Log.i("splash",userSettings);
                 userInfo = new JSONObject(userSettings);
 
                 outputStream = openFileOutput(fileName, Context.MODE_PRIVATE);

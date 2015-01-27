@@ -3,8 +3,9 @@ package wizard;
 import android.content.Context;
 import wizard.model.*;
 
+
 /**
- * Created by Umut on 2.1.2015.
+ * Created by Umut Seven on 2.1.2015, for Graviton.
  */
 public class ExpenseWizardModel extends AbstractWizardModel
 {

@@ -6,8 +6,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.List;
 
+
 /**
- * Created by Umut on 29.11.2014.
+ * Created by Umut Seven on 29.11.2014, for Graviton.
  */
 public class SavingsPageAdapter extends FragmentPagerAdapter {
 

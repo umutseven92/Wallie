@@ -10,8 +10,9 @@ import android.widget.TwoLineListItem;
 
 import java.util.ArrayList;
 
+
 /**
- * Created by Umut on 20.11.2014.
+ * Created by Umut Seven on 20.11.2014, for Graviton.
  */
 public class ExpenseListAdapter extends BaseAdapter {
 

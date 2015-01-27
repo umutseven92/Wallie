@@ -15,7 +15,6 @@ import com.graviton.Cuzdan.ExpenseWizardActivity;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
 import org.json.JSONException;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.Format;
@@ -78,7 +77,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     @Override
     public void onResume()
     {
-        if (mode == "day")
+        if (mode.equals("day"))
         {
             try {
                 LoadListView(dateBeingViewed, true);
@@ -91,7 +90,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
             }
 
         }
-        else if (mode == "month")
+        else if (mode.equals("month"))
         {
             try {
                 LoadListView(dateBeingViewed, false);
@@ -157,7 +156,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     public void getNextDateExpenses() throws JSONException, ParseException, IOException {
         Date today = new Date();
 
-        if(dateBeingViewed.getDay() == today.getDay())
+        if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
         {
             return;
         }
@@ -165,13 +164,13 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
-        if(mode == "day")
+        if(mode.equals("day"))
         {
             cal.add(Calendar.DATE,1);
             dateBeingViewed = cal.getTime();
             LoadListView(dateBeingViewed,true);
         }
-        else if (mode == "month")
+        else if (mode.equals("month"))
         {
             cal.add(Calendar.MONTH,1);
             dateBeingViewed = cal.getTime();
@@ -184,13 +183,13 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
-        if(mode == "day")
+        if(mode.equals("day"))
         {
             cal.add(Calendar.DATE,-1);
             dateBeingViewed = cal.getTime();
             LoadListView(dateBeingViewed,true);
         }
-        else if (mode == "month")
+        else if (mode.equals("month"))
         {
             cal.add(Calendar.MONTH,-1);
             dateBeingViewed = cal.getTime();
@@ -344,7 +343,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     @Override
     public void onDismissed() {
 
-        if (mode == "day")
+        if (mode.equals("day"))
         {
             try {
                 LoadListView(dateBeingViewed, true);
@@ -356,7 +355,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
                 e.printStackTrace();
             }
         }
-        else if (mode == "month")
+        else if (mode.equals("month"))
         {
             try {
                 LoadListView(dateBeingViewed, false);

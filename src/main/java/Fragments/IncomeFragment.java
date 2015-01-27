@@ -1,7 +1,6 @@
 package Fragments;
 
 import Helpers.*;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -252,7 +251,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     {
         Date today = new Date();
 
-        if(dateBeingViewed.getDay() == today.getDay())
+        if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
         {
             return;
         }

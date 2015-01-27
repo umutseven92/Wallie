@@ -7,8 +7,9 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
+
 /**
- * Created by Umut on 18.11.2014.
+ * Created by Umut Seven on 18.11.2014, for Graviton.
  */
 public class RoundedImageView extends ImageView {
 

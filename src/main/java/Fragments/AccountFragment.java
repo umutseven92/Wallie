@@ -9,8 +9,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.graviton.Cuzdan.R;
 
+
 /**
- * Created by Umut on 18.11.2014.
+ * Created by Umut Seven on 18.11.2014, for Graviton.
  */
 public class AccountFragment extends Fragment {
 

@@ -1,12 +1,12 @@
 package com.graviton.Cuzdan;
 
 import Fragments.ExpenseDialogFragment;
-import Fragments.IncomeDialogFragment;
 import Helpers.User;
 import android.app.Application;
 
+
 /**
- * Created by Umut on 18.11.2014.
+ * Created by Umut Seven on 18.11.2014, for Graviton.
  */
 public class Global extends Application {
 

@@ -5,10 +5,10 @@
 
     <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="50dp">
+            android:layout_height="50dp" android:id="@+id/lytIncomePieDate" android:layout_marginTop="10dp">
         <Spinner android:layout_width="100dp" android:layout_height="wrap_content" android:id="@+id/spnIncomePieDate"
-                 android:spinnerMode="dropdown" android:layout_alignParentTop="true"
-                 android:layout_centerHorizontal="true"/>
+                 android:spinnerMode="dropdown"
+                 android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgIncomePieRight"
                      android:src="@drawable/arrowright" android:scaleType="fitXY"
                      android:background="#10ffffff" android:layout_centerVertical="true"

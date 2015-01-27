@@ -1,15 +1,13 @@
 package Helpers;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.Serializable;
 import java.text.ParseException;
-import java.util.ArrayList;
+
 
 /**
- * Created by Umut on 16.11.2014.
+ * Created by Umut Seven on 16.11.2014, for Graviton.
  */
 public class User implements Serializable {
 

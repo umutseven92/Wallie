@@ -6,8 +6,9 @@ import java.math.RoundingMode;
 import java.util.Date;
 import java.util.UUID;
 
+
 /**
- * Created by Umut on 12.11.2014.
+ * Created by Umut Seven on 12.11.2014, for Graviton.
  */
 public class Balance implements Serializable {
 

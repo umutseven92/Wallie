@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentActivity;
 
 
 /**
- * Created by Umut on 14.1.2015.
+ * Created by Umut Seven on 14.1.2015, for Graviton.
  */
 public class IncomeStatsActivity  extends FragmentActivity implements ActionBar.TabListener{
 

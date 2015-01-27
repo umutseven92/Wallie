@@ -18,8 +18,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+
 /**
- * Created by Umut on 22.11.2014.
+ * Created by Umut Seven on 22.11.2014, for Graviton.
  */
 public class BalanceFragment extends Fragment implements AdapterView.OnItemSelectedListener, ExpenseLoadListener {
 
@@ -138,7 +139,7 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
     {
         Date today = new Date();
 
-        if(dateBeingViewed.getDay() == today.getDay())
+        if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
         {
             return;
         }

@@ -1,6 +1,5 @@
 package com.graviton.Cuzdan;
 
-import Helpers.Balance;
 import Helpers.Income;
 import android.content.Context;
 import android.os.Bundle;
@@ -21,14 +20,14 @@ import wizard.model.Page;
 import wizard.ui.PageFragmentCallbacks;
 import wizard.ui.ReviewFragment;
 import wizard.ui.StepPagerStrip;
-
 import java.io.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+
 /**
- * Created by Umut on 21.12.2014.
+ * Created by Umut Seven on 21.12.2014, for Graviton.
  */
 public class IncomeWizardActivity extends FragmentActivity implements PageFragmentCallbacks, ReviewFragment.Callbacks, ModelCallbacks {
 

@@ -1,10 +1,8 @@
 package Helpers;
 
-import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.*;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -12,8 +10,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+
 /**
- * Created by Umut on 12.11.2014.
+ * Created by Umut Seven on 12.11.2014, for Graviton.
  */
 public class Banker implements Serializable {
 
@@ -220,16 +219,13 @@ public class Banker implements Serializable {
         Calendar cal2 = Calendar.getInstance();
         cal2.setTime(day);
 
-        for (int i = 0;i < _incomes.size(); i++)
-        {
-            Income incomeToTest = _incomes.get(i);
+        for (Income incomeToTest : _incomes) {
             cal1.setTime(incomeToTest.GetDate());
             boolean sameDay = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
                     cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
 
-            if(sameDay)
-            {
-                specIncomes.add(_incomes.get(i));
+            if (sameDay) {
+                specIncomes.add(incomeToTest);
             }
         }
 
@@ -243,16 +239,13 @@ public class Banker implements Serializable {
         Calendar cal2 = Calendar.getInstance();
         cal2.setTime(day);
 
-        for (int i = 0;i < _incomes.size(); i++)
-        {
-            Income incomeToTest = _incomes.get(i);
+        for (Income incomeToTest : _incomes) {
             cal1.setTime(incomeToTest.GetDate());
             boolean sameMonth = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
                     cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH);
 
-            if(sameMonth)
-            {
-                specIncomes.add(_incomes.get(i));
+            if (sameMonth) {
+                specIncomes.add(incomeToTest);
             }
         }
 
@@ -266,16 +259,13 @@ public class Banker implements Serializable {
         Calendar cal2 = Calendar.getInstance();
         cal2.setTime(day);
 
-        for (int i = 0;i < _expenses.size(); i++)
-        {
-            Expense expenseToTest = _expenses.get(i);
+        for (Expense expenseToTest : _expenses) {
             cal1.setTime(expenseToTest.GetDate());
             boolean sameDay = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
                     cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
 
-            if(sameDay)
-            {
-                specExpenses.add(_expenses.get(i));
+            if (sameDay) {
+                specExpenses.add(expenseToTest);
             }
         }
 
@@ -289,16 +279,13 @@ public class Banker implements Serializable {
         Calendar cal2 = Calendar.getInstance();
         cal2.setTime(day);
 
-        for (int i = 0;i < _expenses.size(); i++)
-        {
-            Expense expenseToTest = _expenses.get(i);
+        for (Expense expenseToTest : _expenses) {
             cal1.setTime(expenseToTest.GetDate());
             boolean sameMonth = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
                     cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH);
 
-            if(sameMonth)
-            {
-                specExpenses.add(_expenses.get(i));
+            if (sameMonth) {
+                specExpenses.add(expenseToTest);
             }
         }
 
@@ -320,8 +307,6 @@ public class Banker implements Serializable {
                 "\t\t\t\t\t\"date\": \"%s\"\n" +
                 "\t\t\t\t}",income.GetID(),income.GetCategory(),income.GetSubCategory(),income.GetAmount(),income.GetDescription(),date);
 
-        Log.i("income",json);
-
         return new JSONObject(json);
     }
 
@@ -341,15 +326,7 @@ public class Banker implements Serializable {
                 "\t\t\t\t\t\"date\": \"%s\"\n" +
                 "\t\t\t\t}",expense.GetID(),expense.GetCategory(),expense.GetSubCategory(),expense.GetAmount(),expense.GetStringTag(),expense.GetDescription(),date);
 
-        Log.i("expense", json);
-
         return new JSONObject(json);
-
-    }
-
-
-    public void DeleteExpense(Expense expense)
-    {
 
     }
 }

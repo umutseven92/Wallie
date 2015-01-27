@@ -119,7 +119,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
     {
         Date today = new Date();
 
-        if(dateBeingViewed.getDay() == today.getDay())
+        if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
         {
             return;
         }
@@ -128,13 +128,13 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
 
         cal.setTime(dateBeingViewed);
 
-        if(mode == "day")
+        if(mode.equals("day"))
         {
             cal.add(Calendar.DATE,1);
             dateBeingViewed = cal.getTime();
             LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString() , true);
         }
-        else if (mode == "month")
+        else if (mode.equals("month"))
         {
             cal.add(Calendar.MONTH,1);
             dateBeingViewed = cal.getTime();
@@ -146,13 +146,13 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
-        if(mode == "day")
+        if(mode.equals("day"))
         {
             cal.add(Calendar.DATE,-1);
             dateBeingViewed = cal.getTime();
             LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString() , true);
         }
-        else if (mode == "month")
+        else if (mode.equals("month"))
         {
             cal.add(Calendar.MONTH,-1);
             dateBeingViewed = cal.getTime();
@@ -181,7 +181,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                 subCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spnSearchSubCategory.setAdapter(subCategoryAdapter);
 
-                if(mode == "month")
+                if(mode.equals("month"))
                 {
                     try {
                         LoadListView(parent.getItemAtPosition(position).toString(),spnSearchSubCategory.getSelectedItem().toString(), false);
@@ -193,7 +193,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                         e.printStackTrace();
                     }
                 }
-                else if(mode == "day")
+                else if(mode.equals("day"))
                 {
                     try {
                         LoadListView(parent.getItemAtPosition(position).toString(),spnSearchSubCategory.getSelectedItem().toString(), true);
@@ -208,7 +208,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                 break;
 
             case R.id.spnSearchSubCategory:
-                if(mode == "month")
+                if(mode.equals("month"))
                 {
                     try {
                         LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString(), false);
@@ -220,7 +220,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                         e.printStackTrace();
                     }
                 }
-                else if(mode == "day")
+                else if(mode.equals("day"))
                 {
                     try {
                         LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString(), true);
@@ -394,7 +394,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
 
     @Override
     public void onDismissed() {
-        if(mode == "month")
+        if(mode.equals("month"))
         {
             try {
                 LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString(), false);
@@ -406,7 +406,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                 e.printStackTrace();
             }
         }
-        else if(mode == "day")
+        else if(mode.equals("day"))
         {
             try {
                 LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString(), true);

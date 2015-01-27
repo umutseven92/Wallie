@@ -23,7 +23,7 @@ import java.util.List;
 
 
 /**
- * Created by Umut on 15.11.2014.
+ * Created by Umut Seven on 15.11.2014, for Graviton.
  */
 public class MainActivity extends FragmentActivity {
 

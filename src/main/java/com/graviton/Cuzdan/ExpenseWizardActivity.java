@@ -1,8 +1,6 @@
 package com.graviton.Cuzdan;
 
-import Helpers.Balance;
 import Helpers.Expense;
-import Helpers.Income;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.*;
@@ -22,14 +20,14 @@ import wizard.model.Page;
 import wizard.ui.PageFragmentCallbacks;
 import wizard.ui.ReviewFragment;
 import wizard.ui.StepPagerStrip;
-
 import java.io.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+
 /**
- * Created by Umut on 2.1.2015.
+ * Created by Umut Seven on 2.1.2015, for Graviton.
  */
 public class ExpenseWizardActivity  extends FragmentActivity implements PageFragmentCallbacks, ReviewFragment.Callbacks, ModelCallbacks {
     private ViewPager mPager;

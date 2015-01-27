@@ -10,8 +10,9 @@ import android.widget.TwoLineListItem;
 
 import java.util.ArrayList;
 
+
 /**
- * Created by Umut on 26.11.2014.
+ * Created by Umut Seven on 26.11.2014, for Graviton.
  */
 public class IncomeListAdapter extends BaseAdapter {
     private Context context;

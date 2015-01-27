@@ -3,8 +3,9 @@ package Helpers;
 import android.text.InputFilter;
 import android.text.Spanned;
 
+
 /**
- * Created by Umut on 22.1.2015.
+ * Created by Umut Seven on 22.1.2015, for Graviton.
  */
 public class DecimalDigitsInputFilter implements InputFilter {
 

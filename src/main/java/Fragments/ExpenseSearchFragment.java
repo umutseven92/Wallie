@@ -24,8 +24,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+
 /**
- * Created by Umut on 23.1.2015.
+ * Created by Umut Seven on 23.1.2015, for Graviton.
  */
 public class ExpenseSearchFragment extends Fragment implements AdapterView.OnItemSelectedListener, ExpenseLoadListener {
 
@@ -121,7 +122,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
     {
         Date today = new Date();
 
-        if(dateBeingViewed.getDay() == today.getDay())
+        if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
         {
             return;
         }

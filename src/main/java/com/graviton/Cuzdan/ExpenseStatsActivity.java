@@ -8,8 +8,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
+
 /**
- * Created by Umut on 23.1.2015.
+ * Created by Umut Seven on 23.1.2015, for Graviton.
  */
 public class ExpenseStatsActivity extends FragmentActivity implements ActionBar.TabListener{
 

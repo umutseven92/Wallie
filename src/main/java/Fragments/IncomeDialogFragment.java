@@ -19,8 +19,9 @@ import org.json.JSONObject;
 
 import java.io.*;
 
+
 /**
- * Created by Umut on 17.1.2015.
+ * Created by Umut Seven on 17.1.2015, for Graviton.
  */
 public class IncomeDialogFragment extends DialogFragment {
 

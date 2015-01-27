@@ -7,8 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.graviton.Cuzdan.R;
 
+
 /**
- * Created by Umut on 23.1.2015.
+ * Created by Umut Seven on 23.1.2015, for Graviton.
  */
 public class ExpenseGraphFragment extends Fragment{
 

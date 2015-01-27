@@ -7,8 +7,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 /**
- * Created by Umut on 12.11.2014.
+ * Created by Umut Seven on 12.11.2014, for Graviton.
  */
 public class Income extends Balance {
 
