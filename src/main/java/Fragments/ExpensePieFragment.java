@@ -1,16 +1,15 @@
 package Fragments;
 
-import Helpers.Banker;
-import Helpers.ChartHelpers;
-import Helpers.Income;
-import Helpers.User;
-import android.graphics.Color;
+import Helpers.*;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.Spinner;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
@@ -20,23 +19,21 @@ import com.github.mikephil.charting.utils.Legend;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
 import org.json.JSONException;
+
 import java.io.IOException;
-import java.text.Format;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 
-
 /**
- * Created by Umut Seven on 15.1.2015, for Graviton.
+ * Created by Umut Seven on 23.1.2015, for Graviton.
  */
-public class IncomePieFragment extends Fragment implements AdapterView.OnItemSelectedListener{
+public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSelectedListener{
 
-    PieChart incomePieChart;
-    Spinner spnIncomePieDate;
+    PieChart expensePieChart;
+    Spinner spnExpenseDate;
     String mode = "month";
     ImageButton imgLeft, imgRight;
     Date dateBeingViewed;
@@ -45,12 +42,11 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View v = inflater.inflate(R.layout.incomepiefragment, container,false);
-
-        spnIncomePieDate = (Spinner)v.findViewById(R.id.spnIncomePieDate);
-        incomePieChart = (PieChart)v.findViewById(R.id.incomePieChart);
-        imgLeft = (ImageButton)v.findViewById(R.id.imgIncomePieLeft);
-        imgRight= (ImageButton)v.findViewById(R.id.imgIncomePieRight);
+        View v = inflater.inflate(R.layout.expensepiefragment, container,false);
+        spnExpenseDate = (Spinner)v.findViewById(R.id.spnExpensePieDate);
+        expensePieChart = (PieChart)v.findViewById(R.id.expensePieChart);
+        imgLeft = (ImageButton)v.findViewById(R.id.imgExpensePieLeft);
+        imgRight = (ImageButton)v.findViewById(R.id.imgExpensePieRight);
 
         imgLeft.setOnClickListener(onLeftArrowClick);
         imgRight.setOnClickListener(onRightArrowClick);
@@ -60,10 +56,10 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(v.getContext(), R.array.balanceDateArray, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnIncomePieDate.setAdapter(adapter);
-        spnIncomePieDate.setOnItemSelectedListener(this);
+        spnExpenseDate.setAdapter(adapter);
+        spnExpenseDate.setOnItemSelectedListener(this);
 
-        ChartHelpers.InitializePieChart(incomePieChart);
+        ChartHelpers.InitializePieChart(expensePieChart);
 
         if(mode.equals("day"))
         {
@@ -90,45 +86,44 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
             }
         }
 
-        Legend l = incomePieChart.getLegend();
+        Legend l = expensePieChart.getLegend();
         l.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
         l.setTextSize(12f);
 
         return v;
     }
 
-
     private void LoadPieChart(boolean day) throws ParseException, IOException, JSONException {
 
-        ArrayList<String> incomeNames = new ArrayList<String>();
+        ArrayList<String> expenseNames = new ArrayList<String>();
         ArrayList<Entry> entries = new ArrayList<Entry>();
         Banker banker = user.GetBanker();
 
         if(day)
         {
-            ArrayList<Income> incomes =  banker.GetIncomesFromDay(dateBeingViewed);
+            ArrayList<Expense> expenses =  banker.GetExpensesFromDay(dateBeingViewed);
 
-            for (int i = 0;i<incomes.size();i++)
+            for (int i = 0;i<expenses.size();i++)
             {
-                Income income = incomes.get(i);
-                incomeNames.add(income.GetCategory());
-                entries.add(new Entry(income.GetAmount().floatValue(),i));
+                Expense expense = expenses.get(i);
+                expenseNames.add(expense.GetCategory());
+                entries.add(new Entry(expense.GetAmount().floatValue(),i));
             }
 
-            incomePieChart.setCenterText(ChartHelpers.GetDayText(dateBeingViewed));
+            expensePieChart.setCenterText(ChartHelpers.GetDayText(dateBeingViewed));
         }
         else
         {
-            ArrayList<Income> incomes = banker.GetIncomesFromMonth(dateBeingViewed);
+            ArrayList<Expense> expenses = banker.GetExpensesFromMonth(dateBeingViewed);
 
-            for (int i = 0;i<incomes.size();i++)
+            for (int i = 0;i<expenses.size();i++)
             {
-                Income income = incomes.get(i);
-                incomeNames.add(income.GetCategory());
-                entries.add(new Entry(income.GetAmount().floatValue(),i));
+                Expense expense = expenses.get(i);
+                expenseNames.add(expense.GetCategory());
+                entries.add(new Entry(expense.GetAmount().floatValue(),i));
             }
 
-            incomePieChart.setCenterText(ChartHelpers.GetMonthText(dateBeingViewed,getResources()));
+            expensePieChart.setCenterText(ChartHelpers.GetMonthText(dateBeingViewed,getResources()));
 
         }
 
@@ -136,19 +131,18 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
         set.setSliceSpace(3f);
         set.setColors(ColorTemplate.JOYFUL_COLORS);
 
-        PieData data = new PieData(incomeNames.toArray(new String[incomeNames.size()]),set);
+        PieData data = new PieData(expenseNames.toArray(new String[expenseNames.size()]),set);
 
-        incomePieChart.setData(data);
-        incomePieChart.highlightValues(null);
-        incomePieChart.invalidate();
+        expensePieChart.setData(data);
+        expensePieChart.highlightValues(null);
+        expensePieChart.invalidate();
     }
-
 
     View.OnClickListener onLeftArrowClick = new View.OnClickListener() {
         @Override
         public void onClick(View v){
             try {
-                getLastDateIncomes();
+                getLastDateExpenses();
             } catch (ParseException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
@@ -163,7 +157,7 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
         @Override
         public void onClick(View v) {
             try {
-                getNextDateIncomes();
+                getNextDateExpenses();
             } catch (ParseException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
@@ -174,7 +168,7 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
         }
     };
 
-    public void getNextDateIncomes() throws ParseException, JSONException, IOException {
+    public void getNextDateExpenses() throws ParseException, JSONException, IOException {
         Date today = new Date();
 
         if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear())
@@ -200,7 +194,7 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
         }
     }
 
-    public void getLastDateIncomes() throws ParseException, JSONException, IOException {
+    public void getLastDateExpenses() throws ParseException, JSONException, IOException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 

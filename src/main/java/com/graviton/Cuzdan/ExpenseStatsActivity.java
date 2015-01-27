@@ -1,6 +1,6 @@
 package com.graviton.Cuzdan;
 
-import Fragments.ExpenseGraphFragment;
+import Fragments.ExpensePieFragment;
 import Fragments.ExpenseSearchFragment;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
@@ -43,7 +43,7 @@ public class ExpenseStatsActivity extends FragmentActivity implements ActionBar.
         }
         else if(pos == 1)
         {
-            ft.replace(android.R.id.content, new ExpenseGraphFragment());
+            ft.replace(android.R.id.content, new ExpensePieFragment());
 
         }
 
