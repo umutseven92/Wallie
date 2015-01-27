@@ -13,6 +13,10 @@
         <item>Gün</item>
         <item>Ay</item>
     </string-array>
+    <string-array name="balanceDateArray">
+        <item>Ay</item>
+        <item>Gün</item>
+    </string-array>
 
     <!-- Gelir Kategorileri & Alt Kategoriler -->
     <string-array name="incomeCategories">
@@ -128,10 +132,6 @@
         <item>Diğer</item>
     </string-array>
 
-    <string-array name="balanceDateArray">
-        <item>Ay</item>
-        <item>Gün</item>
-    </string-array>
     <string-array name="turkishMonths">
         <item>Ocak</item>
         <item>Şubat</item>

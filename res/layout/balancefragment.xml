@@ -16,8 +16,9 @@
                      android:src="@drawable/arrowright" android:layout_centerVertical="true"
                      android:layout_toRightOf="@+id/spnDateBalance" android:layout_marginLeft="35dp"
                      android:scaleType="fitXY"/>
-        <Spinner android:layout_width="100dp" android:layout_height="wrap_content" android:id="@+id/spnDateBalance"
-                 android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+        <Spinner android:layout_width="100dp" android:layout_height="35dp" android:id="@+id/spnDateBalance"
+                 android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+                 android:background="@drawable/roundedspinner"/>
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="match_parent"

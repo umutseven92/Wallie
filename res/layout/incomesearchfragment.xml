@@ -10,18 +10,20 @@
             android:layout_alignParentLeft="false" android:layout_marginTop="0dp" android:id="@+id/lytCriteria">
         <Spinner
                 android:layout_width="140dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:id="@+id/spnSearchCategory"
                 android:spinnerMode="dropdown"
                 android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-                android:layout_marginLeft="10dp" android:layout_marginTop="12dp"/>
+                android:layout_marginLeft="10dp" android:layout_marginTop="12dp"
+                android:background="@drawable/roundedspinner"/>
         <Spinner
                 android:layout_width="160dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:id="@+id/spnSearchSubCategory"
                 android:spinnerMode="dropdown"
                 android:layout_alignParentTop="true" android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp" android:layout_marginTop="12dp"/>
+                android:layout_marginRight="10dp" android:layout_marginTop="12dp"
+                android:background="@drawable/roundedspinner"/>
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="fill_parent"
@@ -29,10 +31,11 @@
             android:layout_below="@+id/lytCriteria" android:layout_alignParentLeft="true">
         <Spinner
                 android:layout_width="70dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:id="@+id/spnSearchIncomeDate"
                 android:spinnerMode="dropdown"
-                android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+                android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+                android:background="@drawable/roundedspinner"/>
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgSearchLeftIncome"
                      android:src="@drawable/arrowleft" android:background="#10ffffff"
                      android:layout_centerVertical="true" android:layout_toLeftOf="@+id/spnSearchIncomeDate"

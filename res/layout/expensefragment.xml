@@ -18,8 +18,9 @@
                      android:scaleType="fitXY"/>
         <Spinner
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/spnDateExpense" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+                android:layout_height="35dp"
+                android:id="@+id/spnDateExpense" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+                android:background="@drawable/roundedspinner"/>
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="match_parent"
