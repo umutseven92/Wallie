@@ -14,9 +14,7 @@ import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.text.Format;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -282,7 +280,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                 }
             }
 
-            txtIncomeDate.setText(ChartHelpers.GetDayText(dateBeingViewed));
+            txtIncomeDate.setText(DateFormatHelper.GetDayText(dateBeingViewed));
         }
         else
         {
@@ -295,7 +293,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                 }
             }
 
-            txtIncomeDate.setText(ChartHelpers.GetMonthText(dateBeingViewed, getResources()));
+            txtIncomeDate.setText(DateFormatHelper.GetMonthText(dateBeingViewed, getResources()));
         }
         BigDecimal total = BigDecimal.ZERO;
 

@@ -1,9 +1,6 @@
 package Fragments;
 
-import Helpers.Banker;
-import Helpers.ChartHelpers;
-import Helpers.Income;
-import Helpers.User;
+import Helpers.*;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -37,6 +34,7 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
     ImageButton imgLeft, imgRight;
     Date dateBeingViewed;
     User user;
+    TextView txtIncomeDate;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -47,7 +45,6 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
         incomePieChart = (PieChart)v.findViewById(R.id.incomePieChart);
         imgLeft = (ImageButton)v.findViewById(R.id.imgIncomePieLeft);
         imgRight= (ImageButton)v.findViewById(R.id.imgIncomePieRight);
-
         imgLeft.setOnClickListener(onLeftArrowClick);
         imgRight.setOnClickListener(onRightArrowClick);
 
@@ -59,7 +56,7 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
         spnIncomePieDate.setAdapter(adapter);
         spnIncomePieDate.setOnItemSelectedListener(this);
 
-        ChartHelpers.InitializePieChart(incomePieChart);
+        ChartHelper.InitializePieChart(incomePieChart);
 
         if(mode.equals("day"))
         {
@@ -111,7 +108,7 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
                 entries.add(new Entry(income.GetAmount().floatValue(),i));
             }
 
-            incomePieChart.setCenterText(ChartHelpers.GetDayText(dateBeingViewed));
+            incomePieChart.setCenterText(DateFormatHelper.GetDayText(dateBeingViewed));
         }
         else
         {
@@ -124,7 +121,7 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
                 entries.add(new Entry(income.GetAmount().floatValue(),i));
             }
 
-            incomePieChart.setCenterText(ChartHelpers.GetMonthText(dateBeingViewed,getResources()));
+            incomePieChart.setCenterText(DateFormatHelper.GetMonthText(dateBeingViewed, getResources()));
 
         }
 

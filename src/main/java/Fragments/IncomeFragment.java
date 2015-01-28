@@ -16,9 +16,7 @@ import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.text.Format;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -48,6 +46,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         Spinner spnDate = (Spinner)infView.findViewById(R.id.spnDateIncome);
         btnLeftArrow = (ImageButton)infView.findViewById(R.id.imgLeftIncome);
         btnRightArrow = (ImageButton)infView.findViewById(R.id.imgRightIncome);
+
         txtIncomeDate = (TextView)infView.findViewById(R.id.txtIncomeDate);
         btnAddIncome = (ImageButton)infView.findViewById(R.id.btnAddIncome);
         btnIncomeStats = (ImageButton)infView.findViewById(R.id.btnIncomeStats);
@@ -193,7 +192,6 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     public void getNextDateIncomes() throws JSONException, ParseException, IOException
     {
         Date today = new Date();
-
         if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
         {
             return;
@@ -220,6 +218,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     }
 
     public void getLastDateIncomes() throws JSONException, ParseException, IOException {
+
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
@@ -240,16 +239,17 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
     public void LoadListView(Date date, boolean day) throws JSONException, ParseException, IOException {
 
+
         ArrayList<Income> incomes;
         if(day)
         {
             incomes = _user.GetBanker().GetIncomesFromDay(date);
-            txtIncomeDate.setText(ChartHelpers.GetDayText(date));
+            txtIncomeDate.setText(DateFormatHelper.GetDayText(date));
         }
         else
         {
             incomes = _user.GetBanker().GetIncomesFromMonth(date);
-            txtIncomeDate.setText(ChartHelpers.GetMonthText(date,getResources()));
+            txtIncomeDate.setText(DateFormatHelper.GetMonthText(date, getResources()));
         }
         BigDecimal total = BigDecimal.ZERO;
 

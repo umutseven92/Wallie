@@ -1,8 +1,6 @@
 package Helpers;
 
 import android.content.res.Resources;
-import android.graphics.Color;
-import com.github.mikephil.charting.charts.PieChart;
 import com.graviton.Cuzdan.R;
 
 import java.text.Format;
@@ -10,36 +8,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Umut Seven on 27.1.2015, for Graviton.
+ * Created by Umut Seven on 28.1.2015, for Graviton.
  */
-public class ChartHelpers {
-
-    public static void InitializePieChart(PieChart chart)
-    {
-        chart.setDescription("");
-
-        chart.setUsePercentValues(true);
-        chart.setValueTextColor(Color.BLACK);
-        chart.setValueTextSize(15f);
-
-        chart.setDrawYValues(true);
-        chart.setDrawXValues(true);
-
-        chart.setDrawHoleEnabled(true);
-        chart.setHoleRadius(40f);
-        chart.setTransparentCircleRadius(0f);
-        chart.setHoleColor(Color.parseColor("#FFFFF0"));
-
-        chart.setCenterText("");
-        chart.setCenterTextSize(20f);
-
-        chart.setRotationAngle(0);
-        chart.setRotationEnabled(true);
-
-        chart.spin(800, 0, 360);
-
-    }
-
+public class DateFormatHelper {
     public static String GetDayText(Date date)
     {
         Format formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -97,6 +68,4 @@ public class ChartHelpers {
         month += " " + formatterYear.format(date);
         return month;
     }
-
-
 }

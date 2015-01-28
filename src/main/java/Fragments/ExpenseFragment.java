@@ -17,9 +17,7 @@ import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.text.Format;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -49,6 +47,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         Spinner spnDate = (Spinner)infView.findViewById(R.id.spnDateExpense);
         leftArrow = (ImageButton)infView.findViewById(R.id.imgLeftExpense);
         rightArrow = (ImageButton)infView.findViewById(R.id.imgRightExpense);
+
         txtExpenseDate = (TextView)infView.findViewById(R.id.txtExpenseDate);
         btnAddExpense = (ImageButton)infView.findViewById(R.id.btnAddExpense);
         btnExpenseStats = (ImageButton)infView.findViewById(R.id.btnExpenseStats);
@@ -180,6 +179,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     }
 
     public void getLastDateExpenses() throws JSONException, ParseException, IOException {
+
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
@@ -198,18 +198,20 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         }
     }
 
+
     public void LoadListView(Date date, boolean day) throws JSONException, ParseException, IOException {
+
         ArrayList<Expense> expenses;
 
         if(day)
         {
             expenses =_user.GetBanker().GetExpensesFromDay(date);
-            txtExpenseDate.setText(ChartHelpers.GetDayText(date));
+            txtExpenseDate.setText(DateFormatHelper.GetDayText(date));
         }
         else
         {
             expenses =_user.GetBanker().GetExpensesFromMonth(date);
-            txtExpenseDate.setText(ChartHelpers.GetMonthText(date,getResources()));
+            txtExpenseDate.setText(DateFormatHelper.GetMonthText(date, getResources()));
         }
 
         BigDecimal total = BigDecimal.ZERO;

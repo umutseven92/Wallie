@@ -59,7 +59,7 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
         spnExpenseDate.setAdapter(adapter);
         spnExpenseDate.setOnItemSelectedListener(this);
 
-        ChartHelpers.InitializePieChart(expensePieChart);
+        ChartHelper.InitializePieChart(expensePieChart);
 
         if(mode.equals("day"))
         {
@@ -110,7 +110,7 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
                 entries.add(new Entry(expense.GetAmount().floatValue(),i));
             }
 
-            expensePieChart.setCenterText(ChartHelpers.GetDayText(dateBeingViewed));
+            expensePieChart.setCenterText(DateFormatHelper.GetDayText(dateBeingViewed));
         }
         else
         {
@@ -123,7 +123,7 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
                 entries.add(new Entry(expense.GetAmount().floatValue(),i));
             }
 
-            expensePieChart.setCenterText(ChartHelpers.GetMonthText(dateBeingViewed,getResources()));
+            expensePieChart.setCenterText(DateFormatHelper.GetMonthText(dateBeingViewed, getResources()));
 
         }
 
