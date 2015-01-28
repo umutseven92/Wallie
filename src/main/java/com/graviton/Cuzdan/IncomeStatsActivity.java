@@ -1,5 +1,6 @@
 package com.graviton.Cuzdan;
 
+import Fragments.IncomeGraphFragment;
 import Fragments.IncomePieFragment;
 import Fragments.IncomeSearchFragment;
 import android.app.ActionBar;
@@ -25,15 +26,16 @@ public class IncomeStatsActivity  extends FragmentActivity implements ActionBar.
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.cuzdan_red)));
 
-        actionBar.addTab(actionBar.newTab().setText("Gelir Arama").setTabListener(this));
-        actionBar.addTab(actionBar.newTab().setText("Grafikler").setTabListener(this));
+        actionBar.addTab(actionBar.newTab().setIcon(R.drawable.mag).setTabListener(this));
+        actionBar.addTab(actionBar.newTab().setIcon(R.drawable.pie).setTabListener(this));
+        actionBar.addTab(actionBar.newTab().setIcon(R.drawable.graph).setTabListener(this));
     }
 
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
 
-        // pos 0 -> Gelir arama, pos 1 -> Grafikler
+        // pos 0 -> Gelir arama, pos 1 -> Pie Chart, pos 2 -> Graph
         int pos = tab.getPosition();
 
         if(pos == 0)
@@ -44,7 +46,10 @@ public class IncomeStatsActivity  extends FragmentActivity implements ActionBar.
         else if(pos == 1)
         {
             ft.replace(android.R.id.content,new IncomePieFragment());
-
+        }
+        else if(pos == 2)
+        {
+            ft.replace(android.R.id.content, new IncomeGraphFragment());
         }
 
     }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:background="#fffff0">
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp" android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" android:layout_marginTop="10dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Month"
+                android:id="@+id/txtIncomeGraphDate" android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" android:textColor="#ff000000"/>
+        <ImageButton
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/imgIncomeGraphLeft" android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/txtIncomeGraphDate" android:background="#10ffffff"
+                android:src="@drawable/arrowleft" android:scaleType="fitXY" android:layout_marginRight="60dp"/>
+        <ImageButton
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/imgIncomeGraphRight" android:layout_alignBottom="@+id/imgIncomeGraphLeft"
+                android:layout_toRightOf="@+id/txtIncomeGraphDate" android:scaleType="fitXY"
+                android:src="@drawable/arrowright" android:background="#10ffffff" android:layout_marginLeft="60dp"/>
+    </RelativeLayout>
+    <com.github.mikephil.charting.charts.LineChart android:layout_width="match_parent" android:layout_height="1000dp" android:id="@+id/incomeGraph"/>
+</RelativeLayout>

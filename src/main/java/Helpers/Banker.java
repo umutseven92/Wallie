@@ -1,9 +1,5 @@
 package Helpers;
 
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +22,6 @@ public class Banker implements Serializable {
         this.filePath = filePath;
         LoadBalance(incomes, expenses);
     }
-
 
     private ArrayList<Income> _incomes;
 

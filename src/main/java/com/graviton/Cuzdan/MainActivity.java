@@ -1,8 +1,7 @@
 package com.graviton.Cuzdan;
 
 import Fragments.*;
-import Helpers.AccountPageAdapter;
-import Helpers.Balance;
+import Helpers.BudgetPageAdapter;
 import Helpers.SavingsPageAdapter;
 import Helpers.SettingsPageAdapter;
 import android.content.res.Configuration;
@@ -17,7 +16,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,15 +25,14 @@ import java.util.List;
  */
 public class MainActivity extends FragmentActivity {
 
-    AccountPageAdapter accountPageAdapter;
+    BudgetPageAdapter budgetPageAdapter;
     SavingsPageAdapter savingsPageAdapter;
     SettingsPageAdapter settingsPageAdapter;
 
     private DrawerLayout drawerLayout;
     private ListView drawerList;
     private ActionBarDrawerToggle drawerToggle;
-    private CharSequence drawerTitle;
-    private CharSequence title;
+    private CharSequence drawerTitle, title;
     private String[] menuArray;
     ViewPager pager;
 
@@ -88,7 +85,7 @@ public class MainActivity extends FragmentActivity {
         List<Fragment> savingsFragments = GetSavingsFragments();
         List<Fragment> settingsFragments = GetSettingsFragments();
 
-        accountPageAdapter = new AccountPageAdapter(getSupportFragmentManager(), accountFragments, 0);
+        budgetPageAdapter = new BudgetPageAdapter(getSupportFragmentManager(), accountFragments, 0);
         savingsPageAdapter = new SavingsPageAdapter(getSupportFragmentManager(), savingsFragments, 1);
         settingsPageAdapter = new SettingsPageAdapter(getSupportFragmentManager(), settingsFragments, 2);
 
@@ -169,8 +166,8 @@ public class MainActivity extends FragmentActivity {
         {
             case 0:
                 List<Fragment> accountFragments = GetAccountFragments();
-                accountPageAdapter = new AccountPageAdapter(getSupportFragmentManager(), accountFragments, 0);
-                pager.setAdapter(accountPageAdapter);
+                budgetPageAdapter = new BudgetPageAdapter(getSupportFragmentManager(), accountFragments, 0);
+                pager.setAdapter(budgetPageAdapter);
                 break;
             case 1:
                 List<Fragment> savingsFragments = GetSavingsFragments();

@@ -4,7 +4,6 @@ import Helpers.Banker;
 import Helpers.ChartHelpers;
 import Helpers.Income;
 import Helpers.User;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,13 +20,10 @@ import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 import java.io.IOException;
-import java.text.Format;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
 
 
 /**

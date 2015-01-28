@@ -151,63 +151,6 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         }
     };
 
-    public void UpdateDayText()
-    {
-        Format formatter = new SimpleDateFormat("dd/MM/yyyy");
-        txtIncomeDate.setText(formatter.format(dateBeingViewed));
-    }
-
-    public void UpdateMonthText()
-    {
-        Format formatter = new SimpleDateFormat("MM");
-        String[] months = getResources().getStringArray(R.array.turkishMonths);
-        String month = "m";
-
-        switch (Integer.parseInt(formatter.format(dateBeingViewed)))
-        {
-            case 1:
-                month = months[0];
-                break;
-            case 2:
-                month = months[1];
-                break;
-            case 3:
-                month = months[2];
-                break;
-            case 4:
-                month = months[3];
-                break;
-            case 5:
-                month = months[4];
-                break;
-            case 6:
-                month = months[5];
-                break;
-            case 7:
-                month = months[6];
-                break;
-            case 8:
-                month = months[7];
-                break;
-            case 9:
-                month = months[8];
-                break;
-            case 10:
-                month = months[9];
-                break;
-            case 11:
-                month = months[10];
-                break;
-            case 12:
-                month = months[11];
-                break;
-
-        }
-
-        Format formatterYear = new SimpleDateFormat("yyyy");
-        month += " " + formatterYear.format(dateBeingViewed);
-        txtIncomeDate.setText(month);
-    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -301,12 +244,12 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         if(day)
         {
             incomes = _user.GetBanker().GetIncomesFromDay(date);
-            UpdateDayText();
+            txtIncomeDate.setText(ChartHelpers.GetDayText(date));
         }
         else
         {
             incomes = _user.GetBanker().GetIncomesFromMonth(date);
-            UpdateMonthText();
+            txtIncomeDate.setText(ChartHelpers.GetMonthText(date,getResources()));
         }
         BigDecimal total = BigDecimal.ZERO;
 
