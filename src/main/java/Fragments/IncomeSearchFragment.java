@@ -317,6 +317,8 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
             Income inc = (Income)adapter.getItem(position);
 
             Bundle bundle = new Bundle();
+            bundle.putBoolean("canDelete", true);
+
             bundle.putString("income", new Gson().toJson(inc));
             dialog.setArguments(bundle);
             dialog.show(getActivity().getFragmentManager(), "dialog");

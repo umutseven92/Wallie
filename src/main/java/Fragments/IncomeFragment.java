@@ -275,6 +275,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             Income inc = (Income)adapter.getItem(position);
 
             Bundle bundle = new Bundle();
+            bundle.putBoolean("canDelete", true);
             bundle.putString("income", new Gson().toJson(inc));
 
             dialog.setArguments(bundle);

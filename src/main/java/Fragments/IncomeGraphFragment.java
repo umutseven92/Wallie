@@ -18,6 +18,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.Legend;
 import com.github.mikephil.charting.utils.XLabels;
 import com.github.mikephil.charting.utils.YLabels;
+import com.google.gson.Gson;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
 import org.json.JSONException;
@@ -37,6 +38,8 @@ public class IncomeGraphFragment  extends Fragment implements OnChartValueSelect
     User user;
     Date dateBeingViewed;
     LineChart incomeLineChart;
+    ArrayList<String> xVals;
+    List<Income> incomes;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -86,9 +89,9 @@ public class IncomeGraphFragment  extends Fragment implements OnChartValueSelect
 
         incomeLineChart.clear();
 
-        List<Income> incomes = user.GetBanker().GetIncomesFromMonth(dateBeingViewed);
+        incomes = user.GetBanker().GetIncomesFromMonth(dateBeingViewed);
 
-        ArrayList<String> xVals = new ArrayList<String>();
+        xVals = new ArrayList<String>();
         for (Income income : incomes) {
             xVals.add((DateFormatHelper.GetDayText(income.GetDate())));
         }
@@ -174,6 +177,15 @@ public class IncomeGraphFragment  extends Fragment implements OnChartValueSelect
 
     @Override
     public void onValueSelected(Entry entry, int i) {
+        Income income = incomes.get(entry.getXIndex());
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("canDelete", false);
+
+        bundle.putString("income", new Gson().toJson(income));
+        IncomeDialogFragment dialog = new IncomeDialogFragment();
+
+        dialog.setArguments(bundle);
+        dialog.show(getActivity().getFragmentManager(), "dialog");
 
     }
 

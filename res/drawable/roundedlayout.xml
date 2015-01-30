@@ -12,7 +12,7 @@
    <!-- <item android:right="3dp" android:left="-3dp" android:bottom="3dp" android:top="-3dp"> -->
     <item>
         <shape xmlns:android="http://schemas.android.com/apk/res/android">
-            <solid android:color="#FFF8F3"/>
+            <solid android:color="#fffff0"/>
             <stroke android:color="#FFC89A" android:width="2dp"/>
             <corners android:radius="20dp"/>
         </shape>

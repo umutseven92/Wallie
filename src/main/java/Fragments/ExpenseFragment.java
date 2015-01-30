@@ -62,7 +62,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         btnExpenseStats.setOnClickListener(onExpenseStatsClick);
         lv.setOnItemClickListener(onItemClickListener);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, R.layout.cuzdanspinneritem);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnDate.setAdapter(adapter);
         spnDate.setOnItemSelectedListener(this);

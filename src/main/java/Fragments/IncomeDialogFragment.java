@@ -1,5 +1,6 @@
 package Fragments;
 
+import Helpers.DateFormatHelper;
 import Helpers.Income;
 import Helpers.IncomeLoadListener;
 import android.app.AlertDialog;
@@ -32,26 +33,42 @@ public class IncomeDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         Bundle bundle = getArguments();
         final Income income = new Gson().fromJson(bundle.getString("income"), Income.class);
+        boolean canDelete = bundle.getBoolean("canDelete");
 
-        builder.setTitle( Html.fromHtml("Detaylar"))
-                .setMessage(String.format("Kategori: %s\n\nAlt Kategori: %s\n\nAçıklama: %s",income.GetCategory(),income.GetSubCategory(),income.GetDescription()))
-                .setPositiveButton("Sil", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        try {
-                            DeleteIncome(income.GetID());
-                            _listener.onDismissed();
-                            dismiss();
-                        } catch (IOException e) {
-                            e.printStackTrace();
+        if(canDelete) {
+            builder.setTitle(Html.fromHtml("Detaylar"))
+                    .setMessage(String.format("Tarih: %s\n\nKategori: %s\n\nAlt Kategori: %s\n\nMiktar: %s\n\nAçıklama: %s", DateFormatHelper.GetDayText(income.GetDate()), income.GetCategory(), income.GetSubCategory(), income.GetAmount().toString(), income.GetDescription()))
+                    .setPositiveButton("Sil", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            try {
+                                DeleteIncome(income.GetID());
+                                _listener.onDismissed();
+                                dismiss();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
-                    }
-                }).setNegativeButton("Geri", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dismiss();
-            }
-        });
+                    }).setNegativeButton("Geri", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dismiss();
+                }
+            });
+
+        }
+        else
+        {
+            builder.setTitle(Html.fromHtml("Detaylar"))
+                    .setMessage(String.format("Tarih: %s\n\nKategori: %s\n\nAlt Kategori: %s\n\nMiktar: %s\n\nAçıklama: %s", DateFormatHelper.GetDayText(income.GetDate()), income.GetCategory(), income.GetSubCategory(), income.GetAmount().toString(), income.GetDescription()))
+                    .setNegativeButton("Geri", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dismiss();
+                }
+            });
+
+        }
 
         return builder.create();
     }

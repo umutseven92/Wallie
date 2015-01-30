@@ -20,7 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.graviton.Cuzdan.R;
 
 /**
  * Created by Umut Seven on 15.11.2014, for Graviton.

@@ -1,5 +1,6 @@
 package Fragments;
 
+import Helpers.DateFormatHelper;
 import Helpers.Expense;
 import Helpers.ExpenseLoadListener;
 import android.app.AlertDialog;
@@ -31,7 +32,7 @@ public class ExpenseDialogFragment extends DialogFragment{
         final Expense expense = new Gson().fromJson(bundle.getString("expense"), Expense.class);
 
         builder.setTitle( Html.fromHtml("Detaylar"))
-                .setMessage(String.format("Gider Türü: %s\n\nKategori: %s\n\nAlt Kategori: %s\n\nAçıklama: %s",expense.GetTurkishStringTag(),expense.GetCategory(),expense.GetSubCategory(),expense.GetDescription()))
+                .setMessage(String.format("Tarih: %s\n\nGider Türü: %s\n\nKategori: %s\n\nAlt Kategori: %s\n\nAçıklama: %s", DateFormatHelper.GetDayText(expense.GetDate()),expense.GetTurkishStringTag(),expense.GetCategory(),expense.GetSubCategory(),expense.GetDescription()))
                 .setPositiveButton("Sil", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

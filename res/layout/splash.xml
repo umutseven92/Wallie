@@ -3,12 +3,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="#fffff0">
+              android:layout_height="match_parent">
 
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:layout_gravity="center_horizontal"
-            android:background="#fffff0">
+            android:background="#ff4444">
         <ImageView
                 android:layout_width="192dp"
                 android:layout_height="192dp"

@@ -54,7 +54,7 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         leftArrow.setOnClickListener(onLeftArrowClick);
         rightArrow.setOnClickListener(onRightArrowClick);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.balanceDateArray, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.balanceDateArray, R.layout.cuzdanspinneritem);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnDate.setAdapter(adapter);
         spnDate.setOnItemSelectedListener(this);

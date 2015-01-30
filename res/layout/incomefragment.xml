@@ -4,7 +4,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:id="@+id/lytIncome"
-              android:weightSum="1" android:background="#FFA458">
+              android:weightSum="1" android:background="@drawable/mainlayout">
 
     <RelativeLayout
             android:layout_width="match_parent"
