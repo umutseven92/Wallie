@@ -110,6 +110,8 @@ public class IncomeGraphFragment  extends Fragment implements OnChartValueSelect
 
         ArrayList<LineDataSet> dataSets = new ArrayList<LineDataSet>();
 
+        dataSets.add(set);
+
         LineData data = new LineData(xVals, dataSets);
         incomeLineChart.setData(data);
     }

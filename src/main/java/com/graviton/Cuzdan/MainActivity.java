@@ -5,10 +5,12 @@ import Helpers.BudgetPageAdapter;
 import Helpers.SavingsPageAdapter;
 import Helpers.SettingsPageAdapter;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.*;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
@@ -42,10 +44,14 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         pager = (ViewPager) findViewById(R.id.pager);
+
         title = drawerTitle = getTitle();
         menuArray = getResources().getStringArray(R.array.menuArray);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.left_drawer);
+        PagerTabStrip t = (PagerTabStrip)findViewById(R.id.pagerTitle);
+        t.setTextColor(Color.parseColor("#ff0000"));
+        t.setTabIndicatorColor(Color.parseColor("#ff0000"));
 
         // set a custom shadow that overlays the main content when the drawer opens
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);

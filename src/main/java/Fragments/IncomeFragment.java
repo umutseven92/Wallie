@@ -1,6 +1,7 @@
 package Fragments;
 
 import Helpers.*;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -51,6 +52,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         btnAddIncome = (ImageButton)infView.findViewById(R.id.btnAddIncome);
         btnIncomeStats = (ImageButton)infView.findViewById(R.id.btnIncomeStats);
         lv = (ListView)infView.findViewById(R.id.lstIncomes);
+
         dialog = new IncomeDialogFragment();
         dialog.SetListener(this);
 
@@ -60,7 +62,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         btnIncomeStats.setOnClickListener(onIncomeStatsClick);
         lv.setOnItemClickListener(onItemClickListener);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, R.layout.cuzdanspinneritem);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnDate.setAdapter(adapter);
         spnDate.setOnItemSelectedListener(this);
@@ -274,6 +276,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
             Bundle bundle = new Bundle();
             bundle.putString("income", new Gson().toJson(inc));
+
             dialog.setArguments(bundle);
             dialog.show(getActivity().getFragmentManager(), "dialog");
         }

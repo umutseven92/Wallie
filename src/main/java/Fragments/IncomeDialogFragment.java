@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Html;
+import android.widget.TextView;
 import com.google.gson.Gson;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.MainActivity;
@@ -46,11 +47,12 @@ public class IncomeDialogFragment extends DialogFragment {
                         }
                     }
                 }).setNegativeButton("Geri", new DialogInterface.OnClickListener() {
-                    @Override
-                     public void onClick(DialogInterface dialog, int which) {
-                        dismiss();
-                    }
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dismiss();
+            }
         });
+
         return builder.create();
     }
 
