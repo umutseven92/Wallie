@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:background="@drawable/mainlayout">
+                android:layout_height="match_parent" android:background="@drawable/main_layout">
 
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="60dp"
                     android:layout_marginTop="0dp"
@@ -10,17 +10,17 @@
         <Spinner android:layout_width="80dp" android:layout_height="35dp" android:id="@+id/spnExpenseTags"
                  android:spinnerMode="dropdown" android:layout_alignParentTop="true"
                  android:layout_alignParentLeft="true" android:layout_marginLeft="10dp"
-                 android:layout_marginTop="12dp" android:background="@drawable/roundedspinner"/>
+                 android:layout_marginTop="12dp" android:background="@drawable/rounded_spinner"/>
         <Spinner android:layout_width="120dp" android:layout_height="35dp"
                  android:id="@+id/spnExpenseCategory" android:spinnerMode="dropdown"
                  android:layout_marginLeft="15dp" android:layout_alignTop="@+id/spnExpenseTags"
-                 android:layout_toRightOf="@+id/spnExpenseTags" android:background="@drawable/roundedspinner"/>
+                 android:layout_toRightOf="@+id/spnExpenseTags" android:background="@drawable/rounded_spinner"/>
         <Spinner
                 android:layout_width="120dp"
                 android:layout_height="35dp"
                 android:id="@+id/spnExpenseSubCategory" android:layout_alignTop="@+id/spnExpenseCategory"
                 android:layout_toRightOf="@+id/spnExpenseCategory" android:layout_marginLeft="10dp"
-                android:spinnerMode="dropdown" android:background="@drawable/roundedspinner"/>
+                android:spinnerMode="dropdown" android:background="@drawable/rounded_spinner"/>
     </RelativeLayout>
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="50dp"
                     android:layout_below="@+id/relativeLayout3" android:layout_centerHorizontal="true"
@@ -31,7 +31,7 @@
                      android:scaleType="fitXY"/>
         <Spinner android:layout_width="70dp" android:layout_height="35dp" android:id="@+id/spnSearchExpenseDate"
                  android:spinnerMode="dropdown" android:layout_alignParentTop="true"
-                 android:layout_centerHorizontal="true" android:background="@drawable/roundedspinner"/>
+                 android:layout_centerHorizontal="true" android:background="@drawable/rounded_spinner"/>
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgSearchRight"
                      android:src="@drawable/arrowright" android:background="#10ffffff"
                      android:layout_centerVertical="true" android:layout_toRightOf="@+id/spnSearchExpenseDate"
@@ -41,7 +41,7 @@
             android:layout_width="fill_parent"
             android:layout_height="390dp" android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:layout_marginBottom="15dp"
-            android:background="@drawable/roundedlayout">
+            android:background="@drawable/rounded_layout">
         <ListView android:layout_width="wrap_content" android:layout_height="wrap_content"
                   android:id="@+id/lstSearchExpense"
                   android:layout_marginTop="65dp" android:layout_marginLeft="5dp" android:layout_marginRight="5dp"

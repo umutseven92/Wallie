@@ -8,4 +8,4 @@
           android:layout_height="wrap_content"
           android:ellipsize="marquee"
           android:gravity="center"
-          android:textAlignment="inherit"/>
+          />

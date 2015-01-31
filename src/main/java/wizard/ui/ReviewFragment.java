@@ -55,7 +55,7 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.addbalancefragmentpage, container, false);
+        View rootView = inflater.inflate(R.layout.add_balance_fragment_page, container, false);
 
         TextView titleView = (TextView) rootView.findViewById(android.R.id.title);
         titleView.setText(R.string.review);

@@ -43,7 +43,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        v = inflater.inflate(R.layout.incomesearchfragment, container, false);
+        v = inflater.inflate(R.layout.income_search_fragment, container, false);
         dateBeingViewed = new Date();
         _user = ((Global) getActivity().getApplication()).GetUser();
 

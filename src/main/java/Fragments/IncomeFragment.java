@@ -1,7 +1,6 @@
 package Fragments;
 
 import Helpers.*;
-import android.app.DialogFragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -42,7 +41,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        infView = inflater.inflate(R.layout.incomefragment, container, false);
+        infView = inflater.inflate(R.layout.income_fragment, container, false);
 
         Spinner spnDate = (Spinner)infView.findViewById(R.id.spnDateIncome);
         btnLeftArrow = (ImageButton)infView.findViewById(R.id.imgLeftIncome);
@@ -62,7 +61,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         btnIncomeStats.setOnClickListener(onIncomeStatsClick);
         lv.setOnItemClickListener(onItemClickListener);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, R.layout.cuzdanspinneritem);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, R.layout.cuzdan_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnDate.setAdapter(adapter);
         spnDate.setOnItemSelectedListener(this);

@@ -42,7 +42,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        infView = inflater.inflate(R.layout.expensefragment, container, false);
+        infView = inflater.inflate(R.layout.expense_fragment, container, false);
 
         Spinner spnDate = (Spinner)infView.findViewById(R.id.spnDateExpense);
         leftArrow = (ImageButton)infView.findViewById(R.id.imgLeftExpense);
@@ -62,7 +62,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         btnExpenseStats.setOnClickListener(onExpenseStatsClick);
         lv.setOnItemClickListener(onItemClickListener);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, R.layout.cuzdanspinneritem);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, R.layout.cuzdan_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnDate.setAdapter(adapter);
         spnDate.setOnItemSelectedListener(this);

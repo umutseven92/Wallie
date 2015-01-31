@@ -18,7 +18,7 @@ public class SavingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.savingsfragment, container, false);
+        View v = inflater.inflate(R.layout.savings_fragment, container, false);
         return v;
     }
 }

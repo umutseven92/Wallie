@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:background="@drawable/mainlayout">
+                android:layout_height="match_parent" android:background="@drawable/main_layout">
 
     <RelativeLayout
             android:layout_width="fill_parent"
@@ -11,7 +11,7 @@
                 android:layout_width="100dp"
                 android:layout_height="35dp"
                 android:id="@+id/spnExpensePieDate" android:layout_centerVertical="true" android:layout_centerHorizontal="true"
-                android:spinnerMode="dropdown" android:background="@drawable/roundedspinner"/>
+                android:spinnerMode="dropdown" android:background="@drawable/rounded_spinner"/>
         <ImageButton
                 android:layout_width="32dp"
                 android:layout_height="32dp"

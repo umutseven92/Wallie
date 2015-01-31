@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="@drawable/mainlayout">
+              android:layout_height="match_parent" android:background="@drawable/main_layout">
 
     <RelativeLayout
             android:layout_width="fill_parent"
@@ -15,7 +15,7 @@
                 android:spinnerMode="dropdown"
                 android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
                 android:layout_marginLeft="10dp" android:layout_marginTop="12dp"
-                android:background="@drawable/roundedspinner"/>
+                android:background="@drawable/rounded_spinner"/>
         <Spinner
                 android:layout_width="160dp"
                 android:layout_height="35dp"
@@ -23,7 +23,7 @@
                 android:spinnerMode="dropdown"
                 android:layout_alignParentTop="true" android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp" android:layout_marginTop="12dp"
-                android:background="@drawable/roundedspinner"/>
+                android:background="@drawable/rounded_spinner"/>
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="fill_parent"
@@ -35,7 +35,7 @@
                 android:id="@+id/spnSearchIncomeDate"
                 android:spinnerMode="dropdown"
                 android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-                android:background="@drawable/roundedspinner"/>
+                android:background="@drawable/rounded_spinner"/>
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgSearchLeftIncome"
                      android:src="@drawable/arrowleft" android:background="#10ffffff"
                      android:layout_centerVertical="true" android:layout_toLeftOf="@+id/spnSearchIncomeDate"
@@ -48,7 +48,7 @@
     <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="390dp"
-            android:background="@drawable/roundedlayout" android:layout_alignParentBottom="true"
+            android:background="@drawable/rounded_layout" android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
             android:layout_marginBottom="15dp" android:id="@+id/relativeLayout2">
         <ListView

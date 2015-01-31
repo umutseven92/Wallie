@@ -44,7 +44,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        v = inflater.inflate(R.layout.expensesearchfragment, container, false);
+        v = inflater.inflate(R.layout.expense_search_fragment, container, false);
         dateBeingViewed = new Date();
         _user = ((Global) getActivity().getApplication()).GetUser();
         lv = (ListView)v.findViewById(R.id.lstSearchExpense);

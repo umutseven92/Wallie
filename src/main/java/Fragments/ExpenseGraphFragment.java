@@ -16,7 +16,7 @@ public class ExpenseGraphFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View v = inflater.inflate(R.layout.expensegraphfragment, container, false);
+        View v = inflater.inflate(R.layout.expense_graph_fragment, container, false);
 
         return v;
     }

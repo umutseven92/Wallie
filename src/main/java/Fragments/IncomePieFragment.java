@@ -39,7 +39,7 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View v = inflater.inflate(R.layout.incomepiefragment, container,false);
+        View v = inflater.inflate(R.layout.income_pie_fragment, container,false);
 
         spnIncomePieDate = (Spinner)v.findViewById(R.id.spnIncomePieDate);
         incomePieChart = (PieChart)v.findViewById(R.id.incomePieChart);

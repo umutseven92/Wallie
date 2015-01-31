@@ -44,7 +44,7 @@ public class IncomeGraphFragment  extends Fragment implements OnChartValueSelect
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View v = inflater.inflate(R.layout.incomegraphfragment, container, false);
+        View v = inflater.inflate(R.layout.income_graph_fragment, container, false);
 
         user =  ((Global)getActivity().getApplication()).GetUser();
         incomeLineChart = (LineChart)v.findViewById(R.id.incomeGraph);

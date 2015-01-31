@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="@drawable/mainlayout">
+              android:layout_height="match_parent" android:background="@drawable/main_layout">
 
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="45dp" android:id="@+id/relativeLayout"
                     android:layout_marginTop="100dp">
@@ -18,7 +18,7 @@
                      android:scaleType="fitXY"/>
         <Spinner android:layout_width="100dp" android:layout_height="35dp" android:id="@+id/spnDateBalance"
                  android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-                 android:background="@drawable/roundedspinner"/>
+                 android:background="@drawable/rounded_spinner"/>
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="match_parent"
@@ -26,7 +26,7 @@
         <RelativeLayout
                 android:layout_width="400dp"
                 android:layout_height="200dp"
-                android:background="@drawable/roundedlayout"
+                android:background="@drawable/rounded_layout"
                 android:layout_marginRight="10dp" android:layout_marginLeft="10dp">
             <TextView
                     android:layout_width="wrap_content"

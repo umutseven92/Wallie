@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import org.json.*;
 
 import java.io.*;
@@ -26,7 +25,7 @@ public class SplashActivity extends Activity {
         // Let there be light!
         super.onCreate(bundle);
 
-        setContentView(R.layout.splash);
+        setContentView(R.layout.splash_fragment);
 
         User user = null;
 

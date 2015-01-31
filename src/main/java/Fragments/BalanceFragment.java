@@ -41,7 +41,7 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        infView = inflater.inflate(R.layout.balancefragment, container, false);
+        infView = inflater.inflate(R.layout.balance_fragment, container, false);
         _user = ((Global) getActivity().getApplication()).GetUser();
 
         Spinner spnDate = (Spinner)infView.findViewById(R.id.spnDateBalance);
@@ -54,7 +54,7 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         leftArrow.setOnClickListener(onLeftArrowClick);
         rightArrow.setOnClickListener(onRightArrowClick);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.balanceDateArray, R.layout.cuzdanspinneritem);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.balanceDateArray, R.layout.cuzdan_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnDate.setAdapter(adapter);
         spnDate.setOnItemSelectedListener(this);

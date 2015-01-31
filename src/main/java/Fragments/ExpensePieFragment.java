@@ -42,7 +42,7 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View v = inflater.inflate(R.layout.expensepiefragment, container,false);
+        View v = inflater.inflate(R.layout.expense_pie_fragment, container,false);
         spnExpenseDate = (Spinner)v.findViewById(R.id.spnExpensePieDate);
         expensePieChart = (PieChart)v.findViewById(R.id.expensePieChart);
         imgLeft = (ImageButton)v.findViewById(R.id.imgExpensePieLeft);

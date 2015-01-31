@@ -4,7 +4,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:id="@+id/lytIncome"
-              android:weightSum="1" android:background="@drawable/mainlayout">
+              android:weightSum="1" android:background="@drawable/main_layout">
 
     <RelativeLayout
             android:layout_width="match_parent"
@@ -14,7 +14,7 @@
                 android:layout_height="35dp"
                 android:id="@+id/spnDateIncome"
                 android:spinnerMode="dropdown" android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" android:background="@drawable/roundedspinner"/>
+                android:layout_centerHorizontal="true" android:background="@drawable/rounded_spinner"/>
         <ImageButton
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="390dp"
             android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:id="@+id/lytMainIncomes"
-            android:background="@drawable/roundedlayout" android:layout_marginTop="5dp">
+            android:background="@drawable/rounded_layout" android:layout_marginTop="5dp">
         <ListView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
