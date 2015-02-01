@@ -67,7 +67,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
         spnSearchDate = (Spinner)v.findViewById(R.id.spnSearchExpenseDate);
         spnSearchDate.setOnItemSelectedListener(this);
 
-        ArrayAdapter<CharSequence> tagAdapter = ArrayAdapter.createFromResource(v.getContext(), R.array.expenseTags, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> tagAdapter = ArrayAdapter.createFromResource(v.getContext(), R.array.expenseTags, R.layout.cuzdan_spinner_item);
         tagAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnSearchTags.setAdapter(tagAdapter);
         spnSearchTags.setOnItemSelectedListener(this);
@@ -75,7 +75,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
         spnSearchCategory.setOnItemSelectedListener(this);
         spnSearchSubCategory.setOnItemSelectedListener(this);
 
-        ArrayAdapter<CharSequence> dateAdapter = ArrayAdapter.createFromResource(v.getContext(), R.array.balanceDateArray, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> dateAdapter = ArrayAdapter.createFromResource(v.getContext(), R.array.balanceDateArray, R.layout.cuzdan_spinner_item);
         dateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnSearchDate.setAdapter(dateAdapter);
         spnSearchDate.setOnItemSelectedListener(this);
@@ -168,7 +168,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                 String tag = parent.getSelectedItem().toString();
                 int catID = getResources().getIdentifier(tag,"array",getActivity().getPackageName());
 
-                ArrayAdapter<CharSequence> categoryAdapter = ArrayAdapter.createFromResource(v.getContext(), catID, android.R.layout.simple_spinner_item);
+                ArrayAdapter<CharSequence> categoryAdapter = ArrayAdapter.createFromResource(v.getContext(), catID, R.layout.cuzdan_spinner_item);
                 categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spnSearchCategory.setAdapter(categoryAdapter);
 
@@ -183,7 +183,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                 }
                 int subID2 = getResources().getIdentifier(item2,"array",getActivity().getPackageName());
 
-                ArrayAdapter<CharSequence> subCategoryAdapter2 = ArrayAdapter.createFromResource(v.getContext(), subID2, android.R.layout.simple_spinner_item);
+                ArrayAdapter<CharSequence> subCategoryAdapter2 = ArrayAdapter.createFromResource(v.getContext(), subID2, R.layout.cuzdan_spinner_item);
                 subCategoryAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spnSearchSubCategory.setAdapter(subCategoryAdapter2);
 
@@ -228,7 +228,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                 }
                 int subID = getResources().getIdentifier(item,"array",getActivity().getPackageName());
 
-                ArrayAdapter<CharSequence> subCategoryAdapter = ArrayAdapter.createFromResource(v.getContext(), subID, android.R.layout.simple_spinner_item);
+                ArrayAdapter<CharSequence> subCategoryAdapter = ArrayAdapter.createFromResource(v.getContext(), subID, R.layout.cuzdan_spinner_item);
                 subCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spnSearchSubCategory.setAdapter(subCategoryAdapter);
 

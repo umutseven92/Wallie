@@ -3,4 +3,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" android:background="@drawable/main_layout">
 
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Month"
+                android:id="@+id/txtExpenseGraphDate"
+                android:layout_centerVertical="true" android:layout_centerHorizontal="true"
+                android:textColor="#ff000000"/>
+        <ImageButton
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/imgExpenseGraphLeft" android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/txtExpenseGraphDate" android:layout_toStartOf="@+id/txtExpenseGraphDate"
+                android:background="@drawable/left_arrow" android:scaleType="fitXY" android:layout_marginRight="60dp"/>
+        <ImageButton
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/imgExpenseGraphRight" android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/txtExpenseGraphDate" android:layout_toEndOf="@+id/txtExpenseGraphDate"
+                android:layout_marginLeft="60dp" android:scaleType="fitXY" android:background="@drawable/right_arrow"/>
+    </RelativeLayout>
+    <com.github.mikephil.charting.charts.LineChart android:layout_width="match_parent"
+                                                   android:layout_height="1000dp" android:id="@+id/expenseGraph" android:layout_marginTop="50dp"/>
 </RelativeLayout>

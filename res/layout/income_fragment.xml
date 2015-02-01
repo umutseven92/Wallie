@@ -19,14 +19,14 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:id="@+id/imgLeftIncome"
-                android:src="@drawable/arrowleft" android:background="#10ffffff"
+                android:src="@drawable/arrowleft" android:background="@drawable/left_arrow"
                 android:layout_marginRight="35dp" android:layout_alignTop="@+id/imgRightIncome"
                 android:layout_toLeftOf="@+id/spnDateIncome" android:scaleType="fitXY"/>
         <ImageButton
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:id="@+id/imgRightIncome"
-                android:src="@drawable/arrowright" android:background="#10ffffff"
+                android:src="@drawable/arrowright" android:background="@drawable/right_arrow"
                 android:layout_centerVertical="true" android:layout_toRightOf="@+id/spnDateIncome"
                 android:layout_marginLeft="35dp" android:scaleType="fitXY"/>
     </RelativeLayout>
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/lstIncomes"
                 android:layout_alignParentLeft="true" android:layout_marginTop="65dp" android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp" android:divider="#FFC89A" android:dividerHeight="1dp"/>
+                android:layout_marginRight="5dp" android:divider="@color/outline" android:dividerHeight="1dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -76,14 +76,14 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:id="@+id/btnIncomeStats" android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true" android:src="@drawable/piechart"
-                    android:background="#10ffffff" android:layout_marginRight="10dp" android:scaleType="fitXY"/>
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/stats_button" android:layout_marginRight="10dp" android:scaleType="fitXY"/>
             <ImageButton
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:id="@+id/btnAddIncome" android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" android:src="@drawable/greenplus"
-                    android:scaleType="fitXY" android:background="#10ffffff"/>
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="fitXY" android:background="@drawable/green_button"/>
         </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>

@@ -65,14 +65,14 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
         spnSearchDate = (Spinner)v.findViewById(R.id.spnSearchIncomeDate);
         spnSearchDate.setOnItemSelectedListener(this);
 
-        ArrayAdapter<CharSequence> categoryAdapter = ArrayAdapter.createFromResource(v.getContext(), R.array.incomeCategories, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> categoryAdapter = ArrayAdapter.createFromResource(v.getContext(), R.array.incomeCategories, R.layout.cuzdan_spinner_item);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnSearchCategory.setAdapter(categoryAdapter);
         spnSearchCategory.setOnItemSelectedListener(this);
 
         spnSearchSubCategory.setOnItemSelectedListener(this);
 
-        ArrayAdapter<CharSequence> dateAdapter = ArrayAdapter.createFromResource(v.getContext(), R.array.balanceDateArray, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> dateAdapter = ArrayAdapter.createFromResource(v.getContext(), R.array.balanceDateArray, R.layout.cuzdan_spinner_item);
         dateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnSearchDate.setAdapter(dateAdapter);
         spnSearchDate.setOnItemSelectedListener(this);
@@ -172,7 +172,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                 }
                 int subID = getResources().getIdentifier(item,"array",getActivity().getPackageName());
 
-                ArrayAdapter<CharSequence> subCategoryAdapter = ArrayAdapter.createFromResource(v.getContext(), subID, android.R.layout.simple_spinner_item);
+                ArrayAdapter<CharSequence> subCategoryAdapter = ArrayAdapter.createFromResource(v.getContext(), subID, R.layout.cuzdan_spinner_item);
                 subCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spnSearchSubCategory.setAdapter(subCategoryAdapter);
 

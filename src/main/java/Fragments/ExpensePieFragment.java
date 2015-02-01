@@ -54,7 +54,7 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
         user = ((Global)getActivity().getApplication()).GetUser();
         dateBeingViewed = new Date();
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(v.getContext(), R.array.balanceDateArray, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(v.getContext(), R.array.balanceDateArray, R.layout.cuzdan_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnExpenseDate.setAdapter(adapter);
         spnExpenseDate.setOnItemSelectedListener(this);

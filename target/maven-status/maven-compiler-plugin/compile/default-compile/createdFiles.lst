@@ -110,10 +110,10 @@ wizard\model\BalanceInfoPage.class
 com\graviton\Cuzdan\R.class
 com\graviton\Cuzdan\SplashActivity$1.class
 com\graviton\Cuzdan\ExpenseStatsActivity.class
+wizard\model\BranchPage$Branch.class
 Fragments\IncomeGraphFragment$1.class
 Fragments\IncomePieFragment$1.class
 Helpers\DecimalDigitsInputFilter.class
-wizard\model\BranchPage$Branch.class
 wizard\ui\StepPagerStrip$OnPageSelectedListener.class
 com\graviton\Cuzdan\R$array.class
 com\graviton\Cuzdan\IncomeWizardActivity.class

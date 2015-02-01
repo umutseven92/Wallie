@@ -8,11 +8,11 @@
             android:layout_width="fill_parent"
             android:layout_height="45dp" android:id="@+id/lytDate" android:layout_marginTop="2dp">
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgLeftExpense"
-                     android:src="@drawable/arrowleft" android:background="#10ffffff" android:layout_centerVertical="true"
+                     android:src="@drawable/arrowleft" android:background="@drawable/left_arrow" android:layout_centerVertical="true"
                      android:layout_toLeftOf="@+id/spnDateExpense" android:layout_marginRight="35dp"
                      android:scaleType="fitXY"/>
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgRightExpense"
-                     android:background="#10ffffff"
+                     android:background="@drawable/right_arrow"
                      android:src="@drawable/arrowright" android:layout_alignTop="@+id/imgLeftExpense"
                      android:layout_toRightOf="@+id/spnDateExpense" android:layout_marginLeft="35dp"
                      android:scaleType="fitXY"/>
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/lstExpenses"
                 android:layout_alignParentLeft="true" android:layout_marginTop="65dp" android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp" android:divider="@color/outline" android:dividerHeight="1dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -66,13 +66,13 @@
                     android:layout_height="50dp"
                     android:id="@+id/btnExpenseStats" android:layout_centerVertical="true"
                     android:layout_alignParentRight="true" android:src="@drawable/piechart"
-                    android:background="#10ffffff" android:layout_marginRight="10dp" android:scaleType="fitXY"/>
+                    android:background="@drawable/stats_button" android:layout_marginRight="10dp" android:scaleType="fitXY"/>
             <ImageButton
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:id="@+id/btnAddExpense" android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" android:src="@drawable/redminus"
-                    android:background="#10ffffff" android:scaleType="fitXY"/>
+                    android:background="@drawable/red_button" android:scaleType="fitXY"/>
         </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>

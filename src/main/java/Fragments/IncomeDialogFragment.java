@@ -110,7 +110,7 @@ public class IncomeDialogFragment extends DialogFragment {
         {
             JSONObject mainJSON = new JSONObject(main);
             JSONObject userJSON = mainJSON.getJSONObject("user");
-            JSONArray incomes = userJSON.getJSONArray("incomes");
+            JSONArray incomes = userJSON.getJSONArray("expenses");
             JSONArray expenses = userJSON.getJSONArray("expenses");
 
             String userSettings = String.format("{\n" +
@@ -122,13 +122,13 @@ public class IncomeDialogFragment extends DialogFragment {
                     "\t\t\"city\": \"Istanbul\",\n" +
                     "\t\t\"email\": \"umutseven92@gmail.com\",\n" +
                     "\n" +
-                    "\t\t\"incomes\": [],\n" +
+                    "\t\t\"expenses\": [],\n" +
                     "\t\t\"expenses\": []\n" +
                     "\t}\n" +
                     "}\n",userJSON.getString("userName"),userJSON.getString("name"),userJSON.getString("lastName") );
 
             JSONObject userInfo = new JSONObject(userSettings);
-            JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
+            JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("expenses");
             JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
 
             for(int i = 0; i< incomes.length();i++)

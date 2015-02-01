@@ -37,11 +37,11 @@
                 android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
                 android:background="@drawable/rounded_spinner"/>
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgSearchLeftIncome"
-                     android:src="@drawable/arrowleft" android:background="#10ffffff"
+                     android:src="@drawable/arrowleft" android:background="@drawable/left_arrow"
                      android:layout_centerVertical="true" android:layout_toLeftOf="@+id/spnSearchIncomeDate"
                      android:layout_marginRight="35dp" android:scaleType="fitXY"/>
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgSearchRightIncome"
-                     android:src="@drawable/arrowright" android:background="#10ffffff"
+                     android:src="@drawable/arrowright" android:background="@drawable/right_arrow"
                      android:layout_centerVertical="true" android:layout_toRightOf="@+id/spnSearchIncomeDate"
                      android:layout_marginLeft="35dp" android:scaleType="fitXY"/>
     </RelativeLayout>

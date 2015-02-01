@@ -17,13 +17,13 @@
                 android:layout_height="32dp"
                 android:id="@+id/imgExpensePieLeft" android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/spnExpensePieDate" android:layout_marginRight="35dp"
-                android:src="@drawable/arrowleft" android:scaleType="fitXY" android:background="#10ffffff"/>
+                android:src="@drawable/arrowleft" android:scaleType="fitXY" android:background="@drawable/left_arrow"/>
         <ImageButton
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:id="@+id/imgExpensePieRight" android:layout_alignTop="@+id/imgExpensePieLeft"
                 android:layout_toRightOf="@+id/spnExpensePieDate"
-                android:src="@drawable/arrowright" android:scaleType="fitXY" android:background="#10ffffff"
+                android:src="@drawable/arrowright" android:scaleType="fitXY" android:background="@drawable/right_arrow"
                 android:layout_marginLeft="35dp"/>
     </RelativeLayout>
     <com.github.mikephil.charting.charts.PieChart android:layout_width="match_parent"

@@ -23,4 +23,8 @@
     <color name="review_green">#216C2A</color>
     <color name="cuzdan_red">@android:color/holo_red_light</color>
     <color name="text_light">#66000000</color>
+    <color name="background">#FFA458</color>
+    <color name="outline">#FFC89A</color>
+    <color name="foreground">#fffff0</color>
+
 </resources>

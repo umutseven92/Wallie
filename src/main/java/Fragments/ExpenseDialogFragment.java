@@ -30,31 +30,47 @@ public class ExpenseDialogFragment extends DialogFragment{
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         Bundle bundle = getArguments();
         final Expense expense = new Gson().fromJson(bundle.getString("expense"), Expense.class);
+        boolean canDelete = bundle.getBoolean("canDelete");
 
-        builder.setTitle( Html.fromHtml("Detaylar"))
-                .setMessage(String.format("Tarih: %s\n\nGider Türü: %s\n\nKategori: %s\n\nAlt Kategori: %s\n\nAçıklama: %s", DateFormatHelper.GetDayText(expense.GetDate()),expense.GetTurkishStringTag(),expense.GetCategory(),expense.GetSubCategory(),expense.GetDescription()))
-                .setPositiveButton("Sil", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        try {
-                            DeleteExpense(expense.GetID());
-                           _listener.onDismissed();
-                            if(_secondListener != null)
-                            {
-                                _secondListener.onDismissed();
+        if(canDelete)
+        {
+            builder.setTitle( Html.fromHtml("Detaylar"))
+                    .setMessage(String.format("Tarih: %s\n\nGider Türü: %s\n\nKategori: %s\n\nAlt Kategori: %s\n\nMiktar: %s\n\nAçıklama: %s", DateFormatHelper.GetDayText(expense.GetDate()),expense.GetTurkishStringTag(),expense.GetCategory(),expense.GetSubCategory(),expense.GetAmount().toString(),expense.GetDescription()))
+                    .setPositiveButton("Sil", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            try {
+                                DeleteExpense(expense.GetID());
+                                _listener.onDismissed();
+                                if(_secondListener != null)
+                                {
+                                    _secondListener.onDismissed();
+                                }
+                                dismiss();
+                            } catch (IOException e) {
+                                e.printStackTrace();
                             }
-                            dismiss();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
 
-                    }
-                }).setNegativeButton("Geri", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dismiss();
-            }
-        });
+                        }
+                    }).setNegativeButton("Geri", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dismiss();
+                }
+            });
+
+        }
+        else
+        {
+           builder.setTitle( Html.fromHtml("Detaylar"))
+                    .setMessage(String.format("Tarih: %s\n\nGider Türü: %s\n\nKategori: %s\n\nAlt Kategori: %s\n\nMiktar: %s\n\nAçıklama: %s", DateFormatHelper.GetDayText(expense.GetDate()),expense.GetTurkishStringTag(),expense.GetCategory(),expense.GetSubCategory(),expense.GetAmount().toString(),expense.GetDescription()))
+                    .setNegativeButton("Geri", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dismiss();
+                }
+            });
+        }
         return builder.create();
     }
 
@@ -102,7 +118,7 @@ public class ExpenseDialogFragment extends DialogFragment{
         {
             JSONObject mainJSON = new JSONObject(main);
             JSONObject userJSON = mainJSON.getJSONObject("user");
-            JSONArray incomes = userJSON.getJSONArray("incomes");
+            JSONArray incomes = userJSON.getJSONArray("expenses");
             JSONArray expenses = userJSON.getJSONArray("expenses");
 
             String userSettings = String.format("{\n" +
@@ -114,13 +130,13 @@ public class ExpenseDialogFragment extends DialogFragment{
                     "\t\t\"city\": \"Istanbul\",\n" +
                     "\t\t\"email\": \"umutseven92@gmail.com\",\n" +
                     "\n" +
-                    "\t\t\"incomes\": [],\n" +
+                    "\t\t\"expenses\": [],\n" +
                     "\t\t\"expenses\": []\n" +
                     "\t}\n" +
                     "}\n",userJSON.getString("userName"),userJSON.getString("name"),userJSON.getString("lastName") );
 
             JSONObject userInfo = new JSONObject(userSettings);
-            JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
+            JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("expenses");
             JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
 
             for(int i = 0; i< expenses.length();i++)

@@ -8,7 +8,7 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:layout_gravity="center_horizontal"
-            android:background="@drawable/rounded_layout">
+            android:background="#fffff0">
         <ImageView
                 android:layout_width="192dp"
                 android:layout_height="192dp"

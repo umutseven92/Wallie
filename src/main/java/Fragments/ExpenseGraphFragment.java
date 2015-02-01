@@ -1,16 +1,47 @@
 package Fragments;
 
+import Helpers.*;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.OnChartValueSelectedListener;
+import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.Legend;
+import com.github.mikephil.charting.utils.XLabels;
+import com.github.mikephil.charting.utils.YLabels;
+import com.google.gson.Gson;
+import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Umut Seven on 27.1.2015, for Graviton.
  */
-public class ExpenseGraphFragment extends Fragment {
+public class ExpenseGraphFragment extends Fragment implements OnChartValueSelectedListener {
+
+    TextView txtExpenseGraphDate;
+    ImageButton imgLeft, imgRight;
+    User user;
+    Date dateBeingViewed;
+    LineChart expenseLineChart;
+    ArrayList<String> xVals;
+    List<Expense> expenses;
 
 
     @Override
@@ -18,7 +49,152 @@ public class ExpenseGraphFragment extends Fragment {
     {
         View v = inflater.inflate(R.layout.expense_graph_fragment, container, false);
 
+        user =  ((Global)getActivity().getApplication()).GetUser();
+        expenseLineChart = (LineChart)v.findViewById(R.id.expenseGraph);
+        txtExpenseGraphDate = (TextView)v.findViewById(R.id.txtExpenseGraphDate);
+        imgLeft = (ImageButton)v.findViewById(R.id.imgExpenseGraphLeft);
+        imgRight = (ImageButton)v.findViewById(R.id.imgExpenseGraphRight);
+
+        imgLeft.setOnClickListener(onLeftArrowClick);
+        imgRight.setOnClickListener(onRightArrowClick);
+        expenseLineChart.setOnChartValueSelectedListener(this);
+
+        dateBeingViewed = new Date();
+
+        ChartHelper.InitializeLineChart(expenseLineChart);
+        try {
+            LoadLineChart();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Legend l = expenseLineChart.getLegend();
+
+        l.setForm(Legend.LegendForm.LINE);
+        l.setTextColor(Color.BLACK);
+
+        XLabels xl = expenseLineChart.getXLabels();
+        xl.setTextColor(Color.BLACK);
+        xl.setTextSize(12f);
+
+        YLabels yl = expenseLineChart.getYLabels();
+        yl.setTextColor(Color.BLACK);
+        yl.setTextSize(12f);
+
         return v;
+
     }
 
+    public void LoadLineChart() throws ParseException, IOException, JSONException {
+        txtExpenseGraphDate.setText(DateFormatHelper.GetMonthText(dateBeingViewed, getResources()));
+
+        expenseLineChart.clear();
+
+        expenses = user.GetBanker().GetExpensesFromMonth(dateBeingViewed);
+
+        xVals = new ArrayList<String>();
+        for (Expense expense: expenses) {
+            xVals.add((DateFormatHelper.GetDayText(expense.GetDate())));
+        }
+
+        ArrayList<Entry> yVals = new ArrayList<Entry>();
+        for (int i = 0;i < expenses.size(); i++)
+        {
+            yVals.add(new Entry(expenses.get(i).GetAmount().floatValue(),i));
+        }
+
+        LineDataSet set = new LineDataSet(yVals, "Giderler");
+        set.setColor(getResources().getColor(R.color.cuzdan_red));
+        set.setCircleColor(ColorTemplate.getHoloBlue());
+        set.setLineWidth(4f);
+        set.setCircleSize(4f);
+        set.setFillAlpha(65);
+        set.setFillColor(ColorTemplate.getHoloBlue());
+        set.setHighLightColor(ColorTemplate.getHoloBlue());
+
+        ArrayList<LineDataSet> dataSets = new ArrayList<LineDataSet>();
+
+        dataSets.add(set);
+
+        LineData data = new LineData(xVals, dataSets);
+        expenseLineChart.setData(data);
+    }
+
+    View.OnClickListener onLeftArrowClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v){
+            try {
+                getLastDateIncomes();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
+    View.OnClickListener onRightArrowClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            try {
+                getNextDateIncomes();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
+    public void getNextDateIncomes() throws ParseException, JSONException, IOException {
+        Date today = new Date();
+
+        if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear())
+        {
+            return;
+        }
+
+        Calendar cal = Calendar.getInstance();
+
+        cal.setTime(dateBeingViewed);
+
+        cal.add(Calendar.MONTH,1);
+        dateBeingViewed = cal.getTime();
+        LoadLineChart();
+    }
+
+    public void getLastDateIncomes() throws ParseException, JSONException, IOException {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateBeingViewed);
+
+        cal.add(Calendar.MONTH,-1);
+        dateBeingViewed = cal.getTime();
+        LoadLineChart();
+    }
+
+    @Override
+    public void onValueSelected(Entry entry, int i) {
+        Expense expense = expenses.get(entry.getXIndex());
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("canDelete", false);
+
+        bundle.putString("expense", new Gson().toJson(expense));
+        ExpenseDialogFragment dialog = new ExpenseDialogFragment();
+
+        dialog.setArguments(bundle);
+        dialog.show(getActivity().getFragmentManager(), "dialog");
+
+    }
+
+    @Override
+    public void onNothingSelected() {
+
+    }
 }
