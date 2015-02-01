@@ -20,7 +20,7 @@
     </style>
 
     <style name="TextAppearanceFinish" parent="android:TextAppearance.Holo.Medium">
-        <item name="android:textColor">#fff</item>
+        <item name="android:textColor">@color/foreground</item>
     </style>
 
     <style name="WizardPageContainer">
@@ -38,7 +38,7 @@
         <item name="android:layout_marginRight">16dp</item>
         <item name="android:paddingLeft">?android:attr/listPreferredItemPaddingLeft</item>
         <item name="android:textSize">36sp</item>
-        <item name="android:textColor">#ff0099cc</item>
+        <item name="android:textColor">@color/cuzdan_red</item>
     </style>
 
     <style name="WizardFormLabel">

@@ -26,14 +26,14 @@
                     android:layout_below="@+id/relativeLayout3" android:layout_centerHorizontal="true"
                     android:id="@+id/lyt">
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgSearchLeft"
-                     android:src="@drawable/arrowleft" android:background="@drawable/left_arrow" android:layout_centerVertical="true"
+                     android:background="@drawable/left_arrow" android:layout_centerVertical="true"
                      android:layout_toLeftOf="@+id/spnSearchExpenseDate" android:layout_marginRight="35dp"
                      android:scaleType="fitXY"/>
         <Spinner android:layout_width="70dp" android:layout_height="35dp" android:id="@+id/spnSearchExpenseDate"
                  android:spinnerMode="dropdown" android:layout_alignParentTop="true"
                  android:layout_centerHorizontal="true" android:background="@drawable/rounded_spinner"/>
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgSearchRight"
-                     android:src="@drawable/arrowright" android:background="@drawable/right_arrow"
+                     android:background="@drawable/right_arrow"
                      android:layout_centerVertical="true" android:layout_toRightOf="@+id/spnSearchExpenseDate"
                      android:layout_marginLeft="35dp" android:scaleType="fitXY"/>
     </RelativeLayout>

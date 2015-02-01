@@ -11,7 +11,7 @@
                  android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
                  android:background="@drawable/rounded_spinner"/>
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgIncomePieRight"
-                     android:src="@drawable/arrowright" android:scaleType="fitXY"
+                     android:scaleType="fitXY"
                      android:background="@drawable/right_arrow" android:layout_centerVertical="true"
                      android:layout_toRightOf="@+id/spnIncomePieDate" android:layout_marginLeft="35dp"
                 />
@@ -20,7 +20,7 @@
                 android:layout_height="32dp"
                 android:id="@+id/imgIncomePieLeft"
                 android:background="@drawable/left_arrow"
-                android:src="@drawable/arrowleft" android:scaleType="fitXY"
+                android:scaleType="fitXY"
                 android:layout_toLeftOf="@+id/spnIncomePieDate"
                 android:layout_centerVertical="true" android:layout_marginRight="35dp"/>
     </RelativeLayout>

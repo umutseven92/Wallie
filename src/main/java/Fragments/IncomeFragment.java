@@ -1,6 +1,7 @@
 package Fragments;
 
 import Helpers.*;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -27,7 +28,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     String mode = "day";
     View infView;
     Date dateBeingViewed;
-    ImageButton btnLeftArrow, btnRightArrow, btnAddIncome, btnIncomeStats;
+    ImageButton btnLeftArrow, btnRightArrow, btnAddIncome, btnIncomeStats, btnCalendar;
     TextView txtIncomeDate;
     ListView lv;
     IncomeDialogFragment dialog;
@@ -46,6 +47,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         Spinner spnDate = (Spinner)infView.findViewById(R.id.spnDateIncome);
         btnLeftArrow = (ImageButton)infView.findViewById(R.id.imgLeftIncome);
         btnRightArrow = (ImageButton)infView.findViewById(R.id.imgRightIncome);
+        btnCalendar = (ImageButton)infView.findViewById(R.id.btnCalendar);
 
         txtIncomeDate = (TextView)infView.findViewById(R.id.txtIncomeDate);
         btnAddIncome = (ImageButton)infView.findViewById(R.id.btnAddIncome);
@@ -54,7 +56,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
         dialog = new IncomeDialogFragment();
         dialog.SetListener(this);
-
+        btnCalendar.setOnClickListener(onCalendarClick);
         btnLeftArrow.setOnClickListener(onLeftArrowClick);
         btnRightArrow.setOnClickListener(onRightArrowClick);
         btnAddIncome.setOnClickListener(onIncomeClick);
@@ -102,6 +104,14 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         super.onResume();
 
     }
+
+    OnClickListener onCalendarClick = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            DialogFragment calendarFragment = new DatePickerFragment();
+            calendarFragment.show(getActivity().getFragmentManager(),"datepicker");
+        }
+    };
 
     OnClickListener onIncomeStatsClick = new View.OnClickListener(){
         @Override

@@ -19,16 +19,17 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:id="@+id/imgLeftIncome"
-                android:src="@drawable/arrowleft" android:background="@drawable/left_arrow"
+                android:background="@drawable/left_arrow"
                 android:layout_marginRight="35dp" android:layout_alignTop="@+id/imgRightIncome"
                 android:layout_toLeftOf="@+id/spnDateIncome" android:scaleType="fitXY"/>
         <ImageButton
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:id="@+id/imgRightIncome"
-                android:src="@drawable/arrowright" android:background="@drawable/right_arrow"
+                android:background="@drawable/right_arrow"
                 android:layout_centerVertical="true" android:layout_toRightOf="@+id/spnDateIncome"
                 android:layout_marginLeft="35dp" android:scaleType="fitXY"/>
+        
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="match_parent"
@@ -84,6 +85,13 @@
                     android:id="@+id/btnAddIncome" android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
                     android:scaleType="fitXY" android:background="@drawable/green_button"/>
+            <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/btnCalendar" android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
+                    android:layout_marginLeft="10dp" android:scaleType="fitXY"
+                    android:background="@drawable/calendar_button"/>
         </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>

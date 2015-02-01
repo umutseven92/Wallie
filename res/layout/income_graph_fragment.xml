@@ -19,13 +19,13 @@
                 android:layout_height="32dp"
                 android:id="@+id/imgIncomeGraphLeft" android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/txtIncomeGraphDate" android:background="@drawable/left_arrow"
-                android:src="@drawable/arrowleft" android:scaleType="fitXY" android:layout_marginRight="60dp"/>
+                android:scaleType="fitXY" android:layout_marginRight="60dp"/>
         <ImageButton
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:id="@+id/imgIncomeGraphRight" android:layout_alignBottom="@+id/imgIncomeGraphLeft"
                 android:layout_toRightOf="@+id/txtIncomeGraphDate" android:scaleType="fitXY"
-                android:src="@drawable/arrowright" android:background="@drawable/right_arrow" android:layout_marginLeft="60dp"/>
+                android:background="@drawable/right_arrow" android:layout_marginLeft="60dp"/>
     </RelativeLayout>
     <com.github.mikephil.charting.charts.LineChart android:layout_width="match_parent" android:layout_height="1000dp" android:id="@+id/incomeGraph"
                                                    android:layout_marginTop="50dp"/>
