@@ -49,6 +49,7 @@ wizard\model\PageList.class
 com\graviton\Cuzdan\IncomeStatsActivity.class
 Fragments\BalanceFragment$1.class
 wizard\model\MultipleFixedChoicePage.class
+Fragments\ExpenseFragment$6.class
 wizard\ui\MultipleChoiceFragment.class
 Helpers\Expense.class
 com\graviton\Cuzdan\SplashActivity.class
@@ -78,8 +79,8 @@ Fragments\IncomeFragment$6.class
 Fragments\ExpenseDialogFragment$1.class
 Helpers\DateFormatHelper.class
 Fragments\ExpensePieFragment$2.class
-Fragments\DatePickerFragment.class
 wizard\ExpenseWizardModel.class
+Fragments\DatePickerFragment.class
 Helpers\RoundedImageView.class
 wizard\ui\SingleChoiceFragment.class
 wizard\ui\ReviewFragment.class

@@ -8,14 +8,13 @@
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="45dp" android:id="@+id/relativeLayout"
                     android:layout_marginTop="100dp">
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgLeftBalance"
-                     android:src="@drawable/arrowleft" android:background="#10ffffff"
                      android:layout_alignTop="@+id/imgRightBalance" android:layout_toLeftOf="@+id/spnDateBalance"
-                     android:layout_marginRight="35dp" android:scaleType="fitXY"/>
+                     android:layout_marginRight="35dp" android:scaleType="fitXY"
+                     android:background="@drawable/left_arrow"/>
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgRightBalance"
-                     android:background="#10ffffff"
-                     android:src="@drawable/arrowright" android:layout_centerVertical="true"
+                     android:layout_centerVertical="true"
                      android:layout_toRightOf="@+id/spnDateBalance" android:layout_marginLeft="35dp"
-                     android:scaleType="fitXY"/>
+                     android:scaleType="fitXY" android:background="@drawable/right_arrow"/>
         <Spinner android:layout_width="100dp" android:layout_height="35dp" android:id="@+id/spnDateBalance"
                  android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
                  android:background="@drawable/rounded_spinner"/>

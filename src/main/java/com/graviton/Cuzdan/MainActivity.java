@@ -13,6 +13,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,7 +21,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
-import com.graviton.Cuzdan.R;
 
 /**
  * Created by Umut Seven on 15.11.2014, for Graviton.
@@ -49,9 +49,11 @@ public class MainActivity extends FragmentActivity {
         menuArray = getResources().getStringArray(R.array.menuArray);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.left_drawer);
+
         PagerTabStrip t = (PagerTabStrip)findViewById(R.id.pagerTitle);
-        t.setTextColor(Color.parseColor("#ff0000"));
-        t.setTabIndicatorColor(Color.parseColor("#ff0000"));
+        t.setTextColor(getResources().getColor(R.color.cuzdan_red));
+        t.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
+        t.setTabIndicatorColor(getResources().getColor(R.color.cuzdan_red));
 
         // set a custom shadow that overlays the main content when the drawer opens
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);

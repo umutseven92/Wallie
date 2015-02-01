@@ -1,7 +1,6 @@
 package Fragments;
 
 import Helpers.*;
-import android.app.DialogFragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -32,6 +31,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     TextView txtIncomeDate;
     ListView lv;
     IncomeDialogFragment dialog;
+    DatePickerFragment datePickerFragment;
 
     public static final IncomeFragment newInstance()
     {
@@ -54,8 +54,12 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         btnIncomeStats = (ImageButton)infView.findViewById(R.id.btnIncomeStats);
         lv = (ListView)infView.findViewById(R.id.lstIncomes);
 
+        datePickerFragment = new DatePickerFragment();
+        datePickerFragment.SetIncomeListener(this);
+
         dialog = new IncomeDialogFragment();
         dialog.SetListener(this);
+
         btnCalendar.setOnClickListener(onCalendarClick);
         btnLeftArrow.setOnClickListener(onLeftArrowClick);
         btnRightArrow.setOnClickListener(onRightArrowClick);
@@ -108,8 +112,8 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     OnClickListener onCalendarClick = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            DialogFragment calendarFragment = new DatePickerFragment();
-            calendarFragment.show(getActivity().getFragmentManager(),"datepicker");
+            datePickerFragment.SetMode("income");
+            datePickerFragment.show(getActivity().getFragmentManager(), "datepicker");
         }
     };
 
@@ -319,5 +323,36 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public void onDateSelected(Date date) {
+        dateBeingViewed = date;
+
+        if (mode.equals("day"))
+        {
+            try {
+                LoadListView(dateBeingViewed, true);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else if (mode.equals("month"))
+        {
+            try {
+                LoadListView(dateBeingViewed, false);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }

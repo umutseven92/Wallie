@@ -419,4 +419,9 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
         }
 
     }
+
+    @Override
+    public void onDateSelected(Date date) {
+
+    }
 }

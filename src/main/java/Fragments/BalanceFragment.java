@@ -146,13 +146,13 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
-        if(mode == "day")
+        if(mode.equals("day"))
         {
             cal.add(Calendar.DATE,1);
             dateBeingViewed = cal.getTime();
             LoadListView(dateBeingViewed,true);
         }
-        else if (mode == "month")
+        else if (mode.equals("month"))
         {
             cal.add(Calendar.MONTH,1);
             dateBeingViewed = cal.getTime();
@@ -166,13 +166,13 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
-        if(mode == "day")
+        if(mode.equals("day"))
         {
             cal.add(Calendar.DATE,-1);
             dateBeingViewed = cal.getTime();
             LoadListView(dateBeingViewed,true);
         }
-        else if (mode == "month")
+        else if (mode.equals("month"))
         {
             cal.add(Calendar.MONTH,-1);
             dateBeingViewed = cal.getTime();
@@ -220,18 +220,18 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         }
         else if (total.compareTo(BigDecimal.ZERO) == -1)
         {
-            txtTotal.setTextColor(Color.RED);
+            txtTotal.setTextColor(getResources().getColor(R.color.cuzdan_red));
         }
     }
 
     @Override
     public void onResume()
     {
-        if(mode == "day")
+        if(mode.equals("day"))
         {
             LoadListView(dateBeingViewed, true);
         }
-        else if (mode == "month")
+        else if (mode.equals("month"))
         {
             LoadListView(dateBeingViewed, false);
         }
@@ -259,14 +259,19 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
 
     @Override
     public void onDismissed() {
-        if(mode == "day")
+        if(mode.equals("day"))
         {
             LoadListView(dateBeingViewed, true);
         }
-        else if (mode == "month")
+        else if (mode.equals("month"))
         {
             LoadListView(dateBeingViewed, false);
         }
+
+    }
+
+    @Override
+    public void onDateSelected(Date date) {
 
     }
 }

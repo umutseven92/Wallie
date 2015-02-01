@@ -73,6 +73,10 @@
                     android:id="@+id/btnAddExpense" android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" android:src="@drawable/redminus"
                     android:background="@drawable/red_button" android:scaleType="fitXY"/>
+            <ImageButton android:layout_width="50dp" android:layout_height="50dp" android:id="@+id/btnExpenseCalendar"
+                         android:scaleType="fitXY" android:background="@drawable/calendar_button"
+                         android:layout_centerVertical="true" android:layout_alignParentLeft="true"
+                         android:layout_alignParentStart="true" android:layout_marginLeft="10dp"/>
         </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>

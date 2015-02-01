@@ -19,8 +19,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+
 /**
- * Created by Umut on 14.1.2015.
+ * Created by Umut Seven on 14.1.2015, for Graviton.
  */
 public class IncomeSearchFragment extends Fragment implements AdapterView.OnItemSelectedListener, IncomeLoadListener{
 
@@ -357,6 +358,11 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                 e.printStackTrace();
             }
         }
+
+    }
+
+    @Override
+    public void onDateSelected(Date date) {
 
     }
 }

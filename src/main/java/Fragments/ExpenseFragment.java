@@ -28,10 +28,11 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     String mode = "day";
     View infView;
     Date dateBeingViewed;
-    ImageButton leftArrow, rightArrow, btnAddExpense, btnExpenseStats;
+    ImageButton leftArrow, rightArrow, btnAddExpense, btnExpenseStats, btnExpenseCalendar;
     TextView txtExpenseDate;
     ListView lv;
     ExpenseDialogFragment dialog;
+    DatePickerFragment datePickerFragment;
 
     public static final ExpenseFragment newInstance()
     {
@@ -51,7 +52,12 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         txtExpenseDate = (TextView)infView.findViewById(R.id.txtExpenseDate);
         btnAddExpense = (ImageButton)infView.findViewById(R.id.btnAddExpense);
         btnExpenseStats = (ImageButton)infView.findViewById(R.id.btnExpenseStats);
+        btnExpenseCalendar = (ImageButton)infView.findViewById(R.id.btnExpenseCalendar);
         lv = (ListView)infView.findViewById(R.id.lstExpenses);
+
+        datePickerFragment = new DatePickerFragment();
+        datePickerFragment.SetExpenseListener(this);
+
         dialog = new ExpenseDialogFragment();
         dialog.SetListener(this);
         ((Global)getActivity().getApplication()).expenseDialog = dialog;
@@ -60,6 +66,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         rightArrow.setOnClickListener(onRightArrowClick);
         btnAddExpense.setOnClickListener(onExpenseClick);
         btnExpenseStats.setOnClickListener(onExpenseStatsClick);
+        btnExpenseCalendar.setOnClickListener(onCalendarClick);
         lv.setOnItemClickListener(onItemClickListener);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, R.layout.cuzdan_spinner_item);
@@ -104,6 +111,14 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         }
         super.onResume();
     }
+
+    View.OnClickListener onCalendarClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            datePickerFragment.SetMode("expense");
+            datePickerFragment.show(getActivity().getFragmentManager(), "datepicker");
+        }
+    };
 
     View.OnClickListener onExpenseStatsClick = new View.OnClickListener(){
         @Override
@@ -284,6 +299,37 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
 
     @Override
     public void onDismissed() {
+
+        if (mode.equals("day"))
+        {
+            try {
+                LoadListView(dateBeingViewed, true);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else if (mode.equals("month"))
+        {
+            try {
+                LoadListView(dateBeingViewed, false);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    @Override
+    public void onDateSelected(Date date) {
+        dateBeingViewed = date;
 
         if (mode.equals("day"))
         {
