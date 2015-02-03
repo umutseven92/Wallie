@@ -42,7 +42,7 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
 
 * 0.8 (Deneyler)
   * MOAOGY featurelari
-	  *Faturanin resmini cekerek gider
+	  * Faturanin resmini cekerek gider
 
 * 1.0 (End of line)
   * Release
