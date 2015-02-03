@@ -17,6 +17,36 @@ Cüzdan ile neler yapabilirsiniz?
  
 Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan ile  çok kolay. “Param nereye gidiyor böyle?!” sorusunun cevabı artık Cüzdan'ınızda!
 
+##Roadmap
+* 0.3 (Birikim)
+  * Birikim
+
+* 0.4 (Hesap & Ayarlar)
+  * Hesap yaratma
+  * Google Playdan config backup
+  * Ayarlar
+    * Uygulama kitle & bilgi silme sifresi
+	  * Notification kapa 
+	  * Para birimi
+    * Excel'e export & import
+
+* 0.5 (Kategori Optimizasyonu)
+  * Kullanici kategori yaratabilmeli
+  * Gereksiz alt kategorilerin silinmesi
+
+* 0.6 (Widget)
+  * Widget
+
+* 0.7 (Kullanici eğitimi)
+  * Oryantasyon
+
+* 0.8 (Deneyler)
+  * MOAOGY featurelari
+	  *Faturanin resmini cekerek gider
+
+* 1.0 (End of line)
+  * Release
+
 ##Kullanılan Kaynaklar
 * Çüzdan simgesi: Jerry Low
 * Android-WizardPager: [Roman Nurik](http://roman.nurik.net/)
