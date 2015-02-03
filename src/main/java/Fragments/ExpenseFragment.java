@@ -170,9 +170,19 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     public void getNextDateExpenses() throws JSONException, ParseException, IOException {
         Date today = new Date();
 
-        if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
+        if(mode.equals("month"))
         {
-            return;
+            if(dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
+            {
+                return;
+            }
+        }
+        else if(mode.equals("day"))
+        {
+            if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
+            {
+                return;
+            }
         }
 
         Calendar cal = Calendar.getInstance();
@@ -231,9 +241,8 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
 
         BigDecimal total = BigDecimal.ZERO;
 
-        for (int i = 0; i<expenses.size(); i++)
-        {
-            BigDecimal val = expenses.get(i).GetAmount();
+        for (Expense expense : expenses) {
+            BigDecimal val = expense.GetAmount();
 
             total = total.add(val);
         }
@@ -248,10 +257,16 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
     {
+        Date today = new Date();
+
         if(position == 0)
         {
             mode = "day";
             try {
+                if(dateBeingViewed.getMonth() == today.getMonth())
+                {
+                    dateBeingViewed.setDate(today.getDate());
+                }
                 LoadListView(dateBeingViewed, true);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -266,6 +281,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         {
             mode = "month";
             try {
+                dateBeingViewed.setDate(1);
                 LoadListView(dateBeingViewed, false);
             } catch (JSONException e) {
                 e.printStackTrace();

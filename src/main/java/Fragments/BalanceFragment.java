@@ -11,9 +11,12 @@ import android.view.ViewGroup;
 import android.widget.*;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
+import org.json.JSONException;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.Format;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -28,8 +31,9 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
     View infView;
     String mode = "month";
     Date dateBeingViewed;
-    ImageButton leftArrow, rightArrow;
+    ImageButton leftArrow, rightArrow, btnCalendar;
     TextView txtBalanceDate;
+    DatePickerFragment datePickerFragment;
 
     public static final BalanceFragment newInstance()
     {
@@ -43,14 +47,19 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
 
         infView = inflater.inflate(R.layout.balance_fragment, container, false);
         _user = ((Global) getActivity().getApplication()).GetUser();
+        datePickerFragment = new DatePickerFragment();
+        datePickerFragment.SetExpenseListener(this);
 
         Spinner spnDate = (Spinner)infView.findViewById(R.id.spnDateBalance);
         leftArrow = (ImageButton)infView.findViewById(R.id.imgLeftBalance);
         rightArrow = (ImageButton)infView.findViewById(R.id.imgRightBalance);
+        btnCalendar = (ImageButton)infView.findViewById(R.id.btnBalanceCalendar);
+
         txtBalanceDate = (TextView)infView.findViewById(R.id.txtBalanceDate);
         ExpenseDialogFragment edf = ((Global)getActivity().getApplication()).expenseDialog;
         edf.SetSecondListener(this);
 
+        btnCalendar.setOnClickListener(onCalendarClick);
         leftArrow.setOnClickListener(onLeftArrowClick);
         rightArrow.setOnClickListener(onRightArrowClick);
 
@@ -62,6 +71,14 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
 
         return infView;
     }
+
+    View.OnClickListener onCalendarClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            datePickerFragment.SetMode("expense");
+            datePickerFragment.show(getActivity().getFragmentManager(), "datepicker");
+        }
+    };
 
     View.OnClickListener onLeftArrowClick = new View.OnClickListener() {
         @Override
@@ -139,10 +156,21 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
     {
         Date today = new Date();
 
-        if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
+        if(mode.equals("month"))
         {
-            return;
+            if(dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
+            {
+                return;
+            }
         }
+        else if(mode.equals("day"))
+        {
+            if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
+            {
+                return;
+            }
+        }
+
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
@@ -240,14 +268,22 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        Date today = new Date();
+
         if(position == 0)
         {
             mode = "month";
+            dateBeingViewed.setDate(1);
             LoadListView(dateBeingViewed, false);
         }
         else if(position == 1)
         {
             mode = "day";
+            if(dateBeingViewed.getMonth() == today.getMonth())
+            {
+                dateBeingViewed.setDate(today.getDate());
+            }
             LoadListView(dateBeingViewed, true);
         }
     }
@@ -273,5 +309,14 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
     @Override
     public void onDateSelected(Date date) {
 
+        dateBeingViewed = date;
+        if(mode.equals("day"))
+        {
+            LoadListView(dateBeingViewed, true);
+        }
+        else if (mode.equals("month"))
+        {
+            LoadListView(dateBeingViewed, false);
+        }
     }
 }

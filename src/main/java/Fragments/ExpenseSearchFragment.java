@@ -117,22 +117,31 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
     {
         Date today = new Date();
 
-        if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
+        if(mode.equals("month"))
         {
-            return;
+            if(dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
+            {
+                return;
+            }
         }
-
+        else if(mode.equals("day"))
+        {
+            if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
+            {
+                return;
+            }
+        }
         Calendar cal = Calendar.getInstance();
 
         cal.setTime(dateBeingViewed);
 
-        if(mode == "day")
+        if(mode.equals("day"))
         {
             cal.add(Calendar.DATE,1);
             dateBeingViewed = cal.getTime();
             LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString() , true);
         }
-        else if (mode == "month")
+        else if (mode.equals("month"))
         {
             cal.add(Calendar.MONTH,1);
             dateBeingViewed = cal.getTime();
@@ -144,13 +153,13 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
-        if(mode == "day")
+        if(mode.equals("day"))
         {
             cal.add(Calendar.DATE,-1);
             dateBeingViewed = cal.getTime();
             LoadListView(spnSearchTags.getSelectedItem().toString(),spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString() , true);
         }
-        else if (mode == "month")
+        else if (mode.equals("month"))
         {
             cal.add(Calendar.MONTH,-1);
             dateBeingViewed = cal.getTime();
@@ -188,7 +197,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                 spnSearchSubCategory.setAdapter(subCategoryAdapter2);
 
 
-                if(mode == "month")
+                if(mode.equals("month"))
                 {
                     try {
                         LoadListView(parent.getItemAtPosition(position).toString(),spnSearchCategory.getSelectedItem().toString(),spnSearchSubCategory.getSelectedItem().toString(), false);
@@ -201,7 +210,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                     }
 
                 }
-                else if(mode == "day")
+                else if(mode.equals("day"))
                 {
                     try {
                         LoadListView(parent.getItemAtPosition(position).toString(),spnSearchCategory.getSelectedItem().toString(),spnSearchSubCategory.getSelectedItem().toString(), true);
@@ -232,7 +241,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                 subCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spnSearchSubCategory.setAdapter(subCategoryAdapter);
 
-                if(mode == "month")
+                if(mode.equals("month"))
                 {
                     try {
                         LoadListView(spnSearchTags.getSelectedItem().toString(), parent.getItemAtPosition(position).toString(), spnSearchSubCategory.getSelectedItem().toString(), false);
@@ -245,7 +254,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                     }
 
                 }
-                else if(mode == "day")
+                else if(mode.equals("day"))
                 {
                     try {
                         LoadListView(spnSearchTags.getSelectedItem().toString(),parent.getItemAtPosition(position).toString(),spnSearchSubCategory.getSelectedItem().toString(), true);
@@ -261,7 +270,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                 break;
 
             case R.id.spnExpenseSubCategory:
-                if(mode == "month")
+                if(mode.equals("month"))
                 {
                     try {
                         LoadListView(spnSearchTags.getSelectedItem().toString(),spnSearchCategory.getSelectedItem().toString(),parent.getItemAtPosition(position).toString(), false);
@@ -274,7 +283,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                     }
 
                 }
-                else if(mode == "day")
+                else if(mode.equals("day"))
                 {
                     try {
                         LoadListView(spnSearchTags.getSelectedItem().toString(),spnSearchCategory.getSelectedItem().toString(),parent.getItemAtPosition(position).toString(), true);
@@ -290,10 +299,13 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                 break;
 
             case R.id.spnSearchExpenseDate:
+                Date today = new Date();
+
                 if(parent.getItemAtPosition(position).toString().equals("Ay"))
                 {
                     mode = "month";
                     try {
+                        dateBeingViewed.setDate(1);
                         LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString(), false);
                     } catch (ParseException e) {
                         e.printStackTrace();
@@ -308,6 +320,10 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                 {
                     mode = "day";
                     try {
+                        if(dateBeingViewed.getMonth() == today.getMonth())
+                        {
+                            dateBeingViewed.setDate(today.getDate());
+                        }
                         LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString(), true);
                     } catch (ParseException e) {
                         e.printStackTrace();
@@ -391,10 +407,11 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
 
     @Override
     public void onDismissed() {
-        if(mode == "month")
+
+        if(mode.equals("month"))
         {
             try {
-                LoadListView(spnSearchTags.getSelectedItem().toString(),spnSearchCategory.getSelectedItem().toString(),spnSearchSubCategory.getSelectedItem().toString(), false);
+                LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString(), false);
             } catch (ParseException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -404,7 +421,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
             }
 
         }
-        else if(mode == "day")
+        else if(mode.equals("day"))
         {
             try {
                 LoadListView(spnSearchTags.getSelectedItem().toString(),spnSearchCategory.getSelectedItem().toString(),spnSearchSubCategory.getSelectedItem().toString(), true);

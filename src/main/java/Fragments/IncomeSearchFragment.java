@@ -115,13 +115,22 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
     {
         Date today = new Date();
 
-        if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
+        if(mode.equals("month"))
         {
-            return;
+            if(dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
+            {
+                return;
+            }
+        }
+        else if(mode.equals("day"))
+        {
+            if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
+            {
+                return;
+            }
         }
 
         Calendar cal = Calendar.getInstance();
-
         cal.setTime(dateBeingViewed);
 
         if(mode.equals("day"))
@@ -231,10 +240,13 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                 break;
 
             case R.id.spnSearchIncomeDate:
+                Date today = new Date();
+
                 if(parent.getItemAtPosition(position).toString().equals("Ay"))
                 {
                     mode = "month";
                     try {
+                        dateBeingViewed.setDate(1);
                         LoadListView(spnSearchCategory.getSelectedItem().toString(),spnSearchSubCategory.getSelectedItem().toString(),false);
                     } catch (ParseException e) {
                         e.printStackTrace();
@@ -248,6 +260,11 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                 {
                     mode = "day";
                     try {
+                        if(dateBeingViewed.getMonth() == today.getMonth())
+                        {
+                            dateBeingViewed.setDate(today.getDate());
+                        }
+
                         LoadListView(spnSearchCategory.getSelectedItem().toString(),spnSearchSubCategory.getSelectedItem().toString(),true);
                     } catch (ParseException e) {
                         e.printStackTrace();

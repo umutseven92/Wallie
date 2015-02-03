@@ -170,9 +170,19 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
     public void getNextDateIncomes() throws ParseException, JSONException, IOException {
         Date today = new Date();
 
-        if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear())
+        if(mode.equals("month"))
         {
-            return;
+            if(dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
+            {
+                return;
+            }
+        }
+        else if(mode.equals("day"))
+        {
+            if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
+            {
+                return;
+            }
         }
 
         Calendar cal = Calendar.getInstance();
@@ -213,10 +223,13 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Date today = new Date();
+
         if(position == 0)
         {
             mode = "month";
             try {
+                dateBeingViewed.setDate(1);
                 LoadPieChart(false);
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -230,6 +243,10 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
         {
             mode = "day";
             try {
+                if(dateBeingViewed.getMonth() == today.getMonth())
+                {
+                    dateBeingViewed.setDate(today.getDate());
+                }
                 LoadPieChart(true);
             } catch (ParseException e) {
                 e.printStackTrace();

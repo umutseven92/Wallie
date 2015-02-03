@@ -96,6 +96,7 @@ Fragments\ExpenseDialogFragment$2.class
 Fragments\ExpenseFragment$2.class
 wizard\ui\BalanceInfoFragment$2.class
 com\graviton\Cuzdan\ExpenseWizardActivity$3.class
+Fragments\BalanceFragment$3.class
 Helpers\Balance.class
 wizard\model\Page.class
 Fragments\IncomeFragment.class
