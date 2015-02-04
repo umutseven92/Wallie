@@ -18,17 +18,33 @@ Cüzdan ile neler yapabilirsiniz?
 Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan ile  çok kolay. “Param nereye gidiyor böyle?!” sorusunun cevabı artık Cüzdan'ınızda!
 
 ##Roadmap
+* ~~0.1 (Ana Proje Dizaynı)~~
+  * ~~Drawer layout~~
+  * ~~Swipe tabs~~
+
+* ~~0.2 (Gelir & Gider)~~
+  * ~~Gelir~~
+    * ~~Gelir ekleme~~
+    * ~~İleri gelir arama~~
+    * ~~Gelir grafikleri~~
+  * ~~Gider~~
+    * ~~Gider ekleme~~
+    * ~~İleri gider arama~~
+    * ~~Gider grafikleri~~
+
 * 0.3 (Birikim)
-  * Birikim
+  * ~~Birikim dizaynı~~
+  * Birikim yaratma
+  * Birikim notifikasyonları
 
 * 0.4 (Hesap & Ayarlar)
   * Hesap yaratma
   * Google Playdan config backup
   * Ayarlar
     * Uygulama kitle & bilgi silme sifresi
-	  * Notification kapa 
-	  * Para birimi
-    * Excel'e export & import
+    * Notification kapa 
+    * Para birimi
+  * Excel'e export & import
 
 * 0.5 (Kategori Optimizasyonu)
   * Kullanici kategori yaratabilmeli
@@ -37,14 +53,14 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
 * 0.6 (Widget)
   * Widget
 
-* 0.7 (Kullanici eğitimi)
+* 0.7 (Kullanici Eğitimi)
   * Oryantasyon
 
 * 0.8 (Deneyler)
   * MOAOGY featurelari
 	  * Faturanin resmini cekerek gider
 
-* 1.0 (End of line)
+* 1.0 (End of Line)
   * Release
 
 ##Kullanılan Kaynaklar
