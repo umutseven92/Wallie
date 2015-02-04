@@ -3,7 +3,10 @@ package com.graviton.Cuzdan;
 import Helpers.Income;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.*;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.TypedValue;
 import android.view.View;
@@ -20,6 +23,7 @@ import wizard.model.Page;
 import wizard.ui.PageFragmentCallbacks;
 import wizard.ui.ReviewFragment;
 import wizard.ui.StepPagerStrip;
+
 import java.io.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -84,11 +88,12 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
             }
         });
 
-    mNextButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            GoForwardOnePage();
-        }});
+        mNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoForwardOnePage();
+            }
+        });
 
         mPrevButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,13 +107,11 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
 
     }
 
-    private void GoForwardOnePage()
-    {
+    private void GoForwardOnePage() {
         if (mPager.getCurrentItem() == mCurrentPageSequence.size()) {
             AddIncome();
             finish();
-        }
-        else {
+        } else {
             if (mEditingAfterReview) {
                 mPager.setCurrentItem(mPagerAdapter.getCount() - 1);
             } else {
@@ -118,67 +121,54 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
 
     }
 
-    private void AddIncome()
-    {
+    private void AddIncome() {
         String category = mWizardModel.findByKey("Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
         String subCategory = mWizardModel.findByKey(category + ":Alt Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
         BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
         String description = mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.DESC_DATA_KEY);
 
-        if(description == null)
-        {
+        if (description == null) {
             description = "";
         }
 
-        Income income = new Income(category,subCategory,amount,description,new Date());
+        Income income = new Income(category, subCategory, amount, description, new Date());
         StringBuffer datax = new StringBuffer("");
 
         JSONObject incomeToSave = new JSONObject();
-        try
-        {
+        try {
             incomeToSave = ((Global) getApplication()).GetUser().GetBanker().CreateJSONIncome(income);
-        }
-
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
         String filePath = ((Global) getApplication()).GetFilePath();
 
-        try
-        {
+        try {
             FileInputStream fIn = openFileInput(filePath);
             InputStreamReader isr = new InputStreamReader(fIn);
-            BufferedReader buffreader = new BufferedReader(isr) ;
+            BufferedReader buffreader = new BufferedReader(isr);
 
             String readString = buffreader.readLine();
             while (readString != null) {
                 datax.append(readString);
-                readString = buffreader.readLine() ;
+                readString = buffreader.readLine();
             }
 
             isr.close();
-        }
-
-        catch (IOException ioe)
-        {
+        } catch (IOException ioe) {
             ioe.printStackTrace();
         }
 
         String main = datax.toString();
-        try
-        {
+        try {
             JSONObject mainJSON = new JSONObject(main);
             JSONArray incomes = mainJSON.getJSONObject("user").getJSONArray("incomes");
             incomes.put(incomeToSave);
 
-            FileOutputStream fileOutputStream = openFileOutput(filePath,Context.MODE_PRIVATE);
+            FileOutputStream fileOutputStream = openFileOutput(filePath, Context.MODE_PRIVATE);
             fileOutputStream.write(mainJSON.toString().getBytes());
             fileOutputStream.close();
-        }
-
-        catch (JSONException e)
-        {
+        } catch (JSONException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -266,7 +256,7 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
 
     @Override
     public Page onGetPage(String key) {
-       return mWizardModel.findByKey(key);
+        return mWizardModel.findByKey(key);
     }
 
     private boolean recalculateCutOffPage() {

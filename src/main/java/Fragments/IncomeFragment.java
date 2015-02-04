@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.*;
 import com.google.gson.Gson;
 import com.graviton.Cuzdan.Global;
@@ -14,6 +16,7 @@ import com.graviton.Cuzdan.IncomeStatsActivity;
 import com.graviton.Cuzdan.IncomeWizardActivity;
 import com.graviton.Cuzdan.R;
 import org.json.JSONException;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -33,8 +36,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     IncomeDialogFragment dialog;
     DatePickerFragment datePickerFragment;
 
-    public static final IncomeFragment newInstance()
-    {
+    public static final IncomeFragment newInstance() {
         IncomeFragment f = new IncomeFragment();
         return f;
     }
@@ -44,15 +46,15 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                              Bundle savedInstanceState) {
         infView = inflater.inflate(R.layout.income_fragment, container, false);
 
-        Spinner spnDate = (Spinner)infView.findViewById(R.id.spnDateIncome);
-        btnLeftArrow = (ImageButton)infView.findViewById(R.id.imgLeftIncome);
-        btnRightArrow = (ImageButton)infView.findViewById(R.id.imgRightIncome);
-        btnCalendar = (ImageButton)infView.findViewById(R.id.btnCalendar);
+        Spinner spnDate = (Spinner) infView.findViewById(R.id.spnDateIncome);
+        btnLeftArrow = (ImageButton) infView.findViewById(R.id.imgLeftIncome);
+        btnRightArrow = (ImageButton) infView.findViewById(R.id.imgRightIncome);
+        btnCalendar = (ImageButton) infView.findViewById(R.id.btnCalendar);
 
-        txtIncomeDate = (TextView)infView.findViewById(R.id.txtIncomeDate);
-        btnAddIncome = (ImageButton)infView.findViewById(R.id.btnAddIncome);
-        btnIncomeStats = (ImageButton)infView.findViewById(R.id.btnIncomeStats);
-        lv = (ListView)infView.findViewById(R.id.lstIncomes);
+        txtIncomeDate = (TextView) infView.findViewById(R.id.txtIncomeDate);
+        btnAddIncome = (ImageButton) infView.findViewById(R.id.btnAddIncome);
+        btnIncomeStats = (ImageButton) infView.findViewById(R.id.btnIncomeStats);
+        lv = (ListView) infView.findViewById(R.id.lstIncomes);
 
         datePickerFragment = new DatePickerFragment();
         datePickerFragment.SetIncomeListener(this);
@@ -79,10 +81,9 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
 
-        if(mode.equals("day"))
-        {
+        if (mode.equals("day")) {
             try {
                 LoadListView(dateBeingViewed, true);
             } catch (JSONException e) {
@@ -92,9 +93,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        else if(mode.equals("month"))
-        {
+        } else if (mode.equals("month")) {
             try {
                 LoadListView(dateBeingViewed, false);
             } catch (JSONException e) {
@@ -117,10 +116,9 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         }
     };
 
-    OnClickListener onIncomeStatsClick = new View.OnClickListener(){
+    OnClickListener onIncomeStatsClick = new View.OnClickListener() {
         @Override
-        public void onClick(View v)
-        {
+        public void onClick(View v) {
             Intent incomeStatsIntent = new Intent(getActivity(), IncomeStatsActivity.class);
             getActivity().startActivity(incomeStatsIntent);
         }
@@ -156,10 +154,9 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         }
     };
 
-    OnClickListener onIncomeClick = new View.OnClickListener(){
+    OnClickListener onIncomeClick = new View.OnClickListener() {
         @Override
-        public void onClick(View v)
-        {
+        public void onClick(View v) {
             Intent incomeWizardIntent = new Intent(getActivity(), IncomeWizardActivity.class);
             getActivity().startActivity(incomeWizardIntent);
         }
@@ -170,12 +167,10 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
         Date today = new Date();
-        if(position == 0)
-        {
+        if (position == 0) {
             mode = "day";
             try {
-                if(dateBeingViewed.getMonth() == today.getMonth())
-                {
+                if (dateBeingViewed.getMonth() == today.getMonth()) {
                     dateBeingViewed.setDate(today.getDate());
                 }
                 LoadListView(dateBeingViewed, true);
@@ -187,9 +182,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                 e.printStackTrace();
             }
 
-        }
-        else if(position == 1)
-        {
+        } else if (position == 1) {
             mode = "month";
             try {
                 dateBeingViewed.setDate(1);
@@ -210,21 +203,15 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
     }
 
-    public void getNextDateIncomes() throws JSONException, ParseException, IOException
-    {
+    public void getNextDateIncomes() throws JSONException, ParseException, IOException {
         Date today = new Date();
 
-        if(mode.equals("month"))
-        {
-            if(dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
-            {
+        if (mode.equals("month")) {
+            if (dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
                 return;
             }
-        }
-        else if(mode.equals("day"))
-        {
-            if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
-            {
+        } else if (mode.equals("day")) {
+            if (dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
                 return;
             }
         }
@@ -233,18 +220,15 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
         cal.setTime(dateBeingViewed);
 
-        if(mode.equals("day"))
-        {
-            cal.add(Calendar.DATE,1);
+        if (mode.equals("day")) {
+            cal.add(Calendar.DATE, 1);
             dateBeingViewed = cal.getTime();
-            LoadListView(dateBeingViewed,true);
+            LoadListView(dateBeingViewed, true);
 
-        }
-        else if (mode.equals("month"))
-        {
-            cal.add(Calendar.MONTH,1);
+        } else if (mode.equals("month")) {
+            cal.add(Calendar.MONTH, 1);
             dateBeingViewed = cal.getTime();
-            LoadListView(dateBeingViewed,false);
+            LoadListView(dateBeingViewed, false);
 
         }
     }
@@ -254,17 +238,14 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
-        if(mode.equals("day"))
-        {
-            cal.add(Calendar.DATE,-1);
+        if (mode.equals("day")) {
+            cal.add(Calendar.DATE, -1);
             dateBeingViewed = cal.getTime();
             LoadListView(dateBeingViewed, true);
-        }
-        else if (mode.equals("month"))
-        {
-            cal.add(Calendar.MONTH,-1);
+        } else if (mode.equals("month")) {
+            cal.add(Calendar.MONTH, -1);
             dateBeingViewed = cal.getTime();
-            LoadListView(dateBeingViewed,false);
+            LoadListView(dateBeingViewed, false);
 
         }
     }
@@ -273,26 +254,22 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
 
         ArrayList<Income> incomes;
-        if(day)
-        {
+        if (day) {
             incomes = _user.GetBanker().GetIncomesFromDay(date);
             txtIncomeDate.setText(DateFormatHelper.GetDayText(date));
-        }
-        else
-        {
+        } else {
             incomes = _user.GetBanker().GetIncomesFromMonth(date);
             txtIncomeDate.setText(DateFormatHelper.GetMonthText(date, getResources()));
         }
         BigDecimal total = BigDecimal.ZERO;
 
-        for (int i = 0; i<incomes.size(); i++)
-        {
+        for (int i = 0; i < incomes.size(); i++) {
             BigDecimal val = incomes.get(i).GetAmount();
             total = total.add(val);
         }
-        lv.setAdapter(new IncomeListAdapter(this.getActivity(),incomes));
+        lv.setAdapter(new IncomeListAdapter(this.getActivity(), incomes));
 
-        TextView txtTotalIncome = (TextView)infView.findViewById(R.id.txtTotalIncome);
+        TextView txtTotalIncome = (TextView) infView.findViewById(R.id.txtTotalIncome);
 
         txtTotalIncome.setText(total.toString() + "  TL");
         txtTotalIncome.setTextColor(Color.parseColor("#216C2A"));
@@ -301,8 +278,8 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            IncomeListAdapter adapter = (IncomeListAdapter)lv.getAdapter();
-            Income inc = (Income)adapter.getItem(position);
+            IncomeListAdapter adapter = (IncomeListAdapter) lv.getAdapter();
+            Income inc = (Income) adapter.getItem(position);
 
             Bundle bundle = new Bundle();
             bundle.putBoolean("canDelete", true);
@@ -316,8 +293,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public void onDismissed() {
 
-        if (mode.equals("day"))
-        {
+        if (mode.equals("day")) {
             try {
                 LoadListView(dateBeingViewed, true);
             } catch (JSONException e) {
@@ -327,9 +303,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        else if (mode.equals("month"))
-        {
+        } else if (mode.equals("month")) {
             try {
                 LoadListView(dateBeingViewed, false);
             } catch (JSONException e) {
@@ -346,8 +320,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     public void onDateSelected(Date date) {
         dateBeingViewed = date;
 
-        if (mode.equals("day"))
-        {
+        if (mode.equals("day")) {
             try {
                 LoadListView(dateBeingViewed, true);
             } catch (JSONException e) {
@@ -357,9 +330,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        else if (mode.equals("month"))
-        {
+        } else if (mode.equals("month")) {
             try {
                 LoadListView(dateBeingViewed, false);
             } catch (JSONException e) {

@@ -31,6 +31,7 @@ import wizard.model.AbstractWizardModel;
 import wizard.model.ModelCallbacks;
 import wizard.model.Page;
 import wizard.model.ReviewItem;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;

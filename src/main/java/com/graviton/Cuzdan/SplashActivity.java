@@ -6,9 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import org.json.*;
+import org.json.JSONObject;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 
 
 /**
@@ -20,8 +23,7 @@ public class SplashActivity extends Activity {
     private final int splashLength = 1200;
 
     @Override
-    public void onCreate(Bundle bundle)
-    {
+    public void onCreate(Bundle bundle) {
         // Let there be light!
         super.onCreate(bundle);
 
@@ -32,14 +34,13 @@ public class SplashActivity extends Activity {
         String fileName = "userConfigTest31";
         ((Global) this.getApplication()).SetFilePath(fileName);
 
-        File file = new File(this.getFilesDir(),fileName);
+        File file = new File(this.getFilesDir(), fileName);
         JSONObject userInfo = null;
 
 
         // The user doesn't exist; so create one and save the file to internal storage.
         // NOTE: Date is ISO 8601 (YEAR-MONTH-DATE)
-        if(!file.exists())
-        {
+        if (!file.exists()) {
             String userName = "umutseven92";
             String firstName = "Umut";
             String lastName = "Seven";
@@ -58,7 +59,7 @@ public class SplashActivity extends Activity {
                         "\t\t\"incomes\": [],\n" +
                         "\t\t\"expenses\": []\n" +
                         "\t}\n" +
-                        "}\n",userName,firstName,lastName );
+                        "}\n", userName, firstName, lastName);
 
                 userInfo = new JSONObject(userSettings);
 
@@ -68,7 +69,7 @@ public class SplashActivity extends Activity {
                     outputStream.write(userInfo.toString().getBytes());
                 }
                 outputStream.close();
-                user = new User(userInfo,file.getAbsolutePath());
+                user = new User(userInfo, file.getAbsolutePath());
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -77,15 +78,13 @@ public class SplashActivity extends Activity {
         }
 
         // The user exists; so attempt to load it from internal storage.
-        else
-        {
+        else {
             try {
 
                 StringBuilder sb = new StringBuilder();
                 BufferedReader br = new BufferedReader(new FileReader(file));
                 String line;
-                while ((line = br.readLine()) != null)
-                {
+                while ((line = br.readLine()) != null) {
                     sb.append(line);
                     sb.append("\n");
                 }

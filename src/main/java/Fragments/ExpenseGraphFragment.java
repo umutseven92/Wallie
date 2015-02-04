@@ -1,9 +1,12 @@
 package Fragments;
 
-import Helpers.*;
+import Helpers.ChartHelper;
+import Helpers.DateFormatHelper;
+import Helpers.Expense;
+import Helpers.User;
+import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,15 +48,14 @@ public class ExpenseGraphFragment extends Fragment implements OnChartValueSelect
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.expense_graph_fragment, container, false);
 
-        user =  ((Global)getActivity().getApplication()).GetUser();
-        expenseLineChart = (LineChart)v.findViewById(R.id.expenseGraph);
-        txtExpenseGraphDate = (TextView)v.findViewById(R.id.txtExpenseGraphDate);
-        imgLeft = (ImageButton)v.findViewById(R.id.imgExpenseGraphLeft);
-        imgRight = (ImageButton)v.findViewById(R.id.imgExpenseGraphRight);
+        user = ((Global) getActivity().getApplication()).GetUser();
+        expenseLineChart = (LineChart) v.findViewById(R.id.expenseGraph);
+        txtExpenseGraphDate = (TextView) v.findViewById(R.id.txtExpenseGraphDate);
+        imgLeft = (ImageButton) v.findViewById(R.id.imgExpenseGraphLeft);
+        imgRight = (ImageButton) v.findViewById(R.id.imgExpenseGraphRight);
 
         imgLeft.setOnClickListener(onLeftArrowClick);
         imgRight.setOnClickListener(onRightArrowClick);
@@ -96,14 +98,13 @@ public class ExpenseGraphFragment extends Fragment implements OnChartValueSelect
         expenses = user.GetBanker().GetExpensesFromMonth(dateBeingViewed);
 
         xVals = new ArrayList<String>();
-        for (Expense expense: expenses) {
+        for (Expense expense : expenses) {
             xVals.add((DateFormatHelper.GetDayText(expense.GetDate())));
         }
 
         ArrayList<Entry> yVals = new ArrayList<Entry>();
-        for (int i = 0;i < expenses.size(); i++)
-        {
-            yVals.add(new Entry(expenses.get(i).GetAmount().floatValue(),i));
+        for (int i = 0; i < expenses.size(); i++) {
+            yVals.add(new Entry(expenses.get(i).GetAmount().floatValue(), i));
         }
 
         LineDataSet set = new LineDataSet(yVals, "Giderler");
@@ -125,7 +126,7 @@ public class ExpenseGraphFragment extends Fragment implements OnChartValueSelect
 
     View.OnClickListener onLeftArrowClick = new View.OnClickListener() {
         @Override
-        public void onClick(View v){
+        public void onClick(View v) {
             try {
                 getLastDateIncomes();
             } catch (ParseException e) {
@@ -156,8 +157,7 @@ public class ExpenseGraphFragment extends Fragment implements OnChartValueSelect
     public void getNextDateIncomes() throws ParseException, JSONException, IOException {
         Date today = new Date();
 
-        if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear())
-        {
+        if (dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
             return;
         }
 
@@ -165,7 +165,7 @@ public class ExpenseGraphFragment extends Fragment implements OnChartValueSelect
 
         cal.setTime(dateBeingViewed);
 
-        cal.add(Calendar.MONTH,1);
+        cal.add(Calendar.MONTH, 1);
         dateBeingViewed = cal.getTime();
         LoadLineChart();
     }
@@ -174,7 +174,7 @@ public class ExpenseGraphFragment extends Fragment implements OnChartValueSelect
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
-        cal.add(Calendar.MONTH,-1);
+        cal.add(Calendar.MONTH, -1);
         dateBeingViewed = cal.getTime();
         LoadLineChart();
     }

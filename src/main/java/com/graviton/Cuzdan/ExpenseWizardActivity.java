@@ -3,7 +3,10 @@ package com.graviton.Cuzdan;
 import Helpers.Expense;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.*;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.TypedValue;
 import android.view.View;
@@ -20,6 +23,7 @@ import wizard.model.Page;
 import wizard.ui.PageFragmentCallbacks;
 import wizard.ui.ReviewFragment;
 import wizard.ui.StepPagerStrip;
+
 import java.io.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -29,7 +33,7 @@ import java.util.List;
 /**
  * Created by Umut Seven on 2.1.2015, for Graviton.
  */
-public class ExpenseWizardActivity  extends FragmentActivity implements PageFragmentCallbacks, ReviewFragment.Callbacks, ModelCallbacks {
+public class ExpenseWizardActivity extends FragmentActivity implements PageFragmentCallbacks, ReviewFragment.Callbacks, ModelCallbacks {
     private ViewPager mPager;
     private MyPagerAdapter mPagerAdapter;
     private boolean mEditingAfterReview;
@@ -87,7 +91,8 @@ public class ExpenseWizardActivity  extends FragmentActivity implements PageFrag
             @Override
             public void onClick(View view) {
                 GoForwardOnePage();
-            }});
+            }
+        });
 
 
         mPrevButton.setOnClickListener(new View.OnClickListener() {
@@ -102,13 +107,11 @@ public class ExpenseWizardActivity  extends FragmentActivity implements PageFrag
 
     }
 
-    private void GoForwardOnePage()
-    {
+    private void GoForwardOnePage() {
         if (mPager.getCurrentItem() == mCurrentPageSequence.size()) {
             AddExpense();
             finish();
-        }
-        else {
+        } else {
             if (mEditingAfterReview) {
                 mPager.setCurrentItem(mPagerAdapter.getCount() - 1);
             } else {
@@ -118,17 +121,13 @@ public class ExpenseWizardActivity  extends FragmentActivity implements PageFrag
 
     }
 
-    private void AddExpense()
-    {
+    private void AddExpense() {
         String tag = mWizardModel.findByKey("Gider Türü").getData().getString(Page.SIMPLE_DATA_KEY);
         Expense.Tags expenseTag;
 
-        if (tag == "Kişisel")
-        {
+        if (tag == "Kişisel") {
             expenseTag = Expense.Tags.Personal;
-        }
-        else
-        {
+        } else {
             expenseTag = Expense.Tags.Home;
         }
 
@@ -137,49 +136,40 @@ public class ExpenseWizardActivity  extends FragmentActivity implements PageFrag
         BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
         String description = mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.DESC_DATA_KEY);
 
-        if(description == null)
-        {
+        if (description == null) {
             description = "";
         }
 
-        Expense expense = new Expense(category,subCategory,amount,description,new Date(), expenseTag);
+        Expense expense = new Expense(category, subCategory, amount, description, new Date(), expenseTag);
         StringBuffer datax = new StringBuffer("");
 
         JSONObject expenseToSave = new JSONObject();
-        try
-        {
+        try {
             expenseToSave = ((Global) getApplication()).GetUser().GetBanker().CreateJSONExpense(expense);
-        }
-
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
         String filePath = ((Global) getApplication()).GetFilePath();
 
-        try
-        {
+        try {
             FileInputStream fIn = openFileInput(filePath);
             InputStreamReader isr = new InputStreamReader(fIn);
-            BufferedReader buffreader = new BufferedReader(isr) ;
+            BufferedReader buffreader = new BufferedReader(isr);
 
             String readString = buffreader.readLine();
             while (readString != null) {
                 datax.append(readString);
-                readString = buffreader.readLine() ;
+                readString = buffreader.readLine();
             }
 
             isr.close();
-        }
-
-        catch (IOException ioe)
-        {
+        } catch (IOException ioe) {
             ioe.printStackTrace();
         }
 
         String main = datax.toString();
-        try
-        {
+        try {
             JSONObject mainJSON = new JSONObject(main);
             JSONArray expenses = mainJSON.getJSONObject("user").getJSONArray("expenses");
             expenses.put(expenseToSave);
@@ -187,10 +177,7 @@ public class ExpenseWizardActivity  extends FragmentActivity implements PageFrag
             FileOutputStream fileOutputStream = openFileOutput(filePath, Context.MODE_PRIVATE);
             fileOutputStream.write(mainJSON.toString().getBytes());
             fileOutputStream.close();
-        }
-
-        catch (JSONException e)
-        {
+        } catch (JSONException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

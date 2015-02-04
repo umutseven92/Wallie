@@ -5,10 +5,10 @@ import Helpers.BudgetPageAdapter;
 import Helpers.SavingsPageAdapter;
 import Helpers.SettingsPageAdapter;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.*;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class MainActivity extends FragmentActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.left_drawer);
 
-        PagerTabStrip t = (PagerTabStrip)findViewById(R.id.pagerTitle);
+        PagerTabStrip t = (PagerTabStrip) findViewById(R.id.pagerTitle);
         t.setTextColor(getResources().getColor(R.color.cuzdan_red));
         t.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
         t.setTabIndicatorColor(getResources().getColor(R.color.cuzdan_red));
@@ -137,7 +138,7 @@ public class MainActivity extends FragmentActivity {
             return true;
         }
         // Handle action buttons
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -157,21 +158,17 @@ public class MainActivity extends FragmentActivity {
     //                    -Karl Weierstrass
     private void selectItem(int position) {
 
-        if(getSupportFragmentManager().getFragments() != null)
-        {
-            for (int i=0;i<getSupportFragmentManager().getFragments().size();i++)
-            {
+        if (getSupportFragmentManager().getFragments() != null) {
+            for (int i = 0; i < getSupportFragmentManager().getFragments().size(); i++) {
                 Fragment f = getSupportFragmentManager().getFragments().get(i);
-                if(f!=null)
-                {
+                if (f != null) {
                     getSupportFragmentManager().beginTransaction().disallowAddToBackStack().remove(getSupportFragmentManager().getFragments().get(i)).commit();
                 }
             }
             getSupportFragmentManager().executePendingTransactions();
         }
 
-        switch (position)
-        {
+        switch (position) {
             case 0:
                 List<Fragment> accountFragments = GetAccountFragments();
                 budgetPageAdapter = new BudgetPageAdapter(getSupportFragmentManager(), accountFragments, 0);

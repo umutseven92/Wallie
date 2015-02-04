@@ -9,8 +9,7 @@ import com.graviton.Cuzdan.R;
 
 public class SavingsFragment extends Fragment {
 
-    public static final SavingsFragment newInstance()
-    {
+    public static final SavingsFragment newInstance() {
         SavingsFragment f = new SavingsFragment();
         return f;
     }

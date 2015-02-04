@@ -22,28 +22,25 @@ import java.io.*;
 /**
  * Created by Umut Seven on 17.1.2015, for Graviton.
  */
-public class ExpenseDialogFragment extends DialogFragment{
+public class ExpenseDialogFragment extends DialogFragment {
 
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState)
-    {
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         Bundle bundle = getArguments();
         final Expense expense = new Gson().fromJson(bundle.getString("expense"), Expense.class);
         boolean canDelete = bundle.getBoolean("canDelete");
 
-        if(canDelete)
-        {
-            builder.setTitle( Html.fromHtml("Detaylar"))
-                    .setMessage(String.format("Tarih: %s\n\nGider Türü: %s\n\nKategori: %s\n\nAlt Kategori: %s\n\nMiktar: %s\n\nAçıklama: %s", DateFormatHelper.GetDayText(expense.GetDate()),expense.GetTurkishStringTag(),expense.GetCategory(),expense.GetSubCategory(),expense.GetAmount().toString(),expense.GetDescription()))
+        if (canDelete) {
+            builder.setTitle(Html.fromHtml("Detaylar"))
+                    .setMessage(String.format("Tarih: %s\n\nGider Türü: %s\n\nKategori: %s\n\nAlt Kategori: %s\n\nMiktar: %s\n\nAçıklama: %s", DateFormatHelper.GetDayText(expense.GetDate()), expense.GetTurkishStringTag(), expense.GetCategory(), expense.GetSubCategory(), expense.GetAmount().toString(), expense.GetDescription()))
                     .setPositiveButton("Sil", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             try {
                                 DeleteExpense(expense.GetID());
                                 _listener.onDismissed();
-                                if(_secondListener != null)
-                                {
+                                if (_secondListener != null) {
                                     _secondListener.onDismissed();
                                 }
                                 dismiss();
@@ -59,17 +56,15 @@ public class ExpenseDialogFragment extends DialogFragment{
                 }
             });
 
-        }
-        else
-        {
-           builder.setTitle( Html.fromHtml("Detaylar"))
-                    .setMessage(String.format("Tarih: %s\n\nGider Türü: %s\n\nKategori: %s\n\nAlt Kategori: %s\n\nMiktar: %s\n\nAçıklama: %s", DateFormatHelper.GetDayText(expense.GetDate()),expense.GetTurkishStringTag(),expense.GetCategory(),expense.GetSubCategory(),expense.GetAmount().toString(),expense.GetDescription()))
+        } else {
+            builder.setTitle(Html.fromHtml("Detaylar"))
+                    .setMessage(String.format("Tarih: %s\n\nGider Türü: %s\n\nKategori: %s\n\nAlt Kategori: %s\n\nMiktar: %s\n\nAçıklama: %s", DateFormatHelper.GetDayText(expense.GetDate()), expense.GetTurkishStringTag(), expense.GetCategory(), expense.GetSubCategory(), expense.GetAmount().toString(), expense.GetDescription()))
                     .setNegativeButton("Geri", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dismiss();
-                }
-            });
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dismiss();
+                        }
+                    });
         }
         return builder.create();
     }
@@ -77,45 +72,37 @@ public class ExpenseDialogFragment extends DialogFragment{
     private ExpenseLoadListener _listener;
     private ExpenseLoadListener _secondListener;
 
-    public void SetListener(ExpenseLoadListener listener)
-    {
+    public void SetListener(ExpenseLoadListener listener) {
         _listener = listener;
     }
 
-    public void SetSecondListener(ExpenseLoadListener listener)
-    {
+    public void SetSecondListener(ExpenseLoadListener listener) {
         _secondListener = listener;
     }
 
-    public void DeleteExpense(String id) throws IOException
-    {
+    public void DeleteExpense(String id) throws IOException {
         StringBuffer datax = new StringBuffer("");
 
         String filePath = ((Global) getActivity().getApplication()).GetFilePath();
 
-        try
-        {
+        try {
             FileInputStream fIn = getActivity().openFileInput(filePath);
             InputStreamReader isr = new InputStreamReader(fIn);
-            BufferedReader buffreader = new BufferedReader(isr) ;
+            BufferedReader buffreader = new BufferedReader(isr);
 
             String readString = buffreader.readLine();
             while (readString != null) {
                 datax.append(readString);
-                readString = buffreader.readLine() ;
+                readString = buffreader.readLine();
             }
 
             isr.close();
-        }
-
-        catch (IOException ioe)
-        {
+        } catch (IOException ioe) {
             ioe.printStackTrace();
         }
 
         String main = datax.toString();
-        try
-        {
+        try {
             JSONObject mainJSON = new JSONObject(main);
             JSONObject userJSON = mainJSON.getJSONObject("user");
             JSONArray incomes = userJSON.getJSONArray("expenses");
@@ -133,32 +120,26 @@ public class ExpenseDialogFragment extends DialogFragment{
                     "\t\t\"expenses\": [],\n" +
                     "\t\t\"expenses\": []\n" +
                     "\t}\n" +
-                    "}\n",userJSON.getString("userName"),userJSON.getString("name"),userJSON.getString("lastName") );
+                    "}\n", userJSON.getString("userName"), userJSON.getString("name"), userJSON.getString("lastName"));
 
             JSONObject userInfo = new JSONObject(userSettings);
             JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("expenses");
             JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
 
-            for(int i = 0; i< expenses.length();i++)
-            {
-                if(!expenses.getJSONObject(i).getString("id").equals(id))
-                {
+            for (int i = 0; i < expenses.length(); i++) {
+                if (!expenses.getJSONObject(i).getString("id").equals(id)) {
                     newExpenses.put(expenses.getJSONObject(i));
                 }
             }
 
-            for (int i = 0; i<incomes.length();i++)
-            {
+            for (int i = 0; i < incomes.length(); i++) {
                 newIncomes.put(incomes.getJSONObject(i));
             }
 
             FileOutputStream fileOutputStream = getActivity().openFileOutput(filePath, Context.MODE_PRIVATE);
             fileOutputStream.write(userInfo.toString().getBytes());
             fileOutputStream.close();
-        }
-
-        catch (JSONException e)
-        {
+        } catch (JSONException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

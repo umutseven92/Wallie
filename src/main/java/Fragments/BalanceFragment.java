@@ -3,20 +3,17 @@ package Fragments;
 import Helpers.ExpenseLoadListener;
 import Helpers.User;
 import android.graphics.Color;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
-import org.json.JSONException;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.Format;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -35,8 +32,7 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
     TextView txtBalanceDate;
     DatePickerFragment datePickerFragment;
 
-    public static final BalanceFragment newInstance()
-    {
+    public static final BalanceFragment newInstance() {
         BalanceFragment f = new BalanceFragment();
         return f;
     }
@@ -50,13 +46,13 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         datePickerFragment = new DatePickerFragment();
         datePickerFragment.SetExpenseListener(this);
 
-        Spinner spnDate = (Spinner)infView.findViewById(R.id.spnDateBalance);
-        leftArrow = (ImageButton)infView.findViewById(R.id.imgLeftBalance);
-        rightArrow = (ImageButton)infView.findViewById(R.id.imgRightBalance);
-        btnCalendar = (ImageButton)infView.findViewById(R.id.btnBalanceCalendar);
+        Spinner spnDate = (Spinner) infView.findViewById(R.id.spnDateBalance);
+        leftArrow = (ImageButton) infView.findViewById(R.id.imgLeftBalance);
+        rightArrow = (ImageButton) infView.findViewById(R.id.imgRightBalance);
+        btnCalendar = (ImageButton) infView.findViewById(R.id.btnBalanceCalendar);
 
-        txtBalanceDate = (TextView)infView.findViewById(R.id.txtBalanceDate);
-        ExpenseDialogFragment edf = ((Global)getActivity().getApplication()).expenseDialog;
+        txtBalanceDate = (TextView) infView.findViewById(R.id.txtBalanceDate);
+        ExpenseDialogFragment edf = ((Global) getActivity().getApplication()).expenseDialog;
         edf.SetSecondListener(this);
 
         btnCalendar.setOnClickListener(onCalendarClick);
@@ -94,20 +90,17 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         }
     };
 
-    public void UpdateDayText()
-    {
+    public void UpdateDayText() {
         Format formatter = new SimpleDateFormat("dd/MM/yyyy");
         txtBalanceDate.setText(formatter.format(dateBeingViewed));
     }
 
-    public void UpdateMonthText()
-    {
+    public void UpdateMonthText() {
         Format formatter = new SimpleDateFormat("MM");
         String[] months = getResources().getStringArray(R.array.turkishMonths);
         String month = "m";
 
-        switch (Integer.parseInt(formatter.format(dateBeingViewed)))
-        {
+        switch (Integer.parseInt(formatter.format(dateBeingViewed))) {
             case 1:
                 month = months[0];
                 break;
@@ -152,21 +145,15 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         txtBalanceDate.setText(month);
     }
 
-    public void getNextDateBalances()
-    {
+    public void getNextDateBalances() {
         Date today = new Date();
 
-        if(mode.equals("month"))
-        {
-            if(dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
-            {
+        if (mode.equals("month")) {
+            if (dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
                 return;
             }
-        }
-        else if(mode.equals("day"))
-        {
-            if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
-            {
+        } else if (mode.equals("day")) {
+            if (dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
                 return;
             }
         }
@@ -174,93 +161,73 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
-        if(mode.equals("day"))
-        {
-            cal.add(Calendar.DATE,1);
+        if (mode.equals("day")) {
+            cal.add(Calendar.DATE, 1);
             dateBeingViewed = cal.getTime();
-            LoadListView(dateBeingViewed,true);
-        }
-        else if (mode.equals("month"))
-        {
-            cal.add(Calendar.MONTH,1);
+            LoadListView(dateBeingViewed, true);
+        } else if (mode.equals("month")) {
+            cal.add(Calendar.MONTH, 1);
             dateBeingViewed = cal.getTime();
-            LoadListView(dateBeingViewed,false);
+            LoadListView(dateBeingViewed, false);
 
         }
     }
 
-    public void getLastDateBalance()
-    {
+    public void getLastDateBalance() {
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
-        if(mode.equals("day"))
-        {
-            cal.add(Calendar.DATE,-1);
+        if (mode.equals("day")) {
+            cal.add(Calendar.DATE, -1);
             dateBeingViewed = cal.getTime();
-            LoadListView(dateBeingViewed,true);
-        }
-        else if (mode.equals("month"))
-        {
-            cal.add(Calendar.MONTH,-1);
+            LoadListView(dateBeingViewed, true);
+        } else if (mode.equals("month")) {
+            cal.add(Calendar.MONTH, -1);
             dateBeingViewed = cal.getTime();
-            LoadListView(dateBeingViewed,false);
+            LoadListView(dateBeingViewed, false);
 
         }
     }
 
-    public void LoadListView(Date date, boolean day)
-    {
+    public void LoadListView(Date date, boolean day) {
         BigDecimal incomeTotal;
         BigDecimal expenseTotal;
         BigDecimal total;
 
-        if(day)
-        {
+        if (day) {
             incomeTotal = _user.GetBanker().GetTotalDayIncome(date);
             expenseTotal = _user.GetBanker().GetTotalDayExpense(date);
             total = _user.GetBanker().GetBalance(date, true);
             UpdateDayText();
-        }
-        else
-        {
+        } else {
             incomeTotal = _user.GetBanker().GetTotalMonthIncome(date);
             expenseTotal = _user.GetBanker().GetTotalMonthExpense(date);
             total = _user.GetBanker().GetBalance(date, false);
             UpdateMonthText();
         }
 
-        TextView txtIncome = (TextView)infView.findViewById(R.id.txtBalanceIncome);
-        TextView txtExpense = (TextView)infView.findViewById(R.id.txtBalanceExpense);
-        TextView txtTotal = (TextView)infView.findViewById(R.id.txtBalance);
+        TextView txtIncome = (TextView) infView.findViewById(R.id.txtBalanceIncome);
+        TextView txtExpense = (TextView) infView.findViewById(R.id.txtBalanceExpense);
+        TextView txtTotal = (TextView) infView.findViewById(R.id.txtBalance);
 
         txtIncome.setText(incomeTotal.toString());
         txtExpense.setText(expenseTotal.toString());
         txtTotal.setText(total.toString());
 
-        if(total.compareTo(BigDecimal.ZERO) == 0)
-        {
+        if (total.compareTo(BigDecimal.ZERO) == 0) {
             txtTotal.setTextColor(Color.parseColor("#216C2A"));
-        }
-        else if (total.compareTo(BigDecimal.ZERO) == 1)
-        {
+        } else if (total.compareTo(BigDecimal.ZERO) == 1) {
             txtTotal.setTextColor(Color.parseColor("#216C2A"));
-        }
-        else if (total.compareTo(BigDecimal.ZERO) == -1)
-        {
+        } else if (total.compareTo(BigDecimal.ZERO) == -1) {
             txtTotal.setTextColor(getResources().getColor(R.color.cuzdan_red));
         }
     }
 
     @Override
-    public void onResume()
-    {
-        if(mode.equals("day"))
-        {
+    public void onResume() {
+        if (mode.equals("day")) {
             LoadListView(dateBeingViewed, true);
-        }
-        else if (mode.equals("month"))
-        {
+        } else if (mode.equals("month")) {
             LoadListView(dateBeingViewed, false);
         }
         super.onResume();
@@ -271,17 +238,13 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
 
         Date today = new Date();
 
-        if(position == 0)
-        {
+        if (position == 0) {
             mode = "month";
             dateBeingViewed.setDate(1);
             LoadListView(dateBeingViewed, false);
-        }
-        else if(position == 1)
-        {
+        } else if (position == 1) {
             mode = "day";
-            if(dateBeingViewed.getMonth() == today.getMonth())
-            {
+            if (dateBeingViewed.getMonth() == today.getMonth()) {
                 dateBeingViewed.setDate(today.getDate());
             }
             LoadListView(dateBeingViewed, true);
@@ -295,12 +258,9 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
 
     @Override
     public void onDismissed() {
-        if(mode.equals("day"))
-        {
+        if (mode.equals("day")) {
             LoadListView(dateBeingViewed, true);
-        }
-        else if (mode.equals("month"))
-        {
+        } else if (mode.equals("month")) {
             LoadListView(dateBeingViewed, false);
         }
 
@@ -310,12 +270,9 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
     public void onDateSelected(Date date) {
 
         dateBeingViewed = date;
-        if(mode.equals("day"))
-        {
+        if (mode.equals("day")) {
             LoadListView(dateBeingViewed, true);
-        }
-        else if (mode.equals("month"))
-        {
+        } else if (mode.equals("month")) {
             LoadListView(dateBeingViewed, false);
         }
     }

@@ -15,6 +15,7 @@ import com.graviton.Cuzdan.ExpenseWizardActivity;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
 import org.json.JSONException;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -34,8 +35,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     ExpenseDialogFragment dialog;
     DatePickerFragment datePickerFragment;
 
-    public static final ExpenseFragment newInstance()
-    {
+    public static final ExpenseFragment newInstance() {
         ExpenseFragment f = new ExpenseFragment();
         return f;
     }
@@ -45,22 +45,22 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
                              Bundle savedInstanceState) {
         infView = inflater.inflate(R.layout.expense_fragment, container, false);
 
-        Spinner spnDate = (Spinner)infView.findViewById(R.id.spnDateExpense);
-        leftArrow = (ImageButton)infView.findViewById(R.id.imgLeftExpense);
-        rightArrow = (ImageButton)infView.findViewById(R.id.imgRightExpense);
+        Spinner spnDate = (Spinner) infView.findViewById(R.id.spnDateExpense);
+        leftArrow = (ImageButton) infView.findViewById(R.id.imgLeftExpense);
+        rightArrow = (ImageButton) infView.findViewById(R.id.imgRightExpense);
 
-        txtExpenseDate = (TextView)infView.findViewById(R.id.txtExpenseDate);
-        btnAddExpense = (ImageButton)infView.findViewById(R.id.btnAddExpense);
-        btnExpenseStats = (ImageButton)infView.findViewById(R.id.btnExpenseStats);
-        btnExpenseCalendar = (ImageButton)infView.findViewById(R.id.btnExpenseCalendar);
-        lv = (ListView)infView.findViewById(R.id.lstExpenses);
+        txtExpenseDate = (TextView) infView.findViewById(R.id.txtExpenseDate);
+        btnAddExpense = (ImageButton) infView.findViewById(R.id.btnAddExpense);
+        btnExpenseStats = (ImageButton) infView.findViewById(R.id.btnExpenseStats);
+        btnExpenseCalendar = (ImageButton) infView.findViewById(R.id.btnExpenseCalendar);
+        lv = (ListView) infView.findViewById(R.id.lstExpenses);
 
         datePickerFragment = new DatePickerFragment();
         datePickerFragment.SetExpenseListener(this);
 
         dialog = new ExpenseDialogFragment();
         dialog.SetListener(this);
-        ((Global)getActivity().getApplication()).expenseDialog = dialog;
+        ((Global) getActivity().getApplication()).expenseDialog = dialog;
 
         leftArrow.setOnClickListener(onLeftArrowClick);
         rightArrow.setOnClickListener(onRightArrowClick);
@@ -81,10 +81,8 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     }
 
     @Override
-    public void onResume()
-    {
-        if (mode.equals("day"))
-        {
+    public void onResume() {
+        if (mode.equals("day")) {
             try {
                 LoadListView(dateBeingViewed, true);
             } catch (JSONException e) {
@@ -95,9 +93,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
                 e.printStackTrace();
             }
 
-        }
-        else if (mode.equals("month"))
-        {
+        } else if (mode.equals("month")) {
             try {
                 LoadListView(dateBeingViewed, false);
             } catch (JSONException e) {
@@ -120,10 +116,9 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         }
     };
 
-    View.OnClickListener onExpenseStatsClick = new View.OnClickListener(){
+    View.OnClickListener onExpenseStatsClick = new View.OnClickListener() {
         @Override
-        public void onClick(View v)
-        {
+        public void onClick(View v) {
             Intent expenseStatsIntent = new Intent(getActivity(), ExpenseStatsActivity.class);
             getActivity().startActivity(expenseStatsIntent);
         }
@@ -170,17 +165,12 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     public void getNextDateExpenses() throws JSONException, ParseException, IOException {
         Date today = new Date();
 
-        if(mode.equals("month"))
-        {
-            if(dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
-            {
+        if (mode.equals("month")) {
+            if (dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
                 return;
             }
-        }
-        else if(mode.equals("day"))
-        {
-            if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
-            {
+        } else if (mode.equals("day")) {
+            if (dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
                 return;
             }
         }
@@ -188,17 +178,14 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
-        if(mode.equals("day"))
-        {
-            cal.add(Calendar.DATE,1);
+        if (mode.equals("day")) {
+            cal.add(Calendar.DATE, 1);
             dateBeingViewed = cal.getTime();
-            LoadListView(dateBeingViewed,true);
-        }
-        else if (mode.equals("month"))
-        {
-            cal.add(Calendar.MONTH,1);
+            LoadListView(dateBeingViewed, true);
+        } else if (mode.equals("month")) {
+            cal.add(Calendar.MONTH, 1);
             dateBeingViewed = cal.getTime();
-            LoadListView(dateBeingViewed,false);
+            LoadListView(dateBeingViewed, false);
 
         }
     }
@@ -208,17 +195,14 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
-        if(mode.equals("day"))
-        {
-            cal.add(Calendar.DATE,-1);
+        if (mode.equals("day")) {
+            cal.add(Calendar.DATE, -1);
             dateBeingViewed = cal.getTime();
-            LoadListView(dateBeingViewed,true);
-        }
-        else if (mode.equals("month"))
-        {
-            cal.add(Calendar.MONTH,-1);
+            LoadListView(dateBeingViewed, true);
+        } else if (mode.equals("month")) {
+            cal.add(Calendar.MONTH, -1);
             dateBeingViewed = cal.getTime();
-            LoadListView(dateBeingViewed,false);
+            LoadListView(dateBeingViewed, false);
 
         }
     }
@@ -228,14 +212,11 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
 
         ArrayList<Expense> expenses;
 
-        if(day)
-        {
-            expenses =_user.GetBanker().GetExpensesFromDay(date);
+        if (day) {
+            expenses = _user.GetBanker().GetExpensesFromDay(date);
             txtExpenseDate.setText(DateFormatHelper.GetDayText(date));
-        }
-        else
-        {
-            expenses =_user.GetBanker().GetExpensesFromMonth(date);
+        } else {
+            expenses = _user.GetBanker().GetExpensesFromMonth(date);
             txtExpenseDate.setText(DateFormatHelper.GetMonthText(date, getResources()));
         }
 
@@ -247,24 +228,21 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
             total = total.add(val);
         }
 
-        lv.setAdapter(new ExpenseListAdapter(this.getActivity(),expenses));
+        lv.setAdapter(new ExpenseListAdapter(this.getActivity(), expenses));
 
-        TextView txtTotalExpense = (TextView)infView.findViewById(R.id.txtTotalExpense);
+        TextView txtTotalExpense = (TextView) infView.findViewById(R.id.txtTotalExpense);
         txtTotalExpense.setText(total.toString() + " TL");
         txtTotalExpense.setTextColor(Color.RED);
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-    {
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Date today = new Date();
 
-        if(position == 0)
-        {
+        if (position == 0) {
             mode = "day";
             try {
-                if(dateBeingViewed.getMonth() == today.getMonth())
-                {
+                if (dateBeingViewed.getMonth() == today.getMonth()) {
                     dateBeingViewed.setDate(today.getDate());
                 }
                 LoadListView(dateBeingViewed, true);
@@ -276,9 +254,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
                 e.printStackTrace();
             }
 
-        }
-        else if(position == 1)
-        {
+        } else if (position == 1) {
             mode = "month";
             try {
                 dateBeingViewed.setDate(1);
@@ -297,13 +273,13 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            ExpenseListAdapter adapter = (ExpenseListAdapter)lv.getAdapter();
-            Expense exp = (Expense)adapter.getItem(position);
+            ExpenseListAdapter adapter = (ExpenseListAdapter) lv.getAdapter();
+            Expense exp = (Expense) adapter.getItem(position);
 
             Bundle bundle = new Bundle();
-            bundle.putString("expense",new Gson().toJson(exp));
+            bundle.putString("expense", new Gson().toJson(exp));
             dialog.setArguments(bundle);
-            dialog.show(getActivity().getFragmentManager(),"dialog");
+            dialog.show(getActivity().getFragmentManager(), "dialog");
 
         }
     };
@@ -316,8 +292,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     @Override
     public void onDismissed() {
 
-        if (mode.equals("day"))
-        {
+        if (mode.equals("day")) {
             try {
                 LoadListView(dateBeingViewed, true);
             } catch (JSONException e) {
@@ -327,9 +302,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        else if (mode.equals("month"))
-        {
+        } else if (mode.equals("month")) {
             try {
                 LoadListView(dateBeingViewed, false);
             } catch (JSONException e) {
@@ -347,8 +320,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     public void onDateSelected(Date date) {
         dateBeingViewed = date;
 
-        if (mode.equals("day"))
-        {
+        if (mode.equals("day")) {
             try {
                 LoadListView(dateBeingViewed, true);
             } catch (JSONException e) {
@@ -358,9 +330,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        else if (mode.equals("month"))
-        {
+        } else if (mode.equals("month")) {
             try {
                 LoadListView(dateBeingViewed, false);
             } catch (JSONException e) {

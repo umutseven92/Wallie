@@ -1,15 +1,9 @@
 package Helpers;
 
-import android.content.res.Resources;
 import android.graphics.Color;
 import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
-import com.graviton.Cuzdan.R;
-
-import java.text.Format;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by Umut Seven on 27.1.2015, for Graviton.

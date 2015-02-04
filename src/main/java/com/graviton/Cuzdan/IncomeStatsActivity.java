@@ -13,11 +13,10 @@ import android.support.v4.app.FragmentActivity;
 /**
  * Created by Umut Seven on 14.1.2015, for Graviton.
  */
-public class IncomeStatsActivity  extends FragmentActivity implements ActionBar.TabListener{
+public class IncomeStatsActivity extends FragmentActivity implements ActionBar.TabListener {
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         ActionBar actionBar = getActionBar();
@@ -38,17 +37,12 @@ public class IncomeStatsActivity  extends FragmentActivity implements ActionBar.
         // pos 0 -> Gelir arama, pos 1 -> Pie Chart, pos 2 -> Graph
         int pos = tab.getPosition();
 
-        if(pos == 0)
-        {
-            ft.replace(android.R.id.content,new IncomeSearchFragment());
+        if (pos == 0) {
+            ft.replace(android.R.id.content, new IncomeSearchFragment());
 
-        }
-        else if(pos == 1)
-        {
-            ft.replace(android.R.id.content,new IncomePieFragment());
-        }
-        else if(pos == 2)
-        {
+        } else if (pos == 1) {
+            ft.replace(android.R.id.content, new IncomePieFragment());
+        } else if (pos == 2) {
             ft.replace(android.R.id.content, new IncomeGraphFragment());
         }
 

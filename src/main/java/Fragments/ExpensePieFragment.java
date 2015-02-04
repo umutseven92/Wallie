@@ -1,8 +1,8 @@
 package Fragments;
 
 import Helpers.*;
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +30,7 @@ import java.util.Date;
 /**
  * Created by Umut Seven on 23.1.2015, for Graviton.
  */
-public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSelectedListener{
+public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     PieChart expensePieChart;
     Spinner spnExpenseDate;
@@ -40,18 +40,17 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
     User user;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
-        View v = inflater.inflate(R.layout.expense_pie_fragment, container,false);
-        spnExpenseDate = (Spinner)v.findViewById(R.id.spnExpensePieDate);
-        expensePieChart = (PieChart)v.findViewById(R.id.expensePieChart);
-        imgLeft = (ImageButton)v.findViewById(R.id.imgExpensePieLeft);
-        imgRight = (ImageButton)v.findViewById(R.id.imgExpensePieRight);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.expense_pie_fragment, container, false);
+        spnExpenseDate = (Spinner) v.findViewById(R.id.spnExpensePieDate);
+        expensePieChart = (PieChart) v.findViewById(R.id.expensePieChart);
+        imgLeft = (ImageButton) v.findViewById(R.id.imgExpensePieLeft);
+        imgRight = (ImageButton) v.findViewById(R.id.imgExpensePieRight);
 
         imgLeft.setOnClickListener(onLeftArrowClick);
         imgRight.setOnClickListener(onRightArrowClick);
 
-        user = ((Global)getActivity().getApplication()).GetUser();
+        user = ((Global) getActivity().getApplication()).GetUser();
         dateBeingViewed = new Date();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(v.getContext(), R.array.balanceDateArray, R.layout.cuzdan_spinner_item);
@@ -61,8 +60,7 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
 
         ChartHelper.InitializePieChart(expensePieChart);
 
-        if(mode.equals("day"))
-        {
+        if (mode.equals("day")) {
             try {
                 LoadPieChart(true);
             } catch (ParseException e) {
@@ -72,9 +70,7 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }
-        else if(mode.equals("month"))
-        {
+        } else if (mode.equals("month")) {
             try {
                 LoadPieChart(false);
             } catch (ParseException e) {
@@ -99,39 +95,34 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
         ArrayList<Entry> entries = new ArrayList<Entry>();
         Banker banker = user.GetBanker();
 
-        if(day)
-        {
-            ArrayList<Expense> expenses =  banker.GetExpensesFromDay(dateBeingViewed);
+        if (day) {
+            ArrayList<Expense> expenses = banker.GetExpensesFromDay(dateBeingViewed);
 
-            for (int i = 0;i<expenses.size();i++)
-            {
+            for (int i = 0; i < expenses.size(); i++) {
                 Expense expense = expenses.get(i);
                 expenseNames.add(expense.GetCategory());
-                entries.add(new Entry(expense.GetAmount().floatValue(),i));
+                entries.add(new Entry(expense.GetAmount().floatValue(), i));
             }
 
             expensePieChart.setCenterText(DateFormatHelper.GetDayText(dateBeingViewed));
-        }
-        else
-        {
+        } else {
             ArrayList<Expense> expenses = banker.GetExpensesFromMonth(dateBeingViewed);
 
-            for (int i = 0;i<expenses.size();i++)
-            {
+            for (int i = 0; i < expenses.size(); i++) {
                 Expense expense = expenses.get(i);
                 expenseNames.add(expense.GetCategory());
-                entries.add(new Entry(expense.GetAmount().floatValue(),i));
+                entries.add(new Entry(expense.GetAmount().floatValue(), i));
             }
 
             expensePieChart.setCenterText(DateFormatHelper.GetMonthText(dateBeingViewed, getResources()));
 
         }
 
-        PieDataSet set = new PieDataSet(entries,"");
+        PieDataSet set = new PieDataSet(entries, "");
         set.setSliceSpace(3f);
         set.setColors(ColorTemplate.JOYFUL_COLORS);
 
-        PieData data = new PieData(expenseNames.toArray(new String[expenseNames.size()]),set);
+        PieData data = new PieData(expenseNames.toArray(new String[expenseNames.size()]), set);
 
         expensePieChart.setData(data);
         expensePieChart.highlightValues(null);
@@ -140,7 +131,7 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
 
     View.OnClickListener onLeftArrowClick = new View.OnClickListener() {
         @Override
-        public void onClick(View v){
+        public void onClick(View v) {
             try {
                 getLastDateExpenses();
             } catch (ParseException e) {
@@ -171,17 +162,12 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
     public void getNextDateExpenses() throws ParseException, JSONException, IOException {
         Date today = new Date();
 
-        if(mode.equals("month"))
-        {
-            if(dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
-            {
+        if (mode.equals("month")) {
+            if (dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
                 return;
             }
-        }
-        else if(mode.equals("day"))
-        {
-            if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear() )
-            {
+        } else if (mode.equals("day")) {
+            if (dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
                 return;
             }
         }
@@ -190,15 +176,12 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
 
         cal.setTime(dateBeingViewed);
 
-        if(mode.equals("day"))
-        {
-            cal.add(Calendar.DATE,1);
+        if (mode.equals("day")) {
+            cal.add(Calendar.DATE, 1);
             dateBeingViewed = cal.getTime();
             LoadPieChart(true);
-        }
-        else if (mode.equals("month"))
-        {
-            cal.add(Calendar.MONTH,1);
+        } else if (mode.equals("month")) {
+            cal.add(Calendar.MONTH, 1);
             dateBeingViewed = cal.getTime();
             LoadPieChart(false);
         }
@@ -208,15 +191,12 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
-        if(mode.equals("day"))
-        {
-            cal.add(Calendar.DATE,-1);
+        if (mode.equals("day")) {
+            cal.add(Calendar.DATE, -1);
             dateBeingViewed = cal.getTime();
             LoadPieChart(true);
-        }
-        else if (mode.equals("month"))
-        {
-            cal.add(Calendar.MONTH,-1);
+        } else if (mode.equals("month")) {
+            cal.add(Calendar.MONTH, -1);
             dateBeingViewed = cal.getTime();
             LoadPieChart(false);
         }
@@ -226,8 +206,7 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
         Date today = new Date();
-        if(position == 0)
-        {
+        if (position == 0) {
             mode = "month";
             try {
                 dateBeingViewed.setDate(1);
@@ -239,13 +218,10 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }
-        else if(position == 1)
-        {
+        } else if (position == 1) {
             mode = "day";
             try {
-                if(dateBeingViewed.getMonth() == today.getMonth())
-                {
+                if (dateBeingViewed.getMonth() == today.getMonth()) {
                     dateBeingViewed.setDate(today.getDate());
                 }
                 LoadPieChart(true);

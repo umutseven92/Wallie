@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.widget.DatePicker;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -16,8 +17,7 @@ import java.util.Date;
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState)
-    {
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
@@ -33,26 +33,24 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
     private ExpenseLoadListener _expenseListener;
     private String mode = "income";
 
-    public void SetIncomeListener(IncomeLoadListener listener)
-    {
+    public void SetIncomeListener(IncomeLoadListener listener) {
         _incomeListener = listener;
     }
-    public void SetExpenseListener(ExpenseLoadListener listener){ _expenseListener = listener;}
 
-    public void SetMode(String mode)
-    {
+    public void SetExpenseListener(ExpenseLoadListener listener) {
+        _expenseListener = listener;
+    }
+
+    public void SetMode(String mode) {
         this.mode = mode;
     }
 
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
         Calendar cal = Calendar.getInstance();
-        cal.set(year,monthOfYear,dayOfMonth);
-        if(mode.equals("income"))
-        {
+        cal.set(year, monthOfYear, dayOfMonth);
+        if (mode.equals("income")) {
             _incomeListener.onDateSelected(cal.getTime());
-        }
-        else if(mode.equals("expense"))
-        {
+        } else if (mode.equals("expense")) {
             _expenseListener.onDateSelected(cal.getTime());
         }
     }

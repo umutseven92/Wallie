@@ -17,8 +17,7 @@ public class AccountFragment extends Fragment {
 
     static User _user;
 
-    public static final AccountFragment newInstance()
-    {
+    public static final AccountFragment newInstance() {
         AccountFragment f = new AccountFragment();
         return f;
     }
@@ -27,9 +26,9 @@ public class AccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.account_fragment, container, false);
-        TextView txtUserName = (TextView)v.findViewById(R.id.txtUserName);
-        TextView txtName = (TextView)v.findViewById(R.id.txtName);
-        TextView txtVersion = (TextView)v.findViewById(R.id.txtVersion);
+        TextView txtUserName = (TextView) v.findViewById(R.id.txtUserName);
+        TextView txtName = (TextView) v.findViewById(R.id.txtName);
+        TextView txtVersion = (TextView) v.findViewById(R.id.txtVersion);
 
         _user = ((com.graviton.Cuzdan.Global) getActivity().getApplication()).GetUser();
         txtUserName.setText(_user.GetUserName());

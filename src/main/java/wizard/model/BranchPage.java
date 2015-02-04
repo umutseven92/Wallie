@@ -19,6 +19,7 @@ package wizard.model;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import wizard.ui.SingleChoiceFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 

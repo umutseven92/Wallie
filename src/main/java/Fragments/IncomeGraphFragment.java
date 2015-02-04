@@ -1,9 +1,12 @@
 package Fragments;
 
-import Helpers.*;
+import Helpers.ChartHelper;
+import Helpers.DateFormatHelper;
+import Helpers.Income;
+import Helpers.User;
+import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,13 +28,16 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 
 /**
  * Created by Umut Seven on 27.1.2015, for Graviton.
  */
-public class IncomeGraphFragment  extends Fragment implements OnChartValueSelectedListener{
+public class IncomeGraphFragment extends Fragment implements OnChartValueSelectedListener {
 
     TextView txtIncomeGraphDate;
     ImageButton imgLeft, imgRight;
@@ -42,15 +48,14 @@ public class IncomeGraphFragment  extends Fragment implements OnChartValueSelect
     List<Income> incomes;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.income_graph_fragment, container, false);
 
-        user =  ((Global)getActivity().getApplication()).GetUser();
-        incomeLineChart = (LineChart)v.findViewById(R.id.incomeGraph);
-        txtIncomeGraphDate = (TextView)v.findViewById(R.id.txtIncomeGraphDate);
-        imgLeft = (ImageButton)v.findViewById(R.id.imgIncomeGraphLeft);
-        imgRight = (ImageButton)v.findViewById(R.id.imgIncomeGraphRight);
+        user = ((Global) getActivity().getApplication()).GetUser();
+        incomeLineChart = (LineChart) v.findViewById(R.id.incomeGraph);
+        txtIncomeGraphDate = (TextView) v.findViewById(R.id.txtIncomeGraphDate);
+        imgLeft = (ImageButton) v.findViewById(R.id.imgIncomeGraphLeft);
+        imgRight = (ImageButton) v.findViewById(R.id.imgIncomeGraphRight);
 
         imgLeft.setOnClickListener(onLeftArrowClick);
         imgRight.setOnClickListener(onRightArrowClick);
@@ -97,9 +102,8 @@ public class IncomeGraphFragment  extends Fragment implements OnChartValueSelect
         }
 
         ArrayList<Entry> yVals = new ArrayList<Entry>();
-        for (int i = 0;i <incomes.size(); i++)
-        {
-            yVals.add(new Entry(incomes.get(i).GetAmount().floatValue(),i));
+        for (int i = 0; i < incomes.size(); i++) {
+            yVals.add(new Entry(incomes.get(i).GetAmount().floatValue(), i));
         }
 
         LineDataSet set = new LineDataSet(yVals, "Gelirler");
@@ -121,7 +125,7 @@ public class IncomeGraphFragment  extends Fragment implements OnChartValueSelect
 
     View.OnClickListener onLeftArrowClick = new View.OnClickListener() {
         @Override
-        public void onClick(View v){
+        public void onClick(View v) {
             try {
                 getLastDateIncomes();
             } catch (ParseException e) {
@@ -152,8 +156,7 @@ public class IncomeGraphFragment  extends Fragment implements OnChartValueSelect
     public void getNextDateIncomes() throws ParseException, JSONException, IOException {
         Date today = new Date();
 
-        if(dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear())
-        {
+        if (dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
             return;
         }
 
@@ -161,7 +164,7 @@ public class IncomeGraphFragment  extends Fragment implements OnChartValueSelect
 
         cal.setTime(dateBeingViewed);
 
-        cal.add(Calendar.MONTH,1);
+        cal.add(Calendar.MONTH, 1);
         dateBeingViewed = cal.getTime();
         LoadLineChart();
     }
@@ -170,7 +173,7 @@ public class IncomeGraphFragment  extends Fragment implements OnChartValueSelect
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
-        cal.add(Calendar.MONTH,-1);
+        cal.add(Calendar.MONTH, -1);
         dateBeingViewed = cal.getTime();
         LoadLineChart();
     }
