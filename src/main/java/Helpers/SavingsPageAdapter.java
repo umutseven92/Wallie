@@ -16,14 +16,13 @@ public class SavingsPageAdapter extends FragmentPagerAdapter {
 
     public int Position;
 
-    public SavingsPageAdapter(FragmentManager fm, List<Fragment> fragments, int pos)
-    {
+    public SavingsPageAdapter(FragmentManager fm, List<Fragment> fragments, int pos) {
         super(fm);
         Position = pos;
         this.fragments = fragments;
     }
 
-    private final String[] titles = { "Birikim"};
+    private final String[] titles = {"Birikim"};
 
     @Override
     public Fragment getItem(int i) {

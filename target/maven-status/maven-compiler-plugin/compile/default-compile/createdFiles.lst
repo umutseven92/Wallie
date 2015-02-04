@@ -51,6 +51,7 @@ Fragments\BalanceFragment$1.class
 wizard\model\MultipleFixedChoicePage.class
 Fragments\ExpenseFragment$6.class
 wizard\ui\MultipleChoiceFragment.class
+Helpers\Saving.class
 Helpers\Expense.class
 com\graviton\Cuzdan\SplashActivity.class
 com\graviton\Cuzdan\R$string.class
@@ -122,5 +123,6 @@ Fragments\IncomePieFragment$1.class
 Helpers\DecimalDigitsInputFilter.class
 wizard\ui\StepPagerStrip$OnPageSelectedListener.class
 com\graviton\Cuzdan\R$array.class
+Helpers\Saving$Period.class
 com\graviton\Cuzdan\IncomeWizardActivity.class
 Fragments\ExpenseGraphFragment$2.class

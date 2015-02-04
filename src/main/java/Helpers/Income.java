@@ -2,6 +2,7 @@ package Helpers;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,8 +27,7 @@ public class Income extends Balance {
     }
 
     // Create income manually
-    public Income(String category, String subCategory, BigDecimal amount, String desc, Date date)
-    {
+    public Income(String category, String subCategory, BigDecimal amount, String desc, Date date) {
         this.GenerateID();
         this.SetCategory(category);
         this.SetSubCategory(subCategory);

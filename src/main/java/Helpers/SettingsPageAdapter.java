@@ -16,12 +16,12 @@ public class SettingsPageAdapter extends FragmentPagerAdapter {
 
     public int Position;
 
-    public SettingsPageAdapter(FragmentManager fm, List<Fragment> fragments, int pos)
-    {
+    public SettingsPageAdapter(FragmentManager fm, List<Fragment> fragments, int pos) {
         super(fm);
         Position = pos;
         this.fragments = fragments;
     }
+
     @Override
     public Fragment getItem(int i) {
         return this.fragments.get(i);
@@ -32,7 +32,7 @@ public class SettingsPageAdapter extends FragmentPagerAdapter {
         return this.fragments.size();
     }
 
-    private final String[] titles = { "Hesap" };
+    private final String[] titles = {"Hesap"};
 
     @Override
     public CharSequence getPageTitle(int position) {

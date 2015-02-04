@@ -3,6 +3,7 @@ package Helpers;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.*;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -23,30 +24,37 @@ public class Banker implements Serializable {
         LoadBalance(incomes, expenses);
     }
 
+
     private ArrayList<Income> _incomes;
 
     private String filePath;
 
-    public ArrayList<Income> GetIncomes()
-    {
+    public ArrayList<Income> GetIncomes() {
         return _incomes;
     }
 
-    public void SetIncomes(ArrayList<Income> value)
-    {
+    public void SetIncomes(ArrayList<Income> value) {
         _incomes = value;
     }
 
     private ArrayList<Expense> _expenses;
 
-    public ArrayList<Expense> GetExpenses()
-    {
+    public ArrayList<Expense> GetExpenses() {
         return _expenses;
     }
 
-    public void SetExpenses(ArrayList<Expense> value)
-    {
+    public void SetExpenses(ArrayList<Expense> value) {
         _expenses = value;
+    }
+
+    private ArrayList<Saving> _savings;
+
+    public void SetSavings(ArrayList<Saving> savings) {
+        _savings = savings;
+    }
+
+    public ArrayList<Saving> GetSavings() {
+        return _savings;
     }
 
     // This is where expenses & incomes are loaded from users save file
@@ -59,8 +67,7 @@ public class Banker implements Serializable {
 
     public void LoadExpenses(JSONArray jsonBalance) throws JSONException, ParseException {
         _expenses = new ArrayList<Expense>();
-        for(int i = 0; i<jsonBalance.length(); i++)
-        {
+        for (int i = 0; i < jsonBalance.length(); i++) {
             Expense expense = new Expense(jsonBalance.getJSONObject(i));
             _expenses.add(expense);
         }
@@ -68,8 +75,7 @@ public class Banker implements Serializable {
 
     public void LoadIncomes(JSONArray jsonBalance) throws JSONException, ParseException {
         _incomes = new ArrayList<Income>();
-        for(int i = 0; i<jsonBalance.length(); i++)
-        {
+        for (int i = 0; i < jsonBalance.length(); i++) {
             Income income = new Income(jsonBalance.getJSONObject(i));
             _incomes.add(income);
         }
@@ -80,8 +86,7 @@ public class Banker implements Serializable {
         StringBuilder sb = new StringBuilder();
         BufferedReader br = new BufferedReader(new FileReader(this.filePath));
         String line;
-        while ((line = br.readLine()) != null)
-        {
+        while ((line = br.readLine()) != null) {
             sb.append(line);
             sb.append("\n");
         }
@@ -95,28 +100,25 @@ public class Banker implements Serializable {
         return jsonIncome;
     }
 
-    public JSONArray FetchExpenseData() throws IOException, JSONException{
+    public JSONArray FetchExpenseData() throws IOException, JSONException {
         JSONObject jsonObject = FetchBalanceData();
         JSONArray jsonExpense = jsonObject.getJSONObject("user").getJSONArray("expenses");
 
         return jsonExpense;
     }
 
-    public BigDecimal GetTotalDayIncome(Date date)
-    {
+    public BigDecimal GetTotalDayIncome(Date date) {
         BigDecimal total = BigDecimal.ZERO;
         Calendar cal1 = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
         cal2.setTime(date);
 
-        for (Income i : _incomes)
-        {
+        for (Income i : _incomes) {
             cal1.setTime(i.GetDate());
             boolean sameDay = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
                     cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
 
-            if(sameDay)
-            {
+            if (sameDay) {
                 total = total.add(i.GetAmount());
             }
 
@@ -124,21 +126,18 @@ public class Banker implements Serializable {
         return total;
     }
 
-    public BigDecimal GetTotalMonthIncome(Date date)
-    {
+    public BigDecimal GetTotalMonthIncome(Date date) {
         BigDecimal total = BigDecimal.ZERO;
         Calendar cal1 = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
         cal2.setTime(date);
 
-        for (Income i : _incomes)
-        {
+        for (Income i : _incomes) {
             cal1.setTime(i.GetDate());
             boolean sameMonth = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
                     cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH);
 
-            if(sameMonth)
-            {
+            if (sameMonth) {
                 total = total.add(i.GetAmount());
             }
 
@@ -146,21 +145,18 @@ public class Banker implements Serializable {
         return total;
     }
 
-    public BigDecimal GetTotalDayExpense(Date date)
-    {
+    public BigDecimal GetTotalDayExpense(Date date) {
         BigDecimal total = BigDecimal.ZERO;
         Calendar cal1 = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
         cal2.setTime(date);
 
-        for (Expense i : _expenses)
-        {
+        for (Expense i : _expenses) {
             cal1.setTime(i.GetDate());
             boolean sameDay = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
                     cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
 
-            if(sameDay)
-            {
+            if (sameDay) {
                 total = total.add(i.GetAmount());
             }
 
@@ -169,21 +165,18 @@ public class Banker implements Serializable {
         return total;
     }
 
-    public BigDecimal GetTotalMonthExpense(Date date)
-    {
+    public BigDecimal GetTotalMonthExpense(Date date) {
         BigDecimal total = BigDecimal.ZERO;
         Calendar cal1 = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
         cal2.setTime(date);
 
-        for (Expense i : _expenses)
-        {
+        for (Expense i : _expenses) {
             cal1.setTime(i.GetDate());
             boolean sameMonth = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
                     cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH);
 
-            if(sameMonth)
-            {
+            if (sameMonth) {
                 total = total.add(i.GetAmount());
             }
 
@@ -192,17 +185,13 @@ public class Banker implements Serializable {
         return total;
     }
 
-    public BigDecimal GetBalance(Date date, boolean day)
-    {
+    public BigDecimal GetBalance(Date date, boolean day) {
         BigDecimal total = null;
-        if(day)
-        {
+        if (day) {
             BigDecimal totalIncome = GetTotalDayIncome(date);
             BigDecimal totalExpense = GetTotalDayExpense(date);
             total = totalIncome.subtract(totalExpense);
-        }
-        else
-        {
+        } else {
             BigDecimal totalIncome = GetTotalMonthIncome(date);
             BigDecimal totalExpense = GetTotalMonthExpense(date);
             total = totalIncome.subtract(totalExpense);
@@ -291,11 +280,10 @@ public class Banker implements Serializable {
         return specExpenses;
     }
 
-    public JSONObject CreateJSONIncome(Income income) throws JSONException
-    {
+    public JSONObject CreateJSONIncome(Income income) throws JSONException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(income.GetDate());
-        String date = cal.get(Calendar.YEAR)+ "-" + (cal.get(Calendar.MONTH) + 1) + "-" + cal.get(Calendar.DAY_OF_MONTH);
+        String date = cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1) + "-" + cal.get(Calendar.DAY_OF_MONTH);
 
         String json = String.format("{\n" +
                 "\t\t\t\t\t\"id\": \"%s\", \n" +
@@ -304,16 +292,15 @@ public class Banker implements Serializable {
                 "\t\t\t\t\t\"amount\": \"%s\",\n" +
                 "\t\t\t\t\t\"desc\": \"%s\",\n" +
                 "\t\t\t\t\t\"date\": \"%s\"\n" +
-                "\t\t\t\t}",income.GetID(),income.GetCategory(),income.GetSubCategory(),income.GetAmount(),income.GetDescription(),date);
+                "\t\t\t\t}", income.GetID(), income.GetCategory(), income.GetSubCategory(), income.GetAmount(), income.GetDescription(), date);
 
         return new JSONObject(json);
     }
 
-    public JSONObject CreateJSONExpense(Expense expense) throws JSONException
-    {
+    public JSONObject CreateJSONExpense(Expense expense) throws JSONException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(expense.GetDate());
-        String date = cal.get(Calendar.YEAR)+ "-" + (cal.get(Calendar.MONTH) + 1) + "-" + cal.get(Calendar.DAY_OF_MONTH);
+        String date = cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1) + "-" + cal.get(Calendar.DAY_OF_MONTH);
 
         String json = String.format("{\n" +
                 "\t\t\t\t\t\"id\": \"%s\", \n" +
@@ -323,7 +310,7 @@ public class Banker implements Serializable {
                 "\t\t\t\t\t\"tag\": \"%s\",\n" +
                 "\t\t\t\t\t\"desc\": \"%s\",\n" +
                 "\t\t\t\t\t\"date\": \"%s\"\n" +
-                "\t\t\t\t}",expense.GetID(),expense.GetCategory(),expense.GetSubCategory(),expense.GetAmount(),expense.GetStringTag(),expense.GetDescription(),date);
+                "\t\t\t\t}", expense.GetID(), expense.GetCategory(), expense.GetSubCategory(), expense.GetAmount(), expense.GetStringTag(), expense.GetDescription(), date);
 
         return new JSONObject(json);
 

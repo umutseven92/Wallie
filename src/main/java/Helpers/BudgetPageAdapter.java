@@ -27,7 +27,7 @@ public class BudgetPageAdapter extends FragmentPagerAdapter {
         return this.fragments.size();
     }
 
-    private final String[] titles = { "Gelirler", "Giderler", "Bakiye"};
+    private final String[] titles = {"Gelirler", "Giderler", "Bakiye"};
 
     @Override
     public CharSequence getPageTitle(int position) {

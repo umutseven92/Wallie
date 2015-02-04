@@ -11,8 +11,7 @@ public class DecimalDigitsInputFilter implements InputFilter {
 
     private final int decimalDigits;
 
-    public DecimalDigitsInputFilter(int decimalDigits)
-    {
+    public DecimalDigitsInputFilter(int decimalDigits) {
         this.decimalDigits = decimalDigits;
     }
 
@@ -32,8 +31,7 @@ public class DecimalDigitsInputFilter implements InputFilter {
         if (dotPos >= 0) {
 
             // protects against many dots
-            if (source.equals(".") || source.equals(","))
-            {
+            if (source.equals(".") || source.equals(",")) {
                 return "";
             }
             // if the text is entered before the dot

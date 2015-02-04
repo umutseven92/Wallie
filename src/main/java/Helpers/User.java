@@ -2,6 +2,7 @@ package Helpers;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.text.ParseException;
 
@@ -12,12 +13,11 @@ import java.text.ParseException;
 public class User implements Serializable {
 
     public User(JSONObject data, String filePath) throws JSONException, ParseException {
-        if(data!= null)
-        {
+        if (data != null) {
             JSONObject jsonUser = data.getJSONObject("user");
             _userName = jsonUser.getString("userName");
             _name = jsonUser.getString("name");
-            _lastName =jsonUser.getString("lastName");
+            _lastName = jsonUser.getString("lastName");
             _profilePicture = "@drawable/profile.png";
             this._filePath = filePath;
             _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"), this._filePath);
@@ -29,56 +29,47 @@ public class User implements Serializable {
 
     private String _userName;
 
-    public String GetUserName()
-    {
+    public String GetUserName() {
         return _userName;
     }
 
-    public void SetString(String userName)
-    {
+    public void SetString(String userName) {
         _userName = userName;
     }
 
     private String _name;
 
-    public String GetName()
-    {
+    public String GetName() {
         return _name;
     }
 
-    public void SetName(String name)
-    {
+    public void SetName(String name) {
         _name = name;
     }
 
     private String _lastName;
 
-    public String GetLastName()
-    {
+    public String GetLastName() {
         return _lastName;
     }
 
-    public void SetLastName(String lastName)
-    {
+    public void SetLastName(String lastName) {
         _lastName = lastName;
     }
 
     private String _profilePicture;
 
-    public String GetProfilePicture()
-    {
+    public String GetProfilePicture() {
         return _profilePicture;
     }
 
-    public void SetProfilePicture(String profilePicture)
-    {
+    public void SetProfilePicture(String profilePicture) {
         _profilePicture = profilePicture;
     }
 
     private Banker _banker;
 
-    public Banker GetBanker()
-    {
+    public Banker GetBanker() {
         return _banker;
     }
 

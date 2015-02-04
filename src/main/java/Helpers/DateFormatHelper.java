@@ -11,20 +11,17 @@ import java.util.Date;
  * Created by Umut Seven on 28.1.2015, for Graviton.
  */
 public class DateFormatHelper {
-    public static String GetDayText(Date date)
-    {
+    public static String GetDayText(Date date) {
         Format formatter = new SimpleDateFormat("dd/MM/yyyy");
         return formatter.format(date);
     }
 
-    public static String GetMonthText(Date date, Resources res)
-    {
+    public static String GetMonthText(Date date, Resources res) {
         Format formatter = new SimpleDateFormat("MM");
         String[] months = res.getStringArray(R.array.turkishMonths);
         String month = "m";
 
-        switch (Integer.parseInt(formatter.format(date)))
-        {
+        switch (Integer.parseInt(formatter.format(date))) {
             case 1:
                 month = months[0];
                 break;

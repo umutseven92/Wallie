@@ -16,8 +16,7 @@ import java.util.Date;
  */
 public class ChartHelper {
 
-    public static void InitializePieChart(PieChart chart)
-    {
+    public static void InitializePieChart(PieChart chart) {
         chart.setDescription("");
 
         chart.setUsePercentValues(true);
@@ -42,8 +41,7 @@ public class ChartHelper {
 
     }
 
-    public static void InitializeLineChart(LineChart chart)
-    {
+    public static void InitializeLineChart(LineChart chart) {
         chart.setValueTextColor(Color.BLACK);
         chart.setUnit(" TL");
         chart.setDrawUnitsInChart(true);

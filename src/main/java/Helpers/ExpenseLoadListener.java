@@ -8,5 +8,6 @@ import java.util.Date;
  */
 public interface ExpenseLoadListener {
     public void onDismissed();
+
     public void onDateSelected(Date date);
 }
