@@ -47,6 +47,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class color {
         public static final int background=0x7f040007;
+        public static final int cuzdan_green=0x7f04000a;
         /**  Ana Renkler 
          */
         public static final int cuzdan_red=0x7f040006;
@@ -92,17 +93,19 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int red_button=0x7f020016;
         public static final int redminus=0x7f020017;
         public static final int right_arrow=0x7f020018;
-        public static final int rounded_layout=0x7f020019;
-        public static final int rounded_spinner=0x7f02001a;
-        public static final int selectable_item_background=0x7f02001b;
-        public static final int splashicon=0x7f02001c;
-        public static final int stats_button=0x7f02001d;
-        public static final int wallet=0x7f02001e;
-        public static final int wallet512=0x7f02001f;
+        public static final int rounded_button=0x7f020019;
+        public static final int rounded_layout=0x7f02001a;
+        public static final int rounded_spinner=0x7f02001b;
+        public static final int selectable_item_background=0x7f02001c;
+        public static final int splashicon=0x7f02001d;
+        public static final int stats_button=0x7f02001e;
+        public static final int wallet=0x7f02001f;
+        public static final int wallet512=0x7f020020;
     }
     public static final class id {
         public static final int btnAddExpense=0x7f090022;
         public static final int btnAddIncome=0x7f090042;
+        public static final int btnAddSaving=0x7f090061;
         public static final int btnBalanceCalendar=0x7f090015;
         public static final int btnCalendar=0x7f090043;
         public static final int btnExpenseCalendar=0x7f090023;
@@ -112,7 +115,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int drawer_layout=0x7f090058;
         public static final int expenseGraph=0x7f090027;
         public static final int expensePieChart=0x7f09002b;
-        public static final int imageView2=0x7f09005d;
+        public static final int imageView2=0x7f090062;
         public static final int imgExpenseGraphLeft=0x7f090025;
         public static final int imgExpenseGraphRight=0x7f090026;
         public static final int imgExpensePieLeft=0x7f090029;
@@ -138,6 +141,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int left_drawer=0x7f09005a;
         public static final int lstExpenses=0x7f09001c;
         public static final int lstIncomes=0x7f09003d;
+        public static final int lstSavings=0x7f09005c;
         public static final int lstSearchExpense=0x7f090034;
         public static final int lstSearchIncomes=0x7f090054;
         public static final int lyt=0x7f090030;
@@ -145,11 +149,14 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int lytAddIncome=0x7f090040;
         public static final int lytCriteria=0x7f09004d;
         public static final int lytDate=0x7f090017;
+        public static final int lytEmptySavings=0x7f09005e;
         public static final int lytExpense=0x7f090016;
         public static final int lytIncome=0x7f090038;
         public static final int lytIncomePieDate=0x7f090048;
         public static final int lytMainExpenses=0x7f09001b;
         public static final int lytMainIncomes=0x7f09003c;
+        public static final int lytSavingButton=0x7f090060;
+        public static final int lytSavingsList=0x7f09005b;
         public static final int next_button=0x7f090008;
         public static final int pager=0x7f090005;
         public static final int pagerTitle=0x7f090059;
@@ -157,7 +164,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int relativeLayout=0x7f09000b;
         public static final int relativeLayout2=0x7f090053;
         public static final int relativeLayout3=0x7f09002c;
-        public static final int relativeLayout4=0x7f09005b;
         public static final int spnDateBalance=0x7f09000e;
         public static final int spnDateExpense=0x7f090019;
         public static final int spnDateIncome=0x7f090039;
@@ -174,7 +180,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int textView=0x7f090013;
         public static final int textView2=0x7f09000f;
         public static final int textView3=0x7f090055;
-        public static final int textView4=0x7f09005c;
+        public static final int textView4=0x7f09005f;
+        public static final int textView5=0x7f09005d;
         public static final int textView6=0x7f090035;
         public static final int txtBalance=0x7f090012;
         public static final int txtBalanceDate=0x7f090014;

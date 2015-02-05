@@ -272,7 +272,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         TextView txtTotalIncome = (TextView) infView.findViewById(R.id.txtTotalIncome);
 
         txtTotalIncome.setText(total.toString() + "  TL");
-        txtTotalIncome.setTextColor(Color.parseColor("#216C2A"));
+        txtTotalIncome.setTextColor(getResources().getColor(R.color.cuzdan_green));
     }
 
     AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {

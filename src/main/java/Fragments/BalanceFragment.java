@@ -215,9 +215,9 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         txtTotal.setText(total.toString());
 
         if (total.compareTo(BigDecimal.ZERO) == 0) {
-            txtTotal.setTextColor(Color.parseColor("#216C2A"));
+            txtTotal.setTextColor(getResources().getColor(R.color.cuzdan_green));
         } else if (total.compareTo(BigDecimal.ZERO) == 1) {
-            txtTotal.setTextColor(Color.parseColor("#216C2A"));
+            txtTotal.setTextColor(getResources().getColor(R.color.cuzdan_green));
         } else if (total.compareTo(BigDecimal.ZERO) == -1) {
             txtTotal.setTextColor(getResources().getColor(R.color.cuzdan_red));
         }
