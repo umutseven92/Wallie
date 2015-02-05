@@ -278,6 +278,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
 
             Bundle bundle = new Bundle();
             bundle.putString("expense", new Gson().toJson(exp));
+            bundle.putBoolean("canDelete", true);
             dialog.setArguments(bundle);
             dialog.show(getActivity().getFragmentManager(), "dialog");
 

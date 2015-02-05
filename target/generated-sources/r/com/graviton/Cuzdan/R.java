@@ -112,7 +112,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int drawer_layout=0x7f090058;
         public static final int expenseGraph=0x7f090027;
         public static final int expensePieChart=0x7f09002b;
-        public static final int imageView2=0x7f09005c;
+        public static final int imageView2=0x7f09005d;
         public static final int imgExpenseGraphLeft=0x7f090025;
         public static final int imgExpenseGraphRight=0x7f090026;
         public static final int imgExpensePieLeft=0x7f090029;
@@ -157,6 +157,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int relativeLayout=0x7f09000b;
         public static final int relativeLayout2=0x7f090053;
         public static final int relativeLayout3=0x7f09002c;
+        public static final int relativeLayout4=0x7f09005b;
         public static final int spnDateBalance=0x7f09000e;
         public static final int spnDateExpense=0x7f090019;
         public static final int spnDateIncome=0x7f090039;
@@ -173,7 +174,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int textView=0x7f090013;
         public static final int textView2=0x7f09000f;
         public static final int textView3=0x7f090055;
-        public static final int textView4=0x7f09005b;
+        public static final int textView4=0x7f09005c;
         public static final int textView6=0x7f090035;
         public static final int txtBalance=0x7f090012;
         public static final int txtBalanceDate=0x7f090014;
