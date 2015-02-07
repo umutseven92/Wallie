@@ -13,16 +13,16 @@ import java.text.ParseException;
 public class User implements Serializable {
 
     public User(JSONObject data, String filePath) throws JSONException, ParseException {
-        if (data != null) {
-            JSONObject jsonUser = data.getJSONObject("user");
-            _userName = jsonUser.getString("userName");
-            _name = jsonUser.getString("name");
-            _lastName = jsonUser.getString("lastName");
-            _profilePicture = "@drawable/profile.png";
-            this._filePath = filePath;
-            _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"), this._filePath);
 
-        }
+        assert data != null;
+        JSONObject jsonUser = data.getJSONObject("user");
+        _userName = jsonUser.getString("userName");
+        _name = jsonUser.getString("name");
+        _lastName = jsonUser.getString("lastName");
+        _profilePicture = "@drawable/profile.png";
+        this._filePath = filePath;
+        _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"), this._filePath);
+
     }
 
     private String _filePath;

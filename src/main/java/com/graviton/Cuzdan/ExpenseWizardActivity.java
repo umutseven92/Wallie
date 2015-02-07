@@ -1,6 +1,8 @@
 package com.graviton.Cuzdan;
 
+import Helpers.Banker;
 import Helpers.Expense;
+import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -90,7 +92,13 @@ public class ExpenseWizardActivity extends FragmentActivity implements PageFragm
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GoForwardOnePage();
+                try {
+                    GoForwardOnePage();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -107,9 +115,30 @@ public class ExpenseWizardActivity extends FragmentActivity implements PageFragm
 
     }
 
-    private void GoForwardOnePage() {
+    private void GoForwardOnePage() throws IOException, JSONException {
         if (mPager.getCurrentItem() == mCurrentPageSequence.size()) {
-            AddExpense();
+            String tag = mWizardModel.findByKey("Gider Türü").getData().getString(Page.SIMPLE_DATA_KEY);
+            Expense.Tags expenseTag;
+
+            if (tag.equals("Kişisel")) {
+                expenseTag = Expense.Tags.Personal;
+            } else {
+                expenseTag = Expense.Tags.Home;
+            }
+
+            String category = mWizardModel.findByKey(tag + ":Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
+            String subCategory = mWizardModel.findByKey(category + ":Alt Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
+            BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
+            String description = mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.DESC_DATA_KEY);
+
+            if (description == null) {
+                description = "";
+            }
+
+            Expense expense = new Expense(category, subCategory, amount, description, new Date(), expenseTag);
+            Banker banker = ((Global) getApplication()).GetUser().GetBanker();
+
+            banker.AddExpense(expense, getApplication());
             finish();
         } else {
             if (mEditingAfterReview) {
@@ -121,71 +150,6 @@ public class ExpenseWizardActivity extends FragmentActivity implements PageFragm
 
     }
 
-    private void AddExpense() {
-        String tag = mWizardModel.findByKey("Gider Türü").getData().getString(Page.SIMPLE_DATA_KEY);
-        Expense.Tags expenseTag;
-
-        if (tag == "Kişisel") {
-            expenseTag = Expense.Tags.Personal;
-        } else {
-            expenseTag = Expense.Tags.Home;
-        }
-
-        String category = mWizardModel.findByKey(tag + ":Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
-        String subCategory = mWizardModel.findByKey(category + ":Alt Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
-        BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
-        String description = mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.DESC_DATA_KEY);
-
-        if (description == null) {
-            description = "";
-        }
-
-        Expense expense = new Expense(category, subCategory, amount, description, new Date(), expenseTag);
-        StringBuffer datax = new StringBuffer("");
-
-        JSONObject expenseToSave = new JSONObject();
-        try {
-            expenseToSave = ((Global) getApplication()).GetUser().GetBanker().CreateJSONExpense(expense);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        String filePath = ((Global) getApplication()).GetFilePath();
-
-        try {
-            FileInputStream fIn = openFileInput(filePath);
-            InputStreamReader isr = new InputStreamReader(fIn);
-            BufferedReader buffreader = new BufferedReader(isr);
-
-            String readString = buffreader.readLine();
-            while (readString != null) {
-                datax.append(readString);
-                readString = buffreader.readLine();
-            }
-
-            isr.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-
-        String main = datax.toString();
-        try {
-            JSONObject mainJSON = new JSONObject(main);
-            JSONArray expenses = mainJSON.getJSONObject("user").getJSONArray("expenses");
-            expenses.put(expenseToSave);
-
-            FileOutputStream fileOutputStream = openFileOutput(filePath, Context.MODE_PRIVATE);
-            fileOutputStream.write(mainJSON.toString().getBytes());
-            fileOutputStream.close();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     private void updateBottomBar() {
         int position = mPager.getCurrentItem();
@@ -260,7 +224,13 @@ public class ExpenseWizardActivity extends FragmentActivity implements PageFragm
 
     @Override
     public void onOptionClicked() {
-        GoForwardOnePage();
+        try {
+            GoForwardOnePage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 

@@ -12,7 +12,7 @@ import com.graviton.Cuzdan.R;
 public class SavingsFragment extends Fragment {
 
     View v;
-    int savingsCount = 1;
+    int savingsCount = 0;
 
     public static final SavingsFragment newInstance() {
         SavingsFragment f = new SavingsFragment();

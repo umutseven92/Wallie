@@ -2,15 +2,12 @@ package com.graviton.Cuzdan;
 
 import Helpers.User;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 
 
@@ -19,32 +16,29 @@ import java.io.FileReader;
  */
 public class SplashActivity extends Activity {
 
-    // How long in ms the user will wait, change this to be an accurate load time
-    private final int splashLength = 1200;
+    private final int SPLASH_LENGTH = 1200;
 
     @Override
     public void onCreate(Bundle bundle) {
-        // Let there be light!
         super.onCreate(bundle);
 
         setContentView(R.layout.splash_fragment);
 
         User user = null;
 
-        String fileName = "userConfigTest35";
+        String fileName = "userConfigTest38";
         ((Global) this.getApplication()).SetFilePath(fileName);
 
         File file = new File(this.getFilesDir(), fileName);
         JSONObject userInfo = null;
 
-
-        // The user doesn't exist; so create one and save the file to internal storage.
-        // NOTE: Date is ISO 8601 (YEAR-MONTH-DATE)
+        // Tarih formatı ISO 8601 (YEAR-MONTH-DATE)
         if (!file.exists()) {
+
+            // Kullanıcı yok, JSON üstünden yeni yaratıyoruz
             String userName = "umutseven92";
             String firstName = "Umut";
             String lastName = "Seven";
-            FileOutputStream outputStream;
 
             try {
                 String userSettings = String.format("{\n" +
@@ -62,25 +56,19 @@ public class SplashActivity extends Activity {
                         "}\n", userName, firstName, lastName);
 
                 userInfo = new JSONObject(userSettings);
-
-                outputStream = openFileOutput(fileName, Context.MODE_PRIVATE);
-
-                if (userInfo != null) {
-                    outputStream.write(userInfo.toString().getBytes());
-                }
-                outputStream.close();
                 user = new User(userInfo, file.getAbsolutePath());
 
+                user.GetBanker().WriteUserInfo(getApplication(), userInfo.toString());
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
         }
 
-        // The user exists; so attempt to load it from internal storage.
         else {
-            try {
 
+            // Kullanıcı var, JSON üstünden yüklüyoruz
+            try {
                 StringBuilder sb = new StringBuilder();
                 BufferedReader br = new BufferedReader(new FileReader(file));
                 String line;
@@ -106,7 +94,7 @@ public class SplashActivity extends Activity {
                 SplashActivity.this.startActivity(mainIntent);
                 SplashActivity.this.finish();
             }
-        }, splashLength);
+        }, SPLASH_LENGTH);
 
 
     }

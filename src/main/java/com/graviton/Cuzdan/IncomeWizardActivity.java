@@ -1,7 +1,9 @@
 package com.graviton.Cuzdan;
 
+import Helpers.Banker;
 import Helpers.Income;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -91,7 +93,13 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GoForwardOnePage();
+                try {
+                    GoForwardOnePage();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -107,9 +115,20 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
 
     }
 
-    private void GoForwardOnePage() {
+    private void GoForwardOnePage() throws IOException, JSONException {
         if (mPager.getCurrentItem() == mCurrentPageSequence.size()) {
-            AddIncome();
+            String category = mWizardModel.findByKey("Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
+            String subCategory = mWizardModel.findByKey(category + ":Alt Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
+            BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
+            String description = mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.DESC_DATA_KEY);
+
+            if (description == null) {
+                description = "";
+            }
+
+            Income income = new Income(category, subCategory, amount, description, new Date());
+            Banker banker = ((Global) getApplication()).GetUser().GetBanker();
+            banker.AddIncome(income, getApplication());
             finish();
         } else {
             if (mEditingAfterReview) {
@@ -121,62 +140,6 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
 
     }
 
-    private void AddIncome() {
-        String category = mWizardModel.findByKey("Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
-        String subCategory = mWizardModel.findByKey(category + ":Alt Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
-        BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
-        String description = mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.DESC_DATA_KEY);
-
-        if (description == null) {
-            description = "";
-        }
-
-        Income income = new Income(category, subCategory, amount, description, new Date());
-        StringBuffer datax = new StringBuffer("");
-
-        JSONObject incomeToSave = new JSONObject();
-        try {
-            incomeToSave = ((Global) getApplication()).GetUser().GetBanker().CreateJSONIncome(income);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        String filePath = ((Global) getApplication()).GetFilePath();
-
-        try {
-            FileInputStream fIn = openFileInput(filePath);
-            InputStreamReader isr = new InputStreamReader(fIn);
-            BufferedReader buffreader = new BufferedReader(isr);
-
-            String readString = buffreader.readLine();
-            while (readString != null) {
-                datax.append(readString);
-                readString = buffreader.readLine();
-            }
-
-            isr.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-
-        String main = datax.toString();
-        try {
-            JSONObject mainJSON = new JSONObject(main);
-            JSONArray incomes = mainJSON.getJSONObject("user").getJSONArray("incomes");
-            incomes.put(incomeToSave);
-
-            FileOutputStream fileOutputStream = openFileOutput(filePath, Context.MODE_PRIVATE);
-            fileOutputStream.write(mainJSON.toString().getBytes());
-            fileOutputStream.close();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     private void updateBottomBar() {
         int position = mPager.getCurrentItem();
@@ -251,7 +214,13 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
 
     @Override
     public void onOptionClicked() {
-        GoForwardOnePage();
+        try {
+            GoForwardOnePage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
