@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:saveEnabled="false"
                 android:inputType="textEmailAddress|textCapSentences"
-                android:hint="@string/hint_your_email" android:lines="4" android:maxLines="4"/>
+                android:hint="@string/hint_your_email" android:lines="4" android:maxLines="4" android:maxLength="100"/>
 
         </LinearLayout>
     </ScrollView>

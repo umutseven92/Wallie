@@ -1,5 +1,6 @@
 package Fragments;
 
+import Helpers.Banker;
 import Helpers.DateFormatHelper;
 import Helpers.Expense;
 import Helpers.ExpenseLoadListener;
@@ -31,22 +32,27 @@ public class ExpenseDialogFragment extends DialogFragment {
         final Expense expense = new Gson().fromJson(bundle.getString("expense"), Expense.class);
         boolean canDelete = bundle.getBoolean("canDelete");
 
+        String message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s","Tarih:", DateFormatHelper.GetDayText(expense.GetDate()),"Gider Türü:", expense.GetTurkishStringTag(),"Kategori:", expense.GetCategory(), "Alt Kategori:", expense.GetSubCategory(), "Miktar:", expense.GetAmount().toString(),"Açıklama:", expense.GetDescription());
+
         if (canDelete) {
-            builder.setTitle(Html.fromHtml("Detaylar"))
-                    .setMessage(String.format("Tarih: %s\n\nGider Türü: %s\n\nKategori: %s\n\nAlt Kategori: %s\n\nMiktar: %s\n\nAçıklama: %s", DateFormatHelper.GetDayText(expense.GetDate()), expense.GetTurkishStringTag(), expense.GetCategory(), expense.GetSubCategory(), expense.GetAmount().toString(), expense.GetDescription()))
+            builder.setTitle("Detaylar")
+                    .setMessage(Html.fromHtml(message))
                     .setPositiveButton("Sil", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            Banker banker = ((Global) getActivity().getApplication()).GetUser().GetBanker();
                             try {
-                                DeleteExpense(expense.GetID());
-                                _listener.onDismissed();
-                                if (_secondListener != null) {
-                                    _secondListener.onDismissed();
-                                }
-                                dismiss();
+                                banker.DeleteExpense(expense.GetID(), getActivity().getApplication());
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
+                            _listener.onDismissed();
+                            if (_secondListener != null) {
+                                _secondListener.onDismissed();
+                            }
+                            dismiss();
 
                         }
                     }).setNegativeButton("Geri", new DialogInterface.OnClickListener() {
@@ -57,8 +63,8 @@ public class ExpenseDialogFragment extends DialogFragment {
             });
 
         } else {
-            builder.setTitle(Html.fromHtml("Detaylar"))
-                    .setMessage(String.format("Tarih: %s\n\nGider Türü: %s\n\nKategori: %s\n\nAlt Kategori: %s\n\nMiktar: %s\n\nAçıklama: %s", DateFormatHelper.GetDayText(expense.GetDate()), expense.GetTurkishStringTag(), expense.GetCategory(), expense.GetSubCategory(), expense.GetAmount().toString(), expense.GetDescription()))
+            builder.setTitle("Detaylar")
+                    .setMessage(Html.fromHtml(message))
                     .setNegativeButton("Geri", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -66,6 +72,7 @@ public class ExpenseDialogFragment extends DialogFragment {
                         }
                     });
         }
+
         return builder.create();
     }
 
@@ -78,74 +85,5 @@ public class ExpenseDialogFragment extends DialogFragment {
 
     public void SetSecondListener(ExpenseLoadListener listener) {
         _secondListener = listener;
-    }
-
-    public void DeleteExpense(String id) throws IOException {
-        StringBuffer datax = new StringBuffer("");
-
-        String filePath = ((Global) getActivity().getApplication()).GetFilePath();
-
-        try {
-            FileInputStream fIn = getActivity().openFileInput(filePath);
-            InputStreamReader isr = new InputStreamReader(fIn);
-            BufferedReader buffreader = new BufferedReader(isr);
-
-            String readString = buffreader.readLine();
-            while (readString != null) {
-                datax.append(readString);
-                readString = buffreader.readLine();
-            }
-
-            isr.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-
-        String main = datax.toString();
-        try {
-            JSONObject mainJSON = new JSONObject(main);
-            JSONObject userJSON = mainJSON.getJSONObject("user");
-            JSONArray incomes = userJSON.getJSONArray("incomes");
-            JSONArray expenses = userJSON.getJSONArray("expenses");
-
-            String userSettings = String.format("{\n" +
-                    "\t\"user\": {\n" +
-                    "\t\t\"userName\": \"%s\",\n" +
-                    "\t\t\"birthDate\": \"1992-08-05\",\n" +
-                    "\t\t\"name\": \"%s\",\n" +
-                    "\t\t\"lastName\": \"%s\",\n" +
-                    "\t\t\"city\": \"Istanbul\",\n" +
-                    "\t\t\"email\": \"umutseven92@gmail.com\",\n" +
-                    "\n" +
-                    "\t\t\"incomes\": [],\n" +
-                    "\t\t\"expenses\": []\n" +
-                    "\t}\n" +
-                    "}\n", userJSON.getString("userName"), userJSON.getString("name"), userJSON.getString("lastName"));
-
-            JSONObject userInfo = new JSONObject(userSettings);
-            JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
-            JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
-
-            for (int i = 0; i < expenses.length(); i++) {
-                if (!expenses.getJSONObject(i).getString("id").equals(id)) {
-                    newExpenses.put(expenses.getJSONObject(i));
-                }
-            }
-
-            for (int i = 0; i < incomes.length(); i++) {
-                newIncomes.put(incomes.getJSONObject(i));
-            }
-
-            FileOutputStream fileOutputStream = getActivity().openFileOutput(filePath, Context.MODE_PRIVATE);
-            fileOutputStream.write(userInfo.toString().getBytes());
-            fileOutputStream.close();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 }

@@ -7,6 +7,9 @@ import com.github.mikephil.charting.charts.PieChart;
 
 /**
  * Created by Umut Seven on 27.1.2015, for Graviton.
+ *
+ * Istatistik ekranlarinda kullanilan grafikleri initialize ettigimiz class.
+ * Her grafik bu class'i kullanmali.
  */
 public class ChartHelper {
 
@@ -23,7 +26,7 @@ public class ChartHelper {
         chart.setDrawHoleEnabled(true);
         chart.setHoleRadius(40f);
         chart.setTransparentCircleRadius(0f);
-        chart.setHoleColor(Color.parseColor("#FFFFF0"));
+        chart.setHoleColor(Color.parseColor("#ffe0a8"));
 
         chart.setCenterText("");
         chart.setCenterTextSize(20f);

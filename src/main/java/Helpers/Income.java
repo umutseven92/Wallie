@@ -14,7 +14,13 @@ import java.util.Date;
  */
 public class Income extends Balance {
 
-    // Create income via JSON
+    /**
+     *  JSON ustunden gelirin yuklendigi yer.
+     *
+     * @param jsonIncome    Bilgilerin oldugu JSONObject
+     * @throws JSONException
+     * @throws ParseException
+     */
     public Income(JSONObject jsonIncome) throws JSONException, ParseException {
 
         this.SetID(jsonIncome.getString("id"));
@@ -26,7 +32,15 @@ public class Income extends Balance {
         this.SetDate(d);
     }
 
-    // Create income manually
+    /**
+     * Direk elden gelir yaratildigi yer.
+     *
+     * @param category  Kategori
+     * @param subCategory   Alt kategori
+     * @param amount    Miktar
+     * @param desc  Aciklama
+     * @param date  Tarih
+     */
     public Income(String category, String subCategory, BigDecimal amount, String desc, Date date) {
         this.GenerateID();
         this.SetCategory(category);

@@ -9,6 +9,8 @@ import java.text.ParseException;
 
 /**
  * Created by Umut Seven on 16.11.2014, for Graviton.
+ *
+ * Kullanici class'i. Tum bilgiler kullanici ustunden kaydediliyor.
  */
 public class User implements Serializable {
 

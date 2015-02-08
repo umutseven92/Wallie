@@ -10,6 +10,8 @@ import android.widget.ImageView;
 
 /**
  * Created by Umut Seven on 18.11.2014, for Graviton.
+ *
+ * Profil resmi icin yuvarlak resim uzantisi.
  */
 public class RoundedImageView extends ImageView {
 

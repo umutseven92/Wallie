@@ -41,6 +41,10 @@ public class Saving {
 
     private HashMap<Period, Integer> _periodDayDict = new HashMap<Period, Integer>();
 
+
+    /**
+     * Birikim periyotlarini gun sayilarina bagliyoruz.
+     */
     private void InitializePeriodDayDict() {
         _periodDayDict.put(Period.Day, DAY);
         _periodDayDict.put(Period.Week, WEEK);
@@ -56,6 +60,15 @@ public class Saving {
         _desription = CreateDescription(_name, _periodDayDict.get(_savingPeriod), _amount);
     }
 
+    /**
+     * Birikimin user-friendly aciklamasini yaratiyoruz.
+     * Ornek: "Araba icin, 1 yil 4 ay 3 hafta 2 gun sonunda 14000 TL birikim"
+     *
+     * @param name Birikim sebebi
+     * @param totalDays Yil / ay / haftaya cevrilecek toplam gun sayisi
+     * @param amount    Birikim miktari
+     * @return  Birikim aciklamasi
+     */
     public String CreateDescription(String name, int totalDays, BigDecimal amount) {
 
         String namePart = String.format("%s için, ", name);

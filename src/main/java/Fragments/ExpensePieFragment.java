@@ -120,8 +120,7 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
 
         PieDataSet set = new PieDataSet(entries, "");
         set.setSliceSpace(3f);
-        set.setColors(ColorTemplate.JOYFUL_COLORS);
-
+        set.setColors(ColorTemplate.COLORFUL_COLORS);
         PieData data = new PieData(expenseNames.toArray(new String[expenseNames.size()]), set);
 
         expensePieChart.setData(data);

@@ -6,6 +6,9 @@ import android.text.Spanned;
 
 /**
  * Created by Umut Seven on 22.1.2015, for Graviton.
+ *
+ * Kullanici miktar girerken noktadan sonra en fazla 2 rakam girebilmeli.
+ * Limiti bu class ustunden sagliyoruz.
  */
 public class DecimalDigitsInputFilter implements InputFilter {
 
@@ -20,6 +23,11 @@ public class DecimalDigitsInputFilter implements InputFilter {
 
         int dotPos = -1;
         int len = dest.length();
+
+        if(len >= 12)
+        {
+            return "";
+        }
         for (int i = 0; i < len; i++) {
             char c = dest.charAt(i);
             if (c == '.' || c == ',') {

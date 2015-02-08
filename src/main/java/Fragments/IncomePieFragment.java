@@ -119,7 +119,7 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
 
         PieDataSet set = new PieDataSet(entries, "");
         set.setSliceSpace(3f);
-        set.setColors(ColorTemplate.JOYFUL_COLORS);
+        set.setColors(ColorTemplate.COLORFUL_COLORS);
 
         PieData data = new PieData(incomeNames.toArray(new String[incomeNames.size()]), set);
 

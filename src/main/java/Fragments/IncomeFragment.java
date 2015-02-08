@@ -1,6 +1,9 @@
 package Fragments;
 
 import Helpers.*;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -61,6 +64,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
         dialog = new IncomeDialogFragment();
         dialog.SetListener(this);
+
 
         btnCalendar.setOnClickListener(onCalendarClick);
         btnLeftArrow.setOnClickListener(onLeftArrowClick);
@@ -263,8 +267,8 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         }
         BigDecimal total = BigDecimal.ZERO;
 
-        for (int i = 0; i < incomes.size(); i++) {
-            BigDecimal val = incomes.get(i).GetAmount();
+        for (Income income : incomes) {
+            BigDecimal val = income.GetAmount();
             total = total.add(val);
         }
         lv.setAdapter(new IncomeListAdapter(this.getActivity(), incomes));

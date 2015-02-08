@@ -14,6 +14,14 @@ import java.util.Date;
  */
 public class Expense extends Balance {
 
+
+    /**
+     * JSON ustunden giderin yaratildigi yer.
+     *
+     * @param jsonExpense   Bilgilerin oldugu JSONObject
+     * @throws JSONException
+     * @throws ParseException
+     */
     public Expense(JSONObject jsonExpense) throws JSONException, ParseException {
 
         this.SetID(jsonExpense.getString("id"));
@@ -33,6 +41,15 @@ public class Expense extends Balance {
         }
     }
 
+    /**
+     * Direk elden gelir yaratildigi yer.
+     *
+     * @param category  Kategori
+     * @param subCategory   Alt kategori
+     * @param amount    Miktar
+     * @param desc  Aciklama
+     * @param date  Tarih
+     */
     public Expense(String category, String subCategory, BigDecimal amount, String desc, Date date, Tags tag) {
         this.GenerateID();
         this.SetCategory(category);
@@ -50,6 +67,11 @@ public class Expense extends Balance {
 
     private Tags _tag;
 
+    /**
+     * Tag'i JSON olarak kaydederken kullanilan string'i aldigimiz yer.
+     *
+     * @return  Tag'in string hali
+     */
     public String GetStringTag() {
         if (_tag == Tags.Home) {
             return "home";
@@ -58,6 +80,11 @@ public class Expense extends Balance {
         }
     }
 
+    /**
+     * Tag'i kullaniciya gosterirken kullandigimiz string'i aldigimiz yer.
+     *
+     * @return Turkce tag string'i
+     */
     public String GetTurkishStringTag() {
         if (_tag == Tags.Home) {
             return "Ev";

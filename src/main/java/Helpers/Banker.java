@@ -6,6 +6,7 @@ import com.graviton.Cuzdan.Global;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.*;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -16,13 +17,15 @@ import java.util.Date;
 
 /**
  * Created by Umut Seven on 12.11.2014, for Graviton.
+ *
+ * Tum gelirlerin ve giderlerin yonetildigi class.
  */
 public class Banker implements Serializable {
 
     /**
-     * @param incomes   Gelirin olduğu JSON arrayi
-     * @param expenses  Giderlerin olduğu JSON arrayi
-     * @param filePath  userConfig dosya yolu
+     * @param incomes  Gelirin oldugu JSON arrayi
+     * @param expenses Giderlerin oldugu JSON arrayi
+     * @param filePath userConfig dosya yolu
      * @throws JSONException
      * @throws ParseException
      */
@@ -66,10 +69,10 @@ public class Banker implements Serializable {
     }
 
     /**
-     * Gelir ve giderlerin Banker listelerine yüklendiği yer
+     * Gelir ve giderlerin Banker listelerine yuklendigi yer.
      *
-     * @param jsonIncomes   Gelir JSON arrayi
-     * @param jsonExpenses  Gider JSON arrayi
+     * @param jsonIncomes  Gelir JSON arrayi
+     * @param jsonExpenses Gider JSON arrayi
      * @throws JSONException
      * @throws ParseException
      */
@@ -79,9 +82,9 @@ public class Banker implements Serializable {
     }
 
     /**
-     * JSON üstünden giderleri sıfırlanıp ArrayList'lere yüklendiği (veya yeniden yüklendiği) yer
+     * JSON ustunden giderlerin sifirlanip ArrayList'e yeniden yuklendiqi yer.
      *
-     * @param jsonBalance   Gider JSON arrayi
+     * @param jsonBalance Gider JSON arrayi
      * @throws JSONException
      * @throws ParseException
      */
@@ -94,9 +97,9 @@ public class Banker implements Serializable {
     }
 
     /**
-     * JSON üstünden gelirlerin (yeniden) ArrayList'lere yüklendiği (veya yeniden yüklendiği) yer
+     * JSON ustunden gelirlerin sifirlanip ArrayList'e yeniden yuklendiqi yer.
      *
-     * @param jsonBalance   Gelir JSON arrayi
+     * @param jsonBalance Gelir JSON arrayi
      * @throws JSONException
      * @throws ParseException
      */
@@ -110,9 +113,9 @@ public class Banker implements Serializable {
     }
 
     /**
-     * Gelir ve giderleri direk kaynaktan yüklüyoruz
+     * Gelir ve giderleri direk kaynaktan yukluyoruz.
      *
-     * @return  JSON olarak gelir ve giderler
+     * @return JSON olarak gelir ve giderler
      * @throws IOException
      * @throws JSONException
      */
@@ -127,22 +130,12 @@ public class Banker implements Serializable {
         return new JSONObject(sb.toString());
     }
 
-    /**
-     * @return  Ana gelir JSONObjecti
-     * @throws IOException
-     * @throws JSONException
-     */
     public JSONArray FetchIncomeData() throws IOException, JSONException {
         JSONObject jsonObject = FetchBalanceData();
 
         return jsonObject.getJSONObject("user").getJSONArray("incomes");
     }
 
-    /**
-     * @return  Ana gider JSONObjecti
-     * @throws IOException
-     * @throws JSONException
-     */
     public JSONArray FetchExpenseData() throws IOException, JSONException {
         JSONObject jsonObject = FetchBalanceData();
 
@@ -151,10 +144,10 @@ public class Banker implements Serializable {
 
 
     /**
-     * Belli bir güne ait olan gelirlerin toplam miktarını hesaplıyoruz
+     * Belli bir güne ait olan gelirlerin toplam miktarini hesapliyoruz.
      *
-     * @param date  Toplamı istediğimiz gün
-     * @return  Gelir miktar toplamı
+     * @param date Toplami istedigimiz gun
+     * @return Gelir miktar toplami
      */
     public BigDecimal GetTotalDayIncome(Date date) {
         BigDecimal total = BigDecimal.ZERO;
@@ -176,10 +169,10 @@ public class Banker implements Serializable {
     }
 
     /**
-     * Belli bir aya ait olan gelirlerin toplam miktarını hesaplıyoruz
+     * Belli bir aya ait olan gelirlerin toplam miktarini hesapliyoruz.
      *
-     * @param date Toplamı istediğimiz ay
-     * @return  Gelir miktarının toplamı
+     * @param date Toplami istedigimiz ay
+     * @return Gelir miktarinin toplami
      */
     public BigDecimal GetTotalMonthIncome(Date date) {
         BigDecimal total = BigDecimal.ZERO;
@@ -201,10 +194,10 @@ public class Banker implements Serializable {
     }
 
     /**
-     * Belli bir güne ait olan giderleri toplam miktarını hesaplıyoruz
+     * Belli bir güne ait olan giderleri toplam miktarini hesapliyoruz
      *
-     * @param date  Toplamı istediğimiz gün
-     * @return  Gider miktar toplamı
+     * @param date Toplami istedigimiz gün
+     * @return Gider miktar toplami
      */
     public BigDecimal GetTotalDayExpense(Date date) {
         BigDecimal total = BigDecimal.ZERO;
@@ -227,10 +220,10 @@ public class Banker implements Serializable {
     }
 
     /**
-     * Belli bir aya ait olan giderlerin toplam miktarını hesaplıyoruz
+     * Belli bir aya ait olan giderlerin toplam miktarini hesapliyoruz
      *
-     * @param date Toplamı istediğimiz ay
-     * @return  Gider miktarının toplamı
+     * @param date Toplami istedigimiz ay
+     * @return Gider miktarinin toplami
      */
     public BigDecimal GetTotalMonthExpense(Date date) {
         BigDecimal total = BigDecimal.ZERO;
@@ -255,9 +248,9 @@ public class Banker implements Serializable {
     /**
      * Belli bir tarihe ait bakiyeyi (gelir - gider) hesapliyoruz
      *
-     * @param date  Istenen tarih
-     * @param day   Gün bakiyesi için true, ay için false
-     * @return  Bakiye miktarı
+     * @param date Istenen tarih
+     * @param day  Gün bakiyesi icin true, ay icin false
+     * @return Bakiye miktari
      */
     public BigDecimal GetBalance(Date date, boolean day) {
         BigDecimal totalIncome;
@@ -274,6 +267,16 @@ public class Banker implements Serializable {
         return totalIncome.subtract(totalExpense);
     }
 
+
+    /**
+     * Belli bir gune air gelirleri (kaynaktan) dondurur.
+     *
+     * @param day   Gelirlerin istendigi gun
+     * @return  Gune ait gelirler
+     * @throws JSONException
+     * @throws ParseException
+     * @throws IOException
+     */
     public ArrayList<Income> GetIncomesFromDay(Date day) throws JSONException, ParseException, IOException {
         LoadIncomes(FetchIncomeData());
         ArrayList<Income> specIncomes = new ArrayList<Income>();
@@ -294,6 +297,15 @@ public class Banker implements Serializable {
         return specIncomes;
     }
 
+    /**
+     * Belli bir aya air gelirleri (kaynaktan) dondurur.
+     *
+     * @param day   Gelirlerin istendigi ay
+     * @return  Aya ait gelirler
+     * @throws JSONException
+     * @throws ParseException
+     * @throws IOException
+     */
     public ArrayList<Income> GetIncomesFromMonth(Date day) throws JSONException, ParseException, IOException {
         LoadIncomes(FetchIncomeData());
         ArrayList<Income> specIncomes = new ArrayList<Income>();
@@ -314,6 +326,15 @@ public class Banker implements Serializable {
         return specIncomes;
     }
 
+    /**
+     * Belli bir gune air giderleri (kaynaktan) dondurur.
+     *
+     * @param day   Giderlerin istendigi gun
+     * @return  Gune ait giderler
+     * @throws JSONException
+     * @throws ParseException
+     * @throws IOException
+     */
     public ArrayList<Expense> GetExpensesFromDay(Date day) throws JSONException, ParseException, IOException {
         LoadExpenses(FetchExpenseData());
         ArrayList<Expense> specExpenses = new ArrayList<Expense>();
@@ -334,6 +355,15 @@ public class Banker implements Serializable {
         return specExpenses;
     }
 
+    /**
+     * Belli bir aya air giderleri (kaynaktan) dondurur.
+     *
+     * @param day   Giderlerin istendigi ay
+     * @return  Aya ait giderler
+     * @throws JSONException
+     * @throws ParseException
+     * @throws IOException
+     */
     public ArrayList<Expense> GetExpensesFromMonth(Date day) throws JSONException, ParseException, IOException {
         LoadExpenses(FetchExpenseData());
         ArrayList<Expense> specExpenses = new ArrayList<Expense>();
@@ -354,6 +384,13 @@ public class Banker implements Serializable {
         return specExpenses;
     }
 
+    /**
+     * Gelir alip JSON haline cevirir.
+     *
+     * @param income    JSON hali istenen gelir
+     * @return  JSON halinde gelir
+     * @throws JSONException
+     */
     public JSONObject CreateJSONIncome(Income income) throws JSONException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(income.GetDate());
@@ -371,6 +408,13 @@ public class Banker implements Serializable {
         return new JSONObject(json);
     }
 
+    /**
+     * Gider alip JSON haline cevirir.
+     *
+     * @param expense JSON hali istenen gider
+     * @return  JSON halinde gider
+     * @throws JSONException
+     */
     public JSONObject CreateJSONExpense(Expense expense) throws JSONException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(expense.GetDate());
@@ -390,6 +434,13 @@ public class Banker implements Serializable {
 
     }
 
+
+    /**
+     * /data/com/graviton/Cuzdan'daki kullanici bilgilerini dondurur.
+     *
+     * @param app   Ana uygulama
+     * @return  string halinde kullanici bilgileri
+     */
     private String ReadUserInfo(Application app) {
         StringBuffer datax = new StringBuffer("");
 
@@ -413,6 +464,13 @@ public class Banker implements Serializable {
         return datax.toString();
     }
 
+    /**
+     * Verilen stringi /data/com/graviton/Cuzdan'a yazar.
+     *
+     * @param app   Ana uygulama
+     * @param infoToWrite   Yazilmasi istenen veri
+     * @throws IOException
+     */
     public void WriteUserInfo(Application app, String infoToWrite) throws IOException {
         FileOutputStream fileOutputStream = app.openFileOutput(((Global) app).GetFilePath(), Context.MODE_PRIVATE);
         fileOutputStream.write(infoToWrite.getBytes());
@@ -420,6 +478,14 @@ public class Banker implements Serializable {
 
     }
 
+    /**
+     * Gelir ekleme metodu.
+     *
+     * @param income    Eklenicek gelir
+     * @param app   Ana uygulama
+     * @throws IOException
+     * @throws JSONException
+     */
     public void AddIncome(Income income, Application app) throws IOException, JSONException {
 
         JSONObject incomeToSave = CreateJSONIncome(income);
@@ -432,6 +498,14 @@ public class Banker implements Serializable {
         WriteUserInfo(app, mainJSON.toString());
     }
 
+    /**
+     * Gider ekleme metodu.
+     *
+     * @param expense   Eklenicek gider
+     * @param app   Ana uygulama
+     * @throws JSONException
+     * @throws IOException
+     */
     public void AddExpense(Expense expense, Application app) throws JSONException, IOException {
 
         JSONObject expenseToSave = CreateJSONExpense(expense);
@@ -444,5 +518,112 @@ public class Banker implements Serializable {
         WriteUserInfo(app, mainJSON.toString());
     }
 
+    /**
+     * Gelirlerin silindigi yer. Silme adimlari;
+     * 1) Gelirlerin kopyasini al,
+     * 2) Kullanici bilgilerini yeniden olustur,
+     * 3) Silinecek gelir disindaki gelirleri ekle,
+     * 4) Bilgileri birdaha yaz.
+     *
+     * tl:dr; userConfig'i bastan olusturuyoruz.
+     *
+     * @param id    Silinicek gelirin id'si
+     * @param app   Ana uygulama
+     * @throws JSONException
+     * @throws IOException
+     */
+    public void DeleteIncome(String id, Application app) throws JSONException, IOException {
+
+        String main = ReadUserInfo(app);
+        JSONObject mainJSON = new JSONObject(main);
+        JSONObject userJSON = mainJSON.getJSONObject("user");
+        JSONArray incomes = userJSON.getJSONArray("incomes");
+        JSONArray expenses = userJSON.getJSONArray("expenses");
+
+        String userSettings = String.format("{\n" +
+                "\t\"user\": {\n" +
+                "\t\t\"userName\": \"%s\",\n" +
+                "\t\t\"birthDate\": \"1992-08-05\",\n" +
+                "\t\t\"name\": \"%s\",\n" +
+                "\t\t\"lastName\": \"%s\",\n" +
+                "\t\t\"city\": \"Istanbul\",\n" +
+                "\t\t\"email\": \"umutseven92@gmail.com\",\n" +
+                "\n" +
+                "\t\t\"incomes\": [],\n" +
+                "\t\t\"expenses\": []\n" +
+                "\t}\n" +
+                "}\n", userJSON.getString("userName"), userJSON.getString("name"), userJSON.getString("lastName"));
+
+        JSONObject userInfo = new JSONObject(userSettings);
+        JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
+        JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
+
+        for (int i = 0; i < incomes.length(); i++) {
+            if (!incomes.getJSONObject(i).getString("id").equals(id)) {
+                newIncomes.put(incomes.getJSONObject(i));
+            }
+        }
+
+        for (int i = 0; i < expenses.length(); i++) {
+            newExpenses.put(expenses.getJSONObject(i));
+        }
+
+        WriteUserInfo(app, userInfo.toString());
+
+    }
+
+    /**
+     * Giderlerin silindigi yer. Silme adimlari;
+     * 1) Giderlerin kopyasini al,
+     * 2) Kullanici bilgilerini yeniden olustur,
+     * 3) Silinecek gider disindaki giderleri ekle,
+     * 4) Bilgileri birdaha yaz.
+     *
+     * tl:dr; userConfig'i bastan olusturuyoruz.
+     *
+     * @param id    Silinecek giderin id'si
+     * @param app   Ana uygulama
+     * @throws JSONException
+     * @throws IOException
+     */
+    public void DeleteExpense(String id, Application app) throws JSONException, IOException {
+
+        String main = ReadUserInfo(app);
+        JSONObject mainJSON = new JSONObject(main);
+        JSONObject userJSON = mainJSON.getJSONObject("user");
+        JSONArray incomes = userJSON.getJSONArray("incomes");
+        JSONArray expenses = userJSON.getJSONArray("expenses");
+
+        String userSettings = String.format("{\n" +
+                "\t\"user\": {\n" +
+                "\t\t\"userName\": \"%s\",\n" +
+                "\t\t\"birthDate\": \"1992-08-05\",\n" +
+                "\t\t\"name\": \"%s\",\n" +
+                "\t\t\"lastName\": \"%s\",\n" +
+                "\t\t\"city\": \"Istanbul\",\n" +
+                "\t\t\"email\": \"umutseven92@gmail.com\",\n" +
+                "\n" +
+                "\t\t\"incomes\": [],\n" +
+                "\t\t\"expenses\": []\n" +
+                "\t}\n" +
+                "}\n", userJSON.getString("userName"), userJSON.getString("name"), userJSON.getString("lastName"));
+
+        JSONObject userInfo = new JSONObject(userSettings);
+        JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
+        JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
+
+        for (int i = 0; i < expenses.length(); i++) {
+            if (!expenses.getJSONObject(i).getString("id").equals(id)) {
+                newExpenses.put(expenses.getJSONObject(i));
+            }
+        }
+
+        for (int i = 0; i < incomes.length(); i++) {
+            newIncomes.put(incomes.getJSONObject(i));
+        }
+
+        WriteUserInfo(app, userInfo.toString());
+
+    }
 
 }
