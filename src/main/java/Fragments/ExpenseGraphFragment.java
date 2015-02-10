@@ -1,9 +1,6 @@
 package Fragments;
 
-import Helpers.ChartHelper;
-import Helpers.DateFormatHelper;
-import Helpers.Expense;
-import Helpers.User;
+import Helpers.*;
 import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -36,16 +33,16 @@ import java.util.List;
 /**
  * Created by Umut Seven on 27.1.2015, for Graviton.
  */
-public class ExpenseGraphFragment extends Fragment implements OnChartValueSelectedListener {
+public class ExpenseGraphFragment extends Fragment implements OnChartValueSelectedListener, ExpenseLoadListener {
 
     TextView txtExpenseGraphDate;
-    ImageButton imgLeft, imgRight;
+    ImageButton imgLeft, imgRight, btnCalendar;
     User user;
     Date dateBeingViewed;
     LineChart expenseLineChart;
     ArrayList<String> xVals;
     List<Expense> expenses;
-
+    DatePickerFragment datePickerFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,9 +53,15 @@ public class ExpenseGraphFragment extends Fragment implements OnChartValueSelect
         txtExpenseGraphDate = (TextView) v.findViewById(R.id.txtExpenseGraphDate);
         imgLeft = (ImageButton) v.findViewById(R.id.imgExpenseGraphLeft);
         imgRight = (ImageButton) v.findViewById(R.id.imgExpenseGraphRight);
+        btnCalendar = (ImageButton)v.findViewById(R.id.btnExpenseGraphCalendar);
 
         imgLeft.setOnClickListener(onLeftArrowClick);
         imgRight.setOnClickListener(onRightArrowClick);
+        btnCalendar.setOnClickListener(onCalendarClick);
+
+        datePickerFragment = new DatePickerFragment();
+        datePickerFragment.SetExpenseListener(this);
+
         expenseLineChart.setOnChartValueSelectedListener(this);
 
         dateBeingViewed = new Date();
@@ -154,16 +157,34 @@ public class ExpenseGraphFragment extends Fragment implements OnChartValueSelect
         }
     };
 
+    View.OnClickListener onCalendarClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            datePickerFragment.SetMode("expense");
+            datePickerFragment.show(getActivity().getFragmentManager(), "datepicker");
+        }
+    };
+
     public void getNextDateIncomes() throws ParseException, JSONException, IOException {
         Date today = new Date();
-
-        if (dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
-            return;
-        }
+        Calendar calToday = Calendar.getInstance();
+        calToday.setTime(today);
 
         Calendar cal = Calendar.getInstance();
-
         cal.setTime(dateBeingViewed);
+
+        int calDayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
+        int calTodayDayOfMonth = calToday.get(Calendar.DAY_OF_MONTH);
+
+        int calMonth = cal.get(Calendar.MONTH);
+        int calTodayMonth = calToday.get(Calendar.MONTH);
+
+        int calYear = cal.get(Calendar.YEAR);
+        int calTodayYear = calToday.get(Calendar.YEAR);
+
+        if (calDayOfMonth == calTodayDayOfMonth && calMonth == calTodayMonth && calYear == calTodayYear) {
+            return;
+        }
 
         cal.add(Calendar.MONTH, 1);
         dateBeingViewed = cal.getTime();
@@ -196,5 +217,25 @@ public class ExpenseGraphFragment extends Fragment implements OnChartValueSelect
     @Override
     public void onNothingSelected() {
 
+    }
+
+    @Override
+    public void onDismissed() {
+
+    }
+
+    @Override
+    public void onDateSelected(Date date) {
+        dateBeingViewed = date;
+
+        try {
+            LoadLineChart();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

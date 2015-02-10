@@ -28,5 +28,16 @@
                 android:layout_marginLeft="60dp" android:scaleType="fitXY" android:background="@drawable/right_arrow"/>
     </RelativeLayout>
     <com.github.mikephil.charting.charts.LineChart android:layout_width="match_parent"
-                                                   android:layout_height="1000dp" android:id="@+id/expenseGraph" android:layout_marginTop="50dp"/>
+                                                   android:layout_height="935dp" android:id="@+id/expenseGraph" android:layout_marginTop="50dp"
+                                                   android:layout_above="@+id/relativeLayout7"/>
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="65dp" android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:id="@+id/relativeLayout7">
+        <ImageButton
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:id="@+id/btnExpenseGraphCalendar" android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" android:background="@drawable/calendar_button"/>
+    </RelativeLayout>
 </RelativeLayout>

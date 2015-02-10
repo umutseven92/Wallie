@@ -27,15 +27,16 @@ import java.util.Date;
 /**
  * Created by Umut Seven on 15.1.2015, for Graviton.
  */
-public class IncomePieFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class IncomePieFragment extends Fragment implements AdapterView.OnItemSelectedListener,IncomeLoadListener {
 
     PieChart incomePieChart;
     Spinner spnIncomePieDate;
     String mode = "month";
-    ImageButton imgLeft, imgRight;
+    ImageButton imgLeft, imgRight, btnCalendar;
     Date dateBeingViewed;
     User user;
     TextView txtIncomeDate;
+    DatePickerFragment datePickerFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,8 +46,14 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
         incomePieChart = (PieChart) v.findViewById(R.id.incomePieChart);
         imgLeft = (ImageButton) v.findViewById(R.id.imgIncomePieLeft);
         imgRight = (ImageButton) v.findViewById(R.id.imgIncomePieRight);
+        btnCalendar = (ImageButton)v.findViewById(R.id.btnIncomePieCalendar);
+
+        datePickerFragment = new DatePickerFragment();
+        datePickerFragment.SetIncomeListener(this);
+
         imgLeft.setOnClickListener(onLeftArrowClick);
         imgRight.setOnClickListener(onRightArrowClick);
+        btnCalendar.setOnClickListener(onCalendarClick);
 
         user = ((Global) getActivity().getApplication()).GetUser();
         dateBeingViewed = new Date();
@@ -159,22 +166,44 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
         }
     };
 
-    public void getNextDateIncomes() throws ParseException, JSONException, IOException {
-        Date today = new Date();
+    View.OnClickListener onCalendarClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            datePickerFragment.SetMode("income");
+            datePickerFragment.show(getActivity().getFragmentManager(), "datepicker");
+        }
+    };
 
-        if (mode.equals("month")) {
-            if (dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
-                return;
-            }
-        } else if (mode.equals("day")) {
-            if (dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
+    public void getNextDateIncomes() throws ParseException, JSONException, IOException {
+
+        Date today = new Date();
+        Calendar calToday = Calendar.getInstance();
+        calToday.setTime(today);
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateBeingViewed);
+
+        int calDayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
+        int calTodayDayOfMonth = calToday.get(Calendar.DAY_OF_MONTH);
+
+        int calMonth = cal.get(Calendar.MONTH);
+        int calTodayMonth = calToday.get(Calendar.MONTH);
+
+        int calYear = cal.get(Calendar.YEAR);
+        int calTodayYear = calToday.get(Calendar.YEAR);
+
+        if(mode.equals("month")) {
+            if (calMonth == calTodayMonth && calYear == calTodayYear) {
                 return;
             }
         }
+        else if(mode.equals("day"))
+        {
+            if (calDayOfMonth == calTodayDayOfMonth && calMonth == calTodayMonth && calYear == calTodayYear){
+                return;
+            }
 
-        Calendar cal = Calendar.getInstance();
-
-        cal.setTime(dateBeingViewed);
+        }
 
         if (mode.equals("day")) {
             cal.add(Calendar.DATE, 1);
@@ -239,5 +268,36 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    @Override
+    public void onDismissed() {
+
+    }
+
+    @Override
+    public void onDateSelected(Date date) {
+        dateBeingViewed = date;
+        if (mode.equals("day")) {
+            try {
+                LoadPieChart(true);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else if (mode.equals("month")) {
+            try {
+                LoadPieChart(false);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

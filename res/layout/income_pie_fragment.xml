@@ -8,8 +8,8 @@
             android:layout_height="50dp" android:id="@+id/lytIncomePieDate" android:layout_marginTop="10dp">
         <Spinner android:layout_width="100dp" android:layout_height="35dp" android:id="@+id/spnIncomePieDate"
                  android:spinnerMode="dropdown"
-                 android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-                 android:background="@drawable/rounded_spinner"/>
+                 android:background="@drawable/rounded_spinner" android:layout_alignBottom="@+id/imgIncomePieRight"
+                 android:layout_centerHorizontal="true"/>
         <ImageButton android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/imgIncomePieRight"
                      android:scaleType="fitXY"
                      android:background="@drawable/right_arrow" android:layout_centerVertical="true"
@@ -25,8 +25,20 @@
                 android:layout_centerVertical="true" android:layout_marginRight="35dp"/>
     </RelativeLayout>
     <com.github.mikephil.charting.charts.PieChart android:layout_width="match_parent"
-                                                  android:layout_height="1000dp" android:id="@+id/incomePieChart"
-                                                  android:layout_marginTop="50dp"/>
+                                                  android:layout_height="935dp" android:id="@+id/incomePieChart"
+                                                  android:layout_marginTop="50dp"
+                                                  android:layout_above="@+id/relativeLayout4"
+            />
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="65dp" android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:id="@+id/relativeLayout4">
+        <ImageButton
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:id="@+id/btnIncomePieCalendar" android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" android:background="@drawable/calendar_button"/>
+    </RelativeLayout>
 
 
 </RelativeLayout>

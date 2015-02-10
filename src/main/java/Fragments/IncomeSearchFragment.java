@@ -32,9 +32,10 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
     Date dateBeingViewed;
     String mode = "month";
     TextView txtIncomeDate;
-    ImageButton btnRight, btnLeft;
+    ImageButton btnRight, btnLeft, btnCalendar;
     static User _user;
     IncomeDialogFragment dialog;
+    DatePickerFragment datePickerFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,12 +54,16 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
         dialog.SetListener(this);
 
         txtIncomeDate = (TextView) v.findViewById(R.id.txtSearchIncomeDate);
+        datePickerFragment = new DatePickerFragment();
+        datePickerFragment.SetIncomeListener(this);
 
         btnLeft = (ImageButton) v.findViewById(R.id.imgSearchLeftIncome);
         btnRight = (ImageButton) v.findViewById(R.id.imgSearchRightIncome);
+        btnCalendar = (ImageButton)v.findViewById(R.id.btnIncomeSearchCalendar);
 
         btnLeft.setOnClickListener(onLeftArrowClick);
         btnRight.setOnClickListener(onRightArrowClick);
+        btnCalendar.setOnClickListener(onCalendarClick);
 
         spnSearchCategory = (Spinner) v.findViewById(R.id.spnSearchCategory);
         spnSearchSubCategory = (Spinner) v.findViewById(R.id.spnSearchSubCategory);
@@ -110,21 +115,43 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
         }
     };
 
+    View.OnClickListener onCalendarClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            datePickerFragment.SetMode("income");
+            datePickerFragment.show(getActivity().getFragmentManager(), "datepicker");
+        }
+    };
+
     public void getNextDateIncomes() throws JSONException, ParseException, IOException {
         Date today = new Date();
-
-        if (mode.equals("month")) {
-            if (dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
-                return;
-            }
-        } else if (mode.equals("day")) {
-            if (dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
-                return;
-            }
-        }
+        Calendar calToday = Calendar.getInstance();
+        calToday.setTime(today);
 
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
+
+        int calDayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
+        int calTodayDayOfMonth = calToday.get(Calendar.DAY_OF_MONTH);
+
+        int calMonth = cal.get(Calendar.MONTH);
+        int calTodayMonth = calToday.get(Calendar.MONTH);
+
+        int calYear = cal.get(Calendar.YEAR);
+        int calTodayYear = calToday.get(Calendar.YEAR);
+
+        if(mode.equals("month")) {
+            if (calMonth == calTodayMonth && calYear == calTodayYear) {
+                return;
+            }
+        }
+        else if(mode.equals("day"))
+        {
+            if (calDayOfMonth == calTodayDayOfMonth && calMonth == calTodayMonth && calYear == calTodayYear){
+                return;
+            }
+
+        }
 
         if (mode.equals("day")) {
             cal.add(Calendar.DATE, 1);
@@ -345,6 +372,28 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
 
     @Override
     public void onDateSelected(Date date) {
+        dateBeingViewed = date;
+        if (mode.equals("month")) {
+            try {
+                LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString(), false);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else if (mode.equals("day")) {
+            try {
+                LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString(), true);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 }

@@ -47,10 +47,10 @@
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="390dp"
+            android:layout_height="350dp"
             android:background="@drawable/rounded_layout" android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
-            android:layout_marginBottom="15dp" android:id="@+id/relativeLayout2">
+            android:layout_marginBottom="65dp" android:id="@+id/relativeLayout2">
         <ListView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -79,5 +79,16 @@
                 android:text="Small Text"
                 android:id="@+id/txtSearchIncomeDate" android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true" android:layout_marginTop="10dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="65dp" android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true">
+        <ImageButton
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:id="@+id/btnIncomeSearchCalendar" android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" android:background="@drawable/calendar_button"
+                />
     </RelativeLayout>
 </RelativeLayout>

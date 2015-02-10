@@ -65,7 +65,6 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         dialog = new IncomeDialogFragment();
         dialog.SetListener(this);
 
-
         btnCalendar.setOnClickListener(onCalendarClick);
         btnLeftArrow.setOnClickListener(onLeftArrowClick);
         btnRightArrow.setOnClickListener(onRightArrowClick);
@@ -209,20 +208,33 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
     public void getNextDateIncomes() throws JSONException, ParseException, IOException {
         Date today = new Date();
+        Calendar calToday = Calendar.getInstance();
+        calToday.setTime(today);
 
-        if (mode.equals("month")) {
-            if (dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
-                return;
-            }
-        } else if (mode.equals("day")) {
-            if (dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateBeingViewed);
+
+        int calDayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
+        int calTodayDayOfMonth = calToday.get(Calendar.DAY_OF_MONTH);
+
+        int calMonth = cal.get(Calendar.MONTH);
+        int calTodayMonth = calToday.get(Calendar.MONTH);
+
+        int calYear = cal.get(Calendar.YEAR);
+        int calTodayYear = calToday.get(Calendar.YEAR);
+
+        if(mode.equals("month")) {
+            if (calMonth == calTodayMonth && calYear == calTodayYear) {
                 return;
             }
         }
+        else if(mode.equals("day"))
+        {
+            if (calDayOfMonth == calTodayDayOfMonth && calMonth == calTodayMonth && calYear == calTodayYear){
+                return;
+            }
 
-        Calendar cal = Calendar.getInstance();
-
-        cal.setTime(dateBeingViewed);
+        }
 
         if (mode.equals("day")) {
             cal.add(Calendar.DATE, 1);

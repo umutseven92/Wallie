@@ -27,5 +27,16 @@
                 android:layout_marginLeft="35dp"/>
     </RelativeLayout>
     <com.github.mikephil.charting.charts.PieChart android:layout_width="match_parent"
-                                                  android:layout_height="1000dp" android:layout_marginTop="50dp" android:id="@+id/expensePieChart"/>
+                                                  android:layout_height="935dp" android:layout_marginTop="50dp" android:id="@+id/expensePieChart"
+                                                  android:layout_above="@+id/relativeLayout6"/>
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="65dp" android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:id="@+id/relativeLayout6">
+        <ImageButton
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:id="@+id/btnExpensePieCalendar" android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" android:background="@drawable/calendar_button"/>
+    </RelativeLayout>
 </RelativeLayout>

@@ -5,10 +5,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import org.json.JSONException;
 import org.json.JSONObject;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+
+import java.io.*;
+import java.text.ParseException;
 
 
 /**
@@ -26,64 +27,86 @@ public class SplashActivity extends Activity {
 
         User user = null;
 
-        String fileName = "userConfigTest38";
+        String fileName = "userConfigTest39";
         ((Global) this.getApplication()).SetFilePath(fileName);
 
         File file = new File(this.getFilesDir(), fileName);
         JSONObject userInfo = null;
 
-        // Tarih formatı ISO 8601 (YEAR-MONTH-DATE)
-        if (!file.exists()) {
-
-            // Kullanıcı yok, JSON üstünden yeni yaratıyoruz
-            String userName = "umutseven92";
-            String firstName = "Umut";
-            String lastName = "Seven";
-
+        if (getResources().getString(R.string.dummyData).equals("true")) {
             try {
-                String userSettings = String.format("{\n" +
-                        "\t\"user\": {\n" +
-                        "\t\t\"userName\": \"%s\",\n" +
-                        "\t\t\"birthDate\": \"1992-08-05\",\n" +
-                        "\t\t\"name\": \"%s\",\n" +
-                        "\t\t\"lastName\": \"%s\",\n" +
-                        "\t\t\"city\": \"Istanbul\",\n" +
-                        "\t\t\"email\": \"umutseven92@gmail.com\",\n" +
-                        "\n" +
-                        "\t\t\"incomes\": [],\n" +
-                        "\t\t\"expenses\": []\n" +
-                        "\t}\n" +
-                        "}\n", userName, firstName, lastName);
+                StringBuilder buf = new StringBuilder();
+                InputStream dummy = getAssets().open("userConfig.txt");
+                BufferedReader in = new BufferedReader(new InputStreamReader(dummy, "UTF-8"));
+                String str;
 
-                userInfo = new JSONObject(userSettings);
-                user = new User(userInfo, file.getAbsolutePath());
-
-                user.GetBanker().WriteUserInfo(getApplication(), userInfo.toString());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        }
-
-        else {
-
-            // Kullanıcı var, JSON üstünden yüklüyoruz
-            try {
-                StringBuilder sb = new StringBuilder();
-                BufferedReader br = new BufferedReader(new FileReader(file));
-                String line;
-                while ((line = br.readLine()) != null) {
-                    sb.append(line);
-                    sb.append("\n");
+                while ((str = in.readLine()) != null)
+                {
+                    buf.append(str);
                 }
 
-                user = new User(new JSONObject(sb.toString()), file.getAbsolutePath());
-
-            } catch (Exception e) {
+                in.close();
+                user = new User(new JSONObject(buf.toString()), file.getAbsolutePath());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        } else {
 
+            // Tarih formatı ISO 8601 (YEAR-MONTH-DATE)
+            if (!file.exists()) {
+
+                // Kullanıcı yok, JSON üstünden yeni yaratıyoruz
+                String userName = "umutseven92";
+                String firstName = "Umut";
+                String lastName = "Seven";
+
+                try {
+                    String userSettings = String.format("{\n" +
+                            "\t\"user\": {\n" +
+                            "\t\t\"userName\": \"%s\",\n" +
+                            "\t\t\"birthDate\": \"1992-08-05\",\n" +
+                            "\t\t\"name\": \"%s\",\n" +
+                            "\t\t\"lastName\": \"%s\",\n" +
+                            "\t\t\"city\": \"Istanbul\",\n" +
+                            "\t\t\"email\": \"umutseven92@gmail.com\",\n" +
+                            "\n" +
+                            "\t\t\"incomes\": [],\n" +
+                            "\t\t\"expenses\": []\n" +
+                            "\t}\n" +
+                            "}\n", userName, firstName, lastName);
+
+                    userInfo = new JSONObject(userSettings);
+                    user = new User(userInfo, file.getAbsolutePath());
+
+                    user.GetBanker().WriteUserInfo(getApplication(), userInfo.toString());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            } else {
+
+                // Kullanıcı var, JSON üstünden yüklüyoruz
+                try {
+                    StringBuilder sb = new StringBuilder();
+                    BufferedReader br = new BufferedReader(new FileReader(file));
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        sb.append(line);
+                        sb.append("\n");
+                    }
+
+                    user = new User(new JSONObject(sb.toString()), file.getAbsolutePath());
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
 
         ((Global) this.getApplication()).SetUser(user);
 

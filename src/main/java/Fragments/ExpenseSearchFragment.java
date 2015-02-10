@@ -32,9 +32,10 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
     Date dateBeingViewed;
     String mode = "month";
     TextView txtExpenseDate;
-    ImageButton btnRight, btnLeft;
+    ImageButton btnRight, btnLeft, btnCalendar;
     static User _user;
     ExpenseDialogFragment dialog;
+    DatePickerFragment datePickerFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,9 +57,14 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
 
         btnLeft = (ImageButton) v.findViewById(R.id.imgSearchLeft);
         btnRight = (ImageButton) v.findViewById(R.id.imgSearchRight);
+        btnCalendar = (ImageButton)v.findViewById(R.id.btnExpenseSearchCalendar);
+
+        datePickerFragment = new DatePickerFragment();
+        datePickerFragment.SetExpenseListener(this);
 
         btnLeft.setOnClickListener(onLeftArrowClick);
         btnRight.setOnClickListener(onRightArrowClick);
+        btnCalendar.setOnClickListener(onCalendarClick);
 
         spnSearchTags = (Spinner) v.findViewById(R.id.spnExpenseTags);
         spnSearchCategory = (Spinner) v.findViewById(R.id.spnExpenseCategory);
@@ -112,21 +118,44 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
         }
     };
 
-    public void getNextDateExpenses() throws JSONException, ParseException, IOException {
-        Date today = new Date();
+    View.OnClickListener onCalendarClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            datePickerFragment.SetMode("expense");
+            datePickerFragment.show(getActivity().getFragmentManager(), "datepicker");
+        }
+    };
 
-        if (mode.equals("month")) {
-            if (dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
-                return;
-            }
-        } else if (mode.equals("day")) {
-            if (dateBeingViewed.getDay() == today.getDay() && dateBeingViewed.getMonth() == today.getMonth() && dateBeingViewed.getYear() == today.getYear()) {
+    public void getNextDateExpenses() throws JSONException, ParseException, IOException {
+
+        Date today = new Date();
+        Calendar calToday = Calendar.getInstance();
+        calToday.setTime(today);
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateBeingViewed);
+
+        int calDayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
+        int calTodayDayOfMonth = calToday.get(Calendar.DAY_OF_MONTH);
+
+        int calMonth = cal.get(Calendar.MONTH);
+        int calTodayMonth = calToday.get(Calendar.MONTH);
+
+        int calYear = cal.get(Calendar.YEAR);
+        int calTodayYear = calToday.get(Calendar.YEAR);
+
+        if(mode.equals("month")) {
+            if (calMonth == calTodayMonth && calYear == calTodayYear) {
                 return;
             }
         }
-        Calendar cal = Calendar.getInstance();
+        else if(mode.equals("day"))
+        {
+            if (calDayOfMonth == calTodayDayOfMonth && calMonth == calTodayMonth && calYear == calTodayYear){
+                return;
+            }
 
-        cal.setTime(dateBeingViewed);
+        }
 
         if (mode.equals("day")) {
             cal.add(Calendar.DATE, 1);
@@ -397,6 +426,31 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
 
     @Override
     public void onDateSelected(Date date) {
+        dateBeingViewed = date;
+
+        if (mode.equals("month")) {
+            try {
+                LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString(), false);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        } else if (mode.equals("day")) {
+            try {
+                LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString(), true);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
 
     }
 }

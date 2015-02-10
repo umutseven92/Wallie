@@ -41,7 +41,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/lstIncomes"
                 android:layout_alignParentLeft="true" android:layout_marginTop="65dp" android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp" android:divider="@color/outline" android:dividerHeight="1dp"/>
+                android:layout_marginRight="5dp" android:divider="@color/outline" android:dividerHeight="1dp"
+                android:choiceMode="singleChoice" android:listSelector="@drawable/list_selector"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
