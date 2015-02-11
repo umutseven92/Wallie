@@ -1,19 +1,3 @@
-/*
- * Copyright 2013 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package wizard.ui;
 
 import Helpers.DecimalDigitsInputFilter;
@@ -29,23 +13,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
+import wizard.model.SavingInfoPage;
 import com.graviton.Cuzdan.R;
-import wizard.model.BalanceInfoPage;
 
-public class BalanceInfoFragment extends Fragment {
+/**
+ * Created by Umut Seven on 11.2.2015, for Graviton.
+ */
+public class SavingInfoFragment extends Fragment{
     private static final String ARG_KEY = "key";
 
     private PageFragmentCallbacks mCallbacks;
     private String mKey;
-    private BalanceInfoPage mPage;
+    private SavingInfoPage mPage;
     private TextView mAmountView;
-    private TextView mDescriptionView;
+    private TextView mNameView;
 
-    public static BalanceInfoFragment create(String key) {
+    public static SavingInfoFragment create(String key) {
         Bundle args = new Bundle();
         args.putString(ARG_KEY, key);
 
-        BalanceInfoFragment fragment = new BalanceInfoFragment();
+        SavingInfoFragment fragment = new SavingInfoFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,21 +43,21 @@ public class BalanceInfoFragment extends Fragment {
 
         Bundle args = getArguments();
         mKey = args.getString(ARG_KEY);
-        mPage = (BalanceInfoPage) mCallbacks.onGetPage(mKey);
+        mPage = (SavingInfoPage) mCallbacks.onGetPage(mKey);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.add_balance_fragment_info, container, false);
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.add_saving_fragment_info, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
 
-        mAmountView = ((TextView) rootView.findViewById(R.id.your_name));
-        mAmountView.setText(mPage.getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
+        mAmountView = ((TextView) rootView.findViewById(R.id.saving_amount));
+        mAmountView.setText(mPage.getData().getString(SavingInfoPage.AMOUNT_DATA_KEY));
         mAmountView.setFilters(new InputFilter[]{new DecimalDigitsInputFilter(2)});
 
-        mDescriptionView = ((TextView) rootView.findViewById(R.id.your_email));
-        mDescriptionView.setText(mPage.getData().getString(BalanceInfoPage.DESC_DATA_KEY));
+        mNameView = ((TextView) rootView.findViewById(R.id.saving_name));
+        mNameView.setText(mPage.getData().getString(SavingInfoPage.NAME_DATA_KEY));
         return rootView;
     }
 
@@ -107,13 +94,13 @@ public class BalanceInfoFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                mPage.getData().putString(BalanceInfoPage.AMOUNT_DATA_KEY,
+                mPage.getData().putString(SavingInfoPage.AMOUNT_DATA_KEY,
                         (editable != null) ? editable.toString() : null);
                 mPage.notifyDataChanged();
             }
         });
 
-        mDescriptionView.addTextChangedListener(new TextWatcher() {
+        mNameView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1,
                                           int i2) {
@@ -125,7 +112,7 @@ public class BalanceInfoFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                mPage.getData().putString(BalanceInfoPage.DESC_DATA_KEY,
+                mPage.getData().putString(SavingInfoPage.NAME_DATA_KEY,
                         (editable != null) ? editable.toString() : null);
                 mPage.notifyDataChanged();
             }
@@ -146,4 +133,5 @@ public class BalanceInfoFragment extends Fragment {
             }
         }
     }
+
 }

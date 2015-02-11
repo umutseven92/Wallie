@@ -24,5 +24,7 @@
         </activity>
         <activity android:name="com.graviton.Cuzdan.ExpenseStatsActivity" android:theme="@style/CustomActionBarTheme" android:screenOrientation="portrait" >
         </activity>
+        <activity android:name="com.graviton.Cuzdan.SavingsWizardActivity" android:theme="@style/CustomActionBarTheme" android:screenOrientation="portrait">
+        </activity>
     </application>
 </manifest>

@@ -31,24 +31,24 @@
             android:orientation="vertical">
 
             <TextView style="@style/WizardFormLabel"
-                android:text="@string/label_your_name" />
+                android:text="@string/label_amount" />
 
             <EditText android:id="@+id/your_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:saveEnabled="false"
-                android:hint="@string/hint_your_name"
+                android:hint="@string/hint_amount"
                 android:layout_marginBottom="16dp" android:inputType="number|numberDecimal"/>
 
             <TextView style="@style/WizardFormLabel"
-                android:text="@string/label_your_email" />
+                android:text="@string/label_desc" />
 
             <EditText android:id="@+id/your_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:saveEnabled="false"
                 android:inputType="textEmailAddress|textCapSentences"
-                android:hint="@string/hint_your_email" android:lines="4" android:maxLines="4" android:maxLength="100"/>
+                android:hint="@string/hint_desc" android:lines="4" android:maxLines="4" android:maxLength="100"/>
 
         </LinearLayout>
     </ScrollView>

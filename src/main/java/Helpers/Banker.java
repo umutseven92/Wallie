@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-
 /**
  * Created by Umut Seven on 12.11.2014, for Graviton.
  *
@@ -32,6 +31,7 @@ public class Banker implements Serializable {
     public Banker(JSONArray incomes, JSONArray expenses, String filePath) throws JSONException, ParseException {
         _incomes = new ArrayList<Income>();
         _expenses = new ArrayList<Expense>();
+        _savings = new ArrayList<Saving>();
         this.filePath = filePath;
         LoadBalance(incomes, expenses);
     }
@@ -66,6 +66,11 @@ public class Banker implements Serializable {
 
     public ArrayList<Saving> GetSavings() {
         return _savings;
+    }
+
+    public int GetSavingsCount()
+    {
+        return GetSavings().size();
     }
 
     /**

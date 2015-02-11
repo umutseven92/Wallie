@@ -2,6 +2,7 @@ package Helpers;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.UUID;
 
 /**
  * Created by Umut Seven on 4.2.2015, for Graviton.
@@ -130,4 +131,19 @@ public class Saving {
     public boolean GetRepeating() {
         return _repeating;
     }
+
+    private String _id;
+
+    public void GenerateID() {
+        _id = UUID.randomUUID().toString();
+    }
+
+    public void SetID(String id) {
+        _id = id;
+    }
+
+    public String GetID() {
+        return _id;
+    }
+
 }

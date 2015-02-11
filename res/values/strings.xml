@@ -153,12 +153,14 @@
     <string name="prev">Geri</string>
     <string name="finish_income">Gelir Ekle</string>
     <string name="finish_expense">Gider Ekle</string>
+    <string name="finish_saving">Birikim Ekle</string>
     <string name="review">Özet</string>
 
-    <string name="label_your_name">Miktar</string>
-    <string name="label_your_email">Açıklama</string>
-    <string name="hint_your_name">TL</string>
-    <string name="hint_your_email">İsteğe Bağlı</string>
+    <string name="label_amount">Miktar</string>
+    <string name="label_desc">Açıklama</string>
+    <string name="hint_amount">TL</string>
+    <string name="hint_desc">İsteğe Bağlı</string>
+    <string name="label_name">Birikim Adı</string>
 
     <string name="submit_confirm_message">Herşey tamam?</string>
     <string name="submit_confirm_button">Gelir Ekle</string>

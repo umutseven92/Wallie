@@ -24,6 +24,7 @@ Fragments\IncomeGraphFragment$3.class
 com\graviton\Cuzdan\R$style.class
 com\graviton\Cuzdan\ExpenseWizardActivity$2.class
 Fragments\IncomeGraphFragment.class
+wizard\model\SavingInfoPage.class
 com\graviton\Cuzdan\R$id.class
 Helpers\Expense$Tags.class
 com\graviton\Cuzdan\IncomeWizardActivity$2.class
@@ -40,6 +41,7 @@ Fragments\ExpenseDialogFragment$3.class
 Fragments\IncomePieFragment$2.class
 com\graviton\Cuzdan\ExpenseWizardActivity$1.class
 com\graviton\Cuzdan\ExpenseWizardActivity$4.class
+wizard\ui\SavingInfoFragment$1.class
 Helpers\IncomeListAdapter.class
 Fragments\ExpenseFragment$3.class
 com\graviton\Cuzdan\R$color.class
@@ -64,6 +66,7 @@ Fragments\AccountFragment.class
 com\graviton\Cuzdan\MainActivity.class
 wizard\ui\PageFragmentCallbacks.class
 Fragments\IncomeFragment$5.class
+wizard\SavingWizardModel.class
 wizard\model\ModelCallbacks.class
 wizard\ui\BalanceInfoFragment$1.class
 Fragments\ExpenseSearchFragment$4.class
@@ -76,10 +79,12 @@ Fragments\ExpensePieFragment$3.class
 Fragments\IncomeDialogFragment$3.class
 Fragments\IncomeSearchFragment$2.class
 Fragments\ExpenseGraphFragment.class
+wizard\ui\SavingInfoFragment.class
 Fragments\ExpenseGraphFragment$3.class
 com\graviton\Cuzdan\IncomeWizardActivity$MyPagerAdapter.class
 wizard\IncomeWizardModel.class
 Fragments\IncomeDialogFragment.class
+com\graviton\Cuzdan\SavingsWizardActivity$MyPagerAdapter.class
 wizard\ui\MultipleChoiceFragment$1.class
 Fragments\IncomeFragment$6.class
 Fragments\ExpenseDialogFragment$1.class
@@ -87,6 +92,7 @@ Helpers\DateFormatHelper.class
 Fragments\ExpensePieFragment$2.class
 wizard\ExpenseWizardModel.class
 Fragments\DatePickerFragment.class
+Fragments\SavingsFragment$1.class
 Helpers\RoundedImageView.class
 wizard\ui\SingleChoiceFragment.class
 wizard\ui\ReviewFragment.class
@@ -95,6 +101,7 @@ com\graviton\Cuzdan\ExpenseWizardActivity$MyPagerAdapter.class
 Helpers\IncomeLoadListener.class
 Fragments\ExpenseFragment$4.class
 com\graviton\Cuzdan\MainActivity$DrawerItemClickListener.class
+wizard\ui\SavingInfoFragment$2.class
 wizard\model\BranchPage.class
 Helpers\BudgetPageAdapter.class
 Fragments\ExpenseFragment$1.class
@@ -116,6 +123,7 @@ wizard\ui\ReviewFragment$ReviewAdapter.class
 Helpers\ChartHelper.class
 com\graviton\Cuzdan\R$layout.class
 Fragments\IncomeDialogFragment$1.class
+com\graviton\Cuzdan\SavingsWizardActivity.class
 Fragments\IncomeFragment$3.class
 wizard\model\BalanceInfoPage.class
 com\graviton\Cuzdan\SplashActivity$1.class
