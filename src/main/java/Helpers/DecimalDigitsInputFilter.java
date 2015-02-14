@@ -6,7 +6,7 @@ import android.text.Spanned;
 
 /**
  * Created by Umut Seven on 22.1.2015, for Graviton.
- *
+ * <p/>
  * Kullanici miktar girerken noktadan sonra en fazla 2 rakam girebilmeli.
  * Ayrica miktar noktadan sonrasi 12 karakter olmali (nokta dahil).
  * Limiti bu class ustunden sagliyoruz.
@@ -25,8 +25,7 @@ public class DecimalDigitsInputFilter implements InputFilter {
         int dotPos = -1;
         int len = dest.length();
 
-        if(len >= 12)
-        {
+        if (len >= 12) {
             return "";
         }
         for (int i = 0; i < len; i++) {

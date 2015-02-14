@@ -7,7 +7,7 @@ import com.github.mikephil.charting.charts.PieChart;
 
 /**
  * Created by Umut Seven on 27.1.2015, for Graviton.
- *
+ * <p/>
  * Istatistik ekranlarinda kullanilan grafikleri initialize ettigimiz class.
  * Her grafik bu class'i kullanmali.
  */

@@ -15,9 +15,9 @@ import java.util.Date;
 public class Income extends Balance {
 
     /**
-     *  JSON ustunden gelirin yuklendigi yer.
+     * JSON ustunden gelirin yuklendigi yer.
      *
-     * @param jsonIncome    Bilgilerin oldugu JSONObject
+     * @param jsonIncome Bilgilerin oldugu JSONObject
      * @throws JSONException
      * @throws ParseException
      */
@@ -35,11 +35,11 @@ public class Income extends Balance {
     /**
      * Direk elden gelir yaratildigi yer.
      *
-     * @param category  Kategori
-     * @param subCategory   Alt kategori
-     * @param amount    Miktar
-     * @param desc  Aciklama
-     * @param date  Tarih
+     * @param category    Kategori
+     * @param subCategory Alt kategori
+     * @param amount      Miktar
+     * @param desc        Aciklama
+     * @param date        Tarih
      */
     public Income(String category, String subCategory, BigDecimal amount, String desc, Date date) {
         this.GenerateID();

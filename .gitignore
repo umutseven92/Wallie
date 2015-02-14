@@ -26,9 +26,6 @@ hs_err_pid*
 # Files for the Dalvik VM
 *.dex
 
-# Java class files
-*.class
-
 # Generated files
 bin/
 gen/

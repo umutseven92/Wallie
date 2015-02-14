@@ -18,7 +18,7 @@ public class Expense extends Balance {
     /**
      * JSON ustunden giderin yaratildigi yer.
      *
-     * @param jsonExpense   Bilgilerin oldugu JSONObject
+     * @param jsonExpense Bilgilerin oldugu JSONObject
      * @throws JSONException
      * @throws ParseException
      */
@@ -44,11 +44,11 @@ public class Expense extends Balance {
     /**
      * Direk elden gelir yaratildigi yer.
      *
-     * @param category  Kategori
-     * @param subCategory   Alt kategori
-     * @param amount    Miktar
-     * @param desc  Aciklama
-     * @param date  Tarih
+     * @param category    Kategori
+     * @param subCategory Alt kategori
+     * @param amount      Miktar
+     * @param desc        Aciklama
+     * @param date        Tarih
      */
     public Expense(String category, String subCategory, BigDecimal amount, String desc, Date date, Tags tag) {
         this.GenerateID();
@@ -70,7 +70,7 @@ public class Expense extends Balance {
     /**
      * Tag'i JSON olarak kaydederken kullanilan string'i aldigimiz yer.
      *
-     * @return  Tag'in string hali
+     * @return Tag'in string hali
      */
     public String GetStringTag() {
         if (_tag == Tags.Home) {

@@ -1,5 +1,6 @@
 package com.graviton.Cuzdan;
 
+import Helpers.JSONHelper;
 import Helpers.User;
 import android.app.Activity;
 import android.content.Intent;
@@ -27,12 +28,14 @@ public class SplashActivity extends Activity {
 
         User user = null;
 
-        String fileName = "userConfigTest39";
+        String fileName = "userConfigTest46";
         ((Global) this.getApplication()).SetFilePath(fileName);
 
         File file = new File(this.getFilesDir(), fileName);
         JSONObject userInfo = null;
 
+        // Dummy data daha bitmedi
+        // Simdilik kullanma
         if (getResources().getString(R.string.dummyData).equals("true")) {
             try {
                 StringBuilder buf = new StringBuilder();
@@ -40,13 +43,12 @@ public class SplashActivity extends Activity {
                 BufferedReader in = new BufferedReader(new InputStreamReader(dummy, "UTF-8"));
                 String str;
 
-                while ((str = in.readLine()) != null)
-                {
+                while ((str = in.readLine()) != null) {
                     buf.append(str);
                 }
 
                 in.close();
-                user = new User(new JSONObject(buf.toString()), file.getAbsolutePath());
+                user = new User(new JSONObject(buf.toString()), "");
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (ParseException e) {
@@ -65,21 +67,7 @@ public class SplashActivity extends Activity {
                 String lastName = "Seven";
 
                 try {
-                    String userSettings = String.format("{\n" +
-                            "\t\"user\": {\n" +
-                            "\t\t\"userName\": \"%s\",\n" +
-                            "\t\t\"birthDate\": \"1992-08-05\",\n" +
-                            "\t\t\"name\": \"%s\",\n" +
-                            "\t\t\"lastName\": \"%s\",\n" +
-                            "\t\t\"city\": \"Istanbul\",\n" +
-                            "\t\t\"email\": \"umutseven92@gmail.com\",\n" +
-                            "\n" +
-                            "\t\t\"incomes\": [],\n" +
-                            "\t\t\"expenses\": []\n" +
-                            "\t}\n" +
-                            "}\n", userName, firstName, lastName);
-
-                    userInfo = new JSONObject(userSettings);
+                    userInfo = JSONHelper.CreateStartingJSON(userName, firstName, lastName);
                     user = new User(userInfo, file.getAbsolutePath());
 
                     user.GetBanker().WriteUserInfo(getApplication(), userInfo.toString());

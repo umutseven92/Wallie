@@ -9,7 +9,7 @@ import java.text.ParseException;
 
 /**
  * Created by Umut Seven on 16.11.2014, for Graviton.
- *
+ * <p/>
  * Kullanici class'i. Tum bilgiler kullanici ustunden kaydediliyor.
  */
 public class User implements Serializable {
@@ -23,7 +23,7 @@ public class User implements Serializable {
         _lastName = jsonUser.getString("lastName");
         _profilePicture = "@drawable/profile.png";
         this._filePath = filePath;
-        _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"), this._filePath);
+        _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"), jsonUser.getJSONArray("savings"), this._filePath);
 
     }
 

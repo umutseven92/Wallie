@@ -47,7 +47,7 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
         expensePieChart = (PieChart) v.findViewById(R.id.expensePieChart);
         imgLeft = (ImageButton) v.findViewById(R.id.imgExpensePieLeft);
         imgRight = (ImageButton) v.findViewById(R.id.imgExpensePieRight);
-        btnCalendar = (ImageButton)v.findViewById(R.id.btnExpensePieCalendar);
+        btnCalendar = (ImageButton) v.findViewById(R.id.btnExpensePieCalendar);
 
 
         imgLeft.setOnClickListener(onLeftArrowClick);
@@ -190,14 +190,12 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
         int calYear = cal.get(Calendar.YEAR);
         int calTodayYear = calToday.get(Calendar.YEAR);
 
-        if(mode.equals("month")) {
+        if (mode.equals("month")) {
             if (calMonth == calTodayMonth && calYear == calTodayYear) {
                 return;
             }
-        }
-        else if(mode.equals("day"))
-        {
-            if (calDayOfMonth == calTodayDayOfMonth && calMonth == calTodayMonth && calYear == calTodayYear){
+        } else if (mode.equals("day")) {
+            if (calDayOfMonth == calTodayDayOfMonth && calMonth == calTodayMonth && calYear == calTodayYear) {
                 return;
             }
 

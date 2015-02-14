@@ -6,7 +6,6 @@ import com.graviton.Cuzdan.Global;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.*;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -14,9 +13,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import Helpers.Saving.Period;
+
 /**
  * Created by Umut Seven on 12.11.2014, for Graviton.
- *
+ * <p/>
  * Tum gelirlerin ve giderlerin yonetildigi class.
  */
 public class Banker implements Serializable {
@@ -28,12 +29,13 @@ public class Banker implements Serializable {
      * @throws JSONException
      * @throws ParseException
      */
-    public Banker(JSONArray incomes, JSONArray expenses, String filePath) throws JSONException, ParseException {
+    public Banker(JSONArray incomes, JSONArray expenses, JSONArray savings , String filePath) throws JSONException, ParseException {
         _incomes = new ArrayList<Income>();
         _expenses = new ArrayList<Expense>();
         _savings = new ArrayList<Saving>();
         this.filePath = filePath;
         LoadBalance(incomes, expenses);
+        LoadSavings(savings);
     }
 
     private ArrayList<Income> _incomes;
@@ -64,13 +66,92 @@ public class Banker implements Serializable {
         _savings = savings;
     }
 
-    public ArrayList<Saving> GetSavings() {
+    public ArrayList<Saving> GetSavings() throws IOException, JSONException, ParseException {
+        LoadSavings(FetchSavingsData());
         return _savings;
     }
 
-    public int GetSavingsCount()
-    {
+    public int GetSavingsCount() throws JSONException, ParseException, IOException {
         return GetSavings().size();
+    }
+
+
+    public Period GetPeriodFromTurkishString(String turkishPeriod) {
+        Period per = null;
+
+        if (turkishPeriod.equals("Gün")) {
+            per = Period.Day;
+        } else if (turkishPeriod.equals("Hafta")) {
+            per = Period.Week;
+        } else if (turkishPeriod.equals("Ay")) {
+            per = Period.Month;
+        } else if (turkishPeriod.equals("3 Ay")) {
+            per = Period.ThreeMonths;
+        } else if (turkishPeriod.equals("6 Ay")) {
+            per = Period.SixMonths;
+        } else if (turkishPeriod.equals("1 Yıl")) {
+            per = Period.Year;
+        } else if (turkishPeriod.equals("Özel")) {
+            per = Period.Custom;
+        }
+
+        assert per != null;
+
+        return per;
+    }
+
+    private String GetPeriodString(Period period) {
+        String periodRep = "";
+
+        switch (period) {
+            case Day:
+                periodRep = "day";
+                break;
+            case Week:
+                periodRep = "week";
+                break;
+            case Month:
+                periodRep = "month";
+                break;
+            case ThreeMonths:
+                periodRep = "three_months";
+                break;
+            case SixMonths:
+                periodRep = "six_months";
+                break;
+            case Year:
+                periodRep = "year";
+                break;
+            case Custom:
+                periodRep = "custom";
+                break;
+        }
+        return periodRep;
+    }
+
+
+    /**
+     * Birikimi alip uygun JSONa dokuyoruz.
+     *
+     * @param saving JSON olacak birikim
+     * @return JSON olarak birikim
+     * @throws JSONException
+     */
+    public JSONObject CreateJSONSaving(Saving saving) throws JSONException {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(saving.GetDate());
+        String date = cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1) + "-" + cal.get(Calendar.DAY_OF_MONTH);
+
+        String json = String.format("{\n" +
+                "\t\t\t\t\t\"id\": \"%s\", \n" +
+                "\t\t\t\t\t\"name\": \"%s\",\n" +
+                "\t\t\t\t\t\"amount\": \"%s\",\n" +
+                "\t\t\t\t\t\"period\": \"%s\",\n" +
+                "\t\t\t\t\t\"date\": \"%s\",\n" +
+                "\t\t\t\t\t\"repeating\": \"%s\"\n" +
+                "\t\t\t\t}", saving.GetID(), saving.GetName(), saving.GetAmount(), GetPeriodString(saving.GetPeriod()), date, saving.GetRepeating());
+
+        return new JSONObject(json);
     }
 
     /**
@@ -102,6 +183,21 @@ public class Banker implements Serializable {
     }
 
     /**
+     * JSON ustunden birikimlerin sifirlanip ArrayList'e yeniden yuklendigi yer.
+     *
+     * @param jsonSavings   Birikim JSON arrayi
+     * @throws JSONException
+     */
+    public void LoadSavings(JSONArray jsonSavings) throws JSONException, ParseException {
+        _savings = new ArrayList<Saving>();
+        for (int i = 0; i< jsonSavings.length(); i++)
+        {
+            Saving saving = new Saving(jsonSavings.getJSONObject(i));
+            _savings.add(saving);
+        }
+    }
+
+    /**
      * JSON ustunden gelirlerin sifirlanip ArrayList'e yeniden yuklendiqi yer.
      *
      * @param jsonBalance Gelir JSON arrayi
@@ -117,14 +213,20 @@ public class Banker implements Serializable {
 
     }
 
+    public JSONArray FetchSavingsData() throws JSONException, IOException {
+        JSONObject jsonObject = FetchUserData();
+
+        return jsonObject.getJSONObject("user").getJSONArray("savings");
+    }
+
     /**
-     * Gelir ve giderleri direk kaynaktan yukluyoruz.
+     * Kullanici bilgilerini direk kaynaktan yukluyoruz.
      *
-     * @return JSON olarak gelir ve giderler
+     * @return JSON olarak kullanici bilgileri
      * @throws IOException
      * @throws JSONException
      */
-    public JSONObject FetchBalanceData() throws IOException, JSONException {
+    public JSONObject FetchUserData() throws IOException, JSONException {
         StringBuilder sb = new StringBuilder();
         BufferedReader br = new BufferedReader(new FileReader(this.filePath));
         String line;
@@ -136,13 +238,13 @@ public class Banker implements Serializable {
     }
 
     public JSONArray FetchIncomeData() throws IOException, JSONException {
-        JSONObject jsonObject = FetchBalanceData();
+        JSONObject jsonObject = FetchUserData();
 
         return jsonObject.getJSONObject("user").getJSONArray("incomes");
     }
 
     public JSONArray FetchExpenseData() throws IOException, JSONException {
-        JSONObject jsonObject = FetchBalanceData();
+        JSONObject jsonObject = FetchUserData();
 
         return jsonObject.getJSONObject("user").getJSONArray("expenses");
     }
@@ -276,8 +378,8 @@ public class Banker implements Serializable {
     /**
      * Belli bir gune air gelirleri (kaynaktan) dondurur.
      *
-     * @param day   Gelirlerin istendigi gun
-     * @return  Gune ait gelirler
+     * @param day Gelirlerin istendigi gun
+     * @return Gune ait gelirler
      * @throws JSONException
      * @throws ParseException
      * @throws IOException
@@ -305,8 +407,8 @@ public class Banker implements Serializable {
     /**
      * Belli bir aya air gelirleri (kaynaktan) dondurur.
      *
-     * @param day   Gelirlerin istendigi ay
-     * @return  Aya ait gelirler
+     * @param day Gelirlerin istendigi ay
+     * @return Aya ait gelirler
      * @throws JSONException
      * @throws ParseException
      * @throws IOException
@@ -334,8 +436,8 @@ public class Banker implements Serializable {
     /**
      * Belli bir gune air giderleri (kaynaktan) dondurur.
      *
-     * @param day   Giderlerin istendigi gun
-     * @return  Gune ait giderler
+     * @param day Giderlerin istendigi gun
+     * @return Gune ait giderler
      * @throws JSONException
      * @throws ParseException
      * @throws IOException
@@ -363,8 +465,8 @@ public class Banker implements Serializable {
     /**
      * Belli bir aya air giderleri (kaynaktan) dondurur.
      *
-     * @param day   Giderlerin istendigi ay
-     * @return  Aya ait giderler
+     * @param day Giderlerin istendigi ay
+     * @return Aya ait giderler
      * @throws JSONException
      * @throws ParseException
      * @throws IOException
@@ -392,8 +494,8 @@ public class Banker implements Serializable {
     /**
      * Gelir alip JSON haline cevirir.
      *
-     * @param income    JSON hali istenen gelir
-     * @return  JSON halinde gelir
+     * @param income JSON hali istenen gelir
+     * @return JSON halinde gelir
      * @throws JSONException
      */
     public JSONObject CreateJSONIncome(Income income) throws JSONException {
@@ -417,7 +519,7 @@ public class Banker implements Serializable {
      * Gider alip JSON haline cevirir.
      *
      * @param expense JSON hali istenen gider
-     * @return  JSON halinde gider
+     * @return JSON halinde gider
      * @throws JSONException
      */
     public JSONObject CreateJSONExpense(Expense expense) throws JSONException {
@@ -443,8 +545,8 @@ public class Banker implements Serializable {
     /**
      * /data/com/graviton/Cuzdan'daki kullanici bilgilerini dondurur.
      *
-     * @param app   Ana uygulama
-     * @return  string halinde kullanici bilgileri
+     * @param app Ana uygulama
+     * @return string halinde kullanici bilgileri
      */
     private String ReadUserInfo(Application app) {
         StringBuffer datax = new StringBuffer("");
@@ -472,8 +574,8 @@ public class Banker implements Serializable {
     /**
      * Verilen stringi /data/com/graviton/Cuzdan'a yazar.
      *
-     * @param app   Ana uygulama
-     * @param infoToWrite   Yazilmasi istenen veri
+     * @param app         Ana uygulama
+     * @param infoToWrite Yazilmasi istenen veri
      * @throws IOException
      */
     public void WriteUserInfo(Application app, String infoToWrite) throws IOException {
@@ -486,8 +588,8 @@ public class Banker implements Serializable {
     /**
      * Gelir ekleme metodu.
      *
-     * @param income    Eklenicek gelir
-     * @param app   Ana uygulama
+     * @param income Eklenicek gelir
+     * @param app    Ana uygulama
      * @throws IOException
      * @throws JSONException
      */
@@ -504,10 +606,30 @@ public class Banker implements Serializable {
     }
 
     /**
+     * Birikim ekleme metodu.
+     *
+     * @param saving Eklenicek birikim
+     * @param app    Ana uygulama
+     * @throws JSONException
+     */
+    public void AddSaving(Saving saving, Application app) throws JSONException, IOException {
+
+        JSONObject savingToSave = CreateJSONSaving(saving);
+
+        String main = ReadUserInfo(app);
+
+        JSONObject mainJSON = new JSONObject(main);
+        JSONArray savings = mainJSON.getJSONObject("user").getJSONArray("savings");
+        savings.put(savingToSave);
+        WriteUserInfo(app, mainJSON.toString());
+
+    }
+
+    /**
      * Gider ekleme metodu.
      *
-     * @param expense   Eklenicek gider
-     * @param app   Ana uygulama
+     * @param expense Eklenicek gider
+     * @param app     Ana uygulama
      * @throws JSONException
      * @throws IOException
      */
@@ -529,11 +651,11 @@ public class Banker implements Serializable {
      * 2) Kullanici bilgilerini yeniden olustur,
      * 3) Silinecek gelir disindaki gelirleri ekle,
      * 4) Bilgileri birdaha yaz.
-     *
+     * <p/>
      * tl:dr; userConfig'i bastan olusturuyoruz.
      *
-     * @param id    Silinicek gelirin id'si
-     * @param app   Ana uygulama
+     * @param id  Silinicek gelirin id'si
+     * @param app Ana uygulama
      * @throws JSONException
      * @throws IOException
      */
@@ -583,11 +705,11 @@ public class Banker implements Serializable {
      * 2) Kullanici bilgilerini yeniden olustur,
      * 3) Silinecek gider disindaki giderleri ekle,
      * 4) Bilgileri birdaha yaz.
-     *
+     * <p/>
      * tl:dr; userConfig'i bastan olusturuyoruz.
      *
-     * @param id    Silinecek giderin id'si
-     * @param app   Ana uygulama
+     * @param id  Silinecek giderin id'si
+     * @param app Ana uygulama
      * @throws JSONException
      * @throws IOException
      */

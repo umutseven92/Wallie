@@ -16,7 +16,7 @@ public interface IncomeLoadListener {
     /**
      * Tarih girme ekraninda tarih secilginde calisan event.
      *
-     * @param date  Secilen tarih
+     * @param date Secilen tarih
      */
     public void onDateSelected(Date date);
 }

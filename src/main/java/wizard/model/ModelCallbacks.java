@@ -22,6 +22,8 @@ package wizard.model;
  */
 public interface ModelCallbacks {
     void onPageDataChanged(Page page);
+
     void onPageTreeChanged();
+
     void onOptionClicked();
 }

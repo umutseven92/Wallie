@@ -1,5 +1,7 @@
 package com.graviton.Cuzdan;
 
+import Helpers.Banker;
+import Helpers.Saving;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -15,11 +17,14 @@ import wizard.SavingWizardModel;
 import wizard.model.AbstractWizardModel;
 import wizard.model.ModelCallbacks;
 import wizard.model.Page;
+import wizard.model.SavingInfoPage;
 import wizard.ui.PageFragmentCallbacks;
 import wizard.ui.ReviewFragment;
 import wizard.ui.StepPagerStrip;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -83,7 +88,11 @@ public class SavingsWizardActivity extends FragmentActivity implements PageFragm
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GoForwardOnePage();
+                try {
+                    GoForwardOnePage();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -99,21 +108,22 @@ public class SavingsWizardActivity extends FragmentActivity implements PageFragm
 
     }
 
-    private void GoForwardOnePage() {
+    private void GoForwardOnePage() throws JSONException {
         if (mPager.getCurrentItem() == mCurrentPageSequence.size()) {
-          /*  String category = mWizardModel.findByKey("Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
-            String subCategory = mWizardModel.findByKey(category + ":Alt Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
-            BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
-            String description = mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.DESC_DATA_KEY);
+            String period = mWizardModel.findByKey("Dönem").getData().getString(Page.SIMPLE_DATA_KEY);
+            BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(SavingInfoPage.AMOUNT_DATA_KEY));
+            String name = mWizardModel.findByKey("Detaylar").getData().getString(SavingInfoPage.NAME_DATA_KEY);
+            boolean repeat = mWizardModel.findByKey("Detaylar").getData().getBoolean(SavingInfoPage.REPEAT_BOOL_KEY);
 
-            if (description == null) {
-                description = "";
+            Banker banker = ((Global) getApplication()).GetUser().GetBanker();
+
+            Saving saving = new Saving(name, amount, new Date(), banker.GetPeriodFromTurkishString(period), repeat);
+            try {
+                banker.AddSaving(saving, getApplication());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
-            Income income = new Income(category, subCategory, amount, description, new Date());
-            Banker banker = ((Global) getApplication()).GetUser().GetBanker();
-            banker.AddIncome(income, getApplication());
-            */
             finish();
         } else {
             if (mEditingAfterReview) {
@@ -199,7 +209,11 @@ public class SavingsWizardActivity extends FragmentActivity implements PageFragm
 
     @Override
     public void onOptionClicked() {
-        GoForwardOnePage();
+        try {
+            GoForwardOnePage();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

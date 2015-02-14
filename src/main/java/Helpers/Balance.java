@@ -8,7 +8,7 @@ import java.util.UUID;
 
 /**
  * Created by Umut Seven on 12.11.2014, for Graviton.
- *
+ * <p/>
  * Gelir ve giderin ortak bilgilerinin oldugu class. En buyuk fark giderdeki TAG ozelligi.
  * Kolay aktarilabilmesi icin Serializable.
  */

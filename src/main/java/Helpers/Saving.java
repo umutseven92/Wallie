@@ -1,6 +1,13 @@
 package Helpers;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -9,8 +16,34 @@ import java.util.UUID;
  */
 public class Saving {
 
-    public Saving() {
+    public Saving(JSONObject jsonSaving) throws JSONException, ParseException {
         InitializePeriodDayDict();
+        this.SetID(jsonSaving.getString("id"));
+        this.SetName(jsonSaving.getString("name"));
+        this.SetAmount(new BigDecimal(jsonSaving.getDouble("amount")));
+        Date d = new SimpleDateFormat("yyyy-MM-d").parse(jsonSaving.getString("date"));
+        this.SetDate(d);
+        this.SetPeriod(GetPeriodFromString(jsonSaving.getString("period")));
+        this.SetDescription(jsonSaving.getString("name"),_periodDayDict.get(GetPeriodFromString(jsonSaving.getString("period"))),new BigDecimal(jsonSaving.getDouble("amount")));
+        if(jsonSaving.getString("repeating").equals("true"))
+        {
+            this.SetRepeating(true);
+        }
+        else
+        {
+            this.SetRepeating(false);
+        }
+    }
+
+    public Saving(String name, BigDecimal amount, Date date, Period period, boolean repeating) {
+        InitializePeriodDayDict();
+        this.GenerateID();
+        this.SetName(name);
+        this.SetAmount(amount);
+        this.SetDate(date);
+        this.SetPeriod(period);
+        this.SetDescription(name, _periodDayDict.get(period), amount);
+        this.SetRepeating(repeating);
     }
 
     private final int DAY = 1;
@@ -40,8 +73,31 @@ public class Saving {
         return _savingPeriod;
     }
 
-    private HashMap<Period, Integer> _periodDayDict = new HashMap<Period, Integer>();
+    private Period GetPeriodFromString(String period) {
+        Period per = null;
 
+        if (period.equals("day")) {
+            per = Period.Day;
+        } else if (period.equals("week")) {
+            per = Period.Week;
+        } else if (period.equals("month")) {
+            per = Period.Month;
+        } else if (period.equals("three_months")) {
+            per = Period.ThreeMonths;
+        } else if (period.equals("six_months")) {
+            per = Period.SixMonths;
+        } else if (period.equals("year")) {
+            per = Period.Year;
+        } else if (period.equals("custom")) {
+            per = Period.Custom;
+        }
+
+        assert per != null;
+
+        return per;
+    }
+
+    private HashMap<Period, Integer> _periodDayDict = new HashMap<Period, Integer>();
 
     /**
      * Birikim periyotlarini gun sayilarina bagliyoruz.
@@ -57,20 +113,29 @@ public class Saving {
 
     private String _desription;
 
-    public void SetDescription() {
-        _desription = CreateDescription(_name, _periodDayDict.get(_savingPeriod), _amount);
+    private void SetDescription(String name, int totalDays, BigDecimal amount) {
+        _desription = CreateDescription(name, totalDays, amount);
+    }
+
+    public String GetDescription()
+    {
+        return _desription;
+    }
+
+    public int GetDays(Period period) {
+        return _periodDayDict.get(period);
     }
 
     /**
      * Birikimin user-friendly aciklamasini yaratiyoruz.
      * Ornek: "Araba icin, 1 yil 4 ay 3 hafta 2 gun sonunda 14000 TL birikim"
      *
-     * @param name Birikim sebebi
+     * @param name      Birikim sebebi
      * @param totalDays Yil / ay / haftaya cevrilecek toplam gun sayisi
      * @param amount    Birikim miktari
-     * @return  Birikim aciklamasi
+     * @return Birikim aciklamasi
      */
-    public String CreateDescription(String name, int totalDays, BigDecimal amount) {
+    private String CreateDescription(String name, int totalDays, BigDecimal amount) {
 
         String namePart = String.format("%s için, ", name);
         String periodPart = "";
@@ -102,10 +167,6 @@ public class Saving {
 
     }
 
-    public String GetDescription() {
-        return _desription;
-    }
-
     private String _name;
 
     public void SetName(String name) {
@@ -117,6 +178,10 @@ public class Saving {
     }
 
     private BigDecimal _amount;
+
+    public BigDecimal GetAmount() {
+        return _amount;
+    }
 
     public void SetAmount(BigDecimal amount) {
         _amount = amount;
@@ -138,12 +203,23 @@ public class Saving {
         _id = UUID.randomUUID().toString();
     }
 
-    public void SetID(String id) {
+    public String GetID() {
+        return _id;
+    }
+
+    private void SetID(String id)
+    {
         _id = id;
     }
 
-    public String GetID() {
-        return _id;
+    private Date _date;
+
+    public void SetDate(Date date) {
+        _date = date;
+    }
+
+    public Date GetDate() {
+        return _date;
     }
 
 }

@@ -7,28 +7,29 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.TwoLineListItem;
+
 import java.util.ArrayList;
 
 /**
- * Created by Umut Seven on 26.11.2014, for Graviton.
+ * Created by Umut Seven on 14.2.2015, for Graviton.
  */
-public class IncomeListAdapter extends BaseAdapter {
+public class SavingListAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<Income> incomes;
+    private ArrayList<Saving> savings;
 
-    public IncomeListAdapter(Context context, ArrayList<Income> incomes) {
+    public SavingListAdapter(Context context, ArrayList<Saving> savings) {
         this.context = context;
-        this.incomes = incomes;
+        this.savings = savings;
     }
 
     @Override
     public int getCount() {
-        return incomes.size();
+        return savings.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return incomes.get(position);
+        return savings.get(position);
     }
 
     @Override
@@ -52,9 +53,10 @@ public class IncomeListAdapter extends BaseAdapter {
         TextView text1 = twoLineListItem.getText1();
         TextView text2 = twoLineListItem.getText2();
 
-        text1.setText(incomes.get(position).GetCategory());
-        text2.setText(incomes.get(position).GetAmount().toString() + " TL");
+        text1.setText(savings.get(position).GetName());
+        text2.setText(savings.get(position).GetAmount().toString() + " TL");
 
         return twoLineListItem;
+
     }
 }

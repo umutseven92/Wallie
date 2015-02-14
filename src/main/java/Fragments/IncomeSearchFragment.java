@@ -59,7 +59,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
 
         btnLeft = (ImageButton) v.findViewById(R.id.imgSearchLeftIncome);
         btnRight = (ImageButton) v.findViewById(R.id.imgSearchRightIncome);
-        btnCalendar = (ImageButton)v.findViewById(R.id.btnIncomeSearchCalendar);
+        btnCalendar = (ImageButton) v.findViewById(R.id.btnIncomeSearchCalendar);
 
         btnLeft.setOnClickListener(onLeftArrowClick);
         btnRight.setOnClickListener(onRightArrowClick);
@@ -140,14 +140,12 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
         int calYear = cal.get(Calendar.YEAR);
         int calTodayYear = calToday.get(Calendar.YEAR);
 
-        if(mode.equals("month")) {
+        if (mode.equals("month")) {
             if (calMonth == calTodayMonth && calYear == calTodayYear) {
                 return;
             }
-        }
-        else if(mode.equals("day"))
-        {
-            if (calDayOfMonth == calTodayDayOfMonth && calMonth == calTodayMonth && calYear == calTodayYear){
+        } else if (mode.equals("day")) {
+            if (calDayOfMonth == calTodayDayOfMonth && calMonth == calTodayMonth && calYear == calTodayYear) {
                 return;
             }
 

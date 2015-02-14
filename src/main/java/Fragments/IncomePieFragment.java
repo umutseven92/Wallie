@@ -27,7 +27,7 @@ import java.util.Date;
 /**
  * Created by Umut Seven on 15.1.2015, for Graviton.
  */
-public class IncomePieFragment extends Fragment implements AdapterView.OnItemSelectedListener,IncomeLoadListener {
+public class IncomePieFragment extends Fragment implements AdapterView.OnItemSelectedListener, IncomeLoadListener {
 
     PieChart incomePieChart;
     Spinner spnIncomePieDate;
@@ -46,7 +46,7 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
         incomePieChart = (PieChart) v.findViewById(R.id.incomePieChart);
         imgLeft = (ImageButton) v.findViewById(R.id.imgIncomePieLeft);
         imgRight = (ImageButton) v.findViewById(R.id.imgIncomePieRight);
-        btnCalendar = (ImageButton)v.findViewById(R.id.btnIncomePieCalendar);
+        btnCalendar = (ImageButton) v.findViewById(R.id.btnIncomePieCalendar);
 
         datePickerFragment = new DatePickerFragment();
         datePickerFragment.SetIncomeListener(this);
@@ -192,14 +192,12 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
         int calYear = cal.get(Calendar.YEAR);
         int calTodayYear = calToday.get(Calendar.YEAR);
 
-        if(mode.equals("month")) {
+        if (mode.equals("month")) {
             if (calMonth == calTodayMonth && calYear == calTodayYear) {
                 return;
             }
-        }
-        else if(mode.equals("day"))
-        {
-            if (calDayOfMonth == calTodayDayOfMonth && calMonth == calTodayMonth && calYear == calTodayYear){
+        } else if (mode.equals("day")) {
+            if (calDayOfMonth == calTodayDayOfMonth && calMonth == calTodayMonth && calYear == calTodayYear) {
                 return;
             }
 

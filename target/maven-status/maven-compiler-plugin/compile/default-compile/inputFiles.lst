@@ -1,3 +1,4 @@
+C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\SavingListAdapter.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Fragments\ExpenseDialogFragment.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\RoundedImageView.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\wizard\model\ModelCallbacks.java
@@ -22,6 +23,7 @@ C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\BudgetPageAdapter.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Fragments\ExpenseFragment.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Fragments\BalanceFragment.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\wizard\ui\BalanceInfoFragment.java
+C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\JSONHelper.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\com\graviton\Cuzdan\IncomeStatsActivity.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\wizard\ui\MultipleChoiceFragment.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\SettingsPageAdapter.java
@@ -45,8 +47,8 @@ C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Fragments\IncomePieFragment.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Fragments\ExpenseGraphFragment.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\com\graviton\Cuzdan\IncomeWizardActivity.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\IncomeListAdapter.java
-C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\Banker.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\wizard\IncomeWizardModel.java
+C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\Banker.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Fragments\IncomeDialogFragment.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\Saving.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\Income.java

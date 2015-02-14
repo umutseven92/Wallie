@@ -12,14 +12,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import wizard.model.SavingInfoPage;
 import com.graviton.Cuzdan.R;
 
+
 /**
  * Created by Umut Seven on 11.2.2015, for Graviton.
  */
-public class SavingInfoFragment extends Fragment{
+public class SavingInfoFragment extends Fragment {
     private static final String ARG_KEY = "key";
 
     private PageFragmentCallbacks mCallbacks;
@@ -27,6 +30,7 @@ public class SavingInfoFragment extends Fragment{
     private SavingInfoPage mPage;
     private TextView mAmountView;
     private TextView mNameView;
+    private CheckBox mCheckbox;
 
     public static SavingInfoFragment create(String key) {
         Bundle args = new Bundle();
@@ -58,6 +62,9 @@ public class SavingInfoFragment extends Fragment{
 
         mNameView = ((TextView) rootView.findViewById(R.id.saving_name));
         mNameView.setText(mPage.getData().getString(SavingInfoPage.NAME_DATA_KEY));
+
+        mCheckbox = ((CheckBox) rootView.findViewById(R.id.chkRepeating));
+        mCheckbox.setText(mPage.getData().getString(SavingInfoPage.REPEAT_DATA_KEY));
         return rootView;
     }
 
@@ -114,6 +121,20 @@ public class SavingInfoFragment extends Fragment{
             public void afterTextChanged(Editable editable) {
                 mPage.getData().putString(SavingInfoPage.NAME_DATA_KEY,
                         (editable != null) ? editable.toString() : null);
+                mPage.notifyDataChanged();
+            }
+        });
+
+        mCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    mPage.getData().putBoolean(SavingInfoPage.REPEAT_BOOL_KEY, true);
+                    mPage.getData().putString(SavingInfoPage.REPEAT_DATA_KEY, "Evet");
+                } else {
+                    mPage.getData().putBoolean(SavingInfoPage.REPEAT_BOOL_KEY, false);
+                    mPage.getData().putString(SavingInfoPage.REPEAT_DATA_KEY, "Hayır");
+                }
                 mPage.notifyDataChanged();
             }
         });

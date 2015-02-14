@@ -18,7 +18,8 @@
                 android:id="@+id/lstSavings" android:layout_alignParentTop="true"
                 android:layout_alignLeft="@+id/textView5"
                 android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp" android:choiceMode="singleChoice" android:divider="@color/outline"
+                android:dividerHeight="1dp" android:listSelector="@drawable/list_selector"/>
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="fill_parent"

@@ -57,7 +57,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
 
         btnLeft = (ImageButton) v.findViewById(R.id.imgSearchLeft);
         btnRight = (ImageButton) v.findViewById(R.id.imgSearchRight);
-        btnCalendar = (ImageButton)v.findViewById(R.id.btnExpenseSearchCalendar);
+        btnCalendar = (ImageButton) v.findViewById(R.id.btnExpenseSearchCalendar);
 
         datePickerFragment = new DatePickerFragment();
         datePickerFragment.SetExpenseListener(this);
@@ -144,14 +144,12 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
         int calYear = cal.get(Calendar.YEAR);
         int calTodayYear = calToday.get(Calendar.YEAR);
 
-        if(mode.equals("month")) {
+        if (mode.equals("month")) {
             if (calMonth == calTodayMonth && calYear == calTodayYear) {
                 return;
             }
-        }
-        else if(mode.equals("day"))
-        {
-            if (calDayOfMonth == calTodayDayOfMonth && calMonth == calTodayMonth && calYear == calTodayYear){
+        } else if (mode.equals("day")) {
+            if (calDayOfMonth == calTodayDayOfMonth && calMonth == calTodayMonth && calYear == calTodayYear) {
                 return;
             }
 

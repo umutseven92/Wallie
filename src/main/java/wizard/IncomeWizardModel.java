@@ -19,24 +19,21 @@ package wizard;
 import android.content.Context;
 import wizard.model.*;
 
-public class IncomeWizardModel extends AbstractWizardModel
-{
-    public IncomeWizardModel(Context context)
-    {
+public class IncomeWizardModel extends AbstractWizardModel {
+    public IncomeWizardModel(Context context) {
         super(context);
     }
 
     @Override
-    protected PageList onNewRootPageList()
-    {
+    protected PageList onNewRootPageList() {
         return new PageList(
-                                new BranchPage(this, "Kategori")
-                                        .addBranch("Maaş", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Maaş Ödemesi", "Prim Ödemesi").setRequired(true))
-                                        .addBranch("Kira", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Kira Ödemesi").setRequired(true))
-                                        .addBranch("Harçlık", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Harçlık Ödemesi").setRequired(true))
-                                        .addBranch("Faiz Ödemesi", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Banka Faiz Ödemesi", "Borç Faiz Ödemesi").setRequired(true))
-                                        .addBranch("Şans Oyunları", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Piyango", "İddia", "Kumar Oyunları", "Diğer").setRequired(true))
-                                        .addBranch("Alacaklar", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Alacaklar Tahsilatı").setRequired(true)).setRequired(true),
-                               new BalanceInfoPage(this, "Detaylar").setRequired(true));
+                new BranchPage(this, "Kategori")
+                        .addBranch("Maaş", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Maaş Ödemesi", "Prim Ödemesi").setRequired(true))
+                        .addBranch("Kira", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Kira Ödemesi").setRequired(true))
+                        .addBranch("Harçlık", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Harçlık Ödemesi").setRequired(true))
+                        .addBranch("Faiz Ödemesi", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Banka Faiz Ödemesi", "Borç Faiz Ödemesi").setRequired(true))
+                        .addBranch("Şans Oyunları", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Piyango", "İddia", "Kumar Oyunları", "Diğer").setRequired(true))
+                        .addBranch("Alacaklar", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Alacaklar Tahsilatı").setRequired(true)).setRequired(true),
+                new BalanceInfoPage(this, "Detaylar").setRequired(true));
     }
 }

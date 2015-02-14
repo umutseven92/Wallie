@@ -92,8 +92,7 @@ public abstract class Page implements PageTreeNode {
         mCallbacks.onPageDataChanged(this);
     }
 
-    public void optionClicked()
-    {
+    public void optionClicked() {
         mCallbacks.onOptionClicked();
     }
 

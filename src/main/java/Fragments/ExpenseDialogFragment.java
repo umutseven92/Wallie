@@ -32,7 +32,7 @@ public class ExpenseDialogFragment extends DialogFragment {
         final Expense expense = new Gson().fromJson(bundle.getString("expense"), Expense.class);
         boolean canDelete = bundle.getBoolean("canDelete");
 
-        String message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s","Tarih:", DateFormatHelper.GetDayText(expense.GetDate()),"Gider Türü:", expense.GetTurkishStringTag(),"Kategori:", expense.GetCategory(), "Alt Kategori:", expense.GetSubCategory(), "Miktar:", expense.GetAmount().toString(),"Açıklama:", expense.GetDescription());
+        String message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", "Tarih:", DateFormatHelper.GetDayText(expense.GetDate()), "Gider Türü:", expense.GetTurkishStringTag(), "Kategori:", expense.GetCategory(), "Alt Kategori:", expense.GetSubCategory(), "Miktar:", expense.GetAmount().toString(), "Açıklama:", expense.GetDescription());
 
         if (canDelete) {
             builder.setTitle("Detaylar")

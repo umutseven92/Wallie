@@ -53,7 +53,7 @@ public class ExpenseGraphFragment extends Fragment implements OnChartValueSelect
         txtExpenseGraphDate = (TextView) v.findViewById(R.id.txtExpenseGraphDate);
         imgLeft = (ImageButton) v.findViewById(R.id.imgExpenseGraphLeft);
         imgRight = (ImageButton) v.findViewById(R.id.imgExpenseGraphRight);
-        btnCalendar = (ImageButton)v.findViewById(R.id.btnExpenseGraphCalendar);
+        btnCalendar = (ImageButton) v.findViewById(R.id.btnExpenseGraphCalendar);
 
         imgLeft.setOnClickListener(onLeftArrowClick);
         imgRight.setOnClickListener(onRightArrowClick);
