@@ -129,6 +129,7 @@ public class SavingsWizardActivity extends FragmentActivity implements PageFragm
             if (mEditingAfterReview) {
                 mPager.setCurrentItem(mPagerAdapter.getCount() - 1);
             } else {
+
                 mPager.setCurrentItem(mPager.getCurrentItem() + 1);
             }
         }

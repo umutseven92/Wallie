@@ -131,10 +131,6 @@ public class ExpenseWizardActivity extends FragmentActivity implements PageFragm
             BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
             String description = mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.DESC_DATA_KEY);
 
-            if (description == null) {
-                description = "";
-            }
-
             Expense expense = new Expense(category, subCategory, amount, description, new Date(), expenseTag);
             Banker banker = ((Global) getApplication()).GetUser().GetBanker();
 

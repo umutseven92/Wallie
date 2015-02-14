@@ -266,7 +266,6 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
     public void LoadListView(Date date, boolean day) throws JSONException, ParseException, IOException {
 
-
         ArrayList<Income> incomes;
         if (day) {
             incomes = _user.GetBanker().GetIncomesFromDay(date);

@@ -6,6 +6,7 @@ import com.graviton.Cuzdan.Global;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.*;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -29,7 +30,7 @@ public class Banker implements Serializable {
      * @throws JSONException
      * @throws ParseException
      */
-    public Banker(JSONArray incomes, JSONArray expenses, JSONArray savings , String filePath) throws JSONException, ParseException {
+    public Banker(JSONArray incomes, JSONArray expenses, JSONArray savings, String filePath) throws JSONException, ParseException {
         _incomes = new ArrayList<Income>();
         _expenses = new ArrayList<Expense>();
         _savings = new ArrayList<Saving>();
@@ -185,13 +186,12 @@ public class Banker implements Serializable {
     /**
      * JSON ustunden birikimlerin sifirlanip ArrayList'e yeniden yuklendigi yer.
      *
-     * @param jsonSavings   Birikim JSON arrayi
+     * @param jsonSavings Birikim JSON arrayi
      * @throws JSONException
      */
     public void LoadSavings(JSONArray jsonSavings) throws JSONException, ParseException {
         _savings = new ArrayList<Saving>();
-        for (int i = 0; i< jsonSavings.length(); i++)
-        {
+        for (int i = 0; i < jsonSavings.length(); i++) {
             Saving saving = new Saving(jsonSavings.getJSONObject(i));
             _savings.add(saving);
         }

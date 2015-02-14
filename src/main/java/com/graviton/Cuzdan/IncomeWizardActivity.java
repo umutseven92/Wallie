@@ -122,10 +122,6 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
             BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
             String description = mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.DESC_DATA_KEY);
 
-            if (description == null) {
-                description = "";
-            }
-
             Income income = new Income(category, subCategory, amount, description, new Date());
             Banker banker = ((Global) getApplication()).GetUser().GetBanker();
             banker.AddIncome(income, getApplication());

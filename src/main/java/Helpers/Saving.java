@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,15 +25,16 @@ public class Saving {
         Date d = new SimpleDateFormat("yyyy-MM-d").parse(jsonSaving.getString("date"));
         this.SetDate(d);
         this.SetPeriod(GetPeriodFromString(jsonSaving.getString("period")));
-        this.SetDescription(jsonSaving.getString("name"),_periodDayDict.get(GetPeriodFromString(jsonSaving.getString("period"))),new BigDecimal(jsonSaving.getDouble("amount")));
-        if(jsonSaving.getString("repeating").equals("true"))
-        {
+        this.SetDescription(jsonSaving.getString("name"), _periodDayDict.get(GetPeriodFromString(jsonSaving.getString("period"))), new BigDecimal(jsonSaving.getDouble("amount")));
+        if (jsonSaving.getString("repeating").equals("true")) {
             this.SetRepeating(true);
-        }
-        else
-        {
+        } else {
             this.SetRepeating(false);
         }
+
+        int days = _periodDayDict.get(this.GetPeriod());
+        BigDecimal daily = this.GetAmount().divide(new BigDecimal(days), BigDecimal.ROUND_DOWN);
+        this.SetDailyGoal(daily);
     }
 
     public Saving(String name, BigDecimal amount, Date date, Period period, boolean repeating) {
@@ -44,6 +46,10 @@ public class Saving {
         this.SetPeriod(period);
         this.SetDescription(name, _periodDayDict.get(period), amount);
         this.SetRepeating(repeating);
+
+        int days = _periodDayDict.get(period);
+        BigDecimal daily = this.GetAmount().divide(new BigDecimal(days), BigDecimal.ROUND_DOWN);
+        this.SetDailyGoal(daily);
     }
 
     private final int DAY = 1;
@@ -71,6 +77,11 @@ public class Saving {
 
     public Period GetPeriod() {
         return _savingPeriod;
+    }
+
+    public int GetTotalDays(Period period)
+    {
+        return _periodDayDict.get(period);
     }
 
     private Period GetPeriodFromString(String period) {
@@ -114,57 +125,15 @@ public class Saving {
     private String _desription;
 
     private void SetDescription(String name, int totalDays, BigDecimal amount) {
-        _desription = CreateDescription(name, totalDays, amount);
+        _desription = SavingsHelper.CreateDescription(name, totalDays, amount);
     }
 
-    public String GetDescription()
-    {
+    public String GetDescription() {
         return _desription;
     }
 
     public int GetDays(Period period) {
         return _periodDayDict.get(period);
-    }
-
-    /**
-     * Birikimin user-friendly aciklamasini yaratiyoruz.
-     * Ornek: "Araba icin, 1 yil 4 ay 3 hafta 2 gun sonunda 14000 TL birikim"
-     *
-     * @param name      Birikim sebebi
-     * @param totalDays Yil / ay / haftaya cevrilecek toplam gun sayisi
-     * @param amount    Birikim miktari
-     * @return Birikim aciklamasi
-     */
-    private String CreateDescription(String name, int totalDays, BigDecimal amount) {
-
-        String namePart = String.format("%s için, ", name);
-        String periodPart = "";
-
-        int years = totalDays / YEAR;
-        if (years > 0) {
-            periodPart += String.format("%s yıl ", years);
-            totalDays -= years * YEAR;
-        }
-        int months = totalDays / MONTH;
-        if (months > 0) {
-            periodPart += String.format("%s ay ", months);
-            totalDays -= months * MONTH;
-        }
-        int weeks = totalDays / WEEK;
-        if (weeks > 0) {
-            periodPart += String.format("%s hafta ", weeks);
-            totalDays -= weeks * WEEK;
-        }
-        int days = totalDays / DAY;
-        if (days > 0) {
-            periodPart += String.format("%s gün ", days);
-            totalDays -= days * DAY;
-        }
-
-        String amountPart = String.format("sonunda %s TL birikim.", amount.setScale(2, BigDecimal.ROUND_DOWN).toString());
-
-        return namePart + periodPart + amountPart;
-
     }
 
     private String _name;
@@ -180,7 +149,7 @@ public class Saving {
     private BigDecimal _amount;
 
     public BigDecimal GetAmount() {
-        return _amount;
+        return _amount.setScale(2, BigDecimal.ROUND_DOWN);
     }
 
     public void SetAmount(BigDecimal amount) {
@@ -207,8 +176,7 @@ public class Saving {
         return _id;
     }
 
-    private void SetID(String id)
-    {
+    private void SetID(String id) {
         _id = id;
     }
 
@@ -222,4 +190,13 @@ public class Saving {
         return _date;
     }
 
+    private BigDecimal _dailyGoal;
+
+    public void SetDailyGoal(BigDecimal dailyGoal) {
+        _dailyGoal = dailyGoal;
+    }
+
+    public BigDecimal GetDailyGoal() {
+        return _dailyGoal;
+    }
 }

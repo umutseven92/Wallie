@@ -1,5 +1,6 @@
 package Fragments;
 
+import Helpers.Income;
 import Helpers.Saving;
 import Helpers.SavingListAdapter;
 import Helpers.User;
@@ -9,13 +10,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import com.google.gson.Gson;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
+import com.graviton.Cuzdan.SavingActivity;
 import com.graviton.Cuzdan.SavingsWizardActivity;
 import org.json.JSONException;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -44,6 +49,7 @@ public class SavingsFragment extends Fragment {
         lv = (ListView) v.findViewById(R.id.lstSavings);
 
         btnAddSaving.setOnClickListener(onSavingsClick);
+        lv.setOnItemClickListener(onItemClickListener);
         btnAddSaving.setTextColor(getResources().getColor(R.color.foreground));
 
         _user = ((Global) getActivity().getApplication()).GetUser();
@@ -55,7 +61,7 @@ public class SavingsFragment extends Fragment {
     public void onResume() {
 
         try {
-            InitializeSavings();
+            LoadSavingsListView();
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (ParseException e) {
@@ -66,7 +72,7 @@ public class SavingsFragment extends Fragment {
         super.onResume();
     }
 
-    private void InitializeSavings() throws JSONException, ParseException, IOException {
+    private void LoadSavingsListView() throws JSONException, ParseException, IOException {
         int savingsCount = 0;
         ArrayList<Saving> savings = _user.GetBanker().GetSavings();
         try {
@@ -90,8 +96,6 @@ public class SavingsFragment extends Fragment {
 
             lv.setAdapter(new SavingListAdapter(this.getActivity(), savings));
         }
-
-
     }
 
     View.OnClickListener onSavingsClick = new View.OnClickListener() {
@@ -100,6 +104,21 @@ public class SavingsFragment extends Fragment {
             Intent savingWizardIntent = new Intent(getActivity(), SavingsWizardActivity.class);
             getActivity().startActivity(savingWizardIntent);
 
+        }
+    };
+
+    AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            SavingListAdapter adapter = (SavingListAdapter) lv.getAdapter();
+            Saving sav = (Saving) adapter.getItem(position);
+
+            Intent savingIntent = new Intent(getActivity(), SavingActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("saving",new Gson().toJson(sav));
+            savingIntent.putExtras(bundle);
+            getActivity().startActivity(savingIntent);
         }
     };
 }

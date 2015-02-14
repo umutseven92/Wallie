@@ -5,7 +5,8 @@
           android:versionName="@string/version">
     <uses-sdk android:minSdkVersion="11"
             android:targetSdkVersion="21"/>
-    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:name="com.graviton.Cuzdan.Global">
+    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:name="com.graviton.Cuzdan.Global"
+                 android:allowBackup="true">
         <activity android:name="com.graviton.Cuzdan.SplashActivity"
                   android:label="@string/app_name"
                 android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" android:screenOrientation="portrait">
@@ -25,6 +26,8 @@
         <activity android:name="com.graviton.Cuzdan.ExpenseStatsActivity" android:theme="@style/CustomActionBarTheme" android:screenOrientation="portrait" >
         </activity>
         <activity android:name="com.graviton.Cuzdan.SavingsWizardActivity" android:theme="@style/CustomActionBarTheme" android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="com.graviton.Cuzdan.SavingActivity" android:theme="@style/CustomActionBarTheme" android:screenOrientation="portrait">
         </activity>
     </application>
 </manifest>

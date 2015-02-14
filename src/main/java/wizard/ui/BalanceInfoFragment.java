@@ -71,6 +71,8 @@ public class BalanceInfoFragment extends Fragment {
 
         mDescriptionView = ((TextView) rootView.findViewById(R.id.your_email));
         mDescriptionView.setText(mPage.getData().getString(BalanceInfoPage.DESC_DATA_KEY));
+
+        mPage.getData().putString(BalanceInfoPage.DESC_DATA_KEY, " ");
         return rootView;
     }
 

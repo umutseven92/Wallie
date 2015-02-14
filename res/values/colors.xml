@@ -31,4 +31,5 @@
     <color name="foreground">#fffff0</color>
     <color name="cuzdan_green">#216C2A</color>
     <color name="cuzdan_light_red">@android:color/holo_red_light</color>
+    <color name="cuzdan_light_green">@android:color/holo_green_light</color>
 </resources>

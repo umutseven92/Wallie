@@ -15,6 +15,7 @@ com\graviton\Cuzdan\IncomeWizardActivity$1.class
 Helpers\Banker.class
 wizard\model\PageTreeNode.class
 com\graviton\Cuzdan\BuildConfig.class
+com\graviton\Cuzdan\SavingActivity.class
 Helpers\ExpenseLoadListener.class
 Fragments\ExpenseFragment.class
 com\graviton\Cuzdan\SavingsWizardActivity$3.class
@@ -27,6 +28,7 @@ com\graviton\Cuzdan\ExpenseWizardActivity$2.class
 Fragments\IncomeGraphFragment.class
 wizard\model\SavingInfoPage.class
 com\graviton\Cuzdan\R$id.class
+Helpers\SavingsHelper.class
 Helpers\Expense$Tags.class
 com\graviton\Cuzdan\IncomeWizardActivity$2.class
 wizard\ui\StepPagerStrip.class
@@ -91,6 +93,7 @@ wizard\IncomeWizardModel.class
 Fragments\IncomeDialogFragment.class
 com\graviton\Cuzdan\SavingsWizardActivity$MyPagerAdapter.class
 wizard\ui\MultipleChoiceFragment$1.class
+Fragments\SavingsFragment$2.class
 Fragments\IncomeFragment$6.class
 Fragments\ExpenseDialogFragment$1.class
 Helpers\DateFormatHelper.class
@@ -117,6 +120,7 @@ com\graviton\Cuzdan\ExpenseWizardActivity$3.class
 Helpers\Balance.class
 Fragments\BalanceFragment$3.class
 wizard\model\Page.class
+Helpers\SavingsHelper$1.class
 Fragments\IncomeFragment.class
 wizard\model\BranchPage$1.class
 com\graviton\Cuzdan\ExpenseWizardActivity.class

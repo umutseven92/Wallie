@@ -45,7 +45,6 @@ public class ExpenseStatsActivity extends FragmentActivity implements ActionBar.
         } else if (pos == 2) {
             ft.replace(android.R.id.content, new ExpenseGraphFragment());
         }
-
     }
 
     @Override

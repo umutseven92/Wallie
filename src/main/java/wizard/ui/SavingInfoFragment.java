@@ -65,6 +65,9 @@ public class SavingInfoFragment extends Fragment {
 
         mCheckbox = ((CheckBox) rootView.findViewById(R.id.chkRepeating));
         mCheckbox.setText(mPage.getData().getString(SavingInfoPage.REPEAT_DATA_KEY));
+
+        mPage.getData().putBoolean(SavingInfoPage.REPEAT_BOOL_KEY, false);
+        mPage.getData().putString(SavingInfoPage.REPEAT_DATA_KEY, "Hayır");
         return rootView;
     }
 
@@ -103,6 +106,7 @@ public class SavingInfoFragment extends Fragment {
             public void afterTextChanged(Editable editable) {
                 mPage.getData().putString(SavingInfoPage.AMOUNT_DATA_KEY,
                         (editable != null) ? editable.toString() : null);
+
                 mPage.notifyDataChanged();
             }
         });
