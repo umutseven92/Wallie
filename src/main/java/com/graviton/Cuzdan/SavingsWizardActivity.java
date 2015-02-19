@@ -114,10 +114,10 @@ public class SavingsWizardActivity extends FragmentActivity implements PageFragm
             BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(SavingInfoPage.AMOUNT_DATA_KEY));
             String name = mWizardModel.findByKey("Detaylar").getData().getString(SavingInfoPage.NAME_DATA_KEY);
             boolean repeat = mWizardModel.findByKey("Detaylar").getData().getBoolean(SavingInfoPage.REPEAT_BOOL_KEY);
-
+            int priority = mWizardModel.findByKey("Detaylar").getData().getInt(SavingInfoPage.PRIORITY_DATA_KEY);
             Banker banker = ((Global) getApplication()).GetUser().GetBanker();
 
-            Saving saving = new Saving(name, amount, new Date(), banker.GetPeriodFromTurkishString(period), repeat);
+            Saving saving = new Saving(name, amount, new Date(), banker.GetPeriodFromTurkishString(period), repeat, priority);
             try {
                 banker.AddSaving(saving, getApplication());
             } catch (IOException e) {

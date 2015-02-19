@@ -15,6 +15,7 @@ public class SavingInfoPage extends Page {
     public static final String NAME_DATA_KEY = "name";
     public static final String REPEAT_DATA_KEY = "repeat";
     public static final String REPEAT_BOOL_KEY = "repeatBool";
+    public static final String PRIORITY_DATA_KEY = "priority";
 
     public SavingInfoPage(ModelCallbacks callbacks, String title) {
         super(callbacks, title);
@@ -30,11 +31,12 @@ public class SavingInfoPage extends Page {
         dest.add(new ReviewItem("Miktar (TL)", mData.getString(AMOUNT_DATA_KEY), getKey(), -1));
         dest.add(new ReviewItem("İsim", mData.getString(NAME_DATA_KEY), getKey(), -1));
         dest.add(new ReviewItem("Tekrarla", mData.getString(REPEAT_DATA_KEY), getKey(), -1));
+        dest.add(new ReviewItem("Önem Sırası", mData.getString(PRIORITY_DATA_KEY), getKey(), -1));
     }
 
     @Override
     public boolean isCompleted() {
-        return !TextUtils.isEmpty(mData.getString(AMOUNT_DATA_KEY)) && !TextUtils.isEmpty(mData.getString(NAME_DATA_KEY));
+        return !TextUtils.isEmpty(mData.getString(AMOUNT_DATA_KEY)) && !TextUtils.isEmpty(mData.getString(NAME_DATA_KEY)) && !TextUtils.isEmpty(mData.getString(PRIORITY_DATA_KEY));
     }
 
 }

@@ -38,10 +38,12 @@ com\graviton\Cuzdan\IncomeWizardActivity$4.class
 com\graviton\Cuzdan\MainActivity$1.class
 com\graviton\Cuzdan\IncomeWizardActivity$3.class
 Fragments\IncomeFragment$2.class
+Helpers\PriorityInputFilter.class
 Fragments\ExpenseFragment$5.class
 Fragments\ExpenseSearchFragment.class
 Helpers\ExpenseListAdapter.class
 Fragments\ExpenseDialogFragment$3.class
+com\graviton\Cuzdan\SavingActivity$1.class
 Fragments\IncomePieFragment$2.class
 com\graviton\Cuzdan\ExpenseWizardActivity$1.class
 com\graviton\Cuzdan\ExpenseWizardActivity$4.class
@@ -69,6 +71,7 @@ Fragments\ExpensePieFragment.class
 wizard\model\SingleFixedChoicePage.class
 Fragments\AccountFragment.class
 com\graviton\Cuzdan\MainActivity.class
+wizard\ui\SavingInfoFragment$4.class
 wizard\ui\PageFragmentCallbacks.class
 wizard\ui\SavingInfoFragment$3.class
 Fragments\IncomeFragment$5.class

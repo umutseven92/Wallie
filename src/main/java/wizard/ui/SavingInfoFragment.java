@@ -1,6 +1,7 @@
 package wizard.ui;
 
 import Helpers.DecimalDigitsInputFilter;
+import Helpers.PriorityInputFilter;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import wizard.model.SavingInfoPage;
 import com.graviton.Cuzdan.R;
@@ -31,6 +33,7 @@ public class SavingInfoFragment extends Fragment {
     private TextView mAmountView;
     private TextView mNameView;
     private CheckBox mCheckbox;
+    private TextView mPriorityView;
 
     public static SavingInfoFragment create(String key) {
         Bundle args = new Bundle();
@@ -65,6 +68,10 @@ public class SavingInfoFragment extends Fragment {
 
         mCheckbox = ((CheckBox) rootView.findViewById(R.id.chkRepeating));
         mCheckbox.setText(mPage.getData().getString(SavingInfoPage.REPEAT_DATA_KEY));
+
+        mPriorityView = ((TextView) rootView.findViewById(R.id.txtPriority));
+        mPriorityView.setText(mPage.getData().getString(SavingInfoPage.REPEAT_DATA_KEY));
+        //mPriorityView.setFilters(new InputFilter[]{new PriorityInputFilter(10)});
 
         mPage.getData().putBoolean(SavingInfoPage.REPEAT_BOOL_KEY, false);
         mPage.getData().putString(SavingInfoPage.REPEAT_DATA_KEY, "Hayır");
@@ -124,6 +131,25 @@ public class SavingInfoFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable editable) {
                 mPage.getData().putString(SavingInfoPage.NAME_DATA_KEY,
+                        (editable != null) ? editable.toString() : null);
+                mPage.notifyDataChanged();
+            }
+        });
+
+        mPriorityView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                mPage.getData().putString(SavingInfoPage.PRIORITY_DATA_KEY,
                         (editable != null) ? editable.toString() : null);
                 mPage.notifyDataChanged();
             }

@@ -35,9 +35,10 @@ public class Saving {
         int days = _periodDayDict.get(this.GetPeriod());
         BigDecimal daily = this.GetAmount().divide(new BigDecimal(days), BigDecimal.ROUND_DOWN);
         this.SetDailyGoal(daily);
+        this.SetPriority(jsonSaving.getInt("priority"));
     }
 
-    public Saving(String name, BigDecimal amount, Date date, Period period, boolean repeating) {
+    public Saving(String name, BigDecimal amount, Date date, Period period, boolean repeating, int priority) {
         InitializePeriodDayDict();
         this.GenerateID();
         this.SetName(name);
@@ -50,6 +51,8 @@ public class Saving {
         int days = _periodDayDict.get(period);
         BigDecimal daily = this.GetAmount().divide(new BigDecimal(days), BigDecimal.ROUND_DOWN);
         this.SetDailyGoal(daily);
+
+        this.SetPriority(priority);
     }
 
     private final int DAY = 1;
@@ -198,5 +201,17 @@ public class Saving {
 
     public BigDecimal GetDailyGoal() {
         return _dailyGoal;
+    }
+
+    private int _priority;
+
+    public void SetPriority(int priority)
+    {
+        _priority = priority;
+    }
+
+    public int GetPriority()
+    {
+        return _priority;
     }
 }
