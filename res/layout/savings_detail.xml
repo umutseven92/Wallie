@@ -23,112 +23,191 @@
             android:id="@+id/lytDetails"
             android:background="@drawable/rounded_layout" android:layout_below="@+id/lytBar"
             android:layout_centerHorizontal="true" android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Ad"
-                android:id="@+id/textView8" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" android:layout_marginLeft="20dp"
-                android:layout_marginStart="24dp" android:layout_marginTop="29dp" android:textColor="@color/cuzdan_red"
-                />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
-                android:id="@+id/txtSavingName" android:layout_below="@+id/textView8"
-                android:layout_alignLeft="@+id/textView8" android:layout_alignStart="@+id/textView8"
-                android:textColor="#ff000000"/>
-        <View
-                android:layout_width="700dp"
-                android:layout_height="1dp"
-                android:background="@color/outline"
-                android:layout_below="@+id/txtSavingName" android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" android:layout_marginTop="5dp"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Miktar"
-                android:id="@+id/textView10" android:layout_below="@+id/txtSavingName"
-                android:layout_alignLeft="@+id/txtSavingName" android:layout_alignStart="@+id/txtSavingName"
-                android:textColor="@color/cuzdan_red" android:layout_marginTop="10dp"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
-                android:id="@+id/txtSavingAmount" android:layout_below="@+id/textView10"
-                android:layout_alignLeft="@+id/textView10" android:layout_alignStart="@+id/textView10"
-                android:textColor="#ff000000"/>
-        <View
-                android:layout_width="700dp"
-                android:layout_height="1dp"
-                android:background="@color/outline"
-                android:layout_below="@+id/txtSavingAmount" android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" android:layout_marginTop="5dp"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Dönem"
-                android:id="@+id/textView12" android:layout_below="@+id/txtSavingAmount"
-                android:layout_alignLeft="@+id/txtSavingAmount" android:layout_alignStart="@+id/txtSavingAmount"
-                android:textColor="@color/cuzdan_red" android:layout_marginTop="10dp"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
-                android:id="@+id/txtSavingPeriod" android:layout_below="@+id/textView12"
-                android:layout_alignLeft="@+id/textView12" android:layout_alignStart="@+id/textView12"
-                android:textColor="#ff000000"/>
-        <View
-                android:layout_width="700dp"
-                android:layout_height="1dp"
-                android:background="@color/outline"
-                android:layout_below="@+id/txtSavingPeriod" android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" android:layout_marginTop="5dp"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Tekrarlı?"
-                android:id="@+id/textView14" android:layout_below="@+id/txtSavingPeriod"
-                android:layout_alignLeft="@+id/txtSavingPeriod" android:layout_alignStart="@+id/txtSavingPeriod"
-                android:textColor="@color/cuzdan_red" android:layout_marginTop="10dp"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
-                android:id="@+id/txtSavingRep"
-                android:layout_below="@+id/textView14" android:layout_alignLeft="@+id/textView14"
-                android:layout_alignStart="@+id/textView14" android:textColor="#ff000000"
-                />
-        <View
-                android:layout_width="700dp"
-                android:layout_height="1dp"
-                android:background="@color/outline"
-                android:layout_below="@+id/txtSavingRep" android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" android:layout_marginTop="5dp"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Özet"
-                android:id="@+id/textView9" android:layout_below="@+id/txtSavingRep"
-                android:layout_alignLeft="@+id/txtSavingRep" android:layout_alignStart="@+id/txtSavingRep"
-                android:layout_marginTop="10dp" android:textColor="@color/cuzdan_red"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
-                android:id="@+id/txtSavingDesc" android:layout_below="@+id/textView9"
-                android:layout_alignLeft="@+id/textView9" android:layout_alignStart="@+id/textView9"
-                android:textColor="#ff000000"/>
+
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/scrollView">
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Ad"
+                        android:id="@+id/textView8" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" android:layout_marginLeft="20dp"
+                        android:layout_marginStart="24dp" android:layout_marginTop="30dp" android:textColor="@color/cuzdan_red"
+                        />
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Large Text"
+                        android:id="@+id/txtSavingName" android:layout_below="@+id/textView8"
+                        android:layout_alignLeft="@+id/textView8" android:layout_alignStart="@+id/textView8"
+                        android:textColor="#ff000000"/>
+                <View
+                        android:layout_width="700dp"
+                        android:layout_height="1dp"
+                        android:background="@color/outline"
+                        android:layout_below="@+id/txtSavingName" android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" android:layout_marginTop="5dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Miktar"
+                        android:id="@+id/textView10" android:layout_below="@+id/txtSavingName"
+                        android:layout_alignLeft="@+id/txtSavingName" android:layout_alignStart="@+id/txtSavingName"
+                        android:textColor="@color/cuzdan_red" android:layout_marginTop="10dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Large Text"
+                        android:id="@+id/txtSavingAmount" android:layout_below="@+id/textView10"
+                        android:layout_alignLeft="@+id/textView10" android:layout_alignStart="@+id/textView10"
+                        android:textColor="#ff000000"/>
+                <View
+                        android:layout_width="700dp"
+                        android:layout_height="1dp"
+                        android:background="@color/outline"
+                        android:layout_below="@+id/txtSavingAmount" android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" android:layout_marginTop="5dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Günlük Harcama Limiti"
+                        android:id="@+id/textView15" android:layout_below="@+id/txtSavingAmount"
+                        android:layout_alignLeft="@+id/txtSavingAmount" android:layout_alignStart="@+id/txtSavingAmount"
+                        android:textColor="@color/cuzdan_red" android:layout_marginTop="10dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Large Text"
+                        android:id="@+id/txtSavingDailyLimit" android:layout_below="@+id/textView15"
+                        android:layout_alignLeft="@+id/textView10" android:layout_alignStart="@+id/textView15"
+                        android:textColor="#ff000000"/>
+                <View
+                        android:layout_width="700dp"
+                        android:layout_height="1dp"
+                        android:background="@color/outline"
+                        android:layout_below="@+id/txtSavingDailyLimit" android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" android:layout_marginTop="5dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Dönem"
+                        android:id="@+id/textView12" android:layout_below="@+id/txtSavingDailyLimit"
+                        android:layout_alignLeft="@+id/txtSavingDailyLimit" android:layout_alignStart="@+id/txtSavingDailyLimit"
+                        android:textColor="@color/cuzdan_red" android:layout_marginTop="10dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Large Text"
+                        android:id="@+id/txtSavingPeriod" android:layout_below="@+id/textView12"
+                        android:layout_alignLeft="@+id/textView12" android:layout_alignStart="@+id/textView12"
+                        android:textColor="#ff000000"/>
+                <View
+                        android:layout_width="700dp"
+                        android:layout_height="1dp"
+                        android:background="@color/outline"
+                        android:layout_below="@+id/txtSavingPeriod" android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" android:layout_marginTop="5dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Tekrarlı?"
+                        android:id="@+id/textView14" android:layout_below="@+id/txtSavingPeriod"
+                        android:layout_alignLeft="@+id/txtSavingPeriod" android:layout_alignStart="@+id/txtSavingPeriod"
+                        android:textColor="@color/cuzdan_red" android:layout_marginTop="10dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Large Text"
+                        android:id="@+id/txtSavingRep"
+                        android:layout_below="@+id/textView14" android:layout_alignLeft="@+id/textView14"
+                        android:layout_alignStart="@+id/textView14" android:textColor="#ff000000"
+                        />
+                <View
+                        android:layout_width="700dp"
+                        android:layout_height="1dp"
+                        android:background="@color/outline"
+                        android:layout_below="@+id/txtSavingRep" android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" android:layout_marginTop="5dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Özet"
+                        android:id="@+id/textView9" android:layout_below="@+id/txtSavingRep"
+                        android:layout_alignLeft="@+id/txtSavingRep" android:layout_alignStart="@+id/txtSavingRep"
+                        android:layout_marginTop="10dp" android:textColor="@color/cuzdan_red"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Large Text"
+                        android:id="@+id/txtSavingDesc" android:layout_below="@+id/textView9"
+                        android:layout_alignLeft="@+id/textView9" android:layout_alignStart="@+id/textView9"
+                        android:textColor="#ff000000"/>
+                <View
+                        android:layout_width="700dp"
+                        android:layout_height="1dp"
+                        android:background="@color/outline"
+                        android:layout_below="@+id/txtSavingDesc" android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" android:layout_marginTop="5dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Kalan Gün"
+                        android:id="@+id/textView16" android:layout_below="@+id/txtSavingDesc"
+                        android:layout_alignLeft="@+id/txtSavingDesc" android:layout_alignStart="@+id/txtSavingDesc"
+                        android:layout_marginTop="10dp" android:textColor="@color/cuzdan_red"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Large Text"
+                        android:id="@+id/txtSavingDaysPast" android:layout_below="@+id/textView16"
+                        android:layout_alignLeft="@+id/textView16" android:layout_alignStart="@+id/textView16"
+                        android:textColor="#ff000000"/>
+
+                <View
+                        android:layout_width="700dp"
+                        android:layout_height="1dp"
+                        android:background="@color/outline"
+                        android:layout_below="@+id/txtSavingDaysPast" android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" android:layout_marginTop="5dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Biriktirilen Miktar"
+                        android:id="@+id/textView17" android:layout_below="@+id/txtSavingDaysPast"
+                        android:layout_alignLeft="@+id/txtSavingDaysPast" android:layout_alignStart="@+id/txtSavingDaysPast"
+                        android:layout_marginTop="10dp" android:textColor="@color/cuzdan_red"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Large Text"
+                        android:id="@+id/txtSavedAmount" android:layout_below="@+id/textView17"
+                        android:layout_alignLeft="@+id/textView17" android:layout_alignStart="@+id/textView17"
+                        android:textColor="#ff000000"/>
+
+                <Space android:layout_width="match_parent" android:layout_height="30dp" android:layout_below="@+id/txtSavedAmount"/>
+            </RelativeLayout>
+
+
+        </ScrollView>
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="fill_parent"

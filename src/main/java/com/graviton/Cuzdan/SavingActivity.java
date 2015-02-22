@@ -37,6 +37,9 @@ public class SavingActivity extends Activity{
         TextView txtPeriod = (TextView)findViewById(R.id.txtSavingPeriod);
         TextView txtDesc = (TextView)findViewById(R.id.txtSavingDesc);
         TextView txtRep  = (TextView)findViewById(R.id.txtSavingRep);
+        TextView txtDailyLimit = (TextView)findViewById(R.id.txtSavingDailyLimit);
+        TextView txtDaysPast = (TextView)findViewById(R.id.txtSavingDaysPast);
+
         ProgressBar pb = (ProgressBar)findViewById(R.id.pbSaving);
         Button btnDelete = (Button)findViewById(R.id.btnDeleteSaving);
 
@@ -61,7 +64,7 @@ public class SavingActivity extends Activity{
         txtAmount.setText(saving.GetAmount().toString() +" TL (Günlük " + saving.GetDailyGoal().toString() + " TL)");
         txtPeriod.setText(SavingsHelper.GetPeriodString(saving.GetPeriod()) + " (" + saving.GetTotalDays(saving.GetPeriod()) + " Gün)");
         txtDesc.setText(saving.GetDescription());
-
+        txtDailyLimit.setText(saving.GetDailyLimit().toString());
         if(saving.GetRepeating())
         {
             txtRep.setText("Evet");
@@ -70,6 +73,7 @@ public class SavingActivity extends Activity{
         {
             txtRep.setText("Hayır");
         }
+        txtDaysPast.setText(saving.GetRemainingDays() + " Gün");
     }
 
 }

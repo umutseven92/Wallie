@@ -28,7 +28,7 @@ public class SplashActivity extends Activity {
 
         User user = null;
 
-        String fileName = "userConfigTest47";
+        String fileName = "userConfigTest48";
         ((Global) this.getApplication()).SetFilePath(fileName);
 
         File file = new File(this.getFilesDir(), fileName);
@@ -54,6 +54,8 @@ public class SplashActivity extends Activity {
             } catch (ParseException e) {
                 e.printStackTrace();
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {

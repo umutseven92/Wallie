@@ -30,7 +30,7 @@ public class Banker implements Serializable {
      * @throws JSONException
      * @throws ParseException
      */
-    public Banker(JSONArray incomes, JSONArray expenses, JSONArray savings, String filePath) throws JSONException, ParseException {
+    public Banker(JSONArray incomes, JSONArray expenses, JSONArray savings, String filePath) throws Exception {
         _incomes = new ArrayList<Income>();
         _expenses = new ArrayList<Expense>();
         _savings = new ArrayList<Saving>();
@@ -67,12 +67,12 @@ public class Banker implements Serializable {
         _savings = savings;
     }
 
-    public ArrayList<Saving> GetSavings() throws IOException, JSONException, ParseException {
+    public ArrayList<Saving> GetSavings() throws Exception {
         LoadSavings(FetchSavingsData());
         return _savings;
     }
 
-    public int GetSavingsCount() throws JSONException, ParseException, IOException {
+    public int GetSavingsCount() throws Exception {
         return GetSavings().size();
     }
 
@@ -190,12 +190,13 @@ public class Banker implements Serializable {
      * @param jsonSavings Birikim JSON arrayi
      * @throws JSONException
      */
-    public void LoadSavings(JSONArray jsonSavings) throws JSONException, ParseException {
+    public void LoadSavings(JSONArray jsonSavings) throws Exception {
         _savings = new ArrayList<Saving>();
         for (int i = 0; i < jsonSavings.length(); i++) {
             Saving saving = new Saving(jsonSavings.getJSONObject(i));
             _savings.add(saving);
         }
+        CheckSavings();
     }
 
     /**
@@ -812,6 +813,31 @@ public class Banker implements Serializable {
 
         WriteUserInfo(app, userInfo.toString());
 
+    }
+
+    public void CheckSavings() throws Exception {
+        Date today = new Date();
+        Calendar calToday = Calendar.getInstance();
+        calToday.setTime(today);
+
+        for (Saving s : _savings)
+        {
+            Date savingDay = new Date();
+            Calendar calSaving = Calendar.getInstance();
+            calSaving.setTime(savingDay);
+
+            int daysPast = calToday.get(Calendar.DAY_OF_MONTH) - calSaving.get(Calendar.DAY_OF_MONTH);
+
+            if (daysPast <0)
+            {
+                throw new Exception("Gecen gunler 0'dan kucuk.");
+            }
+
+            int remainingDays = s.GetDays(s.GetPeriod()) - daysPast;
+
+            s.SetRemainingDays(remainingDays);
+            s.SetDailyLimit(this.GetBalance(s.GetDate(),false));
+        }
     }
 
 }

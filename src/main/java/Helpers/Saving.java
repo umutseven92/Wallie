@@ -2,10 +2,8 @@ package Helpers;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -48,7 +46,10 @@ public class Saving {
         this.SetDescription(name, _periodDayDict.get(period), amount);
         this.SetRepeating(repeating);
 
+        this.SetProgress(BigDecimal.ZERO);
+
         int days = _periodDayDict.get(period);
+        this.SetRemainingDays(days);
         BigDecimal daily = this.GetAmount().divide(new BigDecimal(days), BigDecimal.ROUND_DOWN);
         this.SetDailyGoal(daily);
 
@@ -147,6 +148,42 @@ public class Saving {
 
     public String GetName() {
         return _name;
+    }
+
+    private BigDecimal _progress;
+
+    public BigDecimal GetProgress()
+    {
+        return _progress;
+    }
+
+    public void SetProgress(BigDecimal progress)
+    {
+        _progress = progress;
+    }
+
+    private BigDecimal _dailyLimit;
+
+    public BigDecimal GetDailyLimit()
+    {
+        return _dailyLimit;
+    }
+
+    public void SetDailyLimit(BigDecimal rev)
+    {
+        _dailyLimit = SavingsHelper.CalculateDailyLimit(rev,this);
+    }
+
+    private int _remainingDays;
+
+    public int GetRemainingDays()
+    {
+        return _remainingDays;
+    }
+
+    public void SetRemainingDays(int remainingDays)
+    {
+        _remainingDays = remainingDays;
     }
 
     private BigDecimal _amount;

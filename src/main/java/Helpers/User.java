@@ -14,7 +14,7 @@ import java.text.ParseException;
  */
 public class User implements Serializable {
 
-    public User(JSONObject data, String filePath) throws JSONException, ParseException {
+    public User(JSONObject data, String filePath) throws Exception {
 
         assert data != null;
         JSONObject jsonUser = data.getJSONObject("user");

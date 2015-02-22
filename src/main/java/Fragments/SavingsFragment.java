@@ -68,11 +68,13 @@ public class SavingsFragment extends Fragment {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         super.onResume();
     }
 
-    private void LoadSavingsListView() throws JSONException, ParseException, IOException {
+    private void LoadSavingsListView() throws Exception {
         int savingsCount = 0;
         ArrayList<Saving> savings = _user.GetBanker().GetSavings();
         try {
