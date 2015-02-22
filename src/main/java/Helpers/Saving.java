@@ -83,8 +83,7 @@ public class Saving {
         return _savingPeriod;
     }
 
-    public int GetTotalDays(Period period)
-    {
+    public int GetTotalDays(Period period) {
         return _periodDayDict.get(period);
     }
 
@@ -126,6 +125,11 @@ public class Saving {
         _periodDayDict.put(Period.Year, YEAR);
     }
 
+    public void SetDailyProgress()
+    {
+        _progress = _progress.add(GetAmount().divide(new BigDecimal(_periodDayDict.get(GetPeriod())),BigDecimal.ROUND_DOWN));
+    }
+
     private String _desription;
 
     private void SetDescription(String name, int totalDays, BigDecimal amount) {
@@ -150,39 +154,33 @@ public class Saving {
         return _name;
     }
 
-    private BigDecimal _progress;
+    private BigDecimal _progress = BigDecimal.ZERO;
 
-    public BigDecimal GetProgress()
-    {
+    public BigDecimal GetProgress() {
         return _progress;
     }
 
-    public void SetProgress(BigDecimal progress)
-    {
+    public void SetProgress(BigDecimal progress) {
         _progress = progress;
     }
 
     private BigDecimal _dailyLimit;
 
-    public BigDecimal GetDailyLimit()
-    {
+    public BigDecimal GetDailyLimit() {
         return _dailyLimit;
     }
 
-    public void SetDailyLimit(BigDecimal rev)
-    {
-        _dailyLimit = SavingsHelper.CalculateDailyLimit(rev,this);
+    public void SetDailyLimit(BigDecimal rev) {
+        _dailyLimit = SavingsHelper.CalculateDailyLimit(rev, this);
     }
 
     private int _remainingDays;
 
-    public int GetRemainingDays()
-    {
+    public int GetRemainingDays() {
         return _remainingDays;
     }
 
-    public void SetRemainingDays(int remainingDays)
-    {
+    public void SetRemainingDays(int remainingDays) {
         _remainingDays = remainingDays;
     }
 
@@ -242,13 +240,11 @@ public class Saving {
 
     private int _priority;
 
-    public void SetPriority(int priority)
-    {
+    public void SetPriority(int priority) {
         _priority = priority;
     }
 
-    public int GetPriority()
-    {
+    public int GetPriority() {
         return _priority;
     }
 }

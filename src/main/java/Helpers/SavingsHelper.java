@@ -84,12 +84,11 @@ public class SavingsHelper {
         return periodRep;
     }
 
-    public static BigDecimal CalculateDailyLimit(BigDecimal revenue, Saving sav)
-    {
+    public static BigDecimal CalculateDailyLimit(BigDecimal revenue, Saving sav) {
         BigDecimal totalLimit = revenue.subtract(sav.GetAmount());
 
-        BigDecimal dailyLimit = totalLimit.divide(new BigDecimal(sav.GetDays(sav.GetPeriod())),BigDecimal.ROUND_DOWN);
-        return dailyLimit.setScale(2,BigDecimal.ROUND_DOWN);
+        BigDecimal dailyLimit = totalLimit.divide(new BigDecimal(sav.GetRemainingDays()), BigDecimal.ROUND_DOWN);
+        return dailyLimit.setScale(2, BigDecimal.ROUND_DOWN);
 
     }
 }

@@ -14,6 +14,8 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 /**
  * Created by Umut Seven on 14.2.2015, for Graviton.
@@ -39,6 +41,7 @@ public class SavingActivity extends Activity{
         TextView txtRep  = (TextView)findViewById(R.id.txtSavingRep);
         TextView txtDailyLimit = (TextView)findViewById(R.id.txtSavingDailyLimit);
         TextView txtDaysPast = (TextView)findViewById(R.id.txtSavingDaysPast);
+        TextView txtSavedAmount = (TextView)findViewById(R.id.txtSavedAmount);
 
         ProgressBar pb = (ProgressBar)findViewById(R.id.pbSaving);
         Button btnDelete = (Button)findViewById(R.id.btnDeleteSaving);
@@ -57,7 +60,13 @@ public class SavingActivity extends Activity{
             }
         });
 
-        pb.setProgress(75);
+        BigDecimal savProgress = saving.GetProgress();
+        BigDecimal prog = BigDecimal.ZERO;
+
+        if (savProgress.compareTo(BigDecimal.ZERO) != 0) {
+            prog = saving.GetAmount().divide(savProgress, BigDecimal.ROUND_DOWN).multiply(new BigDecimal(100));
+        }
+        pb.setProgress(prog.intValue());
 
 
         txtName.setText(saving.GetName());
@@ -74,6 +83,7 @@ public class SavingActivity extends Activity{
             txtRep.setText("Hayır");
         }
         txtDaysPast.setText(saving.GetRemainingDays() + " Gün");
+        txtSavedAmount.setText(savProgress.toString() + "TL");
     }
 
 }

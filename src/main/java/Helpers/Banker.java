@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 import Helpers.Saving.Period;
 
@@ -746,7 +747,7 @@ public class Banker implements Serializable {
             newExpenses.put(expenses.getJSONObject(i));
         }
 
-        for(int i = 0; i <savings.length(); i++){
+        for (int i = 0; i < savings.length(); i++) {
             newSavings.put(savings.getJSONObject(i));
         }
 
@@ -807,7 +808,7 @@ public class Banker implements Serializable {
             newIncomes.put(incomes.getJSONObject(i));
         }
 
-        for(int i = 0; i <savings.length(); i++){
+        for (int i = 0; i < savings.length(); i++) {
             newSavings.put(savings.getJSONObject(i));
         }
 
@@ -820,23 +821,61 @@ public class Banker implements Serializable {
         Calendar calToday = Calendar.getInstance();
         calToday.setTime(today);
 
-        for (Saving s : _savings)
-        {
-            Date savingDay = new Date();
+        boolean delete = false;
+        String id;
+
+        for (Saving s : _savings) {
+            Date savingDay = s.GetDate();
             Calendar calSaving = Calendar.getInstance();
             calSaving.setTime(savingDay);
 
             int daysPast = calToday.get(Calendar.DAY_OF_MONTH) - calSaving.get(Calendar.DAY_OF_MONTH);
 
-            if (daysPast <0)
-            {
+            if (daysPast < 0) {
                 throw new Exception("Gecen gunler 0'dan kucuk.");
             }
 
             int remainingDays = s.GetDays(s.GetPeriod()) - daysPast;
 
             s.SetRemainingDays(remainingDays);
-            s.SetDailyLimit(this.GetBalance(s.GetDate(),false));
+            s.SetDailyLimit(this.GetBalance(s.GetDate(), false));
+
+            if (remainingDays <= 0) {
+                // Birikim tamamlandi, silinecek
+                delete = true;
+                id = s.GetID();
+            } else {
+
+                BigDecimal progress = BigDecimal.ZERO;
+
+                for (int i = 0; i < daysPast; i++) {
+                    Calendar calSav = Calendar.getInstance();
+                    calSav.setTime(s.GetDate());
+                    calSav.add(Calendar.DAY_OF_MONTH,i);
+
+                    BigDecimal gb = GetBalance(calSav.getTime(),false);
+                    BigDecimal dl = s.GetDailyLimit();
+
+
+                    if(GetBalance(calSav.getTime(),false).compareTo(s.GetDailyLimit()) == 0 && GetBalance(calSav.getTime(), false).compareTo(s.GetDailyLimit()) == 1)
+                    {
+                        // Bu gun icinde  limit asilmamis, yani birikim dogru yolda
+                        s.SetDailyProgress();
+                    }
+                    else if(GetBalance(calSav.getTime(),false).compareTo(s.GetDailyLimit()) == -1)
+                    {
+                        // Bu gun icinde limit asilmis
+
+                    }
+                }
+
+            }
+
+        }
+
+        if (delete) {
+            // Birikim burda silinecek
+            // DeleteSaving(id,);
         }
     }
 

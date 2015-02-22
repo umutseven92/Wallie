@@ -6,13 +6,12 @@ import android.text.Spanned;
 /**
  * Created by Umut Seven on 19.2.2015, for Graviton.
  */
-public class PriorityInputFilter implements InputFilter{
+public class PriorityInputFilter implements InputFilter {
 
     private int _maxValue;
 
     @Deprecated
-    public PriorityInputFilter(int maxValue)
-    {
+    public PriorityInputFilter(int maxValue) {
         this._maxValue = maxValue;
     }
 
