@@ -34,7 +34,7 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
 
 * 0.3 (Birikim)
   * ~~Birikim dizaynı~~
-  * Birikim yaratma
+  * ~~Birikim yaratma~~
   * Birikim notifikasyonları
 
 * 0.4 (Hesap & Ayarlar)
