@@ -119,7 +119,7 @@ public class SavingsWizardActivity extends FragmentActivity implements PageFragm
 
             Saving saving = new Saving(name, amount, new Date(), banker.GetPeriodFromTurkishString(period), repeat, priority);
             try {
-                banker.AddSaving(saving, getApplication());
+                banker.AddSaving(saving);
             } catch (IOException e) {
                 e.printStackTrace();
             }

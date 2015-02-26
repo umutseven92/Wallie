@@ -7,23 +7,14 @@ import Helpers.IncomeLoadListener;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
-import android.view.View;
-import android.widget.*;
-import android.widget.Button;
 import com.google.gson.Gson;
 import com.graviton.Cuzdan.Global;
-import com.graviton.Cuzdan.R;
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.awt.*;
-import java.io.*;
+import java.io.IOException;
 
 
 /**
@@ -48,7 +39,7 @@ public class IncomeDialogFragment extends DialogFragment {
                         public void onClick(DialogInterface dialog, int which) {
                             try {
                                 Banker banker = ((Global) getActivity().getApplication()).GetUser().GetBanker();
-                                banker.DeleteIncome(income.GetID(), getActivity().getApplication());
+                                banker.DeleteIncome(income.GetID());
                                 _listener.onDismissed();
                                 dismiss();
                             } catch (IOException e) {

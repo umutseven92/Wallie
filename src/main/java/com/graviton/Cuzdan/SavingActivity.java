@@ -15,42 +15,40 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
 /**
  * Created by Umut Seven on 14.2.2015, for Graviton.
  */
-public class SavingActivity extends Activity{
+public class SavingActivity extends Activity {
 
     @Override
-    public void onCreate(Bundle bundle)
-    {
+    public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.savings_detail);
 
         Intent in = getIntent();
         Bundle b = in.getExtras();
-        final Saving saving = new Gson().fromJson(b.getString("saving"),Saving.class);
+        final Saving saving = new Gson().fromJson(b.getString("saving"), Saving.class);
 
         final Banker banker = ((Global) getApplication()).GetUser().GetBanker();
 
-        TextView txtName = (TextView)findViewById(R.id.txtSavingName);
-        TextView txtAmount = (TextView)findViewById(R.id.txtSavingAmount);
-        TextView txtPeriod = (TextView)findViewById(R.id.txtSavingPeriod);
-        TextView txtDesc = (TextView)findViewById(R.id.txtSavingDesc);
-        TextView txtRep  = (TextView)findViewById(R.id.txtSavingRep);
-        TextView txtDailyLimit = (TextView)findViewById(R.id.txtSavingDailyLimit);
-        TextView txtDaysPast = (TextView)findViewById(R.id.txtSavingDaysPast);
-        TextView txtSavedAmount = (TextView)findViewById(R.id.txtSavedAmount);
+        TextView txtName = (TextView) findViewById(R.id.txtSavingName);
+        TextView txtAmount = (TextView) findViewById(R.id.txtSavingAmount);
+        TextView txtPeriod = (TextView) findViewById(R.id.txtSavingPeriod);
+        TextView txtDesc = (TextView) findViewById(R.id.txtSavingDesc);
+        TextView txtRep = (TextView) findViewById(R.id.txtSavingRep);
+        TextView txtDailyLimit = (TextView) findViewById(R.id.txtSavingDailyLimit);
+        TextView txtDaysPast = (TextView) findViewById(R.id.txtSavingDaysPast);
+        TextView txtSavedAmount = (TextView) findViewById(R.id.txtSavedAmount);
 
-        ProgressBar pb = (ProgressBar)findViewById(R.id.pbSaving);
-        Button btnDelete = (Button)findViewById(R.id.btnDeleteSaving);
+        ProgressBar pb = (ProgressBar) findViewById(R.id.pbSaving);
+        Button btnDelete = (Button) findViewById(R.id.btnDeleteSaving);
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    banker.DeleteSaving(saving.GetID(),getApplication());
+                    banker.DeleteSaving(saving.GetID());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -70,16 +68,13 @@ public class SavingActivity extends Activity{
 
 
         txtName.setText(saving.GetName());
-        txtAmount.setText(saving.GetAmount().toString() +" TL (Günlük " + saving.GetDailyGoal().toString() + " TL)");
+        txtAmount.setText(saving.GetAmount().toString() + " TL (Günlük " + saving.GetDailyGoal().toString() + " TL)");
         txtPeriod.setText(SavingsHelper.GetPeriodString(saving.GetPeriod()) + " (" + saving.GetTotalDays(saving.GetPeriod()) + " Gün)");
         txtDesc.setText(saving.GetDescription());
         txtDailyLimit.setText(saving.GetDailyLimit().toString());
-        if(saving.GetRepeating())
-        {
+        if (saving.GetRepeating()) {
             txtRep.setText("Evet");
-        }
-        else
-        {
+        } else {
             txtRep.setText("Hayır");
         }
         txtDaysPast.setText(saving.GetRemainingDays() + " Gün");

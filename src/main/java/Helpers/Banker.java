@@ -1,5 +1,6 @@
 package Helpers;
 
+import Helpers.Saving.Period;
 import android.app.Application;
 import android.content.Context;
 import com.graviton.Cuzdan.Global;
@@ -13,9 +14,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.UUID;
-
-import Helpers.Saving.Period;
 
 /**
  * Created by Umut Seven on 12.11.2014, for Graviton.
@@ -31,14 +29,17 @@ public class Banker implements Serializable {
      * @throws JSONException
      * @throws ParseException
      */
-    public Banker(JSONArray incomes, JSONArray expenses, JSONArray savings, String filePath) throws Exception {
+    public Banker(JSONArray incomes, JSONArray expenses, JSONArray savings, String filePath, Application app) throws Exception {
         _incomes = new ArrayList<Income>();
         _expenses = new ArrayList<Expense>();
         _savings = new ArrayList<Saving>();
+        mainApp = app;
         this.filePath = filePath;
         LoadBalance(incomes, expenses);
         LoadSavings(savings);
     }
+
+    private Application mainApp;
 
     private ArrayList<Income> _incomes;
 
@@ -548,15 +549,14 @@ public class Banker implements Serializable {
     /**
      * /data/com/graviton/Cuzdan'daki kullanici bilgilerini dondurur.
      *
-     * @param app Ana uygulama
      * @return string halinde kullanici bilgileri
      */
-    private String ReadUserInfo(Application app) {
+    private String ReadUserInfo() {
         StringBuffer datax = new StringBuffer("");
 
         try {
 
-            FileInputStream fIn = app.openFileInput(((Global) app).GetFilePath());
+            FileInputStream fIn = mainApp.openFileInput(((Global) mainApp).GetFilePath());
             InputStreamReader isr = new InputStreamReader(fIn);
             BufferedReader buffreader = new BufferedReader(isr);
 
@@ -577,12 +577,11 @@ public class Banker implements Serializable {
     /**
      * Verilen stringi /data/com/graviton/Cuzdan'a yazar.
      *
-     * @param app         Ana uygulama
      * @param infoToWrite Yazilmasi istenen veri
-     * @throws IOException
+     * @throws java.io.IOException
      */
-    public void WriteUserInfo(Application app, String infoToWrite) throws IOException {
-        FileOutputStream fileOutputStream = app.openFileOutput(((Global) app).GetFilePath(), Context.MODE_PRIVATE);
+    public void WriteUserInfo(String infoToWrite) throws IOException {
+        FileOutputStream fileOutputStream = mainApp.openFileOutput(((Global) mainApp).GetFilePath(), Context.MODE_PRIVATE);
         fileOutputStream.write(infoToWrite.getBytes());
         fileOutputStream.close();
 
@@ -592,44 +591,42 @@ public class Banker implements Serializable {
      * Gelir ekleme metodu.
      *
      * @param income Eklenicek gelir
-     * @param app    Ana uygulama
      * @throws IOException
      * @throws JSONException
      */
-    public void AddIncome(Income income, Application app) throws IOException, JSONException {
+    public void AddIncome(Income income) throws IOException, JSONException {
 
         JSONObject incomeToSave = CreateJSONIncome(income);
 
-        String main = ReadUserInfo(app);
+        String main = ReadUserInfo();
 
         JSONObject mainJSON = new JSONObject(main);
         JSONArray incomes = mainJSON.getJSONObject("user").getJSONArray("incomes");
         incomes.put(incomeToSave);
-        WriteUserInfo(app, mainJSON.toString());
+        WriteUserInfo(mainJSON.toString());
     }
 
     /**
      * Birikim ekleme metodu.
      *
      * @param saving Eklenicek birikim
-     * @param app    Ana uygulama
      * @throws JSONException
      */
-    public void AddSaving(Saving saving, Application app) throws JSONException, IOException {
+    public void AddSaving(Saving saving) throws JSONException, IOException {
 
         JSONObject savingToSave = CreateJSONSaving(saving);
 
-        String main = ReadUserInfo(app);
+        String main = ReadUserInfo();
 
         JSONObject mainJSON = new JSONObject(main);
         JSONArray savings = mainJSON.getJSONObject("user").getJSONArray("savings");
         savings.put(savingToSave);
-        WriteUserInfo(app, mainJSON.toString());
+        WriteUserInfo(mainJSON.toString());
 
     }
 
-    public void DeleteSaving(String id, Application app) throws JSONException, IOException {
-        String main = ReadUserInfo(app);
+    public void DeleteSaving(String id) throws JSONException, IOException {
+        String main = ReadUserInfo();
         JSONObject mainJSON = new JSONObject(main);
         JSONObject userJSON = mainJSON.getJSONObject("user");
         JSONArray incomes = userJSON.getJSONArray("incomes");
@@ -670,27 +667,26 @@ public class Banker implements Serializable {
             }
         }
 
-        WriteUserInfo(app, userInfo.toString());
+        WriteUserInfo(userInfo.toString());
     }
 
     /**
      * Gider ekleme metodu.
      *
      * @param expense Eklenicek gider
-     * @param app     Ana uygulama
      * @throws JSONException
      * @throws IOException
      */
-    public void AddExpense(Expense expense, Application app) throws JSONException, IOException {
+    public void AddExpense(Expense expense) throws JSONException, IOException {
 
         JSONObject expenseToSave = CreateJSONExpense(expense);
 
-        String main = ReadUserInfo(app);
+        String main = ReadUserInfo();
         JSONObject mainJSON = new JSONObject(main);
         JSONArray expenses = mainJSON.getJSONObject("user").getJSONArray("expenses");
         expenses.put(expenseToSave);
 
-        WriteUserInfo(app, mainJSON.toString());
+        WriteUserInfo(mainJSON.toString());
     }
 
 
@@ -703,14 +699,13 @@ public class Banker implements Serializable {
      * <p/>
      * tl:dr; userConfig'i bastan olusturuyoruz.
      *
-     * @param id  Silinicek gelirin id'si
-     * @param app Ana uygulama
-     * @throws JSONException
-     * @throws IOException
+     * @param id Silinicek gelirin id'si
+     * @throws org.json.JSONException
+     * @throws java.io.IOException
      */
-    public void DeleteIncome(String id, Application app) throws JSONException, IOException {
+    public void DeleteIncome(String id) throws JSONException, IOException {
 
-        String main = ReadUserInfo(app);
+        String main = ReadUserInfo();
         JSONObject mainJSON = new JSONObject(main);
         JSONObject userJSON = mainJSON.getJSONObject("user");
         JSONArray incomes = userJSON.getJSONArray("incomes");
@@ -751,7 +746,7 @@ public class Banker implements Serializable {
             newSavings.put(savings.getJSONObject(i));
         }
 
-        WriteUserInfo(app, userInfo.toString());
+        WriteUserInfo(userInfo.toString());
 
     }
 
@@ -764,14 +759,13 @@ public class Banker implements Serializable {
      * <p/>
      * tl:dr; userConfig'i bastan olusturuyoruz.
      *
-     * @param id  Silinecek giderin id'si
-     * @param app Ana uygulama
-     * @throws JSONException
-     * @throws IOException
+     * @param id Silinecek giderin id'si
+     * @throws org.json.JSONException
+     * @throws java.io.IOException
      */
-    public void DeleteExpense(String id, Application app) throws JSONException, IOException {
+    public void DeleteExpense(String id) throws JSONException, IOException {
 
-        String main = ReadUserInfo(app);
+        String main = ReadUserInfo();
         JSONObject mainJSON = new JSONObject(main);
         JSONObject userJSON = mainJSON.getJSONObject("user");
         JSONArray incomes = userJSON.getJSONArray("incomes");
@@ -812,17 +806,17 @@ public class Banker implements Serializable {
             newSavings.put(savings.getJSONObject(i));
         }
 
-        WriteUserInfo(app, userInfo.toString());
+        WriteUserInfo(userInfo.toString());
 
     }
+
 
     public void CheckSavings() throws Exception {
         Date today = new Date();
         Calendar calToday = Calendar.getInstance();
         calToday.setTime(today);
 
-        boolean delete = false;
-        String id;
+        ArrayList<Saving> savingsToDelete = new ArrayList<Saving>();
 
         for (Saving s : _savings) {
             Date savingDay = s.GetDate();
@@ -842,28 +836,22 @@ public class Banker implements Serializable {
 
             if (remainingDays <= 0) {
                 // Birikim tamamlandi, silinecek
-                delete = true;
-                id = s.GetID();
+                savingsToDelete.add(s);
             } else {
-
-                BigDecimal progress = BigDecimal.ZERO;
 
                 for (int i = 0; i < daysPast; i++) {
                     Calendar calSav = Calendar.getInstance();
                     calSav.setTime(s.GetDate());
-                    calSav.add(Calendar.DAY_OF_MONTH,i);
+                    calSav.add(Calendar.DAY_OF_MONTH, i);
 
-                    BigDecimal gb = GetBalance(calSav.getTime(),false);
+                    BigDecimal gb = GetBalance(calSav.getTime(), false);
                     BigDecimal dl = s.GetDailyLimit();
 
 
-                    if(GetBalance(calSav.getTime(),false).compareTo(s.GetDailyLimit()) == 0 && GetBalance(calSav.getTime(), false).compareTo(s.GetDailyLimit()) == 1)
-                    {
+                    if (gb.compareTo(dl) == 0 && gb.compareTo(dl) == 1) {
                         // Bu gun icinde  limit asilmamis, yani birikim dogru yolda
                         s.SetDailyProgress();
-                    }
-                    else if(GetBalance(calSav.getTime(),false).compareTo(s.GetDailyLimit()) == -1)
-                    {
+                    } else if (gb.compareTo(dl) == -1) {
                         // Bu gun icinde limit asilmis
 
                     }
@@ -873,9 +861,9 @@ public class Banker implements Serializable {
 
         }
 
-        if (delete) {
-            // Birikim burda silinecek
-            // DeleteSaving(id,);
+        // Birikimlerin silinmesi
+        for (Saving s : savingsToDelete) {
+            DeleteSaving(s.GetID());
         }
     }
 

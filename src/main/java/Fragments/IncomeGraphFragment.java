@@ -20,6 +20,7 @@ import com.github.mikephil.charting.utils.XLabels;
 import com.github.mikephil.charting.utils.YLabels;
 import com.google.gson.Gson;
 import com.graviton.Cuzdan.Global;
+import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 
 import java.io.IOException;
@@ -28,8 +29,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import com.graviton.Cuzdan.R;
 
 /**
  * Created by Umut Seven on 27.1.2015, for Graviton.

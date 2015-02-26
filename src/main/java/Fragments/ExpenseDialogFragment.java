@@ -7,17 +7,14 @@ import Helpers.ExpenseLoadListener;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Html;
 import com.google.gson.Gson;
 import com.graviton.Cuzdan.Global;
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.*;
+import java.io.IOException;
 
 
 /**
@@ -42,7 +39,7 @@ public class ExpenseDialogFragment extends DialogFragment {
                         public void onClick(DialogInterface dialog, int which) {
                             Banker banker = ((Global) getActivity().getApplication()).GetUser().GetBanker();
                             try {
-                                banker.DeleteExpense(expense.GetID(), getActivity().getApplication());
+                                banker.DeleteExpense(expense.GetID());
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             } catch (IOException e) {

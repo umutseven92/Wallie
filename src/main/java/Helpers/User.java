@@ -1,10 +1,9 @@
 package Helpers;
 
-import org.json.JSONException;
+import android.app.Application;
 import org.json.JSONObject;
 
 import java.io.Serializable;
-import java.text.ParseException;
 
 
 /**
@@ -14,7 +13,7 @@ import java.text.ParseException;
  */
 public class User implements Serializable {
 
-    public User(JSONObject data, String filePath) throws Exception {
+    public User(JSONObject data, String filePath, Application app) throws Exception {
 
         assert data != null;
         JSONObject jsonUser = data.getJSONObject("user");
@@ -23,7 +22,7 @@ public class User implements Serializable {
         _lastName = jsonUser.getString("lastName");
         _profilePicture = "@drawable/profile.png";
         this._filePath = filePath;
-        _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"), jsonUser.getJSONArray("savings"), this._filePath);
+        _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"), jsonUser.getJSONArray("savings"), this._filePath, app);
 
     }
 

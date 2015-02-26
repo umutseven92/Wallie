@@ -48,7 +48,7 @@ public class SplashActivity extends Activity {
                 }
 
                 in.close();
-                user = new User(new JSONObject(buf.toString()), "");
+                user = new User(new JSONObject(buf.toString()), "", getApplication());
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (ParseException e) {
@@ -70,9 +70,9 @@ public class SplashActivity extends Activity {
 
                 try {
                     userInfo = JSONHelper.CreateStartingJSON(userName, firstName, lastName);
-                    user = new User(userInfo, file.getAbsolutePath());
+                    user = new User(userInfo, file.getAbsolutePath(), getApplication());
 
-                    user.GetBanker().WriteUserInfo(getApplication(), userInfo.toString());
+                    user.GetBanker().WriteUserInfo(userInfo.toString());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -89,7 +89,7 @@ public class SplashActivity extends Activity {
                         sb.append("\n");
                     }
 
-                    user = new User(new JSONObject(sb.toString()), file.getAbsolutePath());
+                    user = new User(new JSONObject(sb.toString()), file.getAbsolutePath(), getApplication());
 
                 } catch (Exception e) {
                     e.printStackTrace();

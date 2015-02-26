@@ -1,6 +1,5 @@
 package Fragments;
 
-import Helpers.Income;
 import Helpers.Saving;
 import Helpers.SavingListAdapter;
 import Helpers.User;
@@ -118,7 +117,7 @@ public class SavingsFragment extends Fragment {
 
             Intent savingIntent = new Intent(getActivity(), SavingActivity.class);
             Bundle bundle = new Bundle();
-            bundle.putString("saving",new Gson().toJson(sav));
+            bundle.putString("saving", new Gson().toJson(sav));
             savingIntent.putExtras(bundle);
             getActivity().startActivity(savingIntent);
         }

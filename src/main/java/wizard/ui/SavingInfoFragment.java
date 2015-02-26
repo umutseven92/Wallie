@@ -1,7 +1,6 @@
 package wizard.ui;
 
 import Helpers.DecimalDigitsInputFilter;
-import Helpers.PriorityInputFilter;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -15,10 +14,9 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.NumberPicker;
 import android.widget.TextView;
-import wizard.model.SavingInfoPage;
 import com.graviton.Cuzdan.R;
+import wizard.model.SavingInfoPage;
 
 
 /**

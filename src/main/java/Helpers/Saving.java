@@ -125,9 +125,8 @@ public class Saving {
         _periodDayDict.put(Period.Year, YEAR);
     }
 
-    public void SetDailyProgress()
-    {
-        _progress = _progress.add(GetAmount().divide(new BigDecimal(_periodDayDict.get(GetPeriod())),BigDecimal.ROUND_DOWN));
+    public void SetDailyProgress() {
+        _progress = _progress.add(GetAmount().divide(new BigDecimal(_periodDayDict.get(GetPeriod())), BigDecimal.ROUND_DOWN));
     }
 
     private String _desription;

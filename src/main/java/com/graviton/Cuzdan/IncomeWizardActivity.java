@@ -2,8 +2,6 @@ package com.graviton.Cuzdan;
 
 import Helpers.Banker;
 import Helpers.Income;
-import android.content.Context;
-import android.content.ContextWrapper;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -14,9 +12,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 import wizard.IncomeWizardModel;
 import wizard.model.AbstractWizardModel;
 import wizard.model.BalanceInfoPage;
@@ -26,7 +22,7 @@ import wizard.ui.PageFragmentCallbacks;
 import wizard.ui.ReviewFragment;
 import wizard.ui.StepPagerStrip;
 
-import java.io.*;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -124,7 +120,7 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
 
             Income income = new Income(category, subCategory, amount, description, new Date());
             Banker banker = ((Global) getApplication()).GetUser().GetBanker();
-            banker.AddIncome(income, getApplication());
+            banker.AddIncome(income);
             finish();
         } else {
             if (mEditingAfterReview) {
