@@ -59,13 +59,8 @@ public class SavingActivity extends Activity {
         });
 
         BigDecimal savProgress = saving.GetProgress();
-        BigDecimal prog = BigDecimal.ZERO;
-
-        if (savProgress.compareTo(BigDecimal.ZERO) != 0) {
-            prog = saving.GetAmount().divide(savProgress, BigDecimal.ROUND_DOWN).multiply(new BigDecimal(100));
-        }
-        pb.setProgress(prog.intValue());
-
+        pb.setMax(saving.GetAmount().intValue());
+        pb.setProgress(savProgress.intValue());
 
         txtName.setText(saving.GetName());
         txtAmount.setText(saving.GetAmount().toString() + " TL (Günlük " + saving.GetDailyGoal().toString() + " TL)");

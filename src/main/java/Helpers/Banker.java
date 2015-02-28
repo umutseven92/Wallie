@@ -835,7 +835,19 @@ public class Banker implements Serializable {
             s.SetDailyLimit(this.GetBalance(s.GetDate(), false));
 
             if (remainingDays <= 0) {
-                // Birikim tamamlandi, silinecek
+                // Birikim tamamlandi
+                int compProgress = s.GetProgress().compareTo(s.GetAmount());
+
+                if(compProgress == 0 || compProgress == 1)
+                {
+                    // Birikim amacina ulasti
+                }
+                else
+                {
+                    // Birikim basarisiz
+                }
+
+                // Birikim silinecek
                 savingsToDelete.add(s);
             } else {
 
@@ -847,11 +859,12 @@ public class Banker implements Serializable {
                     BigDecimal gb = GetBalance(calSav.getTime(), false);
                     BigDecimal dl = s.GetDailyLimit();
 
+                    int comp = gb.compareTo(dl);
 
-                    if (gb.compareTo(dl) == 0 && gb.compareTo(dl) == 1) {
+                    if (comp == 0 || comp == 1) {
                         // Bu gun icinde  limit asilmamis, yani birikim dogru yolda
                         s.SetDailyProgress();
-                    } else if (gb.compareTo(dl) == -1) {
+                    } else if (comp == -1) {
                         // Bu gun icinde limit asilmis
 
                     }
