@@ -14,10 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import org.json.JSONException;
 import wizard.SavingWizardModel;
-import wizard.model.AbstractWizardModel;
-import wizard.model.ModelCallbacks;
-import wizard.model.Page;
-import wizard.model.SavingInfoPage;
+import wizard.model.*;
 import wizard.ui.PageFragmentCallbacks;
 import wizard.ui.ReviewFragment;
 import wizard.ui.StepPagerStrip;
@@ -111,13 +108,29 @@ public class SavingsWizardActivity extends FragmentActivity implements PageFragm
     private void GoForwardOnePage() throws JSONException {
         if (mPager.getCurrentItem() == mCurrentPageSequence.size()) {
             String period = mWizardModel.findByKey("Dönem").getData().getString(Page.SIMPLE_DATA_KEY);
-            BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(SavingInfoPage.AMOUNT_DATA_KEY));
-            String name = mWizardModel.findByKey("Detaylar").getData().getString(SavingInfoPage.NAME_DATA_KEY);
-            boolean repeat = mWizardModel.findByKey("Detaylar").getData().getBoolean(SavingInfoPage.REPEAT_BOOL_KEY);
-            int priority = mWizardModel.findByKey("Detaylar").getData().getInt(SavingInfoPage.PRIORITY_DATA_KEY);
+            Page p = mWizardModel.findByKey(period + ":Detaylar");
+            BigDecimal amount;
+            String name;
+            boolean repeat;
+            Saving saving;
             Banker banker = ((Global) getApplication()).GetUser().GetBanker();
 
-            Saving saving = new Saving(name, amount, new Date(), banker.GetPeriodFromTurkishString(period), repeat, priority);
+            if(!period.equals("Özel"))
+            {
+                amount = new BigDecimal(p.getData().getString(SavingInfoPage.AMOUNT_DATA_KEY));
+                name = p.getData().getString(SavingInfoPage.NAME_DATA_KEY);
+                repeat = p.getData().getBoolean(SavingInfoPage.REPEAT_BOOL_KEY);
+                saving = new Saving(name, amount, new Date(), banker.GetPeriodFromTurkishString(period), repeat);
+            }
+            else
+            {
+                amount = new BigDecimal(p.getData().getString(SavingCustomInfoPage.AMOUNT_DATA_KEY));
+                name = p.getData().getString(SavingCustomInfoPage.NAME_DATA_KEY);
+                repeat = p.getData().getBoolean(SavingCustomInfoPage.REPEAT_BOOL_KEY);
+                int customDays = Integer.parseInt(p.getData().getString(SavingCustomInfoPage.CUSTOM_DAY_KEY));
+                saving = new Saving(name,amount,new Date(),customDays,repeat);
+            }
+
             try {
                 banker.AddSaving(saving);
             } catch (IOException e) {

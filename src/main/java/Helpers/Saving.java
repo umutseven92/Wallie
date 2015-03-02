@@ -22,21 +22,34 @@ public class Saving {
         this.SetAmount(new BigDecimal(jsonSaving.getDouble("amount")));
         Date d = new SimpleDateFormat("yyyy-MM-d").parse(jsonSaving.getString("date"));
         this.SetDate(d);
-        this.SetPeriod(GetPeriodFromString(jsonSaving.getString("period")));
-        this.SetDescription(jsonSaving.getString("name"), _periodDayDict.get(GetPeriodFromString(jsonSaving.getString("period"))), new BigDecimal(jsonSaving.getDouble("amount")));
+
+        Period period = GetPeriodFromString(jsonSaving.getString("period"));
+
+        this.SetPeriod(period);
+        this.SetCustomDays(Integer.parseInt(jsonSaving.getString("customDays")));
+        int days;
+
+        if(this.GetPeriod() == Period.Custom)
+        {
+            days = Integer.parseInt(jsonSaving.getString("customDays"));
+            this.SetDescription(jsonSaving.getString("name"), days, new BigDecimal(jsonSaving.getDouble("amount")));
+        }
+        else
+        {
+            days = _periodDayDict.get(this.GetPeriod());
+            this.SetDescription(jsonSaving.getString("name"), _periodDayDict.get(GetPeriodFromString(jsonSaving.getString("period"))), new BigDecimal(jsonSaving.getDouble("amount")));
+        }
         if (jsonSaving.getString("repeating").equals("true")) {
             this.SetRepeating(true);
         } else {
             this.SetRepeating(false);
         }
 
-        int days = _periodDayDict.get(this.GetPeriod());
         BigDecimal daily = this.GetAmount().divide(new BigDecimal(days), BigDecimal.ROUND_DOWN);
         this.SetDailyGoal(daily);
-        this.SetPriority(jsonSaving.getInt("priority"));
     }
 
-    public Saving(String name, BigDecimal amount, Date date, Period period, boolean repeating, int priority) {
+    public Saving(String name, BigDecimal amount, Date date, Period period, boolean repeating) {
         InitializePeriodDayDict();
         this.GenerateID();
         this.SetName(name);
@@ -53,7 +66,25 @@ public class Saving {
         BigDecimal daily = this.GetAmount().divide(new BigDecimal(days), BigDecimal.ROUND_DOWN);
         this.SetDailyGoal(daily);
 
-        this.SetPriority(priority);
+    }
+
+    public Saving(String name, BigDecimal amount, Date date, int customDays, boolean repeating) {
+        InitializePeriodDayDict();
+        this.GenerateID();
+        this.SetName(name);
+        this.SetAmount(amount);
+        this.SetDate(date);
+        this.SetCustomDays(customDays);
+        this.SetPeriod(Period.Custom);
+        this.SetDescription(name,customDays, amount);
+        this.SetRepeating(repeating);
+
+        this.SetProgress(BigDecimal.ZERO);
+
+        this.SetRemainingDays(customDays);
+        BigDecimal daily = this.GetAmount().divide(new BigDecimal(customDays), BigDecimal.ROUND_DOWN);
+        this.SetDailyGoal(daily);
+
     }
 
     private final int DAY = 1;
@@ -84,6 +115,10 @@ public class Saving {
     }
 
     public int GetTotalDays(Period period) {
+        if(period == Period.Custom)
+        {
+            return GetCustomDays();
+        }
         return _periodDayDict.get(period);
     }
 
@@ -140,6 +175,10 @@ public class Saving {
     }
 
     public int GetDays(Period period) {
+        if(period == Period.Custom)
+        {
+            return GetCustomDays();
+        }
         return _periodDayDict.get(period);
     }
 
@@ -237,13 +276,15 @@ public class Saving {
         return _dailyGoal;
     }
 
-    private int _priority;
+    private int _customDays = 0;
 
-    public void SetPriority(int priority) {
-        _priority = priority;
+    public void SetCustomDays(int customDays)
+    {
+        _customDays = customDays;
     }
 
-    public int GetPriority() {
-        return _priority;
+    public int GetCustomDays()
+    {
+        return _customDays;
     }
 }

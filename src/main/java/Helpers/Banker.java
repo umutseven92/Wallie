@@ -151,9 +151,9 @@ public class Banker implements Serializable {
                 "\t\t\t\t\t\"amount\": \"%s\",\n" +
                 "\t\t\t\t\t\"period\": \"%s\",\n" +
                 "\t\t\t\t\t\"date\": \"%s\",\n" +
-                "\t\t\t\t\t\"repeating\": \"%s\",\n" +
-                "\t\t\t\t\t\"priority\": \"%s\"\n" +
-                "\t\t\t\t}", saving.GetID(), saving.GetName(), saving.GetAmount(), GetPeriodString(saving.GetPeriod()), date, saving.GetRepeating(), saving.GetPriority());
+                "\t\t\t\t\t\"customDays\": \"%s\",\n" +
+                "\t\t\t\t\t\"repeating\": \"%s\"\n" +
+                "\t\t\t\t}", saving.GetID(), saving.GetName(), saving.GetAmount(), GetPeriodString(saving.GetPeriod()), date,saving.GetCustomDays(), saving.GetRepeating());
 
         return new JSONObject(json);
     }
@@ -838,6 +838,9 @@ public class Banker implements Serializable {
                 // Birikim tamamlandi
                 int compProgress = s.GetProgress().compareTo(s.GetAmount());
 
+                // Birikim silinecek
+                savingsToDelete.add(s);
+
                 if(compProgress == 0 || compProgress == 1)
                 {
                     // Birikim amacina ulasti
@@ -847,8 +850,13 @@ public class Banker implements Serializable {
                     // Birikim basarisiz
                 }
 
-                // Birikim silinecek
-                savingsToDelete.add(s);
+                if(s.GetRepeating())
+                {
+                    // Birikim tekrar edilecek
+                    Saving savingToRepeat = new Saving(s.GetName(),s.GetAmount(),s.GetDate(),s.GetPeriod(),s.GetRepeating());
+                    AddSaving(savingToRepeat);
+                }
+
             } else {
 
                 for (int i = 0; i < daysPast; i++) {

@@ -37,23 +37,6 @@
                           android:layout_centerVertical="true" android:layout_alignParentLeft="true"
                           android:layout_alignParentStart="true"/>
             </RelativeLayout>
-            <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp">
-                <TextView style="@style/WizardFormLabel" android:text="@string/label_priority"
-                          android:layout_width="wrap_content" android:layout_height="wrap_content"
-                          android:id="@+id/textView11"
-                          android:layout_centerVertical="true" android:layout_alignParentLeft="true"
-                          android:layout_alignParentStart="true"/>
-                <EditText
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:ems="10"
-                        android:id="@+id/txtPriority" android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/textView11" android:layout_toEndOf="@+id/textView11"
-                        android:layout_marginLeft="10dp"/>
-            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 

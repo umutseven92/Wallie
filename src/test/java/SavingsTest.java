@@ -14,7 +14,7 @@ public class SavingsTest {
 
     @Test
     public void DescriptionTest() {
-        Saving saving = new Saving("Araba", new BigDecimal(350), new Date(), Saving.Period.ThreeMonths, false,1);
+        Saving saving = new Saving("Araba", new BigDecimal(350), new Date(), Saving.Period.ThreeMonths, false);
         String desc = "Araba için, 3 ay sonunda 350.00 TL birikim.";
         String methodDesc = saving.GetDescription();
 
@@ -23,7 +23,7 @@ public class SavingsTest {
 
     @Test
     public void DailyLimitTest() {
-        Saving saving = new Saving("Test", new BigDecimal(50), new Date(), Saving.Period.Week, false,2);
+        Saving saving = new Saving("Test", new BigDecimal(50), new Date(), Saving.Period.Week, false);
         BigDecimal expectedLimit = new BigDecimal(12.86).setScale(2,BigDecimal.ROUND_DOWN);
         BigDecimal limit = SavingsHelper.CalculateDailyLimit(new BigDecimal(140), saving);
 

@@ -163,6 +163,7 @@
     <string name="label_name">Birikim Adı</string>
     <string name="label_repeating">Tekrarla?</string>
     <string name="label_priority">Önem Sırası</string>
+    <string name="label_custom_day">Gün Sayısı</string>
     <string name="submit_confirm_message">Herşey tamam?</string>
     <string name="submit_confirm_button">Gelir Ekle</string>
     <string name="submit_cancel_button">İptal</string>

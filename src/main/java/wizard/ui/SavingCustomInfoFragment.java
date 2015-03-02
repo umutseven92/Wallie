@@ -1,7 +1,6 @@
 package wizard.ui;
 
 import Helpers.DecimalDigitsInputFilter;
-import Helpers.Saving;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -17,27 +16,29 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import com.graviton.Cuzdan.R;
+import wizard.model.SavingCustomInfoPage;
 import wizard.model.SavingInfoPage;
 
-
 /**
- * Created by Umut Seven on 11.2.2015, for Graviton.
+ * Created by Umut Seven on 2.3.2015, for Graviton.
  */
-public class SavingInfoFragment extends Fragment {
+public class SavingCustomInfoFragment extends Fragment {
+
     private static final String ARG_KEY = "key";
 
     private PageFragmentCallbacks mCallbacks;
     private String mKey;
-    private SavingInfoPage mPage;
+    private SavingCustomInfoPage mPage;
     private TextView mAmountView;
     private TextView mNameView;
     private CheckBox mCheckbox;
+    private TextView mCustomDayView;
 
-    public static SavingInfoFragment create(String key) {
+    public static SavingCustomInfoFragment create(String key) {
         Bundle args = new Bundle();
         args.putString(ARG_KEY, key);
 
-        SavingInfoFragment fragment = new SavingInfoFragment();
+        SavingCustomInfoFragment fragment = new SavingCustomInfoFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -48,24 +49,27 @@ public class SavingInfoFragment extends Fragment {
 
         Bundle args = getArguments();
         mKey = args.getString(ARG_KEY);
-        mPage = (SavingInfoPage) mCallbacks.onGetPage(mKey);
+        mPage = (SavingCustomInfoPage) mCallbacks.onGetPage(mKey);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.add_saving_fragment_info, container, false);
+        View rootView = inflater.inflate(R.layout.add_custom_saving_fragment_info, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
 
-        mAmountView = ((TextView) rootView.findViewById(R.id.saving_amount));
-        mAmountView.setText(mPage.getData().getString(SavingInfoPage.AMOUNT_DATA_KEY));
+        mCustomDayView = ((TextView) rootView.findViewById(R.id.saving_custom_days));
+        mCustomDayView.setText(mPage.getData().getString(SavingCustomInfoPage.CUSTOM_DAY_KEY));
+
+        mAmountView = ((TextView) rootView.findViewById(R.id.saving_custom_amount));
+        mAmountView.setText(mPage.getData().getString(SavingCustomInfoPage.AMOUNT_DATA_KEY));
         mAmountView.setFilters(new InputFilter[]{new DecimalDigitsInputFilter(2)});
 
-        mNameView = ((TextView) rootView.findViewById(R.id.saving_name));
-        mNameView.setText(mPage.getData().getString(SavingInfoPage.NAME_DATA_KEY));
+        mNameView = ((TextView) rootView.findViewById(R.id.saving_custom_name));
+        mNameView.setText(mPage.getData().getString(SavingCustomInfoPage.NAME_DATA_KEY));
 
-        mCheckbox = ((CheckBox) rootView.findViewById(R.id.chkRepeating));
-        mCheckbox.setText(mPage.getData().getString(SavingInfoPage.REPEAT_DATA_KEY));
+        mCheckbox = ((CheckBox) rootView.findViewById(R.id.chk_custom_repeating));
+        mCheckbox.setText(mPage.getData().getString(SavingCustomInfoPage.REPEAT_DATA_KEY));
 
 
         mPage.getData().putBoolean(SavingInfoPage.REPEAT_BOOL_KEY, false);
@@ -73,15 +77,6 @@ public class SavingInfoFragment extends Fragment {
         return rootView;
     }
 
-    @Override
-    public void onResume()
-    {
-        super.onResume();
-        String test = SavingInfoPage.SIMPLE_DATA_KEY;
-    }
-
-
-    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
@@ -102,6 +97,26 @@ public class SavingInfoFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        mCustomDayView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                mPage.getData().putString(SavingCustomInfoPage.CUSTOM_DAY_KEY,
+                        (editable != null) ? editable.toString() : null);
+
+                mPage.notifyDataChanged();
+            }
+        });
+
         mAmountView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1,
@@ -114,7 +129,7 @@ public class SavingInfoFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                mPage.getData().putString(SavingInfoPage.AMOUNT_DATA_KEY,
+                mPage.getData().putString(SavingCustomInfoPage.AMOUNT_DATA_KEY,
                         (editable != null) ? editable.toString() : null);
 
                 mPage.notifyDataChanged();
@@ -133,7 +148,7 @@ public class SavingInfoFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                mPage.getData().putString(SavingInfoPage.NAME_DATA_KEY,
+                mPage.getData().putString(SavingCustomInfoPage.NAME_DATA_KEY,
                         (editable != null) ? editable.toString() : null);
                 mPage.notifyDataChanged();
             }
@@ -144,11 +159,11 @@ public class SavingInfoFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    mPage.getData().putBoolean(SavingInfoPage.REPEAT_BOOL_KEY, true);
-                    mPage.getData().putString(SavingInfoPage.REPEAT_DATA_KEY, "Evet");
+                    mPage.getData().putBoolean(SavingCustomInfoPage.REPEAT_BOOL_KEY, true);
+                    mPage.getData().putString(SavingCustomInfoPage.REPEAT_DATA_KEY, "Evet");
                 } else {
-                    mPage.getData().putBoolean(SavingInfoPage.REPEAT_BOOL_KEY, false);
-                    mPage.getData().putString(SavingInfoPage.REPEAT_DATA_KEY, "Hayır");
+                    mPage.getData().putBoolean(SavingCustomInfoPage.REPEAT_BOOL_KEY, false);
+                    mPage.getData().putString(SavingCustomInfoPage.REPEAT_DATA_KEY, "Hayır");
                 }
                 mPage.notifyDataChanged();
             }
@@ -169,5 +184,4 @@ public class SavingInfoFragment extends Fragment {
             }
         }
     }
-
 }

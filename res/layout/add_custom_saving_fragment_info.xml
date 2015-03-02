@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView style="@style/WizardPageTitle" android:layout_width="match_parent" android:layout_height="wrap_content"
+              />
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+                android:paddingLeft="16dp" android:paddingRight="16dp" android:scrollbarStyle="outsideOverlay"
+                android:id="@+id/scrollView2">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical">
+
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                <TextView style="@style/WizardFormLabel" android:text="@string/label_custom_day"
+                          android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:layout_centerVertical="true" android:layout_alignParentLeft="true"
+                          android:layout_alignParentStart="true" android:id="@+id/textView11"/>
+                <EditText android:id="@+id/saving_custom_days" android:layout_width="60dp"
+                          android:layout_height="wrap_content" android:saveEnabled="false"
+                          android:inputType="number" android:layout_gravity="center_horizontal"
+                          android:layout_alignParentTop="true" android:layout_toRightOf="@+id/textView11"
+                          android:layout_toEndOf="@+id/textView11" android:layout_marginLeft="8dp"/>
+            </RelativeLayout>
+
+            <TextView style="@style/WizardFormLabel" android:text="@string/label_amount"
+                      android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:layout_marginTop="5dp"/>
+
+            <EditText android:id="@+id/saving_custom_amount" android:layout_width="match_parent"
+                      android:layout_height="wrap_content" android:saveEnabled="false"
+                      android:hint="@string/hint_amount" android:layout_marginBottom="16dp"
+                      android:inputType="number|numberDecimal"/>
+            <TextView style="@style/WizardFormLabel" android:text="@string/label_name"
+                      android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:layout_marginTop="5dp"/>
+
+            <EditText android:id="@+id/saving_custom_name" android:layout_width="match_parent"
+                      android:layout_height="wrap_content" android:saveEnabled="false"
+                      android:inputType="textEmailAddress|textCapSentences" android:lines="4" android:maxLines="4"
+                      android:maxLength="100"/>
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="50dp"
+                            android:layout_marginTop="15dp">
+                <TextView style="@style/WizardFormLabel" android:text="@string/label_repeating"
+                          android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/txtView11" android:layout_centerVertical="true"
+                          android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
+
+                <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/chk_custom_repeating"
+                          android:layout_centerVertical="true" android:layout_toRightOf="@+id/txtView11"
+                          android:layout_toEndOf="@+id/txtView11" android:layout_marginLeft="8dp"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

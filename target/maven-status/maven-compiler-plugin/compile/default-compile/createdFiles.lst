@@ -49,7 +49,9 @@ com\graviton\Cuzdan\ExpenseWizardActivity$1.class
 com\graviton\Cuzdan\ExpenseWizardActivity$4.class
 wizard\ui\SavingInfoFragment$1.class
 Helpers\IncomeListAdapter.class
+wizard\ui\SavingCustomInfoFragment$1.class
 Fragments\ExpenseFragment$3.class
+wizard\model\SavingCustomInfoPage.class
 com\graviton\Cuzdan\R$color.class
 Fragments\IncomeGraphFragment$2.class
 Fragments\IncomeSearchFragment$3.class
@@ -67,11 +69,11 @@ com\graviton\Cuzdan\SplashActivity.class
 com\graviton\Cuzdan\SavingsWizardActivity$4.class
 com\graviton\Cuzdan\R$string.class
 Fragments\ExpenseSearchFragment$1.class
+wizard\ui\SavingCustomInfoFragment$2.class
 Fragments\ExpensePieFragment.class
 wizard\model\SingleFixedChoicePage.class
 Fragments\AccountFragment.class
 com\graviton\Cuzdan\MainActivity.class
-wizard\ui\SavingInfoFragment$4.class
 wizard\ui\PageFragmentCallbacks.class
 wizard\ui\SavingInfoFragment$3.class
 Fragments\IncomeFragment$5.class
@@ -103,6 +105,7 @@ Helpers\DateFormatHelper.class
 Fragments\ExpensePieFragment$2.class
 wizard\ExpenseWizardModel.class
 Fragments\DatePickerFragment.class
+wizard\ui\SavingCustomInfoFragment$4.class
 Fragments\SavingsFragment$1.class
 Helpers\RoundedImageView.class
 wizard\ui\SingleChoiceFragment.class
@@ -129,7 +132,9 @@ wizard\model\BranchPage$1.class
 com\graviton\Cuzdan\ExpenseWizardActivity.class
 wizard\ui\ReviewFragment$1.class
 com\graviton\Cuzdan\Global.class
+wizard\ui\SavingCustomInfoFragment.class
 Fragments\ExpenseSearchFragment$3.class
+wizard\ui\SavingCustomInfoFragment$3.class
 Fragments\SavingsFragment.class
 com\graviton\Cuzdan\SavingsWizardActivity$2.class
 wizard\ui\ReviewFragment$ReviewAdapter.class
