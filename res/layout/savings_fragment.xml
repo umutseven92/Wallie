@@ -7,9 +7,9 @@
 
     <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="420dp"
+            android:layout_height="400dp"
             android:id="@+id/lytSavingsList" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" android:layout_marginTop="30dp"
+            android:layout_alignParentStart="true" android:layout_marginTop="15dp"
             android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
             android:background="@drawable/rounded_layout">
         <ListView
@@ -23,7 +23,7 @@
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="422dp" android:layout_marginTop="30dp" android:id="@+id/lytEmptySavings" android:visibility="invisible"
+            android:layout_height="402dp" android:layout_marginTop="15dp" android:id="@+id/lytEmptySavings" android:visibility="invisible"
             android:background="@drawable/main_layout">
         <TextView
                 android:layout_width="wrap_content"
@@ -45,13 +45,35 @@
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="85dp" android:layout_below="@+id/lytSavingsList"
-            android:layout_alignParentLeft="true" android:layout_alignParentStart="true" android:id="@+id/lytSavingButton">
+            android:layout_height="85dp"
+            android:id="@+id/lytSavingButton" android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
+            android:layout_below="@+id/lytEmptySavings">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Günlük Harcama Limiti:"
+                android:id="@+id/txtTotalDailyLimitExp"
+                android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" android:textColor="@color/cuzdan_red"
+                android:layout_marginLeft="15dp" android:layout_marginTop="10dp"/>
         <Button
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="Birikime Başla"
-                android:id="@+id/btnAddSaving" android:layout_centerVertical="true" android:layout_centerHorizontal="true"
-                android:background="@drawable/rounded_button"/>
+                android:id="@+id/btnAddSaving"
+                android:background="@drawable/rounded_button"
+                android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
+                android:layout_marginBottom="12dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="undefined"
+                android:id="@+id/txtTotalDailyLimit"
+                android:layout_alignTop="@+id/txtTotalDailyLimitExp" android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" android:layout_marginRight="15dp"
+                android:textColor="@color/cuzdan_red"/>
     </RelativeLayout>
 </RelativeLayout>

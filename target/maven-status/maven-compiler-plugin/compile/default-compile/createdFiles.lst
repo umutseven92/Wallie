@@ -17,6 +17,7 @@ wizard\model\PageTreeNode.class
 com\graviton\Cuzdan\BuildConfig.class
 com\graviton\Cuzdan\SavingActivity.class
 Helpers\ExpenseLoadListener.class
+com\graviton\Cuzdan\NotificationAlarmService.class
 Fragments\ExpenseFragment.class
 com\graviton\Cuzdan\SavingsWizardActivity$3.class
 com\graviton\Cuzdan\R$drawable.class

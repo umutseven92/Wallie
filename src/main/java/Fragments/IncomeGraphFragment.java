@@ -66,7 +66,7 @@ public class IncomeGraphFragment extends Fragment implements OnChartValueSelecte
         dateBeingViewed = new Date();
 
 
-        ChartHelper.InitializeLineChart(incomeLineChart);
+        ChartHelper.InitializeLineChart(incomeLineChart,getString(R.string.currency));
         try {
             LoadLineChart();
         } catch (ParseException e) {

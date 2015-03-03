@@ -3,18 +3,16 @@ package com.graviton.Cuzdan;
 import Helpers.JSONHelper;
 import Helpers.User;
 import android.app.*;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.*;
 import java.text.ParseException;
 import java.util.Calendar;
+import java.util.Date;
 
 
 /**
@@ -32,7 +30,7 @@ public class SplashActivity extends Activity {
 
         User user = null;
 
-        String fileName = "userConfigTest53";
+        String fileName = "userConfigTest54";
         ((Global) this.getApplication()).SetFilePath(fileName);
 
         File file = new File(this.getFilesDir(), fileName);
@@ -103,6 +101,25 @@ public class SplashActivity extends Activity {
         }
 
         ((Global) this.getApplication()).SetUser(user);
+
+        try {
+            if(user.GetBanker().GetSavings().size() > 0)
+            {
+                Intent myIntent = new Intent(SplashActivity.this, NotificationAlarmService.class);
+
+                PendingIntent pendingIntent = PendingIntent.getService(SplashActivity.this, 0, myIntent, 0);
+
+                AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(Calendar.HOUR_OF_DAY, 19);
+                calendar.set(Calendar.MINUTE, 0);
+                calendar.set(Calendar.SECOND, 0);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         new Handler().postDelayed(new Runnable() {
             @Override

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.TwoLineListItem;
+import com.graviton.Cuzdan.R;
 
 import java.util.ArrayList;
 
@@ -54,7 +55,7 @@ public class IncomeListAdapter extends BaseAdapter {
         TextView text2 = twoLineListItem.getText2();
 
         text1.setText(incomes.get(position).GetCategory());
-        text2.setText(incomes.get(position).GetAmount().toString() + " TL");
+        text2.setText(incomes.get(position).GetAmount().toString() + " " + context.getString(R.string.currency));
 
         return twoLineListItem;
     }

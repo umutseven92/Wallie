@@ -110,7 +110,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     public static final class id {
         public static final int btnAddExpense=0x7f09002d;
         public static final int btnAddIncome=0x7f090052;
-        public static final int btnAddSaving=0x7f09008b;
+        public static final int btnAddSaving=0x7f09008c;
         public static final int btnBalanceCalendar=0x7f090020;
         public static final int btnCalendar=0x7f090053;
         public static final int btnDeleteSaving=0x7f090084;
@@ -129,7 +129,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int drawer_layout=0x7f09006d;
         public static final int expenseGraph=0x7f090032;
         public static final int expensePieChart=0x7f090038;
-        public static final int imageView2=0x7f09008c;
+        public static final int imageView2=0x7f09008e;
         public static final int imgExpenseGraphLeft=0x7f090030;
         public static final int imgExpenseGraphRight=0x7f090031;
         public static final int imgExpensePieLeft=0x7f090036;
@@ -242,6 +242,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int txtSearchExpenseTotal=0x7f090046;
         public static final int txtSearchIncomeDate=0x7f09006b;
         public static final int txtSearchIncomeTotal=0x7f09006a;
+        public static final int txtTotalDailyLimit=0x7f09008d;
+        public static final int txtTotalDailyLimitExp=0x7f09008b;
         public static final int txtTotalExpense=0x7f090029;
         public static final int txtTotalIncome=0x7f09004e;
         public static final int txtUserName=0x7f090002;
@@ -276,26 +278,26 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class string {
         public static final int app_name=0x7f060000;
+        public static final int currency=0x7f060015;
         public static final int drawer_close=0x7f060004;
         public static final int drawer_open=0x7f060003;
         public static final int dummyData=0x7f060002;
         public static final int finish_expense=0x7f060008;
         public static final int finish_income=0x7f060007;
         public static final int finish_saving=0x7f060009;
-        public static final int hint_amount=0x7f06000d;
-        public static final int hint_desc=0x7f06000e;
+        public static final int hint_desc=0x7f06000d;
         public static final int label_amount=0x7f06000b;
-        public static final int label_custom_day=0x7f060012;
+        public static final int label_custom_day=0x7f060011;
         public static final int label_desc=0x7f06000c;
-        public static final int label_name=0x7f06000f;
-        public static final int label_priority=0x7f060011;
-        public static final int label_repeating=0x7f060010;
+        public static final int label_name=0x7f06000e;
+        public static final int label_priority=0x7f060010;
+        public static final int label_repeating=0x7f06000f;
         public static final int next=0x7f060005;
         public static final int prev=0x7f060006;
         public static final int review=0x7f06000a;
-        public static final int submit_cancel_button=0x7f060015;
-        public static final int submit_confirm_button=0x7f060014;
-        public static final int submit_confirm_message=0x7f060013;
+        public static final int submit_cancel_button=0x7f060014;
+        public static final int submit_confirm_button=0x7f060013;
+        public static final int submit_confirm_message=0x7f060012;
         public static final int version=0x7f060001;
     }
     public static final class style {

@@ -66,7 +66,7 @@ public class ExpenseGraphFragment extends Fragment implements OnChartValueSelect
 
         dateBeingViewed = new Date();
 
-        ChartHelper.InitializeLineChart(expenseLineChart);
+        ChartHelper.InitializeLineChart(expenseLineChart, getString(R.string.currency));
         try {
             LoadLineChart();
         } catch (ParseException e) {

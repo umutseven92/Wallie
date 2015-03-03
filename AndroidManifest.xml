@@ -29,5 +29,9 @@
         </activity>
         <activity android:name="com.graviton.Cuzdan.SavingActivity" android:theme="@style/CustomActionBarTheme" android:screenOrientation="portrait">
         </activity>
+        <service android:name=".NotificationAlarmService" >
+
+        </service>
+
     </application>
 </manifest>

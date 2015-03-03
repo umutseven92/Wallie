@@ -38,9 +38,9 @@ public class ChartHelper {
 
     }
 
-    public static void InitializeLineChart(LineChart chart) {
+    public static void InitializeLineChart(LineChart chart, String currency) {
         chart.setValueTextColor(Color.BLACK);
-        chart.setUnit(" TL");
+        chart.setUnit(" " + currency);
         chart.setDrawUnitsInChart(true);
 
         chart.setDrawYValues(false);

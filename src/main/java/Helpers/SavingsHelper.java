@@ -95,4 +95,5 @@ public class SavingsHelper {
         return dailyLimit.setScale(2, BigDecimal.ROUND_DOWN);
 
     }
+
 }

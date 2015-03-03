@@ -9,10 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
+import android.widget.*;
 import com.google.gson.Gson;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
@@ -31,6 +28,7 @@ public class SavingsFragment extends Fragment {
     RelativeLayout lytNoSavings, lytSavings;
     Button btnAddSaving;
     ListView lv;
+    TextView txtSavingLimitExp, txtSavingLimit;
 
     public static final SavingsFragment newInstance() {
         SavingsFragment f = new SavingsFragment();
@@ -41,6 +39,9 @@ public class SavingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.savings_fragment, container, false);
+
+        txtSavingLimit = (TextView)v.findViewById(R.id.txtTotalDailyLimit);
+        txtSavingLimitExp = (TextView)v.findViewById(R.id.txtTotalDailyLimitExp);
 
         lytNoSavings = (RelativeLayout) v.findViewById(R.id.lytEmptySavings);
         lytSavings = (RelativeLayout) v.findViewById(R.id.lytSavingsList);
@@ -89,10 +90,15 @@ public class SavingsFragment extends Fragment {
         if (savingsCount <= 0) {
             lytNoSavings.setVisibility(View.VISIBLE);
             lytSavings.setVisibility(View.INVISIBLE);
+            txtSavingLimit.setVisibility(View.INVISIBLE);
+            txtSavingLimitExp.setVisibility(View.INVISIBLE);
             btnAddSaving.setText("Birikime Başla");
         } else if (savingsCount > 0) {
             lytNoSavings.setVisibility(View.INVISIBLE);
             lytSavings.setVisibility(View.VISIBLE);
+            txtSavingLimit.setVisibility(View.VISIBLE);
+            txtSavingLimitExp.setVisibility(View.VISIBLE);
+            txtSavingLimit.setText(_user.GetBanker().GetTotalSavingLimit().toString() + " " + getString(R.string.currency));
             btnAddSaving.setText("Birikim Ekle");
 
             lv.setAdapter(new SavingListAdapter(this.getActivity(), savings));

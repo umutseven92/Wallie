@@ -810,6 +810,30 @@ public class Banker implements Serializable {
 
     }
 
+    public BigDecimal GetTotalSavingLimit()
+    {
+        BigDecimal main = BigDecimal.ZERO;
+        BigDecimal temp;
+
+        boolean first = true;
+
+        for (Saving s : _savings)
+        {
+            if(first)
+            {
+                main = s.GetDailyLimit();
+                first = false;
+            }
+
+            temp = s.GetDailyLimit();
+            if(temp.compareTo(main) == -1)
+            {
+                main = temp;
+            }
+
+        }
+        return main;
+    }
 
     public void CheckSavings() throws Exception {
         Date today = new Date();
@@ -832,7 +856,7 @@ public class Banker implements Serializable {
             int remainingDays = s.GetDays(s.GetPeriod()) - daysPast;
 
             s.SetRemainingDays(remainingDays);
-            s.SetDailyLimit(this.GetBalance(s.GetDate(), false));
+            s.SetDailyLimit(this.GetBalance(new Date(), false));
 
             if (remainingDays <= 0) {
                 // Birikim tamamlandi

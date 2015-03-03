@@ -63,7 +63,7 @@ public class SavingActivity extends Activity {
         pb.setProgress(savProgress.intValue());
 
         txtName.setText(saving.GetName());
-        txtAmount.setText(saving.GetAmount().toString() + " TL (Günlük " + saving.GetDailyGoal().toString() + " TL)");
+        txtAmount.setText(saving.GetAmount().toString() + " " + getString(R.string.currency) + " (Günlük " + saving.GetDailyGoal().toString() + " " + getString(R.string.currency) + ")");
         txtPeriod.setText(SavingsHelper.GetPeriodString(saving.GetPeriod()) + " (" + saving.GetTotalDays(saving.GetPeriod()) + " Gün)");
         txtDesc.setText(saving.GetDescription());
         txtDailyLimit.setText(saving.GetDailyLimit().toString());
@@ -73,7 +73,7 @@ public class SavingActivity extends Activity {
             txtRep.setText("Hayır");
         }
         txtDaysPast.setText(saving.GetRemainingDays() + " Gün");
-        txtSavedAmount.setText(savProgress.toString() + "TL");
+        txtSavedAmount.setText(savProgress.toString() + " " + getString(R.string.currency));
     }
 
 }

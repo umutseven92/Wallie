@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.*;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
+import sun.font.TrueTypeFont;
 
 import java.math.BigDecimal;
 import java.text.Format;
@@ -222,9 +223,9 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         TextView txtExpense = (TextView) infView.findViewById(R.id.txtBalanceExpense);
         TextView txtTotal = (TextView) infView.findViewById(R.id.txtBalance);
 
-        txtIncome.setText(incomeTotal.toString());
-        txtExpense.setText(expenseTotal.toString());
-        txtTotal.setText(total.toString());
+        txtIncome.setText(incomeTotal.toString() + " " + getString(R.string.currency));
+        txtExpense.setText(expenseTotal.toString()+ " " + getString(R.string.currency));
+        txtTotal.setText(total.toString()+ " " + getString(R.string.currency));
 
         if (total.compareTo(BigDecimal.ZERO) == 0) {
             txtTotal.setTextColor(getResources().getColor(R.color.cuzdan_green));

@@ -27,7 +27,7 @@ public class SavingInfoPage extends Page {
 
     @Override
     public void getReviewItems(ArrayList<ReviewItem> dest) {
-        dest.add(new ReviewItem("Miktar (TL)", mData.getString(AMOUNT_DATA_KEY), getKey(), -1));
+        dest.add(new ReviewItem("Miktar", mData.getString(AMOUNT_DATA_KEY), getKey(), -1));
         dest.add(new ReviewItem("İsim", mData.getString(NAME_DATA_KEY), getKey(), -1));
         dest.add(new ReviewItem("Tekrarla", mData.getString(REPEAT_DATA_KEY), getKey(), -1));
     }

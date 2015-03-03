@@ -316,7 +316,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
 
         TextView txtTotalIncome = (TextView) v.findViewById(R.id.txtSearchIncomeTotal);
 
-        txtTotalIncome.setText(total.toString() + "  TL");
+        txtTotalIncome.setText(total.toString() + " " + getString(R.string.currency));
         txtTotalIncome.setTextColor(Color.parseColor("#216C2A"));
 
     }

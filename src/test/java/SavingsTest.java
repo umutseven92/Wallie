@@ -14,8 +14,10 @@ public class SavingsTest {
 
     @Test
     public void DescriptionTest() {
+
+        String cur = "TL";
         Saving saving = new Saving("Araba", new BigDecimal(350), new Date(), Saving.Period.ThreeMonths, false);
-        String desc = "Araba için, 3 ay sonunda 350.00 TL birikim.";
+        String desc = "Araba için, 3 ay sonunda 350.00 " + cur + " birikim.";
         String methodDesc = saving.GetDescription();
 
         Assert.assertEquals(desc, methodDesc);
@@ -31,4 +33,5 @@ public class SavingsTest {
 
         Assert.assertEquals(expectedLimit, limit);
     }
+
 }

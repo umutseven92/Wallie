@@ -370,7 +370,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
 
         TextView txtTotalExpense = (TextView) v.findViewById(R.id.txtSearchExpenseTotal);
 
-        txtTotalExpense.setText(total.toString() + "  TL");
+        txtTotalExpense.setText(total.toString() + " " + getString(R.string.currency));
         txtTotalExpense.setTextColor(Color.RED);
     }
 
