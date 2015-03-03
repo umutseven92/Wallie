@@ -32,10 +32,10 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
     * ~~İleri gider arama~~
     * ~~Gider grafikleri~~
 
-* 0.3 (Birikim)
+* ~~0.3 (Birikim)~~
   * ~~Birikim dizaynı~~
   * ~~Birikim yaratma~~
-  * Birikim notifikasyonları
+  * ~~Birikim notifikasyonları~~
 
 * 0.4 (Hesap & Ayarlar)
   * Hesap yaratma
