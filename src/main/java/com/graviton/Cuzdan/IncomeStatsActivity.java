@@ -25,9 +25,9 @@ public class IncomeStatsActivity extends FragmentActivity implements ActionBar.T
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.cuzdan_red)));
 
-        actionBar.addTab(actionBar.newTab().setIcon(R.drawable.mag).setTabListener(this));
-        actionBar.addTab(actionBar.newTab().setIcon(R.drawable.pie).setTabListener(this));
-        actionBar.addTab(actionBar.newTab().setIcon(R.drawable.graph).setTabListener(this));
+        actionBar.addTab(actionBar.newTab().setIcon(R.drawable.detail_magnifier).setTabListener(this));
+        actionBar.addTab(actionBar.newTab().setIcon(R.drawable.detail_pie).setTabListener(this));
+        actionBar.addTab(actionBar.newTab().setIcon(R.drawable.detail_graph).setTabListener(this));
     }
 
 

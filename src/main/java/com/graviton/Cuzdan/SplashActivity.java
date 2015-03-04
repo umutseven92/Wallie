@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
@@ -105,17 +106,12 @@ public class SplashActivity extends Activity {
         try {
             if(user.GetBanker().GetSavings().size() > 0)
             {
-                Intent myIntent = new Intent(SplashActivity.this, NotificationAlarmService.class);
-
-                PendingIntent pendingIntent = PendingIntent.getService(SplashActivity.this, 0, myIntent, 0);
-
-                AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Calendar.HOUR_OF_DAY, 19);
                 calendar.set(Calendar.MINUTE, 0);
                 calendar.set(Calendar.SECOND, 0);
-                alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+                SetSavingsNotification(calendar);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -131,5 +127,15 @@ public class SplashActivity extends Activity {
         }, SPLASH_LENGTH);
 
 
+    }
+
+    public void SetSavingsNotification(Calendar calendar)
+    {
+        Intent myIntent = new Intent(SplashActivity.this, NotificationAlarmService.class);
+        PendingIntent pendingIntent = PendingIntent.getService(SplashActivity.this, 0, myIntent, 0);
+
+        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
     }
 }

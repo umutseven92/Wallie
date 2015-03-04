@@ -10,6 +10,7 @@ wizard\ui\ReviewFragment$Callbacks.class
 Helpers\SavingsPageAdapter.class
 Helpers\SettingsPageAdapter.class
 wizard\ui\BalanceInfoFragment.class
+com\graviton\Cuzdan\R$raw.class
 Fragments\ExpenseDialogFragment.class
 com\graviton\Cuzdan\IncomeWizardActivity$1.class
 Helpers\Banker.class
