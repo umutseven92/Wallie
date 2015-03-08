@@ -77,10 +77,13 @@ public class NotificationReceiver extends BroadcastReceiver{
 
                 Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher);
 
+                Intent intentToStart = new Intent(context,SplashActivity.class);
+                PendingIntent pendingIntentToStart = PendingIntent.getActivity(context,0,intentToStart,0);
+
                 Notification noti = new Notification.Builder(context).setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE)
                         .setContentTitle("Cüzdan birikim")
                         .setContentText(message).setSmallIcon(R.drawable.ic_launcher).setLargeIcon(bm)
-                        .setContentIntent(pIntent).build();
+                        .setContentIntent(pendingIntentToStart).build();
                 NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
                 noti.flags |= Notification.FLAG_AUTO_CANCEL;

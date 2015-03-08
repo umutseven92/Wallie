@@ -75,7 +75,7 @@ public class SavingActivity extends Activity {
         }
         else
         {
-            txtDailyLimit.setText(saving.GetDailyLimit().toString());
+            txtDailyLimit.setText(saving.GetDailyLimit().toString() + " " + getString(R.string.currency));
             txtDailyLimit.setTextColor(Color.BLACK);
         }
         if (saving.GetRepeating()) {

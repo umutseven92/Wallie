@@ -46,7 +46,7 @@ public class IncomeListAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             twoLineListItem = (TwoLineListItem) inflater.inflate(
-                    android.R.layout.simple_list_item_2, null);
+                    R.layout.main_list_item, null);
         } else {
             twoLineListItem = (TwoLineListItem) convertView;
         }

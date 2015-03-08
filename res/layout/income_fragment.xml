@@ -40,20 +40,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/lstIncomes"
-                android:layout_alignParentLeft="true" android:layout_marginTop="65dp" android:layout_marginLeft="5dp"
+                android:layout_alignParentLeft="true" android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp" android:divider="@color/outline" android:dividerHeight="1dp"
-                android:choiceMode="singleChoice" android:listSelector="@drawable/list_selector"/>
+                android:choiceMode="singleChoice" android:listSelector="@drawable/list_selector"
+                android:layout_marginTop="26dp" android:layout_marginBottom="40dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Toplam"
-                android:id="@+id/label" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-                android:textColor="#ff000000" android:layout_marginLeft="15dp" android:layout_marginTop="40dp"/>
+                android:id="@+id/label"
+                android:textColor="#ff000000" android:layout_alignParentBottom="true"
+                android:layout_alignLeft="@+id/lstIncomes" android:layout_alignStart="@+id/lstIncomes"
+                android:layout_marginBottom="12dp" android:layout_marginLeft="5dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="total"
                 android:id="@+id/txtTotalIncome" android:layout_alignBottom="@+id/label"
                 android:layout_alignParentRight="true" android:textColor="#ff000000" android:layout_marginRight="15dp"/>
@@ -64,6 +67,12 @@
                 android:text="Small Text"
                 android:id="@+id/txtIncomeDate" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"/>
+        <View
+                android:layout_width="700dp"
+                android:layout_height="1dp"
+                android:background="@color/outline"
+                android:layout_above="@+id/label" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" android:layout_marginBottom="5dp"/>
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="match_parent"

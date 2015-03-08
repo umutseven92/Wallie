@@ -54,24 +54,34 @@
         <ListView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/lstSearchIncomes" android:layout_marginTop="65dp" android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"/>
+                android:id="@+id/lstSearchIncomes" android:layout_marginTop="26dp" android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp" android:divider="@color/outline" android:dividerHeight="1dp"
+                android:layout_marginBottom="45dp"/>
+        <View
+                android:layout_width="700dp"
+                android:layout_height="1dp"
+                android:background="@color/outline"
+                android:layout_above="@+id/textView3" android:layout_alignRight="@+id/lstSearchIncomes"
+                android:layout_alignEnd="@+id/lstSearchIncomes" android:layout_marginBottom="5dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Toplam"
-                android:id="@+id/textView3" android:layout_alignParentTop="true"
-                android:layout_alignLeft="@+id/lstSearchIncomes" android:textColor="#ff000000"
-                android:layout_marginLeft="15dp" android:layout_marginTop="40dp"/>
+                android:id="@+id/textView3"
+                android:textColor="#ff000000"
+                android:layout_alignParentBottom="true" android:layout_alignLeft="@+id/lstSearchIncomes"
+                android:layout_alignStart="@+id/lstSearchIncomes" android:layout_marginBottom="12dp"
+                android:layout_marginLeft="5dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="total"
-                android:id="@+id/txtSearchIncomeTotal" android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true" android:textColor="#ff000000" android:layout_marginRight="15dp"
-                android:layout_marginTop="40dp"/>
+                android:id="@+id/txtSearchIncomeTotal"
+                android:textColor="#ff000000"
+                android:layout_alignTop="@+id/textView3" android:layout_alignRight="@+id/lstSearchIncomes"
+                android:layout_alignEnd="@+id/lstSearchIncomes" android:layout_marginRight="15dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

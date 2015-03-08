@@ -24,7 +24,9 @@ com\graviton\Cuzdan\R$drawable.class
 Helpers\Income.class
 com\graviton\Cuzdan\R$styleable.class
 Fragments\IncomeGraphFragment$3.class
+Fragments\AccountCreateDialogFragment.class
 com\graviton\Cuzdan\R$style.class
+com\graviton\Cuzdan\SplashActivity$2$1.class
 com\graviton\Cuzdan\ExpenseWizardActivity$2.class
 Fragments\IncomeGraphFragment.class
 wizard\model\SavingInfoPage.class
@@ -75,6 +77,7 @@ Fragments\ExpensePieFragment.class
 wizard\model\SingleFixedChoicePage.class
 Fragments\AccountFragment.class
 com\graviton\Cuzdan\MainActivity.class
+Fragments\AccountCreateDialogFragment$1.class
 wizard\ui\PageFragmentCallbacks.class
 com\graviton\Cuzdan\MainActivity$2.class
 wizard\ui\SavingInfoFragment$3.class
@@ -93,6 +96,7 @@ Fragments\ExpensePieFragment$3.class
 Fragments\IncomeDialogFragment$3.class
 Fragments\IncomeSearchFragment$2.class
 Fragments\ExpenseGraphFragment.class
+com\graviton\Cuzdan\SplashActivity$2.class
 wizard\ui\SavingInfoFragment.class
 Fragments\ExpenseGraphFragment$3.class
 com\graviton\Cuzdan\IncomeWizardActivity$MyPagerAdapter.class

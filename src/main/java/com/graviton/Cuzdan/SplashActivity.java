@@ -1,12 +1,16 @@
 package com.graviton.Cuzdan;
 
+import Fragments.AccountCreateDialogFragment;
 import Helpers.JSONHelper;
 import Helpers.User;
 import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import com.google.gson.Gson;
@@ -17,6 +21,7 @@ import java.io.*;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.SynchronousQueue;
 
 
 /**
@@ -34,7 +39,7 @@ public class SplashActivity extends Activity {
 
         User user = null;
 
-        String fileName = "userConfigTest54";
+        String fileName = "userConfigTest61";
         ((Global) this.getApplication()).SetFilePath(fileName);
 
         File file = new File(this.getFilesDir(), fileName);
@@ -127,9 +132,42 @@ public class SplashActivity extends Activity {
 
     public void SetSavingsNotification(Calendar calendar) {
         AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
-
         Intent intent = new Intent(SplashActivity.this, NotificationReceiver.class);
-        PendingIntent event = PendingIntent.getBroadcast(SplashActivity.this, 0, intent, 0);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), event);
+
+        boolean alarmUp = (PendingIntent.getBroadcast(SplashActivity.this, 0, intent, PendingIntent.FLAG_NO_CREATE) != null);
+
+        if(!alarmUp)
+        {
+            PendingIntent event = PendingIntent.getBroadcast(SplashActivity.this, 0, intent, 0);
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, event);
+        }
+    }
+
+    String m;
+
+    public synchronized String GetUser()
+    {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                AlertDialog.Builder alert = new AlertDialog.Builder(SplashActivity.this);
+                alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        m = "Done";
+                        notify();
+                    }
+                });
+                alert.show();
+            }
+        });
+
+        try
+        {
+            wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return m;
     }
 }
