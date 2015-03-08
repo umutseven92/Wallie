@@ -18,7 +18,6 @@ wizard\model\PageTreeNode.class
 com\graviton\Cuzdan\BuildConfig.class
 com\graviton\Cuzdan\SavingActivity.class
 Helpers\ExpenseLoadListener.class
-com\graviton\Cuzdan\NotificationAlarmService.class
 Fragments\ExpenseFragment.class
 com\graviton\Cuzdan\SavingsWizardActivity$3.class
 com\graviton\Cuzdan\R$drawable.class
@@ -77,6 +76,7 @@ wizard\model\SingleFixedChoicePage.class
 Fragments\AccountFragment.class
 com\graviton\Cuzdan\MainActivity.class
 wizard\ui\PageFragmentCallbacks.class
+com\graviton\Cuzdan\MainActivity$2.class
 wizard\ui\SavingInfoFragment$3.class
 Fragments\IncomeFragment$5.class
 wizard\SavingWizardModel.class
@@ -101,6 +101,7 @@ Fragments\IncomeDialogFragment.class
 com\graviton\Cuzdan\SavingsWizardActivity$MyPagerAdapter.class
 wizard\ui\MultipleChoiceFragment$1.class
 Fragments\SavingsFragment$2.class
+com\graviton\Cuzdan\NotificationReceiver.class
 Fragments\IncomeFragment$6.class
 Fragments\ExpenseDialogFragment$1.class
 Helpers\DateFormatHelper.class

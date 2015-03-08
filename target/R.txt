@@ -255,6 +255,7 @@ int string finish_expense 0x7f070008
 int string finish_income 0x7f070007
 int string finish_saving 0x7f070009
 int string hint_desc 0x7f07000d
+int string insufficent_funds 0x7f070016
 int string label_amount 0x7f07000b
 int string label_custom_day 0x7f070011
 int string label_desc 0x7f07000c

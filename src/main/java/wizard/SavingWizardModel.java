@@ -26,7 +26,7 @@ public class SavingWizardModel extends AbstractWizardModel {
                     .addBranch("3 Ay", new SavingInfoPage(this, "Detaylar").setRequired(true))
                     .addBranch("6 Ay", new SavingInfoPage(this, "Detaylar").setRequired(true))
                     .addBranch("1 Yıl", new SavingInfoPage(this, "Detaylar").setRequired(true))
-                    .addBranch("Özel", new SavingCustomInfoPage(this, "Detaylar").setRequired(true))
+                    .addBranch("Özel", new SavingCustomInfoPage(this, "Detaylar").setRequired(true)).setRequired(true)
         );
     }
 }

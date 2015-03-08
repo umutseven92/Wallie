@@ -2,15 +2,18 @@ package com.graviton.Cuzdan;
 
 import Helpers.JSONHelper;
 import Helpers.User;
-import android.app.*;
+import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.*;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
@@ -103,19 +106,12 @@ public class SplashActivity extends Activity {
 
         ((Global) this.getApplication()).SetUser(user);
 
-        try {
-            if(user.GetBanker().GetSavings().size() > 0)
-            {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 19);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        SetSavingsNotification(calendar);
 
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(Calendar.HOUR_OF_DAY, 19);
-                calendar.set(Calendar.MINUTE, 0);
-                calendar.set(Calendar.SECOND, 0);
-                SetSavingsNotification(calendar);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -129,13 +125,11 @@ public class SplashActivity extends Activity {
 
     }
 
-    public void SetSavingsNotification(Calendar calendar)
-    {
-        Intent myIntent = new Intent(SplashActivity.this, NotificationAlarmService.class);
-        PendingIntent pendingIntent = PendingIntent.getService(SplashActivity.this, 0, myIntent, 0);
-
+    public void SetSavingsNotification(Calendar calendar) {
         AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
 
-        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        Intent intent = new Intent(SplashActivity.this, NotificationReceiver.class);
+        PendingIntent event = PendingIntent.getBroadcast(SplashActivity.this, 0, intent, 0);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), event);
     }
 }

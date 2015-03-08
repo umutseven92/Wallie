@@ -18,6 +18,7 @@ import com.graviton.Cuzdan.SavingsWizardActivity;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.ArrayList;
 
@@ -98,7 +99,15 @@ public class SavingsFragment extends Fragment {
             lytSavings.setVisibility(View.VISIBLE);
             txtSavingLimit.setVisibility(View.VISIBLE);
             txtSavingLimitExp.setVisibility(View.VISIBLE);
-            txtSavingLimit.setText(_user.GetBanker().GetTotalSavingLimit().toString() + " " + getString(R.string.currency));
+            if (_user.GetBanker().GetTotalSavingLimit().compareTo(BigDecimal.ZERO) <= 0)
+            {
+                txtSavingLimit.setText(getString(R.string.insufficent_funds));
+            }
+            else
+            {
+                txtSavingLimit.setText(_user.GetBanker().GetTotalSavingLimit().toString() + " " + getString(R.string.currency));
+            }
+
             btnAddSaving.setText("Birikim Ekle");
 
             lv.setAdapter(new SavingListAdapter(this.getActivity(), savings));

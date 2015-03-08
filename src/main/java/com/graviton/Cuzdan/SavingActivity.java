@@ -5,6 +5,7 @@ import Helpers.Saving;
 import Helpers.SavingsHelper;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -66,7 +67,17 @@ public class SavingActivity extends Activity {
         txtAmount.setText(saving.GetAmount().toString() + " " + getString(R.string.currency) + " (Günlük " + saving.GetDailyGoal().toString() + " " + getString(R.string.currency) + ")");
         txtPeriod.setText(SavingsHelper.GetPeriodString(saving.GetPeriod()) + " (" + saving.GetTotalDays(saving.GetPeriod()) + " Gün)");
         txtDesc.setText(saving.GetDescription());
-        txtDailyLimit.setText(saving.GetDailyLimit().toString());
+
+        if(saving.GetDailyLimit().compareTo(BigDecimal.ZERO) <= 0)
+        {
+            txtDailyLimit.setText(R.string.insufficent_funds);
+            txtDailyLimit.setTextColor(Color.RED);
+        }
+        else
+        {
+            txtDailyLimit.setText(saving.GetDailyLimit().toString());
+            txtDailyLimit.setTextColor(Color.BLACK);
+        }
         if (saving.GetRepeating()) {
             txtRep.setText("Evet");
         } else {

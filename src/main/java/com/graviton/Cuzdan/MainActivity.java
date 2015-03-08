@@ -4,6 +4,8 @@ import Fragments.*;
 import Helpers.BudgetPageAdapter;
 import Helpers.SavingsPageAdapter;
 import Helpers.SettingsPageAdapter;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -213,6 +215,23 @@ public class MainActivity extends FragmentActivity {
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .setTitle("Çıkış")
+                .setMessage("Çıkmak istediğinizden emin misiniz?")
+                .setPositiveButton("Evet", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("Hayır", null)
+                .show();
+    }
 }
 
 

@@ -293,6 +293,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int finish_income=0x7f070007;
         public static final int finish_saving=0x7f070009;
         public static final int hint_desc=0x7f07000d;
+        public static final int insufficent_funds=0x7f070016;
         public static final int label_amount=0x7f07000b;
         public static final int label_custom_day=0x7f070011;
         public static final int label_desc=0x7f07000c;
