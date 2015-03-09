@@ -17,7 +17,6 @@ public class User implements Serializable {
 
         assert data != null;
         JSONObject jsonUser = data.getJSONObject("user");
-        _userName = jsonUser.getString("userName");
         _name = jsonUser.getString("name");
         _lastName = jsonUser.getString("lastName");
         _profilePicture = "@drawable/profile.png";
@@ -27,16 +26,6 @@ public class User implements Serializable {
     }
 
     private String _filePath;
-
-    private String _userName;
-
-    public String GetUserName() {
-        return _userName;
-    }
-
-    public void SetString(String userName) {
-        _userName = userName;
-    }
 
     private String _name;
 

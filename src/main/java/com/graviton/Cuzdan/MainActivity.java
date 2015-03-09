@@ -16,11 +16,10 @@ import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +45,8 @@ public class MainActivity extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        boolean first = getIntent().getBooleanExtra("first", false);
         pager = (ViewPager) findViewById(R.id.pager);
 
         title = drawerTitle = getTitle();
@@ -103,6 +104,61 @@ public class MainActivity extends FragmentActivity {
         if (savedInstanceState == null) {
             selectItem(0);
         }
+
+        if (!first) {
+             CreateUserDialog();
+        }
+    }
+
+    private void CreateUserDialog() {
+        final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        LayoutInflater layoutInflater = getLayoutInflater();
+        View accountView = layoutInflater.inflate(R.layout.account_create, null);
+        alert.setView(accountView);
+
+        final EditText txtName = (EditText)accountView.findViewById(R.id.etName);
+        final EditText txtLastName = (EditText)accountView.findViewById(R.id.etLastName);
+
+        alert.setTitle("Merhaba!").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        }).setCancelable(false);
+
+        Spinner spnCurrency = (Spinner)accountView.findViewById(R.id.spnCurrencies);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.currencies, R.layout.cuzdan_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnCurrency.setAdapter(adapter);
+
+        final AlertDialog dialog = alert.create();
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface d) {
+
+                Button b = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                b.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+
+                        if (!txtName.getText().toString().trim().equals("") && !txtLastName.getText().toString().trim().equals("")) {
+
+                            // TODO: Kullanici bilgilerini update et
+
+                            dialog.dismiss();
+                        }
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
+
+        dialog.show();
+
     }
 
     private List<Fragment> GetAccountFragments() {
@@ -217,6 +273,7 @@ public class MainActivity extends FragmentActivity {
 
     @Override
     public void onBackPressed() {
+
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .setTitle("Çıkış")

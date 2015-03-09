@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Bize kendinizden bahsedin."
+            android:id="@+id/textView13" android:layout_marginLeft="15dp" android:layout_marginTop="10dp"
+            android:textColor="@color/cuzdan_green"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/etName"
+            android:layout_below="@+id/textView13" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_marginTop="10dp" android:layout_marginLeft="15dp"
+            android:hint="İsminiz" android:textColor="#ff000000" android:capitalize="sentences"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/etLastName" android:layout_below="@+id/etName" android:layout_alignLeft="@+id/etName"
+            android:layout_alignStart="@+id/etName" android:layout_marginTop="20dp" android:hint="Soy İsminiz"
+            android:textColor="#ff000000" android:capitalize="sentences"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Para Biriminiz:"
+            android:id="@+id/textView18"
+            android:layout_marginTop="25dp" android:layout_below="@+id/etLastName"
+            android:layout_alignLeft="@+id/etLastName" android:layout_alignStart="@+id/etLastName"
+            android:textColor="#ff000000"/>
+    <Spinner
+            android:layout_width="150dp"
+            android:layout_height="35dp"
+            android:id="@+id/spnCurrencies"
+            android:layout_toRightOf="@+id/textView18"
+            android:layout_toEndOf="@+id/textView18" android:layout_marginLeft="10dp"
+            android:layout_marginTop="160dp"/>
+    <Space
+            android:layout_width="20px"
+            android:layout_height="30dp"
+            android:layout_below="@+id/textView18" android:layout_alignLeft="@+id/textView18"
+            android:layout_alignStart="@+id/textView18" android:layout_alignRight="@+id/etLastName"
+            android:layout_alignEnd="@+id/etLastName" android:id="@+id/space"/>
+</RelativeLayout>

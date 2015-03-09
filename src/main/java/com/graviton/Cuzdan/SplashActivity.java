@@ -1,28 +1,18 @@
 package com.graviton.Cuzdan;
 
-import Fragments.AccountCreateDialogFragment;
 import Helpers.JSONHelper;
 import Helpers.User;
 import android.app.Activity;
 import android.app.AlarmManager;
-import android.app.AlertDialog;
 import android.app.PendingIntent;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.*;
 import java.text.ParseException;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.concurrent.SynchronousQueue;
-
 
 /**
  * Created by Umut Seven on 11.11.2014, for Graviton.
@@ -30,6 +20,7 @@ import java.util.concurrent.SynchronousQueue;
 public class SplashActivity extends Activity {
 
     private final int SPLASH_LENGTH = 1200;
+    boolean first = true;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -39,10 +30,10 @@ public class SplashActivity extends Activity {
 
         User user = null;
 
-        String fileName = "userConfigTest61";
+        String fileName = "userConfigTest66";
         ((Global) this.getApplication()).SetFilePath(fileName);
 
-        File file = new File(this.getFilesDir(), fileName);
+        final File file = new File(this.getFilesDir(), fileName);
         JSONObject userInfo = null;
 
         // Dummy data daha bitmedi
@@ -74,13 +65,14 @@ public class SplashActivity extends Activity {
             // Tarih formatı ISO 8601 (YEAR-MONTH-DATE)
             if (!file.exists()) {
 
+                first = true;
+
                 // Kullanıcı yok, JSON üstünden yeni yaratıyoruz
-                String userName = "umutseven92";
                 String firstName = "Umut";
                 String lastName = "Seven";
 
                 try {
-                    userInfo = JSONHelper.CreateStartingJSON(userName, firstName, lastName);
+                    userInfo = JSONHelper.CreateStartingJSON(firstName, lastName);
                     user = new User(userInfo, file.getAbsolutePath(), getApplication());
 
                     user.GetBanker().WriteUserInfo(userInfo.toString());
@@ -91,6 +83,8 @@ public class SplashActivity extends Activity {
             } else {
 
                 // Kullanıcı var, JSON üstünden yüklüyoruz
+                first = false;
+
                 try {
                     StringBuilder sb = new StringBuilder();
                     BufferedReader br = new BufferedReader(new FileReader(file));
@@ -122,6 +116,7 @@ public class SplashActivity extends Activity {
             @Override
             public void run() {
                 Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+                mainIntent.putExtra("first", first);
                 SplashActivity.this.startActivity(mainIntent);
                 SplashActivity.this.finish();
             }
@@ -143,31 +138,4 @@ public class SplashActivity extends Activity {
         }
     }
 
-    String m;
-
-    public synchronized String GetUser()
-    {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                AlertDialog.Builder alert = new AlertDialog.Builder(SplashActivity.this);
-                alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        m = "Done";
-                        notify();
-                    }
-                });
-                alert.show();
-            }
-        });
-
-        try
-        {
-            wait();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return m;
-    }
 }

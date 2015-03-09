@@ -1,14 +1,16 @@
 package com.graviton.Cuzdan;
 
 import Helpers.User;
-import android.app.*;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
-import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,7 +21,7 @@ import java.util.Date;
 /**
  * Created by Umut Seven on 8.3.2015, for Graviton.
  */
-public class NotificationReceiver extends BroadcastReceiver{
+public class NotificationReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
@@ -77,12 +79,13 @@ public class NotificationReceiver extends BroadcastReceiver{
 
                 Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher);
 
-                Intent intentToStart = new Intent(context,SplashActivity.class);
-                PendingIntent pendingIntentToStart = PendingIntent.getActivity(context,0,intentToStart,0);
+                Intent intentToStart = new Intent(context, SplashActivity.class);
+                PendingIntent pendingIntentToStart = PendingIntent.getActivity(context, 0, intentToStart, 0);
 
-                Notification noti = new Notification.Builder(context).setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE)
+                Notification noti = new Notification.Builder(context).setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE)
                         .setContentTitle("Cüzdan birikim")
                         .setContentText(message).setSmallIcon(R.drawable.ic_launcher).setLargeIcon(bm)
+                        .setLights(Color.parseColor("#F39C12"), 5000, 5000)
                         .setContentIntent(pendingIntentToStart).build();
                 NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -90,10 +93,9 @@ public class NotificationReceiver extends BroadcastReceiver{
 
                 notificationManager.notify(0, noti);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-            catch(Exception e){
-                e.printStackTrace();
-            }
 
     }
 

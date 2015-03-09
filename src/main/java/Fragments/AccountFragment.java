@@ -26,12 +26,10 @@ public class AccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.account_fragment, container, false);
-        TextView txtUserName = (TextView) v.findViewById(R.id.txtUserName);
         TextView txtName = (TextView) v.findViewById(R.id.txtName);
         TextView txtVersion = (TextView) v.findViewById(R.id.txtVersion);
 
         _user = ((com.graviton.Cuzdan.Global) getActivity().getApplication()).GetUser();
-        txtUserName.setText(_user.GetUserName());
         txtName.setText(_user.GetName() + " " + _user.GetLastName());
         txtVersion.setText(R.string.version);
         return v;
