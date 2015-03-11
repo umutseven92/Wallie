@@ -115,20 +115,17 @@ public class SavingsWizardActivity extends FragmentActivity implements PageFragm
             Saving saving;
             Banker banker = ((Global) getApplication()).GetUser().GetBanker();
 
-            if(!period.equals("Özel"))
-            {
+            if (!period.equals("Özel")) {
                 amount = new BigDecimal(p.getData().getString(SavingInfoPage.AMOUNT_DATA_KEY));
                 name = p.getData().getString(SavingInfoPage.NAME_DATA_KEY);
                 repeat = p.getData().getBoolean(SavingInfoPage.REPEAT_BOOL_KEY);
                 saving = new Saving(name, amount, new Date(), banker.GetPeriodFromTurkishString(period), repeat);
-            }
-            else
-            {
+            } else {
                 amount = new BigDecimal(p.getData().getString(SavingCustomInfoPage.AMOUNT_DATA_KEY));
                 name = p.getData().getString(SavingCustomInfoPage.NAME_DATA_KEY);
                 repeat = p.getData().getBoolean(SavingCustomInfoPage.REPEAT_BOOL_KEY);
                 int customDays = Integer.parseInt(p.getData().getString(SavingCustomInfoPage.CUSTOM_DAY_KEY));
-                saving = new Saving(name,amount,new Date(),customDays,repeat);
+                saving = new Saving(name, amount, new Date(), customDays, repeat);
             }
 
             try {

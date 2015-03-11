@@ -106,7 +106,7 @@ public class MainActivity extends FragmentActivity {
         }
 
         if (!first) {
-             CreateUserDialog();
+            CreateUserDialog();
         }
     }
 
@@ -116,8 +116,8 @@ public class MainActivity extends FragmentActivity {
         View accountView = layoutInflater.inflate(R.layout.account_create, null);
         alert.setView(accountView);
 
-        final EditText txtName = (EditText)accountView.findViewById(R.id.etName);
-        final EditText txtLastName = (EditText)accountView.findViewById(R.id.etLastName);
+        final EditText txtName = (EditText) accountView.findViewById(R.id.etName);
+        final EditText txtLastName = (EditText) accountView.findViewById(R.id.etLastName);
 
         alert.setTitle("Merhaba!").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
@@ -126,7 +126,7 @@ public class MainActivity extends FragmentActivity {
             }
         }).setCancelable(false);
 
-        Spinner spnCurrency = (Spinner)accountView.findViewById(R.id.spnCurrencies);
+        Spinner spnCurrency = (Spinner) accountView.findViewById(R.id.spnCurrencies);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.currencies, R.layout.cuzdan_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -278,8 +278,7 @@ public class MainActivity extends FragmentActivity {
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .setTitle("Çıkış")
                 .setMessage("Çıkmak istediğinizden emin misiniz?")
-                .setPositiveButton("Evet", new DialogInterface.OnClickListener()
-                {
+                .setPositiveButton("Evet", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         finish();

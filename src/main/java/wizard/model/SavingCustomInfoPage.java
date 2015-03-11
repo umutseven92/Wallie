@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by Umut Seven on 2.3.2015, for Graviton.
  */
-public class SavingCustomInfoPage extends Page{
+public class SavingCustomInfoPage extends Page {
 
     public static final String AMOUNT_DATA_KEY = "amount";
     public static final String NAME_DATA_KEY = "name";

@@ -29,13 +29,10 @@ public class Saving {
         this.SetCustomDays(Integer.parseInt(jsonSaving.getString("customDays")));
         int days;
 
-        if(this.GetPeriod() == Period.Custom)
-        {
+        if (this.GetPeriod() == Period.Custom) {
             days = Integer.parseInt(jsonSaving.getString("customDays"));
             this.SetDescription(jsonSaving.getString("name"), days, new BigDecimal(jsonSaving.getDouble("amount")));
-        }
-        else
-        {
+        } else {
             days = _periodDayDict.get(this.GetPeriod());
             this.SetDescription(jsonSaving.getString("name"), _periodDayDict.get(GetPeriodFromString(jsonSaving.getString("period"))), new BigDecimal(jsonSaving.getDouble("amount")));
         }
@@ -76,7 +73,7 @@ public class Saving {
         this.SetDate(date);
         this.SetCustomDays(customDays);
         this.SetPeriod(Period.Custom);
-        this.SetDescription(name,customDays, amount);
+        this.SetDescription(name, customDays, amount);
         this.SetRepeating(repeating);
 
         this.SetProgress(BigDecimal.ZERO);
@@ -115,8 +112,7 @@ public class Saving {
     }
 
     public int GetTotalDays(Period period) {
-        if(period == Period.Custom)
-        {
+        if (period == Period.Custom) {
             return GetCustomDays();
         }
         return _periodDayDict.get(period);
@@ -175,8 +171,7 @@ public class Saving {
     }
 
     public int GetDays(Period period) {
-        if(period == Period.Custom)
-        {
+        if (period == Period.Custom) {
             return GetCustomDays();
         }
         return _periodDayDict.get(period);
@@ -278,13 +273,11 @@ public class Saving {
 
     private int _customDays = 0;
 
-    public void SetCustomDays(int customDays)
-    {
+    public void SetCustomDays(int customDays) {
         _customDays = customDays;
     }
 
-    public int GetCustomDays()
-    {
+    public int GetCustomDays() {
         return _customDays;
     }
 }

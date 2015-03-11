@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.*;
 import java.text.ParseException;
 import java.util.Calendar;
@@ -30,7 +31,7 @@ public class SplashActivity extends Activity {
 
         User user = null;
 
-        String fileName = "userConfigTest67";
+        String fileName = "userConfigTest68";
         ((Global) this.getApplication()).SetFilePath(fileName);
 
         final File file = new File(this.getFilesDir(), fileName);
@@ -131,13 +132,12 @@ public class SplashActivity extends Activity {
     }
 
     public void SetNotification(Calendar calendar, Class receiver) {
-        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         Intent intent = new Intent(SplashActivity.this, receiver);
 
         boolean alarmUp = (PendingIntent.getBroadcast(SplashActivity.this, 0, intent, PendingIntent.FLAG_NO_CREATE) != null);
 
-        if(!alarmUp)
-        {
+        if (!alarmUp) {
             PendingIntent event = PendingIntent.getBroadcast(SplashActivity.this, 0, intent, 0);
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, event);
         }

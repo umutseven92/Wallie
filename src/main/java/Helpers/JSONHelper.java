@@ -22,7 +22,7 @@ public class JSONHelper {
                 "\t\t\"expenses\": [],\n" +
                 "\t\t\"savings\": []\n" +
                 "\t}\n" +
-                "}\n" , firstName, lastName);
+                "}\n", firstName, lastName);
 
         return new JSONObject(userSettings);
     }

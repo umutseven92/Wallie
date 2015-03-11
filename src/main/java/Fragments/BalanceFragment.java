@@ -224,8 +224,8 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         TextView txtTotal = (TextView) infView.findViewById(R.id.txtBalance);
 
         txtIncome.setText(incomeTotal.toString() + " " + getString(R.string.currency));
-        txtExpense.setText(expenseTotal.toString()+ " " + getString(R.string.currency));
-        txtTotal.setText(total.toString()+ " " + getString(R.string.currency));
+        txtExpense.setText(expenseTotal.toString() + " " + getString(R.string.currency));
+        txtTotal.setText(total.toString() + " " + getString(R.string.currency));
 
         if (total.compareTo(BigDecimal.ZERO) == 0) {
             txtTotal.setTextColor(getResources().getColor(R.color.cuzdan_green));
