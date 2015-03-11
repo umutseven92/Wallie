@@ -101,10 +101,12 @@ public class SavingsFragment extends Fragment {
             txtSavingLimitExp.setVisibility(View.VISIBLE);
             if (_user.GetBanker().GetTotalSavingLimit().compareTo(BigDecimal.ZERO) <= 0)
             {
-                txtSavingLimit.setText(getString(R.string.insufficent_funds));
+                txtSavingLimitExp.setVisibility(View.INVISIBLE);
+                txtSavingLimit.setText("Birikim yapabilmek için gelir ekleyin.");
             }
             else
             {
+                txtSavingLimitExp.setVisibility(View.VISIBLE);
                 txtSavingLimit.setText(_user.GetBanker().GetTotalSavingLimit().toString() + " " + getString(R.string.currency));
             }
 

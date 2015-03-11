@@ -105,6 +105,24 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
             }
 
         }
+
+        try {
+            int sav = _user.GetBanker().GetSavingsCount();
+            BigDecimal bal = _user.GetBanker().GetBalance(new Date(), true);
+            BigDecimal savL = _user.GetBanker().GetTotalSavingLimit();
+
+            int comp = bal.compareTo(savL);
+
+            if( sav > 0 && comp <= 0)
+            {
+                // Birikim hedefinizi astiniz diye toast gostericez
+                Toast toast = Toast.makeText(this.getActivity(),"Birikim hedefinizi aştınız.", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         super.onResume();
     }
 

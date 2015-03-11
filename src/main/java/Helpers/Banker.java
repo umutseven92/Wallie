@@ -633,22 +633,8 @@ public class Banker implements Serializable {
         JSONArray expenses = userJSON.getJSONArray("expenses");
         JSONArray savings = userJSON.getJSONArray("savings");
 
-        String userSettings = String.format("{\n" +
-                "\t\"user\": {\n" +
-                "\t\t\"userName\": \"%s\",\n" +
-                "\t\t\"birthDate\": \"1992-08-05\",\n" +
-                "\t\t\"name\": \"%s\",\n" +
-                "\t\t\"lastName\": \"%s\",\n" +
-                "\t\t\"city\": \"Istanbul\",\n" +
-                "\t\t\"email\": \"umutseven92@gmail.com\",\n" +
-                "\n" +
-                "\t\t\"incomes\": [],\n" +
-                "\t\t\"expenses\": [],\n" +
-                "\t\t\"savings\": []\n" +
-                "\t}\n" +
-                "}\n", userJSON.getString("userName"), userJSON.getString("name"), userJSON.getString("lastName"));
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"),userJSON.getString("lastName"));
 
-        JSONObject userInfo = new JSONObject(userSettings);
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
         JSONArray newSavings = userInfo.getJSONObject("user").getJSONArray("savings");
@@ -712,22 +698,7 @@ public class Banker implements Serializable {
         JSONArray expenses = userJSON.getJSONArray("expenses");
         JSONArray savings = userJSON.getJSONArray("savings");
 
-        String userSettings = String.format("{\n" +
-                "\t\"user\": {\n" +
-                "\t\t\"userName\": \"%s\",\n" +
-                "\t\t\"birthDate\": \"1992-08-05\",\n" +
-                "\t\t\"name\": \"%s\",\n" +
-                "\t\t\"lastName\": \"%s\",\n" +
-                "\t\t\"city\": \"Istanbul\",\n" +
-                "\t\t\"email\": \"umutseven92@gmail.com\",\n" +
-                "\n" +
-                "\t\t\"incomes\": [],\n" +
-                "\t\t\"expenses\": [],\n" +
-                "\t\t\"savings\": []\n" +
-                "\t}\n" +
-                "}\n", userJSON.getString("userName"), userJSON.getString("name"), userJSON.getString("lastName"));
-
-        JSONObject userInfo = new JSONObject(userSettings);
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"));
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
         JSONArray newSavings = userInfo.getJSONObject("user").getJSONArray("savings");
@@ -772,22 +743,7 @@ public class Banker implements Serializable {
         JSONArray expenses = userJSON.getJSONArray("expenses");
         JSONArray savings = userJSON.getJSONArray("savings");
 
-        String userSettings = String.format("{\n" +
-                "\t\"user\": {\n" +
-                "\t\t\"userName\": \"%s\",\n" +
-                "\t\t\"birthDate\": \"1992-08-05\",\n" +
-                "\t\t\"name\": \"%s\",\n" +
-                "\t\t\"lastName\": \"%s\",\n" +
-                "\t\t\"city\": \"Istanbul\",\n" +
-                "\t\t\"email\": \"umutseven92@gmail.com\",\n" +
-                "\n" +
-                "\t\t\"incomes\": [],\n" +
-                "\t\t\"expenses\": [],\n" +
-                "\t\t\"savings\": []\n" +
-                "\t}\n" +
-                "}\n", userJSON.getString("userName"), userJSON.getString("name"), userJSON.getString("lastName"));
-
-        JSONObject userInfo = new JSONObject(userSettings);
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"));
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
         JSONArray newSavings = userInfo.getJSONObject("user").getJSONArray("savings");

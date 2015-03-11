@@ -21,7 +21,7 @@ import java.util.Date;
 /**
  * Created by Umut Seven on 8.3.2015, for Graviton.
  */
-public class NotificationReceiver extends BroadcastReceiver {
+public class SavingsNotificationReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
@@ -73,17 +73,13 @@ public class NotificationReceiver extends BroadcastReceiver {
                     message = "Birikim hedefinizi " + offset.toString() + " " + context.getString(R.string.currency) + " aştınız.";
                 }
 
-
-                PendingIntent pIntent = PendingIntent.getActivity(context, 0, intent, 0);
-                Uri notificationSoundPath = Uri.parse("android.resource://com.graviton.Cuzdan/" + R.raw.cuzdan_notification);
-
                 Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher);
 
                 Intent intentToStart = new Intent(context, SplashActivity.class);
                 PendingIntent pendingIntentToStart = PendingIntent.getActivity(context, 0, intentToStart, 0);
 
-                Notification noti = new Notification.Builder(context).setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE)
-                        .setContentTitle("Cüzdan birikim")
+                Notification noti = new Notification.Builder(context)
+                        .setContentTitle("Cüzdan Birikim")
                         .setContentText(message).setSmallIcon(R.drawable.ic_launcher).setLargeIcon(bm)
                         .setLights(Color.parseColor("#F39C12"), 5000, 5000)
                         .setContentIntent(pendingIntentToStart).build();

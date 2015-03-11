@@ -30,7 +30,7 @@ public class SplashActivity extends Activity {
 
         User user = null;
 
-        String fileName = "userConfigTest66";
+        String fileName = "userConfigTest67";
         ((Global) this.getApplication()).SetFilePath(fileName);
 
         final File file = new File(this.getFilesDir(), fileName);
@@ -106,11 +106,16 @@ public class SplashActivity extends Activity {
         ((Global) this.getApplication()).SetUser(user);
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 19);
+        calendar.set(Calendar.HOUR_OF_DAY, 8);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
-        SetSavingsNotification(calendar);
+        SetNotification(calendar, SavingsNotificationReceiver.class);
 
+        Calendar calendarReminder = Calendar.getInstance();
+        calendarReminder.set(Calendar.HOUR_OF_DAY, 14);
+        calendarReminder.set(Calendar.MINUTE, 0);
+        calendarReminder.set(Calendar.SECOND, 0);
+        SetNotification(calendarReminder, ReminderNotificationReceiver.class);
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -125,9 +130,9 @@ public class SplashActivity extends Activity {
 
     }
 
-    public void SetSavingsNotification(Calendar calendar) {
+    public void SetNotification(Calendar calendar, Class receiver) {
         AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
-        Intent intent = new Intent(SplashActivity.this, NotificationReceiver.class);
+        Intent intent = new Intent(SplashActivity.this, receiver);
 
         boolean alarmUp = (PendingIntent.getBroadcast(SplashActivity.this, 0, intent, PendingIntent.FLAG_NO_CREATE) != null);
 

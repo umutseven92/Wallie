@@ -1,6 +1,7 @@
 package Fragments;
 
 import Helpers.*;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import com.graviton.Cuzdan.IncomeWizardActivity;
 import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 
+import javax.xml.datatype.Duration;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -103,6 +105,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                 e.printStackTrace();
             }
         }
+
         super.onResume();
 
     }
