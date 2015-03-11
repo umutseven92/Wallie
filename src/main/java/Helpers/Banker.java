@@ -606,6 +606,15 @@ public class Banker implements Serializable {
         WriteUserInfo(mainJSON.toString());
     }
 
+    public void UpdateUserInfo(String name, String lastName) throws JSONException, IOException {
+
+        String main = ReadUserInfo();
+        main = main.replace("defName",name).replace("defLastName", lastName);
+        JSONObject mainJSON = new JSONObject(main);
+
+        WriteUserInfo(mainJSON.toString());
+    }
+
     /**
      * Birikim ekleme metodu.
      *

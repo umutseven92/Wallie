@@ -4,6 +4,7 @@ import Fragments.*;
 import Helpers.BudgetPageAdapter;
 import Helpers.SavingsPageAdapter;
 import Helpers.SettingsPageAdapter;
+import Helpers.User;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
@@ -20,7 +21,9 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+import org.json.JSONException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,7 +108,7 @@ public class MainActivity extends FragmentActivity {
             selectItem(0);
         }
 
-        if (!first) {
+        if (first) {
              CreateUserDialog();
         }
     }
@@ -145,13 +148,25 @@ public class MainActivity extends FragmentActivity {
                     @Override
                     public void onClick(View view) {
 
-                        if (!txtName.getText().toString().trim().equals("") && !txtLastName.getText().toString().trim().equals("")) {
+                        String name = txtName.getText().toString().trim();
+                        String lastName = txtLastName.getText().toString().trim();
+
+                        if (!name.equals("") && !lastName.equals("")) {
 
                             // TODO: Kullanici bilgilerini update et
+                            try {
+                                User user = ((Global)getApplication()).GetUser();
+                                user.GetBanker().UpdateUserInfo(name, lastName);
+                                user.SetName(name);
+                                user.SetLastName(lastName);
 
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                             dialog.dismiss();
                         }
-                        dialog.dismiss();
                     }
                 });
             }

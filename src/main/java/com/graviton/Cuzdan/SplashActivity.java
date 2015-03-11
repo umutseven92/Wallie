@@ -30,7 +30,7 @@ public class SplashActivity extends Activity {
 
         User user = null;
 
-        String fileName = "userConfigTest67";
+        String fileName = "userConfigTest76";
         ((Global) this.getApplication()).SetFilePath(fileName);
 
         final File file = new File(this.getFilesDir(), fileName);
@@ -68,8 +68,8 @@ public class SplashActivity extends Activity {
                 first = true;
 
                 // Kullanıcı yok, JSON üstünden yeni yaratıyoruz
-                String firstName = "Umut";
-                String lastName = "Seven";
+                String firstName = "defName";
+                String lastName = "defLastName";
 
                 try {
                     userInfo = JSONHelper.CreateStartingJSON(firstName, lastName);
