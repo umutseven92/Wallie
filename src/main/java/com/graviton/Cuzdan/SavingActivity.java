@@ -68,13 +68,10 @@ public class SavingActivity extends Activity {
         txtPeriod.setText(SavingsHelper.GetPeriodString(saving.GetPeriod()) + " (" + saving.GetTotalDays(saving.GetPeriod()) + " Gün)");
         txtDesc.setText(saving.GetDescription());
 
-        if(saving.GetDailyLimit().compareTo(BigDecimal.ZERO) <= 0)
-        {
+        if (saving.GetDailyLimit().compareTo(BigDecimal.ZERO) <= 0) {
             txtDailyLimit.setText(R.string.insufficent_funds);
             txtDailyLimit.setTextColor(Color.RED);
-        }
-        else
-        {
+        } else {
             txtDailyLimit.setText(saving.GetDailyLimit().toString() + " " + getString(R.string.currency));
             txtDailyLimit.setTextColor(Color.BLACK);
         }

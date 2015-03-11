@@ -20,13 +20,13 @@ public class SavingWizardModel extends AbstractWizardModel {
                 new SavingInfoPage(this, "Detaylar").setRequired(true)
         ); */
         return new PageList(
-            new BranchPage(this, "Dönem")
-                    .addBranch("Hafta", new SavingInfoPage(this, "Detaylar").setRequired(true))
-                    .addBranch("Ay", new SavingInfoPage(this, "Detaylar").setRequired(true))
-                    .addBranch("3 Ay", new SavingInfoPage(this, "Detaylar").setRequired(true))
-                    .addBranch("6 Ay", new SavingInfoPage(this, "Detaylar").setRequired(true))
-                    .addBranch("1 Yıl", new SavingInfoPage(this, "Detaylar").setRequired(true))
-                    .addBranch("Özel", new SavingCustomInfoPage(this, "Detaylar").setRequired(true)).setRequired(true)
+                new BranchPage(this, "Dönem")
+                        .addBranch("Hafta", new SavingInfoPage(this, "Detaylar").setRequired(true))
+                        .addBranch("Ay", new SavingInfoPage(this, "Detaylar").setRequired(true))
+                        .addBranch("3 Ay", new SavingInfoPage(this, "Detaylar").setRequired(true))
+                        .addBranch("6 Ay", new SavingInfoPage(this, "Detaylar").setRequired(true))
+                        .addBranch("1 Yıl", new SavingInfoPage(this, "Detaylar").setRequired(true))
+                        .addBranch("Özel", new SavingCustomInfoPage(this, "Detaylar").setRequired(true)).setRequired(true)
         );
     }
 }

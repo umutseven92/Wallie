@@ -74,8 +74,7 @@ public class SavingInfoFragment extends Fragment {
     }
 
     @Override
-    public void onResume()
-    {
+    public void onResume() {
         super.onResume();
         String test = SavingInfoPage.SIMPLE_DATA_KEY;
     }

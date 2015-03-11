@@ -41,8 +41,8 @@ public class SavingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.savings_fragment, container, false);
 
-        txtSavingLimit = (TextView)v.findViewById(R.id.txtTotalDailyLimit);
-        txtSavingLimitExp = (TextView)v.findViewById(R.id.txtTotalDailyLimitExp);
+        txtSavingLimit = (TextView) v.findViewById(R.id.txtTotalDailyLimit);
+        txtSavingLimitExp = (TextView) v.findViewById(R.id.txtTotalDailyLimitExp);
 
         lytNoSavings = (RelativeLayout) v.findViewById(R.id.lytEmptySavings);
         lytSavings = (RelativeLayout) v.findViewById(R.id.lytSavingsList);
@@ -99,13 +99,10 @@ public class SavingsFragment extends Fragment {
             lytSavings.setVisibility(View.VISIBLE);
             txtSavingLimit.setVisibility(View.VISIBLE);
             txtSavingLimitExp.setVisibility(View.VISIBLE);
-            if (_user.GetBanker().GetTotalSavingLimit().compareTo(BigDecimal.ZERO) <= 0)
-            {
+            if (_user.GetBanker().GetTotalSavingLimit().compareTo(BigDecimal.ZERO) <= 0) {
                 txtSavingLimitExp.setVisibility(View.INVISIBLE);
                 txtSavingLimit.setText("Birikim yapabilmek için gelir ekleyin.");
-            }
-            else
-            {
+            } else {
                 txtSavingLimitExp.setVisibility(View.VISIBLE);
                 txtSavingLimit.setText(_user.GetBanker().GetTotalSavingLimit().toString() + " " + getString(R.string.currency));
             }

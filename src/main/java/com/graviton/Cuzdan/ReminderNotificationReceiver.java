@@ -13,7 +13,7 @@ import android.graphics.Color;
 /**
  * Created by Umut Seven on 11.3.2015, for Graviton.
  */
-public class ReminderNotificationReceiver extends BroadcastReceiver{
+public class ReminderNotificationReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 

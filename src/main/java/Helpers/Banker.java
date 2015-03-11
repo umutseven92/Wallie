@@ -153,7 +153,7 @@ public class Banker implements Serializable {
                 "\t\t\t\t\t\"date\": \"%s\",\n" +
                 "\t\t\t\t\t\"customDays\": \"%s\",\n" +
                 "\t\t\t\t\t\"repeating\": \"%s\"\n" +
-                "\t\t\t\t}", saving.GetID(), saving.GetName(), saving.GetAmount(), GetPeriodString(saving.GetPeriod()), date,saving.GetCustomDays(), saving.GetRepeating());
+                "\t\t\t\t}", saving.GetID(), saving.GetName(), saving.GetAmount(), GetPeriodString(saving.GetPeriod()), date, saving.GetCustomDays(), saving.GetRepeating());
 
         return new JSONObject(json);
     }
@@ -642,7 +642,7 @@ public class Banker implements Serializable {
         JSONArray expenses = userJSON.getJSONArray("expenses");
         JSONArray savings = userJSON.getJSONArray("savings");
 
-        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"),userJSON.getString("lastName"));
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"));
 
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
@@ -775,24 +775,20 @@ public class Banker implements Serializable {
 
     }
 
-    public BigDecimal GetTotalSavingLimit()
-    {
+    public BigDecimal GetTotalSavingLimit() {
         BigDecimal main = BigDecimal.ZERO;
         BigDecimal temp;
 
         boolean first = true;
 
-        for (Saving s : _savings)
-        {
-            if(first)
-            {
+        for (Saving s : _savings) {
+            if (first) {
                 main = s.GetDailyLimit();
                 first = false;
             }
 
             temp = s.GetDailyLimit();
-            if(temp.compareTo(main) == -1)
-            {
+            if (temp.compareTo(main) == -1) {
                 main = temp;
             }
 
@@ -830,19 +826,15 @@ public class Banker implements Serializable {
                 // Birikim silinecek
                 savingsToDelete.add(s);
 
-                if(compProgress == 0 || compProgress == 1)
-                {
+                if (compProgress == 0 || compProgress == 1) {
                     // Birikim amacina ulasti
-                }
-                else
-                {
+                } else {
                     // Birikim basarisiz
                 }
 
-                if(s.GetRepeating())
-                {
+                if (s.GetRepeating()) {
                     // Birikim tekrar edilecek
-                    Saving savingToRepeat = new Saving(s.GetName(),s.GetAmount(),s.GetDate(),s.GetPeriod(),s.GetRepeating());
+                    Saving savingToRepeat = new Saving(s.GetName(), s.GetAmount(), s.GetDate(), s.GetPeriod(), s.GetRepeating());
                     AddSaving(savingToRepeat);
                 }
 

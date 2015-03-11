@@ -113,10 +113,9 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
 
             int comp = bal.compareTo(savL);
 
-            if( sav > 0 && comp <= 0)
-            {
+            if (sav > 0 && comp <= 0) {
                 // Birikim hedefinizi astiniz diye toast gostericez
-                Toast toast = Toast.makeText(this.getActivity(),"Birikim hedefinizi aştınız.", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(this.getActivity(), "Birikim hedefinizi aştınız.", Toast.LENGTH_SHORT);
                 toast.show();
             }
 
