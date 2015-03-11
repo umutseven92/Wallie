@@ -36,8 +36,7 @@ public class AccountFragment extends Fragment {
     }
 
     @Override
-    public void onResume()
-    {
+    public void onResume() {
         txtName.setText(_user.GetName() + " " + _user.GetLastName());
         super.onResume();
     }
