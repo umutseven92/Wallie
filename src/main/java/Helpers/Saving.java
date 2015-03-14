@@ -15,7 +15,14 @@ import java.util.UUID;
  */
 public class Saving {
 
-    public Saving(JSONObject jsonSaving) throws JSONException, ParseException {
+    /**
+     * Varolan birikimlerin yuklendigi yer.
+     *
+     * @param jsonSaving    Tek JSON birikim
+     * @throws JSONException
+     * @throws ParseException
+     */
+    public Saving(JSONObject jsonSaving, String currency) throws JSONException, ParseException {
         InitializePeriodDayDict();
         this.SetID(jsonSaving.getString("id"));
         this.SetName(jsonSaving.getString("name"));
@@ -44,9 +51,19 @@ public class Saving {
 
         BigDecimal daily = this.GetAmount().divide(new BigDecimal(days), BigDecimal.ROUND_DOWN);
         this.SetDailyGoal(daily);
+        _currency = currency;
     }
 
-    public Saving(String name, BigDecimal amount, Date date, Period period, boolean repeating) {
+    /**
+     * Sabit gunlu (ozel olmayan) birikimin yaratildigi metod.
+     *
+     * @param name  Birikim adi
+     * @param amount    Birikim miktari
+     * @param date  Birikim tarihi
+     * @param period    Birikim donemi
+     * @param repeating Birikim tekrarli mi degil mi
+     */
+    public Saving(String name, BigDecimal amount, Date date, Period period, boolean repeating, String currency) {
         InitializePeriodDayDict();
         this.GenerateID();
         this.SetName(name);
@@ -62,10 +79,20 @@ public class Saving {
         this.SetRemainingDays(days);
         BigDecimal daily = this.GetAmount().divide(new BigDecimal(days), BigDecimal.ROUND_DOWN);
         this.SetDailyGoal(daily);
+        _currency = currency;
 
     }
 
-    public Saving(String name, BigDecimal amount, Date date, int customDays, boolean repeating) {
+    /**
+     * Ozel gunlu birikimin yaratildigi metod.
+     *
+     * @param name  Birikim adi
+     * @param amount    Birikim miktari
+     * @param date  Birikim tarihi
+     * @param customDays    Birikim gunleri
+     * @param repeating Birikim tekrarli mi degil mi
+     */
+    public Saving(String name, BigDecimal amount, Date date, int customDays, boolean repeating, String currency) {
         InitializePeriodDayDict();
         this.GenerateID();
         this.SetName(name);
@@ -81,8 +108,11 @@ public class Saving {
         this.SetRemainingDays(customDays);
         BigDecimal daily = this.GetAmount().divide(new BigDecimal(customDays), BigDecimal.ROUND_DOWN);
         this.SetDailyGoal(daily);
+        _currency = currency;
 
     }
+
+    private String _currency;
 
     private final int DAY = 1;
     private final int WEEK = 7;
@@ -163,7 +193,7 @@ public class Saving {
     private String _desription;
 
     private void SetDescription(String name, int totalDays, BigDecimal amount) {
-        _desription = SavingsHelper.CreateDescription(name, totalDays, amount);
+        _desription = SavingsHelper.CreateDescription(name, totalDays, amount, _currency);
     }
 
     public String GetDescription() {

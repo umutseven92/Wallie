@@ -104,7 +104,7 @@ public class SavingsFragment extends Fragment {
                 txtSavingLimit.setText("Birikim yapabilmek için gelir ekleyin.");
             } else {
                 txtSavingLimitExp.setVisibility(View.VISIBLE);
-                txtSavingLimit.setText(_user.GetBanker().GetTotalSavingLimit().toString() + " " + getString(R.string.currency));
+                txtSavingLimit.setText(_user.GetBanker().GetTotalSavingLimit().toString() + " " + _user.GetCurrency());
             }
 
             btnAddSaving.setText("Birikim Ekle");

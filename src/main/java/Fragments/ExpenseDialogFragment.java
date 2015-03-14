@@ -1,9 +1,6 @@
 package Fragments;
 
-import Helpers.Banker;
-import Helpers.DateFormatHelper;
-import Helpers.Expense;
-import Helpers.ExpenseLoadListener;
+import Helpers.*;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -15,6 +12,7 @@ import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 
+import javax.jws.soap.SOAPBinding;
 import java.io.IOException;
 
 
@@ -29,8 +27,8 @@ public class ExpenseDialogFragment extends DialogFragment {
         Bundle bundle = getArguments();
         final Expense expense = new Gson().fromJson(bundle.getString("expense"), Expense.class);
         boolean canDelete = bundle.getBoolean("canDelete");
-
-        String message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", "Tarih:", DateFormatHelper.GetDayText(expense.GetDate()), "Gider Türü:", expense.GetTurkishStringTag(), "Kategori:", expense.GetCategory(), "Alt Kategori:", expense.GetSubCategory(), "Miktar:", expense.GetAmount().toString() + " " + getString(R.string.currency), "Açıklama:", expense.GetDescription());
+        User user = ((Global)getActivity().getApplication()).GetUser();
+        String message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", "Tarih:", DateFormatHelper.GetDayText(expense.GetDate()), "Gider Türü:", expense.GetTurkishStringTag(), "Kategori:", expense.GetCategory(), "Alt Kategori:", expense.GetSubCategory(), "Miktar:", expense.GetAmount().toString() + " " + user.GetCurrency(), "Açıklama:", expense.GetDescription());
 
         if (canDelete) {
             builder.setTitle("Detaylar")

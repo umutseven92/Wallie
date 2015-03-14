@@ -1,9 +1,6 @@
 package Fragments;
 
-import Helpers.Banker;
-import Helpers.DateFormatHelper;
-import Helpers.Income;
-import Helpers.IncomeLoadListener;
+import Helpers.*;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -29,8 +26,8 @@ public class IncomeDialogFragment extends DialogFragment {
         Bundle bundle = getArguments();
         final Income income = new Gson().fromJson(bundle.getString("income"), Income.class);
         boolean canDelete = bundle.getBoolean("canDelete");
-
-        String message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", "Tarih:", DateFormatHelper.GetDayText(income.GetDate()), "Kategori:", income.GetCategory(), "Alt Kategori:", income.GetSubCategory(), "Miktar:", income.GetAmount().toString() + " " + getString(R.string.currency), "Açıklama:", income.GetDescription());
+        User user = ((Global)getActivity().getApplication()).GetUser();
+        String message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", "Tarih:", DateFormatHelper.GetDayText(income.GetDate()), "Kategori:", income.GetCategory(), "Alt Kategori:", income.GetSubCategory(), "Miktar:", income.GetAmount().toString() + " " + user.GetCurrency(), "Açıklama:", income.GetDescription());
 
         if (canDelete) {
             builder.setTitle("Detaylar")

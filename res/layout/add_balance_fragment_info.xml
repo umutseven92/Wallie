@@ -37,7 +37,6 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:saveEnabled="false"
-                      android:hint="@string/currency"
                       android:layout_marginBottom="16dp" android:inputType="number|numberDecimal"/>
 
             <TextView style="@style/WizardFormLabel"

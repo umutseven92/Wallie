@@ -15,7 +15,7 @@ public class JSONTest {
         boolean valid;
 
         try {
-            JSONObject jsonToTest = JSONHelper.CreateStartingJSON("user", "name");
+            JSONObject jsonToTest = JSONHelper.CreateStartingJSON("user", "name", "TL");
             valid = true;
         } catch (JSONException e) {
             valid = false;

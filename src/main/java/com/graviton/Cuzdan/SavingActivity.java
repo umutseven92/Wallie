@@ -3,6 +3,7 @@ package com.graviton.Cuzdan;
 import Helpers.Banker;
 import Helpers.Saving;
 import Helpers.SavingsHelper;
+import Helpers.User;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -31,7 +32,9 @@ public class SavingActivity extends Activity {
         Bundle b = in.getExtras();
         final Saving saving = new Gson().fromJson(b.getString("saving"), Saving.class);
 
-        final Banker banker = ((Global) getApplication()).GetUser().GetBanker();
+        User user = ((Global) getApplication()).GetUser();
+
+        final Banker banker = user.GetBanker();
 
         TextView txtName = (TextView) findViewById(R.id.txtSavingName);
         TextView txtAmount = (TextView) findViewById(R.id.txtSavingAmount);
@@ -64,7 +67,7 @@ public class SavingActivity extends Activity {
         pb.setProgress(savProgress.intValue());
 
         txtName.setText(saving.GetName());
-        txtAmount.setText(saving.GetAmount().toString() + " " + getString(R.string.currency) + " (Günlük " + saving.GetDailyGoal().toString() + " " + getString(R.string.currency) + ")");
+        txtAmount.setText(saving.GetAmount().toString() + " " + user.GetCurrency() + " (Günlük " + saving.GetDailyGoal().toString() + " " + user.GetCurrency() + ")");
         txtPeriod.setText(SavingsHelper.GetPeriodString(saving.GetPeriod()) + " (" + saving.GetTotalDays(saving.GetPeriod()) + " Gün)");
         txtDesc.setText(saving.GetDescription());
 
@@ -72,7 +75,7 @@ public class SavingActivity extends Activity {
             txtDailyLimit.setText(R.string.insufficent_funds);
             txtDailyLimit.setTextColor(Color.RED);
         } else {
-            txtDailyLimit.setText(saving.GetDailyLimit().toString() + " " + getString(R.string.currency));
+            txtDailyLimit.setText(saving.GetDailyLimit().toString() + " " + user.GetCurrency());
             txtDailyLimit.setTextColor(Color.BLACK);
         }
         if (saving.GetRepeating()) {
@@ -81,7 +84,7 @@ public class SavingActivity extends Activity {
             txtRep.setText("Hayır");
         }
         txtDaysPast.setText(saving.GetRemainingDays() + " Gün");
-        txtSavedAmount.setText(savProgress.toString() + " " + getString(R.string.currency));
+        txtSavedAmount.setText(savProgress.toString() + " " + user.GetCurrency());
     }
 
 }

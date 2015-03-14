@@ -27,7 +27,7 @@ public class SavingsHelper {
      * @param amount    Birikim miktari
      * @return Birikim aciklamasi
      */
-    public static String CreateDescription(String name, int totalDays, BigDecimal amount) {
+    public static String CreateDescription(String name, int totalDays, BigDecimal amount, String currency) {
 
         String namePart = String.format("%s için, ", name);
         String periodPart = "";
@@ -53,7 +53,7 @@ public class SavingsHelper {
             totalDays -= days * DAY;
         }
 
-        String amountPart = String.format("sonunda %s TL birikim.", amount.setScale(2, BigDecimal.ROUND_DOWN).toString());
+        String amountPart = String.format("sonunda %s " + currency + " birikim.", amount.setScale(2, BigDecimal.ROUND_DOWN).toString());
 
         return namePart + periodPart + amountPart;
 

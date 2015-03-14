@@ -108,73 +108,8 @@ public class MainActivity extends FragmentActivity {
             selectItem(0);
         }
 
-        if (first) {
-            CreateUserDialog();
-        }
     }
 
-    private void CreateUserDialog() {
-        final AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        LayoutInflater layoutInflater = getLayoutInflater();
-        View accountView = layoutInflater.inflate(R.layout.account_create, null);
-        alert.setView(accountView);
-
-        final EditText txtName = (EditText) accountView.findViewById(R.id.etName);
-        final EditText txtLastName = (EditText) accountView.findViewById(R.id.etLastName);
-
-        alert.setTitle("Merhaba!").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        }).setCancelable(false);
-
-        Spinner spnCurrency = (Spinner) accountView.findViewById(R.id.spnCurrencies);
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.currencies, R.layout.cuzdan_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnCurrency.setAdapter(adapter);
-
-        final AlertDialog dialog = alert.create();
-        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-
-        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface d) {
-
-                Button b = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-                b.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View view) {
-
-                        String name = txtName.getText().toString().trim();
-                        String lastName = txtLastName.getText().toString().trim();
-
-                        if (!name.equals("") && !lastName.equals("")) {
-
-                            // TODO: Kullanici bilgilerini update et
-                            try {
-                                User user = ((Global) getApplication()).GetUser();
-                                user.GetBanker().UpdateUserInfo(name, lastName);
-                                user.SetName(name);
-                                user.SetLastName(lastName);
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            dialog.dismiss();
-                        }
-                    }
-                });
-            }
-        });
-
-        dialog.show();
-
-    }
 
     private List<Fragment> GetAccountFragments() {
         List<Fragment> fList = new ArrayList<Fragment>();

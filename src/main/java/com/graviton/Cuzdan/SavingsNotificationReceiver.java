@@ -67,10 +67,10 @@ public class SavingsNotificationReceiver extends BroadcastReceiver {
                     message = "Birikim hedefinize ulaştınız";
                 } else if (todayBalance.compareTo(todayLimit) == 1) {
                     BigDecimal offset = todayBalance.subtract(todayLimit).setScale(2, BigDecimal.ROUND_DOWN);
-                    message = "Bugün içinde " + offset.toString() + " " + context.getString(R.string.currency) + " daha harcayabilirsiniz.";
+                    message = "Bugün içinde " + offset.toString() + " " + user.GetCurrency() + " daha harcayabilirsiniz.";
                 } else if (todayBalance.compareTo(todayLimit) == -1) {
                     BigDecimal offset = todayLimit.subtract(todayBalance).setScale(2, BigDecimal.ROUND_DOWN);
-                    message = "Birikim hedefinizi " + offset.toString() + " " + context.getString(R.string.currency) + " aştınız.";
+                    message = "Birikim hedefinizi " + offset.toString() + " " + user.GetCurrency() + " aştınız.";
                 }
 
                 Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher);

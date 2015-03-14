@@ -19,15 +19,26 @@ public class User implements Serializable {
         JSONObject jsonUser = data.getJSONObject("user");
         _name = jsonUser.getString("name");
         _lastName = jsonUser.getString("lastName");
-        _profilePicture = "@drawable/profile.png";
         this._filePath = filePath;
         _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"), jsonUser.getJSONArray("savings"), this._filePath, app);
-
+        _currency = jsonUser.getString("currency");
     }
 
     private String _filePath;
 
     private String _name;
+
+    private String _currency;
+
+    public void SetCurrency(String currency)
+    {
+        _currency = currency;
+    }
+
+    public String GetCurrency()
+    {
+        return _currency;
+    }
 
     public String GetName() {
         return _name;
@@ -45,16 +56,6 @@ public class User implements Serializable {
 
     public void SetLastName(String lastName) {
         _lastName = lastName;
-    }
-
-    private String _profilePicture;
-
-    public String GetProfilePicture() {
-        return _profilePicture;
-    }
-
-    public void SetProfilePicture(String profilePicture) {
-        _profilePicture = profilePicture;
     }
 
     private Banker _banker;

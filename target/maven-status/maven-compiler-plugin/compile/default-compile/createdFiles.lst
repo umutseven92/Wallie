@@ -24,7 +24,6 @@ com\graviton\Cuzdan\R$drawable.class
 Helpers\Income.class
 com\graviton\Cuzdan\R$styleable.class
 Fragments\IncomeGraphFragment$3.class
-com\graviton\Cuzdan\MainActivity$3$1.class
 com\graviton\Cuzdan\R$style.class
 com\graviton\Cuzdan\ExpenseWizardActivity$2.class
 Fragments\IncomeGraphFragment.class
@@ -32,6 +31,7 @@ wizard\model\SavingInfoPage.class
 com\graviton\Cuzdan\R$id.class
 Helpers\SavingsHelper.class
 Helpers\Expense$Tags.class
+com\graviton\Cuzdan\SplashActivity$3$1.class
 com\graviton\Cuzdan\SavingsNotificationReceiver.class
 com\graviton\Cuzdan\IncomeWizardActivity$2.class
 wizard\ui\StepPagerStrip.class
@@ -57,12 +57,14 @@ Fragments\ExpenseFragment$3.class
 wizard\model\SavingCustomInfoPage.class
 com\graviton\Cuzdan\R$color.class
 Fragments\IncomeGraphFragment$2.class
+com\graviton\Cuzdan\SplashActivity$3$1$1.class
 Fragments\IncomeSearchFragment$3.class
 com\graviton\Cuzdan\R$attr.class
 wizard\model\PageList.class
 Fragments\IncomeSearchFragment$4.class
 com\graviton\Cuzdan\IncomeStatsActivity.class
 Fragments\BalanceFragment$1.class
+com\graviton\Cuzdan\SplashActivity$3.class
 wizard\model\MultipleFixedChoicePage.class
 Fragments\ExpenseFragment$6.class
 wizard\ui\MultipleChoiceFragment.class
@@ -96,8 +98,8 @@ Fragments\ExpensePieFragment$3.class
 Fragments\IncomeDialogFragment$3.class
 Fragments\IncomeSearchFragment$2.class
 Fragments\ExpenseGraphFragment.class
+com\graviton\Cuzdan\SplashActivity$2.class
 wizard\ui\SavingInfoFragment.class
-com\graviton\Cuzdan\MainActivity$3.class
 Fragments\ExpenseGraphFragment$3.class
 com\graviton\Cuzdan\IncomeWizardActivity$MyPagerAdapter.class
 wizard\IncomeWizardModel.class
@@ -141,7 +143,6 @@ wizard\ui\ReviewFragment$1.class
 com\graviton\Cuzdan\Global.class
 wizard\ui\SavingCustomInfoFragment.class
 Fragments\ExpenseSearchFragment$3.class
-com\graviton\Cuzdan\MainActivity$4.class
 wizard\ui\SavingCustomInfoFragment$3.class
 Fragments\SavingsFragment.class
 com\graviton\Cuzdan\SavingsWizardActivity$2.class

@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:weightSum="1" android:background="@drawable/main_layout">
 
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp" android:layout_gravity="center_horizontal"
-            android:layout_weight="0.99">
-
-        <Helpers.RoundedImageView
-                android:layout_width="128dp"
-                android:layout_height="128dp"
-                android:id="@+id/imgProfile"
-                android:src="@drawable/profile"
-                android:contentDescription="img"
-                android:layout_centerHorizontal="true" android:layout_marginTop="15dp" android:scaleType="fitXY"/>
+            android:layout_height="fill_parent" android:layout_gravity="center_horizontal"
+            android:layout_weight="0.06" android:id="@+id/relativeLayout8">
 
         <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" android:layout_below="@+id/imgProfile"
-                android:layout_alignParentLeft="true">
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true" android:layout_marginTop="10dp" android:id="@+id/relativeLayout9">
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -29,12 +21,44 @@
                     android:text="Name + LastName"
                     android:id="@+id/txtName"
                     android:textColor="#ff000000"
-                    android:layout_centerHorizontal="true" android:layout_marginTop="10dp" android:textSize="28sp"/>
+                    android:layout_centerHorizontal="true" android:layout_marginTop="10dp" android:textSize="35sp"/>
         </RelativeLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Para Birimi: "
+                android:id="@+id/textView19" android:layout_below="@+id/relativeLayout9"
+                android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
+                android:layout_marginLeft="30dp" android:layout_marginStart="27dp" android:layout_marginTop="47dp"
+                android:textColor="#ff000000"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="CUR"
+                android:id="@+id/txtAccountCurrency"
+                android:layout_alignTop="@+id/textView19" android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" android:layout_marginRight="30dp" android:textColor="#ff000000"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Bildirimler: "
+                android:id="@+id/textView20" android:layout_below="@+id/textView19"
+                android:layout_alignLeft="@+id/textView19" android:layout_alignStart="@+id/textView19"
+                android:layout_marginTop="25dp" android:textColor="#ff000000"/>
+        <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/swcAccountSaving"
+                android:layout_alignTop="@+id/textView20" android:layout_alignParentRight="true" android:textOn="Açık" android:textOff="Kapalı"
+                android:layout_alignParentEnd="true" android:layout_marginRight="30dp" android:enabled="false"/>
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="50dp" android:layout_marginTop="250dp">
+            android:layout_height="50dp" android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,4 +68,4 @@
                 android:layout_alignParentRight="true" android:layout_marginRight="10dp"
                 />
     </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>

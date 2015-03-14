@@ -78,6 +78,10 @@ public class Banker implements Serializable {
         return GetSavings().size();
     }
 
+    public void UpdateApplication(Application app)
+    {
+        mainApp = app;
+    }
 
     public Period GetPeriodFromTurkishString(String turkishPeriod) {
         Period per = null;
@@ -195,7 +199,8 @@ public class Banker implements Serializable {
     public void LoadSavings(JSONArray jsonSavings) throws Exception {
         _savings = new ArrayList<Saving>();
         for (int i = 0; i < jsonSavings.length(); i++) {
-            Saving saving = new Saving(jsonSavings.getJSONObject(i));
+            Application app = mainApp;
+            Saving saving = new Saving(jsonSavings.getJSONObject(i), ((Global)mainApp).GetUser().GetCurrency());
             _savings.add(saving);
         }
         CheckSavings();
@@ -606,15 +611,6 @@ public class Banker implements Serializable {
         WriteUserInfo(mainJSON.toString());
     }
 
-    public void UpdateUserInfo(String name, String lastName) throws JSONException, IOException {
-
-        String main = ReadUserInfo();
-        main = main.replace("defName", name).replace("defLastName", lastName);
-        JSONObject mainJSON = new JSONObject(main);
-
-        WriteUserInfo(mainJSON.toString());
-    }
-
     /**
      * Birikim ekleme metodu.
      *
@@ -642,7 +638,7 @@ public class Banker implements Serializable {
         JSONArray expenses = userJSON.getJSONArray("expenses");
         JSONArray savings = userJSON.getJSONArray("savings");
 
-        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"));
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"));
 
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
@@ -707,7 +703,7 @@ public class Banker implements Serializable {
         JSONArray expenses = userJSON.getJSONArray("expenses");
         JSONArray savings = userJSON.getJSONArray("savings");
 
-        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"));
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"));
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
         JSONArray newSavings = userInfo.getJSONObject("user").getJSONArray("savings");
@@ -752,7 +748,7 @@ public class Banker implements Serializable {
         JSONArray expenses = userJSON.getJSONArray("expenses");
         JSONArray savings = userJSON.getJSONArray("savings");
 
-        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"));
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"));
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
         JSONArray newSavings = userInfo.getJSONObject("user").getJSONArray("savings");
@@ -834,7 +830,7 @@ public class Banker implements Serializable {
 
                 if (s.GetRepeating()) {
                     // Birikim tekrar edilecek
-                    Saving savingToRepeat = new Saving(s.GetName(), s.GetAmount(), s.GetDate(), s.GetPeriod(), s.GetRepeating());
+                    Saving savingToRepeat = new Saving(s.GetName(), s.GetAmount(), s.GetDate(), s.GetPeriod(), s.GetRepeating(), ((Global)mainApp).GetUser().GetCurrency());
                     AddSaving(savingToRepeat);
                 }
 
