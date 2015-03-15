@@ -140,7 +140,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int etName=0x7f0b0001;
         public static final int expenseGraph=0x7f0b003d;
         public static final int expensePieChart=0x7f0b0043;
-        public static final int imageView2=0x7f0b0099;
+        public static final int imageView2=0x7f0b009a;
         public static final int imgExpenseGraphLeft=0x7f0b003b;
         public static final int imgExpenseGraphRight=0x7f0b003c;
         public static final int imgExpensePieLeft=0x7f0b0041;
@@ -249,6 +249,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int txtExpenseGraphDate=0x7f0b003a;
         public static final int txtIncomeDate=0x7f0b005a;
         public static final int txtIncomeGraphDate=0x7f0b005f;
+        public static final int txtInsufficentLimit=0x7f0b0099;
         public static final int txtName=0x7f0b0008;
         public static final int txtSavedAmount=0x7f0b008e;
         public static final int txtSavingAmount=0x7f0b0082;

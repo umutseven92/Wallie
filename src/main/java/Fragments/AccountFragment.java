@@ -30,7 +30,7 @@ public class AccountFragment extends Fragment {
         View v = inflater.inflate(R.layout.account_fragment, container, false);
         txtName = (TextView) v.findViewById(R.id.txtName);
         txtCurrency = (TextView) v.findViewById(R.id.txtAccountCurrency);
-        swcSaving = (Switch)v.findViewById(R.id.swcAccountSaving);
+        swcSaving = (Switch) v.findViewById(R.id.swcAccountSaving);
 
         TextView txtVersion = (TextView) v.findViewById(R.id.txtVersion);
 

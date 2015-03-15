@@ -75,5 +75,13 @@
                 android:layout_alignTop="@+id/txtTotalDailyLimitExp" android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" android:layout_marginRight="15dp"
                 android:textColor="@color/cuzdan_red"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Birikim yapabilmek için gelir ekleyin."
+                android:id="@+id/txtInsufficentLimit"
+                android:layout_alignTop="@+id/txtTotalDailyLimitExp" android:layout_centerHorizontal="true"
+                android:textColor="@color/cuzdan_red"/>
     </RelativeLayout>
 </RelativeLayout>

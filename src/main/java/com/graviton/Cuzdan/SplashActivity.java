@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import org.json.JSONObject;
+
 import java.io.*;
 import java.util.Calendar;
 
@@ -60,7 +61,6 @@ public class SplashActivity extends Activity {
 
                 User user = new User(new JSONObject(sb.toString()), file.getAbsolutePath(), getApplication());
                 ((Global) this.getApplication()).SetUser(user);
-                user.GetBanker().UpdateApplication(this.getApplication());
                 SetNotifications();
 
                 new Handler().postDelayed(new Runnable() {
@@ -92,7 +92,6 @@ public class SplashActivity extends Activity {
         user.GetBanker().WriteUserInfo(userInf.toString());
 
         ((Global) this.getApplication()).SetUser(user);
-        user.GetBanker().UpdateApplication(this.getApplication());
         SetNotifications();
     }
 

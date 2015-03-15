@@ -27,7 +27,7 @@ public class ExpenseDialogFragment extends DialogFragment {
         Bundle bundle = getArguments();
         final Expense expense = new Gson().fromJson(bundle.getString("expense"), Expense.class);
         boolean canDelete = bundle.getBoolean("canDelete");
-        User user = ((Global)getActivity().getApplication()).GetUser();
+        User user = ((Global) getActivity().getApplication()).GetUser();
         String message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", "Tarih:", DateFormatHelper.GetDayText(expense.GetDate()), "Gider Türü:", expense.GetTurkishStringTag(), "Kategori:", expense.GetCategory(), "Alt Kategori:", expense.GetSubCategory(), "Miktar:", expense.GetAmount().toString() + " " + user.GetCurrency(), "Açıklama:", expense.GetDescription());
 
         if (canDelete) {

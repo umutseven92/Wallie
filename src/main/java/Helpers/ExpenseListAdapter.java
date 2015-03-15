@@ -19,10 +19,12 @@ public class ExpenseListAdapter extends BaseAdapter {
 
     private Context context;
     private ArrayList<Expense> expenses;
+    private String currency;
 
-    public ExpenseListAdapter(Context context, ArrayList<Expense> expenses) {
+    public ExpenseListAdapter(Context context, ArrayList<Expense> expenses, String currency) {
         this.context = context;
         this.expenses = expenses;
+        this.currency = currency;
     }
 
     @Override
@@ -56,7 +58,7 @@ public class ExpenseListAdapter extends BaseAdapter {
         TextView text1 = twoLineListItem.getText1();
         TextView text2 = twoLineListItem.getText2();
         text1.setText(expenses.get(position).GetCategory());
-        text2.setText(expenses.get(position).GetAmount().toString() + " " + context.getString(R.string.currency));
+        text2.setText(expenses.get(position).GetAmount().toString() + " " + currency);
 
         return twoLineListItem;
     }

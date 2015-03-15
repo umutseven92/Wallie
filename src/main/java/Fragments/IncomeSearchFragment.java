@@ -312,7 +312,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
             BigDecimal val = income.GetAmount();
             total = total.add(val);
         }
-        lv.setAdapter(new IncomeListAdapter(this.getActivity(), cleanedIncomes));
+        lv.setAdapter(new IncomeListAdapter(this.getActivity(), cleanedIncomes, _user.GetCurrency()));
 
         TextView txtTotalIncome = (TextView) v.findViewById(R.id.txtSearchIncomeTotal);
 

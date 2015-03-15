@@ -17,10 +17,12 @@ import java.util.ArrayList;
 public class SavingListAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<Saving> savings;
+    private String currency;
 
-    public SavingListAdapter(Context context, ArrayList<Saving> savings) {
+    public SavingListAdapter(Context context, ArrayList<Saving> savings, String currency) {
         this.context = context;
         this.savings = savings;
+        this.currency = currency;
     }
 
     @Override
@@ -55,7 +57,7 @@ public class SavingListAdapter extends BaseAdapter {
         TextView text2 = twoLineListItem.getText2();
 
         text1.setText(savings.get(position).GetName());
-        text2.setText(savings.get(position).GetAmount().toString() + " " + context.getString(R.string.currency));
+        text2.setText(savings.get(position).GetAmount().toString() + " " + currency);
 
         return twoLineListItem;
 

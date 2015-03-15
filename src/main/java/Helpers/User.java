@@ -20,8 +20,8 @@ public class User implements Serializable {
         _name = jsonUser.getString("name");
         _lastName = jsonUser.getString("lastName");
         this._filePath = filePath;
-        _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"), jsonUser.getJSONArray("savings"), this._filePath, app);
         _currency = jsonUser.getString("currency");
+        _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"), jsonUser.getJSONArray("savings"), this._filePath, app, _currency);
     }
 
     private String _filePath;
@@ -30,13 +30,11 @@ public class User implements Serializable {
 
     private String _currency;
 
-    public void SetCurrency(String currency)
-    {
+    public void SetCurrency(String currency) {
         _currency = currency;
     }
 
-    public String GetCurrency()
-    {
+    public String GetCurrency() {
         return _currency;
     }
 

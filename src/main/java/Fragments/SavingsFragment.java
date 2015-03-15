@@ -29,7 +29,7 @@ public class SavingsFragment extends Fragment {
     RelativeLayout lytNoSavings, lytSavings;
     Button btnAddSaving;
     ListView lv;
-    TextView txtSavingLimitExp, txtSavingLimit;
+    TextView txtSavingLimitExp, txtSavingLimit, txtInsufficent;
 
     public static final SavingsFragment newInstance() {
         SavingsFragment f = new SavingsFragment();
@@ -43,6 +43,7 @@ public class SavingsFragment extends Fragment {
 
         txtSavingLimit = (TextView) v.findViewById(R.id.txtTotalDailyLimit);
         txtSavingLimitExp = (TextView) v.findViewById(R.id.txtTotalDailyLimitExp);
+        txtInsufficent = (TextView) v.findViewById(R.id.txtInsufficentLimit);
 
         lytNoSavings = (RelativeLayout) v.findViewById(R.id.lytEmptySavings);
         lytSavings = (RelativeLayout) v.findViewById(R.id.lytSavingsList);
@@ -93,6 +94,7 @@ public class SavingsFragment extends Fragment {
             lytSavings.setVisibility(View.INVISIBLE);
             txtSavingLimit.setVisibility(View.INVISIBLE);
             txtSavingLimitExp.setVisibility(View.INVISIBLE);
+            txtInsufficent.setVisibility(View.INVISIBLE);
             btnAddSaving.setText("Birikime Başla");
         } else if (savingsCount > 0) {
             lytNoSavings.setVisibility(View.INVISIBLE);
@@ -101,15 +103,18 @@ public class SavingsFragment extends Fragment {
             txtSavingLimitExp.setVisibility(View.VISIBLE);
             if (_user.GetBanker().GetTotalSavingLimit().compareTo(BigDecimal.ZERO) <= 0) {
                 txtSavingLimitExp.setVisibility(View.INVISIBLE);
-                txtSavingLimit.setText("Birikim yapabilmek için gelir ekleyin.");
+                txtSavingLimit.setVisibility(View.INVISIBLE);
+                txtInsufficent.setVisibility(View.VISIBLE);
             } else {
                 txtSavingLimitExp.setVisibility(View.VISIBLE);
+                txtSavingLimit.setVisibility(View.VISIBLE);
                 txtSavingLimit.setText(_user.GetBanker().GetTotalSavingLimit().toString() + " " + _user.GetCurrency());
+                txtInsufficent.setVisibility(View.INVISIBLE);
             }
 
             btnAddSaving.setText("Birikim Ekle");
 
-            lv.setAdapter(new SavingListAdapter(this.getActivity(), savings));
+            lv.setAdapter(new SavingListAdapter(this.getActivity(), savings, _user.GetCurrency()));
         }
     }
 

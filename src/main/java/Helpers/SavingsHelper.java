@@ -20,7 +20,7 @@ public class SavingsHelper {
 
     /**
      * Birikimin user-friendly aciklamasini yaratiyoruz.
-     * Ornek: "Araba icin, 1 yil 4 ay 3 hafta 2 gun sonunda 14000 TL birikim"
+     * Ornek: "Araba icin, 1 yil 4 ay 3 hafta 2 gun sonunda 14000 TRY birikim"
      *
      * @param name      Birikim sebebi
      * @param totalDays Yil / ay / haftaya cevrilecek toplam gun sayisi

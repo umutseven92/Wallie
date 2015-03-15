@@ -106,7 +106,7 @@ int id etLastName 0x7f0b0002
 int id etName 0x7f0b0001
 int id expenseGraph 0x7f0b003d
 int id expensePieChart 0x7f0b0043
-int id imageView2 0x7f0b0099
+int id imageView2 0x7f0b009a
 int id imgExpenseGraphLeft 0x7f0b003b
 int id imgExpenseGraphRight 0x7f0b003c
 int id imgExpensePieLeft 0x7f0b0041
@@ -215,6 +215,7 @@ int id txtExpenseDate 0x7f0b0035
 int id txtExpenseGraphDate 0x7f0b003a
 int id txtIncomeDate 0x7f0b005a
 int id txtIncomeGraphDate 0x7f0b005f
+int id txtInsufficentLimit 0x7f0b0099
 int id txtName 0x7f0b0008
 int id txtSavedAmount 0x7f0b008e
 int id txtSavingAmount 0x7f0b0082

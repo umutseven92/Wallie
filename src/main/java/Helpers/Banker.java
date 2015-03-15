@@ -29,11 +29,12 @@ public class Banker implements Serializable {
      * @throws JSONException
      * @throws ParseException
      */
-    public Banker(JSONArray incomes, JSONArray expenses, JSONArray savings, String filePath, Application app) throws Exception {
+    public Banker(JSONArray incomes, JSONArray expenses, JSONArray savings, String filePath, Application app, String currency) throws Exception {
         _incomes = new ArrayList<Income>();
         _expenses = new ArrayList<Expense>();
         _savings = new ArrayList<Saving>();
         mainApp = app;
+        _currency = currency;
         this.filePath = filePath;
         LoadBalance(incomes, expenses);
         LoadSavings(savings);
@@ -44,6 +45,8 @@ public class Banker implements Serializable {
     private ArrayList<Income> _incomes;
 
     private String filePath;
+
+    private String _currency;
 
     public ArrayList<Income> GetIncomes() {
         return _incomes;
@@ -76,11 +79,6 @@ public class Banker implements Serializable {
 
     public int GetSavingsCount() throws Exception {
         return GetSavings().size();
-    }
-
-    public void UpdateApplication(Application app)
-    {
-        mainApp = app;
     }
 
     public Period GetPeriodFromTurkishString(String turkishPeriod) {
@@ -199,8 +197,7 @@ public class Banker implements Serializable {
     public void LoadSavings(JSONArray jsonSavings) throws Exception {
         _savings = new ArrayList<Saving>();
         for (int i = 0; i < jsonSavings.length(); i++) {
-            Application app = mainApp;
-            Saving saving = new Saving(jsonSavings.getJSONObject(i), ((Global)mainApp).GetUser().GetCurrency());
+            Saving saving = new Saving(jsonSavings.getJSONObject(i), _currency);
             _savings.add(saving);
         }
         CheckSavings();
@@ -830,7 +827,7 @@ public class Banker implements Serializable {
 
                 if (s.GetRepeating()) {
                     // Birikim tekrar edilecek
-                    Saving savingToRepeat = new Saving(s.GetName(), s.GetAmount(), s.GetDate(), s.GetPeriod(), s.GetRepeating(), ((Global)mainApp).GetUser().GetCurrency());
+                    Saving savingToRepeat = new Saving(s.GetName(), s.GetAmount(), s.GetDate(), s.GetPeriod(), s.GetRepeating(), ((Global) mainApp).GetUser().GetCurrency());
                     AddSaving(savingToRepeat);
                 }
 

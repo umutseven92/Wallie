@@ -17,10 +17,12 @@ import java.util.ArrayList;
 public class IncomeListAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<Income> incomes;
+    private String currency;
 
-    public IncomeListAdapter(Context context, ArrayList<Income> incomes) {
+    public IncomeListAdapter(Context context, ArrayList<Income> incomes, String currency) {
         this.context = context;
         this.incomes = incomes;
+        this.currency = currency;
     }
 
     @Override
@@ -55,7 +57,7 @@ public class IncomeListAdapter extends BaseAdapter {
         TextView text2 = twoLineListItem.getText2();
 
         text1.setText(incomes.get(position).GetCategory());
-        text2.setText(incomes.get(position).GetAmount().toString() + " " + context.getString(R.string.currency));
+        text2.setText(incomes.get(position).GetAmount().toString() + " " + currency);
 
         return twoLineListItem;
     }

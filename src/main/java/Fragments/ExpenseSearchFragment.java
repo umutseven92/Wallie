@@ -366,7 +366,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
             BigDecimal val = expense.GetAmount();
             total = total.add(val);
         }
-        lv.setAdapter(new ExpenseListAdapter(this.getActivity(), cleanedExpenses));
+        lv.setAdapter(new ExpenseListAdapter(this.getActivity(), cleanedExpenses, _user.GetCurrency()));
 
         TextView txtTotalExpense = (TextView) v.findViewById(R.id.txtSearchExpenseTotal);
 

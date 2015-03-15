@@ -18,12 +18,13 @@ public class Saving {
     /**
      * Varolan birikimlerin yuklendigi yer.
      *
-     * @param jsonSaving    Tek JSON birikim
+     * @param jsonSaving Tek JSON birikim
      * @throws JSONException
      * @throws ParseException
      */
     public Saving(JSONObject jsonSaving, String currency) throws JSONException, ParseException {
         InitializePeriodDayDict();
+        _currency = currency;
         this.SetID(jsonSaving.getString("id"));
         this.SetName(jsonSaving.getString("name"));
         this.SetAmount(new BigDecimal(jsonSaving.getDouble("amount")));
@@ -51,20 +52,20 @@ public class Saving {
 
         BigDecimal daily = this.GetAmount().divide(new BigDecimal(days), BigDecimal.ROUND_DOWN);
         this.SetDailyGoal(daily);
-        _currency = currency;
     }
 
     /**
      * Sabit gunlu (ozel olmayan) birikimin yaratildigi metod.
      *
-     * @param name  Birikim adi
+     * @param name      Birikim adi
      * @param amount    Birikim miktari
-     * @param date  Birikim tarihi
+     * @param date      Birikim tarihi
      * @param period    Birikim donemi
      * @param repeating Birikim tekrarli mi degil mi
      */
     public Saving(String name, BigDecimal amount, Date date, Period period, boolean repeating, String currency) {
         InitializePeriodDayDict();
+        _currency = currency;
         this.GenerateID();
         this.SetName(name);
         this.SetAmount(amount);
@@ -79,21 +80,20 @@ public class Saving {
         this.SetRemainingDays(days);
         BigDecimal daily = this.GetAmount().divide(new BigDecimal(days), BigDecimal.ROUND_DOWN);
         this.SetDailyGoal(daily);
-        _currency = currency;
-
     }
 
     /**
      * Ozel gunlu birikimin yaratildigi metod.
      *
-     * @param name  Birikim adi
-     * @param amount    Birikim miktari
-     * @param date  Birikim tarihi
-     * @param customDays    Birikim gunleri
-     * @param repeating Birikim tekrarli mi degil mi
+     * @param name       Birikim adi
+     * @param amount     Birikim miktari
+     * @param date       Birikim tarihi
+     * @param customDays Birikim gunleri
+     * @param repeating  Birikim tekrarli mi degil mi
      */
     public Saving(String name, BigDecimal amount, Date date, int customDays, boolean repeating, String currency) {
         InitializePeriodDayDict();
+        _currency = currency;
         this.GenerateID();
         this.SetName(name);
         this.SetAmount(amount);
@@ -108,8 +108,6 @@ public class Saving {
         this.SetRemainingDays(customDays);
         BigDecimal daily = this.GetAmount().divide(new BigDecimal(customDays), BigDecimal.ROUND_DOWN);
         this.SetDailyGoal(daily);
-        _currency = currency;
-
     }
 
     private String _currency;
@@ -193,7 +191,7 @@ public class Saving {
     private String _desription;
 
     private void SetDescription(String name, int totalDays, BigDecimal amount) {
-        _desription = SavingsHelper.CreateDescription(name, totalDays, amount, _currency);
+        _desription = SavingsHelper.CreateDescription(name, totalDays, amount, this._currency);
     }
 
     public String GetDescription() {
