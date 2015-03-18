@@ -21,7 +21,6 @@ import wizard.model.Page;
 import wizard.ui.PageFragmentCallbacks;
 import wizard.ui.ReviewFragment;
 import wizard.ui.StepPagerStrip;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Date;

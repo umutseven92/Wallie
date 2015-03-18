@@ -48,6 +48,7 @@ Helpers\ExpenseListAdapter.class
 Fragments\ExpenseDialogFragment$3.class
 com\graviton\Cuzdan\SavingActivity$1.class
 Fragments\IncomePieFragment$2.class
+Fragments\AccountFragment$4.class
 com\graviton\Cuzdan\ExpenseWizardActivity$1.class
 com\graviton\Cuzdan\ExpenseWizardActivity$4.class
 wizard\ui\SavingInfoFragment$1.class
@@ -61,6 +62,7 @@ com\graviton\Cuzdan\SplashActivity$3$1$1.class
 Fragments\IncomeSearchFragment$3.class
 com\graviton\Cuzdan\R$attr.class
 wizard\model\PageList.class
+Fragments\AccountFragment$5.class
 Fragments\IncomeSearchFragment$4.class
 com\graviton\Cuzdan\IncomeStatsActivity.class
 Fragments\BalanceFragment$1.class
@@ -102,6 +104,7 @@ com\graviton\Cuzdan\SplashActivity$2.class
 wizard\ui\SavingInfoFragment.class
 Fragments\ExpenseGraphFragment$3.class
 com\graviton\Cuzdan\IncomeWizardActivity$MyPagerAdapter.class
+Fragments\AccountFragment$2.class
 wizard\IncomeWizardModel.class
 Fragments\IncomeDialogFragment.class
 com\graviton\Cuzdan\SavingsWizardActivity$MyPagerAdapter.class
@@ -128,6 +131,7 @@ wizard\model\BranchPage.class
 Helpers\BudgetPageAdapter.class
 Fragments\ExpenseFragment$1.class
 Fragments\ExpenseDialogFragment$2.class
+Fragments\AccountFragment$6.class
 Fragments\ExpenseFragment$2.class
 wizard\ui\BalanceInfoFragment$2.class
 com\graviton\Cuzdan\ExpenseWizardActivity$3.class
@@ -141,6 +145,7 @@ wizard\model\BranchPage$1.class
 com\graviton\Cuzdan\ExpenseWizardActivity.class
 wizard\ui\ReviewFragment$1.class
 com\graviton\Cuzdan\Global.class
+Fragments\AccountFragment$1.class
 wizard\ui\SavingCustomInfoFragment.class
 Fragments\ExpenseSearchFragment$3.class
 wizard\ui\SavingCustomInfoFragment$3.class
@@ -166,6 +171,7 @@ wizard\ui\StepPagerStrip$OnPageSelectedListener.class
 com\graviton\Cuzdan\R$array.class
 Helpers\Saving$Period.class
 Fragments\ExpenseGraphFragment$2.class
+Fragments\AccountFragment$3.class
 com\graviton\Cuzdan\IncomeWizardActivity.class
 Helpers\SavingListAdapter.class
 Fragments\IncomePieFragment$3.class

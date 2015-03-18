@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import java.io.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -589,6 +590,55 @@ public class Banker implements Serializable {
 
     }
 
+    public void ToggleNotifications() throws JSONException, IOException {
+        String main = ReadUserInfo();
+        JSONObject mainJSON = new JSONObject(main);
+        if(mainJSON.getJSONObject("user").getString("notifications").equals("true"))
+        {
+            main = main.replaceFirst("\"notifications\":\"true\"","\"notifications\":\"false\"");
+        }
+        else if(mainJSON.getJSONObject("user").getString("notifications").equals("false"))
+        {
+            main = main.replaceFirst("\"notifications\":\"false\"","\"notifications\":\"true\"");
+        }
+        JSONObject jsonToWrite = new JSONObject(main);
+        WriteUserInfo(jsonToWrite.toString());
+    }
+
+    public void UpdateNotification(int newHour) throws JSONException, IOException {
+        String main = ReadUserInfo();
+        JSONObject mainJSON = new JSONObject(main);
+
+        main = main.replaceFirst("\"savNotHour\":\"" + mainJSON.getJSONObject("user").getString("savNotHour") + "\"","\"savNotHour\":\"" + newHour +"\"");
+        JSONObject jsonToWrite = new JSONObject(main);
+        WriteUserInfo(jsonToWrite.toString());
+    }
+
+    public void UpdateRemNotification(int newHour) throws JSONException, IOException {
+        String main = ReadUserInfo();
+        JSONObject mainJSON = new JSONObject(main);
+
+        main = main.replaceFirst("\"remNotHour\":\"" + mainJSON.getJSONObject("user").getString("remNotHour") + "\"","\"remNotHour\":\"" + newHour +"\"");
+        JSONObject jsonToWrite = new JSONObject(main);
+        WriteUserInfo(jsonToWrite.toString());
+    }
+
+    public void ToggleRemNotifications() throws JSONException, IOException
+    {
+        String main = ReadUserInfo();
+        JSONObject mainJSON = new JSONObject(main);
+        if(mainJSON.getJSONObject("user").getString("remNotifications").equals("true"))
+        {
+            main = main.replaceFirst("\"remNotifications\":\"true\"","\"remNotifications\":\"false\"");
+        }
+        else if(mainJSON.getJSONObject("user").getString("remNotifications").equals("false"))
+        {
+            main = main.replaceFirst("\"remNotifications\":\"false\"","\"remNotifications\":\"true\"");
+        }
+        JSONObject jsonToWrite = new JSONObject(main);
+        WriteUserInfo(jsonToWrite.toString());
+    }
+
     /**
      * Gelir ekleme metodu.
      *
@@ -635,7 +685,7 @@ public class Banker implements Serializable {
         JSONArray expenses = userJSON.getJSONArray("expenses");
         JSONArray savings = userJSON.getJSONArray("savings");
 
-        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"));
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("notifications"), userJSON.getString("remNotifications"),  userJSON.getString("savNotHour"), userJSON.getString("remNotHour"));
 
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
@@ -700,7 +750,7 @@ public class Banker implements Serializable {
         JSONArray expenses = userJSON.getJSONArray("expenses");
         JSONArray savings = userJSON.getJSONArray("savings");
 
-        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"));
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("notifications"), userJSON.getString("remNotifications"),  userJSON.getString("savNotHour"), userJSON.getString("remNotHour"));
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
         JSONArray newSavings = userInfo.getJSONObject("user").getJSONArray("savings");
@@ -745,7 +795,7 @@ public class Banker implements Serializable {
         JSONArray expenses = userJSON.getJSONArray("expenses");
         JSONArray savings = userJSON.getJSONArray("savings");
 
-        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"));
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"));
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
         JSONArray newSavings = userInfo.getJSONObject("user").getJSONArray("savings");

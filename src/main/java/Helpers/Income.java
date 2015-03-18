@@ -26,7 +26,7 @@ public class Income extends Balance {
         this.SetID(jsonIncome.getString("id"));
         this.SetCategory(jsonIncome.getString("category"));
         this.SetSubCategory(jsonIncome.getString("subCategory"));
-        this.SetAmount(new BigDecimal(jsonIncome.getDouble("amount")));
+        this.SetAmount(new BigDecimal(jsonIncome.getString("amount")));
         this.SetDescription(jsonIncome.getString("desc"));
         Date d = new SimpleDateFormat("yyyy-MM-d").parse(jsonIncome.getString("date"));
         this.SetDate(d);

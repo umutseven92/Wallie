@@ -39,7 +39,7 @@ public class SplashActivity extends Activity {
 
         setContentView(R.layout.splash_fragment);
 
-        String fileName = "userConfigTest89";
+        String fileName = "userConfigTest102";
         ((Global) this.getApplication()).SetFilePath(fileName);
 
         file = new File(this.getFilesDir(), fileName);
@@ -59,9 +59,17 @@ public class SplashActivity extends Activity {
                     sb.append("\n");
                 }
 
-                User user = new User(new JSONObject(sb.toString()), file.getAbsolutePath(), getApplication());
+                JSONObject userJSON = new JSONObject(sb.toString());
+                User user = new User(userJSON, file.getAbsolutePath(), getApplication());
+                user.SetUserNotifications(PendingIntent.getBroadcast(SplashActivity.this, 0, new Intent(SplashActivity.this, SavingsNotificationReceiver.class), 0), PendingIntent.getBroadcast(SplashActivity.this, 0, new Intent(SplashActivity.this, ReminderNotificationReceiver.class), 0));
+
                 ((Global) this.getApplication()).SetUser(user);
-                SetNotifications();
+
+
+                if(userJSON.getJSONObject("user").getString("notifications").equals("true"))
+                {
+                    SetNotifications(Integer.parseInt(userJSON.getJSONObject("user").getString("savNotHour")), Integer.parseInt(userJSON.getJSONObject("user").getString("remNotHour")));
+                }
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -87,23 +95,23 @@ public class SplashActivity extends Activity {
     }
 
     private void SetFirstUser() throws Exception {
-        JSONObject userInf = JSONHelper.CreateStartingJSON(userName, userLastName, userCurrency);
+        JSONObject userInf = JSONHelper.CreateStartingJSON(userName, userLastName, userCurrency, "true", "true","8","14");
         User user = new User(userInf, file.getAbsolutePath(), getApplication());
         user.GetBanker().WriteUserInfo(userInf.toString());
 
         ((Global) this.getApplication()).SetUser(user);
-        SetNotifications();
+        SetNotifications(8, 14);
     }
 
-    private void SetNotifications() {
+    private void SetNotifications(int savNotHour, int remNotHour) {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 8);
+        calendar.set(Calendar.HOUR_OF_DAY, savNotHour);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
         SetNotification(calendar, SavingsNotificationReceiver.class);
 
         Calendar calendarReminder = Calendar.getInstance();
-        calendarReminder.set(Calendar.HOUR_OF_DAY, 14);
+        calendarReminder.set(Calendar.HOUR_OF_DAY, remNotHour);
         calendarReminder.set(Calendar.MINUTE, 0);
         calendarReminder.set(Calendar.SECOND, 0);
         SetNotification(calendarReminder, ReminderNotificationReceiver.class);
@@ -112,6 +120,7 @@ public class SplashActivity extends Activity {
     public void SetNotification(Calendar calendar, Class receiver) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         Intent intent = new Intent(SplashActivity.this, receiver);
+
 
         boolean alarmUp = (PendingIntent.getBroadcast(SplashActivity.this, 0, intent, PendingIntent.FLAG_NO_CREATE) != null);
 

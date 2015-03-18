@@ -5,12 +5,14 @@ C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\RoundedImageView.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\com\graviton\Cuzdan\SplashActivity.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\wizard\ui\PageFragmentCallbacks.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Fragments\AccountFragment.java
+C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\com\graviton\Cuzdan\SavingsNotificationReceiver.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\com\graviton\Cuzdan\ExpenseStatsActivity.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\Expense.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\wizard\model\AbstractWizardModel.java
+C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\com\graviton\Cuzdan\ReminderNotificationReceiver.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\SavingsPageAdapter.java
-C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\wizard\SavingWizardModel.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Fragments\IncomeSearchFragment.java
+C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\wizard\SavingWizardModel.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\wizard\model\PageList.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\wizard\model\SingleFixedChoicePage.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\com\graviton\Cuzdan\Global.java
@@ -20,8 +22,8 @@ C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\wizard\ui\SingleChoiceFragment.j
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\ExpenseListAdapter.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\wizard\model\SavingCustomInfoPage.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\DateFormatHelper.java
-C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Fragments\ExpenseFragment.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\BudgetPageAdapter.java
+C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Fragments\ExpenseFragment.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Fragments\BalanceFragment.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\wizard\ui\BalanceInfoFragment.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\JSONHelper.java
@@ -64,7 +66,6 @@ C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\wizard\model\ReviewItem.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\Balance.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\ChartHelper.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\IncomeLoadListener.java
-C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\com\graviton\Cuzdan\NotificationAlarmService.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Fragments\IncomeFragment.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\Helpers\User.java
 C:\Users\Umut\IdeaProjects\Cuzdan\src\main\java\wizard\model\BranchPage.java

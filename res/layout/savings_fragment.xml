@@ -79,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Birikim yapabilmek için gelir ekleyin."
+                android:text="Birikim yapabilmeniz için geliriniz yetersiz."
                 android:id="@+id/txtInsufficentLimit"
                 android:layout_alignTop="@+id/txtTotalDailyLimitExp" android:layout_centerHorizontal="true"
                 android:textColor="@color/cuzdan_red"/>
