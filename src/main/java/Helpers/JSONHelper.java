@@ -22,7 +22,9 @@ public class JSONHelper {
                 "\n" +
                 "\t\t\"incomes\": [],\n" +
                 "\t\t\"expenses\": [],\n" +
-                "\t\t\"savings\": []\n" +
+                "\t\t\"savings\": [],\n" +
+                "\t\t\"incomeCustoms\": [],\n" +
+                "\t\t\"expenseCustoms\": []\n" +
                 "\t}\n" +
                 "}\n", firstName, lastName, currency, notification,remNotification , savNotHour, remNotHour);
 

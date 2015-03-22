@@ -2,6 +2,7 @@ wizard\model\AbstractWizardModel.class
 Fragments\ExpenseSearchFragment$2.class
 Fragments\IncomeFragment$4.class
 Fragments\BalanceFragment$2.class
+wizard\ui\BalanceCustomInfoFragment$1.class
 wizard\ui\SingleChoiceFragment$1.class
 wizard\model\ReviewItem.class
 Helpers\User.class
@@ -89,6 +90,7 @@ Fragments\IncomeFragment$5.class
 wizard\SavingWizardModel.class
 wizard\model\ModelCallbacks.class
 wizard\ui\BalanceInfoFragment$1.class
+wizard\ui\BalanceCustomInfoFragment.class
 Fragments\ExpenseSearchFragment$4.class
 Fragments\BalanceFragment.class
 Fragments\IncomeSearchFragment$1.class

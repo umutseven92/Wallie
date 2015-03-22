@@ -14,11 +14,6 @@ public class SavingWizardModel extends AbstractWizardModel {
 
     @Override
     protected PageList onNewRootPageList() {
-       /*
-        return new PageList(
-                new SingleFixedChoicePage(this, "Dönem").setChoices("Hafta", "Ay", "3 Ay", "6 Ay", "1 Yıl", "Özel").setRequired(true),
-                new SavingInfoPage(this, "Detaylar").setRequired(true)
-        ); */
         return new PageList(
                 new BranchPage(this, "Dönem")
                         .addBranch("Hafta", new SavingInfoPage(this, "Detaylar").setRequired(true))

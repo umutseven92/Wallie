@@ -11,6 +11,7 @@ import com.graviton.Cuzdan.SplashActivity;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 
@@ -34,13 +35,14 @@ public class User implements Serializable {
         _remNotification = jsonUser.getString("remNotifications");
         _savingNotHour = jsonUser.getInt("savNotHour");
         _remNotHour= jsonUser.getInt("remNotHour");
-        _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"), jsonUser.getJSONArray("savings"), this._filePath, app, _currency);
+        _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"), jsonUser.getJSONArray("savings"), jsonUser.getJSONArray("incomeCustoms"),jsonUser.getJSONArray("expenseCustoms"), this._filePath, app, _currency);
     }
 
     private String _remNotification;
 
     private PendingIntent _reminderNotification;
     private PendingIntent _savingNotification;
+
 
     private int _savingNotHour;
 

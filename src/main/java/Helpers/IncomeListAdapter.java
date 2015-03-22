@@ -56,7 +56,16 @@ public class IncomeListAdapter extends BaseAdapter {
         TextView text1 = twoLineListItem.getText1();
         TextView text2 = twoLineListItem.getText2();
 
-        text1.setText(incomes.get(position).GetCategory());
+        String cat = incomes.get(position).GetCategory();
+        if(cat.equals("Özel Kategori"))
+        {
+            text1.setText(incomes.get(position).GetSubCategory());
+        }
+        else
+        {
+            text1.setText(incomes.get(position).GetCategory());
+        }
+
         text2.setText(incomes.get(position).GetAmount().toString() + " " + currency);
 
         return twoLineListItem;

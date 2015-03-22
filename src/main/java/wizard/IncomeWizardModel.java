@@ -33,7 +33,8 @@ public class IncomeWizardModel extends AbstractWizardModel {
                         .addBranch("Harçlık", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Harçlık Ödemesi").setRequired(true))
                         .addBranch("Faiz Ödemesi", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Banka Faiz Ödemesi", "Borç Faiz Ödemesi").setRequired(true))
                         .addBranch("Şans Oyunları", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Piyango", "İddia", "Kumar Oyunları", "Diğer").setRequired(true))
-                        .addBranch("Alacaklar", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Alacaklar Tahsilatı").setRequired(true)).setRequired(true),
+                        .addBranch("Alacaklar", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Alacaklar Tahsilatı").setRequired(true))
+                        .addBranch("Özel Kategori", new BalanceCustomInfoPage(this,"Kategori Girin").setRequired(true)).setRequired(true),
                 new BalanceInfoPage(this, "Detaylar").setRequired(true));
     }
 }

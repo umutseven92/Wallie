@@ -10,7 +10,6 @@ import org.json.JSONObject;
 
 import java.io.*;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,15 +29,18 @@ public class Banker implements Serializable {
      * @throws JSONException
      * @throws ParseException
      */
-    public Banker(JSONArray incomes, JSONArray expenses, JSONArray savings, String filePath, Application app, String currency) throws Exception {
+    public Banker(JSONArray incomes, JSONArray expenses, JSONArray savings,JSONArray incomeCustoms, JSONArray expenseCustoms ,String filePath, Application app, String currency) throws Exception {
         _incomes = new ArrayList<Income>();
         _expenses = new ArrayList<Expense>();
         _savings = new ArrayList<Saving>();
+        _incomeCustoms = new ArrayList<String>();
+        _expenseCustoms = new ArrayList<String>();
         mainApp = app;
         _currency = currency;
         this.filePath = filePath;
         LoadBalance(incomes, expenses);
         LoadSavings(savings);
+        LoadCustoms(incomeCustoms, expenseCustoms);
     }
 
     private Application mainApp;
@@ -67,6 +69,29 @@ public class Banker implements Serializable {
         _expenses = value;
     }
 
+
+    private ArrayList<String> _expenseCustoms;
+
+    public void SetExpenseCustoms(ArrayList<String> customs)
+    {
+        _expenseCustoms = customs;
+    }
+
+    public ArrayList<String> GetExpenseCustoms()
+    {
+        return _expenseCustoms;
+    }
+    private ArrayList<String> _incomeCustoms;
+
+    public void SetIncomeCustoms(ArrayList<String> customs)
+    {
+        _incomeCustoms = customs;
+    }
+
+    public ArrayList<String> GetIncomeCustoms() throws IOException, JSONException {
+        LoadCustoms(FetchIncomeCustomsData(), FetchExpenseCustomsData());
+        return _incomeCustoms;
+    }
     private ArrayList<Saving> _savings;
 
     public void SetSavings(ArrayList<Saving> savings) {
@@ -159,6 +184,21 @@ public class Banker implements Serializable {
                 "\t\t\t\t}", saving.GetID(), saving.GetName(), saving.GetAmount(), GetPeriodString(saving.GetPeriod()), date, saving.GetCustomDays(), saving.GetRepeating());
 
         return new JSONObject(json);
+    }
+
+    public void LoadCustoms(JSONArray incomeCustom, JSONArray expenseCustom) throws JSONException {
+        _incomeCustoms = new ArrayList<String>();
+        _expenseCustoms = new ArrayList<String>();
+
+        for (int i = 0; i <incomeCustom.length(); i++)
+        {
+            _incomeCustoms.add(incomeCustom.getString(i));
+        }
+
+        for (int i = 0; i <expenseCustom.length(); i++)
+        {
+            _expenseCustoms.add(expenseCustom.getString(i));
+        }
     }
 
     /**
@@ -256,6 +296,15 @@ public class Banker implements Serializable {
         return jsonObject.getJSONObject("user").getJSONArray("expenses");
     }
 
+    public JSONArray FetchIncomeCustomsData() throws IOException, JSONException {
+        JSONObject jsonObject = FetchUserData();
+        return jsonObject.getJSONObject("user").getJSONArray("incomeCustoms");
+    }
+
+    public JSONArray FetchExpenseCustomsData() throws IOException, JSONException {
+        JSONObject jsonObject = FetchUserData();
+        return jsonObject.getJSONObject("user").getJSONArray("expenseCustoms");
+    }
 
     /**
      * Belli bir güne ait olan gelirlerin toplam miktarini hesapliyoruz.
@@ -639,6 +688,22 @@ public class Banker implements Serializable {
         WriteUserInfo(jsonToWrite.toString());
     }
 
+    public void AddIncomeCustom(String custom) throws IOException, JSONException {
+        String main = ReadUserInfo();
+        JSONObject mainJSON = new JSONObject(main);
+        JSONArray incomeCustoms = mainJSON.getJSONObject("user").getJSONArray("incomeCustoms");
+        incomeCustoms.put(custom);
+        WriteUserInfo(mainJSON.toString());
+    }
+
+    public void AddExpenseCustom(String custom) throws IOException, JSONException {
+        String main = ReadUserInfo();
+        JSONObject mainJSON = new JSONObject(main);
+        JSONArray expenseCustoms = mainJSON.getJSONObject("user").getJSONArray("expenseCustoms");
+        expenseCustoms.put(custom);
+        WriteUserInfo(mainJSON.toString());
+    }
+
     /**
      * Gelir ekleme metodu.
      *
@@ -707,6 +772,8 @@ public class Banker implements Serializable {
 
         WriteUserInfo(userInfo.toString());
     }
+
+
 
     /**
      * Gider ekleme metodu.

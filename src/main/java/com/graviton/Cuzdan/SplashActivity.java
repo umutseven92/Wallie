@@ -39,7 +39,7 @@ public class SplashActivity extends Activity {
 
         setContentView(R.layout.splash_fragment);
 
-        String fileName = "userConfigTest102";
+        String fileName = "userConfigTest104";
         ((Global) this.getApplication()).SetFilePath(fileName);
 
         file = new File(this.getFilesDir(), fileName);

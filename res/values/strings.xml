@@ -29,6 +29,7 @@
         <item>Şans Oyunları</item>
         <item>Alacaklar</item>
         <item>Harçlık</item>
+        <item>Özel Kategori</item>
     </string-array>
 
     <string-array name="MaaşGelir">
