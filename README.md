@@ -37,16 +37,16 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
   * ~~Birikim yaratma~~
   * ~~Birikim notifikasyonları~~
 
-* 0.4 (Hesap & Ayarlar)
+* ~~0.4 (Hesap & Ayarlar)~~
   * ~~Hesap yaratma~~
   * Google Playdan config backup
-  * Ayarlar
-    * Notification kapa 
+  * ~~Ayarlar~~
+    * ~~Notification kapa~~ 
     * ~~Para birimi~~
   * Excel'e export
 
 * 0.5 (Kategori Optimizasyonu)
-  * Kullanici kategori yaratabilmeli
+  * ~~Kullanici kategori yaratabilmeli~~
   * Gereksiz alt kategorilerin silinmesi
 
 * 0.6 (Widget)
