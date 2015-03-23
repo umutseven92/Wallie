@@ -46,7 +46,7 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
   * Excel'e export
 
 * 0.5 (Kategori Optimizasyonu)
-  * Kullanici kategori yaratabilmeli
+  * ~~Kullanici kategori yaratabilmeli~~
   * Gereksiz alt kategorilerin silinmesi
 
 * 0.6 (Widget)
