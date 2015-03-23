@@ -8,7 +8,7 @@ import org.json.JSONObject;
  */
 public class JSONHelper {
 
-    public static JSONObject CreateStartingJSON(String firstName, String lastName, String currency, String notification,String remNotification, String savNotHour, String remNotHour) throws JSONException {
+    public static JSONObject CreateStartingJSON(String firstName, String lastName, String currency, String notification, String remNotification, String savNotHour, String remNotHour) throws JSONException {
 
         String userSettings = String.format("{\n" +
                 "\t\"user\": {\n" +
@@ -26,7 +26,7 @@ public class JSONHelper {
                 "\t\t\"incomeCustoms\": [],\n" +
                 "\t\t\"expenseCustoms\": []\n" +
                 "\t}\n" +
-                "}\n", firstName, lastName, currency, notification,remNotification , savNotHour, remNotHour);
+                "}\n", firstName, lastName, currency, notification, remNotification, savNotHour, remNotHour);
 
         return new JSONObject(userSettings);
     }

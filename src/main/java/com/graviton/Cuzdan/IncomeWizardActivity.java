@@ -18,6 +18,7 @@ import wizard.model.*;
 import wizard.ui.PageFragmentCallbacks;
 import wizard.ui.ReviewFragment;
 import wizard.ui.StepPagerStrip;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -113,14 +114,13 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
 
             String category = mWizardModel.findByKey("Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
             String subCategory;
-            try
-            {
+            try {
                 subCategory = mWizardModel.findByKey(category + ":Alt Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
-            }
-            catch (NullPointerException ex)
-            {
+            } catch (NullPointerException ex) {
                 subCategory = mWizardModel.findByKey("Özel Kategori:Kategori Girin").getData().getString(BalanceCustomInfoPage.CUST_CAT_DATA_KEY);
-                banker.AddIncomeCustom(subCategory);
+                if (!(banker.GetIncomeCustoms().contains(subCategory))) {
+                    banker.AddIncomeCustom(subCategory);
+                }
             }
 
             BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));

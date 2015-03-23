@@ -122,6 +122,7 @@ wizard\ui\SavingCustomInfoFragment$4.class
 Fragments\SavingsFragment$1.class
 Helpers\RoundedImageView.class
 wizard\ui\SingleChoiceFragment.class
+wizard\model\BalanceCustomInfoPage.class
 wizard\ui\ReviewFragment.class
 Fragments\IncomePieFragment.class
 com\graviton\Cuzdan\ExpenseWizardActivity$MyPagerAdapter.class

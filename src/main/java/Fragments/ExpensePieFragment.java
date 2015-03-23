@@ -107,7 +107,11 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
 
             for (int i = 0; i < expenses.size(); i++) {
                 Expense expense = expenses.get(i);
-                expenseNames.add(expense.GetCategory());
+                if (!expense.GetCategory().startsWith("Özel Kategori")) {
+                    expenseNames.add(expense.GetCategory());
+                } else {
+                    expenseNames.add(expense.GetSubCategory());
+                }
                 entries.add(new Entry(expense.GetAmount().floatValue(), i));
             }
 
@@ -117,7 +121,12 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
 
             for (int i = 0; i < expenses.size(); i++) {
                 Expense expense = expenses.get(i);
-                expenseNames.add(expense.GetCategory());
+
+                if (!expense.GetCategory().startsWith("Özel Kategori")) {
+                    expenseNames.add(expense.GetCategory());
+                } else {
+                    expenseNames.add(expense.GetSubCategory());
+                }
                 entries.add(new Entry(expense.GetAmount().floatValue(), i));
             }
 

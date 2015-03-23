@@ -9,12 +9,11 @@ import java.util.ArrayList;
 /**
  * Created by Umut Seven on 22.3.2015, for Graviton.
  */
-public class BalanceCustomInfoPage  extends Page{
+public class BalanceCustomInfoPage extends Page {
 
     public static final String CUST_CAT_DATA_KEY = "cust";
 
-    public BalanceCustomInfoPage(ModelCallbacks callbacks, String title)
-    {
+    public BalanceCustomInfoPage(ModelCallbacks callbacks, String title) {
         super(callbacks, title);
     }
 

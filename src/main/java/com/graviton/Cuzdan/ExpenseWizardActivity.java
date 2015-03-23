@@ -14,10 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import org.json.JSONException;
 import wizard.ExpenseWizardModel;
-import wizard.model.AbstractWizardModel;
-import wizard.model.BalanceInfoPage;
-import wizard.model.ModelCallbacks;
-import wizard.model.Page;
+import wizard.model.*;
 import wizard.ui.PageFragmentCallbacks;
 import wizard.ui.ReviewFragment;
 import wizard.ui.StepPagerStrip;
@@ -122,13 +119,26 @@ public class ExpenseWizardActivity extends FragmentActivity implements PageFragm
                 expenseTag = Expense.Tags.Home;
             }
 
+            Banker banker = ((Global) getApplication()).GetUser().GetBanker();
             String category = mWizardModel.findByKey(tag + ":Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
-            String subCategory = mWizardModel.findByKey(category + ":Alt Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
+
+            String subCategory;
+            try {
+                subCategory = mWizardModel.findByKey(category + ":Alt Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
+            } catch (NullPointerException ex) {
+
+                subCategory = mWizardModel.findByKey("Özel Kategori (Ev):Kategori Girin").getData().getString(BalanceCustomInfoPage.CUST_CAT_DATA_KEY);
+                if (subCategory == null) {
+                    subCategory = mWizardModel.findByKey("Özel Kategori (Kişisel):Kategori Girin").getData().getString(BalanceCustomInfoPage.CUST_CAT_DATA_KEY);
+                }
+                if (!(banker.GetExpenseCustoms().contains(subCategory))) {
+                    banker.AddExpenseCustom(subCategory);
+                }
+            }
             BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
             String description = mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.DESC_DATA_KEY);
 
             Expense expense = new Expense(category, subCategory, amount, description, new Date(), expenseTag);
-            Banker banker = ((Global) getApplication()).GetUser().GetBanker();
 
             banker.AddExpense(expense);
             finish();

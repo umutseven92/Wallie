@@ -16,9 +16,11 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 import com.graviton.Cuzdan.Global;
+import com.graviton.Cuzdan.IncomeWizardActivity;
 import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 import wizard.model.BalanceCustomInfoPage;
+import wizard.model.Page;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ import java.util.ArrayList;
 /**
  * Created by Umut Seven on 22.3.2015, for Graviton.
  */
-public class BalanceCustomInfoFragment extends Fragment{
+public class BalanceCustomInfoFragment extends Fragment {
 
     private static final String ARG_KEY = "key";
 
@@ -59,20 +61,32 @@ public class BalanceCustomInfoFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.add_custom_balance, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(mPage.getTitle());
 
-        mCustomCategoryView = (AutoCompleteTextView)rootView.findViewById(R.id.custom_category);
+        mCustomCategoryView = (AutoCompleteTextView) rootView.findViewById(R.id.custom_category);
         mCustomCategoryView.setText(mPage.getData().getString(BalanceCustomInfoPage.CUST_CAT_DATA_KEY));
         mCustomCategoryView.setThreshold(1);
 
-        Banker banker = ((Global)getActivity().getApplication()).GetUser().GetBanker();
-        ArrayList<String> incomeCustoms = null;
-        try {
-            incomeCustoms = banker.GetIncomeCustoms();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
+        Banker banker = ((Global) getActivity().getApplication()).GetUser().GetBanker();
+        ArrayList<String> customs = null;
+
+        if (getActivity().getClass() == IncomeWizardActivity.class) {
+            try {
+                customs = banker.GetIncomeCustoms();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                customs = banker.GetExpenseCustoms();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_dropdown_item_1line, incomeCustoms);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_dropdown_item_1line, customs);
         mCustomCategoryView.setAdapter(adapter);
 
         return rootView;
@@ -113,7 +127,6 @@ public class BalanceCustomInfoFragment extends Fragment{
 
             @Override
             public void afterTextChanged(Editable editable) {
-
                 mPage.getData().putString(BalanceCustomInfoPage.CUST_CAT_DATA_KEY,
                         (editable != null) ? editable.toString() : null);
                 mPage.notifyDataChanged();

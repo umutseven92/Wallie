@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Cüzdan</string>
-    <string name="version">0.4.2</string>
+    <string name="version">0.5.0</string>
 
     <string name="dummyData">false</string>
 
@@ -68,12 +68,14 @@
         <item>Eğlence &amp; Sosyal Aktiviteler</item>
         <item>Ulaşım</item>
         <item>Borçlar</item>
+        <item>Özel Kategori (Kişisel)</item>
     </string-array>
     <string-array name="Ev">
         <item>Kira</item>
         <item>Faturalar</item>
         <item>Evcil Hayvan</item>
         <item>Alışveriş</item>
+        <item>Özel Kategori (Ev)</item>
     </string-array>
 
     <string-array name="YiyecekGiderKişisel">

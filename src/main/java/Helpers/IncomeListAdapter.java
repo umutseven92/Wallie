@@ -57,12 +57,9 @@ public class IncomeListAdapter extends BaseAdapter {
         TextView text2 = twoLineListItem.getText2();
 
         String cat = incomes.get(position).GetCategory();
-        if(cat.equals("Özel Kategori"))
-        {
+        if (cat.equals("Özel Kategori")) {
             text1.setText(incomes.get(position).GetSubCategory());
-        }
-        else
-        {
+        } else {
             text1.setText(incomes.get(position).GetCategory());
         }
 

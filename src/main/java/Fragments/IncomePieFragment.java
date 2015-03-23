@@ -106,7 +106,11 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
 
             for (int i = 0; i < incomes.size(); i++) {
                 Income income = incomes.get(i);
-                incomeNames.add(income.GetCategory());
+                if (!income.GetCategory().equals("Özel Kategori")) {
+                    incomeNames.add(income.GetCategory());
+                } else {
+                    incomeNames.add(income.GetSubCategory());
+                }
                 entries.add(new Entry(income.GetAmount().floatValue(), i));
             }
 
@@ -116,7 +120,11 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
 
             for (int i = 0; i < incomes.size(); i++) {
                 Income income = incomes.get(i);
-                incomeNames.add(income.GetCategory());
+                if (!income.GetCategory().equals("Özel Kategori")) {
+                    incomeNames.add(income.GetCategory());
+                } else {
+                    incomeNames.add(income.GetSubCategory());
+                }
                 entries.add(new Entry(income.GetAmount().floatValue(), i));
             }
 

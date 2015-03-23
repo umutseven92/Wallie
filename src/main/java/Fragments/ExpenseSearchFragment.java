@@ -234,16 +234,29 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
 
             case R.id.spnExpenseCategory:
                 String item = parent.getItemAtPosition(position).toString();
-                if (item.contains(" ")) {
-                    item = item.substring(0, item.indexOf(" ")) + "Gider" + spnSearchTags.getSelectedItem().toString();
-                } else {
-                    item += "Gider" + spnSearchTags.getSelectedItem().toString();
-                }
-                int subID = getResources().getIdentifier(item, "array", getActivity().getPackageName());
+                if (!item.startsWith("Özel Kategori")) {
+                    if (item.contains(" ")) {
+                        item = item.substring(0, item.indexOf(" ")) + "Gider" + spnSearchTags.getSelectedItem().toString();
+                    } else {
+                        item += "Gider" + spnSearchTags.getSelectedItem().toString();
+                    }
+                    int subID = getResources().getIdentifier(item, "array", getActivity().getPackageName());
 
-                ArrayAdapter<CharSequence> subCategoryAdapter = ArrayAdapter.createFromResource(v.getContext(), subID, R.layout.cuzdan_spinner_item);
-                subCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spnSearchSubCategory.setAdapter(subCategoryAdapter);
+                    ArrayAdapter<CharSequence> subCategoryAdapter = ArrayAdapter.createFromResource(v.getContext(), subID, R.layout.cuzdan_spinner_item);
+                    subCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spnSearchSubCategory.setAdapter(subCategoryAdapter);
+                } else {
+                    try {
+                        ArrayAdapter<String> customCategoryAdapter = new ArrayAdapter<String>(v.getContext(), R.layout.cuzdan_spinner_item, _user.GetBanker().GetExpenseCustoms());
+                        customCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        spnSearchSubCategory.setAdapter(customCategoryAdapter);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
 
                 if (mode.equals("month")) {
                     try {

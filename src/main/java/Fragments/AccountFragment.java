@@ -41,9 +41,9 @@ public class AccountFragment extends Fragment {
         txtName = (TextView) v.findViewById(R.id.txtName);
         txtCurrency = (TextView) v.findViewById(R.id.txtAccountCurrency);
         swcSaving = (Switch) v.findViewById(R.id.swcAccountSaving);
-        swcRem = (Switch)v.findViewById(R.id.swcAccountRem);
-        btnRem = (Button)v.findViewById(R.id.btnAccountRem);
-        btnSav = (Button)v.findViewById(R.id.btnAccountSav);
+        swcRem = (Switch) v.findViewById(R.id.swcAccountRem);
+        btnRem = (Button) v.findViewById(R.id.btnAccountRem);
+        btnSav = (Button) v.findViewById(R.id.btnAccountSav);
 
         TextView txtVersion = (TextView) v.findViewById(R.id.txtVersion);
 
@@ -62,12 +62,9 @@ public class AccountFragment extends Fragment {
                     _user.GetBanker().ToggleNotifications();
                     _user.ToggleNotifications();
 
-                    if(isChecked)
-                    {
+                    if (isChecked) {
                         btnSav.setEnabled(true);
-                    }
-                    else
-                    {
+                    } else {
                         btnSav.setEnabled(false);
                     }
 
@@ -86,12 +83,9 @@ public class AccountFragment extends Fragment {
                     _user.GetBanker().ToggleRemNotifications();
                     _user.ToggleRemNotifications();
 
-                    if(isChecked)
-                    {
+                    if (isChecked) {
                         btnRem.setEnabled(true);
-                    }
-                    else
-                    {
+                    } else {
                         btnRem.setEnabled(false);
                     }
 
@@ -134,39 +128,31 @@ public class AccountFragment extends Fragment {
         super.onResume();
     }
 
-    private void UpdateControls()
-    {
-        if(_user.GetNotifications().equals("true"))
-        {
+    private void UpdateControls() {
+        if (_user.GetNotifications().equals("true")) {
             swcSaving.setChecked(true);
             btnSav.setEnabled(true);
-        }
-        else if (_user.GetNotifications().equals("false"))
-        {
+        } else if (_user.GetNotifications().equals("false")) {
             swcSaving.setChecked(false);
             btnSav.setEnabled(false);
         }
 
-        if(_user.GetRemNotifications().equals("true"))
-        {
+        if (_user.GetRemNotifications().equals("true")) {
             swcRem.setChecked(true);
             btnRem.setEnabled(true);
-        }
-        else if(_user.GetRemNotifications().equals("false"))
-        {
+        } else if (_user.GetRemNotifications().equals("false")) {
             swcRem.setChecked(false);
             btnRem.setEnabled(false);
         }
     }
 
-    private void PickHour(final String mode, int initial)
-    {
+    private void PickHour(final String mode, int initial) {
         final AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
         LayoutInflater layoutInflater = getActivity().getLayoutInflater();
         View accountView = layoutInflater.inflate(R.layout.number_dialog, null);
         alert.setView(accountView);
 
-        final NumberPicker nmNum = (NumberPicker)accountView.findViewById(R.id.nmNum);
+        final NumberPicker nmNum = (NumberPicker) accountView.findViewById(R.id.nmNum);
         nmNum.setMinValue(1);
         nmNum.setMaxValue(24);
         nmNum.setValue(initial);

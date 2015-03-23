@@ -183,16 +183,29 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
         switch (parent.getId()) {
             case R.id.spnSearchCategory:
                 String item = parent.getItemAtPosition(position).toString();
-                if (item.contains(" ")) {
-                    item = item.substring(0, item.indexOf(" ")) + "Gelir";
-                } else {
-                    item += "Gelir";
-                }
-                int subID = getResources().getIdentifier(item, "array", getActivity().getPackageName());
+                if (!item.equals("Özel Kategori")) {
+                    if (item.contains(" ")) {
+                        item = item.substring(0, item.indexOf(" ")) + "Gelir";
+                    } else {
+                        item += "Gelir";
+                    }
+                    int subID = getResources().getIdentifier(item, "array", getActivity().getPackageName());
 
-                ArrayAdapter<CharSequence> subCategoryAdapter = ArrayAdapter.createFromResource(v.getContext(), subID, R.layout.cuzdan_spinner_item);
-                subCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spnSearchSubCategory.setAdapter(subCategoryAdapter);
+                    ArrayAdapter<CharSequence> subCategoryAdapter = ArrayAdapter.createFromResource(v.getContext(), subID, R.layout.cuzdan_spinner_item);
+                    subCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spnSearchSubCategory.setAdapter(subCategoryAdapter);
+                } else {
+                    try {
+                        ArrayAdapter<String> customCategoryAdapter = new ArrayAdapter<String>(v.getContext(), R.layout.cuzdan_spinner_item, _user.GetBanker().GetIncomeCustoms());
+                        customCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        spnSearchSubCategory.setAdapter(customCategoryAdapter);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
 
                 if (mode.equals("month")) {
                     try {

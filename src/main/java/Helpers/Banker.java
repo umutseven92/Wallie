@@ -29,7 +29,7 @@ public class Banker implements Serializable {
      * @throws JSONException
      * @throws ParseException
      */
-    public Banker(JSONArray incomes, JSONArray expenses, JSONArray savings,JSONArray incomeCustoms, JSONArray expenseCustoms ,String filePath, Application app, String currency) throws Exception {
+    public Banker(JSONArray incomes, JSONArray expenses, JSONArray savings, JSONArray incomeCustoms, JSONArray expenseCustoms, String filePath, Application app, String currency) throws Exception {
         _incomes = new ArrayList<Income>();
         _expenses = new ArrayList<Expense>();
         _savings = new ArrayList<Saving>();
@@ -72,19 +72,18 @@ public class Banker implements Serializable {
 
     private ArrayList<String> _expenseCustoms;
 
-    public void SetExpenseCustoms(ArrayList<String> customs)
-    {
+    public void SetExpenseCustoms(ArrayList<String> customs) {
         _expenseCustoms = customs;
     }
 
-    public ArrayList<String> GetExpenseCustoms()
-    {
+    public ArrayList<String> GetExpenseCustoms() throws IOException, JSONException {
+        LoadCustoms(FetchIncomeCustomsData(), FetchExpenseCustomsData());
         return _expenseCustoms;
     }
+
     private ArrayList<String> _incomeCustoms;
 
-    public void SetIncomeCustoms(ArrayList<String> customs)
-    {
+    public void SetIncomeCustoms(ArrayList<String> customs) {
         _incomeCustoms = customs;
     }
 
@@ -92,6 +91,7 @@ public class Banker implements Serializable {
         LoadCustoms(FetchIncomeCustomsData(), FetchExpenseCustomsData());
         return _incomeCustoms;
     }
+
     private ArrayList<Saving> _savings;
 
     public void SetSavings(ArrayList<Saving> savings) {
@@ -190,13 +190,11 @@ public class Banker implements Serializable {
         _incomeCustoms = new ArrayList<String>();
         _expenseCustoms = new ArrayList<String>();
 
-        for (int i = 0; i <incomeCustom.length(); i++)
-        {
+        for (int i = 0; i < incomeCustom.length(); i++) {
             _incomeCustoms.add(incomeCustom.getString(i));
         }
 
-        for (int i = 0; i <expenseCustom.length(); i++)
-        {
+        for (int i = 0; i < expenseCustom.length(); i++) {
             _expenseCustoms.add(expenseCustom.getString(i));
         }
     }
@@ -642,13 +640,10 @@ public class Banker implements Serializable {
     public void ToggleNotifications() throws JSONException, IOException {
         String main = ReadUserInfo();
         JSONObject mainJSON = new JSONObject(main);
-        if(mainJSON.getJSONObject("user").getString("notifications").equals("true"))
-        {
-            main = main.replaceFirst("\"notifications\":\"true\"","\"notifications\":\"false\"");
-        }
-        else if(mainJSON.getJSONObject("user").getString("notifications").equals("false"))
-        {
-            main = main.replaceFirst("\"notifications\":\"false\"","\"notifications\":\"true\"");
+        if (mainJSON.getJSONObject("user").getString("notifications").equals("true")) {
+            main = main.replaceFirst("\"notifications\":\"true\"", "\"notifications\":\"false\"");
+        } else if (mainJSON.getJSONObject("user").getString("notifications").equals("false")) {
+            main = main.replaceFirst("\"notifications\":\"false\"", "\"notifications\":\"true\"");
         }
         JSONObject jsonToWrite = new JSONObject(main);
         WriteUserInfo(jsonToWrite.toString());
@@ -658,7 +653,7 @@ public class Banker implements Serializable {
         String main = ReadUserInfo();
         JSONObject mainJSON = new JSONObject(main);
 
-        main = main.replaceFirst("\"savNotHour\":\"" + mainJSON.getJSONObject("user").getString("savNotHour") + "\"","\"savNotHour\":\"" + newHour +"\"");
+        main = main.replaceFirst("\"savNotHour\":\"" + mainJSON.getJSONObject("user").getString("savNotHour") + "\"", "\"savNotHour\":\"" + newHour + "\"");
         JSONObject jsonToWrite = new JSONObject(main);
         WriteUserInfo(jsonToWrite.toString());
     }
@@ -667,22 +662,18 @@ public class Banker implements Serializable {
         String main = ReadUserInfo();
         JSONObject mainJSON = new JSONObject(main);
 
-        main = main.replaceFirst("\"remNotHour\":\"" + mainJSON.getJSONObject("user").getString("remNotHour") + "\"","\"remNotHour\":\"" + newHour +"\"");
+        main = main.replaceFirst("\"remNotHour\":\"" + mainJSON.getJSONObject("user").getString("remNotHour") + "\"", "\"remNotHour\":\"" + newHour + "\"");
         JSONObject jsonToWrite = new JSONObject(main);
         WriteUserInfo(jsonToWrite.toString());
     }
 
-    public void ToggleRemNotifications() throws JSONException, IOException
-    {
+    public void ToggleRemNotifications() throws JSONException, IOException {
         String main = ReadUserInfo();
         JSONObject mainJSON = new JSONObject(main);
-        if(mainJSON.getJSONObject("user").getString("remNotifications").equals("true"))
-        {
-            main = main.replaceFirst("\"remNotifications\":\"true\"","\"remNotifications\":\"false\"");
-        }
-        else if(mainJSON.getJSONObject("user").getString("remNotifications").equals("false"))
-        {
-            main = main.replaceFirst("\"remNotifications\":\"false\"","\"remNotifications\":\"true\"");
+        if (mainJSON.getJSONObject("user").getString("remNotifications").equals("true")) {
+            main = main.replaceFirst("\"remNotifications\":\"true\"", "\"remNotifications\":\"false\"");
+        } else if (mainJSON.getJSONObject("user").getString("remNotifications").equals("false")) {
+            main = main.replaceFirst("\"remNotifications\":\"false\"", "\"remNotifications\":\"true\"");
         }
         JSONObject jsonToWrite = new JSONObject(main);
         WriteUserInfo(jsonToWrite.toString());
@@ -749,12 +740,16 @@ public class Banker implements Serializable {
         JSONArray incomes = userJSON.getJSONArray("incomes");
         JSONArray expenses = userJSON.getJSONArray("expenses");
         JSONArray savings = userJSON.getJSONArray("savings");
+        JSONArray incomeCustoms = userJSON.getJSONArray("incomeCustoms");
+        JSONArray expenseCustoms = userJSON.getJSONArray("expenseCustoms");
 
-        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("notifications"), userJSON.getString("remNotifications"),  userJSON.getString("savNotHour"), userJSON.getString("remNotHour"));
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"));
 
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
         JSONArray newSavings = userInfo.getJSONObject("user").getJSONArray("savings");
+        JSONArray newIncomeCustoms = userInfo.getJSONObject("user").getJSONArray("incomeCustoms");
+        JSONArray newExpenseCustoms = userInfo.getJSONObject("user").getJSONArray("expenseCustoms");
 
         for (int i = 0; i < incomes.length(); i++) {
             newIncomes.put(incomes.getJSONObject(i));
@@ -770,9 +765,16 @@ public class Banker implements Serializable {
             }
         }
 
+        for (int i = 0; i < incomeCustoms.length(); i++) {
+            newIncomeCustoms.put(incomeCustoms.get(i));
+        }
+
+        for (int i = 0; i < expenseCustoms.length(); i++) {
+            newExpenseCustoms.put(expenseCustoms.get(i));
+        }
+
         WriteUserInfo(userInfo.toString());
     }
-
 
 
     /**
@@ -816,11 +818,15 @@ public class Banker implements Serializable {
         JSONArray incomes = userJSON.getJSONArray("incomes");
         JSONArray expenses = userJSON.getJSONArray("expenses");
         JSONArray savings = userJSON.getJSONArray("savings");
+        JSONArray incomeCustoms = userJSON.getJSONArray("incomeCustoms");
+        JSONArray expenseCustoms = userJSON.getJSONArray("expenseCustoms");
 
-        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("notifications"), userJSON.getString("remNotifications"),  userJSON.getString("savNotHour"), userJSON.getString("remNotHour"));
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"));
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
         JSONArray newSavings = userInfo.getJSONObject("user").getJSONArray("savings");
+        JSONArray newIncomeCustoms = userInfo.getJSONObject("user").getJSONArray("incomeCustoms");
+        JSONArray newExpenseCustoms = userInfo.getJSONObject("user").getJSONArray("expenseCustoms");
 
         for (int i = 0; i < incomes.length(); i++) {
             if (!incomes.getJSONObject(i).getString("id").equals(id)) {
@@ -834,6 +840,14 @@ public class Banker implements Serializable {
 
         for (int i = 0; i < savings.length(); i++) {
             newSavings.put(savings.getJSONObject(i));
+        }
+
+        for (int i = 0; i < incomeCustoms.length(); i++) {
+            newIncomeCustoms.put(incomeCustoms.get(i));
+        }
+
+        for (int i = 0; i < expenseCustoms.length(); i++) {
+            newExpenseCustoms.put(expenseCustoms.get(i));
         }
 
         WriteUserInfo(userInfo.toString());
@@ -861,11 +875,15 @@ public class Banker implements Serializable {
         JSONArray incomes = userJSON.getJSONArray("incomes");
         JSONArray expenses = userJSON.getJSONArray("expenses");
         JSONArray savings = userJSON.getJSONArray("savings");
+        JSONArray incomeCustoms = userJSON.getJSONArray("incomeCustoms");
+        JSONArray expenseCustoms = userJSON.getJSONArray("expenseCustoms");
 
         JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"));
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
         JSONArray newSavings = userInfo.getJSONObject("user").getJSONArray("savings");
+        JSONArray newIncomeCustoms = userInfo.getJSONObject("user").getJSONArray("incomeCustoms");
+        JSONArray newExpenseCustoms = userInfo.getJSONObject("user").getJSONArray("expenseCustoms");
 
         for (int i = 0; i < expenses.length(); i++) {
             if (!expenses.getJSONObject(i).getString("id").equals(id)) {
@@ -879,6 +897,14 @@ public class Banker implements Serializable {
 
         for (int i = 0; i < savings.length(); i++) {
             newSavings.put(savings.getJSONObject(i));
+        }
+
+        for (int i = 0; i < incomeCustoms.length(); i++) {
+            newIncomeCustoms.put(incomeCustoms.get(i));
+        }
+
+        for (int i = 0; i < expenseCustoms.length(); i++) {
+            newExpenseCustoms.put(expenseCustoms.get(i));
         }
 
         WriteUserInfo(userInfo.toString());

@@ -34,8 +34,8 @@ public class User implements Serializable {
         _notification = jsonUser.getString("notifications");
         _remNotification = jsonUser.getString("remNotifications");
         _savingNotHour = jsonUser.getInt("savNotHour");
-        _remNotHour= jsonUser.getInt("remNotHour");
-        _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"), jsonUser.getJSONArray("savings"), jsonUser.getJSONArray("incomeCustoms"),jsonUser.getJSONArray("expenseCustoms"), this._filePath, app, _currency);
+        _remNotHour = jsonUser.getInt("remNotHour");
+        _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"), jsonUser.getJSONArray("savings"), jsonUser.getJSONArray("incomeCustoms"), jsonUser.getJSONArray("expenseCustoms"), this._filePath, app, _currency);
     }
 
     private String _remNotification;
@@ -46,30 +46,25 @@ public class User implements Serializable {
 
     private int _savingNotHour;
 
-    public void SetSavingNotHour(int hour)
-    {
+    public void SetSavingNotHour(int hour) {
         _savingNotHour = hour;
     }
 
-    public int GetSavingNotHour()
-    {
+    public int GetSavingNotHour() {
         return _savingNotHour;
     }
 
-    public int GetRemNotHour()
-    {
+    public int GetRemNotHour() {
         return _remNotHour;
     }
 
     private int _remNotHour;
 
-    public void SetRemNotHour(int hour)
-    {
+    public void SetRemNotHour(int hour) {
         _remNotHour = hour;
     }
 
-    public void SetUserNotifications(PendingIntent savNot, PendingIntent remNot)
-    {
+    public void SetUserNotifications(PendingIntent savNot, PendingIntent remNot) {
         _reminderNotification = remNot;
         _savingNotification = savNot;
     }
@@ -82,17 +77,13 @@ public class User implements Serializable {
 
     private String _notification;
 
-    public void ToggleNotifications()
-    {
+    public void ToggleNotifications() {
         AlarmManager alarmManager = (AlarmManager) _app.getSystemService(Context.ALARM_SERVICE);
 
-        if(_notification.equals("true"))
-        {
+        if (_notification.equals("true")) {
             _notification = "false";
             alarmManager.cancel(_savingNotification);
-        }
-        else if(_notification.equals("false"))
-        {
+        } else if (_notification.equals("false")) {
             _notification = "true";
 
             Calendar calendar = Calendar.getInstance();
@@ -106,17 +97,13 @@ public class User implements Serializable {
 
     }
 
-    public void ToggleRemNotifications()
-    {
-        AlarmManager alarmManager = (AlarmManager)_app.getSystemService(Context.ALARM_SERVICE);
+    public void ToggleRemNotifications() {
+        AlarmManager alarmManager = (AlarmManager) _app.getSystemService(Context.ALARM_SERVICE);
 
-        if(_remNotification.equals("true"))
-        {
+        if (_remNotification.equals("true")) {
             _remNotification = "false";
             alarmManager.cancel(_reminderNotification);
-        }
-        else if(_remNotification.equals("false"))
-        {
+        } else if (_remNotification.equals("false")) {
             _remNotification = "true";
 
             Calendar calendarReminder = Calendar.getInstance();
@@ -128,9 +115,8 @@ public class User implements Serializable {
         }
     }
 
-    public void UpdateRemNotification()
-    {
-        AlarmManager alarmManager = (AlarmManager)_app.getSystemService(Context.ALARM_SERVICE);
+    public void UpdateRemNotification() {
+        AlarmManager alarmManager = (AlarmManager) _app.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(_reminderNotification);
 
         Calendar calendarReminder = Calendar.getInstance();
@@ -141,9 +127,8 @@ public class User implements Serializable {
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendarReminder.getTimeInMillis(), AlarmManager.INTERVAL_DAY, _reminderNotification);
     }
 
-    public void UpdateSavNotification()
-    {
-        AlarmManager alarmManager = (AlarmManager)_app.getSystemService(Context.ALARM_SERVICE);
+    public void UpdateSavNotification() {
+        AlarmManager alarmManager = (AlarmManager) _app.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(_savingNotification);
 
         Calendar calendar = Calendar.getInstance();
@@ -154,13 +139,11 @@ public class User implements Serializable {
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, _savingNotification);
     }
 
-    public String GetNotifications()
-    {
+    public String GetNotifications() {
         return _notification;
     }
 
-    public String GetRemNotifications()
-    {
+    public String GetRemNotifications() {
         return _remNotification;
     }
 

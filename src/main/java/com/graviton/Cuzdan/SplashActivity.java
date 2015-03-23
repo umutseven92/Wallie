@@ -26,7 +26,7 @@ import java.util.Calendar;
  */
 public class SplashActivity extends Activity {
 
-    private final int SPLASH_LENGTH = 1200;
+    private final int SPLASH_LENGTH = 1000;
     boolean first = true;
     File file;
     private String userName;
@@ -39,7 +39,7 @@ public class SplashActivity extends Activity {
 
         setContentView(R.layout.splash_fragment);
 
-        String fileName = "userConfigTest104";
+        String fileName = "userConfigTest107";
         ((Global) this.getApplication()).SetFilePath(fileName);
 
         file = new File(this.getFilesDir(), fileName);
@@ -66,8 +66,7 @@ public class SplashActivity extends Activity {
                 ((Global) this.getApplication()).SetUser(user);
 
 
-                if(userJSON.getJSONObject("user").getString("notifications").equals("true"))
-                {
+                if (userJSON.getJSONObject("user").getString("notifications").equals("true")) {
                     SetNotifications(Integer.parseInt(userJSON.getJSONObject("user").getString("savNotHour")), Integer.parseInt(userJSON.getJSONObject("user").getString("remNotHour")));
                 }
 
@@ -95,7 +94,7 @@ public class SplashActivity extends Activity {
     }
 
     private void SetFirstUser() throws Exception {
-        JSONObject userInf = JSONHelper.CreateStartingJSON(userName, userLastName, userCurrency, "true", "true","8","14");
+        JSONObject userInf = JSONHelper.CreateStartingJSON(userName, userLastName, userCurrency, "true", "true", "8", "14");
         User user = new User(userInf, file.getAbsolutePath(), getApplication());
         user.GetBanker().WriteUserInfo(userInf.toString());
 
