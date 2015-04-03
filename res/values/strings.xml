@@ -175,6 +175,8 @@
 
     <string-array name="currencies">
         <item tag="TRY">Türk Lirası (TRY)</item>
+        <item tag="USD">United States Dollar (USD)</item>
+        <item tag="EUR">Euro Member Countries (EUR)</item>
         <item tag="AFN">Afghanistan Afghani (AFN)</item>
         <item tag="ALL">Albania Lek (ALL)</item>
         <item tag="ARS">Argentina Peso (ARS)</item>
@@ -208,7 +210,6 @@
         <item tag="EGP">Egypt Pound (EGP)</item>
         <item tag="SVC">El Salvador Colon (SVC)</item>
         <item tag="EEK">Estonia Kroon (EEK)</item>
-        <item tag="EUR">Euro Member Countries (EUR)</item>
         <item tag="FKP">Falkland Islands (Malvinas) Pound (FKP)</item>
         <item tag="FJD">Fiji Dollar (FJD)</item>
         <item tag="GHC">Ghana Cedi (GHC)</item>
@@ -279,7 +280,6 @@
         <item tag="TVD">Tuvalu Dollar (TVD)</item>
         <item tag="UAH">Ukraine Hryvnia (UAH)</item>
         <item tag="GBP">United Kingdom Pound (GBP)</item>
-        <item tag="USD">United States Dollar (USD)</item>
         <item tag="UYU">Uruguay Peso (UYU)</item>
         <item tag="UZS">Uzbekistan Som (UZS)</item>
         <item tag="VEF">Venezuela Bolivar (VEF)</item>

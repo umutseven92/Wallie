@@ -49,8 +49,11 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        boolean first = getIntent().getBooleanExtra("first", false);
         pager = (ViewPager) findViewById(R.id.pager);
+
+        // ICS sistem tuslari (LG telefonlar etc)
+        // https://stackoverflow.com/questions/8469112/hide-ics-back-home-task-switcher-buttons
+        pager.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
         title = drawerTitle = getTitle();
         menuArray = getResources().getStringArray(R.array.menuArray);

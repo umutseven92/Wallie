@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuite name="CurrencyTest" time="0" tests="1" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="idea.version" value="14.0.3"/>
+    <property name="idea.version" value="14.1"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.6.0_39\jre\bin"/>
     <property name="java.vm.version" value="20.14-b01"/>
@@ -11,7 +11,7 @@
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="idea.launcher.port" value="7537"/>
+    <property name="idea.launcher.port" value="7532"/>
     <property name="user.country" value="TR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
@@ -28,7 +28,7 @@
     <property name="os.name" value="Windows 8"/>
     <property name="classworlds.conf" value="C:\maven\apache-maven-3.2.5-bin\apache-maven-3.2.5\bin\m2.conf"/>
     <property name="sun.jnu.encoding" value="Cp1254"/>
-    <property name="java.library.path" value="C:\Program Files (x86)\Java\jdk1.6.0_39\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Python34\;C:\Python34\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\GNU\GnuPG\pub;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\PostgreSQL\9.4\bin;C:\Program Files (x86)\Git\cmd;C:\Android\android-sdk\platform-tools;C:\maven\apache-maven-3.2.5-bin\apache-maven-3.2.5\bin;C:\Android\android-sdk\tools;."/>
+    <property name="java.library.path" value="C:\Program Files (x86)\Java\jdk1.6.0_39\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Python34\;C:\Python34\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\GNU\GnuPG\pub;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\PostgreSQL\9.4\bin;C:\Program Files (x86)\Git\cmd;C:\Android\android-sdk\platform-tools;C:\maven\apache-maven-3.2.5-bin\apache-maven-3.2.5\bin;C:\Android\android-sdk\tools;C:\Program Files (x86)\Livestreamer;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="50.0"/>
     <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
@@ -37,14 +37,14 @@
     <property name="user.timezone" value="America/Caracas"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="java.specification.version" value="1.6"/>
-    <property name="file.encoding" value="UTF-8"/>
-    <property name="idea.launcher.bin.path" value="C:\Program Files (x86)\JetBrains\IntelliJ IDEA 14.0\bin"/>
+    <property name="file.encoding" value="windows-1254"/>
+    <property name="idea.launcher.bin.path" value="C:\Program Files (x86)\JetBrains\IntelliJ IDEA 14.1\bin"/>
     <property name="user.name" value="Umut"/>
-    <property name="java.class.path" value="C:\maven\apache-maven-3.2.5-bin\apache-maven-3.2.5\boot\plexus-classworlds-2.5.2.jar;C:\Program Files (x86)\JetBrains\IntelliJ IDEA 14.0\lib\idea_rt.jar"/>
+    <property name="java.class.path" value="C:\maven\apache-maven-3.2.5-bin\apache-maven-3.2.5\boot\plexus-classworlds-2.5.2.jar;C:\Program Files (x86)\JetBrains\IntelliJ IDEA 14.1\lib\idea_rt.jar"/>
     <property name="java.vm.specification.version" value="1.0"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="C:\Program Files (x86)\Java\jdk1.6.0_39\jre"/>
-    <property name="sun.java.command" value="com.intellij.rt.execution.application.AppMain org.codehaus.classworlds.Launcher -Didea.version=14.0.3 install"/>
+    <property name="sun.java.command" value="com.intellij.rt.execution.application.AppMain org.codehaus.classworlds.Launcher -Didea.version=14.1 install"/>
     <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="user.language" value="tr"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
