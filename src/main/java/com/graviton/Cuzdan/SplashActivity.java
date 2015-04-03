@@ -1,15 +1,15 @@
 package com.graviton.Cuzdan;
 
 import Helpers.JSONHelper;
+import Helpers.NotificationHelper;
 import Helpers.User;
-import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.AlertDialog;
-import android.app.PendingIntent;
+import android.app.*;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,7 +19,9 @@ import android.widget.Spinner;
 import org.json.JSONObject;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Umut Seven on 11.11.2014, for Graviton.
@@ -39,7 +41,7 @@ public class SplashActivity extends Activity {
 
         setContentView(R.layout.splash_fragment);
 
-        String fileName = "userConfigTest107";
+        String fileName = getString(R.string.configVersion);
         ((Global) this.getApplication()).SetFilePath(fileName);
 
         file = new File(this.getFilesDir(), fileName);
@@ -65,10 +67,12 @@ public class SplashActivity extends Activity {
 
                 ((Global) this.getApplication()).SetUser(user);
 
+                String sav = userJSON.getJSONObject("user").getString("notifications");
+                String rem = userJSON.getJSONObject("user").getString("remNotifications");
 
-                if (userJSON.getJSONObject("user").getString("notifications").equals("true")) {
-                    SetNotifications(Integer.parseInt(userJSON.getJSONObject("user").getString("savNotHour")), Integer.parseInt(userJSON.getJSONObject("user").getString("remNotHour")));
-                }
+                SetNotifications(Integer.parseInt(userJSON.getJSONObject("user").getString("savNotHour")), Integer.parseInt(userJSON.getJSONObject("user").getString("remNotHour")), sav, rem);
+
+                NotificationHelper.SetPermaNotification(this, user.GetBanker().GetBalance(new Date(),true),user.GetCurrency());
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -99,22 +103,29 @@ public class SplashActivity extends Activity {
         user.GetBanker().WriteUserInfo(userInf.toString());
 
         ((Global) this.getApplication()).SetUser(user);
-        SetNotifications(8, 14);
+        SetNotifications(8, 14, "true", "true");
+        NotificationHelper.SetPermaNotification(this, user.GetBanker().GetBalance(new Date(), true), user.GetCurrency());
     }
 
-    private void SetNotifications(int savNotHour, int remNotHour) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, savNotHour);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        SetNotification(calendar, SavingsNotificationReceiver.class);
+    private void SetNotifications(int savNotHour, int remNotHour, String sav, String rem) {
+        if (sav.equals("true")) {
 
-        Calendar calendarReminder = Calendar.getInstance();
-        calendarReminder.set(Calendar.HOUR_OF_DAY, remNotHour);
-        calendarReminder.set(Calendar.MINUTE, 0);
-        calendarReminder.set(Calendar.SECOND, 0);
-        SetNotification(calendarReminder, ReminderNotificationReceiver.class);
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, savNotHour);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            SetNotification(calendar, SavingsNotificationReceiver.class);
+        }
+        if (rem.equals("true")) {
+            Calendar calendarReminder = Calendar.getInstance();
+            calendarReminder.set(Calendar.HOUR_OF_DAY, remNotHour);
+            calendarReminder.set(Calendar.MINUTE, 0);
+            calendarReminder.set(Calendar.SECOND, 0);
+            SetNotification(calendarReminder, ReminderNotificationReceiver.class);
+        }
+
     }
+
 
     public void SetNotification(Calendar calendar, Class receiver) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);

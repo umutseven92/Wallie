@@ -13,6 +13,7 @@ import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.Date;
 
 
 /**
@@ -36,7 +37,9 @@ public class IncomeDialogFragment extends DialogFragment {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             try {
-                                Banker banker = ((Global) getActivity().getApplication()).GetUser().GetBanker();
+
+                                User user = ((Global)getActivity().getApplication()).GetUser();
+                                Banker banker = user.GetBanker();
                                 banker.DeleteIncome(income.GetID());
                                 _listener.onDismissed();
                                 dismiss();

@@ -2,6 +2,8 @@ package com.graviton.Cuzdan;
 
 import Helpers.Banker;
 import Helpers.Expense;
+import Helpers.NotificationHelper;
+import Helpers.User;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -119,7 +121,9 @@ public class ExpenseWizardActivity extends FragmentActivity implements PageFragm
                 expenseTag = Expense.Tags.Home;
             }
 
-            Banker banker = ((Global) getApplication()).GetUser().GetBanker();
+            User user = ((Global)getApplication()).GetUser();
+
+            Banker banker = user.GetBanker();
             String category = mWizardModel.findByKey(tag + ":Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
 
             String subCategory;

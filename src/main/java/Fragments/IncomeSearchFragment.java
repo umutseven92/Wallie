@@ -196,6 +196,10 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                     spnSearchSubCategory.setAdapter(subCategoryAdapter);
                 } else {
                     try {
+                        if(_user.GetBanker().GetIncomeCustoms().size() == 0)
+                        {
+                            return;
+                        }
                         ArrayAdapter<String> customCategoryAdapter = new ArrayAdapter<String>(v.getContext(), R.layout.cuzdan_spinner_item, _user.GetBanker().GetIncomeCustoms());
                         customCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spnSearchSubCategory.setAdapter(customCategoryAdapter);

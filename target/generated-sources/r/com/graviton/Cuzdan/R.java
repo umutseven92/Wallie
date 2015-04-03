@@ -315,27 +315,28 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class string {
         public static final int app_name=0x7f080000;
-        public static final int currency=0x7f080015;
-        public static final int drawer_close=0x7f080004;
-        public static final int drawer_open=0x7f080003;
+        public static final int configVersion=0x7f080003;
+        public static final int currency=0x7f080016;
+        public static final int drawer_close=0x7f080005;
+        public static final int drawer_open=0x7f080004;
         public static final int dummyData=0x7f080002;
-        public static final int finish_expense=0x7f080008;
-        public static final int finish_income=0x7f080007;
-        public static final int finish_saving=0x7f080009;
-        public static final int hint_desc=0x7f08000d;
-        public static final int insufficent_funds=0x7f080016;
-        public static final int label_amount=0x7f08000b;
-        public static final int label_custom_day=0x7f080011;
-        public static final int label_desc=0x7f08000c;
-        public static final int label_name=0x7f08000e;
-        public static final int label_priority=0x7f080010;
-        public static final int label_repeating=0x7f08000f;
-        public static final int next=0x7f080005;
-        public static final int prev=0x7f080006;
-        public static final int review=0x7f08000a;
-        public static final int submit_cancel_button=0x7f080014;
-        public static final int submit_confirm_button=0x7f080013;
-        public static final int submit_confirm_message=0x7f080012;
+        public static final int finish_expense=0x7f080009;
+        public static final int finish_income=0x7f080008;
+        public static final int finish_saving=0x7f08000a;
+        public static final int hint_desc=0x7f08000e;
+        public static final int insufficent_funds=0x7f080017;
+        public static final int label_amount=0x7f08000c;
+        public static final int label_custom_day=0x7f080012;
+        public static final int label_desc=0x7f08000d;
+        public static final int label_name=0x7f08000f;
+        public static final int label_priority=0x7f080011;
+        public static final int label_repeating=0x7f080010;
+        public static final int next=0x7f080006;
+        public static final int prev=0x7f080007;
+        public static final int review=0x7f08000b;
+        public static final int submit_cancel_button=0x7f080015;
+        public static final int submit_confirm_button=0x7f080014;
+        public static final int submit_confirm_message=0x7f080013;
         public static final int version=0x7f080001;
     }
     public static final class style {

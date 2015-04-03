@@ -67,6 +67,7 @@ Fragments\AccountFragment$5.class
 Fragments\IncomeSearchFragment$4.class
 com\graviton\Cuzdan\IncomeStatsActivity.class
 Fragments\BalanceFragment$1.class
+com\graviton\Cuzdan\OnBootReceiver.class
 com\graviton\Cuzdan\SplashActivity$3.class
 wizard\model\MultipleFixedChoicePage.class
 Fragments\ExpenseFragment$6.class
@@ -88,6 +89,7 @@ com\graviton\Cuzdan\MainActivity$2.class
 wizard\ui\SavingInfoFragment$3.class
 Fragments\IncomeFragment$5.class
 wizard\SavingWizardModel.class
+Helpers\NotificationHelper.class
 wizard\model\ModelCallbacks.class
 wizard\ui\BalanceInfoFragment$1.class
 wizard\ui\BalanceCustomInfoFragment.class

@@ -247,6 +247,10 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                     spnSearchSubCategory.setAdapter(subCategoryAdapter);
                 } else {
                     try {
+                        if(_user.GetBanker().GetExpenseCustoms().size() == 0)
+                        {
+                            return;
+                        }
                         ArrayAdapter<String> customCategoryAdapter = new ArrayAdapter<String>(v.getContext(), R.layout.cuzdan_spinner_item, _user.GetBanker().GetExpenseCustoms());
                         customCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spnSearchSubCategory.setAdapter(customCategoryAdapter);

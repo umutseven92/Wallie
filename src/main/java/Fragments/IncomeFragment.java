@@ -285,6 +285,8 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
         txtTotalIncome.setText(total.toString() + " " + _user.GetCurrency());
         txtTotalIncome.setTextColor(getResources().getColor(R.color.cuzdan_green));
+
+        NotificationHelper.SetPermaNotification(getActivity(), _user.GetBanker().GetBalance(new Date(), true), _user.GetCurrency());
     }
 
     AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
@@ -326,6 +328,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                 e.printStackTrace();
             }
         }
+
     }
 
     @Override

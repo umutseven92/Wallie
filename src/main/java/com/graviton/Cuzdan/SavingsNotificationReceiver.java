@@ -32,7 +32,7 @@ public class SavingsNotificationReceiver extends BroadcastReceiver {
 
         try {
 
-            String fileName = "userConfigTest54";
+            String fileName = context.getString(R.string.configVersion);
 
             File file = new File(context.getFilesDir(), fileName);
             if (!file.exists()) {

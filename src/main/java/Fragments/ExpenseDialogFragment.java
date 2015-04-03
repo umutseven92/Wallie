@@ -14,6 +14,7 @@ import org.json.JSONException;
 
 import javax.jws.soap.SOAPBinding;
 import java.io.IOException;
+import java.util.Date;
 
 
 /**
@@ -36,9 +37,13 @@ public class ExpenseDialogFragment extends DialogFragment {
                     .setPositiveButton("Sil", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Banker banker = ((Global) getActivity().getApplication()).GetUser().GetBanker();
+
+                            User user = ((Global)getActivity().getApplication()).GetUser();
+                            Banker banker = user.GetBanker();
+
                             try {
                                 banker.DeleteExpense(expense.GetID());
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             } catch (IOException e) {
