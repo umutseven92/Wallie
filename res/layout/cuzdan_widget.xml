@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:background="@color/background">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Cüzdan"
+            android:id="@+id/textView26"
+            android:textColor="#ff000000" android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/textView27" android:layout_alignStart="@+id/textView27"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Cüzdan"
+            android:id="@+id/textView27"
+            android:layout_marginTop="45dp" android:textColor="#ff000000" android:layout_below="@+id/textView28"
+            android:layout_centerHorizontal="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Cüzdan"
+            android:id="@+id/textView28"
+            android:textColor="#ff000000" android:layout_below="@+id/textView29" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Cüzdan"
+            android:id="@+id/textView29"
+            android:textColor="#ff000000" android:layout_below="@+id/textView26" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" android:layout_marginTop="30dp"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gelir / Gider"
+                android:id="@+id/btnWidget" android:layout_alignTop="@+id/textView29"
+                android:layout_centerHorizontal="true"/>
+</RelativeLayout>

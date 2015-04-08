@@ -124,6 +124,12 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
     };
 
     public void getNextDateIncomes() throws JSONException, ParseException, IOException {
+
+        if(spnSearchSubCategory.getSelectedItem() == null)
+        {
+            return;
+        }
+
         Date today = new Date();
         Calendar calToday = Calendar.getInstance();
         calToday.setTime(today);
@@ -163,6 +169,12 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
     }
 
     public void getLastDateIncomes() throws JSONException, ParseException, IOException {
+
+        if(spnSearchSubCategory.getSelectedItem() == null)
+        {
+            return;
+        }
+
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateBeingViewed);
 
@@ -198,6 +210,9 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                     try {
                         if(_user.GetBanker().GetIncomeCustoms().size() == 0)
                         {
+                            ArrayAdapter<String> emptyAdapter = new ArrayAdapter<String>(v.getContext(), R.layout.cuzdan_spinner_item,new ArrayList<String>());
+                            emptyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            spnSearchSubCategory.setAdapter(emptyAdapter);
                             return;
                         }
                         ArrayAdapter<String> customCategoryAdapter = new ArrayAdapter<String>(v.getContext(), R.layout.cuzdan_spinner_item, _user.GetBanker().GetIncomeCustoms());
