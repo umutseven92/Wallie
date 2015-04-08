@@ -29,6 +29,7 @@
         <item>Kira</item>
         <item>Faiz Ödemesi</item>
         <item>Şans Oyunları</item>
+        <item>Kredi</item>
         <item>Alacaklar</item>
         <item>Harçlık</item>
         <item>Özel Kategori</item>
@@ -56,6 +57,9 @@
     <string-array name="HarçlıkGelir">
         <item>Harçlık Ödemesi</item>
     </string-array>
+    <string-array name="KrediGelir">
+        <item>Banka Kredisi</item>
+    </string-array>
 
     <!-- Gider Kategorileri & Alt Kategoriler -->
     <string-array name="expenseTags">
@@ -69,6 +73,8 @@
         <item>Sağlık</item>
         <item>Eğlence &amp; Sosyal Aktiviteler</item>
         <item>Ulaşım</item>
+        <item>Döviz</item>
+        <item>Taksit</item>
         <item>Borçlar</item>
         <item>Özel Kategori (Kişisel)</item>
     </string-array>
@@ -99,6 +105,7 @@
     </string-array>
     <string-array name="EğlenceGiderKişisel">
         <item>Gazete, Dergi &amp; Kitap</item>
+        <item>Oyun</item>
         <item>Sinema, Tiyatro &amp; Konser</item>
         <item>Diğer</item>
     </string-array>
@@ -106,6 +113,13 @@
         <item>Akbil</item>
         <item>Yakıt</item>
         <item>Diğer</item>
+    </string-array>
+    <string-array name="DövizGiderKişisel">
+        <item>Döviz Alımı</item>
+    </string-array>
+
+    <string-array name="TaksitGiderKişisel">
+        <item>Taksit Ödemesi</item>
     </string-array>
     <string-array name="BorçlarGiderKişisel">
         <item>Borç Ödemesi</item>

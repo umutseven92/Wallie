@@ -14,34 +14,37 @@ public final class R {
     }
     public static final class array {
         public static final int AlacaklarGelir=0x7f090008;
-        public static final int AlışverişGiderEv=0x7f090017;
-        public static final int AlışverişGiderKişisel=0x7f09000f;
-        public static final int BorçlarGiderKişisel=0x7f090013;
-        public static final int Ev=0x7f09000c;
-        public static final int EvcilGiderEv=0x7f090016;
-        public static final int EğlenceGiderKişisel=0x7f090011;
+        public static final int AlışverişGiderEv=0x7f09001a;
+        public static final int AlışverişGiderKişisel=0x7f090010;
+        public static final int BorçlarGiderKişisel=0x7f090016;
+        public static final int DövizGiderKişisel=0x7f090014;
+        public static final int Ev=0x7f09000d;
+        public static final int EvcilGiderEv=0x7f090019;
+        public static final int EğlenceGiderKişisel=0x7f090012;
         public static final int FaizGelir=0x7f090006;
-        public static final int FaturalarGiderEv=0x7f090015;
+        public static final int FaturalarGiderEv=0x7f090018;
         public static final int HarçlıkGelir=0x7f090009;
         public static final int KiraGelir=0x7f090005;
-        public static final int KiraGiderEv=0x7f090014;
-        public static final int Kişisel=0x7f09000b;
+        public static final int KiraGiderEv=0x7f090017;
+        public static final int Kişisel=0x7f09000c;
+        public static final int KrediGelir=0x7f09000a;
         public static final int MaaşGelir=0x7f090004;
-        public static final int SağlıkGiderKişisel=0x7f090010;
-        public static final int SigaraGiderKişisel=0x7f09000e;
-        public static final int UlaşımGiderKişisel=0x7f090012;
-        public static final int YiyecekGiderKişisel=0x7f09000d;
+        public static final int SağlıkGiderKişisel=0x7f090011;
+        public static final int SigaraGiderKişisel=0x7f09000f;
+        public static final int TaksitGiderKişisel=0x7f090015;
+        public static final int UlaşımGiderKişisel=0x7f090013;
+        public static final int YiyecekGiderKişisel=0x7f09000e;
         public static final int balanceDateArray=0x7f090002;
-        public static final int currencies=0x7f090019;
+        public static final int currencies=0x7f09001c;
         public static final int dateArray=0x7f090001;
         /**  Gider Kategorileri & Alt Kategoriler 
          */
-        public static final int expenseTags=0x7f09000a;
+        public static final int expenseTags=0x7f09000b;
         /**  Gelir Kategorileri & Alt Kategoriler 
          */
         public static final int incomeCategories=0x7f090003;
         public static final int menuArray=0x7f090000;
-        public static final int turkishMonths=0x7f090018;
+        public static final int turkishMonths=0x7f09001b;
         public static final int ŞansGelir=0x7f090007;
     }
     public static final class attr {
