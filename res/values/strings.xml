@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Cüzdan</string>
-    <string name="version">0.5.1</string>
+    <string name="version">0.5.2</string>
 
     <string name="dummyData">false</string>
 
-    <string name="configVersion">userConfigTest110</string>
+    <string name="configVersion">userConfigTest111</string>
 
     <string-array name="menuArray">
         <item>Bütçe</item>
@@ -84,7 +84,7 @@
         <item>Alkollü İçecek</item>
         <item>Gıda &amp; Alkolsüz İçecek</item>
     </string-array>
-    <string-array name="SigaraGider">
+    <string-array name="SigaraGiderKişisel">
         <item>Sigara</item>
         <item>Tütün</item>
     </string-array>

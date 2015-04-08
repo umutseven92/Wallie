@@ -61,4 +61,10 @@ public class NotificationHelper {
 
         mNotificationManager.notify(31, not);
     }
+
+    public static void RemoveNotification(Context context)
+    {
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancel(31);
+    }
 }

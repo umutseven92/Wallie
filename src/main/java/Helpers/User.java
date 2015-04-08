@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 
 /**
@@ -35,6 +36,7 @@ public class User implements Serializable {
         _remNotification = jsonUser.getString("remNotifications");
         _savingNotHour = jsonUser.getInt("savNotHour");
         _remNotHour = jsonUser.getInt("remNotHour");
+        _statusNotification = jsonUser.getString("statusNot");
         _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"), jsonUser.getJSONArray("savings"), jsonUser.getJSONArray("incomeCustoms"), jsonUser.getJSONArray("expenseCustoms"), this._filePath, app, _currency);
     }
 
@@ -43,6 +45,12 @@ public class User implements Serializable {
     private PendingIntent _reminderNotification;
     private PendingIntent _savingNotification;
 
+    private String _statusNotification;
+
+    public String GetStatusNotification()
+    {
+        return _statusNotification;
+    }
 
     private int _savingNotHour;
 
@@ -77,7 +85,21 @@ public class User implements Serializable {
 
     private String _notification;
 
-    public void ToggleNotifications() {
+    public void ToggleStatusNotification(Context context)
+    {
+        if(_statusNotification.equals("true"))
+        {
+            _statusNotification = "false";
+            NotificationHelper.RemoveNotification(context);
+        }
+        else
+        {
+            _statusNotification = "true";
+            NotificationHelper.SetPermaNotification(context, this.GetBanker().GetBalance(new Date(), true), this.GetCurrency());
+        }
+    }
+
+    public void ToggleSavNotifications() {
         AlarmManager alarmManager = (AlarmManager) _app.getSystemService(Context.ALARM_SERVICE);
 
         if (_notification.equals("true")) {

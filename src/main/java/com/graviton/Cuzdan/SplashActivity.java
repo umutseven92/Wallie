@@ -72,7 +72,10 @@ public class SplashActivity extends Activity {
 
                 SetNotifications(Integer.parseInt(userJSON.getJSONObject("user").getString("savNotHour")), Integer.parseInt(userJSON.getJSONObject("user").getString("remNotHour")), sav, rem);
 
-                NotificationHelper.SetPermaNotification(this, user.GetBanker().GetBalance(new Date(),true),user.GetCurrency());
+                if(user.GetStatusNotification().equals("true"))
+                {
+                    NotificationHelper.SetPermaNotification(this, user.GetBanker().GetBalance(new Date(),true),user.GetCurrency());
+                }
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -98,7 +101,7 @@ public class SplashActivity extends Activity {
     }
 
     private void SetFirstUser() throws Exception {
-        JSONObject userInf = JSONHelper.CreateStartingJSON(userName, userLastName, userCurrency, "true", "true", "8", "14");
+        JSONObject userInf = JSONHelper.CreateStartingJSON(userName, userLastName, userCurrency, "true", "true", "8", "14", "true");
         User user = new User(userInf, file.getAbsolutePath(), getApplication());
         user.GetBanker().WriteUserInfo(userInf.toString());
 

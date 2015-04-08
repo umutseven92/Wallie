@@ -2,8 +2,6 @@ package Fragments;
 
 import Helpers.User;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import com.graviton.Cuzdan.MainActivity;
 import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 
@@ -24,7 +21,7 @@ public class AccountFragment extends Fragment {
 
     static User _user;
     TextView txtName, txtCurrency;
-    Switch swcSaving, swcRem;
+    Switch swcSaving, swcRem, swcStat;
     Button btnSav, btnRem;
     int num;
     int refNum;
@@ -42,6 +39,8 @@ public class AccountFragment extends Fragment {
         txtCurrency = (TextView) v.findViewById(R.id.txtAccountCurrency);
         swcSaving = (Switch) v.findViewById(R.id.swcAccountSaving);
         swcRem = (Switch) v.findViewById(R.id.swcAccountRem);
+        swcStat = (Switch)v.findViewById(R.id.swcStatusNot);
+
         btnRem = (Button) v.findViewById(R.id.btnAccountRem);
         btnSav = (Button) v.findViewById(R.id.btnAccountSav);
 
@@ -60,7 +59,7 @@ public class AccountFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 try {
                     _user.GetBanker().ToggleNotifications();
-                    _user.ToggleNotifications();
+                    _user.ToggleSavNotifications();
 
                     if (isChecked) {
                         btnSav.setEnabled(true);
@@ -89,6 +88,21 @@ public class AccountFragment extends Fragment {
                         btnRem.setEnabled(false);
                     }
 
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+        swcStat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                try {
+                    _user.GetBanker().ToggleStatusNotifications();
+                    _user.ToggleStatusNotification(getActivity());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -143,6 +157,15 @@ public class AccountFragment extends Fragment {
         } else if (_user.GetRemNotifications().equals("false")) {
             swcRem.setChecked(false);
             btnRem.setEnabled(false);
+        }
+
+        if(_user.GetStatusNotification().equals("true"))
+        {
+            swcStat.setChecked(true);
+        }
+        else if(_user.GetStatusNotification().equals("false"))
+        {
+            swcStat.setChecked(false);
         }
     }
 
