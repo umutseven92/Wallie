@@ -1,44 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:background="@color/background">
+                android:layout_height="190dp" android:background="@drawable/rounded_widget">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Cüzdan"
-            android:id="@+id/textView26"
-            android:textColor="#ff000000" android:layout_alignParentTop="true"
-            android:layout_alignLeft="@+id/textView27" android:layout_alignStart="@+id/textView27"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Cüzdan"
-            android:id="@+id/textView27"
-            android:layout_marginTop="45dp" android:textColor="#ff000000" android:layout_below="@+id/textView28"
-            android:layout_centerHorizontal="true"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Cüzdan"
-            android:id="@+id/textView28"
-            android:textColor="#ff000000" android:layout_below="@+id/textView29" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Cüzdan"
-            android:id="@+id/textView29"
-            android:textColor="#ff000000" android:layout_below="@+id/textView26" android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" android:layout_marginTop="30dp"/>
-        <Button
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="37dp"
+                android:background="@color/cuzdan_red"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" android:layout_alignParentTop="true"
+                android:id="@+id/relativeLayout10">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Cüzdan"
+                        android:id="@+id/textView26"
+                        android:layout_marginLeft="50dp"
+                        android:textColor="@android:color/white" android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
+                        android:layout_marginStart="52dp"/>
+                <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:id="@+id/imageView"
+                        android:layout_centerVertical="true" android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" android:layout_marginLeft="10dp"
+                        android:background="@drawable/ic_launcher"/>
+        </RelativeLayout>
+        <ImageButton
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:id="@+id/btnWidgetBalance"
+                android:background="@drawable/green_button"
+                android:layout_below="@+id/relativeLayout10" android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"/>
+         <RelativeLayout
+                android:layout_width="700dp"
+                android:layout_height="1dp"
+                android:background="@color/outline"
+                android:layout_below="@+id/btnWidgetBalance" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" android:layout_marginTop="10dp"/>
+
+        <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Gelir / Gider"
-                android:id="@+id/btnWidget" android:layout_alignTop="@+id/textView29"
-                android:layout_centerHorizontal="true"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Gelir"
+                android:id="@+id/textView27"
+                android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" android:layout_marginLeft="20dp"
+                android:layout_marginBottom="30dp" android:textColor="@color/cuzdan_green"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Gider"
+                android:id="@+id/textView28" android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
+                android:layout_marginBottom="30dp" android:layout_marginRight="20dp"
+                android:textColor="@color/cuzdan_light_red"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Bakiye"
+                android:id="@+id/textView29" android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" android:layout_marginBottom="5dp"
+                android:textColor="@color/cuzdan_green"/>
 </RelativeLayout>
