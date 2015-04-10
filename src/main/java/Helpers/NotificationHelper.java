@@ -36,7 +36,7 @@ public class NotificationHelper {
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
-                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setSmallIcon(R.drawable.notification_logo)
                         .setContentTitle("Hızlı Para Ekle")
                         .setContentText(message);
 

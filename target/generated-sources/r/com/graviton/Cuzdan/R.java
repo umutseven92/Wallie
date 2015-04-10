@@ -101,7 +101,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int list_selector=0x7f020014;
         public static final int mag=0x7f020015;
         public static final int main_layout=0x7f020016;
-        public static final int notification_icon=0x7f020017;
+        public static final int notification_logo=0x7f020017;
         public static final int pie=0x7f020018;
         public static final int piechart=0x7f020019;
         public static final int profile=0x7f02001a;

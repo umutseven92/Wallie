@@ -69,7 +69,7 @@ int drawable left_arrow 0x7f020013
 int drawable list_selector 0x7f020014
 int drawable mag 0x7f020015
 int drawable main_layout 0x7f020016
-int drawable notification_icon 0x7f020017
+int drawable notification_logo 0x7f020017
 int drawable pie 0x7f020018
 int drawable piechart 0x7f020019
 int drawable profile 0x7f02001a
