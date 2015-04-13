@@ -218,9 +218,6 @@ int id textView23 0x7f0c000f
 int id textView24 0x7f0c0011
 int id textView25 0x7f0c0015
 int id textView26 0x7f0c0038
-int id textView27 0x7f0c003b
-int id textView28 0x7f0c003c
-int id textView29 0x7f0c003d
 int id textView3 0x7f0c0086
 int id textView4 0x7f0c00a7
 int id textView5 0x7f0c00a5
@@ -258,6 +255,9 @@ int id txtTotalIncome 0x7f0c006b
 int id txtUserName 0x7f0c002f
 int id txtVersion 0x7f0c0017
 int id txtView11 0x7f0c0025
+int id txtWidgetBalance 0x7f0c003d
+int id txtWidgetExpense 0x7f0c003c
+int id txtWidgetIncome 0x7f0c003b
 int id view 0x7f0c0014
 int id your_email 0x7f0c001e
 int id your_name 0x7f0c001d

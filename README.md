@@ -49,8 +49,8 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
   * ~~Kullanici kategori yaratabilmeli~~
   * Gereksiz alt kategorilerin silinmesi
 
-* 0.6 (Widget)
-  * Widget
+* ~~0.6 (Widget)~~
+  * ~~Widget~~
 
 * 0.7 (Kullanici Eğitimi)
   * Oryantasyon

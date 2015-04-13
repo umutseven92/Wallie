@@ -254,6 +254,11 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
             NotificationHelper.SetPermaNotification(getActivity(), _user.GetBanker().GetBalance(new Date(), true), _user.GetCurrency());
         }
 
+        try {
+            WidgetHelper.UpdateInfoWithUser(getActivity(),_user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -1,6 +1,8 @@
 package Fragments;
 
 import Helpers.*;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +13,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.google.gson.Gson;
-import com.graviton.Cuzdan.Global;
-import com.graviton.Cuzdan.IncomeStatsActivity;
-import com.graviton.Cuzdan.IncomeWizardActivity;
-import com.graviton.Cuzdan.R;
+import com.graviton.Cuzdan.*;
 import org.json.JSONException;
 
 import javax.xml.datatype.Duration;
@@ -289,6 +288,12 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         if(_user.GetStatusNotification().equals("true")) {
             NotificationHelper.SetPermaNotification(getActivity(), _user.GetBanker().GetBalance(new Date(), true), _user.GetCurrency());
         }
+        try {
+            WidgetHelper.UpdateInfoWithUser(getActivity(), _user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {

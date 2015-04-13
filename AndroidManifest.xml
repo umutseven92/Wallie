@@ -43,6 +43,7 @@
         <receiver android:name=".CuzdanWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_ENABLED"/>
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/cuzdan_widger_provider"/>
         </receiver>

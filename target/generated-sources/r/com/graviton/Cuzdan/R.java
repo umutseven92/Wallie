@@ -252,9 +252,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int textView24=0x7f0c0011;
         public static final int textView25=0x7f0c0015;
         public static final int textView26=0x7f0c0038;
-        public static final int textView27=0x7f0c003b;
-        public static final int textView28=0x7f0c003c;
-        public static final int textView29=0x7f0c003d;
         public static final int textView3=0x7f0c0086;
         public static final int textView4=0x7f0c00a7;
         public static final int textView5=0x7f0c00a5;
@@ -292,6 +289,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int txtUserName=0x7f0c002f;
         public static final int txtVersion=0x7f0c0017;
         public static final int txtView11=0x7f0c0025;
+        public static final int txtWidgetBalance=0x7f0c003d;
+        public static final int txtWidgetExpense=0x7f0c003c;
+        public static final int txtWidgetIncome=0x7f0c003b;
         public static final int view=0x7f0c0014;
         public static final int your_email=0x7f0c001e;
         public static final int your_name=0x7f0c001d;

@@ -145,6 +145,7 @@ com\graviton\Cuzdan\ExpenseWizardActivity$3.class
 Helpers\Balance.class
 Fragments\BalanceFragment$3.class
 wizard\model\Page.class
+Helpers\WidgetHelper.class
 Helpers\SavingsHelper$1.class
 com\graviton\Cuzdan\R$anim.class
 Fragments\IncomeFragment.class
