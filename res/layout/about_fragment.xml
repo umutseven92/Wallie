@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:background="@drawable/main_layout">
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView3" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+            android:src="@drawable/grav"/>
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView3" android:layout_below="@+id/imageView3"
+            android:layout_above="@+id/txtAboutVersion"
+            android:scrollbars="none" android:overScrollMode="never">
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="graviton"
+                    android:id="@+id/textView27"
+                    android:textColor="#ff6e4a69"
+                    android:layout_below="@+id/imageView3" android:layout_centerHorizontal="true" android:textSize="30dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Dizayn &amp; QA"
+                    android:id="@+id/textView28"
+                    android:textColor="#ff6e4a69" android:layout_below="@+id/textView27" android:layout_centerHorizontal="true"
+                    android:layout_marginTop="25dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Alican Uncu"
+                    android:id="@+id/textView29"
+                    android:textColor="#ff000000" android:layout_below="@+id/textView28"
+                    android:layout_alignLeft="@+id/textView31" android:layout_alignStart="@+id/textView31"
+                    android:layout_marginTop="2dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Dizayn &amp; Yazilim"
+                    android:id="@+id/textView30"
+                    android:textColor="#ff6f4b6a" android:layout_below="@+id/textView29"
+                    android:layout_centerHorizontal="true" android:layout_marginTop="12dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Umut Seven"
+                    android:id="@+id/textView31"
+                    android:textColor="#ff000000"
+                    android:layout_below="@+id/textView30" android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"/>
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Ek Kaynaklar"
+                      android:textColor="#ff6e4a69"
+                      android:layout_below="@id/textView31"
+                      android:id="@+id/textView32"
+                    android:layout_centerHorizontal="true" android:layout_marginTop="30dp" android:textSize="20dp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="MPAndroidChart"
+                    android:id="@+id/textView33"
+                    android:textColor="#ff6e4a69" android:layout_below="@+id/textView32" android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Philipp Jahoda"
+                    android:id="@+id/textView34"
+                    android:textColor="#ff000000" android:layout_below="@+id/textView33"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Android-WizardPager"
+                    android:id="@+id/textView35"
+                    android:textColor="#ff6e4a69" android:layout_below="@+id/textView34" android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Roman Nurik"
+                    android:id="@+id/textView36"
+                    android:textColor="#ff000000" android:layout_below="@+id/textView35"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"/>
+
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Simgeler"
+                    android:id="@+id/textView37"
+                    android:textColor="#ff6e4a69" android:layout_below="@+id/textView36" android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Jerry Low"
+                    android:id="@+id/textView38"
+                    android:textColor="#ff000000" android:layout_below="@+id/textView37"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Magnus Emil Liisberg Helding"
+                    android:id="@+id/textView39"
+                    android:textColor="#ff000000" android:layout_below="@+id/textView38"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Designerz Base"
+                    android:id="@+id/textView40"
+                    android:textColor="#ff000000" android:layout_below="@+id/textView39"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Paomedia"
+                    android:id="@+id/textView41"
+                    android:textColor="#ff000000" android:layout_below="@+id/textView40"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Watsi"
+                    android:id="@+id/textView42"
+                    android:textColor="#ff000000" android:layout_below="@+id/textView41"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"/>
+
+        </RelativeLayout>
+    </ScrollView>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:textAppearance="?android:attr/textAppearanceSmall" android:text="version"
+              android:id="@+id/txtAboutVersion"
+              android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
+              android:layout_alignParentEnd="true" android:layout_marginBottom="15dp"
+              android:layout_marginRight="15dp"/>
+</RelativeLayout>

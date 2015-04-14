@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Cüzdan</string>
-    <string name="version">0.6.0</string>
+    <string name="version">0.6.1</string>
 
     <string name="dummyData">false</string>
 
@@ -11,6 +11,7 @@
         <item>Bütçe</item>
         <item>Birikim</item>
         <item>Ayarlar</item>
+        <item>Hakkında</item>
     </string-array>
     <string name="drawer_open">Aç</string>
     <string name="drawer_close">Kapat</string>

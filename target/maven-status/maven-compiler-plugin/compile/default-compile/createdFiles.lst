@@ -100,6 +100,7 @@ Fragments\BalanceFragment.class
 Fragments\IncomeSearchFragment$1.class
 Fragments\ExpensePieFragment$1.class
 Helpers\JSONHelper.class
+Helpers\AboutPageAdapter.class
 Fragments\IncomeDialogFragment$2.class
 Fragments\IncomeFragment$1.class
 Fragments\ExpensePieFragment$3.class
@@ -156,6 +157,7 @@ com\graviton\Cuzdan\Global.class
 Fragments\AccountFragment$1.class
 wizard\ui\SavingCustomInfoFragment.class
 Fragments\ExpenseSearchFragment$3.class
+Fragments\AboutFragment.class
 wizard\ui\SavingCustomInfoFragment$3.class
 Fragments\SavingsFragment.class
 com\graviton\Cuzdan\SavingsWizardActivity$2.class

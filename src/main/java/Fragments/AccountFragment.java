@@ -44,10 +44,7 @@ public class AccountFragment extends Fragment {
         btnRem = (Button) v.findViewById(R.id.btnAccountRem);
         btnSav = (Button) v.findViewById(R.id.btnAccountSav);
 
-        TextView txtVersion = (TextView) v.findViewById(R.id.txtVersion);
-
         _user = ((com.graviton.Cuzdan.Global) getActivity().getApplication()).GetUser();
-        txtVersion.setText(R.string.version);
 
         UpdateControls();
 
