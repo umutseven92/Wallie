@@ -3,6 +3,7 @@ package Helpers;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.graphics.Color;
 import android.widget.RemoteViews;
 import com.graviton.Cuzdan.CuzdanWidgetProvider;
 import com.graviton.Cuzdan.R;
@@ -53,6 +54,15 @@ public class WidgetHelper {
         views.setTextViewText(R.id.txtWidgetExpense, todayExpense.toString());
         views.setTextViewText(R.id.txtWidgetBalance, todayBalance.toString() + " " + user.GetCurrency());
 
+        if(todayBalance.compareTo(BigDecimal.ZERO) < 1)
+        {
+            views.setTextColor(R.id.txtWidgetBalance, context.getResources().getColor(R.color.cuzdan_red));
+        }
+        else
+        {
+            views.setTextColor(R.id.txtWidgetBalance, context.getResources().getColor(R.color.cuzdan_green));
+        }
+
         ComponentName thisWidget = new ComponentName(context, CuzdanWidgetProvider.class);
 
         AppWidgetManager manager = AppWidgetManager.getInstance(context);
@@ -71,6 +81,15 @@ public class WidgetHelper {
         views.setTextViewText(R.id.txtWidgetIncome, todayIncome.toString());
         views.setTextViewText(R.id.txtWidgetExpense, todayExpense.toString());
         views.setTextViewText(R.id.txtWidgetBalance, todayBalance.toString() + " " + user.GetCurrency());
+
+        if(todayBalance.compareTo(BigDecimal.ZERO) < 1)
+        {
+            views.setTextColor(R.id.txtWidgetBalance, context.getResources().getColor(R.color.cuzdan_red));
+        }
+        else
+        {
+            views.setTextColor(R.id.txtWidgetBalance, context.getResources().getColor(R.color.cuzdan_green));
+        }
 
         ComponentName thisWidget = new ComponentName(context, CuzdanWidgetProvider.class);
 

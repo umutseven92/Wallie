@@ -60,7 +60,7 @@ public class SavingsNotificationReceiver extends BroadcastReceiver {
         }
 
         try {
-            if (user.GetBanker().GetSavings().size() > 0 && todayLimit.compareTo(BigDecimal.ZERO) > 0) {
+            if (user.GetBanker().GetSavings().size() > 0 && todayLimit.compareTo(BigDecimal.ZERO) > 0 && user.GetNotifications().equals("true")) {
                 String message = "";
 
                 if (todayBalance.compareTo(todayLimit) == 0) {
