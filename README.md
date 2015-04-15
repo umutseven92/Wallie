@@ -44,20 +44,22 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
     * ~~Notification kapa~~ 
     * ~~Para birimi~~
   * Excel'e export
+  * Uygulamayi sifre ile kitleme
 
-* 0.5 (Kategori Optimizasyonu)
+* ~~0.5 (Kategori Optimizasyonu)~~
   * ~~Kullanici kategori yaratabilmeli~~
-  * Gereksiz alt kategorilerin silinmesi
+  * ~~Gereksiz alt kategorilerin silinmesi~~
 
 * ~~0.6 (Widget)~~
   * ~~Widget~~
 
+* **Kapali Beta -> 15.04.15**
+
 * 0.7 (Kullanici Eğitimi)
   * Oryantasyon
 
-* 0.8 (Deneyler)
-  * MOAOGY featurelari
-	  * Faturanin resmini cekerek gider
+* 0.8 (Performans)
+  * Performans Gelistirme
 
 * 1.0 (End of Line)
   * Release
@@ -65,4 +67,4 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
 ##Kullanılan Kaynaklar
 * Android-WizardPager: [Roman Nurik](http://roman.nurik.net/)
 * MPAndroidChart: [Philipp Jahoda](https://github.com/PhilJay)
-* Simgeler: Jerry Low, [Magnus Emil Liisberg Helding](http://www.magnushelding.dk/), [Designerz Base](http://www.finest.graphics/), Paomedia
+* Simgeler: Jerry Low, [Magnus Emil Liisberg Helding](http://www.magnushelding.dk/), [Designerz Base](http://www.finest.graphics/), Paomedia, Watsi
