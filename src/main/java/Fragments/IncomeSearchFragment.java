@@ -2,6 +2,8 @@ package Fragments;
 
 import Helpers.*;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -201,7 +203,16 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                     } else {
                         item += "Gelir";
                     }
+
                     int subID = getResources().getIdentifier(item, "array", getActivity().getPackageName());
+
+                    // Android v4.4'ler ve sonrasinda resource nameler turkce karakter iceremez(mis).
+                    // Bu yuzden getIdentifier() cagirmadan once tum turkce karakterlerden arındırıyoruz.
+                    if (subID == 0)
+                    {
+                        String newItem = LocaleHelper.GetRidOfTurkishCharacters(item);
+                        subID = getResources().getIdentifier(newItem, "array",getActivity().getPackageName());
+                    }
 
                     ArrayAdapter<CharSequence> subCategoryAdapter = ArrayAdapter.createFromResource(v.getContext(), subID, R.layout.cuzdan_spinner_item);
                     subCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -426,4 +437,6 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
         }
 
     }
+
+
 }

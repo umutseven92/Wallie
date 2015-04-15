@@ -31,6 +31,7 @@ Fragments\IncomeGraphFragment.class
 wizard\model\SavingInfoPage.class
 com\graviton\Cuzdan\R$id.class
 Helpers\SavingsHelper.class
+Helpers\LocaleHelper.class
 Helpers\Expense$Tags.class
 com\graviton\Cuzdan\SplashActivity$3$1.class
 com\graviton\Cuzdan\SavingsNotificationReceiver.class

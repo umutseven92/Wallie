@@ -201,6 +201,12 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                 String tag = parent.getSelectedItem().toString();
                 int catID = getResources().getIdentifier(tag, "array", getActivity().getPackageName());
 
+                if (catID == 0)
+                {
+                    String newTag = LocaleHelper.GetRidOfTurkishCharacters(tag);
+                    catID = getResources().getIdentifier(newTag, "array", getActivity().getPackageName());
+                }
+
                 ArrayAdapter<CharSequence> categoryAdapter = ArrayAdapter.createFromResource(v.getContext(), catID, R.layout.cuzdan_spinner_item);
                 categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spnSearchCategory.setAdapter(categoryAdapter);
@@ -212,6 +218,12 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                     item2 += "Gider" + spnSearchTags.getSelectedItem().toString();
                 }
                 int subID2 = getResources().getIdentifier(item2, "array", getActivity().getPackageName());
+
+                if(subID2 == 0)
+                {
+                    String newItem2 = LocaleHelper.GetRidOfTurkishCharacters(item2);
+                    subID2 = getResources().getIdentifier(newItem2, "array", getActivity().getPackageName());
+                }
 
                 ArrayAdapter<CharSequence> subCategoryAdapter2 = ArrayAdapter.createFromResource(v.getContext(), subID2, R.layout.cuzdan_spinner_item);
                 subCategoryAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -252,6 +264,12 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                         item += "Gider" + spnSearchTags.getSelectedItem().toString();
                     }
                     int subID = getResources().getIdentifier(item, "array", getActivity().getPackageName());
+
+                    if(subID == 0)
+                    {
+                        String newItem = LocaleHelper.GetRidOfTurkishCharacters(item);
+                        subID = getResources().getIdentifier(newItem, "array", getActivity().getPackageName());
+                    }
 
                     ArrayAdapter<CharSequence> subCategoryAdapter = ArrayAdapter.createFromResource(v.getContext(), subID, R.layout.cuzdan_spinner_item);
                     subCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

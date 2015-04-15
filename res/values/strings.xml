@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Cüzdan</string>
-    <string name="version">0.6.1</string>
+    <string name="version">0.6.2</string>
 
     <string name="dummyData">false</string>
 
@@ -39,6 +39,10 @@
     <string-array name="MaaşGelir">
         <item>Maaş Ödemesi</item>
     </string-array>
+    <string-array name="MaasGelir">
+        <item>Maaş Ödemesi</item>
+    </string-array>
+
     <string-array name="KiraGelir">
         <item>Kira Ödemesi</item>
     </string-array>
@@ -46,18 +50,31 @@
         <item>Banka Faiz Ödemesi</item>
         <item>Borç Faiz Ödemesi</item>
     </string-array>
+
     <string-array name="ŞansGelir">
         <item>Piyango</item>
         <item>İddia</item>
         <item>Kumar Oyunları</item>
         <item>Diğer</item>
     </string-array>
+    <string-array name="SansGelir">
+        <item>Piyango</item>
+        <item>İddia</item>
+        <item>Kumar Oyunları</item>
+        <item>Diğer</item>
+    </string-array>
+
     <string-array name="AlacaklarGelir">
         <item>Alacaklar Tahsilatı</item>
     </string-array>
+
     <string-array name="HarçlıkGelir">
         <item>Harçlık Ödemesi</item>
     </string-array>
+    <string-array name="HarclikGelir">
+        <item>Harçlık Ödemesi</item>
+    </string-array>
+
     <string-array name="KrediGelir">
         <item>Banka Kredisi</item>
     </string-array>
@@ -67,6 +84,7 @@
         <item>Kişisel</item>
         <item>Ev</item>
     </string-array>
+
     <string-array name="Kişisel">
         <item>Yiyecek &amp; İçecek</item>
         <item>Sigara &amp; Tütün</item>
@@ -79,6 +97,19 @@
         <item>Borçlar</item>
         <item>Özel Kategori (Kişisel)</item>
     </string-array>
+    <string-array name="Kisisel">
+        <item>Yiyecek &amp; İçecek</item>
+        <item>Sigara &amp; Tütün</item>
+        <item>Alışveriş</item>
+        <item>Sağlık</item>
+        <item>Eğlence &amp; Sosyal Aktiviteler</item>
+        <item>Ulaşım</item>
+        <item>Döviz</item>
+        <item>Taksit</item>
+        <item>Borçlar</item>
+        <item>Özel Kategori (Kişisel)</item>
+    </string-array>
+
     <string-array name="Ev">
         <item>Kira</item>
         <item>Faturalar</item>
@@ -91,42 +122,89 @@
         <item>Alkollü İçecek</item>
         <item>Gıda &amp; Alkolsüz İçecek</item>
     </string-array>
+    <string-array name="YiyecekGiderKisisel">
+        <item>Alkollü İçecek</item>
+        <item>Gıda &amp; Alkolsüz İçecek</item>
+    </string-array>
+
     <string-array name="SigaraGiderKişisel">
         <item>Sigara</item>
         <item>Tütün</item>
     </string-array>
+    <string-array name="SigaraGiderKisisel">
+        <item>Sigara</item>
+        <item>Tütün</item>
+    </string-array>
+
     <string-array name="AlışverişGiderKişisel">
         <item>Giyim &amp; Ayakkabı</item>
         <item>Teknolojik Aletler</item>
         <item>Diğer</item>
     </string-array>
+    <string-array name="AlisverisGiderKisisel">
+        <item>Giyim &amp; Ayakkabı</item>
+        <item>Teknolojik Aletler</item>
+        <item>Diğer</item>
+    </string-array>
+
     <string-array name="SağlıkGiderKişisel">
         <item>Hastane Masrafları</item>
         <item>İlaç</item>
     </string-array>
+    <string-array name="SaglikGiderKisisel">
+        <item>Hastane Masrafları</item>
+        <item>İlaç</item>
+    </string-array>
+
     <string-array name="EğlenceGiderKişisel">
         <item>Gazete, Dergi &amp; Kitap</item>
         <item>Oyun</item>
         <item>Sinema, Tiyatro &amp; Konser</item>
         <item>Diğer</item>
     </string-array>
+    <string-array name="EglenceGiderKisisel">
+        <item>Gazete, Dergi &amp; Kitap</item>
+        <item>Oyun</item>
+        <item>Sinema, Tiyatro &amp; Konser</item>
+        <item>Diğer</item>
+    </string-array>
+
     <string-array name="UlaşımGiderKişisel">
         <item>Akbil</item>
         <item>Yakıt</item>
         <item>Diğer</item>
     </string-array>
+    <string-array name="UlasimGiderKisisel">
+        <item>Akbil</item>
+        <item>Yakıt</item>
+        <item>Diğer</item>
+    </string-array>
+
     <string-array name="DövizGiderKişisel">
+        <item>Döviz Alımı</item>
+    </string-array>
+    <string-array name="DovizGiderKisisel">
         <item>Döviz Alımı</item>
     </string-array>
 
     <string-array name="TaksitGiderKişisel">
         <item>Taksit Ödemesi</item>
     </string-array>
+    <string-array name="TaksitGiderKisisel">
+        <item>Taksit Ödemesi</item>
+    </string-array>
+
     <string-array name="BorçlarGiderKişisel">
         <item>Borç Ödemesi</item>
         <item>Banka Faiz Borcu</item>
         <item>Diğer</item>
     </string-array>
+    <string-array name="BorclarGiderKisisel">
+        <item>Borç Ödemesi</item>
+        <item>Banka Faiz Borcu</item>
+        <item>Diğer</item>
+    </string-array>
+
     <string-array name="KiraGiderEv">
         <item>Ev Kirası</item>
     </string-array>
@@ -145,7 +223,17 @@
         <item>Mama</item>
         <item>Diğer</item>
     </string-array>
+
     <string-array name="AlışverişGiderEv">
+        <item>Temizlik Malzemeleri</item>
+        <item>Yiyecek &amp; Alkolsüz İçecek</item>
+        <item>Alkollü İçecek</item>
+        <item>Sigara &amp; Tütün</item>
+        <item>Beyaz Eşya</item>
+        <item>Mobilya</item>
+        <item>Diğer</item>
+    </string-array>
+    <string-array name="AlisverisGiderEv">
         <item>Temizlik Malzemeleri</item>
         <item>Yiyecek &amp; Alkolsüz İçecek</item>
         <item>Alkollü İçecek</item>
