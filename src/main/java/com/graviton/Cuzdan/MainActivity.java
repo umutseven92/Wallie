@@ -47,6 +47,11 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        /*
+        Bundle b = getIntent().getExtras();
+        boolean first = b.getBoolean("first");
+        */
+
         pager = (ViewPager) findViewById(R.id.pager);
 
         // ICS sistem tuslari (LG telefonlar etc)

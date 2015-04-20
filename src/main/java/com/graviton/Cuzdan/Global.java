@@ -31,4 +31,16 @@ public class Global extends Application {
     }
 
     public ExpenseDialogFragment expenseDialog;
+
+    private boolean _first;
+
+    public void SetFirst(boolean first)
+    {
+        _first = first;
+    }
+
+    public boolean GetFirst()
+    {
+        return _first;
+    }
 }

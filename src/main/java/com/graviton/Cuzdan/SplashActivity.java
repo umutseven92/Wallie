@@ -51,6 +51,7 @@ public class SplashActivity extends Activity {
 
             // Kullanıcı var, JSON üstünden yüklüyoruz
             first = false;
+            ((Global)this.getApplication()).SetFirst(false);
 
             try {
                 StringBuilder sb = new StringBuilder();
@@ -95,6 +96,7 @@ public class SplashActivity extends Activity {
 
             // Kullanıcı yok, JSON üstünden yeni yaratıyoruz
             first = true;
+            ((Global)this.getApplication()).SetFirst(false);
             CreateUserDialog();
 
         }

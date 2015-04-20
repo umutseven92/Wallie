@@ -5,7 +5,7 @@
 
     <string name="dummyData">false</string>
 
-    <string name="configVersion">userConfigTest113</string>
+    <string name="configVersion">userConfigTest114</string>
 
     <string-array name="menuArray">
         <item>Bütçe</item>

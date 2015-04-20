@@ -75,7 +75,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:id="@+id/btnExpenseStats" android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true" android:src="@drawable/piechart"
+                    android:layout_alignParentRight="true"
                     android:background="@drawable/stats_button" android:layout_marginRight="10dp" android:scaleType="fitXY"/>
             <ImageButton
                     android:layout_width="70dp"

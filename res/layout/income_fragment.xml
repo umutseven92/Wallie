@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:id="@+id/lytIncome"
               android:weightSum="1" android:background="@drawable/main_layout">
-
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="45dp" android:id="@+id/lytDate" android:layout_marginTop="2dp">
@@ -29,13 +29,15 @@
                 android:background="@drawable/right_arrow"
                 android:layout_centerVertical="true" android:layout_toRightOf="@+id/spnDateIncome"
                 android:layout_marginLeft="35dp" android:scaleType="fitXY"/>
-        
+
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="390dp"
-            android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:id="@+id/lytMainIncomes"
-            android:background="@drawable/rounded_layout" android:layout_marginTop="5dp">
+            android:id="@+id/lytMainIncomes"
+            android:background="@drawable/rounded_layout" android:layout_below="@+id/lytDate"
+            android:layout_centerHorizontal="true" android:layout_marginLeft="10dp" android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp">
         <ListView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -74,34 +76,50 @@
                 android:layout_above="@+id/label" android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" android:layout_marginBottom="5dp"/>
     </RelativeLayout>
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="85dp"
-            android:id="@+id/lytAddIncome">
         <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_alignParentTop="false" android:layout_alignParentLeft="false"
-                android:layout_alignParentBottom="true">
-            <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/btnIncomeStats" android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/stats_button" android:layout_marginRight="10dp" android:scaleType="fitXY"/>
-            <ImageButton
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:id="@+id/btnAddIncome" android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:scaleType="fitXY" android:background="@drawable/green_button"/>
-            <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/btnCalendar" android:layout_centerVertical="true"
-                    android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-                    android:layout_marginLeft="10dp" android:scaleType="fitXY"
-                    android:background="@drawable/calendar_button"/>
+                android:layout_height="90dp"
+                android:id="@+id/lytAddIncome"
+                android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginBottom="-19dp">
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+                <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/btnIncomeStats" android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/stats_button" android:layout_marginRight="10dp" android:scaleType="fitXY"/>
+                <ImageButton
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:id="@+id/btnAddIncome" android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true"
+                        android:scaleType="fitXY" android:background="@drawable/green_button"/>
+                <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/btnCalendar" android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
+                        android:layout_marginLeft="10dp" android:scaleType="fitXY"
+                        android:background="@drawable/calendar_button"/>
+            </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
-</LinearLayout>
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:id="@+id/lytTutorial"
+            >
+        <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/btnTutorialNext" android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
+                android:layout_marginBottom="20dp" android:layout_marginRight="20dp"
+                android:background="@drawable/right_arrow" android:scaleType="fitXY"/>
+    </RelativeLayout>
+</FrameLayout>
