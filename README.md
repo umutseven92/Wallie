@@ -67,4 +67,5 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
 ##Kullanılan Kaynaklar
 * Android-WizardPager: [Roman Nurik](http://roman.nurik.net/)
 * MPAndroidChart: [Philipp Jahoda](https://github.com/PhilJay)
+* ShowcaseView: [Alex Curran](https://github.com/amlcurran)
 * Simgeler: Jerry Low, [Magnus Emil Liisberg Helding](http://www.magnushelding.dk/), [Designerz Base](http://www.finest.graphics/), Paomedia, Watsi
