@@ -13,55 +13,113 @@ public final class R {
         public static final int slide_up_dialog=0x7f040001;
     }
     public static final class array {
-        public static final int AlacaklarGelir=0x7f0a000a;
-        public static final int AlisverisGiderEv=0x7f0a0028;
-        public static final int AlisverisGiderKisisel=0x7f0a0017;
-        public static final int AlışverişGiderEv=0x7f0a0027;
-        public static final int AlışverişGiderKişisel=0x7f0a0016;
-        public static final int BorclarGiderKisisel=0x7f0a0023;
-        public static final int BorçlarGiderKişisel=0x7f0a0022;
-        public static final int DovizGiderKisisel=0x7f0a001f;
-        public static final int DövizGiderKişisel=0x7f0a001e;
-        public static final int EglenceGiderKisisel=0x7f0a001b;
-        public static final int Ev=0x7f0a0011;
-        public static final int EvcilGiderEv=0x7f0a0026;
-        public static final int EğlenceGiderKişisel=0x7f0a001a;
-        public static final int FaizGelir=0x7f0a0007;
-        public static final int FaturalarGiderEv=0x7f0a0025;
-        public static final int HarclikGelir=0x7f0a000c;
-        public static final int HarçlıkGelir=0x7f0a000b;
-        public static final int KiraGelir=0x7f0a0006;
-        public static final int KiraGiderEv=0x7f0a0024;
-        public static final int Kisisel=0x7f0a0010;
-        public static final int Kişisel=0x7f0a000f;
-        public static final int KrediGelir=0x7f0a000d;
-        public static final int MaasGelir=0x7f0a0005;
-        public static final int MaaşGelir=0x7f0a0004;
-        public static final int SaglikGiderKisisel=0x7f0a0019;
-        public static final int SansGelir=0x7f0a0009;
-        public static final int SağlıkGiderKişisel=0x7f0a0018;
-        public static final int SigaraGiderKisisel=0x7f0a0015;
-        public static final int SigaraGiderKişisel=0x7f0a0014;
-        public static final int TaksitGiderKisisel=0x7f0a0021;
-        public static final int TaksitGiderKişisel=0x7f0a0020;
-        public static final int UlasimGiderKisisel=0x7f0a001d;
-        public static final int UlaşımGiderKişisel=0x7f0a001c;
-        public static final int YiyecekGiderKisisel=0x7f0a0013;
-        public static final int YiyecekGiderKişisel=0x7f0a0012;
-        public static final int balanceDateArray=0x7f0a0002;
-        public static final int currencies=0x7f0a002a;
-        public static final int dateArray=0x7f0a0001;
+        public static final int AlacaklarGelir=0x7f0b000a;
+        public static final int AlisverisGiderEv=0x7f0b0028;
+        public static final int AlisverisGiderKisisel=0x7f0b0017;
+        public static final int AlışverişGiderEv=0x7f0b0027;
+        public static final int AlışverişGiderKişisel=0x7f0b0016;
+        public static final int BorclarGiderKisisel=0x7f0b0023;
+        public static final int BorçlarGiderKişisel=0x7f0b0022;
+        public static final int DovizGiderKisisel=0x7f0b001f;
+        public static final int DövizGiderKişisel=0x7f0b001e;
+        public static final int EglenceGiderKisisel=0x7f0b001b;
+        public static final int Ev=0x7f0b0011;
+        public static final int EvcilGiderEv=0x7f0b0026;
+        public static final int EğlenceGiderKişisel=0x7f0b001a;
+        public static final int FaizGelir=0x7f0b0007;
+        public static final int FaturalarGiderEv=0x7f0b0025;
+        public static final int HarclikGelir=0x7f0b000c;
+        public static final int HarçlıkGelir=0x7f0b000b;
+        public static final int KiraGelir=0x7f0b0006;
+        public static final int KiraGiderEv=0x7f0b0024;
+        public static final int Kisisel=0x7f0b0010;
+        public static final int Kişisel=0x7f0b000f;
+        public static final int KrediGelir=0x7f0b000d;
+        public static final int MaasGelir=0x7f0b0005;
+        public static final int MaaşGelir=0x7f0b0004;
+        public static final int SaglikGiderKisisel=0x7f0b0019;
+        public static final int SansGelir=0x7f0b0009;
+        public static final int SağlıkGiderKişisel=0x7f0b0018;
+        public static final int SigaraGiderKisisel=0x7f0b0015;
+        public static final int SigaraGiderKişisel=0x7f0b0014;
+        public static final int TaksitGiderKisisel=0x7f0b0021;
+        public static final int TaksitGiderKişisel=0x7f0b0020;
+        public static final int UlasimGiderKisisel=0x7f0b001d;
+        public static final int UlaşımGiderKişisel=0x7f0b001c;
+        public static final int YiyecekGiderKisisel=0x7f0b0013;
+        public static final int YiyecekGiderKişisel=0x7f0b0012;
+        public static final int balanceDateArray=0x7f0b0002;
+        public static final int currencies=0x7f0b002a;
+        public static final int dateArray=0x7f0b0001;
         /**  Gider Kategorileri & Alt Kategoriler 
          */
-        public static final int expenseTags=0x7f0a000e;
+        public static final int expenseTags=0x7f0b000e;
         /**  Gelir Kategorileri & Alt Kategoriler 
          */
-        public static final int incomeCategories=0x7f0a0003;
-        public static final int menuArray=0x7f0a0000;
-        public static final int turkishMonths=0x7f0a0029;
-        public static final int ŞansGelir=0x7f0a0008;
+        public static final int incomeCategories=0x7f0b0003;
+        public static final int menuArray=0x7f0b0000;
+        public static final int turkishMonths=0x7f0b0029;
+        public static final int ŞansGelir=0x7f0b0008;
     }
     public static final class attr {
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int showcaseViewStyle=0x7f01000b;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int sv_backgroundColor=0x7f010001;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int sv_buttonBackgroundColor=0x7f010004;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int sv_buttonForegroundColor=0x7f010005;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+         */
+        public static final int sv_buttonText=0x7f010006;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int sv_detailTextAppearance=0x7f010007;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int sv_detailTextColor=0x7f010002;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int sv_showcaseColor=0x7f010009;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
+         */
+        public static final int sv_tintButtonColor=0x7f01000a;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int sv_titleTextAppearance=0x7f010008;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int sv_titleTextColor=0x7f010003;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -87,9 +145,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int text_light=0x7f070004;
     }
     public static final class dimen {
+        public static final int action_bar_offset=0x7f080005;
+        public static final int button_margin=0x7f080003;
+        public static final int showcase_radius=0x7f080006;
+        public static final int showcase_radius_inner=0x7f080007;
+        public static final int showcase_radius_outer=0x7f080008;
         public static final int step_pager_tab_height=0x7f080001;
         public static final int step_pager_tab_spacing=0x7f080002;
         public static final int step_pager_tab_width=0x7f080000;
+        public static final int text_padding=0x7f080004;
     }
     public static final class drawable {
         public static final int action_search=0x7f020000;
@@ -97,236 +161,247 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int arrowleftpressed=0x7f020002;
         public static final int arrowright=0x7f020003;
         public static final int arrowrightclicked=0x7f020004;
-        public static final int calendar=0x7f020005;
-        public static final int calendar_button=0x7f020006;
-        public static final int detail_graph=0x7f020007;
-        public static final int detail_magnifier=0x7f020008;
-        public static final int detail_pie=0x7f020009;
-        public static final int drawer_shadow=0x7f02000a;
-        public static final int finish_background=0x7f02000b;
-        public static final int graph=0x7f02000c;
-        public static final int grav=0x7f02000d;
-        public static final int green_button=0x7f02000e;
-        public static final int greenplus=0x7f02000f;
-        public static final int ic_drawer=0x7f020010;
-        public static final int ic_launcher=0x7f020011;
-        public static final int item_focused=0x7f020012;
-        public static final int item_pressed=0x7f020013;
-        public static final int left_arrow=0x7f020014;
-        public static final int list_selector=0x7f020015;
-        public static final int mag=0x7f020016;
-        public static final int main_layout=0x7f020017;
-        public static final int notification_logo=0x7f020018;
-        public static final int pie=0x7f020019;
-        public static final int piechart=0x7f02001a;
-        public static final int profile=0x7f02001b;
-        public static final int progress_bar=0x7f02001c;
-        public static final int red_button=0x7f02001d;
-        public static final int redminus=0x7f02001e;
-        public static final int right_arrow=0x7f02001f;
-        public static final int rounded_button=0x7f020020;
-        public static final int rounded_layout=0x7f020021;
-        public static final int rounded_red_button=0x7f020022;
-        public static final int rounded_spinner=0x7f020023;
-        public static final int rounded_widget=0x7f020024;
-        public static final int selectable_item_background=0x7f020025;
-        public static final int splashicon=0x7f020026;
-        public static final int stats_button=0x7f020027;
-        public static final int wallet=0x7f020028;
-        public static final int wallet512=0x7f020029;
+        public static final int btn_cling_normal=0x7f020005;
+        public static final int btn_cling_pressed=0x7f020006;
+        public static final int button=0x7f020007;
+        public static final int button_normal=0x7f020008;
+        public static final int calendar=0x7f020009;
+        public static final int calendar_button=0x7f02000a;
+        public static final int cling=0x7f02000b;
+        public static final int cling_bleached=0x7f02000c;
+        public static final int cling_button_bg=0x7f02000d;
+        public static final int detail_graph=0x7f02000e;
+        public static final int detail_magnifier=0x7f02000f;
+        public static final int detail_pie=0x7f020010;
+        public static final int drawer_shadow=0x7f020011;
+        public static final int finish_background=0x7f020012;
+        public static final int graph=0x7f020013;
+        public static final int grav=0x7f020014;
+        public static final int green_button=0x7f020015;
+        public static final int greenplus=0x7f020016;
+        public static final int hand=0x7f020017;
+        public static final int ic_drawer=0x7f020018;
+        public static final int ic_launcher=0x7f020019;
+        public static final int item_focused=0x7f02001a;
+        public static final int item_pressed=0x7f02001b;
+        public static final int left_arrow=0x7f02001c;
+        public static final int list_selector=0x7f02001d;
+        public static final int mag=0x7f02001e;
+        public static final int main_layout=0x7f02001f;
+        public static final int notification_logo=0x7f020020;
+        public static final int pie=0x7f020021;
+        public static final int piechart=0x7f020022;
+        public static final int profile=0x7f020023;
+        public static final int progress_bar=0x7f020024;
+        public static final int red_button=0x7f020025;
+        public static final int redminus=0x7f020026;
+        public static final int right_arrow=0x7f020027;
+        public static final int rounded_button=0x7f020028;
+        public static final int rounded_layout=0x7f020029;
+        public static final int rounded_red_button=0x7f02002a;
+        public static final int rounded_spinner=0x7f02002b;
+        public static final int rounded_widget=0x7f02002c;
+        public static final int selectable_item_background=0x7f02002d;
+        public static final int splashicon=0x7f02002e;
+        public static final int stats_button=0x7f02002f;
+        public static final int wallet=0x7f020030;
+        public static final int wallet512=0x7f020031;
     }
     public static final class id {
-        public static final int btnAccountRem=0x7f0c0023;
-        public static final int btnAccountSav=0x7f0c0025;
-        public static final int btnAddExpense=0x7f0c005c;
-        public static final int btnAddIncome=0x7f0c0080;
-        public static final int btnAddSaving=0x7f0c00bb;
-        public static final int btnBalanceCalendar=0x7f0c0048;
-        public static final int btnCalendar=0x7f0c0081;
-        public static final int btnDeleteSaving=0x7f0c00b3;
-        public static final int btnExpenseCalendar=0x7f0c005d;
-        public static final int btnExpenseGraphCalendar=0x7f0c0063;
-        public static final int btnExpensePieCalendar=0x7f0c0069;
-        public static final int btnExpenseSearchCalendar=0x7f0c0076;
-        public static final int btnExpenseStats=0x7f0c005b;
-        public static final int btnIncomeGraphCalendar=0x7f0c0087;
-        public static final int btnIncomePieCalendar=0x7f0c008e;
-        public static final int btnIncomeSearchCalendar=0x7f0c009a;
-        public static final int btnIncomeStats=0x7f0c007f;
-        public static final int btnWidgetBalance=0x7f0c004c;
-        public static final int chkRepeating=0x7f0c003b;
-        public static final int chk_custom_repeating=0x7f0c0038;
-        public static final int custom_category=0x7f0c0031;
-        public static final int divider=0x7f0c002c;
-        public static final int drawer_layout=0x7f0c009b;
-        public static final int etLastName=0x7f0c0015;
-        public static final int etName=0x7f0c0014;
-        public static final int expenseGraph=0x7f0c0061;
-        public static final int expensePieChart=0x7f0c0067;
-        public static final int imageView=0x7f0c004b;
-        public static final int imageView2=0x7f0c00be;
-        public static final int imageView3=0x7f0c0000;
-        public static final int imgExpenseGraphLeft=0x7f0c005f;
-        public static final int imgExpenseGraphRight=0x7f0c0060;
-        public static final int imgExpensePieLeft=0x7f0c0065;
-        public static final int imgExpensePieRight=0x7f0c0066;
-        public static final int imgIncomeGraphLeft=0x7f0c0083;
-        public static final int imgIncomeGraphRight=0x7f0c0084;
-        public static final int imgIncomePieLeft=0x7f0c008b;
-        public static final int imgIncomePieRight=0x7f0c008a;
-        public static final int imgLeftBalance=0x7f0c003e;
-        public static final int imgLeftExpense=0x7f0c0052;
-        public static final int imgLeftIncome=0x7f0c0078;
-        public static final int imgRightBalance=0x7f0c003f;
-        public static final int imgRightExpense=0x7f0c0054;
-        public static final int imgRightIncome=0x7f0c0079;
-        public static final int imgSearchLeft=0x7f0c006f;
-        public static final int imgSearchLeftIncome=0x7f0c0093;
-        public static final int imgSearchRight=0x7f0c0071;
-        public static final int imgSearchRightIncome=0x7f0c0094;
-        public static final int incomeGraph=0x7f0c0085;
-        public static final int incomePieChart=0x7f0c008c;
-        public static final int label=0x7f0c0057;
-        public static final int left_drawer=0x7f0c009d;
-        public static final int lstExpenses=0x7f0c0056;
-        public static final int lstIncomes=0x7f0c007b;
-        public static final int lstSavings=0x7f0c00b5;
-        public static final int lstSearchExpense=0x7f0c0072;
-        public static final int lstSearchIncomes=0x7f0c0096;
-        public static final int lyt=0x7f0c006e;
-        public static final int lytAddExpense=0x7f0c005a;
-        public static final int lytAddIncome=0x7f0c007e;
-        public static final int lytBar=0x7f0c009f;
-        public static final int lytCriteria=0x7f0c008f;
-        public static final int lytDate=0x7f0c0051;
-        public static final int lytDetails=0x7f0c00a1;
-        public static final int lytEmptySavings=0x7f0c00b7;
-        public static final int lytExpense=0x7f0c0050;
-        public static final int lytIncomePieDate=0x7f0c0088;
-        public static final int lytMainExpenses=0x7f0c0055;
-        public static final int lytMainIncomes=0x7f0c007a;
-        public static final int lytSavingButton=0x7f0c00b9;
-        public static final int lytSavingsList=0x7f0c00b4;
-        public static final int next_button=0x7f0c002e;
-        public static final int nmNum=0x7f0c009e;
-        public static final int pager=0x7f0c002b;
-        public static final int pagerTitle=0x7f0c009c;
-        public static final int pbSaving=0x7f0c00a0;
-        public static final int prev_button=0x7f0c002d;
-        public static final int relativeLayout=0x7f0c003d;
-        public static final int relativeLayout10=0x7f0c0049;
-        public static final int relativeLayout2=0x7f0c0095;
-        public static final int relativeLayout3=0x7f0c006a;
-        public static final int relativeLayout4=0x7f0c008d;
-        public static final int relativeLayout5=0x7f0c0086;
-        public static final int relativeLayout6=0x7f0c0068;
-        public static final int relativeLayout7=0x7f0c0062;
-        public static final int relativeLayout8=0x7f0c0019;
-        public static final int relativeLayout9=0x7f0c001a;
-        public static final int saving_amount=0x7f0c0039;
-        public static final int saving_custom_amount=0x7f0c0035;
-        public static final int saving_custom_days=0x7f0c0034;
-        public static final int saving_custom_name=0x7f0c0036;
-        public static final int saving_name=0x7f0c003a;
-        public static final int scrollView=0x7f0c00a2;
-        public static final int scrollView2=0x7f0c0032;
-        public static final int scrollView3=0x7f0c0001;
-        public static final int space=0x7f0c0018;
-        public static final int spnCurrencies=0x7f0c0017;
-        public static final int spnDateBalance=0x7f0c0040;
-        public static final int spnDateExpense=0x7f0c0053;
-        public static final int spnDateIncome=0x7f0c0077;
-        public static final int spnExpenseCategory=0x7f0c006c;
-        public static final int spnExpensePieDate=0x7f0c0064;
-        public static final int spnExpenseSubCategory=0x7f0c006d;
-        public static final int spnExpenseTags=0x7f0c006b;
-        public static final int spnIncomePieDate=0x7f0c0089;
-        public static final int spnSearchCategory=0x7f0c0090;
-        public static final int spnSearchExpenseDate=0x7f0c0070;
-        public static final int spnSearchIncomeDate=0x7f0c0092;
-        public static final int spnSearchSubCategory=0x7f0c0091;
-        public static final int strip=0x7f0c002a;
-        public static final int swcAccountRem=0x7f0c0026;
-        public static final int swcAccountSaving=0x7f0c0020;
-        public static final int swcStatusNot=0x7f0c0029;
-        public static final int textView=0x7f0c0045;
-        public static final int textView10=0x7f0c00a5;
-        public static final int textView11=0x7f0c0033;
-        public static final int textView12=0x7f0c00a9;
-        public static final int textView13=0x7f0c0013;
-        public static final int textView14=0x7f0c00ab;
-        public static final int textView15=0x7f0c00a7;
-        public static final int textView16=0x7f0c00af;
-        public static final int textView17=0x7f0c00b1;
-        public static final int textView18=0x7f0c0016;
-        public static final int textView19=0x7f0c001c;
-        public static final int textView2=0x7f0c0042;
-        public static final int textView20=0x7f0c001f;
-        public static final int textView21=0x7f0c001e;
-        public static final int textView22=0x7f0c0021;
-        public static final int textView23=0x7f0c0022;
-        public static final int textView24=0x7f0c0024;
-        public static final int textView25=0x7f0c0028;
-        public static final int textView26=0x7f0c004a;
-        public static final int textView27=0x7f0c0003;
-        public static final int textView28=0x7f0c0004;
-        public static final int textView29=0x7f0c0005;
-        public static final int textView3=0x7f0c0097;
-        public static final int textView30=0x7f0c0007;
-        public static final int textView31=0x7f0c0006;
-        public static final int textView32=0x7f0c0008;
-        public static final int textView33=0x7f0c0009;
-        public static final int textView34=0x7f0c000a;
-        public static final int textView35=0x7f0c000b;
-        public static final int textView36=0x7f0c000c;
-        public static final int textView37=0x7f0c000d;
-        public static final int textView38=0x7f0c000e;
-        public static final int textView39=0x7f0c000f;
-        public static final int textView4=0x7f0c00b8;
-        public static final int textView40=0x7f0c0010;
-        public static final int textView41=0x7f0c0011;
-        public static final int textView42=0x7f0c0012;
-        public static final int textView5=0x7f0c00b6;
-        public static final int textView6=0x7f0c0073;
-        public static final int textView7=0x7f0c003c;
-        public static final int textView8=0x7f0c00a3;
-        public static final int textView9=0x7f0c00ad;
-        public static final int txtAboutVersion=0x7f0c0002;
-        public static final int txtAccountCurrency=0x7f0c001d;
-        public static final int txtBalance=0x7f0c0046;
-        public static final int txtBalanceDate=0x7f0c0047;
-        public static final int txtBalanceExpense=0x7f0c0044;
-        public static final int txtBalanceIncome=0x7f0c0043;
-        public static final int txtExpenseDate=0x7f0c0059;
-        public static final int txtExpenseGraphDate=0x7f0c005e;
-        public static final int txtIncomeDate=0x7f0c007d;
-        public static final int txtIncomeGraphDate=0x7f0c0082;
-        public static final int txtInsufficentLimit=0x7f0c00bd;
-        public static final int txtName=0x7f0c001b;
-        public static final int txtSavedAmount=0x7f0c00b2;
-        public static final int txtSavingAmount=0x7f0c00a6;
-        public static final int txtSavingDailyLimit=0x7f0c00a8;
-        public static final int txtSavingDaysPast=0x7f0c00b0;
-        public static final int txtSavingDesc=0x7f0c00ae;
-        public static final int txtSavingName=0x7f0c00a4;
-        public static final int txtSavingPeriod=0x7f0c00aa;
-        public static final int txtSavingRep=0x7f0c00ac;
-        public static final int txtSearchExpenseDate=0x7f0c0074;
-        public static final int txtSearchExpenseTotal=0x7f0c0075;
-        public static final int txtSearchIncomeDate=0x7f0c0099;
-        public static final int txtSearchIncomeTotal=0x7f0c0098;
-        public static final int txtTotalDailyLimit=0x7f0c00bc;
-        public static final int txtTotalDailyLimitExp=0x7f0c00ba;
-        public static final int txtTotalExpense=0x7f0c0058;
-        public static final int txtTotalIncome=0x7f0c007c;
-        public static final int txtUserName=0x7f0c0041;
-        public static final int txtView11=0x7f0c0037;
-        public static final int txtWidgetBalance=0x7f0c004f;
-        public static final int txtWidgetExpense=0x7f0c004e;
-        public static final int txtWidgetIncome=0x7f0c004d;
-        public static final int view=0x7f0c0027;
-        public static final int your_email=0x7f0c0030;
-        public static final int your_name=0x7f0c002f;
+        public static final int btnAccountRem=0x7f090026;
+        public static final int btnAccountSav=0x7f090028;
+        public static final int btnAddExpense=0x7f09005f;
+        public static final int btnAddIncome=0x7f090083;
+        public static final int btnAddSaving=0x7f0900be;
+        public static final int btnBalanceCalendar=0x7f09004b;
+        public static final int btnCalendar=0x7f090084;
+        public static final int btnDeleteSaving=0x7f0900b6;
+        public static final int btnExpenseCalendar=0x7f090060;
+        public static final int btnExpenseGraphCalendar=0x7f090066;
+        public static final int btnExpensePieCalendar=0x7f09006c;
+        public static final int btnExpenseSearchCalendar=0x7f090079;
+        public static final int btnExpenseStats=0x7f09005e;
+        public static final int btnIncomeGraphCalendar=0x7f09008a;
+        public static final int btnIncomePieCalendar=0x7f090091;
+        public static final int btnIncomeSearchCalendar=0x7f09009d;
+        public static final int btnIncomeStats=0x7f090082;
+        public static final int btnWidgetBalance=0x7f09004f;
+        public static final int chkRepeating=0x7f09003e;
+        public static final int chk_custom_repeating=0x7f09003b;
+        public static final int custom_category=0x7f090034;
+        public static final int divider=0x7f09002f;
+        public static final int drawer_layout=0x7f09009e;
+        public static final int etLastName=0x7f090018;
+        public static final int etName=0x7f090017;
+        public static final int expenseGraph=0x7f090064;
+        public static final int expensePieChart=0x7f09006a;
+        public static final int imageView=0x7f09004e;
+        public static final int imageView2=0x7f0900c1;
+        public static final int imageView3=0x7f090003;
+        public static final int imgExpenseGraphLeft=0x7f090062;
+        public static final int imgExpenseGraphRight=0x7f090063;
+        public static final int imgExpensePieLeft=0x7f090068;
+        public static final int imgExpensePieRight=0x7f090069;
+        public static final int imgIncomeGraphLeft=0x7f090086;
+        public static final int imgIncomeGraphRight=0x7f090087;
+        public static final int imgIncomePieLeft=0x7f09008e;
+        public static final int imgIncomePieRight=0x7f09008d;
+        public static final int imgLeftBalance=0x7f090041;
+        public static final int imgLeftExpense=0x7f090055;
+        public static final int imgLeftIncome=0x7f09007b;
+        public static final int imgRightBalance=0x7f090042;
+        public static final int imgRightExpense=0x7f090057;
+        public static final int imgRightIncome=0x7f09007c;
+        public static final int imgSearchLeft=0x7f090072;
+        public static final int imgSearchLeftIncome=0x7f090096;
+        public static final int imgSearchRight=0x7f090074;
+        public static final int imgSearchRightIncome=0x7f090097;
+        public static final int incomeGraph=0x7f090088;
+        public static final int incomePieChart=0x7f09008f;
+        public static final int label=0x7f09005a;
+        public static final int left_drawer=0x7f0900a0;
+        public static final int lstExpenses=0x7f090059;
+        public static final int lstIncomes=0x7f09007e;
+        public static final int lstSavings=0x7f0900b8;
+        public static final int lstSearchExpense=0x7f090075;
+        public static final int lstSearchIncomes=0x7f090099;
+        public static final int lyt=0x7f090071;
+        public static final int lytAddExpense=0x7f09005d;
+        public static final int lytAddIncome=0x7f090081;
+        public static final int lytBar=0x7f0900a2;
+        public static final int lytCriteria=0x7f090092;
+        public static final int lytDate=0x7f090054;
+        public static final int lytDetails=0x7f0900a4;
+        public static final int lytEmptySavings=0x7f0900ba;
+        public static final int lytExpense=0x7f090053;
+        public static final int lytIncomePieDate=0x7f09008b;
+        public static final int lytMainExpenses=0x7f090058;
+        public static final int lytMainIncomes=0x7f09007d;
+        public static final int lytSavingButton=0x7f0900bc;
+        public static final int lytSavingsList=0x7f0900b7;
+        public static final int next_button=0x7f090031;
+        public static final int nmNum=0x7f0900a1;
+        public static final int pager=0x7f09002e;
+        public static final int pagerTitle=0x7f09009f;
+        public static final int pbSaving=0x7f0900a3;
+        public static final int prev_button=0x7f090030;
+        public static final int relativeLayout=0x7f090040;
+        public static final int relativeLayout10=0x7f09004c;
+        public static final int relativeLayout2=0x7f090098;
+        public static final int relativeLayout3=0x7f09006d;
+        public static final int relativeLayout4=0x7f090090;
+        public static final int relativeLayout5=0x7f090089;
+        public static final int relativeLayout6=0x7f09006b;
+        public static final int relativeLayout7=0x7f090065;
+        public static final int relativeLayout8=0x7f09001c;
+        public static final int relativeLayout9=0x7f09001d;
+        public static final int saving_amount=0x7f09003c;
+        public static final int saving_custom_amount=0x7f090038;
+        public static final int saving_custom_days=0x7f090037;
+        public static final int saving_custom_name=0x7f090039;
+        public static final int saving_name=0x7f09003d;
+        public static final int scrollView=0x7f0900a5;
+        public static final int scrollView2=0x7f090035;
+        public static final int scrollView3=0x7f090004;
+        public static final int showcase_button=0x7f090000;
+        public static final int showcase_sub_text=0x7f090002;
+        public static final int showcase_title_text=0x7f090001;
+        public static final int space=0x7f09001b;
+        public static final int spnCurrencies=0x7f09001a;
+        public static final int spnDateBalance=0x7f090043;
+        public static final int spnDateExpense=0x7f090056;
+        public static final int spnDateIncome=0x7f09007a;
+        public static final int spnExpenseCategory=0x7f09006f;
+        public static final int spnExpensePieDate=0x7f090067;
+        public static final int spnExpenseSubCategory=0x7f090070;
+        public static final int spnExpenseTags=0x7f09006e;
+        public static final int spnIncomePieDate=0x7f09008c;
+        public static final int spnSearchCategory=0x7f090093;
+        public static final int spnSearchExpenseDate=0x7f090073;
+        public static final int spnSearchIncomeDate=0x7f090095;
+        public static final int spnSearchSubCategory=0x7f090094;
+        public static final int strip=0x7f09002d;
+        public static final int swcAccountRem=0x7f090029;
+        public static final int swcAccountSaving=0x7f090023;
+        public static final int swcStatusNot=0x7f09002c;
+        public static final int textView=0x7f090048;
+        public static final int textView10=0x7f0900a8;
+        public static final int textView11=0x7f090036;
+        public static final int textView12=0x7f0900ac;
+        public static final int textView13=0x7f090016;
+        public static final int textView14=0x7f0900ae;
+        public static final int textView15=0x7f0900aa;
+        public static final int textView16=0x7f0900b2;
+        public static final int textView17=0x7f0900b4;
+        public static final int textView18=0x7f090019;
+        public static final int textView19=0x7f09001f;
+        public static final int textView2=0x7f090045;
+        public static final int textView20=0x7f090022;
+        public static final int textView21=0x7f090021;
+        public static final int textView22=0x7f090024;
+        public static final int textView23=0x7f090025;
+        public static final int textView24=0x7f090027;
+        public static final int textView25=0x7f09002b;
+        public static final int textView26=0x7f09004d;
+        public static final int textView27=0x7f090006;
+        public static final int textView28=0x7f090007;
+        public static final int textView29=0x7f090008;
+        public static final int textView3=0x7f09009a;
+        public static final int textView30=0x7f09000a;
+        public static final int textView31=0x7f090009;
+        public static final int textView32=0x7f09000b;
+        public static final int textView33=0x7f09000c;
+        public static final int textView34=0x7f09000d;
+        public static final int textView35=0x7f09000e;
+        public static final int textView36=0x7f09000f;
+        public static final int textView37=0x7f090010;
+        public static final int textView38=0x7f090011;
+        public static final int textView39=0x7f090012;
+        public static final int textView4=0x7f0900bb;
+        public static final int textView40=0x7f090013;
+        public static final int textView41=0x7f090014;
+        public static final int textView42=0x7f090015;
+        public static final int textView5=0x7f0900b9;
+        public static final int textView6=0x7f090076;
+        public static final int textView7=0x7f09003f;
+        public static final int textView8=0x7f0900a6;
+        public static final int textView9=0x7f0900b0;
+        public static final int txtAboutVersion=0x7f090005;
+        public static final int txtAccountCurrency=0x7f090020;
+        public static final int txtBalance=0x7f090049;
+        public static final int txtBalanceDate=0x7f09004a;
+        public static final int txtBalanceExpense=0x7f090047;
+        public static final int txtBalanceIncome=0x7f090046;
+        public static final int txtExpenseDate=0x7f09005c;
+        public static final int txtExpenseGraphDate=0x7f090061;
+        public static final int txtIncomeDate=0x7f090080;
+        public static final int txtIncomeGraphDate=0x7f090085;
+        public static final int txtInsufficentLimit=0x7f0900c0;
+        public static final int txtName=0x7f09001e;
+        public static final int txtSavedAmount=0x7f0900b5;
+        public static final int txtSavingAmount=0x7f0900a9;
+        public static final int txtSavingDailyLimit=0x7f0900ab;
+        public static final int txtSavingDaysPast=0x7f0900b3;
+        public static final int txtSavingDesc=0x7f0900b1;
+        public static final int txtSavingName=0x7f0900a7;
+        public static final int txtSavingPeriod=0x7f0900ad;
+        public static final int txtSavingRep=0x7f0900af;
+        public static final int txtSearchExpenseDate=0x7f090077;
+        public static final int txtSearchExpenseTotal=0x7f090078;
+        public static final int txtSearchIncomeDate=0x7f09009c;
+        public static final int txtSearchIncomeTotal=0x7f09009b;
+        public static final int txtTotalDailyLimit=0x7f0900bf;
+        public static final int txtTotalDailyLimitExp=0x7f0900bd;
+        public static final int txtTotalExpense=0x7f09005b;
+        public static final int txtTotalIncome=0x7f09007f;
+        public static final int txtUserName=0x7f090044;
+        public static final int txtView11=0x7f09003a;
+        public static final int txtWidgetBalance=0x7f090052;
+        public static final int txtWidgetExpense=0x7f090051;
+        public static final int txtWidgetIncome=0x7f090050;
+        public static final int view=0x7f09002a;
+        public static final int your_email=0x7f090033;
+        public static final int your_name=0x7f090032;
     }
     public static final class layout {
         public static final int about_fragment=0x7f030000;
@@ -346,60 +421,70 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int expense_graph_fragment=0x7f03000e;
         public static final int expense_pie_fragment=0x7f03000f;
         public static final int expense_search_fragment=0x7f030010;
-        public static final int income_fragment=0x7f030011;
-        public static final int income_graph_fragment=0x7f030012;
-        public static final int income_pie_fragment=0x7f030013;
-        public static final int income_search_fragment=0x7f030014;
-        public static final int list_item_review=0x7f030015;
-        public static final int main=0x7f030016;
-        public static final int main_list_item=0x7f030017;
-        public static final int number_dialog=0x7f030018;
-        public static final int savings_detail=0x7f030019;
-        public static final int savings_fragment=0x7f03001a;
-        public static final int splash_fragment=0x7f03001b;
+        public static final int handy=0x7f030011;
+        public static final int income_fragment=0x7f030012;
+        public static final int income_graph_fragment=0x7f030013;
+        public static final int income_pie_fragment=0x7f030014;
+        public static final int income_search_fragment=0x7f030015;
+        public static final int list_item_review=0x7f030016;
+        public static final int main=0x7f030017;
+        public static final int main_list_item=0x7f030018;
+        public static final int number_dialog=0x7f030019;
+        public static final int savings_detail=0x7f03001a;
+        public static final int savings_fragment=0x7f03001b;
+        public static final int showcase_button=0x7f03001c;
+        public static final int splash_fragment=0x7f03001d;
     }
     public static final class raw {
         public static final int cuzdan_notification=0x7f060000;
     }
     public static final class string {
-        public static final int app_name=0x7f090000;
-        public static final int configVersion=0x7f090003;
-        public static final int currency=0x7f090016;
-        public static final int drawer_close=0x7f090005;
-        public static final int drawer_open=0x7f090004;
-        public static final int dummyData=0x7f090002;
-        public static final int finish_expense=0x7f090009;
-        public static final int finish_income=0x7f090008;
-        public static final int finish_saving=0x7f09000a;
-        public static final int hint_desc=0x7f09000e;
-        public static final int insufficent_funds=0x7f090017;
-        public static final int label_amount=0x7f09000c;
-        public static final int label_custom_day=0x7f090012;
-        public static final int label_desc=0x7f09000d;
-        public static final int label_name=0x7f09000f;
-        public static final int label_priority=0x7f090011;
-        public static final int label_repeating=0x7f090010;
-        public static final int next=0x7f090006;
-        public static final int prev=0x7f090007;
-        public static final int review=0x7f09000b;
-        public static final int submit_cancel_button=0x7f090015;
-        public static final int submit_confirm_button=0x7f090014;
-        public static final int submit_confirm_message=0x7f090013;
-        public static final int version=0x7f090001;
+        public static final int app_name=0x7f0a0000;
+        public static final int configVersion=0x7f0a0003;
+        public static final int currency=0x7f0a0016;
+        public static final int drawer_close=0x7f0a0005;
+        public static final int drawer_open=0x7f0a0004;
+        public static final int dummyData=0x7f0a0002;
+        public static final int finish_expense=0x7f0a0009;
+        public static final int finish_income=0x7f0a0008;
+        public static final int finish_saving=0x7f0a000a;
+        public static final int hint_desc=0x7f0a000e;
+        public static final int insufficent_funds=0x7f0a0017;
+        public static final int label_amount=0x7f0a000c;
+        public static final int label_custom_day=0x7f0a0012;
+        public static final int label_desc=0x7f0a000d;
+        public static final int label_name=0x7f0a000f;
+        public static final int label_priority=0x7f0a0011;
+        public static final int label_repeating=0x7f0a0010;
+        public static final int next=0x7f0a0006;
+        public static final int ok=0x7f0a0018;
+        public static final int prev=0x7f0a0007;
+        public static final int review=0x7f0a000b;
+        public static final int submit_cancel_button=0x7f0a0015;
+        public static final int submit_confirm_button=0x7f0a0014;
+        public static final int submit_confirm_message=0x7f0a0013;
+        public static final int version=0x7f0a0001;
     }
     public static final class style {
-        public static final int AppTheme=0x7f0b0000;
+        public static final int AppTheme=0x7f0c0000;
         /**  the theme applied to the application or activity 
          */
-        public static final int CustomActionBarTheme=0x7f0b0006;
-        public static final int DialogAnimation=0x7f0b0005;
+        public static final int CustomActionBarTheme=0x7f0c000d;
+        public static final int DialogAnimation=0x7f0c0005;
         /**  ActionBar styles 
          */
-        public static final int MyActionBar=0x7f0b0007;
-        public static final int TextAppearanceFinish=0x7f0b0001;
-        public static final int WizardFormLabel=0x7f0b0004;
-        public static final int WizardPageContainer=0x7f0b0002;
-        public static final int WizardPageTitle=0x7f0b0003;
+        public static final int MyActionBar=0x7f0c000e;
+        public static final int ShowcaseButton=0x7f0c0006;
+        public static final int ShowcaseView=0x7f0c0008;
+        public static final int ShowcaseView_Light=0x7f0c0007;
+        public static final int TextAppearance_ShowcaseView_Detail=0x7f0c000a;
+        public static final int TextAppearance_ShowcaseView_Detail_Light=0x7f0c000b;
+        public static final int TextAppearance_ShowcaseView_Title=0x7f0c0009;
+        public static final int TextAppearance_ShowcaseView_Title_Light=0x7f0c000c;
+        public static final int TextAppearanceFinish=0x7f0c0001;
+        public static final int WizardFormLabel=0x7f0c0004;
+        public static final int WizardPageContainer=0x7f0c0002;
+        public static final int WizardPageTitle=0x7f0c0003;
     }
     public static final class xml {
         public static final int cuzdan_widger_provider=0x7f050000;
@@ -428,5 +513,175 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           @attr name com.graviton.Cuzdan:textAppearanceFinish
         */
         public static final int AppTheme_textAppearanceFinish = 0;
+        /** Attributes that can be used with a CustomTheme.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #CustomTheme_showcaseViewStyle com.graviton.Cuzdan:showcaseViewStyle}</code></td><td></td></tr>
+           </table>
+           @see #CustomTheme_showcaseViewStyle
+         */
+        public static final int[] CustomTheme = {
+            0x7f01000b
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.graviton.Cuzdan.R.attr#showcaseViewStyle}
+          attribute's value can be found in the {@link #CustomTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.graviton.Cuzdan:showcaseViewStyle
+        */
+        public static final int CustomTheme_showcaseViewStyle = 0;
+        /** Attributes that can be used with a ShowcaseView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #ShowcaseView_sv_backgroundColor com.graviton.Cuzdan:sv_backgroundColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ShowcaseView_sv_buttonBackgroundColor com.graviton.Cuzdan:sv_buttonBackgroundColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ShowcaseView_sv_buttonForegroundColor com.graviton.Cuzdan:sv_buttonForegroundColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ShowcaseView_sv_buttonText com.graviton.Cuzdan:sv_buttonText}</code></td><td></td></tr>
+           <tr><td><code>{@link #ShowcaseView_sv_detailTextAppearance com.graviton.Cuzdan:sv_detailTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #ShowcaseView_sv_detailTextColor com.graviton.Cuzdan:sv_detailTextColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ShowcaseView_sv_showcaseColor com.graviton.Cuzdan:sv_showcaseColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ShowcaseView_sv_tintButtonColor com.graviton.Cuzdan:sv_tintButtonColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ShowcaseView_sv_titleTextAppearance com.graviton.Cuzdan:sv_titleTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #ShowcaseView_sv_titleTextColor com.graviton.Cuzdan:sv_titleTextColor}</code></td><td></td></tr>
+           </table>
+           @see #ShowcaseView_sv_backgroundColor
+           @see #ShowcaseView_sv_buttonBackgroundColor
+           @see #ShowcaseView_sv_buttonForegroundColor
+           @see #ShowcaseView_sv_buttonText
+           @see #ShowcaseView_sv_detailTextAppearance
+           @see #ShowcaseView_sv_detailTextColor
+           @see #ShowcaseView_sv_showcaseColor
+           @see #ShowcaseView_sv_tintButtonColor
+           @see #ShowcaseView_sv_titleTextAppearance
+           @see #ShowcaseView_sv_titleTextColor
+         */
+        public static final int[] ShowcaseView = {
+            0x7f010001, 0x7f010002, 0x7f010003, 0x7f010004,
+            0x7f010005, 0x7f010006, 0x7f010007, 0x7f010008,
+            0x7f010009, 0x7f01000a
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.graviton.Cuzdan.R.attr#sv_backgroundColor}
+          attribute's value can be found in the {@link #ShowcaseView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.graviton.Cuzdan:sv_backgroundColor
+        */
+        public static final int ShowcaseView_sv_backgroundColor = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.graviton.Cuzdan.R.attr#sv_buttonBackgroundColor}
+          attribute's value can be found in the {@link #ShowcaseView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.graviton.Cuzdan:sv_buttonBackgroundColor
+        */
+        public static final int ShowcaseView_sv_buttonBackgroundColor = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.graviton.Cuzdan.R.attr#sv_buttonForegroundColor}
+          attribute's value can be found in the {@link #ShowcaseView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.graviton.Cuzdan:sv_buttonForegroundColor
+        */
+        public static final int ShowcaseView_sv_buttonForegroundColor = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.graviton.Cuzdan.R.attr#sv_buttonText}
+          attribute's value can be found in the {@link #ShowcaseView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+          @attr name com.graviton.Cuzdan:sv_buttonText
+        */
+        public static final int ShowcaseView_sv_buttonText = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.graviton.Cuzdan.R.attr#sv_detailTextAppearance}
+          attribute's value can be found in the {@link #ShowcaseView} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.graviton.Cuzdan:sv_detailTextAppearance
+        */
+        public static final int ShowcaseView_sv_detailTextAppearance = 6;
+        /**
+          <p>This symbol is the offset where the {@link com.graviton.Cuzdan.R.attr#sv_detailTextColor}
+          attribute's value can be found in the {@link #ShowcaseView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.graviton.Cuzdan:sv_detailTextColor
+        */
+        public static final int ShowcaseView_sv_detailTextColor = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.graviton.Cuzdan.R.attr#sv_showcaseColor}
+          attribute's value can be found in the {@link #ShowcaseView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.graviton.Cuzdan:sv_showcaseColor
+        */
+        public static final int ShowcaseView_sv_showcaseColor = 8;
+        /**
+          <p>This symbol is the offset where the {@link com.graviton.Cuzdan.R.attr#sv_tintButtonColor}
+          attribute's value can be found in the {@link #ShowcaseView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
+          @attr name com.graviton.Cuzdan:sv_tintButtonColor
+        */
+        public static final int ShowcaseView_sv_tintButtonColor = 9;
+        /**
+          <p>This symbol is the offset where the {@link com.graviton.Cuzdan.R.attr#sv_titleTextAppearance}
+          attribute's value can be found in the {@link #ShowcaseView} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.graviton.Cuzdan:sv_titleTextAppearance
+        */
+        public static final int ShowcaseView_sv_titleTextAppearance = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.graviton.Cuzdan.R.attr#sv_titleTextColor}
+          attribute's value can be found in the {@link #ShowcaseView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.graviton.Cuzdan:sv_titleTextColor
+        */
+        public static final int ShowcaseView_sv_titleTextColor = 2;
     };
 }
