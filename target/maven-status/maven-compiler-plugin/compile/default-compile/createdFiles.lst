@@ -36,7 +36,6 @@ wizard\IncomeWizardModel.class
 com\graviton\Cuzdan\SplashActivity$3.class
 Helpers\JSONHelper.class
 wizard\ui\SavingInfoFragment$3.class
-Fragments\IncomeFragment$7.class
 com\graviton\Cuzdan\R$layout.class
 wizard\ui\StepPagerStrip$OnPageSelectedListener.class
 com\graviton\Cuzdan\IncomeWizardActivity$3.class

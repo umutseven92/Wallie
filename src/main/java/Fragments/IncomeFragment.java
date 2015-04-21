@@ -30,12 +30,11 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     String mode = "day";
     View infView;
     Date dateBeingViewed;
-    ImageButton btnLeftArrow, btnRightArrow, btnAddIncome, btnIncomeStats, btnCalendar, btnTutNext;
+    ImageButton btnLeftArrow, btnRightArrow, btnAddIncome, btnIncomeStats, btnCalendar;
     TextView txtIncomeDate;
     ListView lv;
     IncomeDialogFragment dialog;
     DatePickerFragment datePickerFragment;
-    RelativeLayout lytTutorial;
 
     private boolean first = false;
 
@@ -51,18 +50,14 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
         infView = inflater.inflate(R.layout.income_fragment, container, false);
 
-        lytTutorial = (RelativeLayout) infView.findViewById(R.id.lytTutorial);
-        btnTutNext = (ImageButton) infView.findViewById(R.id.btnTutorialNext);
-
         if (first)
         {
-            lytTutorial.setVisibility(View.VISIBLE);
-            btnTutNext.setVisibility(View.VISIBLE);
+            // Tutorial
+            // Bitince,
+            ((Global)this.getActivity().getApplication()).SetFirst(false);
         }
         else
         {
-            lytTutorial.setVisibility(View.INVISIBLE);
-            btnTutNext.setVisibility(View.INVISIBLE);
         }
 
         Spinner spnDate = (Spinner) infView.findViewById(R.id.spnDateIncome);
@@ -86,7 +81,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         btnRightArrow.setOnClickListener(onRightArrowClick);
         btnAddIncome.setOnClickListener(onIncomeClick);
         btnIncomeStats.setOnClickListener(onIncomeStatsClick);
-        btnTutNext.setOnClickListener(onTutorialClick);
+
         lv.setOnItemClickListener(onItemClickListener);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, R.layout.cuzdan_spinner_item);
@@ -128,13 +123,6 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         super.onResume();
 
     }
-
-    OnClickListener onTutorialClick = new OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            //..
-        }
-    };
 
     OnClickListener onCalendarClick = new OnClickListener() {
         @Override
