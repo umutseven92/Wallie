@@ -641,12 +641,9 @@ public class Banker implements Serializable {
         String main = ReadUserInfo();
         JSONObject mainJSON = new JSONObject(main);
 
-        if(mainJSON.getJSONObject("user").getString("statusNot").equals("true"))
-        {
+        if (mainJSON.getJSONObject("user").getString("statusNot").equals("true")) {
             main = main.replaceFirst("\"statusNot\":\"true\"", "\"statusNot\":\"false\"");
-        }
-        else if(mainJSON.getJSONObject("user").getString("statusNot").equals("false"))
-        {
+        } else if (mainJSON.getJSONObject("user").getString("statusNot").equals("false")) {
             main = main.replaceFirst("\"statusNot\":\"false\"", "\"statusNot\":\"true\"");
         }
         JSONObject jsonToWrite = new JSONObject(main);
@@ -759,7 +756,7 @@ public class Banker implements Serializable {
         JSONArray incomeCustoms = userJSON.getJSONArray("incomeCustoms");
         JSONArray expenseCustoms = userJSON.getJSONArray("expenseCustoms");
 
-        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"),userJSON.getString("statusNot"));
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"), userJSON.getString("statusNot"));
 
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");

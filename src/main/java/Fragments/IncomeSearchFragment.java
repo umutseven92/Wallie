@@ -127,8 +127,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
 
     public void getNextDateIncomes() throws JSONException, ParseException, IOException {
 
-        if(spnSearchSubCategory.getSelectedItem() == null)
-        {
+        if (spnSearchSubCategory.getSelectedItem() == null) {
             return;
         }
 
@@ -172,8 +171,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
 
     public void getLastDateIncomes() throws JSONException, ParseException, IOException {
 
-        if(spnSearchSubCategory.getSelectedItem() == null)
-        {
+        if (spnSearchSubCategory.getSelectedItem() == null) {
             return;
         }
 
@@ -208,10 +206,9 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
 
                     // Android v4.4'ler ve sonrasinda resource nameler turkce karakter iceremez(mis).
                     // Bu yuzden getIdentifier() cagirmadan once tum turkce karakterlerden arındırıyoruz.
-                    if (subID == 0)
-                    {
+                    if (subID == 0) {
                         String newItem = LocaleHelper.GetRidOfTurkishCharacters(item);
-                        subID = getResources().getIdentifier(newItem, "array",getActivity().getPackageName());
+                        subID = getResources().getIdentifier(newItem, "array", getActivity().getPackageName());
                     }
 
                     ArrayAdapter<CharSequence> subCategoryAdapter = ArrayAdapter.createFromResource(v.getContext(), subID, R.layout.cuzdan_spinner_item);
@@ -219,9 +216,8 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                     spnSearchSubCategory.setAdapter(subCategoryAdapter);
                 } else {
                     try {
-                        if(_user.GetBanker().GetIncomeCustoms().size() == 0)
-                        {
-                            ArrayAdapter<String> emptyAdapter = new ArrayAdapter<String>(v.getContext(), R.layout.cuzdan_spinner_item,new ArrayList<String>());
+                        if (_user.GetBanker().GetIncomeCustoms().size() == 0) {
+                            ArrayAdapter<String> emptyAdapter = new ArrayAdapter<String>(v.getContext(), R.layout.cuzdan_spinner_item, new ArrayList<String>());
                             emptyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                             spnSearchSubCategory.setAdapter(emptyAdapter);
                             return;

@@ -9,14 +9,13 @@ import java.util.List;
 /**
  * Created by Umut Seven on 14.4.2015, for Graviton.
  */
-public class AboutPageAdapter extends FragmentPagerAdapter{
+public class AboutPageAdapter extends FragmentPagerAdapter {
 
     private List<Fragment> fragments;
 
     public int Position;
 
-    public AboutPageAdapter(FragmentManager fm, List<Fragment> fragments, int pos)
-    {
+    public AboutPageAdapter(FragmentManager fm, List<Fragment> fragments, int pos) {
         super(fm);
         Position = pos;
         this.fragments = fragments;

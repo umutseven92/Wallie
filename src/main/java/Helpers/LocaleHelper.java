@@ -5,14 +5,11 @@ package Helpers;
  */
 public class LocaleHelper {
 
-    public static String GetRidOfTurkishCharacters(String turkishString)
-    {
+    public static String GetRidOfTurkishCharacters(String turkishString) {
         String clean = "";
 
-        for (int i = 0; i< turkishString.toCharArray().length; i++)
-        {
-            switch (turkishString.charAt(i))
-            {
+        for (int i = 0; i < turkishString.toCharArray().length; i++) {
+            switch (turkishString.charAt(i)) {
                 case 'ş':
                     clean += 's';
                     break;
@@ -50,7 +47,7 @@ public class LocaleHelper {
                     clean += 'I';
                     break;
                 default:
-                    clean +=turkishString.charAt(i);
+                    clean += turkishString.charAt(i);
                     break;
             }
         }

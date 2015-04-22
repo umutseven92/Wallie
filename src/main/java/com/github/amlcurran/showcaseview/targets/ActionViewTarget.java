@@ -60,7 +60,7 @@ public class ActionViewTarget implements Target {
             case TITLE:
                 internal = new ViewTarget(mActionBarWrapper.getTitleView());
                 break;
-                
+
             case MEDIA_ROUTE_BUTTON:
                 internal = new ViewTarget(mActionBarWrapper.getMediaRouterButtonView());
                 break;

@@ -38,7 +38,7 @@ public class ExpenseDialogFragment extends DialogFragment {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
-                            User user = ((Global)getActivity().getApplication()).GetUser();
+                            User user = ((Global) getActivity().getApplication()).GetUser();
                             Banker banker = user.GetBanker();
 
                             try {

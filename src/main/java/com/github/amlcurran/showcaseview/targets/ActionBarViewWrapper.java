@@ -99,7 +99,7 @@ class ActionBarViewWrapper {
         }
         return null;
     }
-    
+
     /**
      * Return the view which represents the MediaRouterButton action item on the ActionBar, or null
      * if there isn't one
@@ -116,7 +116,7 @@ class ActionBarViewWrapper {
 
             List actionItems = (ArrayList) actionItemsField.get(optionsMenu);
             if (null != actionItems) {
-                for(Object obj : actionItems) {
+                for (Object obj : actionItems) {
                     System.out.println(obj);
                     Object view = getMediaRouteButton(obj);
                     if (null != view) {
@@ -133,13 +133,13 @@ class ActionBarViewWrapper {
         }
         return null;
     }
-    
+
     private Object getMediaRouteButton(Object obj) {
         try {
             Field f = obj.getClass().getDeclaredField("mActionView");
             f.setAccessible(true);
             Object view = f.get(obj);
-            if("android.support.v7.app.MediaRouteButton".equals(view.getClass().getName())) {
+            if ("android.support.v7.app.MediaRouteButton".equals(view.getClass().getName())) {
                 return view;
             }
         } catch (NoSuchFieldException e) {

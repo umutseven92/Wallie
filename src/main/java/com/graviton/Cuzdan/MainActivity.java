@@ -110,7 +110,7 @@ public class MainActivity extends FragmentActivity {
         budgetPageAdapter = new BudgetPageAdapter(getSupportFragmentManager(), accountFragments, 0);
         savingsPageAdapter = new SavingsPageAdapter(getSupportFragmentManager(), savingsFragments, 1);
         settingsPageAdapter = new SettingsPageAdapter(getSupportFragmentManager(), settingsFragments, 2);
-        aboutPageAdapter = new AboutPageAdapter(getSupportFragmentManager(),aboutFragments,3);
+        aboutPageAdapter = new AboutPageAdapter(getSupportFragmentManager(), aboutFragments, 3);
 
         if (savedInstanceState == null) {
             selectItem(0);
@@ -146,7 +146,7 @@ public class MainActivity extends FragmentActivity {
         return fList;
     }
 
-    private List<Fragment> GetAboutFragments(){
+    private List<Fragment> GetAboutFragments() {
         List<Fragment> fList = new ArrayList<Fragment>();
 
         fList.add(AboutFragment.newInstance());

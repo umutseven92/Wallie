@@ -128,8 +128,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
 
     public void getNextDateExpenses() throws JSONException, ParseException, IOException {
 
-        if(spnSearchSubCategory.getSelectedItem() == null)
-        {
+        if (spnSearchSubCategory.getSelectedItem() == null) {
             return;
         }
 
@@ -173,8 +172,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
 
     public void getLastDateExpenses() throws JSONException, ParseException, IOException {
 
-        if(spnSearchSubCategory.getSelectedItem() == null)
-        {
+        if (spnSearchSubCategory.getSelectedItem() == null) {
             return;
         }
 
@@ -201,8 +199,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                 String tag = parent.getSelectedItem().toString();
                 int catID = getResources().getIdentifier(tag, "array", getActivity().getPackageName());
 
-                if (catID == 0)
-                {
+                if (catID == 0) {
                     String newTag = LocaleHelper.GetRidOfTurkishCharacters(tag);
                     catID = getResources().getIdentifier(newTag, "array", getActivity().getPackageName());
                 }
@@ -219,8 +216,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                 }
                 int subID2 = getResources().getIdentifier(item2, "array", getActivity().getPackageName());
 
-                if(subID2 == 0)
-                {
+                if (subID2 == 0) {
                     String newItem2 = LocaleHelper.GetRidOfTurkishCharacters(item2);
                     subID2 = getResources().getIdentifier(newItem2, "array", getActivity().getPackageName());
                 }
@@ -265,8 +261,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                     }
                     int subID = getResources().getIdentifier(item, "array", getActivity().getPackageName());
 
-                    if(subID == 0)
-                    {
+                    if (subID == 0) {
                         String newItem = LocaleHelper.GetRidOfTurkishCharacters(item);
                         subID = getResources().getIdentifier(newItem, "array", getActivity().getPackageName());
                     }
@@ -276,9 +271,8 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                     spnSearchSubCategory.setAdapter(subCategoryAdapter);
                 } else {
                     try {
-                        if(_user.GetBanker().GetExpenseCustoms().size() == 0)
-                        {
-                            ArrayAdapter<String> emptyAdapter = new ArrayAdapter<String>(v.getContext(), R.layout.cuzdan_spinner_item,new ArrayList<String>());
+                        if (_user.GetBanker().GetExpenseCustoms().size() == 0) {
+                            ArrayAdapter<String> emptyAdapter = new ArrayAdapter<String>(v.getContext(), R.layout.cuzdan_spinner_item, new ArrayList<String>());
                             emptyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                             spnSearchSubCategory.setAdapter(emptyAdapter);
                             return;

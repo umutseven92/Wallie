@@ -47,8 +47,7 @@ public class User implements Serializable {
 
     private String _statusNotification;
 
-    public String GetStatusNotification()
-    {
+    public String GetStatusNotification() {
         return _statusNotification;
     }
 
@@ -85,15 +84,11 @@ public class User implements Serializable {
 
     private String _notification;
 
-    public void ToggleStatusNotification(Context context)
-    {
-        if(_statusNotification.equals("true"))
-        {
+    public void ToggleStatusNotification(Context context) {
+        if (_statusNotification.equals("true")) {
             _statusNotification = "false";
             NotificationHelper.RemoveNotification(context);
-        }
-        else
-        {
+        } else {
             _statusNotification = "true";
             NotificationHelper.SetPermaNotification(context, this.GetBanker().GetBalance(new Date(), true), this.GetCurrency());
         }

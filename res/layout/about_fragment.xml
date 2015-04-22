@@ -93,6 +93,7 @@
                     android:id="@+id/textView35"
                     android:textColor="#ff6e4a69" android:layout_below="@+id/textView34" android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"/>
+
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -103,6 +104,23 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="2dp"/>
 
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceMedium"
+                      android:text="ShowcaseView"
+                      android:id="@+id/textView43"
+                      android:textColor="#ff6e4a69" android:layout_below="@+id/textView36" android:layout_centerHorizontal="true"
+                      android:layout_marginTop="15dp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Alex Curran"
+                    android:id="@+id/textView44"
+                    android:textColor="#ff000000" android:layout_below="@+id/textView43"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"/>
 
             <TextView
                     android:layout_width="wrap_content"
@@ -110,7 +128,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Simgeler"
                     android:id="@+id/textView37"
-                    android:textColor="#ff6e4a69" android:layout_below="@+id/textView36" android:layout_centerHorizontal="true"
+                    android:textColor="#ff6e4a69" android:layout_below="@+id/textView44" android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"/>
             <TextView
                     android:layout_width="wrap_content"

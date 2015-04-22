@@ -25,8 +25,7 @@ public class WidgetHelper {
 
     public static void UpdateInfo(Context context) throws Exception {
 
-        if(user == null)
-        {
+        if (user == null) {
             String fileName = context.getString(R.string.configVersion);
 
             File file = new File(context.getFilesDir(), fileName);
@@ -54,12 +53,9 @@ public class WidgetHelper {
         views.setTextViewText(R.id.txtWidgetExpense, todayExpense.toString());
         views.setTextViewText(R.id.txtWidgetBalance, todayBalance.toString() + " " + user.GetCurrency());
 
-        if(todayBalance.compareTo(BigDecimal.ZERO) < 1)
-        {
+        if (todayBalance.compareTo(BigDecimal.ZERO) < 1) {
             views.setTextColor(R.id.txtWidgetBalance, context.getResources().getColor(R.color.cuzdan_red));
-        }
-        else
-        {
+        } else {
             views.setTextColor(R.id.txtWidgetBalance, context.getResources().getColor(R.color.cuzdan_green));
         }
 
@@ -82,12 +78,9 @@ public class WidgetHelper {
         views.setTextViewText(R.id.txtWidgetExpense, todayExpense.toString());
         views.setTextViewText(R.id.txtWidgetBalance, todayBalance.toString() + " " + user.GetCurrency());
 
-        if(todayBalance.compareTo(BigDecimal.ZERO) < 1)
-        {
+        if (todayBalance.compareTo(BigDecimal.ZERO) < 1) {
             views.setTextColor(R.id.txtWidgetBalance, context.getResources().getColor(R.color.cuzdan_red));
-        }
-        else
-        {
+        } else {
             views.setTextColor(R.id.txtWidgetBalance, context.getResources().getColor(R.color.cuzdan_green));
         }
 

@@ -34,13 +34,11 @@ public class Global extends Application {
 
     private boolean _first;
 
-    public void SetFirst(boolean first)
-    {
+    public void SetFirst(boolean first) {
         _first = first;
     }
 
-    public boolean GetFirst()
-    {
+    public boolean GetFirst() {
         return _first;
     }
 }

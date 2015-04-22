@@ -11,10 +11,9 @@ import com.graviton.Cuzdan.R;
 /**
  * Created by Umut Seven on 14.4.2015, for Graviton.
  */
-public class AboutFragment extends Fragment{
+public class AboutFragment extends Fragment {
 
-    public static final AboutFragment newInstance()
-    {
+    public static final AboutFragment newInstance() {
         AboutFragment f = new AboutFragment();
         return f;
     }
@@ -23,7 +22,7 @@ public class AboutFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.about_fragment, container, false);
 
-        TextView txtVersion = (TextView)v.findViewById(R.id.txtAboutVersion);
+        TextView txtVersion = (TextView) v.findViewById(R.id.txtAboutVersion);
         txtVersion.setText(R.string.version);
         return v;
     }

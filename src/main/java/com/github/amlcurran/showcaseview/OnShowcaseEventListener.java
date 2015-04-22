@@ -17,8 +17,8 @@
 package com.github.amlcurran.showcaseview;
 
 /**
-* @author Alex
-*/
+ * @author Alex
+ */
 public interface OnShowcaseEventListener {
 
     /**

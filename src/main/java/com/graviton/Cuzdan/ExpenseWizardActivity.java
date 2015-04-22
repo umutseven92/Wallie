@@ -121,7 +121,7 @@ public class ExpenseWizardActivity extends FragmentActivity implements PageFragm
                 expenseTag = Expense.Tags.Home;
             }
 
-            User user = ((Global)getApplication()).GetUser();
+            User user = ((Global) getApplication()).GetUser();
 
             Banker banker = user.GetBanker();
             String category = mWizardModel.findByKey(tag + ":Kategori").getData().getString(Page.SIMPLE_DATA_KEY);

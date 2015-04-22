@@ -51,8 +51,7 @@ public class ReminderNotificationReceiver extends BroadcastReceiver {
             e.printStackTrace();
         }
 
-        if(user.GetRemNotifications().equals("true"))
-        {
+        if (user.GetRemNotifications().equals("true")) {
 
             Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher);
 

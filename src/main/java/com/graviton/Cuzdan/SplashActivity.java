@@ -51,7 +51,7 @@ public class SplashActivity extends Activity {
 
             // Kullanıcı var, JSON üstünden yüklüyoruz
             first = false;
-            ((Global)this.getApplication()).SetFirst(false);
+            ((Global) this.getApplication()).SetFirst(false);
 
             try {
                 StringBuilder sb = new StringBuilder();
@@ -73,9 +73,8 @@ public class SplashActivity extends Activity {
 
                 SetNotifications(Integer.parseInt(userJSON.getJSONObject("user").getString("savNotHour")), Integer.parseInt(userJSON.getJSONObject("user").getString("remNotHour")), sav, rem);
 
-                if(user.GetStatusNotification().equals("true"))
-                {
-                    NotificationHelper.SetPermaNotification(this, user.GetBanker().GetBalance(new Date(),true),user.GetCurrency());
+                if (user.GetStatusNotification().equals("true")) {
+                    NotificationHelper.SetPermaNotification(this, user.GetBanker().GetBalance(new Date(), true), user.GetCurrency());
                 }
 
                 new Handler().postDelayed(new Runnable() {
@@ -96,7 +95,7 @@ public class SplashActivity extends Activity {
 
             // Kullanıcı yok, JSON üstünden yeni yaratıyoruz
             first = true;
-            ((Global)this.getApplication()).SetFirst(false);
+            ((Global) this.getApplication()).SetFirst(false);
             CreateUserDialog();
 
         }

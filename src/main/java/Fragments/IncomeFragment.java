@@ -1,17 +1,24 @@
 package Fragments;
 
 import Helpers.*;
+import android.app.Activity;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.github.amlcurran.showcaseview.OnShowcaseEventListener;
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
+import com.github.amlcurran.showcaseview.targets.Target;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
 import com.google.gson.Gson;
 import com.graviton.Cuzdan.*;
 import org.json.JSONException;
@@ -24,7 +31,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class IncomeFragment extends Fragment implements AdapterView.OnItemSelectedListener, IncomeLoadListener {
+public class IncomeFragment extends Fragment implements AdapterView.OnItemSelectedListener, IncomeLoadListener, OnShowcaseEventListener {
 
     static User _user;
     String mode = "day";
@@ -35,6 +42,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     ListView lv;
     IncomeDialogFragment dialog;
     DatePickerFragment datePickerFragment;
+    private int tutorialCount = 0;
 
     private boolean first = false;
 
@@ -46,19 +54,10 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        first = ((Global)this.getActivity().getApplication()).GetFirst();
+        first = ((Global) this.getActivity().getApplication()).GetFirst();
 
         infView = inflater.inflate(R.layout.income_fragment, container, false);
 
-        if (first)
-        {
-            // Tutorial
-            // Bitince,
-            ((Global)this.getActivity().getApplication()).SetFirst(false);
-        }
-        else
-        {
-        }
 
         Spinner spnDate = (Spinner) infView.findViewById(R.id.spnDateIncome);
         btnLeftArrow = (ImageButton) infView.findViewById(R.id.imgLeftIncome);
@@ -92,6 +91,19 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         _user = ((Global) getActivity().getApplication()).GetUser();
         dateBeingViewed = new Date();
 
+        if (first) {
+            // Tutorial
+            // Bitince,
+            ((Global) this.getActivity().getApplication()).SetFirst(false);
+        } else {
+        }
+
+        new ShowcaseView.Builder(getActivity(), true)
+                .setTarget(new ViewTarget(infView.findViewById(R.id.btnAddIncome)))
+                .setContentText("Buradan gelir ekleyebilirsiniz.")
+                .setStyle(R.style.ShowcaseView_Cuzdan)
+                .hasManualPosition(false)
+                .setShowcaseEventListener(this).build();
         return infView;
     }
 
@@ -300,7 +312,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         txtTotalIncome.setText(total.toString() + " " + _user.GetCurrency());
         txtTotalIncome.setTextColor(getResources().getColor(R.color.cuzdan_green));
 
-        if(_user.GetStatusNotification().equals("true")) {
+        if (_user.GetStatusNotification().equals("true")) {
             NotificationHelper.SetPermaNotification(getActivity(), _user.GetBanker().GetBalance(new Date(), true), _user.GetCurrency());
         }
         try {
@@ -378,6 +390,32 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                 e.printStackTrace();
             }
         }
+
+    }
+
+    @Override
+    public void onShowcaseViewHide(ShowcaseView showcaseView) {
+        switch (tutorialCount) {
+            case 0:
+                new ShowcaseView.Builder(getActivity(), true)
+                        .setTarget(new ActionViewTarget(this.getActivity(), ActionViewTarget.Type.HOME))
+                        .setContentText("Buradan menuye ulasabilirsiniz.")
+                        .setStyle(R.style.ShowcaseView_Cuzdan)
+                        .hasManualPosition(false)
+                        .setShowcaseEventListener(this)
+                        .build();
+                tutorialCount++;
+                break;
+        }
+    }
+
+    @Override
+    public void onShowcaseViewDidHide(ShowcaseView showcaseView) {
+
+    }
+
+    @Override
+    public void onShowcaseViewShow(ShowcaseView showcaseView) {
 
     }
 }

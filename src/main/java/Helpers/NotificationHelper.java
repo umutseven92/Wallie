@@ -23,20 +23,15 @@ public class NotificationHelper {
 
         String message = "";
 
-        if(amount.compareTo(BigDecimal.ZERO) == -1)
-        {
+        if (amount.compareTo(BigDecimal.ZERO) == -1) {
             message = "Bugün " + amount.negate() + " " + cur + " zarardasınız.";
-        }
-        else if(amount.compareTo(BigDecimal.ZERO) == 0)
-        {
+        } else if (amount.compareTo(BigDecimal.ZERO) == 0) {
             message = "Bugün geliriniz ve gideriniz eşit.";
-        }
-        else if (amount.compareTo(BigDecimal.ZERO) == 1)
-        {
+        } else if (amount.compareTo(BigDecimal.ZERO) == 1) {
             message = "Bugün " + amount + " " + cur + " kardasınız.";
         }
 
-        Bitmap bmp = BitmapFactory.decodeResource(context.getResources(),R.drawable.ic_launcher);
+        Bitmap bmp = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher);
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
@@ -67,8 +62,7 @@ public class NotificationHelper {
         mNotificationManager.notify(31, not);
     }
 
-    public static void RemoveNotification(Context context)
-    {
+    public static void RemoveNotification(Context context) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(31);
     }

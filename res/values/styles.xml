@@ -68,6 +68,13 @@
         <item name="android:background">@drawable/button</item>
     </style>
 
+    <style name="ShowcaseView.Cuzdan">
+        <item name="sv_titleTextAppearance">@style/TextAppearance.ShowcaseView.Title.Cuzdan</item>
+        <item name="sv_detailTextAppearance">@style/TextAppearance.ShowcaseView.Detail</item>
+        <item name="sv_backgroundColor">#99000000</item>
+        <item name="sv_buttonText">Tamam</item>
+    </style>
+
     <style name="ShowcaseView.Light">
         <item name="sv_titleTextAppearance">@style/TextAppearance.ShowcaseView.Title</item>
         <item name="sv_detailTextAppearance">@style/TextAppearance.ShowcaseView.Detail.Light</item>
@@ -80,6 +87,10 @@
         <item name="sv_detailTextAppearance">@style/TextAppearance.ShowcaseView.Detail</item>
         <item name="sv_backgroundColor">#3333B5E5</item>
         <item name="sv_buttonText">@android:string/ok</item>
+    </style>
+
+    <style name="TextAppearance.ShowcaseView.Title.Cuzdan" parent="android:style/TextAppearance.Large">
+        <item name="android:textColor">#FFFFFF</item>
     </style>
 
     <style name="TextAppearance.ShowcaseView.Title" parent="android:style/TextAppearance.Large">

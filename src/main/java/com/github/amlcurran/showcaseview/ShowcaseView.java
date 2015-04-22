@@ -76,6 +76,10 @@ public class ShowcaseView extends RelativeLayout
     private long fadeOutMillis;
     private boolean isShowing;
 
+    // Modifications
+    private boolean hasManualPosition = false;
+    private int xPosition, yPosition, width;
+
     protected ShowcaseView(Context context, boolean newStyle) {
         this(context, null, R.styleable.CustomTheme_showcaseViewStyle, newStyle);
     }
@@ -184,8 +188,8 @@ public class ShowcaseView extends RelativeLayout
 
     private void updateBitmap() {
         if (bitmapBuffer == null || haveBoundsChanged()) {
-            if(bitmapBuffer != null)
-        		bitmapBuffer.recycle();
+            if (bitmapBuffer != null)
+                bitmapBuffer.recycle();
             bitmapBuffer = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_8888);
 
         }
@@ -505,6 +509,22 @@ public class ShowcaseView extends RelativeLayout
             showcaseView.setOnShowcaseEventListener(showcaseEventListener);
             return this;
         }
+
+        // Modifications
+        public Builder hasManualPosition(boolean hasManualPosition) {
+            showcaseView.hasManualPosition = hasManualPosition;
+            return this;
+        }
+
+        public Builder xPostion(int xPosition) {
+            showcaseView.xPosition = xPosition;
+            return this;
+        }
+
+        public Builder yPostion(int yPosition) {
+            showcaseView.yPosition = yPosition;
+            return this;
+        }
     }
 
     /**
@@ -623,7 +643,17 @@ public class ShowcaseView extends RelativeLayout
 
         @Override
         public boolean onPreDraw() {
-            recalculateText();
+            //recalculateText();
+            // Modifications
+            boolean recalculatedCling = showcaseAreaCalculator.calculateShowcaseRect(showcaseX, showcaseY, showcaseDrawer);
+            boolean recalculateText = recalculatedCling || hasAlteredText;
+            if (recalculateText) {
+                textDrawer.calculateTextPosition(getMeasuredWidth(), getMeasuredHeight(), ShowcaseView.this, shouldCentreText);
+                if (hasManualPosition) {
+                    textDrawer.setTestPostionManually(xPosition, yPosition);
+                }
+            }
+            hasAlteredText = false;
             return true;
         }
     }

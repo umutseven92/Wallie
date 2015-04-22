@@ -39,7 +39,7 @@ public class AccountFragment extends Fragment {
         txtCurrency = (TextView) v.findViewById(R.id.txtAccountCurrency);
         swcSaving = (Switch) v.findViewById(R.id.swcAccountSaving);
         swcRem = (Switch) v.findViewById(R.id.swcAccountRem);
-        swcStat = (Switch)v.findViewById(R.id.swcStatusNot);
+        swcStat = (Switch) v.findViewById(R.id.swcStatusNot);
 
         btnRem = (Button) v.findViewById(R.id.btnAccountRem);
         btnSav = (Button) v.findViewById(R.id.btnAccountSav);
@@ -156,12 +156,9 @@ public class AccountFragment extends Fragment {
             btnRem.setEnabled(false);
         }
 
-        if(_user.GetStatusNotification().equals("true"))
-        {
+        if (_user.GetStatusNotification().equals("true")) {
             swcStat.setChecked(true);
-        }
-        else if(_user.GetStatusNotification().equals("false"))
-        {
+        } else if (_user.GetStatusNotification().equals("false")) {
             swcStat.setChecked(false);
         }
     }

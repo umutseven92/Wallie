@@ -38,7 +38,7 @@ public class IncomeDialogFragment extends DialogFragment {
                         public void onClick(DialogInterface dialog, int which) {
                             try {
 
-                                User user = ((Global)getActivity().getApplication()).GetUser();
+                                User user = ((Global) getActivity().getApplication()).GetUser();
                                 Banker banker = user.GetBanker();
                                 banker.DeleteIncome(income.GetID());
                                 _listener.onDismissed();

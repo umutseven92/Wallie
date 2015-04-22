@@ -249,13 +249,12 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         txtTotalExpense.setText(total.toString() + " " + _user.GetCurrency());
         txtTotalExpense.setTextColor(Color.RED);
 
-        if(_user.GetStatusNotification().equals("true"))
-        {
+        if (_user.GetStatusNotification().equals("true")) {
             NotificationHelper.SetPermaNotification(getActivity(), _user.GetBanker().GetBalance(new Date(), true), _user.GetCurrency());
         }
 
         try {
-            WidgetHelper.UpdateInfoWithUser(getActivity(),_user);
+            WidgetHelper.UpdateInfoWithUser(getActivity(), _user);
         } catch (Exception e) {
             e.printStackTrace();
         }
