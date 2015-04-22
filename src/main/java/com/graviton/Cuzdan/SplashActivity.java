@@ -95,7 +95,7 @@ public class SplashActivity extends Activity {
 
             // Kullanıcı yok, JSON üstünden yeni yaratıyoruz
             first = true;
-            ((Global) this.getApplication()).SetFirst(false);
+            ((Global) this.getApplication()).SetFirst(true);
             CreateUserDialog();
 
         }

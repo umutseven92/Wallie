@@ -95,15 +95,15 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             // Tutorial
             // Bitince,
             ((Global) this.getActivity().getApplication()).SetFirst(false);
-        } else {
+            new ShowcaseView.Builder(getActivity(), true)
+                    .setTarget(new ViewTarget(infView.findViewById(R.id.btnAddIncome)))
+                    .setContentText("Buradan gelir ekleyebilirsiniz.")
+                    .setStyle(R.style.ShowcaseView_Cuzdan)
+                    .hasManualPosition(true)
+                    .xPostion(150)
+                    .yPostion(850)
+                    .setShowcaseEventListener(this).build();
         }
-
-        new ShowcaseView.Builder(getActivity(), true)
-                .setTarget(new ViewTarget(infView.findViewById(R.id.btnAddIncome)))
-                .setContentText("Buradan gelir ekleyebilirsiniz.")
-                .setStyle(R.style.ShowcaseView_Cuzdan)
-                .hasManualPosition(false)
-                .setShowcaseEventListener(this).build();
         return infView;
     }
 
@@ -398,13 +398,64 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         switch (tutorialCount) {
             case 0:
                 new ShowcaseView.Builder(getActivity(), true)
+                        .setTarget(new ViewTarget(infView.findViewById(R.id.spnDateIncome)))
+                        .setContentText("Buradan kayıtlarınız gün veya ay olarak listeleyebilir, önceki ve sonraki tarihlere geçiş yapabilirsiniz.")
+                        .setStyle(R.style.ShowcaseView_Cuzdan)
+                        .hasManualPosition(true)
+                        .yPostion(530)
+                        .xPostion(70)
+                        .setShowcaseEventListener(this)
+                        .build();
+                tutorialCount++;
+                break;
+            case 1:
+                new ShowcaseView.Builder(getActivity(), true)
+                        .setTarget(new ViewTarget(infView.findViewById(R.id.btnCalendar)))
+                        .setContentText("Buradan belirli bir tarihteki kayıtları listeleyebilirsiniz.")
+                        .setStyle(R.style.ShowcaseView_Cuzdan)
+                        .hasManualPosition(true)
+                        .xPostion(140)
+                        .yPostion(800)
+                        .setShowcaseEventListener(this)
+                        .build();
+                tutorialCount++;
+                break;
+            case 2:
+                new ShowcaseView.Builder(getActivity(), true)
+                        .setTarget(new ViewTarget(infView.findViewById(R.id.btnIncomeStats)))
+                        .setContentText("Buradan kayıtlarınızı detaylı olarak inceleyebilirsiniz.")
+                        .setStyle(R.style.ShowcaseView_Cuzdan)
+                        .hasManualPosition(true)
+                        .xPostion(80)
+                        .yPostion(820)
+                        .setShowcaseEventListener(this)
+                        .build();
+                tutorialCount++;
+                break;
+            case 3:
+                new ShowcaseView.Builder(getActivity(), true)
+                        .setTarget(new ViewTarget(infView.findViewById(R.id.txtTutRight)))
+                        .setContentText("Sekmeler arasında geçiş yapmak için sağa veya sola kaydırın.")
+                        .setStyle(R.style.ShowcaseView_Cuzdan)
+                        .hasManualPosition(true)
+                        .xPostion(80)
+                        .yPostion(620)
+                        .setShowcaseEventListener(this)
+                        .build();
+                tutorialCount++;
+                break;
+
+            case 4:
+                new ShowcaseView.Builder(getActivity(), true)
                         .setTarget(new ActionViewTarget(this.getActivity(), ActionViewTarget.Type.HOME))
-                        .setContentText("Buradan menuye ulasabilirsiniz.")
+                        .setContentText("Menüye buradan ulaşabilirsiniz.")
                         .setStyle(R.style.ShowcaseView_Cuzdan)
                         .hasManualPosition(false)
                         .setShowcaseEventListener(this)
                         .build();
                 tutorialCount++;
+                break;
+            default:
                 break;
         }
     }
