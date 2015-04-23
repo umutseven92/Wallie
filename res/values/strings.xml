@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Cüzdan</string>
-    <string name="version">0.7.0</string>
+    <string name="version">0.7.1</string>
 
     <string name="dummyData">false</string>
 
-    <string name="configVersion">userConfigTest120</string>
+    <string name="configVersion">userConfigTest121</string>
 
     <string-array name="menuArray">
         <item>Bütçe</item>

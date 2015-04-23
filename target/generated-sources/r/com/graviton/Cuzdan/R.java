@@ -472,20 +472,21 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int AppTheme=0x7f0c0000;
         /**  the theme applied to the application or activity 
          */
-        public static final int CustomActionBarTheme=0x7f0c000f;
+        public static final int CustomActionBarTheme=0x7f0c0010;
         public static final int DialogAnimation=0x7f0c0005;
         /**  ActionBar styles 
          */
-        public static final int MyActionBar=0x7f0c0010;
+        public static final int MyActionBar=0x7f0c0011;
         public static final int ShowcaseButton=0x7f0c0006;
-        public static final int ShowcaseView=0x7f0c0009;
+        public static final int ShowcaseView=0x7f0c000a;
         public static final int ShowcaseView_Cuzdan=0x7f0c0007;
-        public static final int ShowcaseView_Light=0x7f0c0008;
-        public static final int TextAppearance_ShowcaseView_Detail=0x7f0c000c;
-        public static final int TextAppearance_ShowcaseView_Detail_Light=0x7f0c000d;
-        public static final int TextAppearance_ShowcaseView_Title=0x7f0c000b;
-        public static final int TextAppearance_ShowcaseView_Title_Cuzdan=0x7f0c000a;
-        public static final int TextAppearance_ShowcaseView_Title_Light=0x7f0c000e;
+        public static final int ShowcaseView_Cuzdan_Next=0x7f0c0008;
+        public static final int ShowcaseView_Light=0x7f0c0009;
+        public static final int TextAppearance_ShowcaseView_Detail=0x7f0c000d;
+        public static final int TextAppearance_ShowcaseView_Detail_Light=0x7f0c000e;
+        public static final int TextAppearance_ShowcaseView_Title=0x7f0c000c;
+        public static final int TextAppearance_ShowcaseView_Title_Cuzdan=0x7f0c000b;
+        public static final int TextAppearance_ShowcaseView_Title_Light=0x7f0c000f;
         public static final int TextAppearanceFinish=0x7f0c0001;
         public static final int WizardFormLabel=0x7f0c0004;
         public static final int WizardPageContainer=0x7f0c0002;
