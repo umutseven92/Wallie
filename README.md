@@ -55,8 +55,8 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
 
 * **Kapali Beta -> 15.04.15**
 
-* 0.7 (Kullanici Eğitimi)
-  * Oryantasyon
+* ~~0.7 (Kullanici Eğitimi)~~
+  * ~~Oryantasyon~~
 
 * 0.8 (Performans)
   * Performans Gelistirme
