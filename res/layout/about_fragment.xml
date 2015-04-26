@@ -4,10 +4,10 @@
                 android:layout_height="match_parent" android:background="@drawable/main_layout">
 
     <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:id="@+id/imageView3" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-            android:src="@drawable/grav"/>
+            android:src="@drawable/logoson" android:scaleType="fitXY" android:layout_marginTop="15dp"/>
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -23,7 +23,8 @@
                     android:text="graviton"
                     android:id="@+id/textView27"
                     android:textColor="#ff6e4a69"
-                    android:layout_below="@+id/imageView3" android:layout_centerHorizontal="true" android:textSize="30dp"/>
+                    android:layout_below="@+id/imageView3" android:layout_centerHorizontal="true" android:textSize="30dp"
+                    android:layout_marginTop="15dp"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

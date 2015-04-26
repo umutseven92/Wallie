@@ -46,6 +46,7 @@
                 <action android:name="android.appwidget.action.APPWIDGET_ENABLED"/>
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/cuzdan_widger_provider"/>
+
         </receiver>
     </application>
 </manifest>

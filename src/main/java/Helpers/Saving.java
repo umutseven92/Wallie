@@ -118,6 +118,7 @@ public class Saving {
     private final int THREE_MONTHS = 90;
     private final int SIX_MONTHS = 180;
     private final int YEAR = 365;
+    private final int CUSTOM = -1;
 
     public enum Period {
         Day,
@@ -182,10 +183,19 @@ public class Saving {
         _periodDayDict.put(Period.ThreeMonths, THREE_MONTHS);
         _periodDayDict.put(Period.SixMonths, SIX_MONTHS);
         _periodDayDict.put(Period.Year, YEAR);
+
+        _periodDayDict.put(Period.Custom, CUSTOM);
     }
 
     public void SetDailyProgress() {
-        _progress = _progress.add(GetAmount().divide(new BigDecimal(_periodDayDict.get(GetPeriod())), BigDecimal.ROUND_DOWN));
+        if(_periodDayDict.get(GetPeriod()) == CUSTOM)
+        {
+            _progress = _progress.add(GetAmount().divide(new BigDecimal(GetCustomDays()),BigDecimal.ROUND_DOWN));
+        }
+        else
+        {
+            _progress = _progress.add(GetAmount().divide(new BigDecimal(_periodDayDict.get(GetPeriod())), BigDecimal.ROUND_DOWN));
+        }
     }
 
     private String _desription;

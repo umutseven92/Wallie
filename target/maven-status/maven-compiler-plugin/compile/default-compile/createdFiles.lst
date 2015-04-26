@@ -29,7 +29,6 @@ com\graviton\Cuzdan\R$layout.class
 com\graviton\Cuzdan\IncomeWizardActivity$3.class
 Helpers\SavingListAdapter.class
 wizard\model\AbstractWizardModel.class
-com\graviton\Cuzdan\R$raw.class
 com\graviton\Cuzdan\SplashActivity$3$1.class
 wizard\ui\StepPagerStrip.class
 Helpers\SavingsHelper.class
@@ -94,7 +93,6 @@ wizard\ui\BalanceInfoFragment$2.class
 com\graviton\Cuzdan\R$styleable.class
 Fragments\ExpenseDialogFragment.class
 wizard\ui\SavingCustomInfoFragment$4.class
-com\github\amlcurran\showcaseview\R.class
 com\github\amlcurran\showcaseview\targets\SherlockReflector.class
 com\graviton\Cuzdan\SavingsWizardActivity.class
 com\github\amlcurran\showcaseview\targets\ReflectorFactory$1.class
@@ -104,7 +102,6 @@ wizard\ui\SingleChoiceFragment$1.class
 com\github\amlcurran\showcaseview\targets\ActionViewTarget.class
 com\github\amlcurran\showcaseview\targets\Target$1.class
 com\graviton\Cuzdan\R$xml.class
-com\github\amlcurran\showcaseview\R$attr.class
 Fragments\IncomeFragment$4.class
 Helpers\IncomeListAdapter.class
 com\github\amlcurran\showcaseview\AnimatorAnimationFactory$1.class
@@ -127,8 +124,6 @@ com\github\amlcurran\showcaseview\targets\ActionViewTarget$1.class
 Fragments\IncomeFragment.class
 com\graviton\Cuzdan\R$style.class
 wizard\ui\SavingCustomInfoFragment$2.class
-com\github\amlcurran\showcaseview\R$id.class
-com\github\amlcurran\showcaseview\R$dimen.class
 com\graviton\Cuzdan\MainActivity$1.class
 Helpers\Expense$Tags.class
 Fragments\ExpenseDialogFragment$3.class
@@ -177,16 +172,13 @@ wizard\ui\SavingInfoFragment$2.class
 Fragments\IncomeGraphFragment$1.class
 com\graviton\Cuzdan\IncomeWizardActivity$4.class
 com\graviton\Cuzdan\CuzdanWidgetProvider.class
-com\github\amlcurran\showcaseview\R$drawable.class
 com\github\amlcurran\showcaseview\ShowcaseView$Builder.class
-com\github\amlcurran\showcaseview\R$style.class
 Helpers\ExpenseLoadListener.class
 com\github\amlcurran\showcaseview\ShowcaseView$3.class
 com\github\amlcurran\showcaseview\targets\Reflector$ActionBarType.class
 wizard\model\MultipleFixedChoicePage.class
 wizard\ui\ReviewFragment.class
 Fragments\ExpensePieFragment$2.class
-com\github\amlcurran\showcaseview\R$layout.class
 com\graviton\Cuzdan\ExpenseWizardActivity.class
 com\graviton\Cuzdan\SplashActivity.class
 Fragments\IncomePieFragment$3.class
@@ -197,7 +189,6 @@ wizard\model\PageTreeNode.class
 wizard\model\SingleFixedChoicePage.class
 Fragments\IncomeDialogFragment$3.class
 Fragments\AccountFragment.class
-com\github\amlcurran\showcaseview\R$string.class
 Fragments\ExpenseFragment$2.class
 Helpers\ChartHelper.class
 com\github\amlcurran\showcaseview\ShowcaseView$2.class
@@ -209,7 +200,6 @@ Fragments\ExpensePieFragment.class
 Fragments\IncomeDialogFragment$2.class
 wizard\model\ModelCallbacks.class
 Fragments\SavingsFragment$2.class
-com\github\amlcurran\showcaseview\BuildConfig.class
 com\github\amlcurran\showcaseview\targets\ActionBarViewWrapper.class
 Fragments\ExpenseFragment$1.class
 com\github\amlcurran\showcaseview\targets\Reflector.class
@@ -235,6 +225,5 @@ com\graviton\Cuzdan\ExpenseWizardActivity$MyPagerAdapter.class
 Helpers\Expense.class
 com\github\amlcurran\showcaseview\targets\PointTarget.class
 wizard\ui\ReviewFragment$Callbacks.class
-com\github\amlcurran\showcaseview\R$styleable.class
 Helpers\Saving.class
 wizard\ui\MultipleChoiceFragment$1.class
