@@ -3,11 +3,9 @@ package Helpers;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
-import android.graphics.Color;
 import android.widget.RemoteViews;
 import com.graviton.Cuzdan.CuzdanWidgetProvider;
 import com.graviton.Cuzdan.R;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -26,7 +24,7 @@ public class WidgetHelper {
     public static void UpdateInfo(Context context) throws Exception {
 
         if (user == null) {
-            String fileName = context.getString(R.string.configVersion);
+            String fileName = context.getString(R.string.cuzdanUserConfig);
 
             File file = new File(context.getFilesDir(), fileName);
             if (!file.exists()) {

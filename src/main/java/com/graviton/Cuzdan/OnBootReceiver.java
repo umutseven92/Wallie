@@ -10,7 +10,6 @@ import org.json.JSONObject;
 
 import java.io.*;
 import java.util.Date;
-import java.util.jar.JarException;
 
 /**
  * Created by Umut Seven on 3.4.2015, for Graviton.
@@ -23,7 +22,7 @@ public class OnBootReceiver extends BroadcastReceiver {
             try {
 
                 User user = null;
-                String fileName = context.getString(R.string.configVersion);
+                String fileName = context.getString(R.string.cuzdanUserConfig);
 
                 File file = new File(context.getFilesDir(), fileName);
                 if (!file.exists()) {

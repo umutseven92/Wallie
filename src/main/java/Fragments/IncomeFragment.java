@@ -1,13 +1,9 @@
 package Fragments;
 
 import Helpers.*;
-import android.app.Activity;
-import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,19 +13,22 @@ import android.widget.*;
 import com.github.amlcurran.showcaseview.OnShowcaseEventListener;
 import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
-import com.github.amlcurran.showcaseview.targets.Target;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.gson.Gson;
 import com.graviton.Cuzdan.*;
 import org.json.JSONException;
 
-import javax.xml.datatype.Duration;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Logger;
 
 public class IncomeFragment extends Fragment implements AdapterView.OnItemSelectedListener, IncomeLoadListener, OnShowcaseEventListener {
 
@@ -104,6 +103,23 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                     .yPostion(850)
                     .setShowcaseEventListener(this).build();
         }
+
+
+        ad = new InterstitialAd(this.getActivity());
+        ad.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        String android_id = Settings.Secure.getString(this.getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
+        String deviceId = null;
+        try {
+            deviceId = md5(android_id).toUpperCase();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(deviceId)
+                .build();
+
+        ad.loadAd(adRequest);
         return infView;
     }
 
@@ -326,6 +342,10 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            if (ad.isLoaded()) {
+                ad.show();
+            }
+
             IncomeListAdapter adapter = (IncomeListAdapter) lv.getAdapter();
             Income inc = (Income) adapter.getItem(position);
 
@@ -362,6 +382,28 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                 e.printStackTrace();
             }
         }
+
+
+    }
+
+    private InterstitialAd ad;
+
+    public static final String md5(final String s) throws NoSuchAlgorithmException {
+        // Create MD5 Hash
+        MessageDigest digest = java.security.MessageDigest
+                .getInstance("MD5");
+        digest.update(s.getBytes());
+        byte messageDigest[] = digest.digest();
+
+        // Create Hex String
+        StringBuffer hexString = new StringBuffer();
+        for (int i = 0; i < messageDigest.length; i++) {
+            String h = Integer.toHexString(0xFF & messageDigest[i]);
+            while (h.length() < 2)
+                h = "0" + h;
+            hexString.append(h);
+        }
+        return hexString.toString();
 
     }
 

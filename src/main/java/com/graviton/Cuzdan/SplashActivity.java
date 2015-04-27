@@ -4,12 +4,10 @@ import Helpers.JSONHelper;
 import Helpers.NotificationHelper;
 import Helpers.User;
 import android.app.*;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,9 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import org.json.JSONObject;
-
 import java.io.*;
-import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -41,7 +37,7 @@ public class SplashActivity extends Activity {
 
         setContentView(R.layout.splash_fragment);
 
-        String fileName = getString(R.string.configVersion);
+        String fileName = getString(R.string.cuzdanUserConfig);
         ((Global) this.getApplication()).SetFilePath(fileName);
 
         file = new File(this.getFilesDir(), fileName);
@@ -100,6 +96,7 @@ public class SplashActivity extends Activity {
 
         }
     }
+
 
     private void SetFirstUser() throws Exception {
         JSONObject userInf = JSONHelper.CreateStartingJSON(userName, userLastName, userCurrency, "true", "true", "8", "14", "true");

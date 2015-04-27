@@ -26,7 +26,7 @@ public class ReminderNotificationReceiver extends BroadcastReceiver {
 
         try {
 
-            String fileName = context.getString(R.string.configVersion);
+            String fileName = context.getString(R.string.cuzdanUserConfig);
 
             File file = new File(context.getFilesDir(), fileName);
             if (!file.exists()) {

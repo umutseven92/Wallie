@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.net.Uri;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,7 +31,7 @@ public class SavingsNotificationReceiver extends BroadcastReceiver {
 
         try {
 
-            String fileName = context.getString(R.string.configVersion);
+            String fileName = context.getString(R.string.cuzdanUserConfig);
 
             File file = new File(context.getFilesDir(), fileName);
             if (!file.exists()) {
