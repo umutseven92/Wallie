@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Cüzdan</string>
-    <string name="version">0.7.1</string>
+    <string name="version">0.8.0</string>
 
     <string name="dummyData">false</string>
 
-    <string name="cuzdanUserConfig">userConfigTest130</string>
+    <string name="cuzdanUserConfig">userConfigTest131</string>
+
+    <string name="adKey">ca-app-pub-3940256099942544/1033173712</string>
 
     <string-array name="menuArray">
         <item>Bütçe</item>
@@ -38,9 +40,11 @@
 
     <string-array name="MaaşGelir">
         <item>Maaş Ödemesi</item>
+        <item>Prim Ödemesi</item>
     </string-array>
     <string-array name="MaasGelir">
         <item>Maaş Ödemesi</item>
+        <item>Prim Ödemesi</item>
     </string-array>
 
     <string-array name="KiraGelir">
@@ -114,7 +118,7 @@
         <item>Kira</item>
         <item>Faturalar</item>
         <item>Evcil Hayvan</item>
-        <item>Alışveriş</item>
+        <item>Ev Alışverişi</item>
         <item>Özel Kategori (Ev)</item>
     </string-array>
 
@@ -224,16 +228,7 @@
         <item>Diğer</item>
     </string-array>
 
-    <string-array name="AlışverişGiderEv">
-        <item>Temizlik Malzemeleri</item>
-        <item>Yiyecek &amp; Alkolsüz İçecek</item>
-        <item>Alkollü İçecek</item>
-        <item>Sigara &amp; Tütün</item>
-        <item>Beyaz Eşya</item>
-        <item>Mobilya</item>
-        <item>Diğer</item>
-    </string-array>
-    <string-array name="AlisverisGiderEv">
+    <string-array name="EvGiderEv">
         <item>Temizlik Malzemeleri</item>
         <item>Yiyecek &amp; Alkolsüz İçecek</item>
         <item>Alkollü İçecek</item>

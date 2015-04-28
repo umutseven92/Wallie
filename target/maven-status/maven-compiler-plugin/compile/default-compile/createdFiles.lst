@@ -1,6 +1,7 @@
 com\graviton\Cuzdan\ReminderNotificationReceiver.class
 Helpers\IncomeLoadListener.class
 Fragments\IncomePieFragment$1.class
+Helpers\AdHelper.class
 com\github\amlcurran\showcaseview\ShowcaseViewApi.class
 com\github\amlcurran\showcaseview\ShowcaseAreaCalculator.class
 Fragments\IncomeDialogFragment$1.class
@@ -160,6 +161,7 @@ com\google\android\gms\R$id.class
 wizard\model\BranchPage.class
 com\google\android\gms\R$styleable.class
 Helpers\Banker$1.class
+Helpers\ExpenseAddListener.class
 Helpers\RoundedImageView.class
 wizard\model\BranchPage$1.class
 wizard\ui\ReviewFragment$1.class
@@ -239,5 +241,6 @@ Helpers\Expense.class
 com\github\amlcurran\showcaseview\targets\PointTarget.class
 wizard\ui\ReviewFragment$Callbacks.class
 com\google\android\gms\R$style.class
+Helpers\IncomeAddListener.class
 Helpers\Saving.class
 wizard\ui\MultipleChoiceFragment$1.class

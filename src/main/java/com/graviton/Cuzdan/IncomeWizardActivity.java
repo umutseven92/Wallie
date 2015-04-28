@@ -1,14 +1,6 @@
 package com.graviton.Cuzdan;
 
-import Helpers.Banker;
-import Helpers.Income;
-import Helpers.NotificationHelper;
-import Helpers.User;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
+import Helpers.*;
 import android.os.Bundle;
 import android.support.v4.app.*;
 import android.support.v4.view.ViewPager;
@@ -43,6 +35,7 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
     private Button mPrevButton;
     private List<Page> mCurrentPageSequence;
     private StepPagerStrip mStepPagerStrip;
+    private IncomeAddListener _addListener;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,9 +100,15 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
             }
         });
 
+        SetListener(((Global) this.getApplication()).incomeAddListener);
+
         onPageTreeChanged();
         updateBottomBar();
 
+    }
+
+    private void SetListener(IncomeAddListener listener) {
+        _addListener = listener;
     }
 
     private void GoForwardOnePage() throws IOException, JSONException {
@@ -134,6 +133,7 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
 
             Income income = new Income(category, subCategory, amount, description, new Date());
             banker.AddIncome(income);
+            _addListener.onAdded();
             finish();
         } else {
             if (mEditingAfterReview) {

@@ -22,15 +22,15 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.net.InetAddress;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.logging.Logger;
 
-public class IncomeFragment extends Fragment implements AdapterView.OnItemSelectedListener, IncomeLoadListener, OnShowcaseEventListener {
+public class IncomeFragment extends Fragment implements AdapterView.OnItemSelectedListener, IncomeLoadListener, OnShowcaseEventListener, IncomeAddListener {
 
     static User _user;
     String mode = "day";
@@ -42,8 +42,9 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     IncomeDialogFragment dialog;
     DatePickerFragment datePickerFragment;
     private int tutorialCount = 0;
-
+    private InterstitialAd ad;
     private boolean first = false;
+    String deviceId = null;
 
     public static final IncomeFragment newInstance() {
         IncomeFragment f = new IncomeFragment();
@@ -73,6 +74,8 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
         dialog = new IncomeDialogFragment();
         dialog.SetListener(this);
+
+        ((Global) this.getActivity().getApplication()).incomeAddListener = this;
 
         btnCalendar.setOnClickListener(onCalendarClick);
         btnLeftArrow.setOnClickListener(onLeftArrowClick);
@@ -104,24 +107,24 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                     .setShowcaseEventListener(this).build();
         }
 
-
+        // Reklamlar
         ad = new InterstitialAd(this.getActivity());
-        ad.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        ad.setAdUnitId(getString(R.string.adKey));
+
         String android_id = Settings.Secure.getString(this.getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
-        String deviceId = null;
+
         try {
-            deviceId = md5(android_id).toUpperCase();
+            deviceId = AdHelper.md5(android_id).toUpperCase();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
 
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(deviceId)
-                .build();
-
+        AdRequest adRequest = AdHelper.RequestAd(deviceId);
         ad.loadAd(adRequest);
+
         return infView;
     }
+
 
     @Override
     public void onResume() {
@@ -146,6 +149,11 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+
+        if (!ad.isLoaded()) {
+            AdRequest adRequest = AdHelper.RequestAd(deviceId);
+            ad.loadAd(adRequest);
         }
 
         super.onResume();
@@ -342,9 +350,6 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            if (ad.isLoaded()) {
-                ad.show();
-            }
 
             IncomeListAdapter adapter = (IncomeListAdapter) lv.getAdapter();
             Income inc = (Income) adapter.getItem(position);
@@ -382,30 +387,25 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                 e.printStackTrace();
             }
         }
-
-
     }
 
-    private InterstitialAd ad;
+    @Deprecated
+    public boolean IsInternetAvailable() {
+        try {
+            InetAddress ipAddr = InetAddress.getByName("google.com"); //You can replace it with your name
 
-    public static final String md5(final String s) throws NoSuchAlgorithmException {
-        // Create MD5 Hash
-        MessageDigest digest = java.security.MessageDigest
-                .getInstance("MD5");
-        digest.update(s.getBytes());
-        byte messageDigest[] = digest.digest();
+            if (ipAddr.equals("")) {
+                return false;
+            } else {
+                return true;
+            }
 
-        // Create Hex String
-        StringBuffer hexString = new StringBuffer();
-        for (int i = 0; i < messageDigest.length; i++) {
-            String h = Integer.toHexString(0xFF & messageDigest[i]);
-            while (h.length() < 2)
-                h = "0" + h;
-            hexString.append(h);
+        } catch (Exception e) {
+            return false;
         }
-        return hexString.toString();
 
     }
+
 
     @Override
     public void onDateSelected(Date date) {
@@ -510,5 +510,15 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public void onShowcaseViewShow(ShowcaseView showcaseView) {
 
+    }
+
+    @Override
+    public void onAdded() {
+        if (!ad.isLoaded()) {
+            AdRequest adRequest = AdHelper.RequestAd(deviceId);
+            ad.loadAd(adRequest);
+        }
+
+        ad.show();
     }
 }

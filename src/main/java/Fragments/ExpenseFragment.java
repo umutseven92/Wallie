@@ -4,11 +4,14 @@ import Helpers.*;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.gson.Gson;
 import com.graviton.Cuzdan.ExpenseStatsActivity;
 import com.graviton.Cuzdan.ExpenseWizardActivity;
@@ -18,12 +21,13 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelectedListener, ExpenseLoadListener {
+public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelectedListener, ExpenseLoadListener, ExpenseAddListener {
 
     static User _user;
     String mode = "day";
@@ -34,6 +38,8 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     ListView lv;
     ExpenseDialogFragment dialog;
     DatePickerFragment datePickerFragment;
+    private InterstitialAd ad;
+    String deviceId = null;
 
     public static final ExpenseFragment newInstance() {
         ExpenseFragment f = new ExpenseFragment();
@@ -69,6 +75,8 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         btnExpenseCalendar.setOnClickListener(onCalendarClick);
         lv.setOnItemClickListener(onItemClickListener);
 
+        ((Global) this.getActivity().getApplication()).expenseAddListener = this;
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, R.layout.cuzdan_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnDate.setAdapter(adapter);
@@ -77,6 +85,20 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         dateBeingViewed = new Date();
         _user = ((Global) getActivity().getApplication()).GetUser();
 
+        // Reklamlar
+        ad = new InterstitialAd(this.getActivity());
+        ad.setAdUnitId(getString(R.string.adKey));
+
+        String android_id = Settings.Secure.getString(this.getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
+
+        try {
+            deviceId = AdHelper.md5(android_id).toUpperCase();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        AdRequest adRequest = AdHelper.RequestAd(deviceId);
+        ad.loadAd(adRequest);
         return infView;
     }
 
@@ -107,6 +129,10 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
 
         }
 
+        if (!ad.isLoaded()) {
+            AdRequest adRequest = AdHelper.RequestAd(deviceId);
+            ad.loadAd(adRequest);
+        }
         super.onResume();
     }
 
@@ -368,5 +394,16 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
             }
         }
 
+    }
+
+    @Override
+    public void onAdded() {
+
+        if (!ad.isLoaded()) {
+            AdRequest adRequest = AdHelper.RequestAd(deviceId);
+            ad.loadAd(adRequest);
+        }
+
+        ad.show();
     }
 }

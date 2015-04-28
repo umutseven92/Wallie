@@ -32,7 +32,7 @@ public class ExpenseWizardModel extends AbstractWizardModel {
                                         .addBranch("Kira", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Ev Kirası").setRequired(true))
                                         .addBranch("Faturalar", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Elektrik", "Su", "Doğalgaz", "Telefon", "İnternet", "Kanal Abonelikleri", "Diğer").setRequired(true))
                                         .addBranch("Evcil Hayvan", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Evcil Hayvan", "Veteriner", "Mama", "Diğer").setRequired(true))
-                                        .addBranch("Alışveriş", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Temizlik Malzemeleri", "Yiyecek & Alkolsüz İçecek", "Alkollü İçecek", "Sigara & Tütün", "Beyaz Eşya", "Mobilya", "Diğer").setRequired(true))
+                                        .addBranch("Ev Alışverişi", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Temizlik Malzemeleri", "Yiyecek & Alkolsüz İçecek", "Alkollü İçecek", "Sigara & Tütün", "Beyaz Eşya", "Mobilya", "Diğer").setRequired(true))
                                         .addBranch("Özel Kategori (Ev)", new BalanceCustomInfoPage(this, "Kategori Girin").setRequired(true))
                         ).setRequired(true),
                 new BalanceInfoPage(this, "Detaylar").setRequired(true));

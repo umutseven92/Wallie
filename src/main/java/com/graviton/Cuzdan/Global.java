@@ -1,6 +1,8 @@
 package com.graviton.Cuzdan;
 
 import Fragments.ExpenseDialogFragment;
+import Helpers.ExpenseAddListener;
+import Helpers.IncomeAddListener;
 import Helpers.User;
 import android.app.Application;
 
@@ -31,6 +33,10 @@ public class Global extends Application {
     }
 
     public ExpenseDialogFragment expenseDialog;
+
+    public IncomeAddListener incomeAddListener;
+
+    public ExpenseAddListener expenseAddListener;
 
     private boolean _first;
 

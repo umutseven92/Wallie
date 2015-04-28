@@ -1,9 +1,6 @@
 package com.graviton.Cuzdan;
 
-import Helpers.Banker;
-import Helpers.Expense;
-import Helpers.NotificationHelper;
-import Helpers.User;
+import Helpers.*;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -40,6 +37,7 @@ public class ExpenseWizardActivity extends FragmentActivity implements PageFragm
     private Button mPrevButton;
     private List<Page> mCurrentPageSequence;
     private StepPagerStrip mStepPagerStrip;
+    private ExpenseAddListener _addListener;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,9 +103,15 @@ public class ExpenseWizardActivity extends FragmentActivity implements PageFragm
             }
         });
 
+        SetListener(((Global) this.getApplication()).expenseAddListener);
+
         onPageTreeChanged();
         updateBottomBar();
 
+    }
+
+    private void SetListener(ExpenseAddListener listener) {
+        _addListener = listener;
     }
 
     private void GoForwardOnePage() throws IOException, JSONException {
@@ -145,6 +149,7 @@ public class ExpenseWizardActivity extends FragmentActivity implements PageFragm
             Expense expense = new Expense(category, subCategory, amount, description, new Date(), expenseTag);
 
             banker.AddExpense(expense);
+            _addListener.onAdded();
             finish();
         } else {
             if (mEditingAfterReview) {

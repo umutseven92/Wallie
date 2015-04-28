@@ -188,12 +188,9 @@ public class Saving {
     }
 
     public void SetDailyProgress() {
-        if(_periodDayDict.get(GetPeriod()) == CUSTOM)
-        {
-            _progress = _progress.add(GetAmount().divide(new BigDecimal(GetCustomDays()),BigDecimal.ROUND_DOWN));
-        }
-        else
-        {
+        if (_periodDayDict.get(GetPeriod()) == CUSTOM) {
+            _progress = _progress.add(GetAmount().divide(new BigDecimal(GetCustomDays()), BigDecimal.ROUND_DOWN));
+        } else {
             _progress = _progress.add(GetAmount().divide(new BigDecimal(_periodDayDict.get(GetPeriod())), BigDecimal.ROUND_DOWN));
         }
     }
