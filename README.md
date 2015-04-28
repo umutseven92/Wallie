@@ -59,7 +59,7 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
   * ~~Oryantasyon~~
 
 * 0.8 (Monetization)
-  * Reklamlarin koyulmasi
+  * ~~Reklamlarin koyulmasi~~
   * In-app purchases
 
 * 0.9 (Performans)
