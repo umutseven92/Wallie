@@ -23,7 +23,6 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.InetAddress;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -109,15 +108,10 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
         // Reklamlar
         ad = new InterstitialAd(this.getActivity());
-        ad.setAdUnitId(getString(R.string.adKey));
+        ad.setAdUnitId(getString(R.string.incomeAdKey));
 
-        String android_id = Settings.Secure.getString(this.getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
 
-        try {
-            deviceId = AdHelper.md5(android_id).toUpperCase();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
+        deviceId = getString(R.string.testDeviceId);
 
         AdRequest adRequest = AdHelper.RequestAd(deviceId);
         ad.loadAd(adRequest);

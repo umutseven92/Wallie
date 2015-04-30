@@ -7,7 +7,11 @@
 
     <string name="cuzdanUserConfig">userConfigTest131</string>
 
-    <string name="adKey">ca-app-pub-3940256099942544/1033173712</string>
+    <!-- Admob keys -->
+    <string name="incomeAdKey">ca-app-pub-4901113114102271/5071800540</string>
+    <string name="expenseAdKey">ca-app-pub-4901113114102271/6195280144</string>
+
+    <string name="testDeviceId">31F6CD288033C2FD337EF3ED277D0732</string>
 
     <string-array name="menuArray">
         <item>Bütçe</item>

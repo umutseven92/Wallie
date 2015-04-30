@@ -919,7 +919,6 @@ containing a value of this type.
     }
     public static final class string {
         public static final int accept=0x7f080002;
-        public static final int adKey=0x7f08002a;
         public static final int app_name=0x7f080026;
         /**   Text for notification shown when the Android Wear apps needs to be updated. Only shown on the wearable. [CHAR LIMIT=NONE] 
          */
@@ -1031,32 +1030,37 @@ containing a value of this type.
         public static final int commono_google_play_services_api_unavailable_text=0x7f080022;
         public static final int create_calendar_message=0x7f080005;
         public static final int create_calendar_title=0x7f080004;
-        public static final int currency=0x7f08003d;
+        public static final int currency=0x7f08003f;
         public static final int cuzdanUserConfig=0x7f080029;
         public static final int decline=0x7f080003;
-        public static final int drawer_close=0x7f08002c;
-        public static final int drawer_open=0x7f08002b;
+        public static final int drawer_close=0x7f08002e;
+        public static final int drawer_open=0x7f08002d;
         public static final int dummyData=0x7f080028;
-        public static final int finish_expense=0x7f080030;
-        public static final int finish_income=0x7f08002f;
-        public static final int finish_saving=0x7f080031;
-        public static final int hint_desc=0x7f080035;
-        public static final int insufficent_funds=0x7f08003e;
-        public static final int label_amount=0x7f080033;
-        public static final int label_custom_day=0x7f080039;
-        public static final int label_desc=0x7f080034;
-        public static final int label_name=0x7f080036;
-        public static final int label_priority=0x7f080038;
-        public static final int label_repeating=0x7f080037;
-        public static final int next=0x7f08002d;
-        public static final int ok=0x7f08003f;
-        public static final int prev=0x7f08002e;
-        public static final int review=0x7f080032;
+        public static final int expenseAdKey=0x7f08002b;
+        public static final int finish_expense=0x7f080032;
+        public static final int finish_income=0x7f080031;
+        public static final int finish_saving=0x7f080033;
+        public static final int hint_desc=0x7f080037;
+        /**  Admob keys 
+         */
+        public static final int incomeAdKey=0x7f08002a;
+        public static final int insufficent_funds=0x7f080040;
+        public static final int label_amount=0x7f080035;
+        public static final int label_custom_day=0x7f08003b;
+        public static final int label_desc=0x7f080036;
+        public static final int label_name=0x7f080038;
+        public static final int label_priority=0x7f08003a;
+        public static final int label_repeating=0x7f080039;
+        public static final int next=0x7f08002f;
+        public static final int ok=0x7f080041;
+        public static final int prev=0x7f080030;
+        public static final int review=0x7f080034;
         public static final int store_picture_message=0x7f080001;
         public static final int store_picture_title=0x7f080000;
-        public static final int submit_cancel_button=0x7f08003c;
-        public static final int submit_confirm_button=0x7f08003b;
-        public static final int submit_confirm_message=0x7f08003a;
+        public static final int submit_cancel_button=0x7f08003e;
+        public static final int submit_confirm_button=0x7f08003d;
+        public static final int submit_confirm_message=0x7f08003c;
+        public static final int testDeviceId=0x7f08002c;
         public static final int version=0x7f080027;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 

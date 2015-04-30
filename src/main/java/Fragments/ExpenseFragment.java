@@ -87,15 +87,9 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
 
         // Reklamlar
         ad = new InterstitialAd(this.getActivity());
-        ad.setAdUnitId(getString(R.string.adKey));
+        ad.setAdUnitId(getString(R.string.expenseAdKey));
 
-        String android_id = Settings.Secure.getString(this.getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
-
-        try {
-            deviceId = AdHelper.md5(android_id).toUpperCase();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
+        deviceId = getString(R.string.testDeviceId);
 
         AdRequest adRequest = AdHelper.RequestAd(deviceId);
         ad.loadAd(adRequest);

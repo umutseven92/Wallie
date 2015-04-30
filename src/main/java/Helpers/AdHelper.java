@@ -12,7 +12,6 @@ public class AdHelper {
 
     public static AdRequest RequestAd(String deviceId) {
         return new AdRequest.Builder()
-                .addTestDevice(deviceId)
                 .build();
     }
 
