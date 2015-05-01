@@ -89,6 +89,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         ad = new InterstitialAd(this.getActivity());
         ad.setAdUnitId(getString(R.string.expenseAdKey));
 
+        // Test reklamlari icin Umut Seven'in telefon id'si
         deviceId = getString(R.string.testDeviceId);
 
         AdRequest adRequest = AdHelper.RequestAd(deviceId);

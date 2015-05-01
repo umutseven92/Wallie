@@ -1,6 +1,7 @@
 com\graviton\Cuzdan\ReminderNotificationReceiver.class
 Helpers\IncomeLoadListener.class
 Fragments\IncomePieFragment$1.class
+Helpers\Billing\IabHelper$OnConsumeFinishedListener.class
 Helpers\AdHelper.class
 com\github\amlcurran\showcaseview\ShowcaseViewApi.class
 com\github\amlcurran\showcaseview\ShowcaseAreaCalculator.class
@@ -12,12 +13,14 @@ com\github\amlcurran\showcaseview\TextDrawer.class
 com\graviton\Cuzdan\R$drawable.class
 com\graviton\Cuzdan\SavingsWizardActivity$4.class
 Fragments\ExpenseFragment$3.class
+Helpers\Billing\Inventory.class
 wizard\model\PageList.class
 com\github\amlcurran\showcaseview\targets\ActionViewTarget$Type.class
 Fragments\IncomeDialogFragment.class
 wizard\ui\SavingCustomInfoFragment$3.class
 Helpers\NotificationHelper.class
 Fragments\ExpenseGraphFragment.class
+Helpers\Billing\IabHelper$OnIabSetupFinishedListener.class
 com\github\amlcurran\showcaseview\AnimationFactory$AnimationEndListener.class
 com\graviton\Cuzdan\R$dimen.class
 Fragments\ExpenseSearchFragment$3.class
@@ -25,6 +28,7 @@ Fragments\AccountFragment$3.class
 android\UnusedStub.class
 com\graviton\Cuzdan\R$id.class
 wizard\ExpenseWizardModel.class
+Helpers\Billing\Base64DecoderException.class
 Helpers\DecimalDigitsInputFilter.class
 com\github\amlcurran\showcaseview\ShowcaseView$CalculateTextOnPreDraw.class
 com\graviton\Cuzdan\R$layout.class
@@ -50,7 +54,9 @@ Fragments\AccountFragment$2.class
 com\graviton\Cuzdan\OnBootReceiver.class
 com\github\amlcurran\showcaseview\ShowcaseView$UpdateOnGlobalLayout.class
 Fragments\IncomeGraphFragment$3.class
+Helpers\Billing\Base64.class
 com\graviton\Cuzdan\MainActivity$DrawerItemClickListener.class
+com\android\vending\billing\IInAppBillingService.class
 wizard\ui\SavingInfoFragment$1.class
 com\github\amlcurran\showcaseview\targets\ActionBarReflector.class
 com\graviton\Cuzdan\IncomeWizardActivity$2.class
@@ -72,9 +78,11 @@ Fragments\IncomeGraphFragment$2.class
 Helpers\SavingsHelper$1.class
 com\github\amlcurran\showcaseview\ShowcaseView$4.class
 com\github\amlcurran\showcaseview\targets\ViewTarget.class
+Helpers\Billing\IabHelper$OnConsumeMultiFinishedListener.class
 Fragments\IncomeFragment$2.class
 Fragments\IncomeFragment$6.class
 Helpers\User.class
+Helpers\Billing\Purchase.class
 com\github\amlcurran\showcaseview\ShotStateStore.class
 wizard\ui\SingleChoiceFragment.class
 com\graviton\Cuzdan\IncomeWizardActivity$1.class
@@ -82,7 +90,9 @@ wizard\ui\MultipleChoiceFragment.class
 Fragments\IncomeSearchFragment.class
 com\graviton\Cuzdan\SavingActivity.class
 Fragments\IncomeFragment$3.class
+Helpers\Billing\IabException.class
 com\github\amlcurran\showcaseview\StandardShowcaseDrawer.class
+Helpers\Billing\IabResult.class
 Fragments\ExpenseFragment.class
 Helpers\BudgetPageAdapter.class
 Fragments\ExpenseFragment$5.class
@@ -97,6 +107,7 @@ com\graviton\Cuzdan\R$string.class
 wizard\ui\BalanceInfoFragment$2.class
 com\graviton\Cuzdan\R$styleable.class
 Fragments\ExpenseDialogFragment.class
+Helpers\Billing\Security.class
 wizard\ui\SavingCustomInfoFragment$4.class
 com\github\amlcurran\showcaseview\targets\SherlockReflector.class
 com\graviton\Cuzdan\SavingsWizardActivity.class
@@ -122,6 +133,7 @@ com\graviton\Cuzdan\IncomeStatsActivity.class
 wizard\ui\BalanceCustomInfoFragment$1.class
 Fragments\IncomeFragment$5.class
 wizard\SavingWizardModel.class
+Helpers\Billing\SkuDetails.class
 com\github\amlcurran\showcaseview\OnShowcaseEventListener.class
 wizard\model\BalanceCustomInfoPage.class
 wizard\model\ReviewItem.class
@@ -134,6 +146,7 @@ com\graviton\Cuzdan\MainActivity$1.class
 Helpers\Expense$Tags.class
 Fragments\ExpenseDialogFragment$3.class
 Fragments\ExpensePieFragment$3.class
+Helpers\Billing\IabHelper$1.class
 com\graviton\Cuzdan\R$integer.class
 Fragments\IncomeSearchFragment$1.class
 com\graviton\Cuzdan\BuildConfig.class
@@ -145,6 +158,7 @@ Fragments\ExpenseFragment$6.class
 wizard\ui\SavingInfoFragment.class
 Fragments\ExpenseGraphFragment$1.class
 Helpers\Balance.class
+Helpers\Billing\IabHelper$2$1.class
 com\github\amlcurran\showcaseview\targets\Target.class
 Fragments\BalanceFragment$3.class
 com\github\amlcurran\showcaseview\AnimatorAnimationFactory$2.class
@@ -153,6 +167,7 @@ wizard\IncomeWizardModel.class
 com\graviton\Cuzdan\SplashActivity$3.class
 Helpers\JSONHelper.class
 wizard\ui\SavingInfoFragment$3.class
+Helpers\Billing\IabHelper$QueryInventoryFinishedListener.class
 wizard\ui\StepPagerStrip$OnPageSelectedListener.class
 wizard\model\SavingCustomInfoPage.class
 Fragments\AccountFragment$6.class
@@ -164,11 +179,13 @@ Helpers\Banker$1.class
 Helpers\ExpenseAddListener.class
 Helpers\RoundedImageView.class
 wizard\model\BranchPage$1.class
+Helpers\Billing\IabHelper.class
 wizard\ui\ReviewFragment$1.class
 com\graviton\Cuzdan\R.class
 Helpers\ExpenseListAdapter.class
 wizard\ui\BalanceInfoFragment.class
 wizard\model\Page.class
+com\android\vending\billing\IInAppBillingService$Stub$Proxy.class
 Fragments\SavingsFragment.class
 com\graviton\Cuzdan\R$array.class
 Helpers\AboutPageAdapter.class
@@ -188,6 +205,7 @@ Helpers\ExpenseLoadListener.class
 com\github\amlcurran\showcaseview\ShowcaseView$3.class
 com\github\amlcurran\showcaseview\targets\Reflector$ActionBarType.class
 com\google\android\gms\R$color.class
+com\android\vending\billing\IInAppBillingService$Stub.class
 com\google\android\gms\BuildConfig.class
 wizard\model\MultipleFixedChoicePage.class
 wizard\ui\ReviewFragment.class
@@ -222,8 +240,10 @@ Helpers\Banker.class
 wizard\ui\BalanceCustomInfoFragment.class
 com\graviton\Cuzdan\ExpenseWizardActivity$2.class
 Fragments\ExpenseGraphFragment$3.class
+Helpers\Billing\IabHelper$2.class
 Fragments\BalanceFragment$2.class
 Fragments\IncomeSearchFragment$3.class
+Helpers\Billing\IabHelper$3$2.class
 Fragments\IncomePieFragment.class
 Helpers\SavingsPageAdapter.class
 Fragments\AccountFragment$5.class
@@ -237,10 +257,13 @@ com\github\amlcurran\showcaseview\ShowcaseView$1.class
 wizard\model\BranchPage$Branch.class
 com\graviton\Cuzdan\ExpenseWizardActivity$MyPagerAdapter.class
 com\google\android\gms\R$drawable.class
+Helpers\Billing\IabHelper$3.class
 Helpers\Expense.class
 com\github\amlcurran\showcaseview\targets\PointTarget.class
+Helpers\Billing\IabHelper$3$1.class
 wizard\ui\ReviewFragment$Callbacks.class
 com\google\android\gms\R$style.class
+Helpers\Billing\IabHelper$OnIabPurchaseFinishedListener.class
 Helpers\IncomeAddListener.class
 Helpers\Saving.class
 wizard\ui\MultipleChoiceFragment$1.class
