@@ -58,9 +58,9 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
 * ~~0.7 (Kullanici Eğitimi)~~
   * ~~Oryantasyon~~
 
-* 0.8 (Monetization)
+* ~~0.8 (Monetization)~~
   * ~~Reklamlarin koyulmasi~~
-  * In-app purchases
+  * ~~In-app purchases~~
 
 * 0.9 (Performans)
   * Performans Gelistirme
