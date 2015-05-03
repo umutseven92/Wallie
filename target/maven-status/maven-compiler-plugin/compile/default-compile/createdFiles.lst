@@ -1,10 +1,12 @@
 com\graviton\Cuzdan\ReminderNotificationReceiver.class
 Helpers\IncomeLoadListener.class
 Fragments\IncomePieFragment$1.class
+com\graviton\Cuzdan\SplashActivity$5$1$1.class
 Helpers\Billing\IabHelper$OnConsumeFinishedListener.class
 Helpers\AdHelper.class
 com\github\amlcurran\showcaseview\ShowcaseViewApi.class
 com\github\amlcurran\showcaseview\ShowcaseAreaCalculator.class
+Fragments\AccountFragment$8.class
 Fragments\IncomeDialogFragment$1.class
 com\graviton\Cuzdan\IncomeWizardActivity$MyPagerAdapter.class
 Helpers\LocaleHelper.class
@@ -36,7 +38,6 @@ com\graviton\Cuzdan\IncomeWizardActivity$3.class
 Helpers\SavingListAdapter.class
 wizard\model\AbstractWizardModel.class
 com\graviton\Cuzdan\R$raw.class
-com\graviton\Cuzdan\SplashActivity$3$1.class
 wizard\ui\StepPagerStrip.class
 Helpers\SavingsHelper.class
 Helpers\PriorityInputFilter.class
@@ -94,9 +95,12 @@ Helpers\Billing\IabException.class
 com\github\amlcurran\showcaseview\StandardShowcaseDrawer.class
 Helpers\Billing\IabResult.class
 Fragments\ExpenseFragment.class
+com\graviton\Cuzdan\SplashActivity$4.class
 Helpers\BudgetPageAdapter.class
+Helpers\User$Version.class
 Fragments\ExpenseFragment$5.class
 com\graviton\Cuzdan\R$color.class
+com\graviton\Cuzdan\SplashActivity$5$1.class
 com\github\amlcurran\showcaseview\ShowcaseDrawer.class
 wizard\model\BalanceInfoPage.class
 wizard\ui\SavingCustomInfoFragment$1.class
@@ -104,6 +108,7 @@ com\github\amlcurran\showcaseview\ShowcaseView.class
 com\graviton\Cuzdan\SavingsWizardActivity$2.class
 Fragments\BalanceFragment.class
 com\graviton\Cuzdan\R$string.class
+Fragments\AccountFragment$9.class
 wizard\ui\BalanceInfoFragment$2.class
 com\graviton\Cuzdan\R$styleable.class
 Fragments\ExpenseDialogFragment.class
@@ -112,7 +117,6 @@ wizard\ui\SavingCustomInfoFragment$4.class
 com\github\amlcurran\showcaseview\targets\SherlockReflector.class
 com\graviton\Cuzdan\SavingsWizardActivity.class
 com\github\amlcurran\showcaseview\targets\ReflectorFactory$1.class
-com\graviton\Cuzdan\SplashActivity$3$1$1.class
 com\github\amlcurran\showcaseview\NewShowcaseDrawer.class
 wizard\ui\SingleChoiceFragment$1.class
 com\github\amlcurran\showcaseview\targets\ActionViewTarget.class
@@ -120,6 +124,7 @@ com\github\amlcurran\showcaseview\targets\Target$1.class
 com\graviton\Cuzdan\R$xml.class
 Fragments\IncomeFragment$4.class
 Helpers\IncomeListAdapter.class
+Fragments\AccountFragment$6$1.class
 com\github\amlcurran\showcaseview\AnimatorAnimationFactory$1.class
 com\github\amlcurran\showcaseview\targets\ReflectorFactory.class
 com\github\amlcurran\showcaseview\ApiUtils.class
@@ -139,6 +144,7 @@ wizard\model\BalanceCustomInfoPage.class
 wizard\model\ReviewItem.class
 com\github\amlcurran\showcaseview\targets\ActionViewTarget$1.class
 Fragments\IncomeFragment.class
+com\graviton\Cuzdan\SplashActivity$5.class
 com\graviton\Cuzdan\R$style.class
 com\google\android\gms\R$integer.class
 wizard\ui\SavingCustomInfoFragment$2.class

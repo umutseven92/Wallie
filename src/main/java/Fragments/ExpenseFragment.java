@@ -85,15 +85,17 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         dateBeingViewed = new Date();
         _user = ((Global) getActivity().getApplication()).GetUser();
 
-        // Reklamlar
-        ad = new InterstitialAd(this.getActivity());
-        ad.setAdUnitId(getString(R.string.expenseAdKey));
+        if (_user.GetVersion() == User.Version.Free) {
+            // Reklamlar
+            ad = new InterstitialAd(this.getActivity());
+            ad.setAdUnitId(getString(R.string.expenseAdKey));
 
-        // Test reklamlari icin Umut Seven'in telefon id'si
-        deviceId = getString(R.string.testDeviceId);
+            // Test reklamlari icin Umut Seven'in telefon id'si
+            deviceId = getString(R.string.testDeviceId);
 
-        AdRequest adRequest = AdHelper.RequestAd(deviceId);
-        ad.loadAd(adRequest);
+            AdRequest adRequest = AdHelper.RequestAd(deviceId);
+            ad.loadAd(adRequest);
+        }
         return infView;
     }
 
@@ -124,7 +126,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
 
         }
 
-        if (!ad.isLoaded()) {
+        if (!ad.isLoaded() && _user.GetVersion() == User.Version.Free) {
             AdRequest adRequest = AdHelper.RequestAd(deviceId);
             ad.loadAd(adRequest);
         }
@@ -394,11 +396,13 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
     @Override
     public void onAdded() {
 
-        if (!ad.isLoaded()) {
-            AdRequest adRequest = AdHelper.RequestAd(deviceId);
-            ad.loadAd(adRequest);
-        }
+        if (_user.GetVersion() == User.Version.Free) {
+            if (!ad.isLoaded()) {
+                AdRequest adRequest = AdHelper.RequestAd(deviceId);
+                ad.loadAd(adRequest);
+            }
 
-        ad.show();
+            ad.show();
+        }
     }
 }

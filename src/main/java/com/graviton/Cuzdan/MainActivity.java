@@ -2,6 +2,7 @@ package com.graviton.Cuzdan;
 
 import Fragments.*;
 import Helpers.*;
+import Helpers.Billing.IabHelper;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
@@ -33,13 +34,14 @@ public class MainActivity extends FragmentActivity {
     SavingsPageAdapter savingsPageAdapter;
     SettingsPageAdapter settingsPageAdapter;
     AboutPageAdapter aboutPageAdapter;
-
+    User _user;
     private DrawerLayout drawerLayout;
     private ListView drawerList;
     private ActionBarDrawerToggle drawerToggle;
     private CharSequence drawerTitle, title;
     private String[] menuArray;
     ViewPager pager;
+    User.Version version;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,16 +49,10 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        /*
-        Bundle b = getIntent().getExtras();
-        boolean first = b.getBoolean("first");
-        */
+        _user = ((Global) getApplication()).GetUser();
+        version = _user.GetVersion();
 
         pager = (ViewPager) findViewById(R.id.pager);
-
-        // ICS sistem tuslari (LG telefonlar etc)
-        // https://stackoverflow.com/questions/8469112/hide-ics-back-home-task-switcher-buttons
-        pager.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
         title = drawerTitle = getTitle();
         menuArray = getResources().getStringArray(R.array.menuArray);
@@ -251,6 +247,7 @@ public class MainActivity extends FragmentActivity {
                 .setPositiveButton("Evet", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        ((Global) getApplication()).iabHelper.dispose();
                         finish();
                     }
 

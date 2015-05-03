@@ -36,12 +36,9 @@ public class DecimalDigitsInputFilter implements InputFilter {
             }
         }
 
-        if(source.length() > 0)
-        {
-            if(source.charAt(0) == '.' || source.charAt(0) == ',')
-            {
-                if(dest.length() == 0)
-                {
+        if (source.length() > 0) {
+            if (source.charAt(0) == '.' || source.charAt(0) == ',') {
+                if (dest.length() == 0) {
                     return "";
                 }
             }

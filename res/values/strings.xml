@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Cüzdan</string>
-    <string name="version">0.8.0</string>
+    <string name="version">0.8.2</string>
 
     <string name="dummyData">false</string>
 
-    <string name="cuzdanUserConfig">userConfigTest131</string>
+    <string name="cuzdanUserConfig">cuzdanUserConfig</string>
 
     <!-- Admob keys -->
     <string name="incomeAdKey">ca-app-pub-4901113114102271/5071800540</string>

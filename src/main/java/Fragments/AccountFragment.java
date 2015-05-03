@@ -1,18 +1,28 @@
 package Fragments;
 
+import Helpers.Billing.IabHelper;
+import Helpers.Billing.IabResult;
+import Helpers.Billing.Purchase;
 import Helpers.User;
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.UUID;
+import java.util.regex.Pattern;
 
 /**
  * Created by Umut Seven on 18.11.2014, for Graviton.
@@ -22,9 +32,10 @@ public class AccountFragment extends Fragment {
     static User _user;
     TextView txtName, txtCurrency;
     Switch swcSaving, swcRem, swcStat;
-    Button btnSav, btnRem;
+    Button btnSav, btnRem, btnPro;
     int num;
     int refNum;
+    private String processId = "";
 
     public static final AccountFragment newInstance() {
         AccountFragment f = new AccountFragment();
@@ -40,9 +51,9 @@ public class AccountFragment extends Fragment {
         swcSaving = (Switch) v.findViewById(R.id.swcAccountSaving);
         swcRem = (Switch) v.findViewById(R.id.swcAccountRem);
         swcStat = (Switch) v.findViewById(R.id.swcStatusNot);
-
         btnRem = (Button) v.findViewById(R.id.btnAccountRem);
         btnSav = (Button) v.findViewById(R.id.btnAccountSav);
+        btnPro = (Button) v.findViewById(R.id.btnPro);
 
         _user = ((com.graviton.Cuzdan.Global) getActivity().getApplication()).GetUser();
 
@@ -50,6 +61,12 @@ public class AccountFragment extends Fragment {
 
         btnRem.setText(String.valueOf(_user.GetRemNotHour()));
         btnSav.setText(String.valueOf(_user.GetSavingNotHour()));
+
+        if (_user.GetVersion() == User.Version.Pro) {
+            btnPro.setVisibility(View.INVISIBLE);
+        } else {
+            btnPro.setVisibility(View.VISIBLE);
+        }
 
         swcSaving.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -120,6 +137,46 @@ public class AccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 PickHour("sav", Integer.parseInt(btnSav.getText().toString()));
+            }
+        });
+
+        btnPro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                new AlertDialog.Builder(getActivity())
+                        .setIcon(R.drawable.ic_launcher)
+                        .setTitle("Cüzdan Plus")
+                        .setMessage("- Reklamları kaldırın.\n\n" +
+                                "- Gelecekte çıkacak ve sadece Cüzdan Plus sahiplerine özel olacak fonksiyonlara hiçbir ekstra ücret ödemeden sahip olun.")
+                        .setPositiveButton("Satın Al", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                IabHelper helper = ((Global) getActivity().getApplication()).iabHelper;
+
+                                String uId = "";
+
+                                Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
+                                Account[] accounts = AccountManager.get(getActivity().getApplicationContext()).getAccounts();
+                                for (Account account : accounts) {
+                                    if (emailPattern.matcher(account.name).matches()) {
+                                        String possibleEmail = account.name;
+                                        uId += possibleEmail + "+";
+                                    }
+                                }
+
+                                uId += UUID.randomUUID().toString().substring(0, 8);
+                                processId = uId;
+
+                                helper.launchPurchaseFlow(getActivity(), "cuzdan_pro", 8008135, purchaseListener, uId);
+
+                            }
+
+                        })
+                        .setNegativeButton("Geri Dön", null)
+                        .show();
+
             }
         });
 
@@ -216,4 +273,28 @@ public class AccountFragment extends Fragment {
 
         dialog.show();
     }
+
+    IabHelper.OnIabPurchaseFinishedListener purchaseListener = new IabHelper.OnIabPurchaseFinishedListener() {
+        @Override
+        public void onIabPurchaseFinished(IabResult result, Purchase info) {
+            if (result.isFailure()) {
+                Log.d("BILLING", "Error purchasing: " + result);
+                return;
+            } else if (info.getSku().equals("cuzdan_pro")) {
+                String dp = info.getDeveloperPayload();
+
+                if (!(info.getDeveloperPayload().equals(processId))) {
+                    // Bir hata oldu
+                }
+                _user.SetVersion(User.Version.Pro);
+                try {
+                    _user.GetBanker().ToggleVersion();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    };
 }

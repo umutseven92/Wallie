@@ -1,6 +1,7 @@
 package com.graviton.Cuzdan;
 
 import Fragments.ExpenseDialogFragment;
+import Helpers.Billing.IabHelper;
 import Helpers.ExpenseAddListener;
 import Helpers.IncomeAddListener;
 import Helpers.User;
@@ -37,6 +38,8 @@ public class Global extends Application {
     public IncomeAddListener incomeAddListener;
 
     public ExpenseAddListener expenseAddListener;
+
+    public IabHelper iabHelper;
 
     private boolean _first;
 

@@ -32,12 +32,34 @@ public class User implements Serializable {
         this._filePath = filePath;
         _app = app;
         _currency = jsonUser.getString("currency");
+
+        if (jsonUser.getString("pro").equals("true")) {
+            _version = Version.Pro;
+        } else {
+            _version = Version.Free;
+        }
+
         _notification = jsonUser.getString("notifications");
         _remNotification = jsonUser.getString("remNotifications");
         _savingNotHour = jsonUser.getInt("savNotHour");
         _remNotHour = jsonUser.getInt("remNotHour");
         _statusNotification = jsonUser.getString("statusNot");
         _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"), jsonUser.getJSONArray("savings"), jsonUser.getJSONArray("incomeCustoms"), jsonUser.getJSONArray("expenseCustoms"), this._filePath, app, _currency);
+    }
+
+    public enum Version {
+        Pro,
+        Free
+    }
+
+    private Version _version;
+
+    public Version GetVersion() {
+        return _version;
+    }
+
+    public void SetVersion(Version version) {
+        _version = version;
     }
 
     private String _remNotification;

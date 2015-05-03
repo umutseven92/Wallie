@@ -662,6 +662,18 @@ public class Banker implements Serializable {
         WriteUserInfo(jsonToWrite.toString());
     }
 
+    public void ToggleVersion() throws JSONException, IOException {
+        String main = ReadUserInfo();
+        JSONObject mainJson = new JSONObject(main);
+        if (mainJson.getJSONObject("user").getString("pro").equals("true")) {
+            main = main.replaceFirst("\"pro\":\"true\"", "\"pro\":\"false\"");
+        } else if (mainJson.getJSONObject("user").getString("pro").equals("false")) {
+            main = main.replaceFirst("\"pro\":\"false\"", "\"pro\":\"true\"");
+        }
+        JSONObject jsonToWrite = new JSONObject(main);
+        WriteUserInfo(jsonToWrite.toString());
+    }
+
     public void UpdateNotification(int newHour) throws JSONException, IOException {
         String main = ReadUserInfo();
         JSONObject mainJSON = new JSONObject(main);
@@ -756,7 +768,7 @@ public class Banker implements Serializable {
         JSONArray incomeCustoms = userJSON.getJSONArray("incomeCustoms");
         JSONArray expenseCustoms = userJSON.getJSONArray("expenseCustoms");
 
-        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"), userJSON.getString("statusNot"));
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("pro"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"), userJSON.getString("statusNot"));
 
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
@@ -834,7 +846,7 @@ public class Banker implements Serializable {
         JSONArray incomeCustoms = userJSON.getJSONArray("incomeCustoms");
         JSONArray expenseCustoms = userJSON.getJSONArray("expenseCustoms");
 
-        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"), userJSON.getString("statusNot"));
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("pro"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"), userJSON.getString("statusNot"));
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
         JSONArray newSavings = userInfo.getJSONObject("user").getJSONArray("savings");
@@ -891,7 +903,7 @@ public class Banker implements Serializable {
         JSONArray incomeCustoms = userJSON.getJSONArray("incomeCustoms");
         JSONArray expenseCustoms = userJSON.getJSONArray("expenseCustoms");
 
-        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"), userJSON.getString("statusNot"));
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("pro"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"), userJSON.getString("statusNot"));
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
         JSONArray newSavings = userInfo.getJSONObject("user").getJSONArray("savings");

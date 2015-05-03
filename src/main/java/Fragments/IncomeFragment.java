@@ -106,15 +106,16 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                     .setShowcaseEventListener(this).build();
         }
 
-        // Reklamlar
-        ad = new InterstitialAd(this.getActivity());
-        ad.setAdUnitId(getString(R.string.incomeAdKey));
+        if (_user.GetVersion() == User.Version.Free) {
+            // Reklamlar
+            ad = new InterstitialAd(this.getActivity());
+            ad.setAdUnitId(getString(R.string.incomeAdKey));
 
+            deviceId = getString(R.string.testDeviceId);
 
-        deviceId = getString(R.string.testDeviceId);
-
-        AdRequest adRequest = AdHelper.RequestAd(deviceId);
-        ad.loadAd(adRequest);
+            AdRequest adRequest = AdHelper.RequestAd(deviceId);
+            ad.loadAd(adRequest);
+        }
 
         return infView;
     }
@@ -145,7 +146,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             }
         }
 
-        if (!ad.isLoaded()) {
+        if (!ad.isLoaded() && _user.GetVersion() == User.Version.Free) {
             AdRequest adRequest = AdHelper.RequestAd(deviceId);
             ad.loadAd(adRequest);
         }
@@ -508,11 +509,14 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
     @Override
     public void onAdded() {
-        if (!ad.isLoaded()) {
-            AdRequest adRequest = AdHelper.RequestAd(deviceId);
-            ad.loadAd(adRequest);
-        }
 
-        ad.show();
+        if (_user.GetVersion() == User.Version.Free) {
+            if (!ad.isLoaded()) {
+                AdRequest adRequest = AdHelper.RequestAd(deviceId);
+                ad.loadAd(adRequest);
+            }
+
+            ad.show();
+        }
     }
 }
