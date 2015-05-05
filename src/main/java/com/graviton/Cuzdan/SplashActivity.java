@@ -1,5 +1,6 @@
 package com.graviton.Cuzdan;
 
+import Helpers.Billing.IabException;
 import Helpers.Billing.IabHelper;
 import Helpers.Billing.IabResult;
 import Helpers.Billing.Inventory;
@@ -7,12 +8,13 @@ import Helpers.JSONHelper;
 import Helpers.NotificationHelper;
 import Helpers.User;
 import android.app.*;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.nfc.Tag;
+import android.net.ConnectivityManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,11 +23,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import org.json.JSONObject;
-
 import java.io.*;
+import java.net.InetAddress;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Umut Seven on 11.11.2014, for Graviton.
@@ -42,8 +45,7 @@ public class SplashActivity extends Activity {
     // Billing
     IabHelper iabHelper;
     boolean pro;
-    boolean completed = false;
-    IabHelper.QueryInventoryFinishedListener gotInventoryListener;
+    Inventory inv;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -51,10 +53,16 @@ public class SplashActivity extends Activity {
 
         setContentView(R.layout.splash_fragment);
 
+        /*
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        boolean internet = cm.getActiveNetworkInfo() != null;
+        */
 
-        // Not = Bu key simdilik bu halde
-        // Bunu sonra daha secure yap
-        String shineALight = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwPEw2hcLUtHvpxhc/vxeTH4MN9kv7TFcaNhkeeenj5xNqLDrXVmgUaL3KRsght+my50Yt3xjmDVS5NkMV7OZXE7VNKouvUCp12s5iJmoRCDfUpOxxrv3EtmJfYw+H9kwRpbQtDPm6giUEGjXGLO3mEbfbQ3qNOyeSU8hCgYRPsIQrcH6p57y/kwR2+sI5AYTe++AqcjkgpNrpmP4cKLdGe3646G5FOLLv53deQgu26cBkCWKdRuZ3pEl/6CmlPO5bGyckplJlJIfI14Zw9seWrVBt6yrGe0zmy7eMFXA0hZRmp47hzNpzeR4E0mgsPVdSvvSP5xPq6AhjEDipyhPYQIDAQAB";
+        String firstLight = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwPEw2hcLUtHvpxhc/vxeTH4MN9kv7TFcaNhkeeenj5xNqLDrXVmgUaL";
+        String secondLight = "3KRsght+my50Yt3xjmDVS5NkMV7OZXE7VNKouvUCp12s5iJmoRCDfUpOxxrv3EtmJfYw+H9kwRpbQtDPm6giUEGjXGLO3mEbfbQ3qNOyeSU8hCgYRPsI";
+        String thirdLight = "QrcH6p57y/kwR2+sI5AYTe++AqcjkgpNrpmP4cKLdGe3646G5FOLLv53deQgu26cBkCWKdRuZ3pEl/6CmlPO5bGyckplJlJIfI14Zw9seWrVBt6yrGe0zmy7eMFXA0hZRmp47hzNpzeR4E0mgsPVdSvvSP5xPq6AhjEDipyhPYQIDAQAB";
+
+        String shineALight = firstLight.concat(secondLight).concat(thirdLight);
 
         iabHelper = new IabHelper(this, shineALight);
 
@@ -65,23 +73,14 @@ public class SplashActivity extends Activity {
                     return;
                 }
                 ((Global) getApplication()).iabHelper = iabHelper;
-                iabHelper.queryInventoryAsync(gotInventoryListener);
-            }
-        });
-
-
-        gotInventoryListener = new IabHelper.QueryInventoryFinishedListener() {
-            public void onQueryInventoryFinished(IabResult result, Inventory inv) {
-
-                if (result.isFailure()) {
-                    Log.d("BILLING", "Could not get inventory: " + result);
-                    return;
-                } else {
-                    pro = (inv.hasPurchase("cuzdan_pro"));
-                    completed = true;
+                try {
+                    inv = iabHelper.queryInventory(true, null, null);
+                    pro = inv.hasPurchase("cuzdan_pro");
+                } catch (IabException e) {
+                    e.printStackTrace();
                 }
             }
-        };
+        });
 
 
         String fileName = getString(R.string.cuzdanUserConfig);
@@ -269,4 +268,5 @@ public class SplashActivity extends Activity {
         dialog.show();
 
     }
+
 }

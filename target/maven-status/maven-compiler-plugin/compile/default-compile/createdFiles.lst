@@ -1,7 +1,6 @@
 com\graviton\Cuzdan\ReminderNotificationReceiver.class
 Helpers\IncomeLoadListener.class
 Fragments\IncomePieFragment$1.class
-com\graviton\Cuzdan\SplashActivity$5$1$1.class
 Helpers\Billing\IabHelper$OnConsumeFinishedListener.class
 Helpers\AdHelper.class
 com\github\amlcurran\showcaseview\ShowcaseViewApi.class
@@ -100,7 +99,6 @@ Helpers\BudgetPageAdapter.class
 Helpers\User$Version.class
 Fragments\ExpenseFragment$5.class
 com\graviton\Cuzdan\R$color.class
-com\graviton\Cuzdan\SplashActivity$5$1.class
 com\github\amlcurran\showcaseview\ShowcaseDrawer.class
 wizard\model\BalanceInfoPage.class
 wizard\ui\SavingCustomInfoFragment$1.class
@@ -129,6 +127,7 @@ com\github\amlcurran\showcaseview\AnimatorAnimationFactory$1.class
 com\github\amlcurran\showcaseview\targets\ReflectorFactory.class
 com\github\amlcurran\showcaseview\ApiUtils.class
 com\graviton\Cuzdan\MainActivity$2.class
+com\graviton\Cuzdan\SplashActivity$4$1$1.class
 Fragments\ExpenseSearchFragment$2.class
 wizard\ui\ReviewFragment$ReviewAdapter.class
 com\graviton\Cuzdan\IncomeWizardActivity.class
@@ -144,7 +143,6 @@ wizard\model\BalanceCustomInfoPage.class
 wizard\model\ReviewItem.class
 com\github\amlcurran\showcaseview\targets\ActionViewTarget$1.class
 Fragments\IncomeFragment.class
-com\graviton\Cuzdan\SplashActivity$5.class
 com\graviton\Cuzdan\R$style.class
 com\google\android\gms\R$integer.class
 wizard\ui\SavingCustomInfoFragment$2.class
@@ -268,6 +266,7 @@ Helpers\Expense.class
 com\github\amlcurran\showcaseview\targets\PointTarget.class
 Helpers\Billing\IabHelper$3$1.class
 wizard\ui\ReviewFragment$Callbacks.class
+com\graviton\Cuzdan\SplashActivity$4$1.class
 com\google\android\gms\R$style.class
 Helpers\Billing\IabHelper$OnIabPurchaseFinishedListener.class
 Helpers\IncomeAddListener.class

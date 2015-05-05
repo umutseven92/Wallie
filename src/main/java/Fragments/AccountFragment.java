@@ -218,6 +218,12 @@ public class AccountFragment extends Fragment {
         } else if (_user.GetStatusNotification().equals("false")) {
             swcStat.setChecked(false);
         }
+
+        if (_user.GetVersion() == User.Version.Pro) {
+            btnPro.setVisibility(View.INVISIBLE);
+        } else {
+            btnPro.setVisibility(View.VISIBLE);
+        }
     }
 
     private void PickHour(final String mode, int initial) {
@@ -280,7 +286,8 @@ public class AccountFragment extends Fragment {
             if (result.isFailure()) {
                 Log.d("BILLING", "Error purchasing: " + result);
                 return;
-            } else if (info.getSku().equals("cuzdan_pro")) {
+            }
+            if (info.getSku().equals("cuzdan_pro")) {
                 String dp = info.getDeveloperPayload();
 
                 if (!(info.getDeveloperPayload().equals(processId))) {
