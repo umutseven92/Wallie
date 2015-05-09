@@ -41,6 +41,7 @@ public class AccountFragment extends Fragment {
     int num;
     int refNum;
     private String processId = "";
+    IabHelper helper;
 
     public static final AccountFragment newInstance() {
         AccountFragment f = new AccountFragment();
@@ -152,7 +153,7 @@ public class AccountFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                IabHelper helper = ((Global) getActivity().getApplication()).iabHelper;
+                                helper = ((Global) getActivity().getApplication()).iabHelper;
 
                                 String uId = "";
 
