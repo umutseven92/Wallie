@@ -63,6 +63,7 @@ com\graviton\Cuzdan\IncomeWizardActivity$2.class
 Fragments\AccountFragment$7.class
 Fragments\ExpenseSearchFragment.class
 Fragments\IncomePieFragment$2.class
+Fragments\AboutFragment$1.class
 Fragments\IncomeGraphFragment.class
 com\graviton\Cuzdan\SplashActivity$1.class
 Fragments\ExpenseSearchFragment$4.class
@@ -130,6 +131,7 @@ com\graviton\Cuzdan\MainActivity$2.class
 com\graviton\Cuzdan\SplashActivity$4$1$1.class
 Fragments\ExpenseSearchFragment$2.class
 wizard\ui\ReviewFragment$ReviewAdapter.class
+Fragments\AboutFragment$1$1.class
 com\graviton\Cuzdan\IncomeWizardActivity.class
 com\graviton\Cuzdan\R$anim.class
 Fragments\ExpenseSearchFragment$1.class

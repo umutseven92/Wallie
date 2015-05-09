@@ -6,8 +6,12 @@ import Helpers.Billing.Purchase;
 import Helpers.User;
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -18,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.*;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
+import com.graviton.Cuzdan.SplashActivity;
 import org.json.JSONException;
 
 import java.io.IOException;
@@ -61,12 +66,6 @@ public class AccountFragment extends Fragment {
 
         btnRem.setText(String.valueOf(_user.GetRemNotHour()));
         btnSav.setText(String.valueOf(_user.GetSavingNotHour()));
-
-        if (_user.GetVersion() == User.Version.Pro) {
-            btnPro.setVisibility(View.INVISIBLE);
-        } else {
-            btnPro.setVisibility(View.VISIBLE);
-        }
 
         swcSaving.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -170,7 +169,6 @@ public class AccountFragment extends Fragment {
                                 processId = uId;
 
                                 helper.launchPurchaseFlow(getActivity(), "cuzdan_pro", 8008135, purchaseListener, uId);
-
                             }
 
                         })
@@ -283,25 +281,25 @@ public class AccountFragment extends Fragment {
     IabHelper.OnIabPurchaseFinishedListener purchaseListener = new IabHelper.OnIabPurchaseFinishedListener() {
         @Override
         public void onIabPurchaseFinished(IabResult result, Purchase info) {
-            if (result.isFailure()) {
-                Log.d("BILLING", "Error purchasing: " + result);
-                return;
+            _user.SetVersion(User.Version.Pro);
+            try {
+                _user.GetBanker().ToggleVersion();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            if (info.getSku().equals("cuzdan_pro")) {
-                String dp = info.getDeveloperPayload();
 
-                if (!(info.getDeveloperPayload().equals(processId))) {
-                    // Bir hata oldu
-                }
-                _user.SetVersion(User.Version.Pro);
-                try {
-                    _user.GetBanker().ToggleVersion();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            // Uygulamayı yeniden başlat
+            Context context = getActivity().getApplicationContext();
+            Intent mStartActivity = new Intent(context, SplashActivity.class);
+            int mPendingIntentId = 123456;
+            PendingIntent mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+            AlarmManager mgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+            System.exit(0);
         }
+
+
     };
 }

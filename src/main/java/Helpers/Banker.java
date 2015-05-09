@@ -666,7 +666,7 @@ public class Banker implements Serializable {
         String main = ReadUserInfo();
         JSONObject mainJson = new JSONObject(main);
         if (mainJson.getJSONObject("user").getString("pro").equals("true")) {
-            main = main.replaceFirst("\"pro\":\"true\"", "\"pro\":\"false\"");
+            main = main.replaceFirst("\"pro\":\"false\"", "\"pro\":\"true\"");
         } else if (mainJson.getJSONObject("user").getString("pro").equals("false")) {
             main = main.replaceFirst("\"pro\":\"false\"", "\"pro\":\"true\"");
         }

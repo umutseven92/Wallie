@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import org.json.JSONObject;
+
 import java.io.*;
 import java.net.InetAddress;
 import java.util.ArrayList;
@@ -45,6 +46,7 @@ public class SplashActivity extends Activity {
     // Billing
     IabHelper iabHelper;
     boolean pro;
+    String pros = "";
     Inventory inv;
 
     @Override
@@ -75,7 +77,11 @@ public class SplashActivity extends Activity {
                 ((Global) getApplication()).iabHelper = iabHelper;
                 try {
                     inv = iabHelper.queryInventory(true, null, null);
-                    pro = inv.hasPurchase("cuzdan_pro");
+                    if (inv.hasPurchase("cuzdan_pro")) {
+                        pros = "true";
+                    } else {
+                        pros = "false";
+                    }
                 } catch (IabException e) {
                     e.printStackTrace();
                 }
@@ -146,15 +152,8 @@ public class SplashActivity extends Activity {
 
 
     private void SetFirstUser() throws Exception {
-        String proString = "";
 
-        if (pro) {
-            proString = "true";
-        } else {
-            proString = "false";
-        }
-
-        JSONObject userInf = JSONHelper.CreateStartingJSON(userName, userLastName, userCurrency, proString, "true", "true", "8", "14", "true");
+        JSONObject userInf = JSONHelper.CreateStartingJSON(userName, userLastName, userCurrency, pros, "true", "true", "8", "14", "true");
         User user = new User(userInf, file.getAbsolutePath(), getApplication());
         user.GetBanker().WriteUserInfo(userInf.toString());
 

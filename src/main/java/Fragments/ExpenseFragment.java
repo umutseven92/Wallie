@@ -127,8 +127,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         }
 
         if (_user.GetVersion() == User.Version.Free) {
-            if(!ad.isLoaded())
-            {
+            if (!ad.isLoaded()) {
                 AdRequest adRequest = AdHelper.RequestAd(deviceId);
                 ad.loadAd(adRequest);
 

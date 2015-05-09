@@ -146,8 +146,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             }
         }
 
-        if(_user.GetVersion() == User.Version.Free)
-        {
+        if (_user.GetVersion() == User.Version.Free) {
             if (!ad.isLoaded()) {
                 AdRequest adRequest = AdHelper.RequestAd(deviceId);
                 ad.loadAd(adRequest);
