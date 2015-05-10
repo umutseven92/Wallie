@@ -7,12 +7,12 @@ import Helpers.Billing.Inventory;
 import Helpers.JSONHelper;
 import Helpers.NotificationHelper;
 import Helpers.User;
-import android.app.*;
-import android.content.Context;
+import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -24,12 +24,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import org.json.JSONObject;
 
-import java.io.*;
-import java.net.InetAddress;
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Umut Seven on 11.11.2014, for Graviton.

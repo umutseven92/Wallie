@@ -1,7 +1,7 @@
-import Helpers.SavingsHelper;
-import org.junit.Test;
-import org.junit.Assert;
 import Helpers.Saving;
+import Helpers.SavingsHelper;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -26,7 +26,7 @@ public class SavingsTest {
     @Test
     public void DailyLimitTest() {
         Saving saving = new Saving("Test", new BigDecimal(50), new Date(), Saving.Period.Week, false, "TRY");
-        BigDecimal expectedLimit = new BigDecimal(12.86).setScale(2,BigDecimal.ROUND_DOWN);
+        BigDecimal expectedLimit = new BigDecimal(12.86).setScale(2, BigDecimal.ROUND_DOWN);
         BigDecimal limit = SavingsHelper.CalculateDailyLimit(new BigDecimal(140), saving);
 
         // Kucuk (0.01) kadar farklar olabiliyor

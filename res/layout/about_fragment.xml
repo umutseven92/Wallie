@@ -6,12 +6,12 @@
     <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:id="@+id/imageView3" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+            android:id="@+id/imgLogo" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
             android:src="@drawable/logoson" android:scaleType="fitXY" android:layout_marginTop="15dp"/>
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/scrollView3" android:layout_below="@+id/imageView3"
+            android:id="@+id/scrollView3" android:layout_below="@+id/imgLogo"
             android:layout_above="@+id/txtAboutVersion"
             android:scrollbars="none" android:overScrollMode="never">
         <RelativeLayout
@@ -23,7 +23,7 @@
                     android:text="graviton"
                     android:id="@+id/textView27"
                     android:textColor="#ff6e4a69"
-                    android:layout_below="@+id/imageView3" android:layout_centerHorizontal="true" android:textSize="30dp"
+                    android:layout_below="@+id/imgLogo" android:layout_centerHorizontal="true" android:textSize="30dp"
                     android:layout_marginTop="15dp"/>
             <TextView
                     android:layout_width="wrap_content"
@@ -189,4 +189,10 @@
               android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
               android:layout_alignParentEnd="true" android:layout_marginBottom="15dp"
               android:layout_marginRight="15dp"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgRb" android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:src="@drawable/rb1" android:scaleType="fitXY"
+            android:visibility="invisible"/>
 </RelativeLayout>

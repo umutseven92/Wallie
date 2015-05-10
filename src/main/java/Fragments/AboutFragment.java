@@ -1,24 +1,23 @@
 package Fragments;
 
-import android.app.AlarmManager;
-import android.app.AlertDialog;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.graviton.Cuzdan.R;
-import com.graviton.Cuzdan.SplashActivity;
 
 /**
  * Created by Umut Seven on 14.4.2015, for Graviton.
  */
 public class AboutFragment extends Fragment {
+
+    int rsCount = 0;
+    int rsLength = 1000;
+    ImageView rob;
 
     public static final AboutFragment newInstance() {
         AboutFragment f = new AboutFragment();
@@ -30,33 +29,56 @@ public class AboutFragment extends Fragment {
         View v = inflater.inflate(R.layout.about_fragment, container, false);
 
         TextView txtVersion = (TextView) v.findViewById(R.id.txtAboutVersion);
+        ImageView imgLogo = (ImageView) v.findViewById(R.id.imgLogo);
+        rob = (ImageView) v.findViewById(R.id.imgRb);
+        rob.setVisibility(View.INVISIBLE);
+
         txtVersion.setText(R.string.version);
 
-        txtVersion.setOnClickListener(new View.OnClickListener() {
+        imgLogo.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View view) {
+            public boolean onLongClick(View view) {
 
-                new AlertDialog.Builder(getActivity())
-                        .setIcon(android.R.drawable.ic_dialog_info)
-                        .setTitle("Restart")
-                        .setMessage("Device will restart.")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Context context = getActivity().getApplicationContext();
-                                Intent mStartActivity = new Intent(context, SplashActivity.class);
-                                int mPendingIntentId = 123456;
-                                PendingIntent mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
-                                AlarmManager mgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-                                mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
-                                System.exit(0);
-                            }
+                if (rsCount > 2) {
+                    rsCount = 0;
+                }
 
-                        })
-                        .show();
+                MediaPlayer mp = SetSchneider();
+                rsCount++;
+
+                rob.setVisibility(View.VISIBLE);
+                mp.start();
+                rob.postDelayed(new Runnable() {
+                    public void run() {
+                        rob.setVisibility(View.INVISIBLE);
+                    }
+                }, rsLength);
+                return true;
             }
         });
 
         return v;
     }
+
+    private MediaPlayer SetSchneider() {
+        switch (rsCount) {
+            case 0:
+                rsLength = 2600;
+                rob.setImageResource(R.drawable.rb1);
+                return MediaPlayer.create(getActivity().getApplicationContext(), R.raw.rs1);
+            case 1:
+                rsLength = 2800;
+                rob.setImageResource(R.drawable.rb2);
+                return MediaPlayer.create(getActivity().getApplicationContext(), R.raw.rs2);
+            case 2:
+                rsLength = 5300;
+                rob.setImageResource(R.drawable.rb3);
+                return MediaPlayer.create(getActivity().getApplicationContext(), R.raw.rs3);
+            default:
+                rsLength = 2600;
+                rob.setImageResource(R.drawable.rb1);
+                return MediaPlayer.create(getActivity().getApplicationContext(), R.raw.rs1);
+        }
+    }
+
 }

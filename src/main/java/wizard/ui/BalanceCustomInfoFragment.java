@@ -1,7 +1,6 @@
 package wizard.ui;
 
 import Helpers.Banker;
-import Helpers.User;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -20,7 +19,6 @@ import com.graviton.Cuzdan.IncomeWizardActivity;
 import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 import wizard.model.BalanceCustomInfoPage;
-import wizard.model.Page;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,5 +1,4 @@
 import Helpers.JSONHelper;
-import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Assert;
@@ -15,7 +14,7 @@ public class JSONTest {
         boolean valid;
 
         try {
-            JSONObject jsonToTest = JSONHelper.CreateStartingJSON("user", "name", "TRY", "false", "false", "false","8", "14", "true");
+            JSONObject jsonToTest = JSONHelper.CreateStartingJSON("user", "name", "TRY", "false", "false", "false", "8", "14", "true");
             valid = true;
         } catch (JSONException e) {
             valid = false;

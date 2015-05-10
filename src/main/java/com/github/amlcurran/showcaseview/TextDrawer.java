@@ -20,11 +20,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Rect;
-import android.text.DynamicLayout;
-import android.text.Layout;
-import android.text.SpannableString;
-import android.text.TextPaint;
-import android.text.TextUtils;
+import android.text.*;
 import android.text.style.TextAppearanceSpan;
 import com.graviton.Cuzdan.R;
 

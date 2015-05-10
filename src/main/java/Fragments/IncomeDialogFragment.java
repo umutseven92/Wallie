@@ -9,11 +9,9 @@ import android.os.Bundle;
 import android.text.Html;
 import com.google.gson.Gson;
 import com.graviton.Cuzdan.Global;
-import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 
 import java.io.IOException;
-import java.util.Date;
 
 
 /**

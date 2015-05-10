@@ -2,8 +2,6 @@ package Fragments;
 
 import Helpers.*;
 import android.app.Fragment;
-import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -1,9 +1,5 @@
 package Helpers;
 
-import android.content.Intent;
-import android.support.v4.app.NotificationCompat;
-import com.graviton.Cuzdan.R;
-
 import java.math.BigDecimal;
 
 /**

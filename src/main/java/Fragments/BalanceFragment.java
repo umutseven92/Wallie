@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.*;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
-import sun.font.TrueTypeFont;
 
 import java.math.BigDecimal;
 import java.text.Format;

@@ -7,14 +7,13 @@ import org.junit.Test;
 public class CurrencyTest {
 
     @Test
-    public void CurrencyCodeTest()
-    {
+    public void CurrencyCodeTest() {
         String currency = "Czech Republic Koruna (CZK)";
         String expectedCode = "CZK";
 
         String code = currency.substring(currency.indexOf("(") + 1, currency.indexOf(")"));
 
         Assert.assertEquals(code.toCharArray().length, 3);
-        Assert.assertEquals(code,expectedCode);
+        Assert.assertEquals(code, expectedCode);
     }
 }

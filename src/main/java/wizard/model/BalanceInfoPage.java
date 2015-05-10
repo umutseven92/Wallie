@@ -16,10 +16,8 @@
 
 package wizard.model;
 
-import Helpers.User;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import com.graviton.Cuzdan.Global;
 import wizard.ui.BalanceInfoFragment;
 
 import java.util.ArrayList;

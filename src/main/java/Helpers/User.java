@@ -4,14 +4,9 @@ import android.app.AlarmManager;
 import android.app.Application;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
-import com.graviton.Cuzdan.ReminderNotificationReceiver;
-import com.graviton.Cuzdan.SavingsNotificationReceiver;
-import com.graviton.Cuzdan.SplashActivity;
 import org.json.JSONObject;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 

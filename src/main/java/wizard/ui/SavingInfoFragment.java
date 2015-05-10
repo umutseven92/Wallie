@@ -1,7 +1,6 @@
 package wizard.ui;
 
 import Helpers.DecimalDigitsInputFilter;
-import Helpers.Saving;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;

@@ -17,13 +17,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
-import org.json.JSONException;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -243,7 +242,7 @@ public class MainActivity extends FragmentActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        IabHelper helper = ((Global)getApplication()).iabHelper;
+        IabHelper helper = ((Global) getApplication()).iabHelper;
 
         // Pass on the activity result to the helper for handling
         if (!helper.handleActivityResult(requestCode, resultCode, data)) {

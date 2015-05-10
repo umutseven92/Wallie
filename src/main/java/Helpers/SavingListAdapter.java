@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.TwoLineListItem;
-import com.graviton.Cuzdan.R;
 
 import java.util.ArrayList;
 
