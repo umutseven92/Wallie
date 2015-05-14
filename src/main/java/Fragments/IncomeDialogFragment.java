@@ -9,9 +9,6 @@ import android.os.Bundle;
 import android.text.Html;
 import com.google.gson.Gson;
 import com.graviton.Cuzdan.Global;
-import org.json.JSONException;
-
-import java.io.IOException;
 
 
 /**
@@ -41,10 +38,9 @@ public class IncomeDialogFragment extends DialogFragment {
                                 banker.DeleteIncome(income.GetID());
                                 _listener.onDismissed();
                                 dismiss();
-                            } catch (IOException e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                                ErrorDialog.ShowErrorDialog(getActivity().getApplication(), e, "Gelir silinirken hata oluştu.", null);
                             }
                         }
                     }).setNegativeButton("Geri", new DialogInterface.OnClickListener() {

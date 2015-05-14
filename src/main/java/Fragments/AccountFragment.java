@@ -3,6 +3,7 @@ package Fragments;
 import Helpers.Billing.IabHelper;
 import Helpers.Billing.IabResult;
 import Helpers.Billing.Purchase;
+import Helpers.ErrorDialog;
 import Helpers.User;
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -36,7 +37,9 @@ public class AccountFragment extends Fragment {
     static User _user;
     TextView txtName, txtCurrency;
     Switch swcSaving, swcRem, swcStat;
-    Button btnSav, btnRem, btnPro;
+    Button btnSav, btnRem, btnPro, btnBackup;
+    ImageView imgBackup;
+    ProgressBar pbar;
     int num;
     int refNum;
     private String processId = "";
@@ -59,6 +62,9 @@ public class AccountFragment extends Fragment {
         btnRem = (Button) v.findViewById(R.id.btnAccountRem);
         btnSav = (Button) v.findViewById(R.id.btnAccountSav);
         btnPro = (Button) v.findViewById(R.id.btnPro);
+        btnBackup = (Button) v.findViewById(R.id.btnBackup);
+        imgBackup = (ImageView) v.findViewById(R.id.imgBackup);
+        pbar = (ProgressBar) v.findViewById(R.id.progressBar);
 
         _user = ((com.graviton.Cuzdan.Global) getActivity().getApplication()).GetUser();
 
@@ -178,6 +184,28 @@ public class AccountFragment extends Fragment {
             }
         });
 
+        btnBackup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                try {
+                    pbar.setVisibility(View.INVISIBLE);
+
+                    String result = _user.GetBanker().BackupUserData();
+                    imgBackup.setVisibility(View.VISIBLE);
+                    if (result.equals("SUCCESS")) {
+                        imgBackup.setImageResource(R.drawable.tick);
+                    } else if (result.equals("FAILURE")) {
+                        imgBackup.setImageResource(R.drawable.cross);
+                    }
+                    pbar.setVisibility(View.INVISIBLE);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    ErrorDialog.ShowErrorDialog(getActivity().getApplication(), ex, "Yedeklenirken hata oluştu.", null);
+                }
+            }
+        });
+
         return v;
     }
 
@@ -222,6 +250,10 @@ public class AccountFragment extends Fragment {
         } else {
             btnPro.setVisibility(View.VISIBLE);
         }
+
+        imgBackup.setVisibility(View.INVISIBLE);
+        pbar.setVisibility(View.INVISIBLE);
+
     }
 
     private void PickHour(final String mode, int initial) {
@@ -284,10 +316,9 @@ public class AccountFragment extends Fragment {
             _user.SetVersion(User.Version.Pro);
             try {
                 _user.GetBanker().ToggleVersion();
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+                ErrorDialog.ShowErrorDialog(getActivity().getApplication(), e, "Cüzdan Plus'a geçilirken hata oluştu.", null);
             }
 
             // Uygulamayı yeniden başlat
@@ -297,7 +328,7 @@ public class AccountFragment extends Fragment {
             PendingIntent mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
             AlarmManager mgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
-            System.exit(0);
+            getActivity().finish();
         }
 
 

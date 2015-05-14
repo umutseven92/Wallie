@@ -4,6 +4,7 @@ import Helpers.Billing.IabException;
 import Helpers.Billing.IabHelper;
 import Helpers.Billing.IabResult;
 import Helpers.Billing.Inventory;
+import Helpers.ErrorDialog;
 import Helpers.JSONHelper;
 import Helpers.NotificationHelper;
 import Helpers.User;
@@ -14,6 +15,7 @@ import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -54,11 +56,6 @@ public class SplashActivity extends Activity {
 
         setContentView(R.layout.splash_fragment);
 
-        /*
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        boolean internet = cm.getActiveNetworkInfo() != null;
-        */
-
         String firstLight = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwPEw2hcLUtHvpxhc/vxeTH4MN9kv7TFcaNhkeeenj5xNqLDrXVmgUaL";
         String secondLight = "3KRsght+my50Yt3xjmDVS5NkMV7OZXE7VNKouvUCp12s5iJmoRCDfUpOxxrv3EtmJfYw+H9kwRpbQtDPm6giUEGjXGLO3mEbfbQ3qNOyeSU8hCgYRPsI";
         String thirdLight = "QrcH6p57y/kwR2+sI5AYTe++AqcjkgpNrpmP4cKLdGe3646G5FOLLv53deQgu26cBkCWKdRuZ3pEl/6CmlPO5bGyckplJlJIfI14Zw9seWrVBt6yrGe0zmy7eMFXA0hZRmp47hzNpzeR4E0mgsPVdSvvSP5xPq6AhjEDipyhPYQIDAQAB";
@@ -70,6 +67,7 @@ public class SplashActivity extends Activity {
         iabHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
             public void onIabSetupFinished(IabResult result) {
                 if (result.isFailure()) {
+                    ErrorDialog.ShowErrorDialog(getApplication(), null, "In-app billing hatası.", result.getMessage());
                     Log.d("BILLING", "Problem setting in-app billing: " + result);
                     return;
                 }
@@ -83,6 +81,7 @@ public class SplashActivity extends Activity {
                     }
                 } catch (IabException e) {
                     e.printStackTrace();
+                    ErrorDialog.ShowErrorDialog(getApplication(), e, "In-app billing hatası.", null);
                 }
             }
         });
@@ -136,6 +135,7 @@ public class SplashActivity extends Activity {
 
 
             } catch (Exception e) {
+                ErrorDialog.ShowErrorDialog(getApplication(), e, "Varolan kullanıcıyı okurken hata oluştu.", null);
                 e.printStackTrace();
             }
         } else {
@@ -149,6 +149,39 @@ public class SplashActivity extends Activity {
         }
     }
 
+    private void CreateBackupUser(File file) throws Exception {
+
+        ((Global) this.getApplication()).SetFirst(false);
+
+        StringBuilder sb = new StringBuilder();
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String line;
+        while ((line = br.readLine()) != null) {
+            sb.append(line);
+            sb.append("\n");
+        }
+
+        String fileName = getString(R.string.cuzdanUserConfig);
+        File main= new File(this.getFilesDir(), fileName);
+
+        JSONObject userJSON = new JSONObject(sb.toString());
+        User user = new User(userJSON, main.getAbsolutePath(), getApplication());
+        user.GetBanker().WriteUserInfo(userJSON.toString());
+
+        user.SetUserNotifications(PendingIntent.getBroadcast(SplashActivity.this, 0, new Intent(SplashActivity.this, SavingsNotificationReceiver.class), 0), PendingIntent.getBroadcast(SplashActivity.this, 0, new Intent(SplashActivity.this, ReminderNotificationReceiver.class), 0));
+
+        ((Global) this.getApplication()).SetUser(user);
+
+        String sav = userJSON.getJSONObject("user").getString("notifications");
+        String rem = userJSON.getJSONObject("user").getString("remNotifications");
+
+        SetNotifications(Integer.parseInt(userJSON.getJSONObject("user").getString("savNotHour")), Integer.parseInt(userJSON.getJSONObject("user").getString("remNotHour")), sav, rem);
+
+        if (user.GetStatusNotification().equals("true")) {
+            NotificationHelper.SetPermaNotification(this, user.GetBanker().GetBalance(new Date(), true), user.GetCurrency());
+        }
+
+    }
 
     private void SetFirstUser() throws Exception {
 
@@ -185,13 +218,27 @@ public class SplashActivity extends Activity {
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         Intent intent = new Intent(SplashActivity.this, receiver);
 
-
         boolean alarmUp = (PendingIntent.getBroadcast(SplashActivity.this, 0, intent, PendingIntent.FLAG_NO_CREATE) != null);
 
         if (!alarmUp) {
             PendingIntent event = PendingIntent.getBroadcast(SplashActivity.this, 0, intent, 0);
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, event);
         }
+    }
+
+    private void ShowErrorDialog(String message) {
+        new AlertDialog.Builder(SplashActivity.this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Hata")
+                .setMessage(message)
+                .setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+
+                })
+                .show();
     }
 
     private void CreateUserDialog() {
@@ -206,6 +253,11 @@ public class SplashActivity extends Activity {
         alert.setTitle("Merhaba!").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+
+            }
+        }).setNegativeButton("Yedekten Yükle", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
             }
         }).setCancelable(false);
@@ -223,6 +275,7 @@ public class SplashActivity extends Activity {
             @Override
             public void onShow(DialogInterface d) {
 
+                // Yeni kullanici
                 Button b = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
                 b.setOnClickListener(new View.OnClickListener() {
 
@@ -235,7 +288,6 @@ public class SplashActivity extends Activity {
 
                         String currencyCode = selectedCurrency.substring(selectedCurrency.indexOf("(") + 1, selectedCurrency.indexOf(")"));
 
-
                         if (!name.equals("") && !lastName.equals("")) {
                             userName = name;
                             userLastName = lastName;
@@ -244,6 +296,7 @@ public class SplashActivity extends Activity {
                             try {
                                 SetFirstUser();
                             } catch (Exception e) {
+                                ErrorDialog.ShowErrorDialog(getApplication(), e, "Kullanici yaratirken hata oluştu.", null);
                                 e.printStackTrace();
                             }
                             dialog.dismiss();
@@ -258,6 +311,47 @@ public class SplashActivity extends Activity {
                                 }
                             }, SPLASH_LENGTH);
                         }
+                    }
+                });
+
+                Button backup = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+
+                // Backup
+                backup.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String state = android.os.Environment.getExternalStorageState();
+
+                        if (android.os.Environment.MEDIA_MOUNTED.equals(state)) {
+                            File file = new File(Environment.getExternalStorageDirectory() + "/Documents");
+
+                            if (!file.exists()) {
+                                ShowErrorDialog("Yedek bulunamadı.");
+                            } else if (file.exists()) {
+                                File backupFile = new File(file.getAbsolutePath(), "cuzdanBackup");
+                                try {
+                                    CreateBackupUser(backupFile);
+                                    dialog.dismiss();
+
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+                                            mainIntent.putExtra("first", first);
+                                            SplashActivity.this.startActivity(mainIntent);
+                                            SplashActivity.this.finish();
+                                        }
+                                    }, SPLASH_LENGTH);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+
+                        } else {
+                            ShowErrorDialog("Harici hafıza bulunamadı.");
+                        }
+
                     }
                 });
             }

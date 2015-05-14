@@ -1,9 +1,6 @@
 package com.graviton.Cuzdan;
 
-import Helpers.Banker;
-import Helpers.Income;
-import Helpers.IncomeAddListener;
-import Helpers.User;
+import Helpers.*;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -138,7 +135,11 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
             String description = mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.DESC_DATA_KEY);
 
             Income income = new Income(category, subCategory, amount, description, new Date());
-            banker.AddIncome(income);
+            try {
+                banker.AddIncome(income);
+            } catch (Exception e) {
+                ErrorDialog.ShowErrorDialog(getApplication(), e, "Gelir eklerken hata oluştu.", null);
+            }
             _addListener.onAdded();
             finish();
         } else {

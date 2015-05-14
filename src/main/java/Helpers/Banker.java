@@ -3,6 +3,7 @@ package Helpers;
 import Helpers.Saving.Period;
 import android.app.Application;
 import android.content.Context;
+import android.os.Environment;
 import com.graviton.Cuzdan.Global;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -637,6 +638,35 @@ public class Banker implements Serializable {
 
     }
 
+    public String BackupUserData() throws JSONException, IOException {
+        String main = ReadUserInfo();
+
+        String state = android.os.Environment.getExternalStorageState();
+
+        if (android.os.Environment.MEDIA_MOUNTED.equals(state)) {
+            File file = new File(Environment.getExternalStorageDirectory() + "/Documents");
+            boolean isPresent = true;
+
+            if (!file.exists()) {
+                isPresent = file.mkdir();
+            }
+
+            if (isPresent) {
+                File backupFile = new File(file.getAbsolutePath(), "cuzdanBackup");
+
+                FileOutputStream fileOutputStream = new FileOutputStream(backupFile);
+                fileOutputStream.write(main.getBytes());
+                fileOutputStream.close();
+
+                return "SUCCESS";
+
+            }
+
+        }
+
+        return "FAILURE";
+    }
+
     public void ToggleStatusNotifications() throws JSONException, IOException {
         String main = ReadUserInfo();
         JSONObject mainJSON = new JSONObject(main);
@@ -727,7 +757,7 @@ public class Banker implements Serializable {
      * @throws IOException
      * @throws JSONException
      */
-    public void AddIncome(Income income) throws IOException, JSONException {
+    public void AddIncome(Income income) throws JSONException, IOException {
 
         JSONObject incomeToSave = CreateJSONIncome(income);
 

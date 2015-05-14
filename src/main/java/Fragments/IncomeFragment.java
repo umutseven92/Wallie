@@ -442,9 +442,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                         .setTarget(new ViewTarget(infView.findViewById(R.id.spnDateIncome)))
                         .setContentText("Buradan kayıtlarınız gün veya ay olarak listeleyebilir, önceki ve sonraki tarihlere geçiş yapabilirsiniz.")
                         .setStyle(R.style.ShowcaseView_Cuzdan_Next)
-                        .hasManualPosition(true)
-                        .yPostion(530)
-                        .xPostion(70)
+                        .hasManualPosition(false)
                         .setShowcaseEventListener(this)
                         .build();
                 tutorialCount++;

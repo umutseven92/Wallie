@@ -62,8 +62,9 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
   * ~~Reklamlarin koyulmasi~~
   * ~~In-app purchases~~
 
-* 0.9 (Performans)
-  * Performans Gelistirme
+* 0.9 (Performans & Ek Özellikler)
+  * Performans gelistirme
+  * ~~Backup alma & geri yükleme~~
 
 * 1.0 (End of Line)
   * Release

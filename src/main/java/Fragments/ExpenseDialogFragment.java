@@ -9,9 +9,6 @@ import android.os.Bundle;
 import android.text.Html;
 import com.google.gson.Gson;
 import com.graviton.Cuzdan.Global;
-import org.json.JSONException;
-
-import java.io.IOException;
 
 
 /**
@@ -41,10 +38,9 @@ public class ExpenseDialogFragment extends DialogFragment {
                             try {
                                 banker.DeleteExpense(expense.GetID());
 
-                            } catch (JSONException e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                                ErrorDialog.ShowErrorDialog(getActivity().getApplication(), e, "Gider silinirken hata oluştu.", null);
                             }
                             _listener.onDismissed();
                             if (_secondListener != null) {

@@ -1,6 +1,7 @@
 package com.graviton.Cuzdan;
 
 import Helpers.Banker;
+import Helpers.ErrorDialog;
 import Helpers.Saving;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -132,6 +133,7 @@ public class SavingsWizardActivity extends FragmentActivity implements PageFragm
                 banker.AddSaving(saving);
             } catch (IOException e) {
                 e.printStackTrace();
+                ErrorDialog.ShowErrorDialog(getApplication(), e, "Birikim oluşturulurken hata oluştu.", null);
             }
 
             finish();

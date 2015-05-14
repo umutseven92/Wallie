@@ -1,9 +1,6 @@
 package com.graviton.Cuzdan;
 
-import Helpers.Banker;
-import Helpers.Expense;
-import Helpers.ExpenseAddListener;
-import Helpers.User;
+import Helpers.*;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -151,7 +148,11 @@ public class ExpenseWizardActivity extends FragmentActivity implements PageFragm
 
             Expense expense = new Expense(category, subCategory, amount, description, new Date(), expenseTag);
 
-            banker.AddExpense(expense);
+            try {
+                banker.AddExpense(expense);
+            } catch (Exception e) {
+                ErrorDialog.ShowErrorDialog(getApplication(), e, "Gider eklerken hata oluştu.", null);
+            }
             _addListener.onAdded();
             finish();
         } else {

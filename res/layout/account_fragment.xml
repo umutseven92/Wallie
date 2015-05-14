@@ -27,7 +27,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="370dp"
                 android:background="@drawable/rounded_layout"
-                android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:layout_marginTop="70dp">
+                android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:layout_marginTop="70dp"
+                android:id="@+id/relativeLayout11">
 
             <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
 
@@ -164,8 +165,34 @@
                                 android:layout_alignLeft="@+id/swcAccountRem"
                                 android:layout_alignStart="@+id/swcAccountRem"/>
 
+                    <View
+                            android:layout_width="700dp"
+                            android:layout_height="1dp"
+                            android:background="@color/outline"
+                            android:layout_below="@+id/textView25" android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" android:layout_marginTop="20dp"/>
 
+                    <Button android:layout_width="200dp" android:layout_height="wrap_content" android:text="Yedekle"
+                            android:id="@+id/btnBackup"
+                            android:background="@drawable/rounded_button" android:textColor="#ffffffff"
+                            android:layout_below="@+id/textView25" android:layout_alignLeft="@+id/textView25"
+                            android:layout_alignStart="@+id/textView25" android:layout_marginTop="40dp"/>
+                        <ProgressBar
+                                style="?android:attr/progressBarStyleSmall"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:id="@+id/progressBar"
+                                android:layout_toRightOf="@id/btnBackup"
+                                android:layout_alignTop="@+id/imgBackup" android:layout_marginLeft="20dp"
+                                android:visibility="invisible"/>
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:id="@+id/imgBackup" android:layout_toRightOf="@+id/btnBackup" android:layout_below="@+id/swcStatusNot"
+                            android:layout_marginTop="50dp" android:layout_marginLeft="60dp"
+                            android:src="@drawable/tick" android:scaleType="fitXY" android:visibility="invisible"/>
 
+                    <Space android:layout_width="match_parent" android:layout_height="40dp" android:layout_below="@id/imgBackup"/>
                 </RelativeLayout>
             </ScrollView>
         </RelativeLayout>
