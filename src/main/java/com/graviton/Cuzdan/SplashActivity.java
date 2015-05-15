@@ -324,11 +324,11 @@ public class SplashActivity extends Activity {
 
                         if (android.os.Environment.MEDIA_MOUNTED.equals(state)) {
                             File file = new File(Environment.getExternalStorageDirectory() + "/Documents");
+                            File backupFile = new File(file.getAbsolutePath(), "cuzdanBackup");
 
-                            if (!file.exists()) {
+                            if (!backupFile.exists()) {
                                 ShowErrorDialog("Yedek bulunamadı.");
-                            } else if (file.exists()) {
-                                File backupFile = new File(file.getAbsolutePath(), "cuzdanBackup");
+                            } else if (backupFile.exists()) {
                                 try {
                                     CreateBackupUser(backupFile);
                                     dialog.dismiss();
