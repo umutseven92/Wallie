@@ -22,7 +22,8 @@
             android:layout_height="410dp"
             android:id="@+id/lytDetails"
             android:background="@drawable/rounded_layout" android:layout_below="@+id/lytBar"
-            android:layout_centerHorizontal="true" android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+            android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:layout_centerInParent="true"
+            android:layout_above="@+id/relativeLayout12" android:layout_marginBottom="5dp">
 
         <ScrollView
                 android:layout_width="match_parent"
@@ -211,12 +212,16 @@
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" android:layout_below="@+id/lytDetails">
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout12" android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="false" android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true">
         <Button
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Birikimi Sil"
                 android:id="@+id/btnDeleteSaving" android:layout_centerVertical="true" android:layout_centerHorizontal="true"
-                android:background="@drawable/rounded_red_button" android:textColor="@color/foreground"/>
+                android:background="@drawable/rounded_red_button" android:textColor="@color/foreground"
+                android:layout_marginBottom="15dp"/>
     </RelativeLayout>
 </RelativeLayout>

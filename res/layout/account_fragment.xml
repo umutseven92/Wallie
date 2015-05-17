@@ -25,10 +25,11 @@
         </RelativeLayout>
         <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="370dp"
+                android:layout_height="fill_parent"
                 android:background="@drawable/rounded_layout"
                 android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:layout_marginTop="70dp"
-                android:id="@+id/relativeLayout11">
+                android:id="@+id/relativeLayout11" android:layout_above="@+id/btnPro"
+                android:layout_marginBottom="15dp">
 
             <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
 

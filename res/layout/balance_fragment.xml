@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="@drawable/main_layout">
+              android:layout_height="match_parent" android:background="@drawable/main_layout" android:weightSum="1">
 
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="45dp" android:id="@+id/relativeLayout"
                     android:layout_marginTop="100dp">
@@ -21,12 +21,12 @@
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:layout_gravity="center_horizontal">
+            android:layout_height="wrap_content" android:layout_gravity="center_horizontal">
         <RelativeLayout
-                android:layout_width="400dp"
+                android:layout_width="fill_parent"
                 android:layout_height="200dp"
                 android:background="@drawable/rounded_layout"
-                android:layout_marginRight="10dp" android:layout_marginLeft="10dp">
+                android:layout_marginRight="10dp" android:layout_marginLeft="10dp" android:layout_centerInParent="true">
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -88,10 +88,15 @@
                       android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
                       android:layout_marginTop="10dp"/>
         </RelativeLayout>
-        <ImageButton android:layout_width="64dp" android:layout_height="64dp" android:id="@+id/btnBalanceCalendar"
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent">
+        <ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/btnBalanceCalendar"
                      android:scaleType="fitXY"
                      android:background="@drawable/calendar_button"
+                     android:layout_gravity="center_horizontal"
                      android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
-                     android:layout_marginBottom="5dp"/>
+                     android:layout_marginBottom="15dp"/>
     </RelativeLayout>
 </LinearLayout>

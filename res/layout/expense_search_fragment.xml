@@ -39,9 +39,10 @@
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="350dp" android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+            android:layout_height="fill_parent" android:layout_alignParentBottom="true" android:layout_alignParentLeft="false"
             android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:layout_marginBottom="65dp"
-            android:background="@drawable/rounded_layout">
+            android:background="@drawable/rounded_layout" android:layout_centerInParent="true"
+            android:layout_above="@+id/lytExpenseSearchCalendar" android:layout_below="@+id/lyt">
         <ListView android:layout_width="wrap_content" android:layout_height="wrap_content"
                   android:id="@+id/lstSearchExpense"
                   android:layout_marginTop="26dp" android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
@@ -75,7 +76,7 @@
     <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="65dp" android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true" android:id="@+id/lytExpenseSearchCalendar">
         <ImageButton
                 android:layout_width="64dp"
                 android:layout_height="64dp"

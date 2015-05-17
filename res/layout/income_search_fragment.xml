@@ -28,7 +28,8 @@
     <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="50dp"
-            android:layout_below="@+id/lytCriteria" android:layout_alignParentLeft="true">
+            android:layout_below="@+id/lytCriteria" android:layout_alignParentLeft="true"
+            android:id="@+id/lytIncomeSearchDates">
         <Spinner
                 android:layout_width="70dp"
                 android:layout_height="35dp"
@@ -47,10 +48,11 @@
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="350dp"
+            android:layout_height="fill_parent"
             android:background="@drawable/rounded_layout" android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
-            android:layout_marginBottom="65dp" android:id="@+id/relativeLayout2">
+            android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+            android:layout_marginBottom="65dp" android:id="@+id/relativeLayout2" android:layout_centerInParent="true"
+            android:layout_above="@+id/lytIncomeSearchCalendar" android:layout_below="@+id/lytIncomeSearchDates">
         <ListView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -92,8 +94,10 @@
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="65dp" android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true">
+            android:layout_height="65dp"
+            android:layout_alignParentBottom="true" android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="true" android:layout_centerInParent="true"
+            android:id="@+id/lytIncomeSearchCalendar">
         <ImageButton
                 android:layout_width="64dp"
                 android:layout_height="64dp"

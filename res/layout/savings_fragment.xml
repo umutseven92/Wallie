@@ -5,23 +5,28 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:background="@drawable/main_layout">
 
-    <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="400dp"
-            android:id="@+id/lytSavingsList" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" android:layout_marginTop="15dp"
-            android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
-            android:background="@drawable/rounded_layout">
-        <ListView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/lstSavings" android:layout_alignParentTop="true"
-                android:layout_alignLeft="@+id/textView5"
-                android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" android:choiceMode="singleChoice" android:divider="@color/outline"
-                android:dividerHeight="1dp" android:listSelector="@drawable/list_selector"/>
-    </RelativeLayout>
-    <RelativeLayout
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:layout_above="@+id/lytSavingButton"
+                android:id="@+id/lytParentSavingLists">
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/lytSavingsList" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" android:layout_marginTop="15dp"
+                    android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+                    android:background="@drawable/rounded_layout" android:layout_centerInParent="true">
+                <ListView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/lstSavings" android:layout_alignParentTop="true"
+                        android:layout_alignLeft="@+id/textView5"
+                        android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp" android:choiceMode="singleChoice" android:divider="@color/outline"
+                        android:dividerHeight="1dp" android:listSelector="@drawable/list_selector"/>
+            </RelativeLayout>
+        </RelativeLayout>
+        <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="402dp" android:layout_marginTop="15dp" android:id="@+id/lytEmptySavings" android:visibility="invisible"
             android:background="@drawable/main_layout">
@@ -45,7 +50,7 @@
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="85dp"
+            android:layout_height="fill_parent"
             android:id="@+id/lytSavingButton" android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
             android:layout_below="@+id/lytEmptySavings">
@@ -81,7 +86,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Birikim yapabilmeniz için geliriniz yetersiz."
                 android:id="@+id/txtInsufficentLimit"
-                android:layout_alignTop="@+id/txtTotalDailyLimitExp" android:layout_centerHorizontal="true"
-                android:textColor="@color/cuzdan_red"/>
+                android:textColor="@color/cuzdan_red"
+                android:layout_alignTop="@+id/txtTotalDailyLimitExp" android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 </RelativeLayout>
