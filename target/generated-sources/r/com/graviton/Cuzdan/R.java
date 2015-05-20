@@ -929,9 +929,9 @@ containing a value of this type.
     }
     public static final class raw {
         public static final int gtm_analytics=0x7f060000;
-        public static final int rs1=0x7f060001;
-        public static final int rs2=0x7f060002;
-        public static final int rs3=0x7f060003;
+        public static final int rs1_comp=0x7f060001;
+        public static final int rs2_comp=0x7f060002;
+        public static final int rs3_comp=0x7f060003;
     }
     public static final class string {
         public static final int accept=0x7f080002;

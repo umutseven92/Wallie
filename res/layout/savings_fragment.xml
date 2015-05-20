@@ -87,6 +87,7 @@
                 android:text="Birikim yapabilmeniz için geliriniz yetersiz."
                 android:id="@+id/txtInsufficentLimit"
                 android:textColor="@color/cuzdan_red"
-                android:layout_alignTop="@+id/txtTotalDailyLimitExp" android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true" android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="false"/>
     </RelativeLayout>
 </RelativeLayout>

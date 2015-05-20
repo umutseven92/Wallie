@@ -490,9 +490,9 @@ int layout savings_fragment 0x7f03001b
 int layout showcase_button 0x7f03001c
 int layout splash_fragment 0x7f03001d
 int raw gtm_analytics 0x7f060000
-int raw rs1 0x7f060001
-int raw rs2 0x7f060002
-int raw rs3 0x7f060003
+int raw rs1_comp 0x7f060001
+int raw rs2_comp 0x7f060002
+int raw rs3_comp 0x7f060003
 int string accept 0x7f080002
 int string app_name 0x7f080026
 int string common_android_wear_notification_needs_update_text 0x7f080009

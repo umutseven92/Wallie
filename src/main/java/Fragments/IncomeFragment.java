@@ -24,7 +24,6 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.net.InetAddress;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,7 +32,7 @@ import java.util.Date;
 public class IncomeFragment extends Fragment implements AdapterView.OnItemSelectedListener, IncomeLoadListener, OnShowcaseEventListener, IncomeAddListener {
 
     static User _user;
-    String mode = "day";
+    String mode = "month";
     View infView;
     Date dateBeingViewed;
     ImageButton btnLeftArrow, btnRightArrow, btnAddIncome, btnIncomeStats, btnCalendar;
@@ -70,8 +69,8 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         lv = (ListView) infView.findViewById(R.id.lstIncomes);
 
         datePickerFragment = new DatePickerFragment();
-        datePickerFragment.SetIncomeListener(this);
-
+        datePickerFragment.SetIncomeListener(this)
+        ;
         dialog = new IncomeDialogFragment();
         dialog.SetListener(this);
 
@@ -85,7 +84,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
 
         lv.setOnItemClickListener(onItemClickListener);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.dateArray, R.layout.cuzdan_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(infView.getContext(), R.array.balanceDateArray, R.layout.cuzdan_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnDate.setAdapter(adapter);
         spnDate.setOnItemSelectedListener(this);
@@ -218,7 +217,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
         Date today = new Date();
-        if (position == 0) {
+        if (position == 1) {
             mode = "day";
             try {
                 if (dateBeingViewed.getMonth() == today.getMonth()) {
@@ -233,7 +232,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
                 e.printStackTrace();
             }
 
-        } else if (position == 1) {
+        } else if (position == 0) {
             mode = "month";
             try {
                 dateBeingViewed.setDate(1);
@@ -387,24 +386,6 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             }
         }
     }
-
-    @Deprecated
-    public boolean IsInternetAvailable() {
-        try {
-            InetAddress ipAddr = InetAddress.getByName("google.com"); //You can replace it with your name
-
-            if (ipAddr.equals("")) {
-                return false;
-            } else {
-                return true;
-            }
-
-        } catch (Exception e) {
-            return false;
-        }
-
-    }
-
 
     @Override
     public void onDateSelected(Date date) {

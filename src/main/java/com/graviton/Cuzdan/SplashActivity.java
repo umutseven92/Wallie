@@ -162,7 +162,7 @@ public class SplashActivity extends Activity {
         }
 
         String fileName = getString(R.string.cuzdanUserConfig);
-        File main= new File(this.getFilesDir(), fileName);
+        File main = new File(this.getFilesDir(), fileName);
 
         JSONObject userJSON = new JSONObject(sb.toString());
         User user = new User(userJSON, main.getAbsolutePath(), getApplication());

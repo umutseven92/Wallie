@@ -65,19 +65,19 @@ public class AboutFragment extends Fragment {
             case 0:
                 rsLength = 2600;
                 rob.setImageResource(R.drawable.rb1);
-                return MediaPlayer.create(getActivity().getApplicationContext(), R.raw.rs1);
+                return MediaPlayer.create(getActivity().getApplicationContext(), R.raw.rs1_comp);
             case 1:
                 rsLength = 2800;
                 rob.setImageResource(R.drawable.rb2);
-                return MediaPlayer.create(getActivity().getApplicationContext(), R.raw.rs2);
+                return MediaPlayer.create(getActivity().getApplicationContext(), R.raw.rs2_comp);
             case 2:
                 rsLength = 5300;
                 rob.setImageResource(R.drawable.rb3);
-                return MediaPlayer.create(getActivity().getApplicationContext(), R.raw.rs3);
+                return MediaPlayer.create(getActivity().getApplicationContext(), R.raw.rs3_comp);
             default:
                 rsLength = 2600;
                 rob.setImageResource(R.drawable.rb1);
-                return MediaPlayer.create(getActivity().getApplicationContext(), R.raw.rs1);
+                return MediaPlayer.create(getActivity().getApplicationContext(), R.raw.rs1_comp);
         }
     }
 

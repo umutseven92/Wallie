@@ -313,22 +313,25 @@ public class AccountFragment extends Fragment {
     IabHelper.OnIabPurchaseFinishedListener purchaseListener = new IabHelper.OnIabPurchaseFinishedListener() {
         @Override
         public void onIabPurchaseFinished(IabResult result, Purchase info) {
-            _user.SetVersion(User.Version.Pro);
-            try {
-                _user.GetBanker().ToggleVersion();
-            } catch (Exception e) {
-                e.printStackTrace();
-                ErrorDialog.ShowErrorDialog(getActivity().getApplication(), e, "Cüzdan Plus'a geçilirken hata oluştu.", null);
-            }
+            if (result.isSuccess()) {
+                _user.SetVersion(User.Version.Pro);
+                try {
+                    _user.GetBanker().ToggleVersion();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ErrorDialog.ShowErrorDialog(getActivity().getApplication(), e, "Cüzdan Plus'a geçilirken hata oluştu.", null);
+                }
 
-            // Uygulamayı yeniden başlat
-            Context context = getActivity().getApplicationContext();
-            Intent mStartActivity = new Intent(context, SplashActivity.class);
-            int mPendingIntentId = 123456;
-            PendingIntent mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
-            AlarmManager mgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-            mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
-            getActivity().finish();
+                // Uygulamayı yeniden başlat
+                Context context = getActivity().getApplicationContext();
+                Intent mStartActivity = new Intent(context, SplashActivity.class);
+                int mPendingIntentId = 123456;
+                PendingIntent mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+                AlarmManager mgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+                mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+                getActivity().finish();
+
+            }
         }
 
 
