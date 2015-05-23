@@ -335,7 +335,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
         txtTotalIncome.setTextColor(getResources().getColor(R.color.cuzdan_green));
 
         if (_user.GetStatusNotification().equals("true")) {
-            NotificationHelper.SetPermaNotification(getActivity(), _user.GetBanker().GetBalance(new Date(), true), _user.GetCurrency());
+            NotificationHelper.SetPermaNotification(getActivity(), _user.GetBanker().GetBalance(new Date(), false), _user.GetCurrency());
         }
         try {
             WidgetHelper.UpdateInfoWithUser(getActivity(), _user);

@@ -20,6 +20,8 @@ public class ChartHelper {
         chart.setValueTextColor(Color.BLACK);
         chart.setValueTextSize(15f);
 
+        chart.setDrawLegend(false);
+
         chart.setDrawYValues(true);
         chart.setDrawXValues(true);
 

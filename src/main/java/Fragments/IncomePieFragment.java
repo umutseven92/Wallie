@@ -6,22 +6,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.Spinner;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.github.mikephil.charting.utils.Legend;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 
 /**
@@ -35,7 +35,6 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
     ImageButton imgLeft, imgRight, btnCalendar;
     Date dateBeingViewed;
     User user;
-    TextView txtIncomeDate;
     DatePickerFragment datePickerFragment;
 
     @Override
@@ -87,10 +86,6 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
             }
         }
 
-        Legend l = incomePieChart.getLegend();
-        l.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
-        l.setTextSize(12f);
-
         return v;
     }
 
@@ -103,29 +98,104 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
 
         if (day) {
             ArrayList<Income> incomes = banker.GetIncomesFromDay(dateBeingViewed);
+            Dictionary<String, Integer> dataKey = new Hashtable<String, Integer>();
 
             for (int i = 0; i < incomes.size(); i++) {
                 Income income = incomes.get(i);
+                boolean dup = false;
+
                 if (!income.GetCategory().equals("Özel Kategori")) {
-                    incomeNames.add(income.GetCategory());
+
+                    if (!incomeNames.contains(income.GetCategory())) {
+                        incomeNames.add(income.GetCategory());
+                    } else {
+                        dup = true;
+                    }
+
                 } else {
-                    incomeNames.add(income.GetSubCategory());
+
+                    if (!incomeNames.contains(income.GetSubCategory())) {
+                        incomeNames.add(income.GetSubCategory());
+                    } else {
+                        dup = true;
+                    }
+
                 }
-                entries.add(new Entry(income.GetAmount().floatValue(), i));
+
+                if (income.GetCategory().equals("Özel Kategori")) {
+                    if (!dup) {
+                        entries.add(new Entry(income.GetAmount().floatValue(), i));
+                        dataKey.put(income.GetSubCategory(), i);
+                    } else {
+                        for (Entry e : entries) {
+                            if (e.getXIndex() == dataKey.get(income.GetSubCategory())) {
+                                e.setVal(e.getVal() + income.GetAmount().floatValue());
+                            }
+                        }
+                    }
+                } else {
+                    if (!dup) {
+                        entries.add(new Entry(income.GetAmount().floatValue(), i));
+                        dataKey.put(income.GetCategory(), i);
+                    } else {
+                        for (Entry e : entries) {
+                            if (e.getXIndex() == dataKey.get(income.GetCategory())) {
+                                e.setVal(e.getVal() + income.GetAmount().floatValue());
+                            }
+                        }
+                    }
+
+                }
+
             }
 
             incomePieChart.setCenterText(DateFormatHelper.GetDayText(dateBeingViewed));
         } else {
             ArrayList<Income> incomes = banker.GetIncomesFromMonth(dateBeingViewed);
+            Dictionary<String, Integer> dataKey = new Hashtable<String, Integer>();
 
             for (int i = 0; i < incomes.size(); i++) {
                 Income income = incomes.get(i);
+                boolean dup = false;
+
                 if (!income.GetCategory().equals("Özel Kategori")) {
-                    incomeNames.add(income.GetCategory());
+                    if (!incomeNames.contains(income.GetCategory())) {
+                        incomeNames.add(income.GetCategory());
+                    } else {
+                        dup = true;
+                    }
                 } else {
-                    incomeNames.add(income.GetSubCategory());
+                    if (!incomeNames.contains(income.GetSubCategory())) {
+                        incomeNames.add(income.GetSubCategory());
+                    } else {
+                        dup = true;
+                    }
                 }
-                entries.add(new Entry(income.GetAmount().floatValue(), i));
+
+                if (income.GetCategory().equals("Özel Kategori")) {
+                    if (!dup) {
+                        entries.add(new Entry(income.GetAmount().floatValue(), i));
+                        dataKey.put(income.GetSubCategory(), i);
+                    } else {
+                        for (Entry e : entries) {
+                            if (e.getXIndex() == dataKey.get(income.GetSubCategory())) {
+                                e.setVal(e.getVal() + income.GetAmount().floatValue());
+                            }
+                        }
+                    }
+                } else {
+                    if (!dup) {
+                        entries.add(new Entry(income.GetAmount().floatValue(), i));
+                        dataKey.put(income.GetCategory(), i);
+                    } else {
+                        for (Entry e : entries) {
+                            if (e.getXIndex() == dataKey.get(income.GetCategory())) {
+                                e.setVal(e.getVal() + income.GetAmount().floatValue());
+                            }
+                        }
+                    }
+
+                }
             }
 
             incomePieChart.setCenterText(DateFormatHelper.GetMonthText(dateBeingViewed, getResources()));
@@ -133,6 +203,7 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
         }
 
         PieDataSet set = new PieDataSet(entries, "");
+
         set.setSliceSpace(3f);
         set.setColors(ColorTemplate.COLORFUL_COLORS);
 

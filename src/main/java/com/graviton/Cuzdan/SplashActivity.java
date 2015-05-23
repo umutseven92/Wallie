@@ -120,7 +120,7 @@ public class SplashActivity extends Activity {
                 SetNotifications(Integer.parseInt(userJSON.getJSONObject("user").getString("savNotHour")), Integer.parseInt(userJSON.getJSONObject("user").getString("remNotHour")), sav, rem);
 
                 if (user.GetStatusNotification().equals("true")) {
-                    NotificationHelper.SetPermaNotification(this, user.GetBanker().GetBalance(new Date(), true), user.GetCurrency());
+                    NotificationHelper.SetPermaNotification(this, user.GetBanker().GetBalance(new Date(), false), user.GetCurrency());
                 }
 
                 new Handler().postDelayed(new Runnable() {
@@ -178,7 +178,7 @@ public class SplashActivity extends Activity {
         SetNotifications(Integer.parseInt(userJSON.getJSONObject("user").getString("savNotHour")), Integer.parseInt(userJSON.getJSONObject("user").getString("remNotHour")), sav, rem);
 
         if (user.GetStatusNotification().equals("true")) {
-            NotificationHelper.SetPermaNotification(this, user.GetBanker().GetBalance(new Date(), true), user.GetCurrency());
+            NotificationHelper.SetPermaNotification(this, user.GetBanker().GetBalance(new Date(), false), user.GetCurrency());
         }
 
     }
@@ -191,7 +191,7 @@ public class SplashActivity extends Activity {
 
         ((Global) this.getApplication()).SetUser(user);
         SetNotifications(8, 14, "true", "true");
-        NotificationHelper.SetPermaNotification(this, user.GetBanker().GetBalance(new Date(), true), user.GetCurrency());
+        NotificationHelper.SetPermaNotification(this, user.GetBanker().GetBalance(new Date(), false), user.GetCurrency());
     }
 
     private void SetNotifications(int savNotHour, int remNotHour, String sav, String rem) {

@@ -39,7 +39,7 @@ public class OnBootReceiver extends BroadcastReceiver {
                 user = new User(new JSONObject(sb.toString()), file.getAbsolutePath(), null);
 
                 if (user.GetStatusNotification().equals("true")) {
-                    NotificationHelper.SetPermaNotification(context, user.GetBanker().GetBalance(new Date(), true), user.GetCurrency());
+                    NotificationHelper.SetPermaNotification(context, user.GetBanker().GetBalance(new Date(), false), user.GetCurrency());
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

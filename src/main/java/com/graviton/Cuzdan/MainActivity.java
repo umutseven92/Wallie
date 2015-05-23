@@ -1,8 +1,11 @@
 package com.graviton.Cuzdan;
 
 import Fragments.*;
-import Helpers.*;
+import Helpers.AboutPageAdapter;
 import Helpers.Billing.IabHelper;
+import Helpers.BudgetPageAdapter;
+import Helpers.SavingsPageAdapter;
+import Helpers.SettingsPageAdapter;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -36,14 +39,12 @@ public class MainActivity extends FragmentActivity {
     SavingsPageAdapter savingsPageAdapter;
     SettingsPageAdapter settingsPageAdapter;
     AboutPageAdapter aboutPageAdapter;
-    User _user;
     private DrawerLayout drawerLayout;
     private ListView drawerList;
     private ActionBarDrawerToggle drawerToggle;
     private CharSequence drawerTitle, title;
     private String[] menuArray;
     ViewPager pager;
-    User.Version version;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,9 +56,6 @@ public class MainActivity extends FragmentActivity {
         }
 
         setContentView(R.layout.main);
-
-        _user = ((Global) getApplication()).GetUser();
-        version = _user.GetVersion();
 
         pager = (ViewPager) findViewById(R.id.pager);
 

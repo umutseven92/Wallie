@@ -274,7 +274,7 @@ public class ExpenseFragment extends Fragment implements AdapterView.OnItemSelec
         txtTotalExpense.setTextColor(Color.RED);
 
         if (_user.GetStatusNotification().equals("true")) {
-            NotificationHelper.SetPermaNotification(getActivity(), _user.GetBanker().GetBalance(new Date(), true), _user.GetCurrency());
+            NotificationHelper.SetPermaNotification(getActivity(), _user.GetBanker().GetBalance(new Date(), false), _user.GetCurrency());
         }
 
         try {

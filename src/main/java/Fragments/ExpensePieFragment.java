@@ -15,16 +15,13 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.github.mikephil.charting.utils.Legend;
 import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 
 /**
@@ -89,10 +86,6 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
             }
         }
 
-        Legend l = expensePieChart.getLegend();
-        l.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
-        l.setTextSize(12f);
-
         return v;
     }
 
@@ -104,30 +97,101 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
 
         if (day) {
             ArrayList<Expense> expenses = banker.GetExpensesFromDay(dateBeingViewed);
+            Dictionary<String, Integer> dataKey = new Hashtable<String, Integer>();
 
             for (int i = 0; i < expenses.size(); i++) {
                 Expense expense = expenses.get(i);
+                boolean dup = false;
+
                 if (!expense.GetCategory().startsWith("Özel Kategori")) {
-                    expenseNames.add(expense.GetCategory());
+
+                    if (!expenseNames.contains(expense.GetCategory())) {
+                        expenseNames.add(expense.GetCategory());
+                    } else {
+                        dup = true;
+                    }
                 } else {
-                    expenseNames.add(expense.GetSubCategory());
+                    if (!expenseNames.contains(expense.GetSubCategory())) {
+                        expenseNames.add(expense.GetSubCategory());
+                    } else {
+                        dup = true;
+                    }
                 }
-                entries.add(new Entry(expense.GetAmount().floatValue(), i));
+
+                if (expense.GetCategory().equals("Özel Kategori")) {
+                    if (!dup) {
+                        entries.add(new Entry(expense.GetAmount().floatValue(), i));
+                        dataKey.put(expense.GetSubCategory(), i);
+                    } else {
+                        for (Entry e : entries) {
+                            if (e.getXIndex() == dataKey.get(expense.GetSubCategory())) {
+                                e.setVal(e.getVal() + expense.GetAmount().floatValue());
+                            }
+                        }
+                    }
+                } else {
+                    if (!dup) {
+                        entries.add(new Entry(expense.GetAmount().floatValue(), i));
+                        dataKey.put(expense.GetCategory(), i);
+                    } else {
+                        for (Entry e : entries) {
+                            if (e.getXIndex() == dataKey.get(expense.GetCategory())) {
+                                e.setVal(e.getVal() + expense.GetAmount().floatValue());
+                            }
+                        }
+                    }
+
+                }
             }
 
             expensePieChart.setCenterText(DateFormatHelper.GetDayText(dateBeingViewed));
         } else {
             ArrayList<Expense> expenses = banker.GetExpensesFromMonth(dateBeingViewed);
+            Dictionary<String, Integer> dataKey = new Hashtable<String, Integer>();
 
             for (int i = 0; i < expenses.size(); i++) {
                 Expense expense = expenses.get(i);
+                boolean dup = false;
 
                 if (!expense.GetCategory().startsWith("Özel Kategori")) {
-                    expenseNames.add(expense.GetCategory());
+
+                    if (!expenseNames.contains(expense.GetCategory())) {
+                        expenseNames.add(expense.GetCategory());
+                    } else {
+                        dup = true;
+                    }
                 } else {
-                    expenseNames.add(expense.GetSubCategory());
+                    if (!expenseNames.contains(expense.GetSubCategory())) {
+                        expenseNames.add(expense.GetSubCategory());
+                    } else {
+                        dup = true;
+                    }
                 }
-                entries.add(new Entry(expense.GetAmount().floatValue(), i));
+
+                if (expense.GetCategory().equals("Özel Kategori")) {
+                    if (!dup) {
+                        entries.add(new Entry(expense.GetAmount().floatValue(), i));
+                        dataKey.put(expense.GetSubCategory(), i);
+                    } else {
+                        for (Entry e : entries) {
+                            if (e.getXIndex() == dataKey.get(expense.GetSubCategory())) {
+                                e.setVal(e.getVal() + expense.GetAmount().floatValue());
+                            }
+                        }
+                    }
+                } else {
+                    if (!dup) {
+                        entries.add(new Entry(expense.GetAmount().floatValue(), i));
+                        dataKey.put(expense.GetCategory(), i);
+                    } else {
+                        for (Entry e : entries) {
+                            if (e.getXIndex() == dataKey.get(expense.GetCategory())) {
+                                e.setVal(e.getVal() + expense.GetAmount().floatValue());
+                            }
+                        }
+                    }
+
+                }
             }
 
             expensePieChart.setCenterText(DateFormatHelper.GetMonthText(dateBeingViewed, getResources()));

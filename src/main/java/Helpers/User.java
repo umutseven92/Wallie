@@ -107,7 +107,7 @@ public class User implements Serializable {
             NotificationHelper.RemoveNotification(context);
         } else {
             _statusNotification = "true";
-            NotificationHelper.SetPermaNotification(context, this.GetBanker().GetBalance(new Date(), true), this.GetCurrency());
+            NotificationHelper.SetPermaNotification(context, this.GetBanker().GetBalance(new Date(), false), this.GetCurrency());
         }
     }
 
