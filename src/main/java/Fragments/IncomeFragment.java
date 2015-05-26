@@ -328,7 +328,6 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             total = total.add(val);
         }
         lv.setAdapter(new IncomeListAdapter(this.getActivity(), incomes, _user.GetCurrency()));
-
         TextView txtTotalIncome = (TextView) infView.findViewById(R.id.txtTotalIncome);
 
         txtTotalIncome.setText(total.toString() + " " + _user.GetCurrency());

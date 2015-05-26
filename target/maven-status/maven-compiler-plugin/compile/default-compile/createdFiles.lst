@@ -166,6 +166,7 @@ com\graviton\Cuzdan\SavingsNotificationReceiver.class
 Helpers\Saving$Period.class
 com\graviton\Cuzdan\SavingsWizardActivity$1.class
 Fragments\ExpenseFragment$6.class
+Fragments\IncomeDialogFragment$4.class
 wizard\ui\SavingInfoFragment.class
 Fragments\ExpenseGraphFragment$1.class
 Helpers\Balance.class
@@ -224,6 +225,7 @@ com\google\android\gms\BuildConfig.class
 wizard\model\MultipleFixedChoicePage.class
 wizard\ui\ReviewFragment.class
 Fragments\ExpensePieFragment$2.class
+Fragments\ExpenseDialogFragment$4.class
 com\graviton\Cuzdan\ExpenseWizardActivity.class
 com\graviton\Cuzdan\SplashActivity.class
 Fragments\IncomePieFragment$3.class

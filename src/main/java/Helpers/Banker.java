@@ -769,6 +769,11 @@ public class Banker implements Serializable {
         WriteUserInfo(mainJSON.toString());
     }
 
+    public void RepeatIncome(Income income) throws IOException, JSONException {
+        Income newIncome = new Income(income.GetCategory(),income.GetSubCategory(),income.GetAmount(),income.GetDescription(), new Date());
+        AddIncome(newIncome);
+    }
+
     /**
      * Birikim ekleme metodu.
      *
@@ -851,6 +856,10 @@ public class Banker implements Serializable {
         WriteUserInfo(mainJSON.toString());
     }
 
+    public void RepeatExpense(Expense expense) throws IOException, JSONException {
+        Expense newExpense = new Expense(expense.GetCategory(),expense.GetSubCategory(),expense.GetAmount(),expense.GetDescription(), new Date(), expense.GetTag());
+        AddExpense(newExpense);
+    }
 
     /**
      * Gelirlerin silindigi yer. Silme adimlari;

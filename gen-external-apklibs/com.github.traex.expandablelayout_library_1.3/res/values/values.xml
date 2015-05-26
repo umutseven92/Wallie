@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ExpandableLayout"><attr format="reference" name="el_headerLayout"/><attr format="reference" name="el_contentLayout"/><attr format="integer" name="el_duration"/></declare-styleable>
+    <!-- From: file:/C:/Users/robin.chutaux/Documents/GIT-3IE/ExpandableLayout/library/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="app_name">ExpandableLayout</string>
+</resources>

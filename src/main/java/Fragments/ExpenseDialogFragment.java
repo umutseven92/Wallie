@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.text.Html;
 import com.google.gson.Gson;
 import com.graviton.Cuzdan.Global;
+import org.json.JSONException;
+
+import java.io.IOException;
 
 
 /**
@@ -49,12 +52,33 @@ public class ExpenseDialogFragment extends DialogFragment {
                             dismiss();
 
                         }
-                    }).setNegativeButton("Geri", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dismiss();
-                }
-            });
+                    })
+                    .setNeutralButton("Tekrarla", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            User user = ((Global) getActivity().getApplication()).GetUser();
+                            Banker banker = user.GetBanker();
+                            try {
+                                banker.RepeatExpense(expense);
+                                _listener.onDismissed();
+                                if (_secondListener != null) {
+                                    _secondListener.onDismissed();
+                                }
+                                dismiss();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    })
+                    .setNegativeButton("Geri", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dismiss();
+                        }
+                    });
 
         } else {
             builder.setTitle("Detaylar")
