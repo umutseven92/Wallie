@@ -17,6 +17,7 @@ Fragments\ExpenseFragment$3.class
 Helpers\Billing\Inventory.class
 wizard\model\PageList.class
 com\github\amlcurran\showcaseview\targets\ActionViewTarget$Type.class
+Helpers\PlusPageAdapter.class
 Fragments\IncomeDialogFragment.class
 wizard\ui\SavingCustomInfoFragment$3.class
 Helpers\NotificationHelper.class
@@ -69,6 +70,7 @@ Fragments\AboutFragment$1.class
 Fragments\IncomeGraphFragment.class
 com\graviton\Cuzdan\SplashActivity$1.class
 com\graviton\Cuzdan\SplashActivity$6$1.class
+Fragments\PlusFragment.class
 Fragments\ExpenseSearchFragment$4.class
 com\graviton\Cuzdan\ExpenseWizardActivity$4.class
 com\graviton\Cuzdan\SavingsWizardActivity$3.class
@@ -111,7 +113,6 @@ com\github\amlcurran\showcaseview\ShowcaseView.class
 com\graviton\Cuzdan\SavingsWizardActivity$2.class
 Fragments\BalanceFragment.class
 com\graviton\Cuzdan\R$string.class
-Fragments\AccountFragment$9.class
 wizard\ui\BalanceInfoFragment$2.class
 com\graviton\Cuzdan\R$styleable.class
 Fragments\ExpenseDialogFragment.class
@@ -127,7 +128,6 @@ com\github\amlcurran\showcaseview\targets\Target$1.class
 com\graviton\Cuzdan\R$xml.class
 Fragments\IncomeFragment$4.class
 Helpers\IncomeListAdapter.class
-Fragments\AccountFragment$6$1.class
 com\github\amlcurran\showcaseview\AnimatorAnimationFactory$1.class
 com\github\amlcurran\showcaseview\targets\ReflectorFactory.class
 com\github\amlcurran\showcaseview\ApiUtils.class
@@ -167,6 +167,7 @@ Helpers\Saving$Period.class
 com\graviton\Cuzdan\SavingsWizardActivity$1.class
 Fragments\ExpenseFragment$6.class
 Fragments\IncomeDialogFragment$4.class
+Fragments\PlusFragment$2.class
 wizard\ui\SavingInfoFragment.class
 Fragments\ExpenseGraphFragment$1.class
 Helpers\Balance.class
@@ -182,6 +183,7 @@ wizard\ui\SavingInfoFragment$3.class
 Helpers\Billing\IabHelper$QueryInventoryFinishedListener.class
 wizard\ui\StepPagerStrip$OnPageSelectedListener.class
 wizard\model\SavingCustomInfoPage.class
+Fragments\PlusFragment$1.class
 Fragments\AccountFragment$6.class
 com\graviton\Cuzdan\SplashActivity$2.class
 com\graviton\Cuzdan\SplashActivity$6$2.class
@@ -209,7 +211,6 @@ com\graviton\Cuzdan\SavingsWizardActivity$MyPagerAdapter.class
 Fragments\AccountFragment$1.class
 Fragments\AccountFragment$4.class
 Fragments\ExpenseGraphFragment$2.class
-Fragments\AccountFragment$10.class
 wizard\ui\SavingInfoFragment$2.class
 com\google\android\gms\R$attr.class
 Fragments\IncomeGraphFragment$1.class

@@ -18,7 +18,16 @@
         <item>Birikim</item>
         <item>Ayarlar</item>
         <item>Hakkında</item>
+        <item>Cüzdan Plus</item>
     </string-array>
+
+    <string-array name="plusMenuArray">
+        <item>Bütçe</item>
+        <item>Birikim</item>
+        <item>Ayarlar</item>
+        <item>Hakkında</item>
+    </string-array>
+
     <string name="drawer_open">Aç</string>
     <string name="drawer_close">Kapat</string>
     <string-array name="dateArray">
@@ -45,18 +54,22 @@
     <string-array name="MaaşGelir">
         <item>Maaş Ödemesi</item>
         <item>Prim Ödemesi</item>
+        <item>Hepsi</item>
     </string-array>
     <string-array name="MaasGelir">
         <item>Maaş Ödemesi</item>
         <item>Prim Ödemesi</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="KiraGelir">
         <item>Kira Ödemesi</item>
+        <item>Hepsi</item>
     </string-array>
     <string-array name="FaizGelir">
         <item>Banka Faiz Ödemesi</item>
         <item>Borç Faiz Ödemesi</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="ŞansGelir">
@@ -64,27 +77,33 @@
         <item>İddia</item>
         <item>Kumar Oyunları</item>
         <item>Diğer</item>
+        <item>Hepsi</item>
     </string-array>
     <string-array name="SansGelir">
         <item>Piyango</item>
         <item>İddia</item>
         <item>Kumar Oyunları</item>
         <item>Diğer</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="AlacaklarGelir">
         <item>Alacaklar Tahsilatı</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="HarçlıkGelir">
         <item>Harçlık Ödemesi</item>
+        <item>Hepsi</item>
     </string-array>
     <string-array name="HarclikGelir">
         <item>Harçlık Ödemesi</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="KrediGelir">
         <item>Banka Kredisi</item>
+        <item>Hepsi</item>
     </string-array>
 
     <!-- Gider Kategorileri & Alt Kategoriler -->
@@ -104,6 +123,7 @@
         <item>Taksit</item>
         <item>Borçlar</item>
         <item>Özel Kategori (Kişisel)</item>
+        <item>Hepsi</item>
     </string-array>
     <string-array name="Kisisel">
         <item>Yiyecek &amp; İçecek</item>
@@ -116,6 +136,7 @@
         <item>Taksit</item>
         <item>Borçlar</item>
         <item>Özel Kategori (Kişisel)</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="Ev">
@@ -124,44 +145,53 @@
         <item>Evcil Hayvan</item>
         <item>Ev Alışverişi</item>
         <item>Özel Kategori (Ev)</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="YiyecekGiderKişisel">
         <item>Alkollü İçecek</item>
         <item>Gıda &amp; Alkolsüz İçecek</item>
+        <item>Hepsi</item>
     </string-array>
     <string-array name="YiyecekGiderKisisel">
         <item>Alkollü İçecek</item>
         <item>Gıda &amp; Alkolsüz İçecek</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="SigaraGiderKişisel">
         <item>Sigara</item>
         <item>Tütün</item>
+        <item>Hepsi</item>
     </string-array>
     <string-array name="SigaraGiderKisisel">
         <item>Sigara</item>
         <item>Tütün</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="AlışverişGiderKişisel">
         <item>Giyim &amp; Ayakkabı</item>
         <item>Teknolojik Aletler</item>
         <item>Diğer</item>
+        <item>Hepsi</item>
     </string-array>
     <string-array name="AlisverisGiderKisisel">
         <item>Giyim &amp; Ayakkabı</item>
         <item>Teknolojik Aletler</item>
         <item>Diğer</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="SağlıkGiderKişisel">
         <item>Hastane Masrafları</item>
         <item>İlaç</item>
+        <item>Hepsi</item>
     </string-array>
     <string-array name="SaglikGiderKisisel">
         <item>Hastane Masrafları</item>
         <item>İlaç</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="EğlenceGiderKişisel">
@@ -169,52 +199,63 @@
         <item>Oyun</item>
         <item>Sinema, Tiyatro &amp; Konser</item>
         <item>Diğer</item>
+        <item>Hepsi</item>
     </string-array>
     <string-array name="EglenceGiderKisisel">
         <item>Gazete, Dergi &amp; Kitap</item>
         <item>Oyun</item>
         <item>Sinema, Tiyatro &amp; Konser</item>
         <item>Diğer</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="UlaşımGiderKişisel">
         <item>Akbil</item>
         <item>Yakıt</item>
         <item>Diğer</item>
+        <item>Hepsi</item>
     </string-array>
     <string-array name="UlasimGiderKisisel">
         <item>Akbil</item>
         <item>Yakıt</item>
         <item>Diğer</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="DövizGiderKişisel">
         <item>Döviz Alımı</item>
+        <item>Hepsi</item>
     </string-array>
     <string-array name="DovizGiderKisisel">
         <item>Döviz Alımı</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="TaksitGiderKişisel">
         <item>Taksit Ödemesi</item>
+        <item>Hepsi</item>
     </string-array>
     <string-array name="TaksitGiderKisisel">
         <item>Taksit Ödemesi</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="BorçlarGiderKişisel">
         <item>Borç Ödemesi</item>
         <item>Banka Faiz Borcu</item>
         <item>Diğer</item>
+        <item>Hepsi</item>
     </string-array>
     <string-array name="BorclarGiderKisisel">
         <item>Borç Ödemesi</item>
         <item>Banka Faiz Borcu</item>
         <item>Diğer</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="KiraGiderEv">
         <item>Ev Kirası</item>
+        <item>Hepsi</item>
     </string-array>
     <string-array name="FaturalarGiderEv">
         <item>Elektrik</item>
@@ -224,12 +265,14 @@
         <item>İnternet</item>
         <item>Kanal Abonelikleri</item>
         <item>Diğer</item>
+        <item>Hepsi</item>
     </string-array>
     <string-array name="EvcilGiderEv">
         <item>Evcil Hayvan</item>
         <item>Veteriner</item>
         <item>Mama</item>
         <item>Diğer</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="EvGiderEv">
@@ -240,6 +283,7 @@
         <item>Beyaz Eşya</item>
         <item>Mobilya</item>
         <item>Diğer</item>
+        <item>Hepsi</item>
     </string-array>
 
     <string-array name="turkishMonths">

@@ -37,13 +37,11 @@ public class AccountFragment extends Fragment {
     static User _user;
     TextView txtName, txtCurrency;
     Switch swcSaving, swcRem, swcStat;
-    Button btnSav, btnRem, btnPro, btnBackup;
+    Button btnSav, btnRem,  btnBackup;
     ImageView imgBackup;
     ProgressBar pbar;
     int num;
     int refNum;
-    private String processId = "";
-    IabHelper helper;
 
     public static final AccountFragment newInstance() {
         AccountFragment f = new AccountFragment();
@@ -61,7 +59,6 @@ public class AccountFragment extends Fragment {
         swcStat = (Switch) v.findViewById(R.id.swcStatusNot);
         btnRem = (Button) v.findViewById(R.id.btnAccountRem);
         btnSav = (Button) v.findViewById(R.id.btnAccountSav);
-        btnPro = (Button) v.findViewById(R.id.btnPro);
         btnBackup = (Button) v.findViewById(R.id.btnBackup);
         imgBackup = (ImageView) v.findViewById(R.id.imgBackup);
         pbar = (ProgressBar) v.findViewById(R.id.progressBar);
@@ -145,44 +142,6 @@ public class AccountFragment extends Fragment {
             }
         });
 
-        btnPro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                new AlertDialog.Builder(getActivity())
-                        .setIcon(R.drawable.ic_launcher)
-                        .setTitle("Cüzdan Plus")
-                        .setMessage("- Reklamları kaldırın.\n\n" +
-                                "- Gelecekte çıkacak ve sadece Cüzdan Plus sahiplerine özel olacak fonksiyonlara hiçbir ekstra ücret ödemeden sahip olun.")
-                        .setPositiveButton("Satın Al", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                helper = ((Global) getActivity().getApplication()).iabHelper;
-
-                                String uId = "";
-
-                                Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
-                                Account[] accounts = AccountManager.get(getActivity().getApplicationContext()).getAccounts();
-                                for (Account account : accounts) {
-                                    if (emailPattern.matcher(account.name).matches()) {
-                                        String possibleEmail = account.name;
-                                        uId += possibleEmail + "+";
-                                    }
-                                }
-
-                                uId += UUID.randomUUID().toString().substring(0, 8);
-                                processId = uId;
-
-                                helper.launchPurchaseFlow(getActivity(), "cuzdan_pro", 8008135, purchaseListener, uId);
-                            }
-
-                        })
-                        .setNegativeButton("Geri Dön", null)
-                        .show();
-
-            }
-        });
 
         btnBackup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -245,12 +204,6 @@ public class AccountFragment extends Fragment {
             swcStat.setChecked(false);
         }
 
-        if (_user.GetVersion() == User.Version.Pro) {
-            btnPro.setVisibility(View.INVISIBLE);
-        } else {
-            btnPro.setVisibility(View.VISIBLE);
-        }
-
         imgBackup.setVisibility(View.INVISIBLE);
         pbar.setVisibility(View.INVISIBLE);
 
@@ -310,30 +263,4 @@ public class AccountFragment extends Fragment {
         dialog.show();
     }
 
-    IabHelper.OnIabPurchaseFinishedListener purchaseListener = new IabHelper.OnIabPurchaseFinishedListener() {
-        @Override
-        public void onIabPurchaseFinished(IabResult result, Purchase info) {
-            if (result.isSuccess()) {
-                _user.SetVersion(User.Version.Pro);
-                try {
-                    _user.GetBanker().ToggleVersion();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    ErrorDialog.ShowErrorDialog(getActivity().getApplication(), e, "Cüzdan Plus'a geçilirken hata oluştu.", null);
-                }
-
-                // Uygulamayı yeniden başlat
-                Context context = getActivity().getApplicationContext();
-                Intent mStartActivity = new Intent(context, SplashActivity.class);
-                int mPendingIntentId = 123456;
-                PendingIntent mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
-                AlarmManager mgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-                mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
-                getActivity().finish();
-
-            }
-        }
-
-
-    };
 }

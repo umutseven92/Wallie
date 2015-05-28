@@ -253,6 +253,38 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
 
             case R.id.spnExpenseCategory:
                 String item = parent.getItemAtPosition(position).toString();
+                if(item.equals("Hepsi"))
+                {
+                    ArrayAdapter<String> emptyAdapter = new ArrayAdapter<String>(v.getContext(), R.layout.cuzdan_spinner_item, new ArrayList<String>());
+                    emptyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spnSearchSubCategory.setAdapter(emptyAdapter);
+
+                    if (mode.equals("month")) {
+                        try {
+                            LoadListView(spnSearchTags.getSelectedItem().toString(), null, null, false);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    } else if (mode.equals("day")) {
+                        try {
+                            LoadListView(spnSearchTags.getSelectedItem().toString(), null, null, true);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                    return;
+                }
+
                 if (!item.startsWith("Özel Kategori")) {
                     if (item.contains(" ")) {
                         item = item.substring(0, item.indexOf(" ")) + "Gider" + spnSearchTags.getSelectedItem().toString();
@@ -314,9 +346,17 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                 break;
 
             case R.id.spnExpenseSubCategory:
+
                 if (mode.equals("month")) {
                     try {
-                        LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), parent.getItemAtPosition(position).toString(), false);
+                        if (spnSearchSubCategory.getSelectedItem().toString().equals("Hepsi"))
+                        {
+                            LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), null, false);
+                        }
+                        else
+                        {
+                            LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), parent.getItemAtPosition(position).toString(), false);
+                        }
                     } catch (ParseException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -327,7 +367,15 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
 
                 } else if (mode.equals("day")) {
                     try {
-                        LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), parent.getItemAtPosition(position).toString(), true);
+
+                        if (spnSearchSubCategory.getSelectedItem().toString().equals("Hepsi"))
+                        {
+                            LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), null, true);
+                        }
+                        else
+                        {
+                            LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), parent.getItemAtPosition(position).toString(), true);
+                        }
                     } catch (ParseException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -385,9 +433,35 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
         if (day) {
             expenses = _user.GetBanker().GetExpensesFromDay(dateBeingViewed);
 
-            for (Expense expense : expenses) {
-                if (expense.GetCategory().equals(category) && expense.GetSubCategory().equals(subCategory) && expense.GetTurkishStringTag().equals(tag)) {
-                    cleanedExpenses.add(expense);
+            if(category == null && subCategory == null)
+            {
+                for (Expense expense : expenses)
+                {
+                    if(expense.GetTurkishStringTag().equals(tag))
+                    {
+                        cleanedExpenses.add(expense);
+                    }
+                }
+            }
+
+            if(category != null && subCategory == null)
+            {
+                for (Expense expense : expenses)
+                {
+                    if(expense.GetTurkishStringTag().equals(tag) && expense.GetCategory().equals(category))
+                    {
+                        cleanedExpenses.add(expense);
+                    }
+                }
+
+            }
+
+            else
+            {
+                for (Expense expense : expenses) {
+                    if (expense.GetCategory().equals(category) && expense.GetSubCategory().equals(subCategory) && expense.GetTurkishStringTag().equals(tag)) {
+                        cleanedExpenses.add(expense);
+                    }
                 }
             }
 
@@ -395,9 +469,34 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
         } else {
             expenses = _user.GetBanker().GetExpensesFromMonth(dateBeingViewed);
 
-            for (Expense expense : expenses) {
-                if (expense.GetCategory().equals(category) && expense.GetSubCategory().equals(subCategory) && expense.GetTurkishStringTag().equals(tag)) {
-                    cleanedExpenses.add(expense);
+            if(category == null && subCategory == null)
+            {
+                for (Expense expense : expenses)
+                {
+                    if(expense.GetTurkishStringTag().equals(tag))
+                    {
+                        cleanedExpenses.add(expense);
+                    }
+                }
+            }
+
+            if(category != null && subCategory == null)
+            {
+                for (Expense expense : expenses)
+                {
+                    if(expense.GetTurkishStringTag().equals(tag) && expense.GetCategory().equals(category))
+                    {
+                        cleanedExpenses.add(expense);
+                    }
+                }
+            }
+
+            else
+            {
+                for (Expense expense : expenses) {
+                    if (expense.GetCategory().equals(category) && expense.GetSubCategory().equals(subCategory) && expense.GetTurkishStringTag().equals(tag)) {
+                        cleanedExpenses.add(expense);
+                    }
                 }
             }
 

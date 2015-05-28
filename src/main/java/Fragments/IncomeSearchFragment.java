@@ -255,9 +255,15 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                 break;
 
             case R.id.spnSearchSubCategory:
+
                 if (mode.equals("month")) {
                     try {
-                        LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString(), false);
+                        if (spnSearchSubCategory.getSelectedItem().toString().equals("Hepsi")) {
+                            LoadListView(spnSearchCategory.getSelectedItem().toString(), null, false);
+                        } else {
+                            LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString(), false);
+                        }
+
                     } catch (ParseException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -267,7 +273,12 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                     }
                 } else if (mode.equals("day")) {
                     try {
-                        LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString(), true);
+
+                        if (spnSearchSubCategory.getSelectedItem().toString().equals("Hepsi")) {
+                            LoadListView(spnSearchCategory.getSelectedItem().toString(), null, true);
+                        } else {
+                            LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString(), true);
+                        }
                     } catch (ParseException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -276,6 +287,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                         e.printStackTrace();
                     }
                 }
+
                 break;
 
             case R.id.spnSearchIncomeDate:
@@ -325,9 +337,17 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
         if (day) {
             incomes = _user.GetBanker().GetIncomesFromDay(dateBeingViewed);
 
-            for (Income income : incomes) {
-                if (income.GetCategory().equals(category) && income.GetSubCategory().equals(subCategory)) {
-                    cleanedIncomes.add(income);
+            if (subCategory == null) {
+                for (Income income : incomes) {
+                    if (income.GetCategory().equals(category)) {
+                        cleanedIncomes.add(income);
+                    }
+                }
+            } else {
+                for (Income income : incomes) {
+                    if (income.GetCategory().equals(category) && income.GetSubCategory().equals(subCategory)) {
+                        cleanedIncomes.add(income);
+                    }
                 }
             }
 
@@ -335,9 +355,17 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
         } else {
             incomes = _user.GetBanker().GetIncomesFromMonth(dateBeingViewed);
 
-            for (Income income : incomes) {
-                if (income.GetCategory().equals(category) && income.GetSubCategory().equals(subCategory)) {
-                    cleanedIncomes.add(income);
+            if (subCategory == null) {
+                for (Income income : incomes) {
+                    if (income.GetCategory().equals(category)) {
+                        cleanedIncomes.add(income);
+                    }
+                }
+            } else {
+                for (Income income : incomes) {
+                    if (income.GetCategory().equals(category) && income.GetSubCategory().equals(subCategory)) {
+                        cleanedIncomes.add(income);
+                    }
                 }
             }
 
@@ -365,7 +393,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
             Income inc = (Income) adapter.getItem(position);
 
             Bundle bundle = new Bundle();
-            bundle.putBoolean("canDelete", true);
+            bundle.putBoolean("canDelete", false);
 
             bundle.putString("income", new Gson().toJson(inc));
             dialog.setArguments(bundle);

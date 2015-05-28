@@ -1,11 +1,8 @@
 package com.graviton.Cuzdan;
 
 import Fragments.*;
-import Helpers.AboutPageAdapter;
+import Helpers.*;
 import Helpers.Billing.IabHelper;
-import Helpers.BudgetPageAdapter;
-import Helpers.SavingsPageAdapter;
-import Helpers.SettingsPageAdapter;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -39,6 +36,8 @@ public class MainActivity extends FragmentActivity {
     SavingsPageAdapter savingsPageAdapter;
     SettingsPageAdapter settingsPageAdapter;
     AboutPageAdapter aboutPageAdapter;
+    PlusPageAdapter plusPageAdapter;
+
     private DrawerLayout drawerLayout;
     private ListView drawerList;
     private ActionBarDrawerToggle drawerToggle;
@@ -59,8 +58,19 @@ public class MainActivity extends FragmentActivity {
 
         pager = (ViewPager) findViewById(R.id.pager);
 
+        User user = ((Global)getApplication()).GetUser();
+
         title = drawerTitle = getTitle();
-        menuArray = getResources().getStringArray(R.array.menuArray);
+
+        if(user.GetVersion() == User.Version.Pro)
+        {
+            menuArray = getResources().getStringArray(R.array.plusMenuArray);
+        }
+        else
+        {
+            menuArray = getResources().getStringArray(R.array.menuArray);
+        }
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.left_drawer);
 
@@ -107,11 +117,13 @@ public class MainActivity extends FragmentActivity {
         List<Fragment> savingsFragments = GetSavingsFragments();
         List<Fragment> settingsFragments = GetSettingsFragments();
         List<Fragment> aboutFragments = GetAboutFragments();
+        List<Fragment> plusFragments = GetPlusFragments();
 
         budgetPageAdapter = new BudgetPageAdapter(getSupportFragmentManager(), accountFragments, 0);
         savingsPageAdapter = new SavingsPageAdapter(getSupportFragmentManager(), savingsFragments, 1);
         settingsPageAdapter = new SettingsPageAdapter(getSupportFragmentManager(), settingsFragments, 2);
         aboutPageAdapter = new AboutPageAdapter(getSupportFragmentManager(), aboutFragments, 3);
+        plusPageAdapter = new PlusPageAdapter(getSupportFragmentManager(), plusFragments, 4);
 
         if (savedInstanceState == null) {
             selectItem(0);
@@ -151,6 +163,14 @@ public class MainActivity extends FragmentActivity {
         List<Fragment> fList = new ArrayList<Fragment>();
 
         fList.add(AboutFragment.newInstance());
+
+        return fList;
+    }
+
+    private List<Fragment> GetPlusFragments()
+    {
+        List<Fragment> fList = new ArrayList<Fragment>();
+        fList.add(PlusFragment.newInstance());
 
         return fList;
     }
@@ -213,6 +233,12 @@ public class MainActivity extends FragmentActivity {
                 List<Fragment> aboutFragments = GetAboutFragments();
                 aboutPageAdapter = new AboutPageAdapter(getSupportFragmentManager(), aboutFragments, 3);
                 pager.setAdapter(aboutPageAdapter);
+                break;
+            case 4:
+                List<Fragment> plusFragments = GetPlusFragments();
+                plusPageAdapter = new PlusPageAdapter(getSupportFragmentManager(), plusFragments, 3);
+                pager.setAdapter(plusPageAdapter);
+                break;
             default:
                 break;
         }
