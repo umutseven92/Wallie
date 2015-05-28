@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SavingsTest" time="0.046" tests="2" errors="0" skipped="0" failures="0">
+<testsuite name="SavingsTest" time="0.031" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="idea.version" value="14.1.3"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -12,7 +12,7 @@
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="idea.launcher.port" value="7535"/>
+    <property name="idea.launcher.port" value="7532"/>
     <property name="user.script" value=""/>
     <property name="user.country" value="TR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
@@ -63,6 +63,6 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="DailyLimitTest" classname="SavingsTest" time="0.045"/>
+  <testcase name="DailyLimitTest" classname="SavingsTest" time="0.03"/>
   <testcase name="DescriptionTest" classname="SavingsTest" time="0.001"/>
 </testsuite>
