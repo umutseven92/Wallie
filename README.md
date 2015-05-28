@@ -39,12 +39,9 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
 
 * ~~0.4 (Hesap & Ayarlar)~~
   * ~~Hesap yaratma~~
-  * Google Playdan config backup
   * ~~Ayarlar~~
     * ~~Notification kapa~~ 
     * ~~Para birimi~~
-  * Excel'e export
-  * Uygulamayi sifre ile kitleme
 
 * ~~0.5 (Kategori Optimizasyonu)~~
   * ~~Kullanici kategori yaratabilmeli~~
@@ -68,6 +65,11 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
 
 * 1.0 (End of Line)
   * Release
+
+* After Release
+  * Baska formatlara export
+  * Uygulama sifreleme
+  * Hesap makinesi
 
 ##Kullanılan Kaynaklar
 * Android-WizardPager: [Roman Nurik](http://roman.nurik.net/)
