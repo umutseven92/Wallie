@@ -66,12 +66,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="Birikim Bildirimi: "
+                            android:text="Birikim \nHatırlatması: "
                             android:id="@+id/textView20"
                             android:textColor="#ff000000"
-                            android:layout_alignBottom="@+id/swcAccountSaving"
-                            android:layout_alignLeft="@+id/textView19"
-                            android:layout_alignStart="@+id/textView19"/>
+                            android:layout_below="@+id/textView21" android:layout_alignLeft="@+id/textView19"
+                            android:layout_alignStart="@+id/textView19" android:layout_marginTop="10dp"/>
                     <Switch
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -85,7 +84,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="Birikim Bildirim Saati:"
+                            android:text="Birikim Hatırlatma Saati:"
                             android:id="@+id/textView22" android:layout_below="@+id/swcAccountSaving"
                             android:layout_alignLeft="@+id/textView20" android:layout_alignStart="@+id/textView20"
                             android:layout_marginTop="30dp" android:textColor="#ff000000"
@@ -94,11 +93,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="Hatirlatma Bildirim Saati:"
+                            android:text="Günlük İşlem\nHatırlatma Saati:"
                             android:id="@+id/textView23"
                             android:textColor="#ff000000"
                             android:layout_alignTop="@+id/btnAccountRem" android:layout_alignLeft="@+id/textView24"
-                            android:layout_alignStart="@+id/textView24" android:layout_marginTop="16dp"/>
+                            android:layout_alignStart="@+id/textView24" android:layout_marginTop="5dp"/>
                     <Button
                             style="?android:attr/buttonStyleSmall"
                             android:layout_width="60dp"
@@ -123,15 +122,17 @@
                             android:layout_height="1dp"
                             android:background="@color/outline"
                             android:layout_below="@+id/textView22" android:layout_alignParentLeft="true"
-                            android:layout_alignParentStart="true" android:layout_marginTop="20dp"/>
+                            android:layout_alignParentStart="true" android:layout_marginTop="20dp"
+                            android:id="@+id/view3"/>
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="Hatirlatma Bildirimi:"
-                            android:id="@+id/textView24" android:layout_below="@+id/btnAccountSav"
+                            android:text="Günlük İşlem \nHatırlatması:"
+                            android:id="@+id/textView24"
+                            android:textColor="#ff000000" android:layout_below="@+id/view3"
                             android:layout_alignLeft="@+id/textView22" android:layout_alignStart="@+id/textView22"
-                            android:layout_marginTop="30dp" android:textColor="#ff000000"/>
+                            android:layout_marginTop="10dp"/>
                     <Switch
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -151,7 +152,7 @@
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="#ff000000" android:text="Durum Bildirimi:"
+                            android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="#ff000000" android:text="Durum Çubuğunda\nGöster:"
                             android:layout_below="@+id/view" android:layout_alignLeft="@+id/textView23"
                             android:layout_alignStart="@+id/textView23" android:layout_marginTop="20dp"
                             android:id="@+id/textView25"/>
@@ -162,8 +163,7 @@
                                 android:id="@+id/swcStatusNot"
                                 android:textOn="Açık" android:textOff="Kapalı"
                                 android:enabled="true"
-                                android:layout_alignBottom="@+id/textView25"
-                                android:layout_alignLeft="@+id/swcAccountRem"
+                                android:layout_alignTop="@+id/textView25" android:layout_alignLeft="@+id/swcAccountRem"
                                 android:layout_alignStart="@+id/swcAccountRem"/>
 
                     <View
@@ -190,7 +190,7 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:id="@+id/imgBackup" android:layout_toRightOf="@+id/btnBackup" android:layout_below="@+id/swcStatusNot"
-                            android:layout_marginTop="50dp" android:layout_marginLeft="60dp"
+                            android:layout_marginTop="60dp" android:layout_marginLeft="60dp"
                             android:src="@drawable/tick" android:scaleType="fitXY" android:visibility="invisible"/>
 
                     <RelativeLayout android:layout_width="wrap_content"

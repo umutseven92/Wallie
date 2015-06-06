@@ -5,7 +5,6 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Environment;
 import com.graviton.Cuzdan.Global;
-import org.apache.commons.codec.binary.Base64;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,7 +13,6 @@ import java.io.*;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -604,7 +602,7 @@ public class Banker implements Serializable {
      *
      * @return string halinde kullanici bilgileri
      */
-    private String ReadUserInfo() {
+    public String ReadUserInfo() {
         StringBuffer datax = new StringBuffer("");
 
         try {
@@ -672,71 +670,58 @@ public class Banker implements Serializable {
         return "FAILURE";
     }
 
-    public void ToggleStatusNotifications() throws JSONException, IOException {
+    private void ToggleInfo(String key) throws JSONException, IOException {
         String main = ReadUserInfo();
         JSONObject mainJSON = new JSONObject(main);
 
-        if (mainJSON.getJSONObject("user").getString("statusNot").equals("true")) {
-            main = main.replaceFirst("\"statusNot\":\"true\"", "\"statusNot\":\"false\"");
-        } else if (mainJSON.getJSONObject("user").getString("statusNot").equals("false")) {
-            main = main.replaceFirst("\"statusNot\":\"false\"", "\"statusNot\":\"true\"");
+        if(mainJSON.getJSONObject("user").getString(key).equals("true"))
+        {
+            main = main.replaceFirst("\"" + key + "\":\"true\"", "\"" + key + "\":\"false\"");
+        }
+        else if(mainJSON.getJSONObject("user").getString(key).equals("false"))
+        {
+            main = main.replaceFirst("\"" + key + "\":\"false\"", "\"" + key + "\":\"true\"");
         }
         JSONObject jsonToWrite = new JSONObject(main);
         WriteUserInfo(jsonToWrite.toString());
+    }
+
+    private void UpdateInfo(String key, int newHour) throws JSONException, IOException {
+        String main = ReadUserInfo();
+        JSONObject mainJSON = new JSONObject(main);
+
+        main = main.replaceFirst("\"" + key + "\":\"" + mainJSON.getJSONObject("user").getString(key) + "\"", "\"" + key + "\":\"" + newHour + "\"");
+        JSONObject jsonToWrite = new JSONObject(main);
+        WriteUserInfo(jsonToWrite.toString());
+    }
+
+    public void ToggleAutoBackup() throws JSONException, IOException{
+        ToggleInfo("autoBackup");
+    }
+
+
+    public void ToggleStatusNotifications() throws JSONException, IOException {
+        ToggleInfo("statusNot");
     }
 
     public void ToggleNotifications() throws JSONException, IOException {
-        String main = ReadUserInfo();
-        JSONObject mainJSON = new JSONObject(main);
-        if (mainJSON.getJSONObject("user").getString("notifications").equals("true")) {
-            main = main.replaceFirst("\"notifications\":\"true\"", "\"notifications\":\"false\"");
-        } else if (mainJSON.getJSONObject("user").getString("notifications").equals("false")) {
-            main = main.replaceFirst("\"notifications\":\"false\"", "\"notifications\":\"true\"");
-        }
-        JSONObject jsonToWrite = new JSONObject(main);
-        WriteUserInfo(jsonToWrite.toString());
+        ToggleInfo("notifications");
     }
 
     public void ToggleVersion() throws JSONException, IOException {
-        String main = ReadUserInfo();
-        JSONObject mainJson = new JSONObject(main);
-        if (mainJson.getJSONObject("user").getString("pro").equals("true")) {
-            main = main.replaceFirst("\"pro\":\"false\"", "\"pro\":\"true\"");
-        } else if (mainJson.getJSONObject("user").getString("pro").equals("false")) {
-            main = main.replaceFirst("\"pro\":\"false\"", "\"pro\":\"true\"");
-        }
-        JSONObject jsonToWrite = new JSONObject(main);
-        WriteUserInfo(jsonToWrite.toString());
+        ToggleInfo("pro");
     }
 
     public void UpdateNotification(int newHour) throws JSONException, IOException {
-        String main = ReadUserInfo();
-        JSONObject mainJSON = new JSONObject(main);
-
-        main = main.replaceFirst("\"savNotHour\":\"" + mainJSON.getJSONObject("user").getString("savNotHour") + "\"", "\"savNotHour\":\"" + newHour + "\"");
-        JSONObject jsonToWrite = new JSONObject(main);
-        WriteUserInfo(jsonToWrite.toString());
+        UpdateInfo("savNotHour", newHour);
     }
 
     public void UpdateRemNotification(int newHour) throws JSONException, IOException {
-        String main = ReadUserInfo();
-        JSONObject mainJSON = new JSONObject(main);
-
-        main = main.replaceFirst("\"remNotHour\":\"" + mainJSON.getJSONObject("user").getString("remNotHour") + "\"", "\"remNotHour\":\"" + newHour + "\"");
-        JSONObject jsonToWrite = new JSONObject(main);
-        WriteUserInfo(jsonToWrite.toString());
+        UpdateInfo("remNotHour", newHour);
     }
 
     public void ToggleRemNotifications() throws JSONException, IOException {
-        String main = ReadUserInfo();
-        JSONObject mainJSON = new JSONObject(main);
-        if (mainJSON.getJSONObject("user").getString("remNotifications").equals("true")) {
-            main = main.replaceFirst("\"remNotifications\":\"true\"", "\"remNotifications\":\"false\"");
-        } else if (mainJSON.getJSONObject("user").getString("remNotifications").equals("false")) {
-            main = main.replaceFirst("\"remNotifications\":\"false\"", "\"remNotifications\":\"true\"");
-        }
-        JSONObject jsonToWrite = new JSONObject(main);
-        WriteUserInfo(jsonToWrite.toString());
+        ToggleInfo("remNotifications");
     }
 
     public void AddIncomeCustom(String custom) throws IOException, JSONException {
@@ -808,7 +793,7 @@ public class Banker implements Serializable {
         JSONArray incomeCustoms = userJSON.getJSONArray("incomeCustoms");
         JSONArray expenseCustoms = userJSON.getJSONArray("expenseCustoms");
 
-        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("pro"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"), userJSON.getString("statusNot"));
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("pro"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"), userJSON.getString("statusNot"), userJSON.getString("autoBackup"));
 
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
@@ -890,7 +875,7 @@ public class Banker implements Serializable {
         JSONArray incomeCustoms = userJSON.getJSONArray("incomeCustoms");
         JSONArray expenseCustoms = userJSON.getJSONArray("expenseCustoms");
 
-        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("pro"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"), userJSON.getString("statusNot"));
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("pro"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"), userJSON.getString("statusNot"), userJSON.getString("autoBackup"));
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
         JSONArray newSavings = userInfo.getJSONObject("user").getJSONArray("savings");
@@ -947,7 +932,7 @@ public class Banker implements Serializable {
         JSONArray incomeCustoms = userJSON.getJSONArray("incomeCustoms");
         JSONArray expenseCustoms = userJSON.getJSONArray("expenseCustoms");
 
-        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("pro"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"), userJSON.getString("statusNot"));
+        JSONObject userInfo = JSONHelper.CreateStartingJSON(userJSON.getString("name"), userJSON.getString("lastName"), userJSON.getString("currency"), userJSON.getString("pro"), userJSON.getString("notifications"), userJSON.getString("remNotifications"), userJSON.getString("savNotHour"), userJSON.getString("remNotHour"), userJSON.getString("statusNot"), userJSON.getString("autoBackup"));
         JSONArray newIncomes = userInfo.getJSONObject("user").getJSONArray("incomes");
         JSONArray newExpenses = userInfo.getJSONObject("user").getJSONArray("expenses");
         JSONArray newSavings = userInfo.getJSONObject("user").getJSONArray("savings");

@@ -4,11 +4,13 @@ import android.app.AlarmManager;
 import android.app.Application;
 import android.app.PendingIntent;
 import android.content.Context;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.SplittableRandom;
 
 
 /**
@@ -39,7 +41,23 @@ public class User implements Serializable {
         _savingNotHour = jsonUser.getInt("savNotHour");
         _remNotHour = jsonUser.getInt("remNotHour");
         _statusNotification = jsonUser.getString("statusNot");
+
         _banker = new Banker(jsonUser.getJSONArray("incomes"), jsonUser.getJSONArray("expenses"), jsonUser.getJSONArray("savings"), jsonUser.getJSONArray("incomeCustoms"), jsonUser.getJSONArray("expenseCustoms"), this._filePath, app, _currency);
+
+        // Yeni featurelar buradan sonra
+        // Auto Backup
+        try
+        {
+            _autoBackup = jsonUser.getString("autoBackup");
+        }
+        catch (JSONException ex)
+        {
+            _autoBackup = "false";
+            JSONObject json = new JSONObject(_banker.ReadUserInfo());
+            json.getJSONObject("user").put("autoBackup", _autoBackup);
+            _banker.WriteUserInfo(json.toString());
+        }
+
     }
 
     public enum Version {
@@ -55,6 +73,18 @@ public class User implements Serializable {
 
     public void SetVersion(Version version) {
         _version = version;
+    }
+
+    private String _autoBackup;
+
+    public void SetAutoBackup(String auto)
+    {
+        _autoBackup = auto;
+    }
+
+    public String GetAutoBackup()
+    {
+        return _autoBackup;
     }
 
     private String _remNotification;
@@ -108,6 +138,18 @@ public class User implements Serializable {
         } else {
             _statusNotification = "true";
             NotificationHelper.SetPermaNotification(context, this.GetBanker().GetBalance(new Date(), false), this.GetCurrency());
+        }
+    }
+
+    public void ToggleAutoBackup()
+    {
+        if(_autoBackup.equals("true"))
+        {
+            _autoBackup = "false";
+        }
+        else
+        {
+            _autoBackup = "true";
         }
     }
 

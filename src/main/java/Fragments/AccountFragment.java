@@ -1,34 +1,19 @@
 package Fragments;
 
-import Helpers.Billing.IabHelper;
-import Helpers.Billing.IabResult;
-import Helpers.Billing.Purchase;
 import Helpers.ErrorDialog;
 import Helpers.User;
-import android.accounts.Account;
-import android.accounts.AccountManager;
-import android.app.AlarmManager;
 import android.app.AlertDialog;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Html;
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
-import com.graviton.Cuzdan.SplashActivity;
 import org.json.JSONException;
 
 import java.io.IOException;
-import java.util.UUID;
-import java.util.regex.Pattern;
 
 /**
  * Created by Umut Seven on 18.11.2014, for Graviton.
@@ -135,7 +120,14 @@ public class AccountFragment extends Fragment {
         swcAutoBackup.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                // Auto Backup
+                try {
+                    _user.GetBanker().ToggleAutoBackup();
+                    _user.ToggleAutoBackup();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -215,13 +207,22 @@ public class AccountFragment extends Fragment {
             swcStat.setChecked(false);
         }
 
-        if (_user.GetVersion() != User.Version.Free)
+        if (_user.GetVersion() == User.Version.Free)
         {
             lytPro.setVisibility(View.GONE);
         }
         else
         {
             lytPro.setVisibility(View.VISIBLE);
+
+            if(_user.GetAutoBackup().equals("true"))
+            {
+                swcAutoBackup.setChecked(true);
+            }
+            else
+            {
+                swcAutoBackup.setChecked(false);
+            }
         }
 
         imgBackup.setVisibility(View.INVISIBLE);

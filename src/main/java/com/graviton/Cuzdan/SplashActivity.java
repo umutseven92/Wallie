@@ -22,12 +22,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.*;
-import java.util.Base64;
 
 /**
  * Created by Umut Seven on 11.11.2014, for Graviton.
@@ -53,13 +51,13 @@ public class SplashActivity extends Activity {
 
         setContentView(R.layout.splash_fragment);
 
-        String firstLight = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwPEw2hcLUtHvpxhc/vxeTH4MN9kv7TFcaNhkeeenj5xNqLDrXVmgUaL";
-        String secondLight = "3KRsght+my50Yt3xjmDVS5NkMV7OZXE7VNKouvUCp12s5iJmoRCDfUpOxxrv3EtmJfYw+H9kwRpbQtDPm6giUEGjXGLO3mEbfbQ3qNOyeSU8hCgYRPsI";
-        String thirdLight = "QrcH6p57y/kwR2+sI5AYTe++AqcjkgpNrpmP4cKLdGe3646G5FOLLv53deQgu26cBkCWKdRuZ3pEl/6CmlPO5bGyckplJlJIfI14Zw9seWrVBt6yrGe0zmy7eMFXA0hZRmp47hzNpzeR4E0mgsPVdSvvSP5xPq6AhjEDipyhPYQIDAQAB";
+        String firstKeyPart = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwPEw2hcLUtHvpxhc/vxeTH4MN9kv7TFcaNhkeeenj5xNqLDrXVmgUaL";
+        String secondKeyPart = "3KRsght+my50Yt3xjmDVS5NkMV7OZXE7VNKouvUCp12s5iJmoRCDfUpOxxrv3EtmJfYw+H9kwRpbQtDPm6giUEGjXGLO3mEbfbQ3qNOyeSU8hCgYRPsI";
+        String thirdKeyPart = "QrcH6p57y/kwR2+sI5AYTe++AqcjkgpNrpmP4cKLdGe3646G5FOLLv53deQgu26cBkCWKdRuZ3pEl/6CmlPO5bGyckplJlJIfI14Zw9seWrVBt6yrGe0zmy7eMFXA0hZRmp47hzNpzeR4E0mgsPVdSvvSP5xPq6AhjEDipyhPYQIDAQAB";
 
-        String shineALight = firstLight.concat(secondLight).concat(thirdLight);
+        String billingKey = firstKeyPart.concat(secondKeyPart).concat(thirdKeyPart);
 
-        iabHelper = new IabHelper(this, shineALight);
+        iabHelper = new IabHelper(this, billingKey);
 
         iabHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
             public void onIabSetupFinished(IabResult result) {
@@ -184,7 +182,7 @@ public class SplashActivity extends Activity {
 
     private void SetFirstUser() throws Exception {
 
-        JSONObject userInf = JSONHelper.CreateStartingJSON(userName, userLastName, userCurrency, pros, "true", "true", "8", "14", "true");
+        JSONObject userInf = JSONHelper.CreateStartingJSON(userName, userLastName, userCurrency, pros, "true", "true", "8", "14", "true", "false");
         User user = new User(userInf, file.getAbsolutePath(), getApplication());
         user.GetBanker().WriteUserInfo(userInf.toString());
 

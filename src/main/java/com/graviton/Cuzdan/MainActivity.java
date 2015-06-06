@@ -23,7 +23,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import org.json.JSONException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +39,6 @@ public class MainActivity extends FragmentActivity {
     SettingsPageAdapter settingsPageAdapter;
     AboutPageAdapter aboutPageAdapter;
     PlusPageAdapter plusPageAdapter;
-
     private DrawerLayout drawerLayout;
     private ListView drawerList;
     private ActionBarDrawerToggle drawerToggle;
@@ -50,7 +51,6 @@ public class MainActivity extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
 
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.main);
 
         pager = (ViewPager) findViewById(R.id.pager);
@@ -282,6 +282,7 @@ public class MainActivity extends FragmentActivity {
     @Override
     public void onBackPressed() {
 
+
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .setTitle("Çıkış")
@@ -290,6 +291,16 @@ public class MainActivity extends FragmentActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ((Global) getApplication()).iabHelper.dispose();
+                        User user = ((Global) getApplication()).GetUser();
+                        if (user.GetVersion() == User.Version.Pro && user.GetAutoBackup().equals("true")) {
+                            try {
+                                user.GetBanker().BackupUserData();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                         finish();
                     }
 
