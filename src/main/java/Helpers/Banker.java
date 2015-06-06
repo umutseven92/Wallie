@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Environment;
 import com.graviton.Cuzdan.Global;
+import org.apache.commons.codec.binary.Base64;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,6 +14,7 @@ import java.io.*;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -638,8 +640,11 @@ public class Banker implements Serializable {
 
     }
 
+
     public String BackupUserData() throws JSONException, IOException {
-        String main = ReadUserInfo();
+        String mainInfo = ReadUserInfo();
+
+        String main = android.util.Base64.encodeToString(mainInfo.getBytes(), android.util.Base64.DEFAULT);
 
         String state = android.os.Environment.getExternalStorageState();
 

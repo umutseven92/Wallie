@@ -1,9 +1,6 @@
 package com.graviton.Cuzdan;
 
-import Helpers.Billing.IabException;
-import Helpers.Billing.IabHelper;
-import Helpers.Billing.IabResult;
-import Helpers.Billing.Inventory;
+import Helpers.Billing.*;
 import Helpers.ErrorDialog;
 import Helpers.JSONHelper;
 import Helpers.NotificationHelper;
@@ -29,8 +26,8 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
+import java.util.Base64;
 
 /**
  * Created by Umut Seven on 11.11.2014, for Graviton.
@@ -164,7 +161,9 @@ public class SplashActivity extends Activity {
         String fileName = getString(R.string.cuzdanUserConfig);
         File main = new File(this.getFilesDir(), fileName);
 
-        JSONObject userJSON = new JSONObject(sb.toString());
+        String info = new String(android.util.Base64.decode(sb.toString(), android.util.Base64.DEFAULT));
+
+        JSONObject userJSON = new JSONObject(info);
         User user = new User(userJSON, main.getAbsolutePath(), getApplication());
         user.GetBanker().WriteUserInfo(userJSON.toString());
 

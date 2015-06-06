@@ -15,6 +15,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,10 +37,11 @@ public class AccountFragment extends Fragment {
 
     static User _user;
     TextView txtName, txtCurrency;
-    Switch swcSaving, swcRem, swcStat;
+    Switch swcSaving, swcRem, swcStat, swcAutoBackup;
     Button btnSav, btnRem,  btnBackup;
     ImageView imgBackup;
     ProgressBar pbar;
+    RelativeLayout lytPro;
     int num;
     int refNum;
 
@@ -62,6 +64,8 @@ public class AccountFragment extends Fragment {
         btnBackup = (Button) v.findViewById(R.id.btnBackup);
         imgBackup = (ImageView) v.findViewById(R.id.imgBackup);
         pbar = (ProgressBar) v.findViewById(R.id.progressBar);
+        swcAutoBackup = (Switch)v.findViewById(R.id.swcAutoBackup);
+        lytPro = (RelativeLayout) v.findViewById(R.id.lytProOptions);
 
         _user = ((com.graviton.Cuzdan.Global) getActivity().getApplication()).GetUser();
 
@@ -125,6 +129,13 @@ public class AccountFragment extends Fragment {
                     e.printStackTrace();
                 }
 
+            }
+        });
+
+        swcAutoBackup.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                // Auto Backup
             }
         });
 
@@ -202,6 +213,15 @@ public class AccountFragment extends Fragment {
             swcStat.setChecked(true);
         } else if (_user.GetStatusNotification().equals("false")) {
             swcStat.setChecked(false);
+        }
+
+        if (_user.GetVersion() != User.Version.Free)
+        {
+            lytPro.setVisibility(View.GONE);
+        }
+        else
+        {
+            lytPro.setVisibility(View.VISIBLE);
         }
 
         imgBackup.setVisibility(View.INVISIBLE);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Cüzdan</string>
-    <string name="version">0.9.5</string>
+    <string name="version">0.9.6</string>
 
     <string name="dummyData">false</string>
 

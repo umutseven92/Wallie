@@ -181,7 +181,7 @@ public class ShowcaseView extends RelativeLayout
         if (bitmapBuffer == null || haveBoundsChanged()) {
             if (bitmapBuffer != null)
                 bitmapBuffer.recycle();
-            bitmapBuffer = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_4444);
+            bitmapBuffer = Bitmap.createBitmap(getMeasuredWidth() > 0 ? getMeasuredWidth(): 1,getMeasuredHeight() > 0 ? getMeasuredHeight(): 1, Bitmap.Config.ARGB_4444);
 
         }
     }

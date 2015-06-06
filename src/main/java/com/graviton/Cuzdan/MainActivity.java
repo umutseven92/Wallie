@@ -50,10 +50,7 @@ public class MainActivity extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
 
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-        }
-
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.main);
 
         pager = (ViewPager) findViewById(R.id.pager);

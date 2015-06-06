@@ -113,6 +113,7 @@ com\github\amlcurran\showcaseview\ShowcaseView.class
 com\graviton\Cuzdan\SavingsWizardActivity$2.class
 Fragments\BalanceFragment.class
 com\graviton\Cuzdan\R$string.class
+Fragments\AccountFragment$9.class
 wizard\ui\BalanceInfoFragment$2.class
 com\graviton\Cuzdan\R$styleable.class
 Fragments\ExpenseDialogFragment.class
