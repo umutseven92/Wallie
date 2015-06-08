@@ -61,6 +61,7 @@ Gündelik hayatımızda önemli bir ihtiyaç halini alan harcama takibi Cüzdan 
 
 * 0.9 (Performans & Ek Özellikler)
   * Performans gelistirme
+  * Ingilizce lokalizasyon
   * ~~Backup alma & geri yükleme~~
 
 * 1.0 (End of Line)
