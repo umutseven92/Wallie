@@ -1,6 +1,9 @@
 package com.graviton.Cuzdan;
 
-import Helpers.*;
+import Helpers.Banker;
+import Helpers.Income;
+import Helpers.IncomeAddListener;
+import Helpers.User;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -138,7 +141,7 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
             try {
                 banker.AddIncome(income);
             } catch (Exception e) {
-                ErrorDialog.ShowErrorDialog(getApplication(), e, "Gelir eklerken hata oluştu.", null);
+                e.printStackTrace();
             }
             _addListener.onAdded();
             finish();

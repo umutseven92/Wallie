@@ -1,6 +1,9 @@
 package com.graviton.Cuzdan;
 
-import Helpers.*;
+import Helpers.Banker;
+import Helpers.Saving;
+import Helpers.SavingsHelper;
+import Helpers.User;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -50,7 +53,6 @@ public class SavingActivity extends Activity {
                     banker.DeleteSaving(saving.GetID());
                 } catch (Exception e) {
                     e.printStackTrace();
-                    ErrorDialog.ShowErrorDialog(getApplication(), e, "Birikim silinirken hata oluştu.", null);
                 }
 
                 finish();

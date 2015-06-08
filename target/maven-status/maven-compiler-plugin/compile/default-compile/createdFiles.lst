@@ -108,7 +108,6 @@ com\graviton\Cuzdan\R$color.class
 com\github\amlcurran\showcaseview\ShowcaseDrawer.class
 wizard\model\BalanceInfoPage.class
 wizard\ui\SavingCustomInfoFragment$1.class
-Helpers\ErrorDialog.class
 com\github\amlcurran\showcaseview\ShowcaseView.class
 com\graviton\Cuzdan\SavingsWizardActivity$2.class
 Fragments\BalanceFragment.class
@@ -151,7 +150,6 @@ com\github\amlcurran\showcaseview\targets\ActionViewTarget$1.class
 Fragments\IncomeFragment.class
 com\graviton\Cuzdan\SplashActivity$5.class
 com\graviton\Cuzdan\R$style.class
-Helpers\ErrorDialog$1.class
 com\google\android\gms\R$integer.class
 wizard\ui\SavingCustomInfoFragment$2.class
 com\graviton\Cuzdan\MainActivity$1.class

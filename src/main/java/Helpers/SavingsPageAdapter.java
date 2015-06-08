@@ -1,8 +1,10 @@
 package Helpers;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import com.graviton.Cuzdan.R;
 
 import java.util.List;
 
@@ -16,13 +18,14 @@ public class SavingsPageAdapter extends FragmentPagerAdapter {
 
     public int Position;
 
-    public SavingsPageAdapter(FragmentManager fm, List<Fragment> fragments, int pos) {
+    public SavingsPageAdapter(FragmentManager fm, List<Fragment> fragments, int pos, Context ctx) {
         super(fm);
         Position = pos;
         this.fragments = fragments;
+        titles = new String[]{ctx.getResources().getString(R.string.savings_savings)};
     }
 
-    private final String[] titles = {"Birikim"};
+    private final String[] titles;
 
     @Override
     public Fragment getItem(int i) {

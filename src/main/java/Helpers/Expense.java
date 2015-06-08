@@ -1,6 +1,5 @@
 package Helpers;
 
-import android.nfc.Tag;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -98,8 +97,7 @@ public class Expense extends Balance {
         _tag = tag;
     }
 
-    public Tags GetTag()
-    {
+    public Tags GetTag() {
         return _tag;
     }
 }

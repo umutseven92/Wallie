@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Wallie</string>
+    <string name="app_name">Cüzdan</string>
     <string name="version">0.9.7</string>
 
     <string name="dummyData">false</string>
@@ -14,29 +14,29 @@
     <string name="testDeviceId">31F6CD288033C2FD337EF3ED277D0732</string>
 
     <string-array name="menuArray">
-        <item>Budget</item>
-        <item>Savings</item>
-        <item>Settings</item>
-        <item>About</item>
-        <item>Wallie Plus</item>
+        <item>Bütçe</item>
+        <item>Birikim</item>
+        <item>Ayarlar</item>
+        <item>Hakkında</item>
+        <item>Cüzdan Plus</item>
     </string-array>
 
     <string-array name="plusMenuArray">
-        <item>Budget</item>
-        <item>Savings</item>
-        <item>Settings</item>
-        <item>About</item>
+        <item>Bütçe</item>
+        <item>Birikim</item>
+        <item>Ayarlar</item>
+        <item>Hakkında</item>
     </string-array>
 
-    <string name="drawer_open">Open</string>
-    <string name="drawer_close">Close</string>
+    <string name="drawer_open">Aç</string>
+    <string name="drawer_close">Kapat</string>
     <string-array name="dateArray">
-        <item>Day</item>
-        <item>Month</item>
+        <item>Gün</item>
+        <item>Ay</item>
     </string-array>
     <string-array name="balanceDateArray">
-        <item>Month</item>
-        <item>Day</item>
+        <item>Ay</item>
+        <item>Gün</item>
     </string-array>
 
     <!-- Gelir Kategorileri & Alt Kategoriler -->
@@ -212,14 +212,12 @@
     <string-array name="UlaşımGiderKişisel">
         <item>Akbil</item>
         <item>Yakıt</item>
-        <item>Taksi</item>
         <item>Diğer</item>
         <item>Hepsi</item>
     </string-array>
     <string-array name="UlasimGiderKisisel">
         <item>Akbil</item>
         <item>Yakıt</item>
-        <item>Taksi</item>
         <item>Diğer</item>
         <item>Hepsi</item>
     </string-array>
@@ -302,28 +300,29 @@
         <item>Kasım</item>
         <item>Aralık</item>
     </string-array>
-    <string name="next">Next</string>
-    <string name="prev">Back</string>
-    <string name="finish_income">Add Income</string>
-    <string name="finish_expense">Add Expense</string>
-    <string name="finish_saving">Add Savings</string>
-    <string name="review">Review</string>
+    <string name="next">İleri</string>
+    <string name="prev">Geri</string>
+    <string name="finish_income">Gelir Ekle</string>
+    <string name="finish_expense">Gider Ekle</string>
+    <string name="finish_saving">Birikim Ekle</string>
+    <string name="review">Özet</string>
 
-    <string name="label_amount">Amount</string>
-    <string name="label_desc">Description</string>
-    <string name="hint_desc">Optional</string>
-    <string name="label_name">Savings Name</string>
-    <string name="label_repeating">Repeat?</string>
-    <string name="label_priority">Priority</string>
-    <string name="label_custom_day">Days</string>
-    <string name="submit_confirm_message">Looking good?</string>
-    <string name="submit_confirm_button">Add Income</string>
-    <string name="submit_cancel_button">Cancel</string>
+    <string name="label_amount">Miktar</string>
+    <string name="label_desc">Açıklama</string>
+    <string name="hint_desc">İsteğe Bağlı</string>
+    <string name="label_name">Birikim Adı</string>
+    <string name="label_repeating">Tekrarla?</string>
+    <string name="label_priority">Önem Sırası</string>
+    <string name="label_custom_day">Gün Sayısı</string>
+    <string name="submit_confirm_message">Herşey tamam?</string>
+    <string name="submit_confirm_button">Gelir Ekle</string>
+    <string name="submit_cancel_button">İptal</string>
 
     <string name="currency">TL</string>
-    <string name="insufficent_funds">Insufficient funds.</string>
+    <string name="insufficent_funds">Geliriniz yetersiz.</string>
 
     <string-array name="currencies">
+        <item tag="TRY">Türk Lirası (TRY)</item>
         <item tag="USD">United States Dollar (USD)</item>
         <item tag="EUR">Euro Member Countries (EUR)</item>
         <item tag="AFN">Afghanistan Afghani (AFN)</item>
@@ -426,7 +425,6 @@
         <item tag="TWD">Taiwan New Dollar (TWD)</item>
         <item tag="THB">Thailand Baht (THB)</item>
         <item tag="TTD">Trinidad and Tobago Dollar (TTD)</item>
-        <item tag="TRY">Turkish Lira(TRY)</item>
         <item tag="TVD">Tuvalu Dollar (TVD)</item>
         <item tag="UAH">Ukraine Hryvnia (UAH)</item>
         <item tag="GBP">United Kingdom Pound (GBP)</item>
@@ -438,55 +436,58 @@
         <item tag="ZWD">Zimbabwe Dollar (ZWD)</item>
     </string-array>
 
-    <string name="ok">OK</string>
-    <string name="intro_hello">Tell us about yourself.</string>
-    <string name="intro_name">Name</string>
-    <string name="intro_last_name">Last Name</string>
-    <string name="intro_currency">Currency:</string>
-    <string name="tutorial_1">You can add incomes from here.</string>
-    <string name="tutorial_2">You can list your records as monthly or daily, and switch to next or previous dates.</string>
-    <string name="tutorial_3">You can list records from a specific date from here.</string>
-    <string name="tutorial_4">You can see a detailed view of your records here.</string>
-    <string name="tutorial_5">Swipe left or right to switch between tabs.</string>
-    <string name="tutorial_6">Access the menu from here.</string>
-    <string name="budget_incomes">Incomes</string>
-    <string name="budget_expenses">Expenses</string>
-    <string name="budget_balance">Balance</string>
-    <string name="savings_savings">Savings</string>
-    <string name="settings_settings">Settings</string>
-    <string name="about_about">About</string>
-    <string name="plus_plus">Wallie Plus</string>
-    <string name="exit">Exit</string>
-    <string name="exit_confirm">Are you sure you want to quit?</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="intro_hi">Hello!</string>
-    <string name="intro_ok">OK</string>
-    <string name="intro_backup">Restore From Backup</string>
-    <string name="error_backup">Could not find backup.</string>
-    <string name="error_external">Could not find external memory.</string>
-    <string name="error">Error</string>
-    <string name="about_dandq"><![CDATA[Design & QA]]></string>
-    <string name="about_dands"><![CDATA[Design & Programming]]></string>
+    <string name="ok">Tamam</string>
+    <string name="intro_hello">Bize kendinizden bahsedin.</string>
+    <string name="intro_name">Adınız</string>
+    <string name="intro_last_name">Soyadınız</string>
+    <string name="intro_currency">Para Biriminiz:</string>
+    <string name="tutorial_1">Buradan gelir ekleyebilirsiniz.</string>
+    <string name="tutorial_2">Buradan kayıtlarınız gün veya ay olarak listeleyebilir, önceki ve sonraki tarihlere geçiş
+        yapabilirsiniz.
+    </string>
+    <string name="tutorial_3">Buradan belirli bir tarihteki kayıtları listeleyebilirsiniz.</string>
+    <string name="tutorial_4">Buradan kayıtlarınızı detaylı olarak inceleyebilirsiniz.</string>
+    <string name="tutorial_5">Sekmeler arasında geçiş yapmak için sağa veya sola kaydırın.</string>
+    <string name="tutorial_6">Menüye buradan ulaşabilirsiniz.</string>
+    <string name="budget_incomes">Gelirler</string>
+    <string name="budget_expenses">Giderler</string>
+    <string name="budget_balance">Bakiye</string>
+    <string name="savings_savings">Birikim</string>
+    <string name="settings_settings">Hesap</string>
+    <string name="about_about">Hakkında</string>
+    <string name="plus_plus">Cüzdan Plus</string>
+    <string name="exit">Çıkış</string>
+    <string name="exit_confirm">Çıkmak istediğinizden emin misiniz?</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
+    <string name="intro_hi">Merhaba!</string>
+    <string name="intro_ok">Tamam</string>
+    <string name="intro_backup">Yedekten Yükle</string>
+    <string name="error_backup">Yedek bulunamadı.</string>
+    <string name="error_external">Harici hafıza bulunamadı.</string>
+    <string name="error">Hata</string>
+    <string name="about_dandq"><![CDATA[Dizayn & QA]]></string>
+    <string name="about_dands"><![CDATA[Dizayn & Yazilim]]></string>
     <string name="about_company">Graviton Software</string>
     <string name="about_site">www.graviton.io</string>
     <string name="about_alican">Alican Uncu</string>
     <string name="about_umut">Umut Seven</string>
-    <string name="about_contact">Contact</string>
+    <string name="about_contact">İletişim</string>
     <string name="about_email">contact@graviton.io</string>
-    <string name="about_add">Additional Libraries</string>
-    <string name="about_icons">Icons</string>
-    <string name="settings_currency">Currency:</string>
-    <string name="settings_savings_reminder">Savings\nReminder:</string>
-    <string name="switch_open">On</string>
-    <string name="switch_closed">Off</string>
-    <string name="settings_savings_hour">Savings Reminder Hour:</string>
-    <string name="settings_daily_reminder_hour">Daily\nReminder Hour:</string>
-    <string name="settings_daily_reminder">Daily\nReminder:</string>
-    <string name="settings_status_bar">Show In Status\nBar:</string>
-    <string name="settings_backup">Back Up</string>
-    <string name="settings_auto_backup">Auto Backup:</string>
-    <string name="plus_buy">Purchase</string>
-    <string name="plus_ads">Get rid of ads!</string>
-    <string name="plus_exclusive">Get full access to features that are and will be exclusive to Wallie Plus members!</string>
+    <string name="about_add">Ek Kaynaklar</string>
+    <string name="about_icons">Simgeler</string>
+    <string name="settings_currency">Para Birimi:</string>
+    <string name="settings_savings_reminder">Birikim \nHatırlatması:</string>
+    <string name="switch_open">Açık</string>
+    <string name="switch_closed">Kapalı</string>
+    <string name="settings_savings_hour">Birikim Hatırlatma Saati:</string>
+    <string name="settings_daily_reminder_hour">Günlük İşlem\nHatırlatma Saati:</string>
+    <string name="settings_daily_reminder">Günlük İşlem \nHatırlatması:</string>
+    <string name="settings_status_bar">Durum Çubuğunda\nGöster:</string>
+    <string name="settings_backup">Yedekle</string>
+    <string name="plus_buy">Satın Al</string>
+    <string name="plus_ads">Reklamları kaldırın!</string>
+    <string name="plus_exclusive">Cüzdan Plus sahiplerine özel olacak fonksiyonlara hiçbir ekstra ücret ödemeden sahip
+        olun!
+    </string>
 </resources>

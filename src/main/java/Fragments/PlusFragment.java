@@ -3,7 +3,6 @@ package Fragments;
 import Helpers.Billing.IabHelper;
 import Helpers.Billing.IabResult;
 import Helpers.Billing.Purchase;
-import Helpers.ErrorDialog;
 import Helpers.User;
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -94,7 +93,6 @@ public class PlusFragment extends Fragment {
                     _user.GetBanker().ToggleVersion();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    ErrorDialog.ShowErrorDialog(getActivity().getApplication(), e, "Cüzdan Plus'a geçilirken hata oluştu.", null);
                 }
 
                 // Uygulamayı yeniden başlat

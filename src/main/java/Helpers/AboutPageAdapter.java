@@ -1,8 +1,10 @@
 package Helpers;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import com.graviton.Cuzdan.R;
 
 import java.util.List;
 
@@ -15,10 +17,11 @@ public class AboutPageAdapter extends FragmentPagerAdapter {
 
     public int Position;
 
-    public AboutPageAdapter(FragmentManager fm, List<Fragment> fragments, int pos) {
+    public AboutPageAdapter(FragmentManager fm, List<Fragment> fragments, int pos, Context ctx) {
         super(fm);
         Position = pos;
         this.fragments = fragments;
+        titles = new String[]{ctx.getResources().getString(R.string.about_about)};
     }
 
     @Override
@@ -31,7 +34,7 @@ public class AboutPageAdapter extends FragmentPagerAdapter {
         return this.fragments.size();
     }
 
-    private final String[] titles = {"Hakkında"};
+    private final String[] titles;
 
     @Override
     public CharSequence getPageTitle(int position) {

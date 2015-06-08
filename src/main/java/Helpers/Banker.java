@@ -674,12 +674,9 @@ public class Banker implements Serializable {
         String main = ReadUserInfo();
         JSONObject mainJSON = new JSONObject(main);
 
-        if(mainJSON.getJSONObject("user").getString(key).equals("true"))
-        {
+        if (mainJSON.getJSONObject("user").getString(key).equals("true")) {
             main = main.replaceFirst("\"" + key + "\":\"true\"", "\"" + key + "\":\"false\"");
-        }
-        else if(mainJSON.getJSONObject("user").getString(key).equals("false"))
-        {
+        } else if (mainJSON.getJSONObject("user").getString(key).equals("false")) {
             main = main.replaceFirst("\"" + key + "\":\"false\"", "\"" + key + "\":\"true\"");
         }
         JSONObject jsonToWrite = new JSONObject(main);
@@ -695,7 +692,7 @@ public class Banker implements Serializable {
         WriteUserInfo(jsonToWrite.toString());
     }
 
-    public void ToggleAutoBackup() throws JSONException, IOException{
+    public void ToggleAutoBackup() throws JSONException, IOException {
         ToggleInfo("autoBackup");
     }
 
@@ -760,7 +757,7 @@ public class Banker implements Serializable {
     }
 
     public void RepeatIncome(Income income) throws IOException, JSONException {
-        Income newIncome = new Income(income.GetCategory(),income.GetSubCategory(),income.GetAmount(),income.GetDescription(), new Date());
+        Income newIncome = new Income(income.GetCategory(), income.GetSubCategory(), income.GetAmount(), income.GetDescription(), new Date());
         AddIncome(newIncome);
     }
 
@@ -847,7 +844,7 @@ public class Banker implements Serializable {
     }
 
     public void RepeatExpense(Expense expense) throws IOException, JSONException {
-        Expense newExpense = new Expense(expense.GetCategory(),expense.GetSubCategory(),expense.GetAmount(),expense.GetDescription(), new Date(), expense.GetTag());
+        Expense newExpense = new Expense(expense.GetCategory(), expense.GetSubCategory(), expense.GetAmount(), expense.GetDescription(), new Date(), expense.GetTag());
         AddExpense(newExpense);
     }
 

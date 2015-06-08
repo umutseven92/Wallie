@@ -51,9 +51,11 @@ public final class R {
         public static final int currencies=0x7f0d002a;
         public static final int dateArray=0x7f0d0002;
         /**  Gider Kategorileri & Alt Kategoriler 
+ Gider Kategorileri & Alt Kategoriler 
          */
         public static final int expenseTags=0x7f0d000f;
         /**  Gelir Kategorileri & Alt Kategoriler 
+ Gelir Kategorileri & Alt Kategoriler 
          */
         public static final int incomeCategories=0x7f0d0004;
         public static final int menuArray=0x7f0d0000;
@@ -945,8 +947,22 @@ containing a value of this type.
         public static final int rs3_comp=0x7f060003;
     }
     public static final class string {
+        public static final int about_about=0x7f080051;
+        public static final int about_add=0x7f080065;
+        public static final int about_alican=0x7f080061;
+        public static final int about_company=0x7f08005f;
+        public static final int about_contact=0x7f080063;
+        public static final int about_dandq=0x7f08005d;
+        public static final int about_dands=0x7f08005e;
+        public static final int about_email=0x7f080064;
+        public static final int about_icons=0x7f080066;
+        public static final int about_site=0x7f080060;
+        public static final int about_umut=0x7f080062;
         public static final int accept=0x7f080002;
         public static final int app_name=0x7f080026;
+        public static final int budget_balance=0x7f08004e;
+        public static final int budget_expenses=0x7f08004d;
+        public static final int budget_incomes=0x7f08004c;
         /**   Text for notification shown when the Android Wear apps needs to be updated. Only shown on the wearable. [CHAR LIMIT=NONE] 
          */
         public static final int common_android_wear_notification_needs_update_text=0x7f080009;
@@ -1063,15 +1079,28 @@ containing a value of this type.
         public static final int drawer_close=0x7f08002e;
         public static final int drawer_open=0x7f08002d;
         public static final int dummyData=0x7f080028;
+        public static final int error=0x7f08005c;
+        public static final int error_backup=0x7f08005a;
+        public static final int error_external=0x7f08005b;
+        public static final int exit=0x7f080053;
+        public static final int exit_confirm=0x7f080054;
         public static final int expenseAdKey=0x7f08002b;
         public static final int finish_expense=0x7f080032;
         public static final int finish_income=0x7f080031;
         public static final int finish_saving=0x7f080033;
         public static final int hint_desc=0x7f080037;
         /**  Admob keys 
+ Admob keys 
          */
         public static final int incomeAdKey=0x7f08002a;
         public static final int insufficent_funds=0x7f080040;
+        public static final int intro_backup=0x7f080059;
+        public static final int intro_currency=0x7f080045;
+        public static final int intro_hello=0x7f080042;
+        public static final int intro_hi=0x7f080057;
+        public static final int intro_last_name=0x7f080044;
+        public static final int intro_name=0x7f080043;
+        public static final int intro_ok=0x7f080058;
         public static final int label_amount=0x7f080035;
         public static final int label_custom_day=0x7f08003b;
         public static final int label_desc=0x7f080036;
@@ -1079,20 +1108,44 @@ containing a value of this type.
         public static final int label_priority=0x7f08003a;
         public static final int label_repeating=0x7f080039;
         public static final int next=0x7f08002f;
+        public static final int no=0x7f080056;
         public static final int ok=0x7f080041;
+        public static final int plus_ads=0x7f080072;
+        public static final int plus_buy=0x7f080071;
+        public static final int plus_exclusive=0x7f080073;
+        public static final int plus_plus=0x7f080052;
         public static final int prev=0x7f080030;
         public static final int review=0x7f080034;
+        public static final int savings_savings=0x7f08004f;
+        public static final int settings_auto_backup=0x7f080070;
+        public static final int settings_backup=0x7f08006f;
+        public static final int settings_currency=0x7f080067;
+        public static final int settings_daily_reminder=0x7f08006d;
+        public static final int settings_daily_reminder_hour=0x7f08006c;
+        public static final int settings_savings_hour=0x7f08006b;
+        public static final int settings_savings_reminder=0x7f080068;
+        public static final int settings_settings=0x7f080050;
+        public static final int settings_status_bar=0x7f08006e;
         public static final int store_picture_message=0x7f080001;
         public static final int store_picture_title=0x7f080000;
         public static final int submit_cancel_button=0x7f08003e;
         public static final int submit_confirm_button=0x7f08003d;
         public static final int submit_confirm_message=0x7f08003c;
+        public static final int switch_closed=0x7f08006a;
+        public static final int switch_open=0x7f080069;
         public static final int testDeviceId=0x7f08002c;
+        public static final int tutorial_1=0x7f080046;
+        public static final int tutorial_2=0x7f080047;
+        public static final int tutorial_3=0x7f080048;
+        public static final int tutorial_4=0x7f080049;
+        public static final int tutorial_5=0x7f08004a;
+        public static final int tutorial_6=0x7f08004b;
         public static final int version=0x7f080027;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 
          */
         public static final int wallet_buy_button_place_holder=0x7f080025;
+        public static final int yes=0x7f080055;
     }
     public static final class style {
         public static final int AppTheme=0x7f070005;

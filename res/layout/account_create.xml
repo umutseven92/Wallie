@@ -7,9 +7,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Bize kendinizden bahsedin."
+            android:text="@string/intro_hello"
             android:id="@+id/textView13" android:layout_marginLeft="40dp" android:layout_marginTop="10dp"
-            android:textColor="@color/cuzdan_green"/>
+            android:textColor="@color/cuzdan_green" android:layout_centerHorizontal="true"/>
     <EditText
             android:layout_width="280dp"
             android:layout_height="wrap_content"
@@ -18,20 +18,20 @@
             android:id="@+id/etName"
             android:layout_below="@+id/textView13" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" android:layout_marginTop="10dp" android:layout_marginLeft="15dp"
-            android:hint="Adınız" android:textColor="#ff000000"/>
+            android:hint="@string/intro_name" android:textColor="#ff000000"/>
     <EditText
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:inputType="textCapWords|textPersonName"
             android:ems="10"
             android:id="@+id/etLastName" android:layout_below="@+id/etName" android:layout_alignLeft="@+id/etName"
-            android:layout_alignStart="@+id/etName" android:layout_marginTop="20dp" android:hint="Soyadınız"
+            android:layout_alignStart="@+id/etName" android:layout_marginTop="20dp" android:hint="@string/intro_last_name"
             android:textColor="#ff000000"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Para Biriminiz:"
+            android:text="@string/intro_currency"
             android:id="@+id/textView18"
             android:layout_marginTop="25dp" android:layout_below="@+id/etLastName"
             android:layout_alignLeft="@+id/etLastName" android:layout_alignStart="@+id/etLastName"

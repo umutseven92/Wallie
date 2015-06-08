@@ -43,7 +43,6 @@ public class ExpenseDialogFragment extends DialogFragment {
 
                             } catch (Exception e) {
                                 e.printStackTrace();
-                                ErrorDialog.ShowErrorDialog(getActivity().getApplication(), e, "Gider silinirken hata oluştu.", null);
                             }
                             _listener.onDismissed();
                             if (_secondListener != null) {

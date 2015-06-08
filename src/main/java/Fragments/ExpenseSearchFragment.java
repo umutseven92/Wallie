@@ -253,8 +253,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
 
             case R.id.spnExpenseCategory:
                 String item = parent.getItemAtPosition(position).toString();
-                if(item.equals("Hepsi"))
-                {
+                if (item.equals("Hepsi")) {
                     ArrayAdapter<String> emptyAdapter = new ArrayAdapter<String>(v.getContext(), R.layout.cuzdan_spinner_item, new ArrayList<String>());
                     emptyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spnSearchSubCategory.setAdapter(emptyAdapter);
@@ -349,12 +348,9 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
 
                 if (mode.equals("month")) {
                     try {
-                        if (spnSearchSubCategory.getSelectedItem().toString().equals("Hepsi"))
-                        {
+                        if (spnSearchSubCategory.getSelectedItem().toString().equals("Hepsi")) {
                             LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), null, false);
-                        }
-                        else
-                        {
+                        } else {
                             LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), parent.getItemAtPosition(position).toString(), false);
                         }
                     } catch (ParseException e) {
@@ -368,12 +364,9 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                 } else if (mode.equals("day")) {
                     try {
 
-                        if (spnSearchSubCategory.getSelectedItem().toString().equals("Hepsi"))
-                        {
+                        if (spnSearchSubCategory.getSelectedItem().toString().equals("Hepsi")) {
                             LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), null, true);
-                        }
-                        else
-                        {
+                        } else {
                             LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), parent.getItemAtPosition(position).toString(), true);
                         }
                     } catch (ParseException e) {
@@ -433,31 +426,22 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
         if (day) {
             expenses = _user.GetBanker().GetExpensesFromDay(dateBeingViewed);
 
-            if(category == null && subCategory == null)
-            {
-                for (Expense expense : expenses)
-                {
-                    if(expense.GetTurkishStringTag().equals(tag))
-                    {
+            if (category == null && subCategory == null) {
+                for (Expense expense : expenses) {
+                    if (expense.GetTurkishStringTag().equals(tag)) {
                         cleanedExpenses.add(expense);
                     }
                 }
             }
 
-            if(category != null && subCategory == null)
-            {
-                for (Expense expense : expenses)
-                {
-                    if(expense.GetTurkishStringTag().equals(tag) && expense.GetCategory().equals(category))
-                    {
+            if (category != null && subCategory == null) {
+                for (Expense expense : expenses) {
+                    if (expense.GetTurkishStringTag().equals(tag) && expense.GetCategory().equals(category)) {
                         cleanedExpenses.add(expense);
                     }
                 }
 
-            }
-
-            else
-            {
+            } else {
                 for (Expense expense : expenses) {
                     if (expense.GetCategory().equals(category) && expense.GetSubCategory().equals(subCategory) && expense.GetTurkishStringTag().equals(tag)) {
                         cleanedExpenses.add(expense);
@@ -469,30 +453,21 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
         } else {
             expenses = _user.GetBanker().GetExpensesFromMonth(dateBeingViewed);
 
-            if(category == null && subCategory == null)
-            {
-                for (Expense expense : expenses)
-                {
-                    if(expense.GetTurkishStringTag().equals(tag))
-                    {
+            if (category == null && subCategory == null) {
+                for (Expense expense : expenses) {
+                    if (expense.GetTurkishStringTag().equals(tag)) {
                         cleanedExpenses.add(expense);
                     }
                 }
             }
 
-            if(category != null && subCategory == null)
-            {
-                for (Expense expense : expenses)
-                {
-                    if(expense.GetTurkishStringTag().equals(tag) && expense.GetCategory().equals(category))
-                    {
+            if (category != null && subCategory == null) {
+                for (Expense expense : expenses) {
+                    if (expense.GetTurkishStringTag().equals(tag) && expense.GetCategory().equals(category)) {
                         cleanedExpenses.add(expense);
                     }
                 }
-            }
-
-            else
-            {
+            } else {
                 for (Expense expense : expenses) {
                     if (expense.GetCategory().equals(category) && expense.GetSubCategory().equals(subCategory) && expense.GetTurkishStringTag().equals(tag)) {
                         cleanedExpenses.add(expense);

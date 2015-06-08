@@ -1,6 +1,5 @@
 package Fragments;
 
-import Helpers.ErrorDialog;
 import Helpers.User;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -23,7 +22,7 @@ public class AccountFragment extends Fragment {
     static User _user;
     TextView txtName, txtCurrency;
     Switch swcSaving, swcRem, swcStat, swcAutoBackup;
-    Button btnSav, btnRem,  btnBackup;
+    Button btnSav, btnRem, btnBackup;
     ImageView imgBackup;
     ProgressBar pbar;
     RelativeLayout lytPro;
@@ -49,7 +48,7 @@ public class AccountFragment extends Fragment {
         btnBackup = (Button) v.findViewById(R.id.btnBackup);
         imgBackup = (ImageView) v.findViewById(R.id.imgBackup);
         pbar = (ProgressBar) v.findViewById(R.id.progressBar);
-        swcAutoBackup = (Switch)v.findViewById(R.id.swcAutoBackup);
+        swcAutoBackup = (Switch) v.findViewById(R.id.swcAutoBackup);
         lytPro = (RelativeLayout) v.findViewById(R.id.lytProOptions);
 
         _user = ((com.graviton.Cuzdan.Global) getActivity().getApplication()).GetUser();
@@ -163,7 +162,6 @@ public class AccountFragment extends Fragment {
                     pbar.setVisibility(View.INVISIBLE);
                 } catch (Exception ex) {
                     ex.printStackTrace();
-                    ErrorDialog.ShowErrorDialog(getActivity().getApplication(), ex, "Yedeklenirken hata oluştu.", null);
                 }
             }
         });
@@ -207,20 +205,14 @@ public class AccountFragment extends Fragment {
             swcStat.setChecked(false);
         }
 
-        if (_user.GetVersion() == User.Version.Free)
-        {
+        if (_user.GetVersion() == User.Version.Free) {
             lytPro.setVisibility(View.GONE);
-        }
-        else
-        {
+        } else {
             lytPro.setVisibility(View.VISIBLE);
 
-            if(_user.GetAutoBackup().equals("true"))
-            {
+            if (_user.GetAutoBackup().equals("true")) {
                 swcAutoBackup.setChecked(true);
-            }
-            else
-            {
+            } else {
                 swcAutoBackup.setChecked(false);
             }
         }

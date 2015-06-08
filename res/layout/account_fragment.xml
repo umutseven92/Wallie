@@ -39,7 +39,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="Para Birimi: "
+                            android:text="@string/settings_currency"
                             android:id="@+id/textView19"
                             android:textColor="#ff000000"
                             android:layout_alignParentLeft="true"
@@ -66,7 +66,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="Birikim \nHatırlatması: "
+                            android:text="@string/settings_savings_reminder"
                             android:id="@+id/textView20"
                             android:textColor="#ff000000"
                             android:layout_below="@+id/textView21" android:layout_alignLeft="@+id/textView19"
@@ -75,7 +75,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/swcAccountSaving"
-                            android:textOn="Açık" android:textOff="Kapalı"
+                            android:textOn="@string/switch_open" android:textOff="@string/switch_closed"
                             android:enabled="true"
                             android:layout_marginTop="20dp"
                             android:layout_below="@+id/textView21" android:layout_alignParentRight="true"
@@ -84,7 +84,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="Birikim Hatırlatma Saati:"
+                            android:text="@string/settings_savings_hour"
                             android:id="@+id/textView22" android:layout_below="@+id/swcAccountSaving"
                             android:layout_alignLeft="@+id/textView20" android:layout_alignStart="@+id/textView20"
                             android:layout_marginTop="30dp" android:textColor="#ff000000"
@@ -93,7 +93,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="Günlük İşlem\nHatırlatma Saati:"
+                            android:text="@string/settings_daily_reminder_hour"
                             android:id="@+id/textView23"
                             android:textColor="#ff000000"
                             android:layout_alignTop="@+id/btnAccountRem" android:layout_alignLeft="@+id/textView24"
@@ -128,7 +128,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="Günlük İşlem \nHatırlatması:"
+                            android:text="@string/settings_daily_reminder"
                             android:id="@+id/textView24"
                             android:textColor="#ff000000" android:layout_below="@+id/view3"
                             android:layout_alignLeft="@+id/textView22" android:layout_alignStart="@+id/textView22"
@@ -139,7 +139,7 @@
                             android:id="@+id/swcAccountRem" android:layout_alignBottom="@+id/textView24"
                             android:layout_alignRight="@+id/swcAccountSaving"
                             android:layout_alignEnd="@+id/swcAccountSaving"
-                            android:textOff="Kapalı" android:textOn="Açık"/>
+                            android:textOff="@string/switch_closed" android:textOn="@string/switch_open"/>
 
                     <View
                             android:layout_width="700dp"
@@ -152,7 +152,7 @@
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="#ff000000" android:text="Durum Çubuğunda\nGöster:"
+                            android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="#ff000000" android:text="@string/settings_status_bar"
                             android:layout_below="@+id/view" android:layout_alignLeft="@+id/textView23"
                             android:layout_alignStart="@+id/textView23" android:layout_marginTop="20dp"
                             android:id="@+id/textView25"/>
@@ -161,7 +161,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/swcStatusNot"
-                                android:textOn="Açık" android:textOff="Kapalı"
+                                android:textOn="@string/switch_open" android:textOff="@string/switch_closed"
                                 android:enabled="true"
                                 android:layout_alignTop="@+id/textView25" android:layout_alignLeft="@+id/swcAccountRem"
                                 android:layout_alignStart="@+id/swcAccountRem"/>
@@ -173,7 +173,7 @@
                             android:layout_below="@+id/textView25" android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true" android:layout_marginTop="20dp"/>
 
-                    <Button android:layout_width="200dp" android:layout_height="wrap_content" android:text="Yedekle"
+                    <Button android:layout_width="200dp" android:layout_height="wrap_content" android:text="@string/settings_backup"
                             android:id="@+id/btnBackup"
                             android:background="@drawable/rounded_button" android:textColor="#ffffffff"
                             android:layout_below="@+id/textView25" android:layout_alignLeft="@+id/textView25"
@@ -199,7 +199,7 @@
                         <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="#ff000000" android:text="Oto Yedekleme:"
+                                android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="#ff000000" android:text="@string/settings_auto_backup"
                                 android:id="@+id/textView26"
                                 android:layout_alignParentLeft="true"
                                 android:layout_alignParentStart="true" android:layout_marginLeft="20dp" android:layout_marginTop="10dp"/>
@@ -211,7 +211,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/swcAutoBackup"
-                                android:textOn="Açık" android:textOff="Kapalı"
+                                android:textOn="@string/switch_open" android:textOff="@string/switch_closed"
                                 android:enabled="true"
                                 android:layout_alignParentTop="true" android:layout_alignParentRight="true"
                                 android:layout_alignParentEnd="true" android:layout_marginRight="20dp"/>

@@ -6,11 +6,9 @@ import android.app.PendingIntent;
 import android.content.Context;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.SplittableRandom;
 
 
 /**
@@ -46,12 +44,9 @@ public class User implements Serializable {
 
         // Yeni featurelar buradan sonra
         // Auto Backup
-        try
-        {
+        try {
             _autoBackup = jsonUser.getString("autoBackup");
-        }
-        catch (JSONException ex)
-        {
+        } catch (JSONException ex) {
             _autoBackup = "false";
             JSONObject json = new JSONObject(_banker.ReadUserInfo());
             json.getJSONObject("user").put("autoBackup", _autoBackup);
@@ -77,13 +72,11 @@ public class User implements Serializable {
 
     private String _autoBackup;
 
-    public void SetAutoBackup(String auto)
-    {
+    public void SetAutoBackup(String auto) {
         _autoBackup = auto;
     }
 
-    public String GetAutoBackup()
-    {
+    public String GetAutoBackup() {
         return _autoBackup;
     }
 
@@ -141,14 +134,10 @@ public class User implements Serializable {
         }
     }
 
-    public void ToggleAutoBackup()
-    {
-        if(_autoBackup.equals("true"))
-        {
+    public void ToggleAutoBackup() {
+        if (_autoBackup.equals("true")) {
             _autoBackup = "false";
-        }
-        else
-        {
+        } else {
             _autoBackup = "true";
         }
     }

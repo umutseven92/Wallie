@@ -1,7 +1,9 @@
 package com.graviton.Cuzdan;
 
-import Helpers.Billing.*;
-import Helpers.ErrorDialog;
+import Helpers.Billing.IabException;
+import Helpers.Billing.IabHelper;
+import Helpers.Billing.IabResult;
+import Helpers.Billing.Inventory;
 import Helpers.JSONHelper;
 import Helpers.NotificationHelper;
 import Helpers.User;
@@ -22,10 +24,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Umut Seven on 11.11.2014, for Graviton.
@@ -62,7 +66,6 @@ public class SplashActivity extends Activity {
         iabHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
             public void onIabSetupFinished(IabResult result) {
                 if (result.isFailure()) {
-                    ErrorDialog.ShowErrorDialog(getApplication(), null, "In-app billing hatası.", result.getMessage());
                     Log.d("BILLING", "Problem setting in-app billing: " + result);
                     return;
                 }
@@ -76,7 +79,6 @@ public class SplashActivity extends Activity {
                     }
                 } catch (IabException e) {
                     e.printStackTrace();
-                    ErrorDialog.ShowErrorDialog(getApplication(), e, "In-app billing hatası.", null);
                 }
             }
         });
@@ -130,7 +132,6 @@ public class SplashActivity extends Activity {
 
 
             } catch (Exception e) {
-                ErrorDialog.ShowErrorDialog(getApplication(), e, "Varolan kullanıcıyı okurken hata oluştu.", null);
                 e.printStackTrace();
             }
         } else {
@@ -226,9 +227,9 @@ public class SplashActivity extends Activity {
     private void ShowErrorDialog(String message) {
         new AlertDialog.Builder(SplashActivity.this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Hata")
+                .setTitle(getString(R.string.error))
                 .setMessage(message)
-                .setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -247,12 +248,12 @@ public class SplashActivity extends Activity {
         final EditText txtName = (EditText) accountView.findViewById(R.id.etName);
         final EditText txtLastName = (EditText) accountView.findViewById(R.id.etLastName);
 
-        alert.setTitle("Merhaba!").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        alert.setTitle(getString(R.string.intro_hi)).setPositiveButton(getString(R.string.intro_ok), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
             }
-        }).setNegativeButton("Yedekten Yükle", new DialogInterface.OnClickListener() {
+        }).setNegativeButton(getString(R.string.intro_backup), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -293,7 +294,6 @@ public class SplashActivity extends Activity {
                             try {
                                 SetFirstUser();
                             } catch (Exception e) {
-                                ErrorDialog.ShowErrorDialog(getApplication(), e, "Kullanici yaratirken hata oluştu.", null);
                                 e.printStackTrace();
                             }
                             dialog.dismiss();
@@ -324,7 +324,7 @@ public class SplashActivity extends Activity {
                             File backupFile = new File(file.getAbsolutePath(), "cuzdanBackup");
 
                             if (!backupFile.exists()) {
-                                ShowErrorDialog("Yedek bulunamadı.");
+                                ShowErrorDialog(getString(R.string.error_backup));
                             } else if (backupFile.exists()) {
                                 try {
                                     CreateBackupUser(backupFile);
@@ -346,7 +346,7 @@ public class SplashActivity extends Activity {
                             }
 
                         } else {
-                            ShowErrorDialog("Harici hafıza bulunamadı.");
+                            ShowErrorDialog(getString(R.string.error_external));
                         }
 
                     }

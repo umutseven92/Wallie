@@ -43,15 +43,13 @@ public class IncomeDialogFragment extends DialogFragment {
                                 dismiss();
                             } catch (Exception e) {
                                 e.printStackTrace();
-                                ErrorDialog.ShowErrorDialog(getActivity().getApplication(), e, "Gelir silinirken hata oluştu.", null);
                             }
                         }
                     })
-                    .setNeutralButton("Tekrarla", new DialogInterface.OnClickListener(){
+                    .setNeutralButton("Tekrarla", new DialogInterface.OnClickListener() {
                         @Override
-                        public void onClick(DialogInterface dialog, int which)
-                        {
-                            User user = ((Global)getActivity().getApplication()).GetUser();
+                        public void onClick(DialogInterface dialog, int which) {
+                            User user = ((Global) getActivity().getApplication()).GetUser();
                             Banker banker = user.GetBanker();
                             try {
                                 banker.RepeatIncome(income);

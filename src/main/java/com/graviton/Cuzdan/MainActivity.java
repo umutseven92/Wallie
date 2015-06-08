@@ -7,7 +7,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
@@ -55,16 +54,13 @@ public class MainActivity extends FragmentActivity {
 
         pager = (ViewPager) findViewById(R.id.pager);
 
-        User user = ((Global)getApplication()).GetUser();
+        User user = ((Global) getApplication()).GetUser();
 
         title = drawerTitle = getTitle();
 
-        if(user.GetVersion() == User.Version.Pro)
-        {
+        if (user.GetVersion() == User.Version.Pro) {
             menuArray = getResources().getStringArray(R.array.plusMenuArray);
-        }
-        else
-        {
+        } else {
             menuArray = getResources().getStringArray(R.array.menuArray);
         }
 
@@ -116,11 +112,11 @@ public class MainActivity extends FragmentActivity {
         List<Fragment> aboutFragments = GetAboutFragments();
         List<Fragment> plusFragments = GetPlusFragments();
 
-        budgetPageAdapter = new BudgetPageAdapter(getSupportFragmentManager(), accountFragments, 0);
-        savingsPageAdapter = new SavingsPageAdapter(getSupportFragmentManager(), savingsFragments, 1);
-        settingsPageAdapter = new SettingsPageAdapter(getSupportFragmentManager(), settingsFragments, 2);
-        aboutPageAdapter = new AboutPageAdapter(getSupportFragmentManager(), aboutFragments, 3);
-        plusPageAdapter = new PlusPageAdapter(getSupportFragmentManager(), plusFragments, 4);
+        budgetPageAdapter = new BudgetPageAdapter(getSupportFragmentManager(), accountFragments, 0, this.getApplicationContext());
+        savingsPageAdapter = new SavingsPageAdapter(getSupportFragmentManager(), savingsFragments, 1, this.getApplicationContext());
+        settingsPageAdapter = new SettingsPageAdapter(getSupportFragmentManager(), settingsFragments, 2, this.getApplicationContext());
+        aboutPageAdapter = new AboutPageAdapter(getSupportFragmentManager(), aboutFragments, 3, this.getApplicationContext());
+        plusPageAdapter = new PlusPageAdapter(getSupportFragmentManager(), plusFragments, 4, this.getApplicationContext());
 
         if (savedInstanceState == null) {
             selectItem(0);
@@ -164,8 +160,7 @@ public class MainActivity extends FragmentActivity {
         return fList;
     }
 
-    private List<Fragment> GetPlusFragments()
-    {
+    private List<Fragment> GetPlusFragments() {
         List<Fragment> fList = new ArrayList<Fragment>();
         fList.add(PlusFragment.newInstance());
 
@@ -213,27 +208,27 @@ public class MainActivity extends FragmentActivity {
         switch (position) {
             case 0:
                 List<Fragment> accountFragments = GetAccountFragments();
-                budgetPageAdapter = new BudgetPageAdapter(getSupportFragmentManager(), accountFragments, 0);
+                budgetPageAdapter = new BudgetPageAdapter(getSupportFragmentManager(), accountFragments, 0, getApplicationContext());
                 pager.setAdapter(budgetPageAdapter);
                 break;
             case 1:
                 List<Fragment> savingsFragments = GetSavingsFragments();
-                savingsPageAdapter = new SavingsPageAdapter(getSupportFragmentManager(), savingsFragments, 1);
+                savingsPageAdapter = new SavingsPageAdapter(getSupportFragmentManager(), savingsFragments, 1, getApplicationContext());
                 pager.setAdapter(savingsPageAdapter);
                 break;
             case 2:
                 List<Fragment> settingsFragments = GetSettingsFragments();
-                settingsPageAdapter = new SettingsPageAdapter(getSupportFragmentManager(), settingsFragments, 2);
+                settingsPageAdapter = new SettingsPageAdapter(getSupportFragmentManager(), settingsFragments, 2, getApplicationContext());
                 pager.setAdapter(settingsPageAdapter);
                 break;
             case 3:
                 List<Fragment> aboutFragments = GetAboutFragments();
-                aboutPageAdapter = new AboutPageAdapter(getSupportFragmentManager(), aboutFragments, 3);
+                aboutPageAdapter = new AboutPageAdapter(getSupportFragmentManager(), aboutFragments, 3, getApplicationContext());
                 pager.setAdapter(aboutPageAdapter);
                 break;
             case 4:
                 List<Fragment> plusFragments = GetPlusFragments();
-                plusPageAdapter = new PlusPageAdapter(getSupportFragmentManager(), plusFragments, 3);
+                plusPageAdapter = new PlusPageAdapter(getSupportFragmentManager(), plusFragments, 3, getApplicationContext());
                 pager.setAdapter(plusPageAdapter);
                 break;
             default:
@@ -285,9 +280,9 @@ public class MainActivity extends FragmentActivity {
 
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_info)
-                .setTitle("Çıkış")
-                .setMessage("Çıkmak istediğinizden emin misiniz?")
-                .setPositiveButton("Evet", new DialogInterface.OnClickListener() {
+                .setTitle(getString(R.string.exit))
+                .setMessage(getString(R.string.exit_confirm))
+                .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ((Global) getApplication()).iabHelper.dispose();
@@ -305,7 +300,7 @@ public class MainActivity extends FragmentActivity {
                     }
 
                 })
-                .setNegativeButton("Hayır", null)
+                .setNegativeButton(getString(R.string.no), null)
                 .show();
     }
 }

@@ -98,7 +98,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             ((Global) this.getActivity().getApplication()).SetFirst(false);
             new ShowcaseView.Builder(getActivity(), true)
                     .setTarget(new ViewTarget(infView.findViewById(R.id.btnAddIncome)))
-                    .setContentText("Buradan gelir ekleyebilirsiniz.")
+                    .setContentText(getString(R.string.tutorial_1))
                     .setStyle(R.style.ShowcaseView_Cuzdan_Next)
                     .hasManualPosition(true)
                     .xPostion(150)
@@ -420,7 +420,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             case 0:
                 new ShowcaseView.Builder(getActivity(), true)
                         .setTarget(new ViewTarget(infView.findViewById(R.id.spnDateIncome)))
-                        .setContentText("Buradan kayıtlarınız gün veya ay olarak listeleyebilir, önceki ve sonraki tarihlere geçiş yapabilirsiniz.")
+                        .setContentText(getString(R.string.tutorial_2))
                         .setStyle(R.style.ShowcaseView_Cuzdan_Next)
                         .hasManualPosition(false)
                         .setShowcaseEventListener(this)
@@ -430,7 +430,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             case 1:
                 new ShowcaseView.Builder(getActivity(), true)
                         .setTarget(new ViewTarget(infView.findViewById(R.id.btnCalendar)))
-                        .setContentText("Buradan belirli bir tarihteki kayıtları listeleyebilirsiniz.")
+                        .setContentText(getString(R.string.tutorial_3))
                         .setStyle(R.style.ShowcaseView_Cuzdan_Next)
                         .hasManualPosition(true)
                         .xPostion(140)
@@ -442,7 +442,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             case 2:
                 new ShowcaseView.Builder(getActivity(), true)
                         .setTarget(new ViewTarget(infView.findViewById(R.id.btnIncomeStats)))
-                        .setContentText("Buradan kayıtlarınızı detaylı olarak inceleyebilirsiniz.")
+                        .setContentText(getString(R.string.tutorial_4))
                         .setStyle(R.style.ShowcaseView_Cuzdan_Next)
                         .hasManualPosition(true)
                         .xPostion(80)
@@ -454,7 +454,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             case 3:
                 new ShowcaseView.Builder(getActivity(), true)
                         .setTarget(new ViewTarget(infView.findViewById(R.id.txtTutRight)))
-                        .setContentText("Sekmeler arasında geçiş yapmak için sağa veya sola kaydırın.")
+                        .setContentText(getString(R.string.tutorial_5))
                         .setStyle(R.style.ShowcaseView_Cuzdan_Next)
                         .hasManualPosition(true)
                         .xPostion(80)
@@ -467,7 +467,7 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             case 4:
                 new ShowcaseView.Builder(getActivity(), true)
                         .setTarget(new ActionViewTarget(this.getActivity(), ActionViewTarget.Type.HOME))
-                        .setContentText("Menüye buradan ulaşabilirsiniz.")
+                        .setContentText(getString(R.string.tutorial_6))
                         .setStyle(R.style.ShowcaseView_Cuzdan)
                         .hasManualPosition(false)
                         .setShowcaseEventListener(this)
