@@ -9,10 +9,10 @@ import android.os.Bundle;
 import android.text.Html;
 import com.google.gson.Gson;
 import com.graviton.Cuzdan.Global;
+import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 
 import java.io.IOException;
-
 
 /**
  * Created by Umut Seven on 17.1.2015, for Graviton.
@@ -26,12 +26,12 @@ public class IncomeDialogFragment extends DialogFragment {
         final Income income = new Gson().fromJson(bundle.getString("income"), Income.class);
         boolean canDelete = bundle.getBoolean("canDelete");
         User user = ((Global) getActivity().getApplication()).GetUser();
-        String message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", "Tarih:", DateFormatHelper.GetDayText(income.GetDate()), "Kategori:", income.GetCategory(), "Alt Kategori:", income.GetSubCategory(), "Miktar:", income.GetAmount().toString() + " " + user.GetCurrency(), "Açıklama:", income.GetDescription());
+        String message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", getString(R.string.date), DateFormatHelper.GetDayText(income.GetDate()), getString(R.string.category), income.GetCategory(), getString(R.string.subCategory), income.GetSubCategory(), getString(R.string.amount), income.GetAmount().toString() + " " + user.GetCurrency(), getString(R.string.description), income.GetDescription());
 
         if (canDelete) {
-            builder.setTitle("Detaylar")
+            builder.setTitle(getString(R.string.details))
                     .setMessage(Html.fromHtml(message))
-                    .setPositiveButton("Sil", new DialogInterface.OnClickListener() {
+                    .setPositiveButton(getString(R.string.delete), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             try {
@@ -46,7 +46,7 @@ public class IncomeDialogFragment extends DialogFragment {
                             }
                         }
                     })
-                    .setNeutralButton("Tekrarla", new DialogInterface.OnClickListener() {
+                    .setNeutralButton(getString(R.string.repeat), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             User user = ((Global) getActivity().getApplication()).GetUser();
@@ -63,7 +63,7 @@ public class IncomeDialogFragment extends DialogFragment {
 
                         }
                     })
-                    .setNegativeButton("Geri", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(getString(R.string.back), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dismiss();
@@ -71,9 +71,9 @@ public class IncomeDialogFragment extends DialogFragment {
                     });
 
         } else {
-            builder.setTitle("Detaylar")
+            builder.setTitle(getString(R.string.details))
                     .setMessage(Html.fromHtml(message))
-                    .setNegativeButton("Geri", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(getString(R.string.back), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dismiss();

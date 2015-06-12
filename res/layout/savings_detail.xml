@@ -34,7 +34,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Ad"
+                        android:text="@string/savings_name"
                         android:id="@+id/textView8" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true" android:layout_marginLeft="20dp"
                         android:layout_marginStart="24dp" android:layout_marginTop="30dp" android:textColor="@color/cuzdan_red"
@@ -57,7 +57,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Miktar"
+                        android:text="@string/savings_amount"
                         android:id="@+id/textView10" android:layout_below="@+id/txtSavingName"
                         android:layout_alignLeft="@+id/txtSavingName" android:layout_alignStart="@+id/txtSavingName"
                         android:textColor="@color/cuzdan_red" android:layout_marginTop="10dp"/>
@@ -79,7 +79,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Günlük Harcama Limiti"
+                        android:text="@string/savings_daily_limit"
                         android:id="@+id/textView15" android:layout_below="@+id/txtSavingAmount"
                         android:layout_alignLeft="@+id/txtSavingAmount" android:layout_alignStart="@+id/txtSavingAmount"
                         android:textColor="@color/cuzdan_red" android:layout_marginTop="10dp"/>
@@ -101,7 +101,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Dönem"
+                        android:text="@string/savings_period"
                         android:id="@+id/textView12" android:layout_below="@+id/txtSavingDailyLimit"
                         android:layout_alignLeft="@+id/txtSavingDailyLimit" android:layout_alignStart="@+id/txtSavingDailyLimit"
                         android:textColor="@color/cuzdan_red" android:layout_marginTop="10dp"/>
@@ -123,7 +123,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Tekrarlı?"
+                        android:text="@string/savings_repeat"
                         android:id="@+id/textView14" android:layout_below="@+id/txtSavingPeriod"
                         android:layout_alignLeft="@+id/txtSavingPeriod" android:layout_alignStart="@+id/txtSavingPeriod"
                         android:textColor="@color/cuzdan_red" android:layout_marginTop="10dp"/>
@@ -146,7 +146,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Özet"
+                        android:text="@string/savings_summary"
                         android:id="@+id/textView9" android:layout_below="@+id/txtSavingRep"
                         android:layout_alignLeft="@+id/txtSavingRep" android:layout_alignStart="@+id/txtSavingRep"
                         android:layout_marginTop="10dp" android:textColor="@color/cuzdan_red"/>
@@ -168,7 +168,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Kalan Gün"
+                        android:text="@string/savings_remaining_days"
                         android:id="@+id/textView16" android:layout_below="@+id/txtSavingDesc"
                         android:layout_alignLeft="@+id/txtSavingDesc" android:layout_alignStart="@+id/txtSavingDesc"
                         android:layout_marginTop="10dp" android:textColor="@color/cuzdan_red"/>
@@ -191,7 +191,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Biriktirilen Miktar"
+                        android:text="@string/savings_saved_amount"
                         android:id="@+id/textView17" android:layout_below="@+id/txtSavingDaysPast"
                         android:layout_alignLeft="@+id/txtSavingDaysPast" android:layout_alignStart="@+id/txtSavingDaysPast"
                         android:layout_marginTop="10dp" android:textColor="@color/cuzdan_red"/>
@@ -219,7 +219,7 @@
         <Button
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Birikimi Sil"
+                android:text="@string/savings_delete"
                 android:id="@+id/btnDeleteSaving" android:layout_centerVertical="true" android:layout_centerHorizontal="true"
                 android:background="@drawable/rounded_red_button" android:textColor="@color/foreground"
                 />

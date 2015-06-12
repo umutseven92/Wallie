@@ -289,18 +289,18 @@
     </string-array>
 
     <string-array name="turkishMonths">
-        <item>Ocak</item>
-        <item>Şubat</item>
-        <item>Mart</item>
-        <item>Nisan</item>
-        <item>Mayıs</item>
-        <item>Haziran</item>
-        <item>Temmuz</item>
-        <item>Ağustos</item>
-        <item>Eylül</item>
-        <item>Ekim</item>
-        <item>Kasım</item>
-        <item>Aralık</item>
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
     </string-array>
     <string name="next">Next</string>
     <string name="prev">Back</string>
@@ -489,4 +489,45 @@
     <string name="plus_buy">Purchase</string>
     <string name="plus_ads">Get rid of ads!</string>
     <string name="plus_exclusive">Get full access to features that are and will be exclusive to Wallie Plus members!</string>
+    <string name="total">Total</string>
+    <string name="not_daily">Have you recorded your daily expenses?</string>
+    <string name="not_savings_reached">You have reached your savings goal for today.</string>
+    <string name="not_savings_title">Wallie Savings</string>
+    <string name="not_savings_under1">You can still spend up to</string>
+    <string name="not_savings_under2">today.</string>
+    <string name="not_savings_over1">You have exceeded your limit of</string>
+    <string name="not_savings_over2">today.</string>
+    <string name="not_fast">Wallie Shortcut</string>
+    <string name="not_stat_lost">You are at a</string>
+    <string name="not_stat_loss2">loss today.</string>
+    <string name="not_stat_equal">You are currently breaking even.</string>
+    <string name="not_stat_prof1">You are at a</string>
+    <string name="not_stat_prof2">profit today.</string>
+    <string name="balance_income">Incomes</string>
+    <string name="balance_expense">Expenses</string>
+    <string name="date">Date:</string>
+    <string name="details">Details</string>
+    <string name="repeat">Repeat</string>
+    <string name="back">Back</string>
+    <string name="category">Category:</string>
+    <string name="subCategory">Subcategory:</string>
+    <string name="amount">Amount:</string>
+    <string name="description">Description:</string>
+    <string name="delete">Delete</string>
+    <string name="daily">Daily</string>
+    <string name="day">Day</string>
+    <string name="savings_start">Start Saving</string>
+    <string name="savings_limit">Daily Spending Limit:</string>
+    <string name="savings_insufficient">Your funds are insufficient to save money.</string>
+    <string name="savings_no">You don\'t have any savings.</string>
+    <string name="savings_to_start">You are ready to start saving money!</string>
+    <string name="savings_name">Name</string>
+    <string name="savings_amount">Amount</string>
+    <string name="savings_daily_limit">Daily Spending Limit</string>
+    <string name="savings_period">Period</string>
+    <string name="savings_repeat">Repeat?</string>
+    <string name="savings_summary">Summary</string>
+    <string name="savings_remaining_days">Remaining Days</string>
+    <string name="savings_saved_amount">Saved Amount</string>
+    <string name="savings_delete">Delete Saving</string>
 </resources>

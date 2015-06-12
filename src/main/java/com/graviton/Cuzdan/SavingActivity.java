@@ -64,8 +64,8 @@ public class SavingActivity extends Activity {
         pb.setProgress(savProgress.intValue());
 
         txtName.setText(saving.GetName());
-        txtAmount.setText(saving.GetAmount().toString() + " " + user.GetCurrency() + " (Günlük " + saving.GetDailyGoal().toString() + " " + user.GetCurrency() + ")");
-        txtPeriod.setText(SavingsHelper.GetPeriodString(saving.GetPeriod()) + " (" + saving.GetTotalDays(saving.GetPeriod()) + " Gün)");
+        txtAmount.setText(saving.GetAmount().toString() + " " + user.GetCurrency() + " " + "(" + getString(R.string.daily) + " " + saving.GetDailyGoal().toString() + " " + user.GetCurrency() + ")");
+        txtPeriod.setText(SavingsHelper.GetPeriodString(saving.GetPeriod()) + " (" + saving.GetTotalDays(saving.GetPeriod()) + " " + getString(R.string.day) + ")");
         txtDesc.setText(saving.GetDescription());
 
         if (saving.GetDailyLimit().compareTo(BigDecimal.ZERO) <= 0) {
@@ -76,11 +76,11 @@ public class SavingActivity extends Activity {
             txtDailyLimit.setTextColor(Color.BLACK);
         }
         if (saving.GetRepeating()) {
-            txtRep.setText("Evet");
+            txtRep.setText(getString(R.string.yes));
         } else {
-            txtRep.setText("Hayır");
+            txtRep.setText(getString(R.string.no));
         }
-        txtDaysPast.setText(saving.GetRemainingDays() + " Gün");
+        txtDaysPast.setText(saving.GetRemainingDays() + " " + getString(R.string.day));
         txtSavedAmount.setText(savProgress.toString() + " " + user.GetCurrency());
     }
 

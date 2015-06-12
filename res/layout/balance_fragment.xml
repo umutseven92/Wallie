@@ -31,7 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Gelir"
+                    android:text="@string/balance_income"
                     android:id="@+id/txtUserName" android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true" android:layout_marginTop="40dp"
                     android:layout_marginLeft="20dp" android:textColor="#ff000000"/>
@@ -39,7 +39,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Gider"
+                    android:text="@string/balance_expense"
                     android:id="@+id/textView2"
                     android:textColor="#ff000000"
                     android:layout_below="@+id/txtUserName" android:layout_alignLeft="@+id/txtUserName"
@@ -79,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Toplam"
+                    android:text="@string/total"
                     android:id="@+id/textView" android:layout_alignBottom="@+id/txtBalance"
                     android:layout_alignLeft="@+id/textView2" android:textColor="#ff000000"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"

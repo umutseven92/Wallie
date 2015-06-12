@@ -314,7 +314,7 @@
     <string name="label_repeating">Tekrarla?</string>
     <string name="label_priority">Önem Sırası</string>
     <string name="label_custom_day">Gün Sayısı</string>
-    <string name="submit_confirm_message">Herşey tamam?</string>
+    <string name="submit_confirm_message">Her şey tamam?</string>
     <string name="submit_confirm_button">Gelir Ekle</string>
     <string name="submit_cancel_button">İptal</string>
 
@@ -485,9 +485,51 @@
     <string name="settings_daily_reminder">Günlük İşlem \nHatırlatması:</string>
     <string name="settings_status_bar">Durum Çubuğunda\nGöster:</string>
     <string name="settings_backup">Yedekle</string>
+    <string name="settings_auto_backup">Auto Backup:</string>
     <string name="plus_buy">Satın Al</string>
     <string name="plus_ads">Reklamları kaldırın!</string>
     <string name="plus_exclusive">Cüzdan Plus sahiplerine özel olacak fonksiyonlara hiçbir ekstra ücret ödemeden sahip
         olun!
     </string>
+    <string name="total">Toplam</string>
+    <string name="not_daily">Günlük harcamalarınızı kaydettiniz mi?</string>
+    <string name="not_savings_reached">Birikim hedefinize ulaştınız</string>
+    <string name="not_savings_title">Cüzdan Birikim</string>
+    <string name="not_savings_under1">Bugün içinde</string>
+    <string name="not_savings_under2">daha harcayabilirsiniz.</string>
+    <string name="not_savings_over1">Birikim hedefinizi</string>
+    <string name="not_savings_over2">aştınız.</string>
+    <string name="not_fast">Hızlı Para Ekle</string>
+    <string name="not_stat_lost">Bugün</string>
+    <string name="not_stat_loss2">zarardasınız.</string>
+    <string name="not_stat_equal">Bugün geliriniz ve gideriniz eşit.</string>
+    <string name="not_stat_prof1">Bugün</string>
+    <string name="not_stat_prof2">kardasınız.</string>
+    <string name="balance_income">Gelir</string>
+    <string name="balance_expense">Gider</string>
+    <string name="date">Tarih:</string>
+    <string name="details">Detaylar</string>
+    <string name="repeat">Tekrarla</string>
+    <string name="back">Geri</string>
+    <string name="category">Kategori:</string>
+    <string name="subCategory">Alt Kategori:</string>
+    <string name="amount">Miktar:</string>
+    <string name="description">Açıklama:</string>
+    <string name="delete">Sil</string>
+    <string name="daily">Günlük</string>
+    <string name="day">Gün</string>
+    <string name="savings_start">Birikime Başla</string>
+    <string name="savings_limit">Günlük Harcama Limiti:</string>
+    <string name="savings_insufficient">Birikim yapabilmeniz için geliriniz yetersiz.</string>
+    <string name="savings_no">Birikiminiz yok.</string>
+    <string name="savings_to_start">Para biriktirmeye başlamak için \"Birikime Başla\" tuşuna basın.</string>
+    <string name="savings_name">Ad</string>
+    <string name="savings_amount">Miktar</string>
+    <string name="savings_daily_limit">Günlük Harcama Limiti</string>
+    <string name="savings_period">Dönem</string>
+    <string name="savings_repeat">Tekrarlı?</string>
+    <string name="savings_summary">Özet</string>
+    <string name="savings_remaining_days">Kalan Gün</string>
+    <string name="savings_saved_amount">Biriktirilen Miktar</string>
+    <string name="savings_delete">Birikimi Sil</string>
 </resources>

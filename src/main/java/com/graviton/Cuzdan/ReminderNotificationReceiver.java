@@ -59,8 +59,8 @@ public class ReminderNotificationReceiver extends BroadcastReceiver {
             PendingIntent pendingIntentToStart = PendingIntent.getActivity(context, 0, intentToStart, 0);
 
             Notification noti = new Notification.Builder(context).setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE)
-                    .setContentTitle("Cüzdan")
-                    .setContentText("Günlük harcamalarınızı kaydettiniz mi?").setSmallIcon(R.drawable.ic_launcher).setLargeIcon(bm)
+                    .setContentTitle(context.getResources().getString(R.string.app_name))
+                    .setContentText(context.getString(R.string.not_daily)).setSmallIcon(R.drawable.ic_launcher).setLargeIcon(bm)
                     .setLights(Color.parseColor("#F39C12"), 5000, 5000)
                     .setContentIntent(pendingIntentToStart).build();
             NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);

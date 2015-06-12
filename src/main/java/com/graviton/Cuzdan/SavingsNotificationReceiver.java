@@ -63,13 +63,13 @@ public class SavingsNotificationReceiver extends BroadcastReceiver {
                 String message = "";
 
                 if (todayBalance.compareTo(todayLimit) == 0) {
-                    message = "Birikim hedefinize ulaştınız";
+                    message = context.getString(R.string.not_savings_reached);
                 } else if (todayBalance.compareTo(todayLimit) == 1) {
                     BigDecimal offset = todayBalance.subtract(todayLimit).setScale(2, BigDecimal.ROUND_DOWN);
-                    message = "Bugün içinde " + offset.toString() + " " + user.GetCurrency() + " daha harcayabilirsiniz.";
+                    message = context.getString(R.string.not_savings_under1) + " " + offset.toString() + " " + user.GetCurrency() + " " + context.getString(R.string.not_savings_under2);
                 } else if (todayBalance.compareTo(todayLimit) == -1) {
                     BigDecimal offset = todayLimit.subtract(todayBalance).setScale(2, BigDecimal.ROUND_DOWN);
-                    message = "Birikim hedefinizi " + offset.toString() + " " + user.GetCurrency() + " aştınız.";
+                    message = context.getString(R.string.not_savings_over1) + " " + offset.toString() + " " + user.GetCurrency() + " " + context.getString(R.string.not_savings_over2);
                 }
 
                 Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher);
@@ -78,7 +78,7 @@ public class SavingsNotificationReceiver extends BroadcastReceiver {
                 PendingIntent pendingIntentToStart = PendingIntent.getActivity(context, 0, intentToStart, 0);
 
                 Notification noti = new Notification.Builder(context)
-                        .setContentTitle("Cüzdan Birikim")
+                        .setContentTitle(context.getString(R.string.not_savings_title))
                         .setContentText(message).setSmallIcon(R.drawable.ic_launcher).setLargeIcon(bm)
                         .setLights(Color.parseColor("#F39C12"), 5000, 5000)
                         .setContentIntent(pendingIntentToStart).build();

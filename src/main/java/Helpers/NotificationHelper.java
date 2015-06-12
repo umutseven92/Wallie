@@ -24,11 +24,11 @@ public class NotificationHelper {
         String message = "";
 
         if (amount.compareTo(BigDecimal.ZERO) == -1) {
-            message = "Bugün " + amount.negate() + " " + cur + " zarardasınız.";
+            message = context.getString(R.string.not_stat_lost) + " " + amount.negate() + " " + cur + " " + context.getString(R.string.not_stat_loss2);
         } else if (amount.compareTo(BigDecimal.ZERO) == 0) {
-            message = "Bugün geliriniz ve gideriniz eşit.";
+            message = context.getString(R.string.not_stat_equal);
         } else if (amount.compareTo(BigDecimal.ZERO) == 1) {
-            message = "Bugün " + amount + " " + cur + " kardasınız.";
+            message = context.getString(R.string.not_stat_prof1) + " " + amount + " " + cur + " " + context.getString(R.string.not_stat_prof2);
         }
 
         Bitmap bmp = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher);
@@ -37,7 +37,7 @@ public class NotificationHelper {
                 new NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.notification_logo)
                         .setLargeIcon(bmp)
-                        .setContentTitle("Hızlı Para Ekle")
+                        .setContentTitle(context.getString(R.string.not_fast))
                         .setContentText(message);
 
         Intent resultIntent = new Intent(context, SplashActivity.class);
