@@ -54,7 +54,7 @@
                 android:layout_above="@+id/textView6" android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" android:layout_marginBottom="5dp"/>
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:textAppearance="?android:attr/textAppearanceLarge" android:text="Toplam"
+                  android:textAppearance="?android:attr/textAppearanceLarge" android:text="@string/total"
                   android:id="@+id/textView6"
                   android:textColor="#ff000000"
                   android:layout_alignParentBottom="true" android:layout_alignLeft="@+id/lstSearchExpense"

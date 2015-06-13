@@ -21,7 +21,7 @@ public class IncomeStatsActivity extends FragmentActivity implements ActionBar.T
 
         ActionBar actionBar = getActionBar();
 
-        actionBar.setTitle("Gelirler");
+        actionBar.setTitle(getString(R.string.budget_incomes));
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.cuzdan_red)));
 

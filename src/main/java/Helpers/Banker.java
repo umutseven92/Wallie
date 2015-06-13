@@ -692,6 +692,15 @@ public class Banker implements Serializable {
         WriteUserInfo(jsonToWrite.toString());
     }
 
+    public void ChangeUserLocale(String locale) throws JSONException, IOException {
+        String main = ReadUserInfo();
+        JSONObject mainJSON = new JSONObject(main);
+
+        main = main.replaceFirst("\"" + "locale" + "\":\"" + mainJSON.getJSONObject("user").getString("locale") + "\"", "\"" + "locale" + "\":\"" + locale + "\"");
+        JSONObject jsonToWrite = new JSONObject(main);
+        WriteUserInfo(jsonToWrite.toString());
+    }
+
     public void ToggleAutoBackup() throws JSONException, IOException {
         ToggleInfo("autoBackup");
     }

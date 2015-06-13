@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Html;
 import com.google.gson.Gson;
 import com.graviton.Cuzdan.Global;
+import com.graviton.Cuzdan.R;
 import org.json.JSONException;
 
 import java.io.IOException;
@@ -26,12 +27,12 @@ public class ExpenseDialogFragment extends DialogFragment {
         final Expense expense = new Gson().fromJson(bundle.getString("expense"), Expense.class);
         boolean canDelete = bundle.getBoolean("canDelete");
         User user = ((Global) getActivity().getApplication()).GetUser();
-        String message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", "Tarih:", DateFormatHelper.GetDayText(expense.GetDate()), "Gider Türü:", expense.GetTurkishStringTag(), "Kategori:", expense.GetCategory(), "Alt Kategori:", expense.GetSubCategory(), "Miktar:", expense.GetAmount().toString() + " " + user.GetCurrency(), "Açıklama:", expense.GetDescription());
+        String message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", getString(R.string.date), DateFormatHelper.GetDayText(expense.GetDate()), getString(R.string.expense_type) + ":", expense.GetTurkishStringTag(), getString(R.string.category), expense.GetCategory(), getString(R.string.subCategory), expense.GetSubCategory(), getString(R.string.amount), expense.GetAmount().toString() + " " + user.GetCurrency(), getString(R.string.description), expense.GetDescription());
 
         if (canDelete) {
-            builder.setTitle("Detaylar")
+            builder.setTitle(getString(R.string.details))
                     .setMessage(Html.fromHtml(message))
-                    .setPositiveButton("Sil", new DialogInterface.OnClickListener() {
+                    .setPositiveButton(getString(R.string.delete), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
@@ -52,7 +53,7 @@ public class ExpenseDialogFragment extends DialogFragment {
 
                         }
                     })
-                    .setNeutralButton("Tekrarla", new DialogInterface.OnClickListener() {
+                    .setNeutralButton(getString(R.string.repeat), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             User user = ((Global) getActivity().getApplication()).GetUser();
@@ -72,7 +73,7 @@ public class ExpenseDialogFragment extends DialogFragment {
 
                         }
                     })
-                    .setNegativeButton("Geri", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(getString(R.string.back), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dismiss();
@@ -80,9 +81,9 @@ public class ExpenseDialogFragment extends DialogFragment {
                     });
 
         } else {
-            builder.setTitle("Detaylar")
+            builder.setTitle(getString(R.string.details))
                     .setMessage(Html.fromHtml(message))
-                    .setNegativeButton("Geri", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(getString(R.string.back), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dismiss();

@@ -44,6 +44,7 @@ public class MainActivity extends FragmentActivity {
     private CharSequence drawerTitle, title;
     private String[] menuArray;
     ViewPager pager;
+    User user;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,8 @@ public class MainActivity extends FragmentActivity {
 
         pager = (ViewPager) findViewById(R.id.pager);
 
-        User user = ((Global) getApplication()).GetUser();
+        user = ((Global) getApplication()).GetUser();
+        LocaleHelper.SetAppLocale(user.GetLocale(), getApplicationContext());
 
         title = drawerTitle = getTitle();
 
@@ -272,6 +274,11 @@ public class MainActivity extends FragmentActivity {
         } else {
             Log.d("IABHELPER", "onActivityResult handled by IABUtil.");
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     @Override

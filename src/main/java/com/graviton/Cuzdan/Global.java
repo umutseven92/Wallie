@@ -4,6 +4,7 @@ import Fragments.ExpenseDialogFragment;
 import Helpers.Billing.IabHelper;
 import Helpers.ExpenseAddListener;
 import Helpers.IncomeAddListener;
+import Helpers.RecordsHelper;
 import Helpers.User;
 import android.app.Application;
 
@@ -40,6 +41,8 @@ public class Global extends Application {
     public ExpenseAddListener expenseAddListener;
 
     public IabHelper iabHelper;
+
+    public RecordsHelper recordsHelper;
 
     private boolean _first;
 

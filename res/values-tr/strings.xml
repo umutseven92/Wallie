@@ -623,6 +623,7 @@
     <string name="groceries5">Beyaz Eşya</string>
     <string name="groceries6">Mobilya</string>
     <string name="groceries7">Diğer</string>
+    <string name="language">Dil:</string>
 
     <string-array name="languages">
         <item>İngilizce</item>

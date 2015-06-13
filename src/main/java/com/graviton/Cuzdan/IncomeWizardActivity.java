@@ -1,9 +1,6 @@
 package com.graviton.Cuzdan;
 
-import Helpers.Banker;
-import Helpers.Income;
-import Helpers.IncomeAddListener;
-import Helpers.User;
+import Helpers.*;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -122,6 +119,8 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
         if (mPager.getCurrentItem() == mCurrentPageSequence.size()) {
 
             User user = ((Global) getApplication()).GetUser();
+            RecordsHelper records = ((Global) getApplication()).recordsHelper;
+
             Banker banker = user.GetBanker();
 
             String category = mWizardModel.findByKey(getString(R.string.category)).getData().getString(Page.SIMPLE_DATA_KEY);
@@ -138,7 +137,15 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
             BigDecimal amount = new BigDecimal(mWizardModel.findByKey(getString(R.string.details)).getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
             String description = mWizardModel.findByKey(getString(R.string.details)).getData().getString(BalanceInfoPage.DESC_DATA_KEY);
 
-            Income income = new Income(category, subCategory, amount, description, new Date());
+            String catID = Integer.toString(records.GetIDFromName(category));
+            String subCatID = "";
+            if (!category.equals(getString(R.string.custom_category))) {
+                subCatID = Integer.toString(records.GetIDFromName(subCategory));
+            } else {
+                subCatID = subCategory;
+            }
+
+            Income income = new Income(catID, subCatID, amount, description, new Date());
             try {
                 banker.AddIncome(income);
             } catch (Exception e) {

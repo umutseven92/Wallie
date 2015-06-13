@@ -1,8 +1,13 @@
 package Fragments;
 
+import Helpers.LocaleHelper;
 import Helpers.User;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.graviton.Cuzdan.R;
+import com.graviton.Cuzdan.SplashActivity;
 import org.json.JSONException;
 
 import java.io.IOException;
@@ -26,8 +32,10 @@ public class AccountFragment extends Fragment {
     ImageView imgBackup;
     ProgressBar pbar;
     RelativeLayout lytPro;
+    Spinner spnLanguage;
     int num;
     int refNum;
+    boolean first = true;
 
     public static final AccountFragment newInstance() {
         AccountFragment f = new AccountFragment();
@@ -49,6 +57,7 @@ public class AccountFragment extends Fragment {
         imgBackup = (ImageView) v.findViewById(R.id.imgBackup);
         pbar = (ProgressBar) v.findViewById(R.id.progressBar);
         swcAutoBackup = (Switch) v.findViewById(R.id.swcAutoBackup);
+        spnLanguage = (Spinner) v.findViewById(R.id.spnLanguage);
         lytPro = (RelativeLayout) v.findViewById(R.id.lytProOptions);
 
         _user = ((com.graviton.Cuzdan.Global) getActivity().getApplication()).GetUser();
@@ -57,6 +66,9 @@ public class AccountFragment extends Fragment {
 
         btnRem.setText(String.valueOf(_user.GetRemNotHour()));
         btnSav.setText(String.valueOf(_user.GetSavingNotHour()));
+
+        spnLanguage.setAdapter(ArrayAdapter.createFromResource(v.getContext(), R.array.languages, R.layout.cuzdan_spinner_item));
+
 
         swcSaving.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -166,6 +178,53 @@ public class AccountFragment extends Fragment {
             }
         });
 
+        spnLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if (first) {
+                    first = false;
+                    return;
+                }
+                if (i == 0) {
+                    LocaleHelper.SetAppLocale("en", getActivity().getBaseContext());
+                    _user.SetLocale("en");
+                    try {
+                        _user.GetBanker().ChangeUserLocale("en");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    LocaleHelper.SetAppLocale("tr", getActivity().getBaseContext());
+                    _user.SetLocale("tr");
+
+                    try {
+                        _user.GetBanker().ChangeUserLocale("tr");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                // Uygulamayı yeniden başlat
+                Context context = getActivity().getApplicationContext();
+                Intent mStartActivity = new Intent(context, SplashActivity.class);
+                int mPendingIntentId = 123456;
+                PendingIntent mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+                AlarmManager mgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+                mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+                getActivity().finish();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         return v;
     }
 
@@ -217,8 +276,15 @@ public class AccountFragment extends Fragment {
             }
         }
 
+        if (_user.GetLocale().equals("en")) {
+            spnLanguage.setSelection(0);
+        } else {
+            spnLanguage.setSelection(1);
+        }
+
         imgBackup.setVisibility(View.INVISIBLE);
         pbar.setVisibility(View.INVISIBLE);
+
 
     }
 

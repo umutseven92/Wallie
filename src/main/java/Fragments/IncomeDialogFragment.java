@@ -26,7 +26,15 @@ public class IncomeDialogFragment extends DialogFragment {
         final Income income = new Gson().fromJson(bundle.getString("income"), Income.class);
         boolean canDelete = bundle.getBoolean("canDelete");
         User user = ((Global) getActivity().getApplication()).GetUser();
-        String message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", getString(R.string.date), DateFormatHelper.GetDayText(income.GetDate()), getString(R.string.category), income.GetCategory(), getString(R.string.subCategory), income.GetSubCategory(), getString(R.string.amount), income.GetAmount().toString() + " " + user.GetCurrency(), getString(R.string.description), income.GetDescription());
+        RecordsHelper rec = ((Global) getActivity().getApplication()).recordsHelper;
+
+        String message;
+
+        if (income.GetCategory().equals(Integer.toString(rec.GetIDFromName(getString(R.string.custom_category))))) {
+            message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", getString(R.string.date), DateFormatHelper.GetDayText(income.GetDate()), getString(R.string.category), rec.GetNameFromID(Integer.parseInt(income.GetCategory())), getString(R.string.subCategory), income.GetSubCategory(), getString(R.string.amount), income.GetAmount().toString() + " " + user.GetCurrency(), getString(R.string.description), income.GetDescription());
+        } else {
+            message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", getString(R.string.date), DateFormatHelper.GetDayText(income.GetDate()), getString(R.string.category), rec.GetNameFromID(Integer.parseInt(income.GetCategory())), getString(R.string.subCategory), rec.GetNameFromID(Integer.parseInt(income.GetSubCategory())), getString(R.string.amount), income.GetAmount().toString() + " " + user.GetCurrency(), getString(R.string.description), income.GetDescription());
+        }
 
         if (canDelete) {
             builder.setTitle(getString(R.string.details))

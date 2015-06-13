@@ -21,7 +21,7 @@ public class ExpenseStatsActivity extends FragmentActivity implements ActionBar.
 
         ActionBar actionBar = getActionBar();
 
-        actionBar.setTitle("Giderler");
+        actionBar.setTitle(getString(R.string.budget_expenses));
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.cuzdan_red)));
 

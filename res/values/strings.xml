@@ -566,6 +566,7 @@
     <string name="groceries5">Home Appliances</string>
     <string name="groceries6">Furniture</string>
     <string name="groceries7">Others</string>
+    <string name="language">Language:</string>
 
     <string-array name="languages">
         <item>English</item>

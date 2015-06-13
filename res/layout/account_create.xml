@@ -41,7 +41,7 @@
             android:layout_height="35dp"
             android:id="@+id/spnCurrencies"
             android:layout_toRightOf="@+id/textView18"
-            android:layout_toEndOf="@+id/textView18" android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/textView18" android:layout_marginLeft="10dp" android:layout_alignRight="@+id/etName"
             android:layout_marginTop="160dp"/>
     <Space
             android:layout_width="20px"

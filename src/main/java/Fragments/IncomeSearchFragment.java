@@ -36,6 +36,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
     static User _user;
     IncomeDialogFragment dialog;
     DatePickerFragment datePickerFragment;
+    RecordsHelper rec;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
         v = inflater.inflate(R.layout.income_search_fragment, container, false);
         dateBeingViewed = new Date();
         _user = ((Global) getActivity().getApplication()).GetUser();
+        rec = ((Global) getActivity().getApplication()).recordsHelper;
 
         lv = (ListView) v.findViewById(R.id.lstSearchIncomes);
         lv.setOnItemClickListener(onItemClickListener);
@@ -339,14 +341,20 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
 
             if (subCategory == null) {
                 for (Income income : incomes) {
-                    if (income.GetCategory().equals(category)) {
+                    if (income.GetCategory().equals(Integer.toString(rec.GetIDFromName(category)))) {
                         cleanedIncomes.add(income);
                     }
                 }
             } else {
                 for (Income income : incomes) {
-                    if (income.GetCategory().equals(category) && income.GetSubCategory().equals(subCategory)) {
-                        cleanedIncomes.add(income);
+                    if (!income.GetCategory().equals(Integer.toString(rec.GetIDFromName(getString(R.string.custom_category))))) {
+                        if (income.GetCategory().equals(Integer.toString(rec.GetIDFromName(category))) && income.GetSubCategory().equals(Integer.toString(rec.GetIDFromName(subCategory)))) {
+                            cleanedIncomes.add(income);
+                        }
+                    } else {
+                        if (income.GetCategory().equals(Integer.toString(rec.GetIDFromName(category))) && income.GetSubCategory().equals(subCategory)) {
+                            cleanedIncomes.add(income);
+                        }
                     }
                 }
             }
@@ -357,14 +365,21 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
 
             if (subCategory == null) {
                 for (Income income : incomes) {
-                    if (income.GetCategory().equals(category)) {
+                    if (income.GetCategory().equals(Integer.toString(rec.GetIDFromName(category)))) {
                         cleanedIncomes.add(income);
                     }
                 }
             } else {
                 for (Income income : incomes) {
-                    if (income.GetCategory().equals(category) && income.GetSubCategory().equals(subCategory)) {
-                        cleanedIncomes.add(income);
+
+                    if (!income.GetCategory().equals(Integer.toString(rec.GetIDFromName(getString(R.string.custom_category))))) {
+                        if (income.GetCategory().equals(Integer.toString(rec.GetIDFromName(category))) && income.GetSubCategory().equals(Integer.toString(rec.GetIDFromName(subCategory)))) {
+                            cleanedIncomes.add(income);
+                        }
+                    } else {
+                        if (income.GetCategory().equals(Integer.toString(rec.GetIDFromName(category))) && income.GetSubCategory().equals(subCategory)) {
+                            cleanedIncomes.add(income);
+                        }
                     }
                 }
             }

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.TwoLineListItem;
+import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
 
 import java.util.ArrayList;
@@ -44,6 +45,8 @@ public class IncomeListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         TwoLineListItem twoLineListItem;
 
+        RecordsHelper recordsHelper = ((Global) context.getApplicationContext()).recordsHelper;
+
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -57,10 +60,11 @@ public class IncomeListAdapter extends BaseAdapter {
         TextView text2 = twoLineListItem.getText2();
 
         String cat = incomes.get(position).GetCategory();
-        if (cat.equals("Özel Kategori")) {
+
+        if (cat.equals(Integer.toString(recordsHelper.GetIDFromName(context.getString(R.string.custom_category))))) {
             text1.setText(incomes.get(position).GetSubCategory());
         } else {
-            text1.setText(incomes.get(position).GetCategory());
+            text1.setText(recordsHelper.GetNameFromID(Integer.parseInt(incomes.get(position).GetCategory())));
         }
 
         text2.setText(incomes.get(position).GetAmount().toString() + " " + currency);

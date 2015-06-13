@@ -307,7 +307,6 @@ public class IncomeFragment extends Fragment implements AdapterView.OnItemSelect
             cal.add(Calendar.MONTH, -1);
             dateBeingViewed = cal.getTime();
             LoadListView(dateBeingViewed, false);
-
         }
     }
 

@@ -210,6 +210,7 @@ com\graviton\Cuzdan\SavingsWizardActivity$MyPagerAdapter.class
 Fragments\AccountFragment$1.class
 Fragments\AccountFragment$4.class
 Fragments\ExpenseGraphFragment$2.class
+Fragments\AccountFragment$10.class
 wizard\ui\SavingInfoFragment$2.class
 com\google\android\gms\R$attr.class
 Fragments\IncomeGraphFragment$1.class
@@ -280,6 +281,7 @@ Helpers\Billing\IabHelper$3$1.class
 wizard\ui\ReviewFragment$Callbacks.class
 com\google\android\gms\R$style.class
 Helpers\Billing\IabHelper$OnIabPurchaseFinishedListener.class
+Helpers\RecordsHelper.class
 Helpers\IncomeAddListener.class
 Helpers\Saving.class
 wizard\ui\MultipleChoiceFragment$1.class

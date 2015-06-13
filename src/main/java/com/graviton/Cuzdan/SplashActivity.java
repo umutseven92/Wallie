@@ -4,10 +4,7 @@ import Helpers.Billing.IabException;
 import Helpers.Billing.IabHelper;
 import Helpers.Billing.IabResult;
 import Helpers.Billing.Inventory;
-import Helpers.JSONHelper;
-import Helpers.LocaleHelper;
-import Helpers.NotificationHelper;
-import Helpers.User;
+import Helpers.*;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
@@ -113,6 +110,7 @@ public class SplashActivity extends Activity {
 
                 ((Global) this.getApplication()).SetUser(user);
                 LocaleHelper.SetAppLocale(user.GetLocale(), getBaseContext());
+                ((Global) this.getApplication()).recordsHelper = new RecordsHelper(getResources());
 
                 String sav = userJSON.getJSONObject("user").getString("notifications");
                 String rem = userJSON.getJSONObject("user").getString("remNotifications");
@@ -199,6 +197,7 @@ public class SplashActivity extends Activity {
         user.GetBanker().WriteUserInfo(userInf.toString());
 
         ((Global) this.getApplication()).SetUser(user);
+        ((Global) this.getApplication()).recordsHelper = new RecordsHelper(getResources());
         SetNotifications(8, 14, "true", "true");
         NotificationHelper.SetPermaNotification(this, user.GetBanker().GetBalance(new Date(), false), user.GetCurrency());
     }
