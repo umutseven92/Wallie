@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 
 /**
@@ -54,6 +55,31 @@ public class User implements Serializable {
             _banker.WriteUserInfo(json.toString());
         }
 
+        //Locale
+        try {
+            _locale = jsonUser.getString("locale");
+        } catch (JSONException ex) {
+            if (Locale.getDefault().getLanguage().equals("tr")) {
+                _locale = "tr";
+            } else {
+                _locale = "en";
+            }
+
+            JSONObject json = new JSONObject(_banker.ReadUserInfo());
+            json.getJSONObject("user").put("locale", _locale);
+            _banker.WriteUserInfo(json.toString());
+        }
+
+    }
+
+    private String _locale;
+
+    public String GetLocale() {
+        return _locale;
+    }
+
+    public void SetLocale(String locale) {
+        _locale = locale;
     }
 
     public enum Version {

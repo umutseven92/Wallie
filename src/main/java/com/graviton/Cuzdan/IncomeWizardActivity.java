@@ -35,7 +35,7 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
     private ViewPager mPager;
     private MyPagerAdapter mPagerAdapter;
     private boolean mEditingAfterReview;
-    private AbstractWizardModel mWizardModel = new IncomeWizardModel(this);
+    private AbstractWizardModel mWizardModel;
     private boolean mConsumePageSelectedEvent;
     private Button mNextButton;
     private Button mPrevButton;
@@ -46,7 +46,8 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getActionBar().setTitle("Gelir Ekle");
+        getActionBar().setTitle(getString(R.string.add_income));
+        mWizardModel = new IncomeWizardModel(this);
 
         if (savedInstanceState != null) {
             mWizardModel.load(savedInstanceState.getBundle("model"));
@@ -123,19 +124,19 @@ public class IncomeWizardActivity extends FragmentActivity implements PageFragme
             User user = ((Global) getApplication()).GetUser();
             Banker banker = user.GetBanker();
 
-            String category = mWizardModel.findByKey("Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
+            String category = mWizardModel.findByKey(getString(R.string.category)).getData().getString(Page.SIMPLE_DATA_KEY);
             String subCategory;
             try {
-                subCategory = mWizardModel.findByKey(category + ":Alt Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
+                subCategory = mWizardModel.findByKey(category + ":" + getString(R.string.subCategory)).getData().getString(Page.SIMPLE_DATA_KEY);
             } catch (NullPointerException ex) {
-                subCategory = mWizardModel.findByKey("Özel Kategori:Kategori Girin").getData().getString(BalanceCustomInfoPage.CUST_CAT_DATA_KEY);
+                subCategory = mWizardModel.findByKey(getString(R.string.custom_category) + ":" + getString(R.string.enter_category)).getData().getString(BalanceCustomInfoPage.CUST_CAT_DATA_KEY);
                 if (!(banker.GetIncomeCustoms().contains(subCategory))) {
                     banker.AddIncomeCustom(subCategory);
                 }
             }
 
-            BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
-            String description = mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.DESC_DATA_KEY);
+            BigDecimal amount = new BigDecimal(mWizardModel.findByKey(getString(R.string.details)).getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
+            String description = mWizardModel.findByKey(getString(R.string.details)).getData().getString(BalanceInfoPage.DESC_DATA_KEY);
 
             Income income = new Income(category, subCategory, amount, description, new Date());
             try {

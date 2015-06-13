@@ -34,7 +34,7 @@ public class ExpenseWizardActivity extends FragmentActivity implements PageFragm
     private ViewPager mPager;
     private MyPagerAdapter mPagerAdapter;
     private boolean mEditingAfterReview;
-    private AbstractWizardModel mWizardModel = new ExpenseWizardModel(this);
+    private AbstractWizardModel mWizardModel;
     private boolean mConsumePageSelectedEvent;
     private Button mNextButton;
     private Button mPrevButton;
@@ -45,7 +45,8 @@ public class ExpenseWizardActivity extends FragmentActivity implements PageFragm
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getActionBar().setTitle("Gider Ekle");
+        getActionBar().setTitle(getString(R.string.add_expense));
+        mWizardModel = new ExpenseWizardModel(this);
 
         if (savedInstanceState != null) {
             mWizardModel.load(savedInstanceState.getBundle("model"));
@@ -119,10 +120,10 @@ public class ExpenseWizardActivity extends FragmentActivity implements PageFragm
 
     private void GoForwardOnePage() throws IOException, JSONException {
         if (mPager.getCurrentItem() == mCurrentPageSequence.size()) {
-            String tag = mWizardModel.findByKey("Gider Türü").getData().getString(Page.SIMPLE_DATA_KEY);
+            String tag = mWizardModel.findByKey(getString(R.string.expense_type)).getData().getString(Page.SIMPLE_DATA_KEY);
             Expense.Tags expenseTag;
 
-            if (tag.equals("Kişisel")) {
+            if (tag.equals(getString(R.string.tag_personal))) {
                 expenseTag = Expense.Tags.Personal;
             } else {
                 expenseTag = Expense.Tags.Home;
@@ -131,23 +132,23 @@ public class ExpenseWizardActivity extends FragmentActivity implements PageFragm
             User user = ((Global) getApplication()).GetUser();
 
             Banker banker = user.GetBanker();
-            String category = mWizardModel.findByKey(tag + ":Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
+            String category = mWizardModel.findByKey(tag + ":" + getString(R.string.category)).getData().getString(Page.SIMPLE_DATA_KEY);
 
             String subCategory;
             try {
-                subCategory = mWizardModel.findByKey(category + ":Alt Kategori").getData().getString(Page.SIMPLE_DATA_KEY);
+                subCategory = mWizardModel.findByKey(category + ":" + getString(R.string.subCategory)).getData().getString(Page.SIMPLE_DATA_KEY);
             } catch (NullPointerException ex) {
 
-                subCategory = mWizardModel.findByKey("Özel Kategori (Ev):Kategori Girin").getData().getString(BalanceCustomInfoPage.CUST_CAT_DATA_KEY);
+                subCategory = mWizardModel.findByKey(getString(R.string.custom_category_home) + ":" + getString(R.string.enter_category)).getData().getString(BalanceCustomInfoPage.CUST_CAT_DATA_KEY);
                 if (subCategory == null) {
-                    subCategory = mWizardModel.findByKey("Özel Kategori (Kişisel):Kategori Girin").getData().getString(BalanceCustomInfoPage.CUST_CAT_DATA_KEY);
+                    subCategory = mWizardModel.findByKey(getString(R.string.custom_category_personal) + ":" + getString(R.string.enter_category)).getData().getString(BalanceCustomInfoPage.CUST_CAT_DATA_KEY);
                 }
                 if (!(banker.GetExpenseCustoms().contains(subCategory))) {
                     banker.AddExpenseCustom(subCategory);
                 }
             }
-            BigDecimal amount = new BigDecimal(mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
-            String description = mWizardModel.findByKey("Detaylar").getData().getString(BalanceInfoPage.DESC_DATA_KEY);
+            BigDecimal amount = new BigDecimal(mWizardModel.findByKey(getString(R.string.details)).getData().getString(BalanceInfoPage.AMOUNT_DATA_KEY));
+            String description = mWizardModel.findByKey(getString(R.string.details)).getData().getString(BalanceInfoPage.DESC_DATA_KEY);
 
             Expense expense = new Expense(category, subCategory, amount, description, new Date(), expenseTag);
 

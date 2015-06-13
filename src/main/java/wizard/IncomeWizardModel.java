@@ -17,6 +17,7 @@
 package wizard;
 
 import android.content.Context;
+import com.graviton.Cuzdan.R;
 import wizard.model.*;
 
 public class IncomeWizardModel extends AbstractWizardModel {
@@ -26,16 +27,17 @@ public class IncomeWizardModel extends AbstractWizardModel {
 
     @Override
     protected PageList onNewRootPageList() {
+
         return new PageList(
-                new BranchPage(this, "Kategori")
-                        .addBranch("Maaş", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Maaş Ödemesi", "Prim Ödemesi").setRequired(true))
-                        .addBranch("Kira", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Kira Ödemesi").setRequired(true))
-                        .addBranch("Harçlık", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Harçlık Ödemesi").setRequired(true))
-                        .addBranch("Kredi", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Banka Kredisi").setRequired(true))
-                        .addBranch("Faiz Ödemesi", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Banka Faiz Ödemesi", "Borç Faiz Ödemesi").setRequired(true))
-                        .addBranch("Şans Oyunları", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Piyango", "İddia", "Kumar Oyunları", "Diğer").setRequired(true))
-                        .addBranch("Alacaklar", new SingleFixedChoicePage(this, "Alt Kategori").setChoices("Alacaklar Tahsilatı").setRequired(true))
-                        .addBranch("Özel Kategori", new BalanceCustomInfoPage(this, "Kategori Girin").setRequired(true)).setRequired(true),
-                new BalanceInfoPage(this, "Detaylar").setRequired(true));
+                new BranchPage(this, mContext.getResources().getString(R.string.category))
+                        .addBranch(mContext.getResources().getString(R.string.salary), new SingleFixedChoicePage(this, mContext.getResources().getString(R.string.subCategory)).setChoices(mContext.getResources().getString(R.string.salary1), mContext.getResources().getString(R.string.salary2)).setRequired(true))
+                        .addBranch(mContext.getResources().getString(R.string.rent), new SingleFixedChoicePage(this, mContext.getResources().getString(R.string.subCategory)).setChoices(mContext.getResources().getString(R.string.rent1)).setRequired(true))
+                        .addBranch(mContext.getResources().getString(R.string.allowance), new SingleFixedChoicePage(this, mContext.getResources().getString(R.string.subCategory)).setChoices(mContext.getResources().getString(R.string.allowance1)).setRequired(true))
+                        .addBranch(mContext.getResources().getString(R.string.loan), new SingleFixedChoicePage(this, mContext.getResources().getString(R.string.subCategory)).setChoices(mContext.getResources().getString(R.string.loan1)).setRequired(true))
+                        .addBranch(mContext.getResources().getString(R.string.interest), new SingleFixedChoicePage(this, mContext.getResources().getString(R.string.subCategory)).setChoices(mContext.getResources().getString(R.string.interest1), mContext.getResources().getString(R.string.interest2)).setRequired(true))
+                        .addBranch(mContext.getResources().getString(R.string.games_of_chance), new SingleFixedChoicePage(this, mContext.getResources().getString(R.string.subCategory)).setChoices(mContext.getResources().getString(R.string.games1), mContext.getResources().getString(R.string.games2), mContext.getString(R.string.games3), mContext.getString(R.string.games4)).setRequired(true))
+                        .addBranch(mContext.getResources().getString(R.string.receivables), new SingleFixedChoicePage(this, mContext.getResources().getString(R.string.subCategory)).setChoices(mContext.getResources().getString(R.string.receivables1)).setRequired(true))
+                        .addBranch(mContext.getResources().getString(R.string.custom_category), new BalanceCustomInfoPage(this, mContext.getResources().getString(R.string.enter_category)).setRequired(true)).setRequired(true),
+                new BalanceInfoPage(this, mContext.getResources().getString(R.string.details)).setRequired(true));
     }
 }

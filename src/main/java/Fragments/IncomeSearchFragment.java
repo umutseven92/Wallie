@@ -193,11 +193,11 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
         switch (parent.getId()) {
             case R.id.spnSearchCategory:
                 String item = parent.getItemAtPosition(position).toString();
-                if (!item.equals("Özel Kategori")) {
+                if (!item.equals(getString(R.string.custom_category))) {
                     if (item.contains(" ")) {
-                        item = item.substring(0, item.indexOf(" ")) + "Gelir";
+                        item = item.substring(0, item.indexOf(" ")) + getString(R.string.income_search_add);
                     } else {
-                        item += "Gelir";
+                        item += getString(R.string.income_search_add);
                     }
 
                     int subID = getResources().getIdentifier(item, "array", getActivity().getPackageName());
@@ -258,7 +258,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
 
                 if (mode.equals("month")) {
                     try {
-                        if (spnSearchSubCategory.getSelectedItem().toString().equals("Hepsi")) {
+                        if (spnSearchSubCategory.getSelectedItem().toString().equals(getString(R.string.all))) {
                             LoadListView(spnSearchCategory.getSelectedItem().toString(), null, false);
                         } else {
                             LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString(), false);
@@ -274,7 +274,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                 } else if (mode.equals("day")) {
                     try {
 
-                        if (spnSearchSubCategory.getSelectedItem().toString().equals("Hepsi")) {
+                        if (spnSearchSubCategory.getSelectedItem().toString().equals(getString(R.string.all))) {
                             LoadListView(spnSearchCategory.getSelectedItem().toString(), null, true);
                         } else {
                             LoadListView(spnSearchCategory.getSelectedItem().toString(), spnSearchSubCategory.getSelectedItem().toString(), true);
@@ -293,7 +293,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
             case R.id.spnSearchIncomeDate:
                 Date today = new Date();
 
-                if (parent.getItemAtPosition(position).toString().equals("Ay")) {
+                if (parent.getItemAtPosition(position).toString().equals(getString(R.string.search_month))) {
                     mode = "month";
                     try {
                         dateBeingViewed.setDate(1);
@@ -305,7 +305,7 @@ public class IncomeSearchFragment extends Fragment implements AdapterView.OnItem
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                } else if (parent.getItemAtPosition(position).toString().equals("Gün")) {
+                } else if (parent.getItemAtPosition(position).toString().equals(getString(R.string.search_day))) {
                     mode = "day";
                     try {
                         if (dateBeingViewed.getMonth() == today.getMonth()) {

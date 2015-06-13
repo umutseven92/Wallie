@@ -210,9 +210,9 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
 
                 String item2 = spnSearchCategory.getSelectedItem().toString();
                 if (item2.contains(" ")) {
-                    item2 = item2.substring(0, item2.indexOf(" ")) + "Gider" + spnSearchTags.getSelectedItem().toString();
+                    item2 = item2.substring(0, item2.indexOf(" ")) + getString(R.string.expense_search_add) + spnSearchTags.getSelectedItem().toString();
                 } else {
-                    item2 += "Gider" + spnSearchTags.getSelectedItem().toString();
+                    item2 += getString(R.string.expense_search_add) + spnSearchTags.getSelectedItem().toString();
                 }
                 int subID2 = getResources().getIdentifier(item2, "array", getActivity().getPackageName());
 

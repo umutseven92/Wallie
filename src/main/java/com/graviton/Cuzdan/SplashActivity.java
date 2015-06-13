@@ -5,6 +5,7 @@ import Helpers.Billing.IabHelper;
 import Helpers.Billing.IabResult;
 import Helpers.Billing.Inventory;
 import Helpers.JSONHelper;
+import Helpers.LocaleHelper;
 import Helpers.NotificationHelper;
 import Helpers.User;
 import android.app.Activity;
@@ -30,6 +31,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Umut Seven on 11.11.2014, for Graviton.
@@ -110,6 +112,7 @@ public class SplashActivity extends Activity {
                 user.SetUserNotifications(PendingIntent.getBroadcast(SplashActivity.this, 0, new Intent(SplashActivity.this, SavingsNotificationReceiver.class), 0), PendingIntent.getBroadcast(SplashActivity.this, 0, new Intent(SplashActivity.this, ReminderNotificationReceiver.class), 0));
 
                 ((Global) this.getApplication()).SetUser(user);
+                LocaleHelper.SetAppLocale(user.GetLocale(), getBaseContext());
 
                 String sav = userJSON.getJSONObject("user").getString("notifications");
                 String rem = userJSON.getJSONObject("user").getString("remNotifications");
@@ -183,7 +186,15 @@ public class SplashActivity extends Activity {
 
     private void SetFirstUser() throws Exception {
 
-        JSONObject userInf = JSONHelper.CreateStartingJSON(userName, userLastName, userCurrency, pros, "true", "true", "8", "14", "true", "false");
+        String locale;
+
+        if (Locale.getDefault().getLanguage().equals("tr")) {
+            locale = "tr";
+        } else {
+            locale = "en";
+        }
+
+        JSONObject userInf = JSONHelper.CreateStartingJSON(userName, userLastName, userCurrency, pros, "true", "true", "8", "14", "true", "false", locale);
         User user = new User(userInf, file.getAbsolutePath(), getApplication());
         user.GetBanker().WriteUserInfo(userInf.toString());
 

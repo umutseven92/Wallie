@@ -212,12 +212,14 @@
     <string-array name="UlaşımGiderKişisel">
         <item>Akbil</item>
         <item>Yakıt</item>
+        <item>Taksi</item>
         <item>Diğer</item>
         <item>Hepsi</item>
     </string-array>
     <string-array name="UlasimGiderKisisel">
         <item>Akbil</item>
         <item>Yakıt</item>
+        <item>Taksi</item>
         <item>Diğer</item>
         <item>Hepsi</item>
     </string-array>
@@ -532,4 +534,98 @@
     <string name="savings_remaining_days">Kalan Gün</string>
     <string name="savings_saved_amount">Biriktirilen Miktar</string>
     <string name="savings_delete">Birikimi Sil</string>
+    <string name="enter_category">Kategori Girin</string>
+
+    <string name="salary">Maaş</string>
+    <string name="rent">Kira</string>
+    <string name="allowance">Harçlık</string>
+    <string name="loan">Kredi</string>
+    <string name="interest">Faiz Ödemesi</string>
+    <string name="games_of_chance">Şans Oyunları</string>
+    <string name="receivables">Alacaklar</string>
+    <string name="custom_category">Özel Kategori</string>
+    <string name="salary1">Maaş Ödemesi</string>
+    <string name="salary2">Prim Ödemesi</string>
+    <string name="rent1">Kira Ödemesi</string>
+    <string name="allowance1">Harçlık Ödemesi</string>
+    <string name="loan1">Banka Kredisi</string>
+    <string name="interest1">Banka Faiz Ödemesi</string>
+    <string name="interest2">Borç Faiz Ödemesi</string>
+    <string name="games1">Piyango</string>
+    <string name="games2">İddia</string>
+    <string name="games3">Kumar Oyunları</string>
+    <string name="games4">Diğer</string>
+    <string name="receivables1">Alacaklar Tahsilatı</string>
+
+    <string name="income_search_add">Gelir</string>
+    <string name="all">Hepsi</string>
+    <string name="search_month">Ay</string>
+    <string name="search_day">Gün</string>
+    <string name="add_income">Gelir Ekle</string>
+    <string name="add_expense">Gider Ekle</string>
+    <string name="tag_personal">Kişisel</string>
+    <string name="expense_type">Gider Türü</string>
+    <string name="custom_category_home">Özel Kategori (Ev)</string>
+    <string name="custom_category_personal">Özel Kategori (Kişisel)</string>
+    <string name="tag_home">Ev</string>
+    <string name="expense_search_add">Gider</string>
+    <string name="food"><![CDATA[Yiyecek & İçecek]]></string>
+    <string name="food1">Alkollü İçecek</string>
+    <string name="food2"><![CDATA[Gıda & Alkolsüz İçecek]]></string>
+    <string name="cig"><![CDATA[Sigara & Tütün]]></string>
+    <string name="shop">Alışveriş</string>
+    <string name="cig1">Sigara</string>
+    <string name="cig2">Tütün</string>
+    <string name="shop1"><![CDATA[Giyim & Ayakkabı]]></string>
+    <string name="shop2">Teknolojik Aletler</string>
+    <string name="shop3">Diğer</string>
+    <string name="health">Sağlık</string>
+    <string name="health1">Hastane Masrafları</string>
+    <string name="health2">İlaç</string>
+    <string name="ent"><![CDATA[Eğlence & Sosyal Aktiviteler]]></string>
+    <string name="ent1"><![CDATA[Gazete, Dergi & Kitap]]></string>
+    <string name="ent2">Oyun</string>
+    <string name="ent3"><![CDATA[Sinema, Tiyatro & Konser]]></string>
+    <string name="ent4">Diğer</string>
+    <string name="trans">Ulaşım</string>
+    <string name="trans1">Akbil</string>
+    <string name="trans2">Yakıt</string>
+    <string name="trans3">Taksi</string>
+    <string name="trans4">Diğer</string>
+    <string name="exchange">Döviz</string>
+    <string name="exchange1">Döviz Alımı</string>
+    <string name="install">Taksit</string>
+    <string name="install1">Taksit Ödemesi</string>
+    <string name="debt">Borçlar</string>
+    <string name="debt1">Borç Ödemesi</string>
+    <string name="debt2">Banka Faiz Borcu</string>
+    <string name="debt3">Diğer</string>
+    <string name="rent_expense">Kira</string>
+    <string name="rent_expense1">Ev Kirası</string>
+    <string name="bills">Faturalar</string>
+    <string name="bills1">Elektrik</string>
+    <string name="bills2">Su</string>
+    <string name="bills3">Doğalgaz</string>
+    <string name="bills4">Telefon</string>
+    <string name="bills5">İnternet</string>
+    <string name="bills6">Kanal Abonelikleri</string>
+    <string name="bills7">Diğer</string>
+    <string name="pet">Evcil Hayvan</string>
+    <string name="pet1">Evcil Hayvan</string>
+    <string name="pet2">Veteriner</string>
+    <string name="pet3">Mama</string>
+    <string name="pet4">Diğer</string>
+    <string name="groceries">Ev Alışverişi</string>
+    <string name="groceries1">Temizlik Malzemeleri</string>
+    <string name="groceries2"><![CDATA[Yiyecek & Alkolsüz İçecek]]></string>
+    <string name="groceries3">Alkollü İçecek</string>
+    <string name="groceries4"><![CDATA[Sigara & Tütün]]></string>
+    <string name="groceries5">Beyaz Eşya</string>
+    <string name="groceries6">Mobilya</string>
+    <string name="groceries7">Diğer</string>
+
+    <string-array name="languages">
+        <item>İngilizce</item>
+        <item>Türkçe</item>
+    </string-array>
 </resources>

@@ -10,7 +10,6 @@
     <!-- Admob keys -->
     <string name="incomeAdKey">ca-app-pub-4901113114102271/5071800540</string>
     <string name="expenseAdKey">ca-app-pub-4901113114102271/6195280144</string>
-
     <string name="testDeviceId">31F6CD288033C2FD337EF3ED277D0732</string>
 
     <string-array name="menuArray">
@@ -41,251 +40,177 @@
 
     <!-- Gelir Kategorileri & Alt Kategoriler -->
     <string-array name="incomeCategories">
-        <item>Maaş</item>
-        <item>Kira</item>
-        <item>Faiz Ödemesi</item>
-        <item>Şans Oyunları</item>
-        <item>Kredi</item>
-        <item>Alacaklar</item>
-        <item>Harçlık</item>
-        <item>Özel Kategori</item>
+        <item>Salary</item>
+        <item>Rent</item>
+        <item>Interest</item>
+        <item>Games of Chance</item>
+        <item>Loan</item>
+        <item>Receivables</item>
+        <item>Allowance</item>
+        <item>Custom Category</item>
     </string-array>
 
-    <string-array name="MaaşGelir">
-        <item>Maaş Ödemesi</item>
-        <item>Prim Ödemesi</item>
-        <item>Hepsi</item>
-    </string-array>
-    <string-array name="MaasGelir">
-        <item>Maaş Ödemesi</item>
-        <item>Prim Ödemesi</item>
-        <item>Hepsi</item>
+    <string-array name="SalaryIncome">
+        <item>Salary Payment</item>
+        <item>Premium Payment</item>
+        <item>All</item>
     </string-array>
 
-    <string-array name="KiraGelir">
-        <item>Kira Ödemesi</item>
-        <item>Hepsi</item>
-    </string-array>
-    <string-array name="FaizGelir">
-        <item>Banka Faiz Ödemesi</item>
-        <item>Borç Faiz Ödemesi</item>
-        <item>Hepsi</item>
+    <string-array name="RentIncome">
+        <item>Rent Payment</item>
+        <item>All</item>
     </string-array>
 
-    <string-array name="ŞansGelir">
-        <item>Piyango</item>
-        <item>İddia</item>
-        <item>Kumar Oyunları</item>
-        <item>Diğer</item>
-        <item>Hepsi</item>
-    </string-array>
-    <string-array name="SansGelir">
-        <item>Piyango</item>
-        <item>İddia</item>
-        <item>Kumar Oyunları</item>
-        <item>Diğer</item>
-        <item>Hepsi</item>
+    <string-array name="InterestIncome">
+        <item>Bank Interest</item>
+        <item>Debt Interest</item>
+        <item>All</item>
     </string-array>
 
-    <string-array name="AlacaklarGelir">
-        <item>Alacaklar Tahsilatı</item>
-        <item>Hepsi</item>
+    <string-array name="GamesIncome">
+        <item>Lottery</item>
+        <item>Betting</item>
+        <item>Gambling</item>
+        <item>Other</item>
+        <item>All</item>
     </string-array>
 
-    <string-array name="HarçlıkGelir">
-        <item>Harçlık Ödemesi</item>
-        <item>Hepsi</item>
-    </string-array>
-    <string-array name="HarclikGelir">
-        <item>Harçlık Ödemesi</item>
-        <item>Hepsi</item>
+    <string-array name="LoanIncome">
+        <item>Bank Loan</item>
+        <item>All</item>
     </string-array>
 
-    <string-array name="KrediGelir">
-        <item>Banka Kredisi</item>
-        <item>Hepsi</item>
+    <string-array name="ReceivablesIncome">
+        <item>Receivables Payment</item>
+        <item>All</item>
     </string-array>
+
+    <string-array name="AllowanceIncome">
+        <item>Allowance Payment</item>
+        <item>All</item>
+    </string-array>
+
 
     <!-- Gider Kategorileri & Alt Kategoriler -->
     <string-array name="expenseTags">
-        <item>Kişisel</item>
-        <item>Ev</item>
+        <item>Personal</item>
+        <item>Home</item>
     </string-array>
 
-    <string-array name="Kişisel">
-        <item>Yiyecek &amp; İçecek</item>
-        <item>Sigara &amp; Tütün</item>
-        <item>Alışveriş</item>
-        <item>Sağlık</item>
-        <item>Eğlence &amp; Sosyal Aktiviteler</item>
-        <item>Ulaşım</item>
-        <item>Döviz</item>
-        <item>Taksit</item>
-        <item>Borçlar</item>
-        <item>Özel Kategori (Kişisel)</item>
-        <item>Hepsi</item>
-    </string-array>
-    <string-array name="Kisisel">
-        <item>Yiyecek &amp; İçecek</item>
-        <item>Sigara &amp; Tütün</item>
-        <item>Alışveriş</item>
-        <item>Sağlık</item>
-        <item>Eğlence &amp; Sosyal Aktiviteler</item>
-        <item>Ulaşım</item>
-        <item>Döviz</item>
-        <item>Taksit</item>
-        <item>Borçlar</item>
-        <item>Özel Kategori (Kişisel)</item>
-        <item>Hepsi</item>
+    <string-array name="Personal">
+        <item>Food &amp; Drink</item>
+        <item>Smoking &amp; Tobacco</item>
+        <item>Shopping</item>
+        <item>Health</item>
+        <item>Entertainment &amp; Social Activities</item>
+        <item>Transportation</item>
+        <item>Exchange</item>
+        <item>Installments</item>
+        <item>Debts</item>
+        <item>Custom Category (Personal)</item>
+        <item>All</item>
     </string-array>
 
-    <string-array name="Ev">
-        <item>Kira</item>
-        <item>Faturalar</item>
-        <item>Evcil Hayvan</item>
-        <item>Ev Alışverişi</item>
-        <item>Özel Kategori (Ev)</item>
-        <item>Hepsi</item>
+    <string-array name="Home">
+        <item>Rent</item>
+        <item>Bills</item>
+        <item>Pets</item>
+        <item>Groceries &amp; Supplies</item>
+        <item>Custom Category (Home)</item>
+        <item>All</item>
     </string-array>
 
-    <string-array name="YiyecekGiderKişisel">
-        <item>Alkollü İçecek</item>
-        <item>Gıda &amp; Alkolsüz İçecek</item>
-        <item>Hepsi</item>
-    </string-array>
-    <string-array name="YiyecekGiderKisisel">
-        <item>Alkollü İçecek</item>
-        <item>Gıda &amp; Alkolsüz İçecek</item>
-        <item>Hepsi</item>
+    <string-array name="FoodExpensePersonal">
+        <item>Alcoholic Drinks</item>
+        <item>Food &amp; Non-Alcoholic Drinks</item>
+        <item>All</item>
     </string-array>
 
-    <string-array name="SigaraGiderKişisel">
-        <item>Sigara</item>
-        <item>Tütün</item>
-        <item>Hepsi</item>
-    </string-array>
-    <string-array name="SigaraGiderKisisel">
-        <item>Sigara</item>
-        <item>Tütün</item>
-        <item>Hepsi</item>
+    <string-array name="SmokingExpensePersonal">
+        <item>Cigarettes</item>
+        <item>Tobacco</item>
+        <item>All</item>
     </string-array>
 
-    <string-array name="AlışverişGiderKişisel">
-        <item>Giyim &amp; Ayakkabı</item>
-        <item>Teknolojik Aletler</item>
-        <item>Diğer</item>
-        <item>Hepsi</item>
-    </string-array>
-    <string-array name="AlisverisGiderKisisel">
-        <item>Giyim &amp; Ayakkabı</item>
-        <item>Teknolojik Aletler</item>
-        <item>Diğer</item>
-        <item>Hepsi</item>
+    <string-array name="ShoppingExpensePersonal">
+        <item>Clothing &amp; Shoes</item>
+        <item>Electronics</item>
+        <item>Others</item>
+        <item>All</item>
     </string-array>
 
-    <string-array name="SağlıkGiderKişisel">
-        <item>Hastane Masrafları</item>
-        <item>İlaç</item>
-        <item>Hepsi</item>
-    </string-array>
-    <string-array name="SaglikGiderKisisel">
-        <item>Hastane Masrafları</item>
-        <item>İlaç</item>
-        <item>Hepsi</item>
+    <string-array name="HealthExpensePersonal">
+        <item>Hospital Bills</item>
+        <item>Medicine</item>
+        <item>All</item>
     </string-array>
 
-    <string-array name="EğlenceGiderKişisel">
-        <item>Gazete, Dergi &amp; Kitap</item>
-        <item>Oyun</item>
-        <item>Sinema, Tiyatro &amp; Konser</item>
-        <item>Diğer</item>
-        <item>Hepsi</item>
-    </string-array>
-    <string-array name="EglenceGiderKisisel">
-        <item>Gazete, Dergi &amp; Kitap</item>
-        <item>Oyun</item>
-        <item>Sinema, Tiyatro &amp; Konser</item>
-        <item>Diğer</item>
-        <item>Hepsi</item>
+    <string-array name="EntertainmentExpensePersonal">
+        <item>Newspapers, Magazines &amp; Books</item>
+        <item>Video Games</item>
+        <item>Movies, Theatre &amp; Concerts</item>
+        <item>Others</item>
+        <item>All</item>
     </string-array>
 
-    <string-array name="UlaşımGiderKişisel">
-        <item>Akbil</item>
-        <item>Yakıt</item>
-        <item>Taksi</item>
-        <item>Diğer</item>
-        <item>Hepsi</item>
-    </string-array>
-    <string-array name="UlasimGiderKisisel">
-        <item>Akbil</item>
-        <item>Yakıt</item>
-        <item>Taksi</item>
-        <item>Diğer</item>
-        <item>Hepsi</item>
+    <string-array name="TransportationExpensePersonal">
+        <item>Bus Pass</item>
+        <item>Fuel</item>
+        <item>Taxi</item>
+        <item>Others</item>
+        <item>All</item>
     </string-array>
 
-    <string-array name="DövizGiderKişisel">
-        <item>Döviz Alımı</item>
-        <item>Hepsi</item>
-    </string-array>
-    <string-array name="DovizGiderKisisel">
-        <item>Döviz Alımı</item>
-        <item>Hepsi</item>
+    <string-array name="ExchangeExpensePersonal">
+        <item>Currency Exchange</item>
+        <item>All</item>
     </string-array>
 
-    <string-array name="TaksitGiderKişisel">
-        <item>Taksit Ödemesi</item>
-        <item>Hepsi</item>
-    </string-array>
-    <string-array name="TaksitGiderKisisel">
-        <item>Taksit Ödemesi</item>
-        <item>Hepsi</item>
+    <string-array name="InstallmentsExpensePersonal">
+        <item>Installment Payment</item>
+        <item>ALl</item>
     </string-array>
 
-    <string-array name="BorçlarGiderKişisel">
-        <item>Borç Ödemesi</item>
-        <item>Banka Faiz Borcu</item>
-        <item>Diğer</item>
-        <item>Hepsi</item>
-    </string-array>
-    <string-array name="BorclarGiderKisisel">
-        <item>Borç Ödemesi</item>
-        <item>Banka Faiz Borcu</item>
-        <item>Diğer</item>
-        <item>Hepsi</item>
+    <string-array name="DebtsExpensePersonal">
+        <item>Debt Payment</item>
+        <item>Bank Interest Debt</item>
+        <item>Others</item>
+        <item>All</item>
     </string-array>
 
-    <string-array name="KiraGiderEv">
-        <item>Ev Kirası</item>
-        <item>Hepsi</item>
-    </string-array>
-    <string-array name="FaturalarGiderEv">
-        <item>Elektrik</item>
-        <item>Su</item>
-        <item>Doğalgaz</item>
-        <item>Telefon</item>
-        <item>İnternet</item>
-        <item>Kanal Abonelikleri</item>
-        <item>Diğer</item>
-        <item>Hepsi</item>
-    </string-array>
-    <string-array name="EvcilGiderEv">
-        <item>Evcil Hayvan</item>
-        <item>Veteriner</item>
-        <item>Mama</item>
-        <item>Diğer</item>
-        <item>Hepsi</item>
+    <string-array name="RentExpenseHome">
+        <item>House Rent</item>
+        <item>All</item>
     </string-array>
 
-    <string-array name="EvGiderEv">
-        <item>Temizlik Malzemeleri</item>
-        <item>Yiyecek &amp; Alkolsüz İçecek</item>
-        <item>Alkollü İçecek</item>
-        <item>Sigara &amp; Tütün</item>
-        <item>Beyaz Eşya</item>
-        <item>Mobilya</item>
-        <item>Diğer</item>
-        <item>Hepsi</item>
+    <string-array name="BillsExpenseHome">
+        <item>Electric</item>
+        <item>Water</item>
+        <item>Gas</item>
+        <item>Phone</item>
+        <item>Internet</item>
+        <item>Cable</item>
+        <item>Others</item>
+        <item>All</item>
+    </string-array>
+
+    <string-array name="PetsExpenseHome">
+        <item>Pet Purchase</item>
+        <item>Veterinarian</item>
+        <item>Food</item>
+        <item>Others</item>
+        <item>All</item>
+    </string-array>
+
+    <string-array name="GroceriesExpenseHome">
+        <item>Cleaning Supplies</item>
+        <item>Food &amp; Non-Alcoholic Drinks</item>
+        <item>Alcoholic Drinks</item>
+        <item>Cigarettes &amp; Tobacco</item>
+        <item>Home Appliances</item>
+        <item>Furniture</item>
+        <item>Others</item>
+        <item>All</item>
     </string-array>
 
     <string-array name="turkishMonths">
@@ -530,4 +455,121 @@
     <string name="savings_remaining_days">Remaining Days</string>
     <string name="savings_saved_amount">Saved Amount</string>
     <string name="savings_delete">Delete Saving</string>
+    <string name="enter_category">Enter Category</string>
+
+    <string name="salary">Salary</string>
+    <string name="rent">Rent</string>
+    <string name="allowance">Allowance</string>
+    <string name="loan">Loan</string>
+    <string name="interest">Interest</string>
+    <string name="games_of_chance">Games of Chance</string>
+    <string name="receivables">Receivables</string>
+    <string name="custom_category">Custom Category</string>
+
+    <string name="salary1">Salary Payment</string>
+    <string name="salary2">Premium Payment</string>
+
+    <string name="rent1">Rent Payment</string>
+
+    <string name="allowance1">Allowance Payment</string>
+
+    <string name="loan1">Bank Loan</string>
+
+    <string name="interest1">Bank Interest</string>
+    <string name="interest2">Debt Interest</string>
+
+    <string name="games1">Lottery</string>
+    <string name="games2">Betting</string>
+    <string name="games3">Gambling</string>
+    <string name="games4">Other</string>
+
+    <string name="receivables1">Receivables Payment</string>
+
+    <string name="income_search_add">Income</string>
+    <string name="expense_search_add">Expense</string>
+
+    <string name="all">All</string>
+    <string name="search_month">Month</string>
+    <string name="search_day">Day</string>
+
+    <string name="add_income">Add Income</string>
+    <string name="add_expense">Add Expense</string>
+    <string name="tag_personal">Personal</string>
+    <string name="expense_type">Expense Type</string>
+    <string name="custom_category_home">Custom Category (Home)</string>
+    <string name="custom_category_personal">Custom Category (Personal)</string>
+    <string name="tag_home">Home</string>
+
+    <string name="food"><![CDATA[Food & Drinks]]></string>
+    <string name="food1">Alcoholic Drinks</string>
+    <string name="food2"><![CDATA[Food & Non-Alcoholic Drinks]]></string>
+
+    <string name="cig"><![CDATA[Smoking & Tobacco]]></string>
+    <string name="cig1">Cigarettes</string>
+    <string name="cig2">Tobacco</string>
+
+    <string name="shop">Shopping</string>
+    <string name="shop1"><![CDATA[Clothing & Shoes]]></string>
+    <string name="shop2">Electronics</string>
+    <string name="shop3">Others</string>
+
+    <string name="health">Health</string>
+    <string name="health1">Hospital Bills</string>
+    <string name="health2">Medicine</string>
+
+    <string name="ent"><![CDATA[Entertainment & Social Activities]]></string>
+    <string name="ent1"><![CDATA[Newspapers, Magazines & Books]]></string>
+    <string name="ent2">Video Games</string>
+    <string name="ent3"><![CDATA[Movies, Theatre & Concerts]]></string>
+    <string name="ent4">Others</string>
+
+    <string name="trans">Transportation</string>
+    <string name="trans1">Bus Pass</string>
+    <string name="trans2">Fuel</string>
+    <string name="trans3">Taxi</string>
+    <string name="trans4">Others</string>
+
+    <string name="exchange">Exchange</string>
+    <string name="exchange1">Currency Exchange</string>
+
+    <string name="install">Installments</string>
+    <string name="install1">Installment Payment</string>
+
+    <string name="debt">Debts</string>
+    <string name="debt1">Debt Payment</string>
+    <string name="debt2">Bank Interest Debt</string>
+    <string name="debt3">Others</string>
+
+    <string name="rent_expense">Rent</string>
+    <string name="rent_expense1">House Rent</string>
+
+    <string name="bills">Bills</string>
+    <string name="bills1">Electric</string>
+    <string name="bills2">Water</string>
+    <string name="bills3">Gas</string>
+    <string name="bills4">Phone</string>
+    <string name="bills5">Internet</string>
+    <string name="bills6">Cable</string>
+    <string name="bills7">Others</string>
+
+    <string name="pet">Pets</string>
+    <string name="pet1">Pet Purchase</string>
+    <string name="pet2">Veterinarian</string>
+    <string name="pet3">Food</string>
+    <string name="pet4">Others</string>
+
+    <string name="groceries">Groceries &amp; Supplies</string>
+    <string name="groceries1">Cleaning Supplies</string>
+    <string name="groceries2"><![CDATA[Food & Non-Alcoholic Drinks]]></string>
+    <string name="groceries3">Alcoholic Drinks</string>
+    <string name="groceries4"><![CDATA[Cigarettes & Tobacco]]></string>
+    <string name="groceries5">Home Appliances</string>
+    <string name="groceries6">Furniture</string>
+    <string name="groceries7">Others</string>
+
+    <string-array name="languages">
+        <item>English</item>
+        <item>Turkish</item>
+    </string-array>
+
 </resources>

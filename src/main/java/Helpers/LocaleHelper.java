@@ -1,5 +1,10 @@
 package Helpers;
 
+import android.content.Context;
+import android.content.res.Configuration;
+
+import java.util.Locale;
+
 /**
  * Created by Umut Seven on 15.4.2015, for Graviton.
  */
@@ -54,4 +59,14 @@ public class LocaleHelper {
 
         return clean;
     }
+
+    public static void SetAppLocale(String local, Context context) {
+        Locale locale = new Locale(local);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        context.getResources().updateConfiguration(config,
+                context.getResources().getDisplayMetrics());
+    }
+
 }
