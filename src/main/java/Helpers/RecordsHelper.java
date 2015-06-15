@@ -77,6 +77,8 @@ public class RecordsHelper {
         records.put(2111, res.getString(R.string.bills));
         records.put(2112, res.getString(R.string.pet));
         records.put(2113, res.getString(R.string.groceries));
+        records.put(2114, res.getString(R.string.custom_category_personal));
+        records.put(2115, res.getString(R.string.custom_category_home));
 
         records.put(210101, res.getString(R.string.food1));
         records.put(210102, res.getString(R.string.food2));

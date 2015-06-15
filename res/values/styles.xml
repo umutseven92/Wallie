@@ -72,14 +72,14 @@
         <item name="sv_titleTextAppearance">@style/TextAppearance.ShowcaseView.Title.Cuzdan</item>
         <item name="sv_detailTextAppearance">@style/TextAppearance.ShowcaseView.Detail</item>
         <item name="sv_backgroundColor">#99000000</item>
-        <item name="sv_buttonText">Tamam</item>
+        <item name="sv_buttonText">@string/ok</item>
     </style>
 
     <style name="ShowcaseView.Cuzdan.Next">
         <item name="sv_titleTextAppearance">@style/TextAppearance.ShowcaseView.Title.Cuzdan</item>
         <item name="sv_detailTextAppearance">@style/TextAppearance.ShowcaseView.Detail</item>
         <item name="sv_backgroundColor">#99000000</item>
-        <item name="sv_buttonText">İleri</item>
+        <item name="sv_buttonText">@string/next</item>
     </style>
 
     <style name="ShowcaseView.Light">

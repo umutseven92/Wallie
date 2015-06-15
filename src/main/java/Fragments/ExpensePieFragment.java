@@ -106,10 +106,10 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
                 Expense expense = expenses.get(i);
                 boolean dup = false;
 
-                if (!expense.GetCategory().startsWith("Özel Kategori")) {
+                if (!rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).startsWith(getString(R.string.custom_category))) {
 
-                    if (!expenseNames.contains(expense.GetCategory())) {
-                        expenseNames.add(expense.GetCategory());
+                    if (!expenseNames.contains(rec.GetNameFromID(Integer.parseInt(expense.GetCategory())))) {
+                        expenseNames.add(rec.GetNameFromID(Integer.parseInt(expense.GetCategory())));
                     } else {
                         dup = true;
                     }
@@ -121,7 +121,7 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
                     }
                 }
 
-                if (expense.GetCategory().equals("Özel Kategori")) {
+                if (rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(getString(R.string.custom_category))) {
                     if (!dup) {
                         entries.add(new Entry(expense.GetAmount().floatValue(), i));
                         dataKey.put(expense.GetSubCategory(), i);
@@ -135,10 +135,10 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
                 } else {
                     if (!dup) {
                         entries.add(new Entry(expense.GetAmount().floatValue(), i));
-                        dataKey.put(expense.GetCategory(), i);
+                        dataKey.put(rec.GetNameFromID(Integer.parseInt(expense.GetCategory())), i);
                     } else {
                         for (Entry e : entries) {
-                            if (e.getXIndex() == dataKey.get(expense.GetCategory())) {
+                            if (e.getXIndex() == dataKey.get(rec.GetNameFromID(Integer.parseInt(expense.GetCategory())))) {
                                 e.setVal(e.getVal() + expense.GetAmount().floatValue());
                             }
                         }
@@ -156,10 +156,10 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
                 Expense expense = expenses.get(i);
                 boolean dup = false;
 
-                if (!expense.GetCategory().startsWith("Özel Kategori")) {
+                if (!rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).startsWith(getString(R.string.custom_category))) {
 
-                    if (!expenseNames.contains(expense.GetCategory())) {
-                        expenseNames.add(expense.GetCategory());
+                    if (!expenseNames.contains(rec.GetNameFromID(Integer.parseInt(expense.GetCategory())))) {
+                        expenseNames.add(rec.GetNameFromID(Integer.parseInt(expense.GetCategory())));
                     } else {
                         dup = true;
                     }
@@ -171,7 +171,7 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
                     }
                 }
 
-                if (expense.GetCategory().equals("Özel Kategori")) {
+                if (rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(getString(R.string.custom_category))) {
                     if (!dup) {
                         entries.add(new Entry(expense.GetAmount().floatValue(), i));
                         dataKey.put(expense.GetSubCategory(), i);
@@ -185,10 +185,10 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
                 } else {
                     if (!dup) {
                         entries.add(new Entry(expense.GetAmount().floatValue(), i));
-                        dataKey.put(expense.GetCategory(), i);
+                        dataKey.put(rec.GetNameFromID(Integer.parseInt(expense.GetCategory())), i);
                     } else {
                         for (Entry e : entries) {
-                            if (e.getXIndex() == dataKey.get(expense.GetCategory())) {
+                            if (e.getXIndex() == dataKey.get(rec.GetNameFromID(Integer.parseInt(expense.GetCategory())))) {
                                 e.setVal(e.getVal() + expense.GetAmount().floatValue());
                             }
                         }
