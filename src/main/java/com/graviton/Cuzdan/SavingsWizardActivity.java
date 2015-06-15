@@ -32,7 +32,7 @@ public class SavingsWizardActivity extends FragmentActivity implements PageFragm
     private ViewPager mPager;
     private MyPagerAdapter mPagerAdapter;
     private boolean mEditingAfterReview;
-    private AbstractWizardModel mWizardModel = new SavingWizardModel(this);
+    private AbstractWizardModel mWizardModel;
     private boolean mConsumePageSelectedEvent;
     private Button mNextButton;
     private Button mPrevButton;
@@ -42,7 +42,8 @@ public class SavingsWizardActivity extends FragmentActivity implements PageFragm
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getActionBar().setTitle("Birikim Ekle");
+        getActionBar().setTitle(getString(R.string.add_saving));
+        mWizardModel = new SavingWizardModel(this);
 
         if (savedInstanceState != null) {
             mWizardModel.load(savedInstanceState.getBundle("model"));
@@ -107,15 +108,15 @@ public class SavingsWizardActivity extends FragmentActivity implements PageFragm
 
     private void GoForwardOnePage() throws JSONException {
         if (mPager.getCurrentItem() == mCurrentPageSequence.size()) {
-            String period = mWizardModel.findByKey("Dönem").getData().getString(Page.SIMPLE_DATA_KEY);
-            Page p = mWizardModel.findByKey(period + ":Detaylar");
+            String period = mWizardModel.findByKey(getString(R.string.savings_period)).getData().getString(Page.SIMPLE_DATA_KEY);
+            Page p = mWizardModel.findByKey(period + ":" + getString(R.string.details));
             BigDecimal amount;
             String name;
             boolean repeat;
             Saving saving;
             Banker banker = ((Global) getApplication()).GetUser().GetBanker();
 
-            if (!period.equals("Özel")) {
+            if (!period.equals(getString(R.string.custom))) {
                 amount = new BigDecimal(p.getData().getString(SavingInfoPage.AMOUNT_DATA_KEY));
                 name = p.getData().getString(SavingInfoPage.NAME_DATA_KEY);
                 repeat = p.getData().getBoolean(SavingInfoPage.REPEAT_BOOL_KEY);

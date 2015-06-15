@@ -1,6 +1,10 @@
 package Helpers;
 
+import android.content.Context;
+import com.graviton.Cuzdan.R;
+
 import java.math.BigDecimal;
+import java.util.Locale;
 
 /**
  * Created by Umut Seven on 14.2.2015, for Graviton.
@@ -25,60 +29,90 @@ public class SavingsHelper {
      */
     public static String CreateDescription(String name, int totalDays, BigDecimal amount, String currency) {
 
-        String namePart = String.format("%s için, ", name);
-        String periodPart = "";
+        String namePart, periodPart, amountPart;
 
-        int years = totalDays / YEAR;
-        if (years > 0) {
-            periodPart += String.format("%s yıl ", years);
-            totalDays -= years * YEAR;
-        }
-        int months = totalDays / MONTH;
-        if (months > 0) {
-            periodPart += String.format("%s ay ", months);
-            totalDays -= months * MONTH;
-        }
-        int weeks = totalDays / WEEK;
-        if (weeks > 0) {
-            periodPart += String.format("%s hafta ", weeks);
-            totalDays -= weeks * WEEK;
-        }
-        int days = totalDays / DAY;
-        if (days > 0) {
-            periodPart += String.format("%s gün ", days);
-            totalDays -= days * DAY;
+        if (Locale.getDefault().getLanguage().equals("tr")) {
+            namePart = String.format("%s için", name);
+            periodPart = "";
+
+            int years = totalDays / YEAR;
+            if (years > 0) {
+                periodPart += String.format("%s yıl ", years);
+                totalDays -= years * YEAR;
+            }
+            int months = totalDays / MONTH;
+            if (months > 0) {
+                periodPart += String.format("%s ay ", months);
+                totalDays -= months * MONTH;
+            }
+            int weeks = totalDays / WEEK;
+            if (weeks > 0) {
+                periodPart += String.format("%s hafta ", weeks);
+                totalDays -= weeks * WEEK;
+            }
+            int days = totalDays / DAY;
+            if (days > 0) {
+                periodPart += String.format("%s gün ", days);
+                totalDays -= days * DAY;
+            }
+
+            amountPart = String.format("sonunda %s " + currency + " birikim.", amount.setScale(2, BigDecimal.ROUND_DOWN).toString());
+        } else {
+            periodPart = "";
+
+            int years = totalDays / YEAR;
+            if (years > 0) {
+                periodPart += String.format("%s year(s) ", years);
+                totalDays -= years * YEAR;
+            }
+            int months = totalDays / MONTH;
+            if (months > 0) {
+                periodPart += String.format("%s month(s) ", months);
+                totalDays -= months * MONTH;
+            }
+            int weeks = totalDays / WEEK;
+            if (weeks > 0) {
+                periodPart += String.format("%s week(s) ", weeks);
+                totalDays -= weeks * WEEK;
+            }
+            int days = totalDays / DAY;
+            if (days > 0) {
+                periodPart += String.format("%s day(s) ", days);
+                totalDays -= days * DAY;
+            }
+
+            namePart = String.format("worth of savings, named %s, ", name);
+            amountPart = String.format("valued at %s." + currency, amount.setScale(2, BigDecimal.ROUND_DOWN).toString());
         }
 
-        String amountPart = String.format("sonunda %s " + currency + " birikim.", amount.setScale(2, BigDecimal.ROUND_DOWN).toString());
-
-        return namePart + periodPart + amountPart;
+        return periodPart + namePart + amountPart;
 
     }
 
-    public static String GetPeriodString(Saving.Period period) {
+    public static String GetPeriodString(Saving.Period period, Context context) {
         String periodRep = "";
 
         switch (period) {
             case Day:
-                periodRep = "Gün";
+                periodRep = context.getString(R.string.day);
                 break;
             case Week:
-                periodRep = "Hafta";
+                periodRep = context.getString(R.string.week);
                 break;
             case Month:
-                periodRep = "Ay";
+                periodRep = context.getString(R.string.month);
                 break;
             case ThreeMonths:
-                periodRep = "3 Ay";
+                periodRep = context.getString(R.string.three_months);
                 break;
             case SixMonths:
-                periodRep = "6 Ay";
+                periodRep = context.getString(R.string.six_months);
                 break;
             case Year:
-                periodRep = "Yıl";
+                periodRep = context.getString(R.string.year);
                 break;
             case Custom:
-                periodRep = "Özel";
+                periodRep = context.getString(R.string.custom);
                 break;
         }
         return periodRep;

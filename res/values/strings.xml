@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Wallie</string>
-    <string name="version">0.9.7</string>
+    <string name="version">0.9.8</string>
 
     <string name="dummyData">false</string>
 
@@ -440,7 +440,7 @@
     <string name="description">Description:</string>
     <string name="delete">Delete</string>
     <string name="daily">Daily</string>
-    <string name="day">Day</string>
+    <string name="day">Day(s)</string>
     <string name="savings_start">Start Saving</string>
     <string name="savings_limit">Daily Spending Limit:</string>
     <string name="savings_insufficient">Your funds are insufficient to save money.</string>
@@ -567,7 +567,16 @@
     <string name="groceries6">Furniture</string>
     <string name="groceries7">Others</string>
     <string name="language">Language:</string>
-    <string name="no_record">Gelir yok.</string>
+    <string name="no_record">No records.</string>
+    <string name="week">Week</string>
+    <string name="month">Month</string>
+    <string name="three_months">3 Months</string>
+    <string name="six_months">6 Months</string>
+    <string name="year">Year</string>
+    <string name="custom">Custom</string>
+    <string name="add_saving">Add Saving</string>
+    <string name="day_count">Day Count</string>
+    <string name="saving_desc_1">"%s için, "</string>
 
     <string-array name="languages">
         <item>English</item>

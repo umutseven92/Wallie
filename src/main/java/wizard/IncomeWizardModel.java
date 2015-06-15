@@ -37,7 +37,7 @@ public class IncomeWizardModel extends AbstractWizardModel {
                         .addBranch(mContext.getResources().getString(R.string.interest), new SingleFixedChoicePage(this, mContext.getResources().getString(R.string.subCategory)).setChoices(mContext.getResources().getString(R.string.interest1), mContext.getResources().getString(R.string.interest2)).setRequired(true))
                         .addBranch(mContext.getResources().getString(R.string.games_of_chance), new SingleFixedChoicePage(this, mContext.getResources().getString(R.string.subCategory)).setChoices(mContext.getResources().getString(R.string.games1), mContext.getResources().getString(R.string.games2), mContext.getString(R.string.games3), mContext.getString(R.string.games4)).setRequired(true))
                         .addBranch(mContext.getResources().getString(R.string.receivables), new SingleFixedChoicePage(this, mContext.getResources().getString(R.string.subCategory)).setChoices(mContext.getResources().getString(R.string.receivables1)).setRequired(true))
-                        .addBranch(mContext.getResources().getString(R.string.custom_category), new BalanceCustomInfoPage(this, mContext.getResources().getString(R.string.enter_category)).setRequired(true)).setRequired(true),
-                new BalanceInfoPage(this, mContext.getResources().getString(R.string.details)).setRequired(true));
+                        .addBranch(mContext.getResources().getString(R.string.custom_category), new BalanceCustomInfoPage(this, mContext.getResources().getString(R.string.enter_category), mContext).setRequired(true)).setRequired(true),
+                new BalanceInfoPage(this, mContext.getResources().getString(R.string.details), mContext).setRequired(true));
     }
 }

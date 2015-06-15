@@ -13,7 +13,6 @@ C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\Fragments\ExpenseFragment.
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\Fragments\DatePickerFragment.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\Helpers\SavingsHelper.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\wizard\ui\StepPagerStrip.java
-C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\Helpers\ErrorDialog.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\target\generated-sources\aidl\com\android\vending\billing\IInAppBillingService.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\wizard\model\BalanceCustomInfoPage.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\wizard\ui\BalanceCustomInfoFragment.java
@@ -40,10 +39,12 @@ C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\Helpers\AdHelper.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\com\github\amlcurran\showcaseview\targets\Reflector.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\wizard\model\SavingCustomInfoPage.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\wizard\ui\BalanceInfoFragment.java
+C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\Fragments\PlusFragment.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\wizard\model\ReviewItem.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\Fragments\ExpenseSearchFragment.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\Helpers\Banker.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\com\github\amlcurran\showcaseview\targets\PointTarget.java
+C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\Helpers\PlusPageAdapter.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\com\github\amlcurran\showcaseview\ShotStateStore.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\com\github\amlcurran\showcaseview\ShowcaseView.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\com\github\amlcurran\showcaseview\targets\Target.java
@@ -59,6 +60,7 @@ C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\Fragments\BalanceFragment.
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\com\github\amlcurran\showcaseview\targets\ActionBarViewWrapper.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\Helpers\SavingsPageAdapter.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\com\github\amlcurran\showcaseview\targets\ActionItemTarget.java
+C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\Helpers\RecordsHelper.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\com\graviton\Cuzdan\IncomeWizardActivity.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\Helpers\Billing\IabHelper.java
 C:\Users\Umut Seven\IdeaProjects\Cuzdan\src\main\java\Helpers\Billing\IabException.java

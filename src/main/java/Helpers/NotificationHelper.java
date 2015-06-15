@@ -38,6 +38,7 @@ public class NotificationHelper {
                         .setSmallIcon(R.drawable.notification_logo)
                         .setLargeIcon(bmp)
                         .setContentTitle(context.getString(R.string.not_fast))
+                        .setPriority(NotificationCompat.PRIORITY_MIN)
                         .setContentText(message);
 
         Intent resultIntent = new Intent(context, SplashActivity.class);

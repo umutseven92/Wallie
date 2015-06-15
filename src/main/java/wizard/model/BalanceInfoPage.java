@@ -16,8 +16,10 @@
 
 package wizard.model;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import com.graviton.Cuzdan.R;
 import wizard.ui.BalanceInfoFragment;
 
 import java.util.ArrayList;
@@ -25,9 +27,11 @@ import java.util.ArrayList;
 public class BalanceInfoPage extends Page {
     public static final String AMOUNT_DATA_KEY = "amount";
     public static final String DESC_DATA_KEY = "description";
+    private Context ctx;
 
-    public BalanceInfoPage(ModelCallbacks callbacks, String title) {
+    public BalanceInfoPage(ModelCallbacks callbacks, String title, Context context) {
         super(callbacks, title);
+        ctx = context;
     }
 
     @Override
@@ -37,8 +41,8 @@ public class BalanceInfoPage extends Page {
 
     @Override
     public void getReviewItems(ArrayList<ReviewItem> dest) {
-        dest.add(new ReviewItem("Miktar", mData.getString(AMOUNT_DATA_KEY), getKey(), -1));
-        dest.add(new ReviewItem("Açıklama", mData.getString(DESC_DATA_KEY), getKey(), -1));
+        dest.add(new ReviewItem(ctx.getString(R.string.amount), mData.getString(AMOUNT_DATA_KEY), getKey(), -1));
+        dest.add(new ReviewItem(ctx.getString(R.string.description), mData.getString(DESC_DATA_KEY), getKey(), -1));
     }
 
     @Override

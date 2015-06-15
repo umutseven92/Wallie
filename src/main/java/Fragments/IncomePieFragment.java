@@ -56,7 +56,7 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
         btnCalendar.setOnClickListener(onCalendarClick);
 
         user = ((Global) getActivity().getApplication()).GetUser();
-        rec = ((Global)getActivity().getApplication()).recordsHelper;
+        rec = ((Global) getActivity().getApplication()).recordsHelper;
 
         dateBeingViewed = new Date();
 
@@ -192,7 +192,7 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
                         dataKey.put(rec.GetNameFromID(Integer.parseInt(income.GetCategory())), i);
                     } else {
                         for (Entry e : entries) {
-                            if (e.getXIndex() == dataKey.get(rec.GetNameFromID(Integer.parseInt(income.GetCategory()))) ){
+                            if (e.getXIndex() == dataKey.get(rec.GetNameFromID(Integer.parseInt(income.GetCategory())))) {
                                 e.setVal(e.getVal() + income.GetAmount().floatValue());
                             }
                         }

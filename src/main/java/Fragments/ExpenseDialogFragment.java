@@ -31,12 +31,9 @@ public class ExpenseDialogFragment extends DialogFragment {
         RecordsHelper rec = ((Global) getActivity().getApplication()).recordsHelper;
 
         String message;
-        if(expense.GetCategory().equals(Integer.toString(rec.GetIDFromName(getString(R.string.custom_category_home)))) || expense.GetCategory().equals(Integer.toString(rec.GetIDFromName(getString(R.string.custom_category_personal) ))))
-        {
+        if (expense.GetCategory().equals(Integer.toString(rec.GetIDFromName(getString(R.string.custom_category_home)))) || expense.GetCategory().equals(Integer.toString(rec.GetIDFromName(getString(R.string.custom_category_personal))))) {
             message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", getString(R.string.date), DateFormatHelper.GetDayText(expense.GetDate()), getString(R.string.expense_type) + ":", LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(), expense.GetStringTag()), getString(R.string.category), rec.GetNameFromID(Integer.parseInt(expense.GetCategory())), getString(R.string.subCategory), expense.GetSubCategory(), getString(R.string.amount), expense.GetAmount().toString() + " " + user.GetCurrency(), getString(R.string.description), expense.GetDescription());
-        }
-        else
-        {
+        } else {
             message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", getString(R.string.date), DateFormatHelper.GetDayText(expense.GetDate()), getString(R.string.expense_type) + ":", LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(), expense.GetStringTag()), getString(R.string.category), rec.GetNameFromID(Integer.parseInt(expense.GetCategory())), getString(R.string.subCategory), rec.GetNameFromID(Integer.parseInt(expense.GetSubCategory())), getString(R.string.amount), expense.GetAmount().toString() + " " + user.GetCurrency(), getString(R.string.description), expense.GetDescription());
         }
 

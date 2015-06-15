@@ -95,7 +95,7 @@ public class SavingsFragment extends Fragment {
             txtSavingLimit.setVisibility(View.INVISIBLE);
             txtSavingLimitExp.setVisibility(View.INVISIBLE);
             txtInsufficent.setVisibility(View.INVISIBLE);
-            btnAddSaving.setText("Birikime Başla");
+            btnAddSaving.setText(getString(R.string.savings_start));
         } else if (savingsCount > 0) {
             lytNoSavings.setVisibility(View.INVISIBLE);
             lytSavings.setVisibility(View.VISIBLE);
@@ -112,7 +112,7 @@ public class SavingsFragment extends Fragment {
                 txtInsufficent.setVisibility(View.INVISIBLE);
             }
 
-            btnAddSaving.setText("Birikim Ekle");
+            btnAddSaving.setText(getString(R.string.add_saving));
 
             lv.setAdapter(new SavingListAdapter(this.getActivity(), savings, _user.GetCurrency()));
         }

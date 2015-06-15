@@ -986,6 +986,7 @@ containing a value of this type.
         public static final int accept=0x7f080002;
         public static final int add_expense=0x7f0800b8;
         public static final int add_income=0x7f0800b7;
+        public static final int add_saving=0x7f0800fc;
         public static final int all=0x7f0800b4;
         public static final int allowance=0x7f0800a0;
         public static final int allowance1=0x7f0800a9;
@@ -1120,6 +1121,7 @@ containing a value of this type.
         public static final int create_calendar_message=0x7f080005;
         public static final int create_calendar_title=0x7f080004;
         public static final int currency=0x7f08003f;
+        public static final int custom=0x7f0800fb;
         public static final int custom_category=0x7f0800a5;
         public static final int custom_category_home=0x7f0800bb;
         public static final int custom_category_personal=0x7f0800bc;
@@ -1127,6 +1129,7 @@ containing a value of this type.
         public static final int daily=0x7f08008d;
         public static final int date=0x7f080084;
         public static final int day=0x7f08008e;
+        public static final int day_count=0x7f0800fd;
         public static final int debt=0x7f0800d9;
         public static final int debt1=0x7f0800da;
         public static final int debt2=0x7f0800db;
@@ -1204,6 +1207,7 @@ containing a value of this type.
         public static final int language=0x7f0800f4;
         public static final int loan=0x7f0800a1;
         public static final int loan1=0x7f0800aa;
+        public static final int month=0x7f0800f7;
         public static final int next=0x7f08002f;
         public static final int no=0x7f080056;
         public static final int no_record=0x7f0800f5;
@@ -1242,6 +1246,7 @@ containing a value of this type.
         public static final int salary=0x7f08009e;
         public static final int salary1=0x7f0800a6;
         public static final int salary2=0x7f0800a7;
+        public static final int saving_desc_1=0x7f0800fe;
         public static final int savings_amount=0x7f080095;
         public static final int savings_daily_limit=0x7f080096;
         public static final int savings_delete=0x7f08009c;
@@ -1272,6 +1277,7 @@ containing a value of this type.
         public static final int shop1=0x7f0800c5;
         public static final int shop2=0x7f0800c6;
         public static final int shop3=0x7f0800c7;
+        public static final int six_months=0x7f0800f9;
         public static final int store_picture_message=0x7f080001;
         public static final int store_picture_title=0x7f080000;
         public static final int subCategory=0x7f080089;
@@ -1283,6 +1289,7 @@ containing a value of this type.
         public static final int tag_home=0x7f0800bd;
         public static final int tag_personal=0x7f0800b9;
         public static final int testDeviceId=0x7f08002c;
+        public static final int three_months=0x7f0800f8;
         public static final int total=0x7f080074;
         public static final int trans=0x7f0800d0;
         public static final int trans1=0x7f0800d1;
@@ -1300,6 +1307,8 @@ containing a value of this type.
          available or up-to-date 
          */
         public static final int wallet_buy_button_place_holder=0x7f080025;
+        public static final int week=0x7f0800f6;
+        public static final int year=0x7f0800fa;
         public static final int yes=0x7f080055;
     }
     public static final class style {

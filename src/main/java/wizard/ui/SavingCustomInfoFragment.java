@@ -73,7 +73,7 @@ public class SavingCustomInfoFragment extends Fragment {
 
 
         mPage.getData().putBoolean(SavingInfoPage.REPEAT_BOOL_KEY, false);
-        mPage.getData().putString(SavingInfoPage.REPEAT_DATA_KEY, "Hayır");
+        mPage.getData().putString(SavingInfoPage.REPEAT_DATA_KEY, getString(R.string.no));
         return rootView;
     }
 
@@ -160,10 +160,10 @@ public class SavingCustomInfoFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     mPage.getData().putBoolean(SavingCustomInfoPage.REPEAT_BOOL_KEY, true);
-                    mPage.getData().putString(SavingCustomInfoPage.REPEAT_DATA_KEY, "Evet");
+                    mPage.getData().putString(SavingCustomInfoPage.REPEAT_DATA_KEY, getString(R.string.yes));
                 } else {
                     mPage.getData().putBoolean(SavingCustomInfoPage.REPEAT_BOOL_KEY, false);
-                    mPage.getData().putString(SavingCustomInfoPage.REPEAT_DATA_KEY, "Hayır");
+                    mPage.getData().putString(SavingCustomInfoPage.REPEAT_DATA_KEY, getString(R.string.no));
                 }
                 mPage.notifyDataChanged();
             }

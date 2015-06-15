@@ -70,14 +70,10 @@ public class LocaleHelper {
                 context.getResources().getDisplayMetrics());
     }
 
-    public static String GetExpenseLocale(Context context, String tag)
-    {
-        if(tag.equals("home"))
-        {
+    public static String GetExpenseLocale(Context context, String tag) {
+        if (tag.equals("home")) {
             return context.getResources().getString(R.string.tag_home);
-        }
-        else
-        {
+        } else {
             return context.getResources().getString(R.string.tag_personal);
         }
     }

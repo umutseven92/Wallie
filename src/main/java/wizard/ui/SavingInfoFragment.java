@@ -143,10 +143,10 @@ public class SavingInfoFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     mPage.getData().putBoolean(SavingInfoPage.REPEAT_BOOL_KEY, true);
-                    mPage.getData().putString(SavingInfoPage.REPEAT_DATA_KEY, "Evet");
+                    mPage.getData().putString(SavingInfoPage.REPEAT_DATA_KEY, getString(R.string.yes));
                 } else {
                     mPage.getData().putBoolean(SavingInfoPage.REPEAT_BOOL_KEY, false);
-                    mPage.getData().putString(SavingInfoPage.REPEAT_DATA_KEY, "Hayır");
+                    mPage.getData().putString(SavingInfoPage.REPEAT_DATA_KEY, getString(R.string.no));
                 }
                 mPage.notifyDataChanged();
             }

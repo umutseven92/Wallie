@@ -1,6 +1,7 @@
 package wizard;
 
 import android.content.Context;
+import com.graviton.Cuzdan.R;
 import wizard.model.*;
 
 /**
@@ -15,13 +16,13 @@ public class SavingWizardModel extends AbstractWizardModel {
     @Override
     protected PageList onNewRootPageList() {
         return new PageList(
-                new BranchPage(this, "Dönem")
-                        .addBranch("Hafta", new SavingInfoPage(this, "Detaylar").setRequired(true))
-                        .addBranch("Ay", new SavingInfoPage(this, "Detaylar").setRequired(true))
-                        .addBranch("3 Ay", new SavingInfoPage(this, "Detaylar").setRequired(true))
-                        .addBranch("6 Ay", new SavingInfoPage(this, "Detaylar").setRequired(true))
-                        .addBranch("1 Yıl", new SavingInfoPage(this, "Detaylar").setRequired(true))
-                        .addBranch("Özel", new SavingCustomInfoPage(this, "Detaylar").setRequired(true)).setRequired(true)
+                new BranchPage(this, mContext.getString(R.string.savings_period))
+                        .addBranch(mContext.getString(R.string.week), new SavingInfoPage(this, mContext.getString(R.string.details), mContext).setRequired(true))
+                        .addBranch(mContext.getString(R.string.month), new SavingInfoPage(this, mContext.getString(R.string.details), mContext).setRequired(true))
+                        .addBranch(mContext.getString(R.string.three_months), new SavingInfoPage(this, mContext.getString(R.string.details), mContext).setRequired(true))
+                        .addBranch(mContext.getString(R.string.six_months), new SavingInfoPage(this, mContext.getString(R.string.details), mContext).setRequired(true))
+                        .addBranch(mContext.getString(R.string.year), new SavingInfoPage(this, mContext.getString(R.string.details), mContext).setRequired(true))
+                        .addBranch(mContext.getString(R.string.custom), new SavingCustomInfoPage(this, mContext.getString(R.string.details), mContext).setRequired(true)).setRequired(true)
         );
     }
 }

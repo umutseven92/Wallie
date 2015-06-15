@@ -543,6 +543,7 @@ int string about_umut 0x7f080062
 int string accept 0x7f080002
 int string add_expense 0x7f0800b8
 int string add_income 0x7f0800b7
+int string add_saving 0x7f0800fc
 int string all 0x7f0800b4
 int string allowance 0x7f0800a0
 int string allowance1 0x7f0800a9
@@ -600,6 +601,7 @@ int string commono_google_play_services_api_unavailable_text 0x7f080022
 int string create_calendar_message 0x7f080005
 int string create_calendar_title 0x7f080004
 int string currency 0x7f08003f
+int string custom 0x7f0800fb
 int string custom_category 0x7f0800a5
 int string custom_category_home 0x7f0800bb
 int string custom_category_personal 0x7f0800bc
@@ -607,6 +609,7 @@ int string cuzdanUserConfig 0x7f080029
 int string daily 0x7f08008d
 int string date 0x7f080084
 int string day 0x7f08008e
+int string day_count 0x7f0800fd
 int string debt 0x7f0800d9
 int string debt1 0x7f0800da
 int string debt2 0x7f0800db
@@ -681,6 +684,7 @@ int string label_repeating 0x7f080039
 int string language 0x7f0800f4
 int string loan 0x7f0800a1
 int string loan1 0x7f0800aa
+int string month 0x7f0800f7
 int string next 0x7f08002f
 int string no 0x7f080056
 int string no_record 0x7f0800f5
@@ -719,6 +723,7 @@ int string review 0x7f080034
 int string salary 0x7f08009e
 int string salary1 0x7f0800a6
 int string salary2 0x7f0800a7
+int string saving_desc_1 0x7f0800fe
 int string savings_amount 0x7f080095
 int string savings_daily_limit 0x7f080096
 int string savings_delete 0x7f08009c
@@ -749,6 +754,7 @@ int string shop 0x7f0800c4
 int string shop1 0x7f0800c5
 int string shop2 0x7f0800c6
 int string shop3 0x7f0800c7
+int string six_months 0x7f0800f9
 int string store_picture_message 0x7f080001
 int string store_picture_title 0x7f080000
 int string subCategory 0x7f080089
@@ -760,6 +766,7 @@ int string switch_open 0x7f080069
 int string tag_home 0x7f0800bd
 int string tag_personal 0x7f0800b9
 int string testDeviceId 0x7f08002c
+int string three_months 0x7f0800f8
 int string total 0x7f080074
 int string trans 0x7f0800d0
 int string trans1 0x7f0800d1
@@ -774,6 +781,8 @@ int string tutorial_5 0x7f08004a
 int string tutorial_6 0x7f08004b
 int string version 0x7f080027
 int string wallet_buy_button_place_holder 0x7f080025
+int string week 0x7f0800f6
+int string year 0x7f0800fa
 int string yes 0x7f080055
 int style AppTheme 0x7f070005
 int style CustomActionBarTheme 0x7f070015

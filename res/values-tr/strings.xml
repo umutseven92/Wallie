@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Cüzdan</string>
-    <string name="version">0.9.7</string>
+    <string name="version">0.9.8</string>
 
     <string name="dummyData">false</string>
 
@@ -624,7 +624,16 @@
     <string name="groceries6">Mobilya</string>
     <string name="groceries7">Diğer</string>
     <string name="language">Dil:</string>
-    <string name="no_record">Gelir yok.</string>
+    <string name="no_record">Kayıt yok.</string>
+    <string name="week">Hafta</string>
+    <string name="month">Ay</string>
+    <string name="three_months">3 Ay</string>
+    <string name="six_months">6 Ay</string>
+    <string name="year">1 Yıl</string>
+    <string name="custom">Özel</string>
+    <string name="add_saving">Birikim Ekle</string>
+    <string name="day_count">Gün Sayısı</string>
+    <string name="saving_desc_1">"%s için, "</string>
 
     <string-array name="languages">
         <item>İngilizce</item>

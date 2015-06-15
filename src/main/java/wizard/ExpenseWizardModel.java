@@ -29,16 +29,16 @@ public class ExpenseWizardModel extends AbstractWizardModel {
                                         .addBranch(mContext.getString(R.string.exchange), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.exchange1)).setRequired(true))
                                         .addBranch(mContext.getString(R.string.install), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.install1)).setRequired(true))
                                         .addBranch(mContext.getString(R.string.debt), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.debt1), mContext.getString(R.string.debt2), mContext.getString(R.string.debt3)).setRequired(true))
-                                        .addBranch(mContext.getString(R.string.custom_category_personal), new BalanceCustomInfoPage(this, mContext.getString(R.string.enter_category)).setRequired(true))
+                                        .addBranch(mContext.getString(R.string.custom_category_personal), new BalanceCustomInfoPage(this, mContext.getString(R.string.enter_category), mContext).setRequired(true))
                         )
                         .addBranch(mContext.getString(R.string.tag_home), new BranchPage(this, mContext.getString(R.string.category))
                                         .addBranch(mContext.getString(R.string.rent_expense), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.rent_expense1)).setRequired(true))
                                         .addBranch(mContext.getString(R.string.bills), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.bills1), mContext.getString(R.string.bills2), mContext.getString(R.string.bills3), mContext.getString(R.string.bills4), mContext.getString(R.string.bills5), mContext.getString(R.string.bills6), mContext.getString(R.string.bills7)).setRequired(true))
                                         .addBranch(mContext.getString(R.string.pet), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.pet1), mContext.getString(R.string.pet2), mContext.getString(R.string.pet3), mContext.getString(R.string.pet4)).setRequired(true))
                                         .addBranch(mContext.getString(R.string.groceries), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.groceries1), mContext.getString(R.string.groceries2), mContext.getString(R.string.groceries3), mContext.getString(R.string.groceries4), mContext.getString(R.string.groceries5), mContext.getString(R.string.groceries6), mContext.getString(R.string.groceries7)).setRequired(true))
-                                        .addBranch(mContext.getString(R.string.custom_category_home), new BalanceCustomInfoPage(this, mContext.getString(R.string.enter_category)).setRequired(true))
+                                        .addBranch(mContext.getString(R.string.custom_category_home), new BalanceCustomInfoPage(this, mContext.getString(R.string.enter_category), mContext).setRequired(true))
                         ).setRequired(true),
-                new BalanceInfoPage(this, mContext.getString(R.string.details)).setRequired(true));
+                new BalanceInfoPage(this, mContext.getString(R.string.details), mContext).setRequired(true));
     }
 
 }

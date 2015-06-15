@@ -48,7 +48,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
         v = inflater.inflate(R.layout.expense_search_fragment, container, false);
         dateBeingViewed = new Date();
         _user = ((Global) getActivity().getApplication()).GetUser();
-        rec = ((Global)getActivity().getApplication()).recordsHelper;
+        rec = ((Global) getActivity().getApplication()).recordsHelper;
 
         lv = (ListView) v.findViewById(R.id.lstSearchExpense);
         lv.setOnItemClickListener(onItemClickListener);
@@ -431,7 +431,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
 
             if (category == null && subCategory == null) {
                 for (Expense expense : expenses) {
-                    if (LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(),expense.GetStringTag()).equals(tag)) {
+                    if (LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(), expense.GetStringTag()).equals(tag)) {
                         cleanedExpenses.add(expense);
                     }
                 }
@@ -439,22 +439,19 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
 
             if (category != null && subCategory == null) {
                 for (Expense expense : expenses) {
-                    if (LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(),expense.GetStringTag()).equals(tag) && rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(category)) {
+                    if (LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(), expense.GetStringTag()).equals(tag) && rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(category)) {
                         cleanedExpenses.add(expense);
                     }
                 }
 
             } else {
                 for (Expense expense : expenses) {
-                    if(rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(getString(R.string.custom_category_personal)) || rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(getString(R.string.custom_category_home)))
-                    {
-                        if (rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(category) && expense.GetSubCategory().equals(subCategory) && LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(),expense.GetStringTag()).equals(tag)) {
+                    if (rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(getString(R.string.custom_category_personal)) || rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(getString(R.string.custom_category_home))) {
+                        if (rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(category) && expense.GetSubCategory().equals(subCategory) && LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(), expense.GetStringTag()).equals(tag)) {
                             cleanedExpenses.add(expense);
                         }
-                    }
-                    else
-                    {
-                        if (rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(category) && rec.GetNameFromID(Integer.parseInt(expense.GetSubCategory())).equals(subCategory) && LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(),expense.GetStringTag()).equals(tag)) {
+                    } else {
+                        if (rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(category) && rec.GetNameFromID(Integer.parseInt(expense.GetSubCategory())).equals(subCategory) && LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(), expense.GetStringTag()).equals(tag)) {
                             cleanedExpenses.add(expense);
                         }
                     }
@@ -468,7 +465,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
             if (category == null && subCategory == null) {
                 for (Expense expense : expenses) {
 
-                    if (LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(),expense.GetStringTag()).equals(tag)) {
+                    if (LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(), expense.GetStringTag()).equals(tag)) {
                         cleanedExpenses.add(expense);
                     }
                 }
@@ -477,21 +474,18 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
             if (category != null && subCategory == null) {
                 for (Expense expense : expenses) {
 
-                    if (LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(),expense.GetStringTag()).equals(tag) && rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(category)) {
+                    if (LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(), expense.GetStringTag()).equals(tag) && rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(category)) {
                         cleanedExpenses.add(expense);
                     }
                 }
             } else {
                 for (Expense expense : expenses) {
-                    if(rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(getString(R.string.custom_category_personal)) || rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(getString(R.string.custom_category_home)))
-                    {
-                        if (rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(category) && expense.GetSubCategory().equals(subCategory) && LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(),expense.GetStringTag()).equals(tag)) {
+                    if (rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(getString(R.string.custom_category_personal)) || rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(getString(R.string.custom_category_home))) {
+                        if (rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(category) && expense.GetSubCategory().equals(subCategory) && LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(), expense.GetStringTag()).equals(tag)) {
                             cleanedExpenses.add(expense);
                         }
-                    }
-                    else
-                    {
-                        if (rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(category) && rec.GetNameFromID(Integer.parseInt(expense.GetSubCategory())).equals(subCategory) && LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(),expense.GetStringTag()).equals(tag)) {
+                    } else {
+                        if (rec.GetNameFromID(Integer.parseInt(expense.GetCategory())).equals(category) && rec.GetNameFromID(Integer.parseInt(expense.GetSubCategory())).equals(subCategory) && LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(), expense.GetStringTag()).equals(tag)) {
                             cleanedExpenses.add(expense);
                         }
                     }

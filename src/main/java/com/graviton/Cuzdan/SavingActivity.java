@@ -65,7 +65,7 @@ public class SavingActivity extends Activity {
 
         txtName.setText(saving.GetName());
         txtAmount.setText(saving.GetAmount().toString() + " " + user.GetCurrency() + " " + "(" + getString(R.string.daily) + " " + saving.GetDailyGoal().toString() + " " + user.GetCurrency() + ")");
-        txtPeriod.setText(SavingsHelper.GetPeriodString(saving.GetPeriod()) + " (" + saving.GetTotalDays(saving.GetPeriod()) + " " + getString(R.string.day) + ")");
+        txtPeriod.setText(SavingsHelper.GetPeriodString(saving.GetPeriod(), this.getApplicationContext()) + " (" + saving.GetTotalDays(saving.GetPeriod()) + " " + getString(R.string.day) + ")");
         txtDesc.setText(saving.GetDescription());
 
         if (saving.GetDailyLimit().compareTo(BigDecimal.ZERO) <= 0) {

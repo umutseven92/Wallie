@@ -56,7 +56,7 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
         datePickerFragment.SetExpenseListener(this);
 
         user = ((Global) getActivity().getApplication()).GetUser();
-        rec = ((Global)getActivity().getApplication()).recordsHelper;
+        rec = ((Global) getActivity().getApplication()).recordsHelper;
 
         dateBeingViewed = new Date();
 

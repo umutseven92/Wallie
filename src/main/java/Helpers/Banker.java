@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Environment;
 import com.graviton.Cuzdan.Global;
+import com.graviton.Cuzdan.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -111,19 +112,19 @@ public class Banker implements Serializable {
     public Period GetPeriodFromTurkishString(String turkishPeriod) {
         Period per = null;
 
-        if (turkishPeriod.equals("Gün")) {
+        if (turkishPeriod.equals(mainApp.getString(R.string.day))) {
             per = Period.Day;
-        } else if (turkishPeriod.equals("Hafta")) {
+        } else if (turkishPeriod.equals(mainApp.getString(R.string.week))) {
             per = Period.Week;
-        } else if (turkishPeriod.equals("Ay")) {
+        } else if (turkishPeriod.equals(mainApp.getString(R.string.month))) {
             per = Period.Month;
-        } else if (turkishPeriod.equals("3 Ay")) {
+        } else if (turkishPeriod.equals(mainApp.getString(R.string.three_months))) {
             per = Period.ThreeMonths;
-        } else if (turkishPeriod.equals("6 Ay")) {
+        } else if (turkishPeriod.equals(mainApp.getString(R.string.six_months))) {
             per = Period.SixMonths;
-        } else if (turkishPeriod.equals("1 Yıl")) {
+        } else if (turkishPeriod.equals(mainApp.getString(R.string.year))) {
             per = Period.Year;
-        } else if (turkishPeriod.equals("Özel")) {
+        } else if (turkishPeriod.equals(mainApp.getString(R.string.custom))) {
             per = Period.Custom;
         }
 
@@ -1007,7 +1008,8 @@ public class Banker implements Serializable {
             int daysPast = calToday.get(Calendar.DAY_OF_MONTH) - calSaving.get(Calendar.DAY_OF_MONTH);
 
             if (daysPast < 0) {
-                throw new Exception("Gecen gunler 0'dan kucuk.");
+                // HATA!!
+                return;
             }
 
             int remainingDays = s.GetDays(s.GetPeriod()) - daysPast;
