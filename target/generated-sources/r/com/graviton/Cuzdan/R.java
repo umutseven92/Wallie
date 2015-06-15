@@ -1206,6 +1206,7 @@ containing a value of this type.
         public static final int loan1=0x7f0800aa;
         public static final int next=0x7f08002f;
         public static final int no=0x7f080056;
+        public static final int no_record=0x7f0800f5;
         public static final int not_daily=0x7f080075;
         public static final int not_fast=0x7f08007c;
         public static final int not_savings_over1=0x7f08007a;

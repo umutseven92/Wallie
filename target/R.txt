@@ -683,6 +683,7 @@ int string loan 0x7f0800a1
 int string loan1 0x7f0800aa
 int string next 0x7f08002f
 int string no 0x7f080056
+int string no_record 0x7f0800f5
 int string not_daily 0x7f080075
 int string not_fast 0x7f08007c
 int string not_savings_over1 0x7f08007a

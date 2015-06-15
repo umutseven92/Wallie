@@ -253,7 +253,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
 
             case R.id.spnExpenseCategory:
                 String item = parent.getItemAtPosition(position).toString();
-                if (item.equals("Hepsi")) {
+                if (item.equals(getString(R.string.all))) {
                     ArrayAdapter<String> emptyAdapter = new ArrayAdapter<String>(v.getContext(), R.layout.cuzdan_spinner_item, new ArrayList<String>());
                     emptyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spnSearchSubCategory.setAdapter(emptyAdapter);
@@ -284,11 +284,11 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                     return;
                 }
 
-                if (!item.startsWith("Özel Kategori")) {
+                if (!item.startsWith(getString(R.string.custom_category))) {
                     if (item.contains(" ")) {
-                        item = item.substring(0, item.indexOf(" ")) + "Gider" + spnSearchTags.getSelectedItem().toString();
+                        item = item.substring(0, item.indexOf(" ")) + getString(R.string.expense_search_add) + spnSearchTags.getSelectedItem().toString();
                     } else {
-                        item += "Gider" + spnSearchTags.getSelectedItem().toString();
+                        item += getString(R.string.expense_search_add) + spnSearchTags.getSelectedItem().toString();
                     }
                     int subID = getResources().getIdentifier(item, "array", getActivity().getPackageName());
 
@@ -348,7 +348,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
 
                 if (mode.equals("month")) {
                     try {
-                        if (spnSearchSubCategory.getSelectedItem().toString().equals("Hepsi")) {
+                        if (spnSearchSubCategory.getSelectedItem().toString().equals(getString(R.string.all))) {
                             LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), null, false);
                         } else {
                             LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), parent.getItemAtPosition(position).toString(), false);
@@ -364,7 +364,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                 } else if (mode.equals("day")) {
                     try {
 
-                        if (spnSearchSubCategory.getSelectedItem().toString().equals("Hepsi")) {
+                        if (spnSearchSubCategory.getSelectedItem().toString().equals(getString(R.string.all))) {
                             LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), null, true);
                         } else {
                             LoadListView(spnSearchTags.getSelectedItem().toString(), spnSearchCategory.getSelectedItem().toString(), parent.getItemAtPosition(position).toString(), true);
@@ -383,7 +383,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
             case R.id.spnSearchExpenseDate:
                 Date today = new Date();
 
-                if (parent.getItemAtPosition(position).toString().equals("Ay")) {
+                if (parent.getItemAtPosition(position).toString().equals(getString(R.string.search_month))) {
                     mode = "month";
                     try {
                         dateBeingViewed.setDate(1);
@@ -396,7 +396,7 @@ public class ExpenseSearchFragment extends Fragment implements AdapterView.OnIte
                         e.printStackTrace();
                     }
 
-                } else if (parent.getItemAtPosition(position).toString().equals("Gün")) {
+                } else if (parent.getItemAtPosition(position).toString().equals(getString(R.string.search_day))) {
                     mode = "day";
                     try {
                         if (dateBeingViewed.getMonth() == today.getMonth()) {

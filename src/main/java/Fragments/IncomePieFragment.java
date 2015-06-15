@@ -36,6 +36,7 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
     Date dateBeingViewed;
     User user;
     DatePickerFragment datePickerFragment;
+    RecordsHelper rec;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,6 +56,8 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
         btnCalendar.setOnClickListener(onCalendarClick);
 
         user = ((Global) getActivity().getApplication()).GetUser();
+        rec = ((Global)getActivity().getApplication()).recordsHelper;
+
         dateBeingViewed = new Date();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(v.getContext(), R.array.balanceDateArray, R.layout.cuzdan_spinner_item);
@@ -104,10 +107,10 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
                 Income income = incomes.get(i);
                 boolean dup = false;
 
-                if (!income.GetCategory().equals("Özel Kategori")) {
+                if (!rec.GetNameFromID(Integer.parseInt(income.GetCategory())).equals(getString(R.string.custom_category))) {
 
-                    if (!incomeNames.contains(income.GetCategory())) {
-                        incomeNames.add(income.GetCategory());
+                    if (!incomeNames.contains(rec.GetNameFromID(Integer.parseInt(income.GetCategory())))) {
+                        incomeNames.add(rec.GetNameFromID(Integer.parseInt(income.GetCategory())));
                     } else {
                         dup = true;
                     }
@@ -122,7 +125,7 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
 
                 }
 
-                if (income.GetCategory().equals("Özel Kategori")) {
+                if (rec.GetNameFromID(Integer.parseInt(income.GetCategory())).equals(getString(R.string.custom_category))) {
                     if (!dup) {
                         entries.add(new Entry(income.GetAmount().floatValue(), i));
                         dataKey.put(income.GetSubCategory(), i);
@@ -136,10 +139,10 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
                 } else {
                     if (!dup) {
                         entries.add(new Entry(income.GetAmount().floatValue(), i));
-                        dataKey.put(income.GetCategory(), i);
+                        dataKey.put(rec.GetNameFromID(Integer.parseInt(income.GetCategory())), i);
                     } else {
                         for (Entry e : entries) {
-                            if (e.getXIndex() == dataKey.get(income.GetCategory())) {
+                            if (e.getXIndex() == dataKey.get(rec.GetNameFromID(Integer.parseInt(income.GetCategory())))) {
                                 e.setVal(e.getVal() + income.GetAmount().floatValue());
                             }
                         }
@@ -158,9 +161,9 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
                 Income income = incomes.get(i);
                 boolean dup = false;
 
-                if (!income.GetCategory().equals("Özel Kategori")) {
-                    if (!incomeNames.contains(income.GetCategory())) {
-                        incomeNames.add(income.GetCategory());
+                if (!rec.GetNameFromID(Integer.parseInt(income.GetCategory())).equals(getString(R.string.custom_category))) {
+                    if (!incomeNames.contains(rec.GetNameFromID(Integer.parseInt(income.GetCategory())))) {
+                        incomeNames.add(rec.GetNameFromID(Integer.parseInt(income.GetCategory())));
                     } else {
                         dup = true;
                     }
@@ -172,7 +175,7 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
                     }
                 }
 
-                if (income.GetCategory().equals("Özel Kategori")) {
+                if (rec.GetNameFromID(Integer.parseInt(income.GetCategory())).equals(getString(R.string.custom_category))) {
                     if (!dup) {
                         entries.add(new Entry(income.GetAmount().floatValue(), i));
                         dataKey.put(income.GetSubCategory(), i);
@@ -186,10 +189,10 @@ public class IncomePieFragment extends Fragment implements AdapterView.OnItemSel
                 } else {
                     if (!dup) {
                         entries.add(new Entry(income.GetAmount().floatValue(), i));
-                        dataKey.put(income.GetCategory(), i);
+                        dataKey.put(rec.GetNameFromID(Integer.parseInt(income.GetCategory())), i);
                     } else {
                         for (Entry e : entries) {
-                            if (e.getXIndex() == dataKey.get(income.GetCategory())) {
+                            if (e.getXIndex() == dataKey.get(rec.GetNameFromID(Integer.parseInt(income.GetCategory()))) ){
                                 e.setVal(e.getVal() + income.GetAmount().floatValue());
                             }
                         }

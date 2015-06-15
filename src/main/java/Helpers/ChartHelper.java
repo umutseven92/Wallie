@@ -1,9 +1,11 @@
 package Helpers;
 
+import android.content.Context;
 import android.graphics.Color;
 import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.graviton.Cuzdan.R;
 
 /**
  * Created by Umut Seven on 27.1.2015, for Graviton.
@@ -40,7 +42,7 @@ public class ChartHelper {
 
     }
 
-    public static void InitializeLineChart(LineChart chart, String currency) {
+    public static void InitializeLineChart(LineChart chart, String currency, Context context) {
         chart.setValueTextColor(Color.BLACK);
         chart.setUnit(" " + currency);
         chart.setDrawUnitsInChart(true);
@@ -55,8 +57,8 @@ public class ChartHelper {
                 });
 
         chart.setDescription("");
-        chart.setNoDataText("Gelir yok.");
-        chart.setNoDataTextDescription("Gelir yok.");
+        chart.setNoDataText(context.getString(R.string.no_record));
+        chart.setNoDataTextDescription(context.getString(R.string.no_record));
 
         chart.setHighlightEnabled(true);
         chart.setTouchEnabled(true);

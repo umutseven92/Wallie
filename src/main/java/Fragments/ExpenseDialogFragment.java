@@ -27,7 +27,18 @@ public class ExpenseDialogFragment extends DialogFragment {
         final Expense expense = new Gson().fromJson(bundle.getString("expense"), Expense.class);
         boolean canDelete = bundle.getBoolean("canDelete");
         User user = ((Global) getActivity().getApplication()).GetUser();
-        String message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", getString(R.string.date), DateFormatHelper.GetDayText(expense.GetDate()), getString(R.string.expense_type) + ":", expense.GetTurkishStringTag(), getString(R.string.category), expense.GetCategory(), getString(R.string.subCategory), expense.GetSubCategory(), getString(R.string.amount), expense.GetAmount().toString() + " " + user.GetCurrency(), getString(R.string.description), expense.GetDescription());
+
+        RecordsHelper rec = ((Global) getActivity().getApplication()).recordsHelper;
+
+        String message;
+        if(expense.GetCategory().equals(Integer.toString(rec.GetIDFromName(getString(R.string.custom_category_home)))) || expense.GetCategory().equals(Integer.toString(rec.GetIDFromName(getString(R.string.custom_category_personal) ))))
+        {
+            message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", getString(R.string.date), DateFormatHelper.GetDayText(expense.GetDate()), getString(R.string.expense_type) + ":", LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(), expense.GetStringTag()), getString(R.string.category), rec.GetNameFromID(Integer.parseInt(expense.GetCategory())), getString(R.string.subCategory), expense.GetSubCategory(), getString(R.string.amount), expense.GetAmount().toString() + " " + user.GetCurrency(), getString(R.string.description), expense.GetDescription());
+        }
+        else
+        {
+            message = String.format("<b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s<br /><br /><b>%s</b> %s", getString(R.string.date), DateFormatHelper.GetDayText(expense.GetDate()), getString(R.string.expense_type) + ":", LocaleHelper.GetExpenseLocale(this.getActivity().getApplicationContext(), expense.GetStringTag()), getString(R.string.category), rec.GetNameFromID(Integer.parseInt(expense.GetCategory())), getString(R.string.subCategory), rec.GetNameFromID(Integer.parseInt(expense.GetSubCategory())), getString(R.string.amount), expense.GetAmount().toString() + " " + user.GetCurrency(), getString(R.string.description), expense.GetDescription());
+        }
 
         if (canDelete) {
             builder.setTitle(getString(R.string.details))

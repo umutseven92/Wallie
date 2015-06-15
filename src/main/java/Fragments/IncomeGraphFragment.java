@@ -65,7 +65,7 @@ public class IncomeGraphFragment extends Fragment implements OnChartValueSelecte
 
         dateBeingViewed = new Date();
 
-        ChartHelper.InitializeLineChart(incomeLineChart, user.GetCurrency());
+        ChartHelper.InitializeLineChart(incomeLineChart, user.GetCurrency(), getActivity().getApplicationContext());
         try {
             LoadLineChart();
         } catch (ParseException e) {
@@ -108,7 +108,7 @@ public class IncomeGraphFragment extends Fragment implements OnChartValueSelecte
             yVals.add(new Entry(incomes.get(i).GetAmount().floatValue(), i));
         }
 
-        LineDataSet set = new LineDataSet(yVals, "Gelirler");
+        LineDataSet set = new LineDataSet(yVals, getString(R.string.budget_incomes));
         set.setColor(getResources().getColor(R.color.cuzdan_red));
         set.setCircleColor(ColorTemplate.getHoloBlue());
         set.setLineWidth(4f);

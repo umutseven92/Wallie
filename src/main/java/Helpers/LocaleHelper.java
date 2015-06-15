@@ -2,6 +2,7 @@ package Helpers;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import com.graviton.Cuzdan.R;
 
 import java.util.Locale;
 
@@ -67,6 +68,18 @@ public class LocaleHelper {
         config.locale = locale;
         context.getResources().updateConfiguration(config,
                 context.getResources().getDisplayMetrics());
+    }
+
+    public static String GetExpenseLocale(Context context, String tag)
+    {
+        if(tag.equals("home"))
+        {
+            return context.getResources().getString(R.string.tag_home);
+        }
+        else
+        {
+            return context.getResources().getString(R.string.tag_personal);
+        }
     }
 
 }

@@ -36,6 +36,7 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
     Date dateBeingViewed;
     User user;
     DatePickerFragment datePickerFragment;
+    RecordsHelper rec;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,6 +56,8 @@ public class ExpensePieFragment extends Fragment implements AdapterView.OnItemSe
         datePickerFragment.SetExpenseListener(this);
 
         user = ((Global) getActivity().getApplication()).GetUser();
+        rec = ((Global)getActivity().getApplication()).recordsHelper;
+
         dateBeingViewed = new Date();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(v.getContext(), R.array.balanceDateArray, R.layout.cuzdan_spinner_item);

@@ -567,6 +567,7 @@
     <string name="groceries6">Furniture</string>
     <string name="groceries7">Others</string>
     <string name="language">Language:</string>
+    <string name="no_record">Gelir yok.</string>
 
     <string-array name="languages">
         <item>English</item>
