@@ -67,7 +67,7 @@ public class AccountFragment extends Fragment {
         btnRem.setText(String.valueOf(_user.GetRemNotHour()));
         btnSav.setText(String.valueOf(_user.GetSavingNotHour()));
 
-        spnLanguage.setAdapter(ArrayAdapter.createFromResource(v.getContext(), R.array.languages, R.layout.cuzdan_spinner_item));
+        spnLanguage.setAdapter(ArrayAdapter.createFromResource(v.getContext(), R.array.languages, android.R.layout.simple_spinner_dropdown_item));
 
 
         swcSaving.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

@@ -408,7 +408,7 @@
     <string name="settings_savings_hour">Savings Reminder Hour:</string>
     <string name="settings_daily_reminder_hour">Daily\nReminder Hour:</string>
     <string name="settings_daily_reminder">Daily\nReminder:</string>
-    <string name="settings_status_bar">Show In Status\nBar:</string>
+    <string name="settings_status_bar">Show On Notification\nWindow:</string>
     <string name="settings_backup">Back Up</string>
     <string name="settings_auto_backup">Auto Backup:</string>
     <string name="plus_buy">Purchase</string>

@@ -485,7 +485,7 @@
     <string name="settings_savings_hour">Birikim Hatırlatma Saati:</string>
     <string name="settings_daily_reminder_hour">Günlük İşlem\nHatırlatma Saati:</string>
     <string name="settings_daily_reminder">Günlük İşlem \nHatırlatması:</string>
-    <string name="settings_status_bar">Durum Çubuğunda\nGöster:</string>
+    <string name="settings_status_bar">Bildirim Penceresinde\nGöster:</string>
     <string name="settings_backup">Yedekle</string>
     <string name="settings_auto_backup">Auto Backup:</string>
     <string name="plus_buy">Satın Al</string>

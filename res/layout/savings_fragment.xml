@@ -60,9 +60,9 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/savings_limit"
                 android:id="@+id/txtTotalDailyLimitExp"
-                android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" android:textColor="@color/cuzdan_red"
-                android:layout_marginLeft="15dp" android:layout_marginTop="10dp"/>
+                android:textColor="@color/cuzdan_red"
+                android:layout_alignTop="@+id/txtInsufficentLimit" android:layout_alignLeft="@+id/txtInsufficentLimit"
+                android:layout_alignStart="@+id/txtInsufficentLimit"/>
         <Button
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
@@ -77,8 +77,8 @@
                 android:text="undefined"
                 android:id="@+id/txtTotalDailyLimit"
                 android:layout_alignTop="@+id/txtTotalDailyLimitExp" android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" android:layout_marginRight="15dp"
-                android:textColor="@color/cuzdan_red"/>
+                android:layout_alignParentEnd="false" android:layout_marginRight="15dp"
+                android:textColor="@color/cuzdan_red" android:layout_above="@+id/btnAddSaving"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                 android:text="@string/savings_insufficient"
                 android:id="@+id/txtInsufficentLimit"
                 android:textColor="@color/cuzdan_red"
-                android:layout_alignParentTop="true" android:layout_alignLeft="@+id/txtTotalDailyLimitExp"
-                android:layout_alignStart="@+id/txtTotalDailyLimitExp" android:layout_marginTop="10dp"/>
+                android:layout_above="@+id/btnAddSaving" android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"/>
     </RelativeLayout>
 </RelativeLayout>
