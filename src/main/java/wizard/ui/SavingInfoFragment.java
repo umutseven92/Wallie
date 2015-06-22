@@ -68,7 +68,7 @@ public class SavingInfoFragment extends Fragment {
 
 
         mPage.getData().putBoolean(SavingInfoPage.REPEAT_BOOL_KEY, false);
-        mPage.getData().putString(SavingInfoPage.REPEAT_DATA_KEY, "Hayır");
+        mPage.getData().putString(SavingInfoPage.REPEAT_DATA_KEY, getString(R.string.no));
         return rootView;
     }
 

@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:background="@drawable/main_layout">
-
-        <RelativeLayout
+    <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" android:layout_above="@+id/lytSavingButton"
+                android:layout_height="fill_parent" android:layout_above="@+id/lytSavingButton" android:layout_weight="80"
                 android:id="@+id/lytParentSavingLists">
-                <RelativeLayout
+        <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/lytSavingsList" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
@@ -20,37 +19,29 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:id="@+id/lstSavings" android:layout_alignParentTop="true"
-                        android:layout_alignLeft="@+id/textView5"
                         android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp" android:choiceMode="singleChoice" android:divider="@color/outline"
                         android:dividerHeight="1dp" android:listSelector="@drawable/list_selector"/>
-            </RelativeLayout>
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="402dp" android:layout_marginTop="15dp" android:id="@+id/lytEmptySavings" android:visibility="invisible"
-            android:background="@drawable/main_layout">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/savings_no"
-                android:id="@+id/textView4"
-                android:layout_marginTop="55dp"
-                android:textColor="@color/cuzdan_red" android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"/>
+                android:id="@+id/txtNoSav1" android:layout_centerInParent="true" android:textColor="@color/cuzdan_red"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/savings_to_start"
-                android:id="@+id/textView5" android:layout_below="@+id/textView4" android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp" android:textColor="@color/cuzdan_red" android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp" android:gravity="center"/>
+                android:layout_below="@+id/txtNoSav1"
+                android:id="@+id/txtNoSav2" android:layout_centerHorizontal="true" android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp" android:layout_marginLeft="20dp"
+                android:textColor="@color/cuzdan_red" android:gravity="center"/>
     </RelativeLayout>
     <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="102dp"
             android:id="@+id/lytSavingButton" android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
             android:layout_below="@+id/lytEmptySavings">
@@ -62,14 +53,15 @@
                 android:id="@+id/txtTotalDailyLimitExp"
                 android:textColor="@color/cuzdan_red"
                 android:layout_alignTop="@+id/txtInsufficentLimit" android:layout_alignLeft="@+id/txtInsufficentLimit"
-                android:layout_alignStart="@+id/txtInsufficentLimit"/>
+                android:layout_alignStart="@+id/txtInsufficentLimit" android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"/>
         <Button
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnAddSaving"
                 android:background="@drawable/rounded_button"
-                android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
-                android:layout_marginBottom="12dp"/>
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp" android:layout_centerHorizontal="true"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -77,8 +69,8 @@
                 android:text="undefined"
                 android:id="@+id/txtTotalDailyLimit"
                 android:layout_alignTop="@+id/txtTotalDailyLimitExp" android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="false" android:layout_marginRight="15dp"
-                android:textColor="@color/cuzdan_red" android:layout_above="@+id/btnAddSaving"/>
+                android:layout_alignParentEnd="false"
+                android:textColor="@color/cuzdan_red"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,7 +78,7 @@
                 android:text="@string/savings_insufficient"
                 android:id="@+id/txtInsufficentLimit"
                 android:textColor="@color/cuzdan_red"
-                android:layout_above="@+id/btnAddSaving" android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10dp"/>
+                android:layout_above="@+id/btnAddSaving"
+                android:layout_marginBottom="10dp" android:layout_centerInParent="true"/>
     </RelativeLayout>
-</RelativeLayout>
+</LinearLayout>

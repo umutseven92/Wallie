@@ -26,10 +26,10 @@ public class SavingsFragment extends Fragment {
 
     View v;
     User _user;
-    RelativeLayout lytNoSavings, lytSavings;
+    RelativeLayout lytSavings;
     Button btnAddSaving;
     ListView lv;
-    TextView txtSavingLimitExp, txtSavingLimit, txtInsufficent;
+    TextView txtSavingLimitExp, txtSavingLimit, txtInsufficent, txtNoSav1, txtNoSav2;
 
     public static final SavingsFragment newInstance() {
         SavingsFragment f = new SavingsFragment();
@@ -45,7 +45,9 @@ public class SavingsFragment extends Fragment {
         txtSavingLimitExp = (TextView) v.findViewById(R.id.txtTotalDailyLimitExp);
         txtInsufficent = (TextView) v.findViewById(R.id.txtInsufficentLimit);
 
-        lytNoSavings = (RelativeLayout) v.findViewById(R.id.lytEmptySavings);
+        txtNoSav1 = (TextView)v.findViewById(R.id.txtNoSav1);
+        txtNoSav2 = (TextView)v.findViewById(R.id.txtNoSav2);
+
         lytSavings = (RelativeLayout) v.findViewById(R.id.lytSavingsList);
         btnAddSaving = (Button) v.findViewById(R.id.btnAddSaving);
         lv = (ListView) v.findViewById(R.id.lstSavings);
@@ -90,17 +92,19 @@ public class SavingsFragment extends Fragment {
         }
 
         if (savingsCount <= 0) {
-            lytNoSavings.setVisibility(View.VISIBLE);
             lytSavings.setVisibility(View.INVISIBLE);
             txtSavingLimit.setVisibility(View.INVISIBLE);
             txtSavingLimitExp.setVisibility(View.INVISIBLE);
             txtInsufficent.setVisibility(View.INVISIBLE);
+            txtNoSav1.setVisibility(View.VISIBLE);
+            txtNoSav2.setVisibility(View.VISIBLE);
             btnAddSaving.setText(getString(R.string.savings_start));
         } else if (savingsCount > 0) {
-            lytNoSavings.setVisibility(View.INVISIBLE);
             lytSavings.setVisibility(View.VISIBLE);
             txtSavingLimit.setVisibility(View.VISIBLE);
             txtSavingLimitExp.setVisibility(View.VISIBLE);
+            txtNoSav1.setVisibility(View.INVISIBLE);
+            txtNoSav2.setVisibility(View.INVISIBLE);
             if (_user.GetBanker().GetTotalSavingLimit().compareTo(BigDecimal.ZERO) <= 0) {
                 txtSavingLimitExp.setVisibility(View.INVISIBLE);
                 txtSavingLimit.setVisibility(View.INVISIBLE);

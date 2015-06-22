@@ -693,7 +693,7 @@ containing a value of this type.
         public static final int btnAccountSav=0x7f0c0048;
         public static final int btnAddExpense=0x7f0c0088;
         public static final int btnAddIncome=0x7f0c00ae;
-        public static final int btnAddSaving=0x7f0c00ee;
+        public static final int btnAddSaving=0x7f0c00ef;
         public static final int btnBackup=0x7f0c004e;
         public static final int btnBalanceCalendar=0x7f0c0075;
         public static final int btnCalendar=0x7f0c00af;
@@ -767,7 +767,7 @@ containing a value of this type.
         public static final int lytCriteria=0x7f0c00bd;
         public static final int lytDate=0x7f0c007d;
         public static final int lytDetails=0x7f0c00d2;
-        public static final int lytEmptySavings=0x7f0c00eb;
+        public static final int lytEmptySavings=0x7f0c00ec;
         public static final int lytExpense=0x7f0c007c;
         public static final int lytExpenseSearchCalendar=0x7f0c009e;
         public static final int lytIncomePieDate=0x7f0c00b6;
@@ -873,7 +873,6 @@ containing a value of this type.
         public static final int textView37=0x7f0c002d;
         public static final int textView38=0x7f0c002e;
         public static final int textView39=0x7f0c002f;
-        public static final int textView4=0x7f0c00ec;
         public static final int textView40=0x7f0c0030;
         public static final int textView41=0x7f0c0031;
         public static final int textView42=0x7f0c0032;
@@ -883,7 +882,6 @@ containing a value of this type.
         public static final int textView46=0x7f0c001f;
         public static final int textView47=0x7f0c0025;
         public static final int textView48=0x7f0c0051;
-        public static final int textView5=0x7f0c00ea;
         public static final int textView6=0x7f0c00a0;
         public static final int textView7=0x7f0c0069;
         public static final int textView8=0x7f0c00d5;
@@ -898,8 +896,10 @@ containing a value of this type.
         public static final int txtExpenseGraphDate=0x7f0c008a;
         public static final int txtIncomeDate=0x7f0c00ab;
         public static final int txtIncomeGraphDate=0x7f0c00b0;
-        public static final int txtInsufficentLimit=0x7f0c00f0;
+        public static final int txtInsufficentLimit=0x7f0c00ee;
         public static final int txtName=0x7f0c003c;
+        public static final int txtNoSav1=0x7f0c00ea;
+        public static final int txtNoSav2=0x7f0c00eb;
         public static final int txtSavedAmount=0x7f0c00e4;
         public static final int txtSavingAmount=0x7f0c00d8;
         public static final int txtSavingDailyLimit=0x7f0c00da;
@@ -912,7 +912,7 @@ containing a value of this type.
         public static final int txtSearchExpenseTotal=0x7f0c00a2;
         public static final int txtSearchIncomeDate=0x7f0c00c9;
         public static final int txtSearchIncomeTotal=0x7f0c00c8;
-        public static final int txtTotalDailyLimit=0x7f0c00ef;
+        public static final int txtTotalDailyLimit=0x7f0c00f0;
         public static final int txtTotalDailyLimitExp=0x7f0c00ed;
         public static final int txtTotalExpense=0x7f0c0084;
         public static final int txtTotalIncome=0x7f0c00a9;

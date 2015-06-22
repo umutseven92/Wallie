@@ -258,7 +258,7 @@ int id btnAccountRem 0x7f0c0046
 int id btnAccountSav 0x7f0c0048
 int id btnAddExpense 0x7f0c0088
 int id btnAddIncome 0x7f0c00ae
-int id btnAddSaving 0x7f0c00ee
+int id btnAddSaving 0x7f0c00ef
 int id btnBackup 0x7f0c004e
 int id btnBalanceCalendar 0x7f0c0075
 int id btnCalendar 0x7f0c00af
@@ -332,7 +332,7 @@ int id lytBar 0x7f0c00d0
 int id lytCriteria 0x7f0c00bd
 int id lytDate 0x7f0c007d
 int id lytDetails 0x7f0c00d2
-int id lytEmptySavings 0x7f0c00eb
+int id lytEmptySavings 0x7f0c00ec
 int id lytExpense 0x7f0c007c
 int id lytExpenseSearchCalendar 0x7f0c009e
 int id lytIncomePieDate 0x7f0c00b6
@@ -438,7 +438,6 @@ int id textView36 0x7f0c002a
 int id textView37 0x7f0c002d
 int id textView38 0x7f0c002e
 int id textView39 0x7f0c002f
-int id textView4 0x7f0c00ec
 int id textView40 0x7f0c0030
 int id textView41 0x7f0c0031
 int id textView42 0x7f0c0032
@@ -448,7 +447,6 @@ int id textView45 0x7f0c0024
 int id textView46 0x7f0c001f
 int id textView47 0x7f0c0025
 int id textView48 0x7f0c0051
-int id textView5 0x7f0c00ea
 int id textView6 0x7f0c00a0
 int id textView7 0x7f0c0069
 int id textView8 0x7f0c00d5
@@ -463,8 +461,10 @@ int id txtExpenseDate 0x7f0c0085
 int id txtExpenseGraphDate 0x7f0c008a
 int id txtIncomeDate 0x7f0c00ab
 int id txtIncomeGraphDate 0x7f0c00b0
-int id txtInsufficentLimit 0x7f0c00f0
+int id txtInsufficentLimit 0x7f0c00ee
 int id txtName 0x7f0c003c
+int id txtNoSav1 0x7f0c00ea
+int id txtNoSav2 0x7f0c00eb
 int id txtSavedAmount 0x7f0c00e4
 int id txtSavingAmount 0x7f0c00d8
 int id txtSavingDailyLimit 0x7f0c00da
@@ -477,7 +477,7 @@ int id txtSearchExpenseDate 0x7f0c00a1
 int id txtSearchExpenseTotal 0x7f0c00a2
 int id txtSearchIncomeDate 0x7f0c00c9
 int id txtSearchIncomeTotal 0x7f0c00c8
-int id txtTotalDailyLimit 0x7f0c00ef
+int id txtTotalDailyLimit 0x7f0c00f0
 int id txtTotalDailyLimitExp 0x7f0c00ed
 int id txtTotalExpense 0x7f0c0084
 int id txtTotalIncome 0x7f0c00a9

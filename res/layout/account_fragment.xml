@@ -201,7 +201,7 @@
 
                     <Spinner android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/spnLanguage"
                               android:layout_toRightOf="@+id/textView48" android:layout_marginLeft="80dp" android:layout_alignTop="@+id/textView48" android:layout_alignRight="@id/swcStatusNot"
-                             android:spinnerMode="dialog" android:layout_marginTop="-20dp"/>
+                             android:spinnerMode="dropdown" android:layout_marginTop="-20dp"/>
 
                     <RelativeLayout android:layout_width="wrap_content"
                                     android:layout_height="wrap_content" android:layout_below="@+id/btnBackup" android:layout_marginTop="70dp" android:id="@+id/lytProOptions">
