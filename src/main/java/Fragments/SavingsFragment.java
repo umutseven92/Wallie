@@ -45,8 +45,8 @@ public class SavingsFragment extends Fragment {
         txtSavingLimitExp = (TextView) v.findViewById(R.id.txtTotalDailyLimitExp);
         txtInsufficent = (TextView) v.findViewById(R.id.txtInsufficentLimit);
 
-        txtNoSav1 = (TextView)v.findViewById(R.id.txtNoSav1);
-        txtNoSav2 = (TextView)v.findViewById(R.id.txtNoSav2);
+        txtNoSav1 = (TextView) v.findViewById(R.id.txtNoSav1);
+        txtNoSav2 = (TextView) v.findViewById(R.id.txtNoSav2);
 
         lytSavings = (RelativeLayout) v.findViewById(R.id.lytSavingsList);
         btnAddSaving = (Button) v.findViewById(R.id.btnAddSaving);
