@@ -62,6 +62,9 @@ public class ExpenseListAdapter extends BaseAdapter {
         TextView text2 = twoLineListItem.getText2();
 
         String cat = expenses.get(position).GetCategory();
+        String s = context.getString(R.string.custom_category_home);
+        String id = Integer.toString(recordsHelper.GetIDFromName(context.getString(R.string.custom_category_home)));
+
         if (cat.equals(Integer.toString(recordsHelper.GetIDFromName(context.getString(R.string.custom_category_home)))) || cat.equals(Integer.toString(recordsHelper.GetIDFromName(context.getString(R.string.custom_category_personal))))) {
             text1.setText(expenses.get(position).GetSubCategory());
         } else {

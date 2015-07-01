@@ -30,7 +30,30 @@ public class RecordsHelper {
         return records.get(id);
     }
 
+    public SparseArray<String> ReturnIncomes() {
+        SparseArray<String> iList = new SparseArray<String>();
+
+        for (int i = 0; i < records.size(); i++) {
+            if (Integer.toString(records.keyAt(i)).startsWith("1")) {
+                iList.put(records.keyAt(i), records.valueAt(i));
+            }
+        }
+        return iList;
+    }
+
+    public SparseArray<String> ReturnExpenses() {
+        SparseArray<String> eList = new SparseArray<String>();
+
+        for (int i = 0; i < records.size(); i++) {
+            if (Integer.toString(records.keyAt(i)).startsWith("2")) {
+                eList.put(records.keyAt(i), records.valueAt(i));
+            }
+        }
+        return eList;
+    }
+
     private void PopulateRecords(Resources res) {
+
         //Gelirler
         records.put(101, res.getString(R.string.salary));
         records.put(102, res.getString(R.string.rent));
@@ -73,12 +96,13 @@ public class RecordsHelper {
         records.put(2107, res.getString(R.string.exchange));
         records.put(2108, res.getString(R.string.install));
         records.put(2109, res.getString(R.string.debt));
-        records.put(2110, res.getString(R.string.rent_expense));
-        records.put(2111, res.getString(R.string.bills));
-        records.put(2112, res.getString(R.string.pet));
-        records.put(2113, res.getString(R.string.groceries));
-        records.put(2114, res.getString(R.string.custom_category_personal));
-        records.put(2115, res.getString(R.string.custom_category_home));
+        records.put(2110, res.getString(R.string.custom_category_personal));
+
+        records.put(2201, res.getString(R.string.rent_expense));
+        records.put(2202, res.getString(R.string.bills));
+        records.put(2203, res.getString(R.string.pet));
+        records.put(2204, res.getString(R.string.groceries));
+        records.put(2205, res.getString(R.string.custom_category_home));
 
         records.put(210101, res.getString(R.string.food1));
         records.put(210102, res.getString(R.string.food2));
@@ -111,28 +135,28 @@ public class RecordsHelper {
         records.put(210902, res.getString(R.string.debt2));
         records.put(210903, res.getString(R.string.debt3));
 
-        records.put(211001, res.getString(R.string.rent_expense1));
+        records.put(220101, res.getString(R.string.rent_expense1));
 
-        records.put(211101, res.getString(R.string.bills1));
-        records.put(211102, res.getString(R.string.bills2));
-        records.put(211103, res.getString(R.string.bills3));
-        records.put(211104, res.getString(R.string.bills4));
-        records.put(211105, res.getString(R.string.bills5));
-        records.put(211106, res.getString(R.string.bills6));
-        records.put(211107, res.getString(R.string.bills7));
+        records.put(220201, res.getString(R.string.bills1));
+        records.put(220202, res.getString(R.string.bills2));
+        records.put(220203, res.getString(R.string.bills3));
+        records.put(220204, res.getString(R.string.bills4));
+        records.put(220205, res.getString(R.string.bills5));
+        records.put(220206, res.getString(R.string.bills6));
+        records.put(220207, res.getString(R.string.bills7));
 
-        records.put(211201, res.getString(R.string.pet1));
-        records.put(211202, res.getString(R.string.pet2));
-        records.put(211203, res.getString(R.string.pet3));
-        records.put(211204, res.getString(R.string.pet4));
+        records.put(220301, res.getString(R.string.pet1));
+        records.put(220302, res.getString(R.string.pet2));
+        records.put(220303, res.getString(R.string.pet3));
+        records.put(220304, res.getString(R.string.pet4));
 
-        records.put(211301, res.getString(R.string.groceries1));
-        records.put(211302, res.getString(R.string.groceries2));
-        records.put(211303, res.getString(R.string.groceries3));
-        records.put(211304, res.getString(R.string.groceries4));
-        records.put(211305, res.getString(R.string.groceries5));
-        records.put(211306, res.getString(R.string.groceries6));
-        records.put(211307, res.getString(R.string.groceries7));
+        records.put(220401, res.getString(R.string.groceries1));
+        records.put(220402, res.getString(R.string.groceries2));
+        records.put(220403, res.getString(R.string.groceries3));
+        records.put(220404, res.getString(R.string.groceries4));
+        records.put(220405, res.getString(R.string.groceries5));
+        records.put(220406, res.getString(R.string.groceries6));
+        records.put(220407, res.getString(R.string.groceries7));
     }
 
 

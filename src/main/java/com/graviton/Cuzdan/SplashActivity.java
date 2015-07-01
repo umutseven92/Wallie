@@ -170,6 +170,7 @@ public class SplashActivity extends Activity {
         user.SetUserNotifications(PendingIntent.getBroadcast(SplashActivity.this, 0, new Intent(SplashActivity.this, SavingsNotificationReceiver.class), 0), PendingIntent.getBroadcast(SplashActivity.this, 0, new Intent(SplashActivity.this, ReminderNotificationReceiver.class), 0));
 
         ((Global) this.getApplication()).SetUser(user);
+        ((Global) this.getApplication()).recordsHelper = new RecordsHelper(getResources());
 
         String sav = userJSON.getJSONObject("user").getString("notifications");
         String rem = userJSON.getJSONObject("user").getString("remNotifications");

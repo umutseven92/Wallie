@@ -1,8 +1,12 @@
 package wizard;
 
 import android.content.Context;
+import android.util.SparseArray;
+import com.graviton.Cuzdan.Global;
 import com.graviton.Cuzdan.R;
 import wizard.model.*;
+
+import java.util.ArrayList;
 
 
 /**
@@ -16,29 +20,70 @@ public class ExpenseWizardModel extends AbstractWizardModel {
     @Override
     protected PageList onNewRootPageList() {
 
+        BranchPage mainPage = new BranchPage(this, mContext.getString(R.string.expense_type));
+        mainPage.setRequired(true);
 
-        return new PageList(
-                new BranchPage(this, mContext.getString(R.string.expense_type))
-                        .addBranch(mContext.getString(R.string.tag_personal), new BranchPage(this, mContext.getString(R.string.category))
-                                        .addBranch(mContext.getString(R.string.food), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.food1), mContext.getString(R.string.food2)).setRequired(true))
-                                        .addBranch(mContext.getString(R.string.cig), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.cig1), mContext.getString(R.string.cig2)).setRequired(true))
-                                        .addBranch(mContext.getString(R.string.shop), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.shop1), mContext.getString(R.string.shop2), mContext.getString(R.string.shop3)).setRequired(true))
-                                        .addBranch(mContext.getString(R.string.health), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.health1), mContext.getString(R.string.health2)).setRequired(true))
-                                        .addBranch(mContext.getString(R.string.ent), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.ent1), mContext.getString(R.string.ent2), mContext.getString(R.string.ent3), mContext.getString(R.string.ent4)).setRequired(true))
-                                        .addBranch(mContext.getString(R.string.trans), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.trans1), mContext.getString(R.string.trans2), mContext.getString(R.string.trans3), mContext.getString(R.string.trans4)).setRequired(true))
-                                        .addBranch(mContext.getString(R.string.exchange), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.exchange1)).setRequired(true))
-                                        .addBranch(mContext.getString(R.string.install), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.install1)).setRequired(true))
-                                        .addBranch(mContext.getString(R.string.debt), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.debt1), mContext.getString(R.string.debt2), mContext.getString(R.string.debt3)).setRequired(true))
-                                        .addBranch(mContext.getString(R.string.custom_category_personal), new BalanceCustomInfoPage(this, mContext.getString(R.string.enter_category), mContext).setRequired(true))
-                        )
-                        .addBranch(mContext.getString(R.string.tag_home), new BranchPage(this, mContext.getString(R.string.category))
-                                        .addBranch(mContext.getString(R.string.rent_expense), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.rent_expense1)).setRequired(true))
-                                        .addBranch(mContext.getString(R.string.bills), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.bills1), mContext.getString(R.string.bills2), mContext.getString(R.string.bills3), mContext.getString(R.string.bills4), mContext.getString(R.string.bills5), mContext.getString(R.string.bills6), mContext.getString(R.string.bills7)).setRequired(true))
-                                        .addBranch(mContext.getString(R.string.pet), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.pet1), mContext.getString(R.string.pet2), mContext.getString(R.string.pet3), mContext.getString(R.string.pet4)).setRequired(true))
-                                        .addBranch(mContext.getString(R.string.groceries), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(mContext.getString(R.string.groceries1), mContext.getString(R.string.groceries2), mContext.getString(R.string.groceries3), mContext.getString(R.string.groceries4), mContext.getString(R.string.groceries5), mContext.getString(R.string.groceries6), mContext.getString(R.string.groceries7)).setRequired(true))
-                                        .addBranch(mContext.getString(R.string.custom_category_home), new BalanceCustomInfoPage(this, mContext.getString(R.string.enter_category), mContext).setRequired(true))
-                        ).setRequired(true),
-                new BalanceInfoPage(this, mContext.getString(R.string.details), mContext).setRequired(true));
+        SparseArray<String> expenses = ((Global) mContext.getApplicationContext()).recordsHelper.ReturnExpenses();
+
+        SparseArray<String> personalCategories = new SparseArray<String>();
+        SparseArray<String> homeCategories = new SparseArray<String>();
+
+        // Kategorileri al
+        for (int i = 0; i < expenses.size(); i++) {
+            if (Integer.toString(expenses.keyAt(i)).startsWith("21") && Integer.toString(expenses.keyAt(i)).toCharArray().length == 4) {
+                // "Personal"
+                personalCategories.put(expenses.keyAt(i), expenses.valueAt(i));
+
+            } else if (Integer.toString(expenses.keyAt(i)).startsWith("22") && Integer.toString(expenses.keyAt(i)).toCharArray().length == 4) {
+                // "Home"
+                homeCategories.put(expenses.keyAt(i), expenses.valueAt(i));
+            }
+        }
+
+        BranchPage personalBranch = new BranchPage(this, mContext.getString(R.string.category));
+        personalBranch.setRequired(true);
+
+        // Personal
+        for (int i = 0; i < personalCategories.size(); i++) {
+            ArrayList<String> personalSubCategories = new ArrayList<String>();
+
+            for (int j = 0; j < expenses.size(); j++) {
+                if (Integer.toString(expenses.keyAt(j)).toCharArray().length > 4 && Integer.toString(expenses.keyAt(j)).startsWith(Integer.toString(personalCategories.keyAt(i)))) {
+                    personalSubCategories.add(expenses.valueAt(j));
+                }
+            }
+
+            if (personalCategories.valueAt(i).equals(mContext.getString(R.string.custom_category_personal))) {
+                personalBranch.addBranch(personalCategories.valueAt(i), new BalanceCustomInfoPage(this, mContext.getString(R.string.enter_category), mContext).setRequired(true));
+            } else {
+                personalBranch.addBranch(personalCategories.valueAt(i), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(personalSubCategories.toArray(new String[personalSubCategories.size()])).setRequired(true));
+            }
+        }
+
+        BranchPage homeBranch = new BranchPage(this, mContext.getString(R.string.category));
+        homeBranch.setRequired(true);
+
+        // Home
+        for (int i = 0; i < homeCategories.size(); i++) {
+            ArrayList<String> homeSubCategories = new ArrayList<String>();
+
+            for (int j = 0; j < expenses.size(); j++) {
+                if (Integer.toString(expenses.keyAt(j)).toCharArray().length > 4 && Integer.toString(expenses.keyAt(j)).startsWith(Integer.toString(homeCategories.keyAt(i)))) {
+                    homeSubCategories.add(expenses.valueAt(j));
+                }
+            }
+
+            if (homeCategories.valueAt(i).equals(mContext.getString(R.string.custom_category_home))) {
+                homeBranch.addBranch(homeCategories.valueAt(i), new BalanceCustomInfoPage(this, mContext.getString(R.string.enter_category), mContext).setRequired(true));
+            } else {
+                homeBranch.addBranch(homeCategories.valueAt(i), new SingleFixedChoicePage(this, mContext.getString(R.string.subCategory)).setChoices(homeSubCategories.toArray(new String[homeSubCategories.size()])).setRequired(true));
+            }
+        }
+
+        mainPage.addBranch(mContext.getString(R.string.tag_personal), personalBranch);
+        mainPage.addBranch(mContext.getString(R.string.tag_home), homeBranch);
+
+        return new PageList(mainPage, new BalanceInfoPage(this, mContext.getString(R.string.details), mContext).setRequired(true));
     }
 
 }

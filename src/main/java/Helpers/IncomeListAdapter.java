@@ -60,6 +60,9 @@ public class IncomeListAdapter extends BaseAdapter {
         TextView text2 = twoLineListItem.getText2();
 
         String cat = incomes.get(position).GetCategory();
+        String xz = context.getString(R.string.custom_category);
+        Integer i = recordsHelper.GetIDFromName(xz);
+        String s = Integer.toString(i);
 
         if (cat.equals(Integer.toString(recordsHelper.GetIDFromName(context.getString(R.string.custom_category))))) {
             text1.setText(incomes.get(position).GetSubCategory());
