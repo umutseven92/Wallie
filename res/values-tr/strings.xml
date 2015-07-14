@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Cüzdan</string>
-    <string name="version">1.0.0</string>
+    <string name="app_name">Wallie</string>
+    <string name="version">1.0.1</string>
 
     <string name="dummyData">false</string>
 
@@ -18,7 +18,7 @@
         <item>Birikim</item>
         <item>Ayarlar</item>
         <item>Hakkında</item>
-        <item>Cüzdan Plus</item>
+        <item>Wallie Plus</item>
     </string-array>
 
     <string-array name="plusMenuArray">
@@ -457,7 +457,7 @@
     <string name="savings_savings">Birikim</string>
     <string name="settings_settings">Hesap</string>
     <string name="about_about">Hakkında</string>
-    <string name="plus_plus">Cüzdan Plus</string>
+    <string name="plus_plus">Wallie Plus</string>
     <string name="exit">Çıkış</string>
     <string name="exit_confirm">Çıkmak istediğinizden emin misiniz?</string>
     <string name="yes">Evet</string>
@@ -490,13 +490,13 @@
     <string name="settings_auto_backup">Auto Backup:</string>
     <string name="plus_buy">Satın Al</string>
     <string name="plus_ads">Reklamları kaldırın!</string>
-    <string name="plus_exclusive">Cüzdan Plus sahiplerine özel olacak fonksiyonlara hiçbir ekstra ücret ödemeden sahip
+    <string name="plus_exclusive">Wallie Plus sahiplerine özel olacak fonksiyonlara hiçbir ekstra ücret ödemeden sahip
         olun!
     </string>
     <string name="total">Toplam</string>
     <string name="not_daily">Günlük harcamalarınızı kaydettiniz mi?</string>
     <string name="not_savings_reached">Birikim hedefinize ulaştınız</string>
-    <string name="not_savings_title">Cüzdan Birikim</string>
+    <string name="not_savings_title">Wallie Birikim</string>
     <string name="not_savings_under1">Bugün içinde</string>
     <string name="not_savings_under2">daha harcayabilirsiniz.</string>
     <string name="not_savings_over1">Birikim hedefinizi</string>
