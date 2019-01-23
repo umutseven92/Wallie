@@ -1,7 +1,7 @@
 Wallie
 ======
 
-##About
+## About
 ![Wallie](https://github.com/umutseven92/Cuzdan/blob/master/res/drawable-xxhdpi/ic_launcher.png)
 
 Wallie is made for you to keep track on your spending, plan your budget and meet your saving goals. It is very user-friendly and easy to use. The key to being money smart is now in your pocket!
@@ -14,7 +14,7 @@ What can you do with Wallie?
 - Analyse your spending with detailed & graphical views. 
 - Save all your spending habits securely in your phone. Nothing leaves your pocket!
 
-##Resources Used
+## Resources Used
 * Android-WizardPager: [Roman Nurik](http://roman.nurik.net/)
 * MPAndroidChart: [Philipp Jahoda](https://github.com/PhilJay)
 * ShowcaseView: [Alex Curran](https://github.com/amlcurran)
